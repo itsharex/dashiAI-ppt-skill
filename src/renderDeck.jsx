@@ -28,6 +28,7 @@ export function renderDeck(deck, { outFile }) {
   const template = fs.readFileSync(path.join(ROOT, 'assets/template-swiss.html'), 'utf8');
   const slides = renderToStaticMarkup(<>{React.Children.toArray(deck.slides)}</>);
   let html = insertSlides(template, slides);
+  html = html.replace('<html lang="zh-CN">', `<html lang="zh-CN" data-theme="${themeName}">`);
   html = html.replace('<title>[必填] 替换为 PPT 标题 · Deck Title</title>', `<title>${escapeHtml(deck.title)}</title>`);
   html = replaceCssVars(html, { ...theme.vars, ...font.vars, ...typeScale.vars, ...spacing.vars });
   html = replaceOptionLabels(html, { themeLabel: theme.label, fontLabel: font.label, fontName });
@@ -43,6 +44,7 @@ export function renderDeck(deck, { outFile }) {
       spacing: spacingName,
     },
   });
+  html = injectUnicornSceneJson(html);
   html = html.replace('<link rel="preconnect" href="https://fonts.googleapis.com">', '<link rel="icon" href="data:,">\n<link rel="preconnect" href="https://fonts.googleapis.com">');
 
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
@@ -102,23 +104,38 @@ function injectPreviewOptions(html, options) {
   );
 }
 
+function injectUnicornSceneJson(html) {
+  const scenesDir = path.join(ROOT, 'assets/unicorn');
+  if (!fs.existsSync(scenesDir)) return html;
+  const sceneMap = Object.fromEntries(
+    fs.readdirSync(scenesDir)
+      .filter(file => file.endsWith('.json'))
+      .map(file => [`assets/unicorn/${file}`, fs.readFileSync(path.join(scenesDir, file), 'utf8')]),
+  );
+  const json = escapeScriptJson(JSON.stringify(sceneMap));
+  return html.replace(
+    /<script id="unicorn-scene-json-map" type="application\/json">[\s\S]*?<\/script>/,
+    `<script id="unicorn-scene-json-map" type="application/json">${json}</script>`,
+  );
+}
+
 function copyRuntimeAssets(outDir) {
   const assetsDir = path.join(outDir, 'assets');
   const imagesDir = path.join(outDir, 'images');
   fs.mkdirSync(assetsDir, { recursive: true });
   fs.mkdirSync(imagesDir, { recursive: true });
   fs.copyFileSync(path.join(ROOT, 'assets/motion.min.js'), path.join(assetsDir, 'motion.min.js'));
+  copyDirectoryIfExists(path.join(ROOT, 'assets/imported'), path.join(assetsDir, 'imported'));
   copyDirectoryIfExists(path.join(ROOT, 'assets/screenshot-backgrounds'), path.join(assetsDir, 'screenshot-backgrounds'));
+  copyDirectoryIfExists(path.join(ROOT, 'assets/unicorn'), path.join(assetsDir, 'unicorn'));
 
   const placeholder = path.join(imagesDir, 'placeholder-21x9.svg');
-  if (!fs.existsSync(placeholder)) {
-    fs.writeFileSync(placeholder, `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 900">
+  fs.writeFileSync(placeholder, `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 900">
   <rect width="2100" height="900" fill="#f0f0ee"/>
   <path d="M0 700H2100M340 0V900M1760 0V900" stroke="#d4d4d2" stroke-width="3"/>
   <rect x="690" y="250" width="720" height="260" fill="#fafaf8"/>
-  <text x="1050" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" fill="#737373">21:9 IMAGE SLOT</text>
+  <text x="1050" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" fill="#737373">21:9 MEDIA SLOT</text>
 </svg>`);
-  }
 }
 
 function copyDirectoryIfExists(from, to) {

@@ -7,6 +7,8 @@ const showcaseFile = 'examples/component-decks/all-layouts-showcase.jsx';
 const options = readFileSync(optionsFile, 'utf8');
 const showcase = readFileSync(showcaseFile, 'utf8');
 
+const registeredLayouts = [...options.matchAll(/^\s*([a-z]\w*):\s*\{[\s\S]*?dataLayout:\s*'([^']+)'/gm)]
+  .map((match) => ({ key: match[1], dataLayout: match[2] }));
 const canonicalLayouts = [...options.matchAll(/^\s*(s\d{2}):\s*\{[\s\S]*?dataLayout:\s*'S(\d{2})'/gm)]
   .map((match) => ({ key: match[1], dataLayout: `S${match[2]}` }))
   .filter((layout) => layout.key === layout.dataLayout.toLowerCase());
@@ -15,8 +17,12 @@ const magazineLayouts = [...options.matchAll(/^\s*(a\d{2}):\s*\{[\s\S]*?dataLayo
   .filter((layout) => layout.key === layout.dataLayout.toLowerCase());
 
 const showcaseKeys = [...showcase.matchAll(/slide\('([^']+)'/g)].map((match) => match[1]);
+const registeredKeys = registeredLayouts.map((layout) => layout.key);
 const showcaseCanonicalKeys = showcaseKeys.filter((key) => /^s\d{2}$/.test(key));
 const showcaseMagazineKeys = showcaseKeys.filter((key) => /^a\d{2}$/.test(key));
+const missingRegistered = registeredKeys.filter((key) => !showcaseKeys.includes(key));
+const extraRegistered = showcaseKeys.filter((key) => !registeredKeys.includes(key));
+const duplicateRegistered = showcaseKeys.filter((key, index) => showcaseKeys.indexOf(key) !== index);
 const expectedKeys = canonicalLayouts.map((layout) => layout.key);
 const expectedMagazineKeys = magazineLayouts.map((layout) => layout.key);
 const requiredExtensionKeys = ['s08Map'].filter((key) => new RegExp(`^\\s*${key}:\\s*\\{`, 'm').test(options));
@@ -29,7 +35,10 @@ const extraMagazine = showcaseMagazineKeys.filter((key) => !expectedMagazineKeys
 const duplicateMagazine = showcaseMagazineKeys.filter((key, index) => showcaseMagazineKeys.indexOf(key) !== index);
 const missingExtensions = requiredExtensionKeys.filter((key) => !showcaseKeys.includes(key));
 
-if (missing.length || extra.length || duplicates.length || missingMagazine.length || extraMagazine.length || duplicateMagazine.length || missingExtensions.length) {
+if (missingRegistered.length || extraRegistered.length || duplicateRegistered.length || missing.length || extra.length || duplicates.length || missingMagazine.length || extraMagazine.length || duplicateMagazine.length || missingExtensions.length) {
+  if (missingRegistered.length) console.error(`Missing registered layout(s) in ${showcaseFile}: ${missingRegistered.join(', ')}`);
+  if (extraRegistered.length) console.error(`Unknown registered layout(s) in ${showcaseFile}: ${extraRegistered.join(', ')}`);
+  if (duplicateRegistered.length) console.error(`Duplicate registered layout(s) in ${showcaseFile}: ${[...new Set(duplicateRegistered)].join(', ')}`);
   if (missing.length) console.error(`Missing layout(s) in ${showcaseFile}: ${missing.join(', ')}`);
   if (extra.length) console.error(`Unknown layout(s) in ${showcaseFile}: ${extra.join(', ')}`);
   if (duplicates.length) console.error(`Duplicate layout(s) in ${showcaseFile}: ${[...new Set(duplicates)].join(', ')}`);
@@ -40,6 +49,7 @@ if (missing.length || extra.length || duplicates.length || missingMagazine.lengt
   process.exit(1);
 }
 
+console.log(`Layout showcase covers ${registeredKeys.length} registered layout(s): ${registeredKeys.join(', ') || '(none)'}`);
 console.log(`Layout showcase covers ${expectedMagazineKeys.length} magazine layout(s): ${expectedMagazineKeys.join(', ') || '(none)'}`);
 console.log(`Layout showcase covers ${expectedKeys.length} canonical layout(s): ${expectedKeys.join(', ') || '(none)'}`);
 console.log(`Layout showcase covers Style B extension(s): ${requiredExtensionKeys.join(', ') || '(none)'}`);

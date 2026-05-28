@@ -22,9 +22,9 @@
 
 `.githooks/pre-commit` 会运行 `scripts/update-project-docs.mjs`,并 stage `README.md`、`docs/ADR.md`、`docs/project-files.md`。
 
-## ADR-006: layout-sandbox 分支从空布局 registry 开始
+## ADR-006: 导入布局按页登记
 
-当前分支已清空旧 layout preset。`src/options.jsx` 保留空的 `LAYOUT_OPTIONS`,后续新增布局时再登记 key、label、dataLayout 和组件。
+`src/components/blacktech/`、`report/`、`xhs/`、`xhs2/`、`xhs3/`、`htmlfx/`、`vision/`、`style1/` 和 `style2/` 分别存放从外部 HTML deck 提炼出的页面布局组件。`src/options.jsx` 当前登记 `bt01`-`bt12`、`rp01`-`rp16`、`xhs01`-`xhs26`、`xhs2_01`-`xhs2_34`、`xhs3_01`-`xhs3_25`、`hfx01`-`hfx05`、`vision01`-`vision09`、`style1_01`-`style1_06`、`style2_01`-`style2_06`。
 
 ## ADR-007: 新布局继续按文件拆分
 
@@ -32,7 +32,7 @@
 
 ## ADR-008: 提交前刷新全布局总览
 
-`.githooks/pre-commit` 会运行 `npm run showcase:update`。当 registry 为空时,demo 只渲染 sandbox 页;新增布局后,showcase 需要同步覆盖已登记布局。
+`.githooks/pre-commit` 会运行 `npm run showcase:update`。showcase 需要同步覆盖全部已登记布局,当前覆盖 139 个布局。
 
 ## ADR-009: 旧布局参考资料保留为历史参考
 
@@ -40,7 +40,7 @@
 
 ## ADR-010: 生成底座继续保留
 
-`assets/template-swiss.html`、`src/renderDeck.jsx`、`src/tokens/` 和基础组件目录继续保留,用于承载下一批新布局。
+`assets/template-swiss.html`、`src/renderDeck.jsx`、`src/tokens/` 和基础组件目录继续保留,用于承载黑科技布局和后续新布局。
 
 ## ADR-011: token 与基础组件按组合维度分类
 
@@ -48,4 +48,12 @@
 
 ## ADR-012: demo 同时覆盖布局穷举和运行时切换
 
-`examples/component-decks/all-layouts-showcase.jsx` 当前是空 registry 的 sandbox 预览页。主题、字体、字号、间距这类全局 token 仍由 `assets/template-swiss.html` 的预览侧边栏切换。明暗底色归入 theme 的 `surface` / `inverse` 角色;布局内被高亮的 item 后续继续使用 theme 的 `focus-*` 角色。
+`examples/component-decks/all-layouts-showcase.jsx` 当前按顺序渲染全部已登记布局,用于预览组件组合效果。主题、字体、字号、间距这类全局 token 仍由 `assets/template-swiss.html` 的预览侧边栏切换。主题必须覆盖整页视觉语境,不是单个 accent 色:每个 theme preset 需要定义全屏基调、前景文字、面板、边框、focus 和装饰色,并允许浅色、暗色、多色背景、单色底加点缀色等不同类型。
+
+## ADR-013: 用户目标通过 JSON 计划组合组件
+
+`src/deckComposer.jsx` 将用户目标 JSON 计划映射为已登记布局组件。`scripts/render-goal-deck.jsx` 负责把计划渲染为最终静态 HTML。Agent 调用 skill 时应优先生成目标计划,再运行 `npm run render:goal`。
+
+## ADR-014: 预览页支持局部内容替换
+
+静态预览页允许用户直接替换媒体、编辑文字和切换图表。媒体占位接受图片或视频文件并内嵌到导出的 HTML 中;文字编辑状态在导出 PDF/HTML 前写入页面;图表组件通过 `data-chart-switch` 暴露可选图表形态。

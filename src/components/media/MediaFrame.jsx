@@ -1,14 +1,25 @@
 import React from 'react';
 
-const placeholderImage = 'images/placeholder-21x9.svg';
+const placeholderMedia = 'images/placeholder-21x9.svg';
 
-export function MediaFrame({ image = {}, ratio = 'r-16x10', slot, caption, className = '', style }) {
-  const src = image.src || placeholderImage;
-  const alt = image.alt || caption || 'Layout image';
+export function MediaFrame({ media, image = {}, ratio = 'r-16x10', slot, caption, className = '', style }) {
+  const item = media || image;
+  const src = item.src || placeholderMedia;
+  const alt = item.alt || caption || 'Layout media';
+  const isVideo = item.type?.startsWith?.('video/') || /\.(mp4|webm|mov|m4v|ogg)(\?|#|$)/i.test(src);
+
   return (
-    <figure className={`frame-img ${ratio} ${image.position || ''} ${className}`.trim()} style={style} data-anim>
-      <img src={src} alt={alt} data-image-slot={slot} />
-      {caption || image.caption ? <figcaption className="img-cap">{caption || image.caption}</figcaption> : null}
+    <figure
+      className={`frame-img ${ratio} ${item.position || ''} ${className}`.trim()}
+      style={style}
+      data-anim
+      data-media-slot={slot}
+      data-media-kind="image-video"
+    >
+      {isVideo
+        ? <video src={src} muted loop playsInline data-media-slot={slot} />
+        : <img src={src} alt={alt} data-image-slot={slot} data-media-slot={slot} />}
+      {caption || item.caption ? <figcaption className="img-cap">{caption || item.caption}</figcaption> : null}
     </figure>
   );
 }

@@ -44,15 +44,17 @@ slides.forEach((slide) => {
   const isStatement = isMagazine || layout === 'S03' || layout === 'S09' || layout === 'S10' || layout === 'SWISS-COVER-ASCII' || layout === 'SWISS-CLOSING-ASCII';
   const topChunk = slide.html.slice(0, 1800);
 
-  if (!isStatement && /text-align\s*:\s*center/i.test(topChunk)) {
+  const isSwissLayout = isMagazine || /^S\d{2}$/.test(layout) || /^SWISS-/.test(layout);
+
+  if (isSwissLayout && !isStatement && /text-align\s*:\s*center/i.test(topChunk)) {
     errors.push(`Slide ${slide.idx}: top title area contains text-align:center. Swiss body titles should stay left aligned.`);
   }
 
-  if (!isStatement && /align-self\s*:\s*center/i.test(topChunk) && /<h[12]\b/i.test(topChunk)) {
+  if (isSwissLayout && !isStatement && /align-self\s*:\s*center/i.test(topChunk) && /<h[12]\b/i.test(topChunk)) {
     errors.push(`Slide ${slide.idx}: top heading appears vertically/centrally aligned. Use the original left-top title skeleton.`);
   }
 
-  if (!isStatement && /grid-template-columns\s*:\s*[0-9.]+fr\s+[0-9.]+fr/i.test(topChunk) && /<h[12]\b/i.test(topChunk)) {
+  if (isSwissLayout && !isStatement && /grid-template-columns\s*:\s*[0-9.]+fr\s+[0-9.]+fr/i.test(topChunk) && /<h[12]\b/i.test(topChunk)) {
     warnings.push(`Slide ${slide.idx}: heading inside a custom fr/fr grid. Confirm this is copied from the original Sxx skeleton, not a centered title hack.`);
   }
 

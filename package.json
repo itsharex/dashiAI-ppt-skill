@@ -6,6 +6,7 @@
   "scripts": {
     "docs:update": "node scripts/update-project-docs.mjs",
     "render:deck": "tsx scripts/render-deck.jsx",
+    "render:goal": "tsx scripts/render-goal-deck.jsx",
     "render:all-layouts": "tsx scripts/render-deck.jsx examples/component-decks/all-layouts-showcase.jsx output/all-components-showcase/ppt/index.html",
     "showcase:update": "node scripts/validate-layout-showcase.mjs && npm run render:all-layouts && npm run validate:swiss -- output/all-components-showcase/ppt/index.html",
     "render:demo": "tsx scripts/render-deck.jsx examples/component-decks/all-layouts-showcase.jsx output/component-demo/ppt/index.html",
@@ -15,7 +16,8 @@
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "unicornstudio-react": "^2.1.9"
   },
   "devDependencies": {
     "tsx": "^4.20.0"

@@ -1,247 +1,105 @@
 ---
 name: guizang-ppt-skill
-description: 通过登记选项生成静态 HTML 横向翻页 PPT，使用 React 组件生成层和 Swiss 模板运行时。
+description: 根据用户目标组合登记组件,生成可离线打开和导出的静态 HTML 横向翻页 PPT。
 ---
 
 # Guizang PPT Skill
 
-生成一份**静态 HTML 横向翻页 PPT**。React 只作为生成层使用;最终交付仍是 `index.html` + `assets/motion.min.js`,浏览器直接打开即可。
+生成一份**静态 HTML 横向翻页 PPT**。React 只作为生成层使用;最终交付是 `index.html` + `assets/motion.min.js`,浏览器直接打开即可。
 
-## 核心模型
+## 使用目标
 
-所有可变部分都必须从登记选项里**多选一**:
+当用户调用这个 skill 时,不要只套一个固定 demo。应先理解用户目标,再组合已登记组件:
 
-| 部分 | 字段 | 选项来源 | 规则 |
-|---|---|---|---|
-| 主题色 | `theme` | `THEME_OPTIONS` | 一个 deck 只能选一个 |
-| 字体组合 | `fontSet` | `FONT_OPTIONS` | 一个 deck 只能选一个 |
-| 页面版式 | `slide(layoutKey, props)` | `LAYOUT_OPTIONS` | 每一页从版式列表 n 选 1 |
-| 动效 | 版式组件内部声明 | `src/components/swiss/*.jsx` | 不在 deck 配置里自造运行时 |
+1. 提炼用户目标: `title`、`goal`、`audience`、`owner`。
+2. 选择全局选项: `theme`、`fontSet`、`typeScale`。
+3. 选择页面节奏: 从 `role` 或 `layout` 多选一组合页面。
+4. 为每页填写 props。
+5. 渲染 HTML,把本地预览地址给用户。
 
-选项登记在 [src/options.jsx](/Users/jadon7/Documents/SynologyDrive/code/项目研究/guizang-ppt-skill-main/src/options.jsx)。不要临时发明 theme/font/layout key;需要新增能力时先登记选项,再使用。
+## 生成方式
 
-## 何时使用
-
-用于生成演讲、汇报、发布会、研究报告、内部复盘等视觉化 deck。特别适合:
-
-- 需要统一视觉系统的多页汇报
-- 需要批量生成不同主题内容的 deck
-- 需要比较不同内容主题、字体组合、版式组合的呈现结果
-- 需要保持最终产物轻量、离线、可直接打开
-
-不适合:
-
-- 大段表格和复杂可编辑图表
-- 需要多人在 PPT 软件里协作编辑
-- 需要任意自由排版且不受组件约束的页面
-
-## 工作流
-
-### 1. 明确内容主题
-
-先把用户需求整理成:
-
-- deck 标题
-- 受众和场景
-- 5-8 页页面节奏
-- 每页的信息角色:封面、时间线、六宫格、KPI、排行、图片主视觉、收尾等
-- 是否需要真实图片;没有图片时可先使用生成器内置的 `placeholder-21x9.svg`
-
-### 2. 选择选项
-
-从登记表中选择:
-
-```jsx
-export default {
-  style: 'swiss',
-  theme: 'ikb',
-  fontSet: 'inter',
-  title: 'Deck 标题',
-  slides: [
-    slide('cover', {...}),
-    slide('s02', {...}),
-    slide('closing', {...}),
-  ],
-};
-```
-
-当前主题选项:
-
-| key | 用途 |
-|---|---|
-| `ikb` | 默认,科技、产品、管理汇报 |
-| `lemon` | 活力、消费、零售、年轻主题 |
-| `green` | 生态、未来、城市、可持续 |
-| `orange` | 工业、警示、风险、决策节点 |
-| `monocle` | 电子杂志默认,墨水经典 |
-| `indigo` | 研究、数据、工程内容 |
-| `forest` | 自然、可持续、文化主题 |
-| `kraft` | 人文、怀旧、手作主题 |
-| `dune` | 艺术、设计、品牌主题 |
-
-当前字体组合:
-
-| key | 用途 |
-|---|---|
-| `inter` | 默认,现代科技和产品汇报 |
-| `system` | 系统字体优先,适合跨机器稳定展示 |
-| `compact` | 更紧凑,适合信息密度稍高的报告 |
-| `editorial` | 电子杂志感,适合引用、叙事和人文内容 |
-
-当前页面版式:
-
-| key | data-layout | 用途 |
-|---|---|---|
-| `a01` | `A01` | Hero Cover |
-| `a02` | `A02` | Act Divider |
-| `a03` | `A03` | Big Numbers Grid |
-| `a04` | `A04` | Quote + Image |
-| `a05` | `A05` | Image Grid |
-| `a06` | `A06` | Pipeline |
-| `a07` | `A07` | Hero Question |
-| `a08` | `A08` | Big Quote |
-| `a09` | `A09` | Before / After |
-| `a10` | `A10` | Lead Image + Side Text |
-| `s01` | `S01` | Index Cover |
-| `s02` | `S02` | Vertical Timeline + KPI |
-| `s03` | `S03` | Split Statement |
-| `s04` | `S04` | Six Cells |
-| `s05` | `S05` | Three Layers |
-| `s06` | `S06` | KPI Tower |
-| `s07` | `S07` | H-Bar Chart |
-| `s08` | `S08` | Duo Compare |
-| `s08Map` | `S08` | S08 + Swiss Map Component |
-| `s09` | `S09` | Dot Matrix Statement |
-| `s10` | `S10` | Split Closing |
-| `s11` | `S11` | Horizontal Timeline |
-| `s12` | `S12` | Manifesto + Ink Banner |
-| `s13` | `S13` | Three Forces |
-| `s14` | `S14` | Loop Form |
-| `s15` | `S15` | Matrix + Hero Stat |
-| `s16` | `S16` | Multi-card Brief |
-| `s17` | `S17` | System Diagram |
-| `s18` | `S18` | Why Now |
-| `s19` | `S19` | Four Cards |
-| `s20` | `S20` | Stacked KPI Ledger |
-| `s21` | `S21` | Tech Spec Sheet |
-| `s22` | `S22` | Image Hero |
-| `cover` | `SWISS-COVER-ASCII` | 封面 |
-| `timeline` | `S02` | 时间线 + KPI |
-| `sixCells` | `S04` | 六宫格概念/能力定义 |
-| `kpiTower` | `S06` | KPI 塔 |
-| `hBar` | `S07` | 横向柱状排行 |
-| `imageHero` | `S22` | 21:9 图片主视觉 |
-| `closing` | `SWISS-CLOSING-ASCII` | 收尾页 |
-
-`a01`-`a10` 是原始电子杂志风布局补入统一 registry 后的 key;`s01`-`s22` 是原始 Swiss 正文布局的 canonical key;`s08Map` 是原项目登记的 S08 地图插槽扩展,不是新 S 编号。`cover`、`closing` 和旧的语义 key 保留给示例兼容。
-
-token 放在 `src/tokens/`:主题、字体、字号、间距、动效分文件维护。可组合基础组件按职责放在 `src/components/shell/`、`text/`、`media/`、`metrics/`、`charts/`、`timelines/`、`cards/`、`decorations/`、`diagrams/`;`magazine/` 和 `swiss/` 只保留布局 preset。
-
-### 3. 复制示例并改内容
-
-从 `examples/component-decks/` 复制最接近的示例:
-
-- `ai-ops-review.jsx`
-- `all-layouts-showcase.jsx`
-- `climate-field-report.jsx`
-- `retail-launch-brief.jsx`
-- `swiss-demo.jsx`
-
-只改配置和 props。不要在 deck 配置里写浏览器运行时逻辑,不要手写 `<section>`。
-
-### 4. 渲染
+优先使用 JSON 计划文件:
 
 ```bash
-npm install
-npm run render:deck -- examples/component-decks/ai-ops-review.jsx output/my-deck/ppt/index.html
-```
-
-渲染器会:
-
-- 读取 `assets/template-swiss.html`
-- 注入 React 静态 HTML
-- 替换主题和字体 CSS 变量
-- 复制 `assets/motion.min.js`
-- 复制 `assets/screenshot-backgrounds/` 截图背景资源
-- 创建 `images/placeholder-21x9.svg`
-
-### 5. 校验
-
-```bash
+npm run render:goal -- examples/goal-decks/annual-review.json output/my-deck/ppt/index.html
 npm run validate:swiss -- output/my-deck/ppt/index.html
-npm run showcase:update
 ```
 
-必须通过:
+JSON 计划结构:
 
-- 每页有合法 `data-layout`
-- S22 图片有 `data-image-slot="s22-hero-21x9"`
-- 不使用未登记实验版式
-- SVG 不承载文字标签
-- 顶部标题不做瑞士风禁用的居中 hack
-
-提交前 hook 会运行 `npm run showcase:update`,确保 `examples/component-decks/all-layouts-showcase.jsx` 穷举全部 `a01`-`a10`、canonical `s01`-`s22` 布局和 Style B 登记扩展,并刷新当前总览 demo HTML。
-
-### 6. 视觉检查
-
-打开生成的 `index.html`,至少检查:
-
-- 封面主题色和 `accent-on` 是否可读
-- 中文标题是否溢出
-- KPI、卡片、图片槽位是否避开底部分页
-- 动效完成后内容是否完整可见
-- `B` 低功耗模式是否能切到静态
-
-## Subagent 验证要求
-
-如果要开多个 subagent 做验证,不能让它们只跑同一内容的不同配色。每个 subagent 必须至少改变三项:
-
-- 内容主题不同,例如 AI 运营复盘 / 城市生态报告 / 零售上市简报
-- 风格要求不同,例如科技冷静 / 生态田野 / 消费活力 / 工业警示
-- 页面组合不同,例如时间线优先 / 图片页优先 / KPI+排行优先
-
-允许主题色不同,但主题色只能作为结果差异的一部分,不能作为唯一差异。
-
-## 资源文件
-
-```text
-guizang-ppt-skill/
-├── SKILL.md
-├── README.md
-├── package.json
-├── assets/
-│   ├── screenshot-backgrounds/style-a/
-│   ├── screenshot-backgrounds/style-b/
-│   ├── template-swiss.html
-│   └── motion.min.js
-├── src/
-│   ├── options.jsx
-│   ├── renderDeck.jsx
-│   └── components/
-│       ├── magazine/
-│       └── swiss/
-├── scripts/
-│   ├── render-deck.jsx
-│   └── validate-swiss-deck.mjs
-├── examples/
-│   └── component-decks/
-└── references/
-    ├── component-workflow.md
-    ├── themes.md
-    ├── themes-swiss.md
-    ├── layouts.md
-    ├── swiss-layout-lock.md
-    ├── layouts-swiss.md
-    ├── swiss-map-component.md
-    ├── image-prompts.md
-    ├── screenshot-framing.md
-    └── checklist.md
+```json
+{
+  "title": "2026 年度经营复盘",
+  "goal": "面向管理层汇报全年经营结果、关键风险和下一年动作",
+  "audience": "管理层 / 业务负责人",
+  "owner": "战略与经营团队",
+  "theme": "dark",
+  "fontSet": "cnReport",
+  "typeScale": "medium",
+  "slides": [
+    {"role": "cover", "props": {"titleTop": "2026", "titleAlt": "年度", "titleBottom": "经营复盘"}},
+    {"role": "statement", "props": {"accent": "年度判断", "quote": ["今年最重要的变化，", "是增长从规模驱动转向质量驱动。"]}},
+    {"role": "closing", "props": {"titleTop": "下一年", "titleAlt": "继续", "titleMiddle": "高质量", "titleBottom": "增长"}}
+  ]
+}
 ```
 
-## 修改原则
+如果 `slides` 为空,`src/deckComposer.jsx` 会根据 `goal` 生成一套默认页序。用户有明确目标时,Agent 应主动写 `slides`,不要依赖默认页序。
 
-- 新主题色:加到 `THEME_OPTIONS`,不要直接改模板变量。
-- 新字体组合:加到 `FONT_OPTIONS`,不要在单页写散落字体。
-- 新页面类型:按一个布局一个文件放到对应组件目录,共享基础件只放该目录的 `primitives.jsx`,再从 `index.jsx` 导出并登记到 `LAYOUT_OPTIONS`。
-- 新校验规则:加到 `scripts/validate-swiss-deck.mjs`。
-- Style A/Style B 的参考资料和截图背景资源保留在 `references/` 与 `assets/screenshot-backgrounds/`;不要把它们改成另一套自由 HTML 工作流。
+## 页面角色
+
+`role` 会映射到当前登记布局:
+
+| role | layout | 用途 |
+|---|---|---|
+| `cover` | `bt01` | 封面 |
+| `statement` | `bt02` | 核心判断 / 大引用 |
+| `context` | `bt03` | 图片 + 背景解释 |
+| `process` | `bt04` | 四步骤流程 |
+| `breakdown` | `bt05` | 图片 + 四点拆解 |
+| `metrics` | `bt06` | 图片 + 指标图表 |
+| `transition` | `bt07` | 全屏背景转场 |
+| `result` | `bt08` | 大数字 + 表格 |
+| `risks` | `bt09` | 三栏风险 |
+| `observation` | `bt10` | 观察结论 |
+| `actions` | `bt11` | 重点行动卡片 |
+| `closing` | `bt12` | 收尾页 |
+
+也可以直接用 `layout`,例如 `{"layout":"bt08","props":{...}}`。
+
+## 全局选项
+
+主题:
+
+- `light`: 浅色背景
+- `dark`: 深色背景
+- `other`: 多色点缀
+
+字体组合:
+
+- `cnReport`: 标题字中文 / 正文 / 数字字体
+- `cnEditorial`: 标题字中文 / 正文 / 数字字体
+- `cnStrong`: 标题字中文 / 正文 / 数字字体
+
+字号:
+
+- `large`
+- `medium`
+- `small`
+
+## 图片替换与最终交付
+
+生成后的预览页支持点击图片占位符替换本地图片。控制面板里的 `导出 HTML` 会下载一个新的 `index.html`,其中包含:
+
+- 用户替换后的图片 data URL
+- 当前主题、字体、字号、间距选择
+
+这份导出的 HTML 不需要服务器,可以作为最终交付页面。
+
+## 约束
+
+- 不要手写自由 HTML slide,只使用 `role`/`layout` + props。
+- 不要临时发明 theme/font/typeScale/layout key;需要新增能力时先登记。
+- 输出后必须运行 `validate:swiss`。
+- 改动展示 demo 后运行 `npm run showcase:update`。
