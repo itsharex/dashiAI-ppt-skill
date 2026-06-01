@@ -1333,6 +1333,16 @@ export const SHOWCASE_TEXT_OVERRIDES = {
 export const SHOWCASE_DEV_ADJUSTMENTS = {
   version: 1,
   changes: {
+    "text:bt02:7": {
+      id: "text:bt02:7",
+      slide: 2,
+      slideId: "bt02-2",
+      slideKey: "bt02",
+      layout: "BT02",
+      html: "这页面向真实 PPT 场景，重点是对齐目标、确认线索，并形成可追踪结论。<br>销售目标校准 · 目标<strong>目标</strong>线索",
+      text: "这页面向真实 PPT 场景，重点是对齐目标、确认线索，并形成可追踪结论。 销售目标校准 · 目标目标线索",
+      colorToken: "--accent-on",
+    },
     "text:xhs2_05:5": {
       id: "text:xhs2_05:5",
       slide: 39,
@@ -1481,6 +1491,7 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       html: "WORK",
       text: "WORK",
       fontSizeToken: null,
+      colorToken: "--ink",
     },
     "text:xhs3_23:9": {
       id: "text:xhs3_23:9",
@@ -1491,6 +1502,7 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       html: "AGENDA",
       text: "AGENDA",
       fontSizeToken: "--fs-h2",
+      colorToken: "--ink",
     },
     "text:xhs3_23:11": {
       id: "text:xhs3_23:11",
@@ -1501,6 +1513,7 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       html: "EXER",
       text: "EXER",
       fontSizeToken: "--fs-h2",
+      colorToken: "--ink",
     },
     "text:xhs3_24:5": {
       id: "text:xhs3_24:5",
