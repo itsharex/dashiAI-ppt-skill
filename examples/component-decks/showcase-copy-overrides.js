@@ -2453,6 +2453,18 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       text: "CHECK SIGNAL",
       colorToken: "--ink",
     },
+    "text:xhs3_15:9": {
+      id: "text:xhs3_15:9",
+      slide: 58,
+      slideId: "xhs3_15-58",
+      slideKey: "xhs3_15",
+      layout: "XHS3-15",
+      html: "法律医疗风险不做泛泛介绍，只承载会中判断、负责人和下一步动作。",
+      text: "法律医疗风险不做泛泛介绍，只承载会中判断、负责人和下一步动作。",
+      colorToken: "--text-on-color",
+      scope: "theme",
+      theme: "dark",
+    },
     "text:xhs3_15:10": {
       id: "text:xhs3_15:10",
       slide: 58,
@@ -2462,6 +2474,8 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       html: "P58 · RISK PLAN CHECK · ACTION CHECK",
       text: "P58 · RISK PLAN CHECK · ACTION CHECK",
       backgroundColorToken: "--theme-panel-bg",
+      scope: "theme",
+      theme: "dark",
     },
     "element:xhs3_16:1": {
       id: "element:xhs3_16:1",
@@ -2725,7 +2739,7 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       html: "WORK",
       text: "WORK",
       fontSizeToken: null,
-      colorToken: "--ink",
+      colorToken: "--accent-on",
     },
     "text:xhs3_23:8": {
       id: "text:xhs3_23:8",
@@ -2746,7 +2760,7 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       html: "AGENDA",
       text: "AGENDA",
       fontSizeToken: "--fs-h2",
-      colorToken: "--ink",
+      colorToken: "--accent-on",
     },
     "text:xhs3_23:10": {
       id: "text:xhs3_23:10",
@@ -2767,7 +2781,9 @@ export const SHOWCASE_DEV_ADJUSTMENTS = {
       html: "EXER",
       text: "EXER",
       fontSizeToken: "--fs-h2",
-      colorToken: "--ink",
+      colorToken: "--accent-on",
+      scope: "theme",
+      theme: "dark",
     },
     "text:style1_04:3": {
       id: "text:style1_04:3",
