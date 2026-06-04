@@ -128,6 +128,7 @@ const files = [...new Set([
   ...generatedFiles,
 ])]
   .filter((file) => file !== '.DS_Store')
+  .filter((file) => !file.startsWith('.codex/'))
   .filter((file) => !file.startsWith('.playwright-cli/'))
   .filter((file) => fs.existsSync(path.join(ROOT, file)))
   .sort();
@@ -176,7 +177,7 @@ function renderAdr() {
 
 ## ADR-006: 导入布局按页登记
 
-\`src/components/theme-pages/\` 存放当前对外登记的 79 个逻辑页薄包装。\`src/options.jsx\` 当前只登记 \`page01\` 到 \`page74\`、\`page76\` 到 \`page80\`;旧的 \`bt\`、\`report\`、\`xhs\`、\`xhs2\`、\`xhs3\`、\`style1\`、\`style2\` layout key 只作为别名映射到对应逻辑页。
+\`src/components/theme-pages/\` 存放当前对外登记的 87 个逻辑页薄包装。\`src/options.jsx\` 当前只登记 \`page01\` 到 \`page74\`、\`page76\` 到 \`page88\`;旧的 \`bt\`、\`report\`、\`xhs\`、\`xhs2\`、\`xhs3\`、\`style1\`、\`style2\` layout key 和 \`ai_capital_01\` 到 \`ai_capital_08\` 只作为别名映射到对应逻辑页。
 
 ## ADR-007: 新布局继续按文件拆分
 
@@ -184,7 +185,7 @@ function renderAdr() {
 
 ## ADR-008: 提交前刷新全布局总览
 
-\`.githooks/pre-commit\` 会运行 \`npm run showcase:update\`。showcase 需要同步覆盖全部已登记逻辑页,当前覆盖 79 个逻辑页。
+\`.githooks/pre-commit\` 会运行 \`npm run showcase:update\`。showcase 需要同步覆盖全部已登记逻辑页,当前覆盖 87 个逻辑页。
 
 ## ADR-009: 旧布局参考资料保留为历史参考
 

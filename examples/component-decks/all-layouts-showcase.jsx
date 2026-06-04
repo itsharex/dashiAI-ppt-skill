@@ -85,5 +85,13 @@ export default {
     slide('page78'),
     slide('page79'),
     slide('page80'),
+    slide('page81'),
+    slide('page82'),
+    slide('page83'),
+    slide('page84'),
+    slide('page85'),
+    slide('page86'),
+    slide('page87'),
+    slide('page88'),
   ],
 };

@@ -14,7 +14,7 @@ description: 根据用户目标组合登记组件,生成可离线打开和导出
 1. 提炼用户目标: `title`、`goal`、`audience`、`owner`。
 2. 生成 `randomSeed`,并随机化页面节奏、布局来源和内容切分方式。
 3. 选择全局选项: `theme`。当前只支持 `dark` / `light`。
-4. 从 `page01` 到 `page74`、`page76` 到 `page80` 的逻辑页池按信息角色组合页面,不要把不同来源布局当成互相隔离的套装。
+4. 从 `page01` 到 `page74`、`page76` 到 `page88` 的逻辑页池按信息角色组合页面,不要把不同来源布局当成互相隔离的套装。
 5. 为每个逻辑页填写 props;用户要求 10 页时,JSON 写 10 个逻辑页,最终 HTML 就是 10 个逻辑页。
 6. 需要预置媒体、图表、图标、文本覆盖时写入同级字段。
 7. 渲染 HTML,把本地预览地址给用户。
@@ -71,7 +71,7 @@ JSON 计划结构:
 
 也可以直接用 `layout`,例如 `{"layout":"page08","props":{...}}`。旧的 `bt08` 仍会作为别名映射到 `page08`。
 
-把 `page01` 到 `page74`、`page76` 到 `page80` 看成统一布局池。旧的 `bt`、`report`、`xhs`、`xhs2`、`xhs3`、`style1`、`style2` key 只是兼容别名。自动填字段优先使用 `page01`-`page12` 这套稳定参数化布局;需要视觉变化时可直接指定其它 `pageXX`,但同一 deck 内最多混合 2-3 个视觉家族。
+把 `page01` 到 `page74`、`page76` 到 `page88` 看成统一布局池。旧的 `bt`、`report`、`xhs`、`xhs2`、`xhs3`、`style1`、`style2` key 和 `ai_capital_01` 到 `ai_capital_08` 只是兼容别名。自动填字段优先使用 `page01`-`page12` 这套稳定参数化布局;需要视觉变化时可直接指定其它 `pageXX`,但同一 deck 内最多混合 2-3 个视觉家族。
 
 信息量选择建议:
 

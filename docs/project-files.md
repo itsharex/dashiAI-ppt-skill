@@ -4,9 +4,6 @@
 
 ```text
 .
-|-- .codex/
-|   `-- environments/
-|       `-- environment.toml - 项目源码或配置文件。
 |-- .githooks/
 |   `-- pre-commit - 本地 Git pre-commit hook,提交前重生成 README、ADR 和文件作用说明并自动 stage。
 |-- assets/
@@ -119,6 +116,9 @@
 |   `-- validate-swiss-deck.mjs - 静态 deck 校验器,检查合法 layout、图片槽位和禁用模式。
 |-- src/
 |   |-- components/
+|   |   |-- ai-capital/
+|   |   |   |-- AiCapitalPages.jsx - React 生成层源码。
+|   |   |   `-- index.jsx - React 生成层源码。
 |   |   |-- blacktech/
 |   |   |   |-- BT01Cover.jsx - 黑科技技能分享第 1 页封面布局组件。
 |   |   |   |-- BT02Hypothesis.jsx - 黑科技技能分享第 2 页假设/大引用布局组件。
@@ -281,6 +281,14 @@
 |   |   |   |-- Page78.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
 |   |   |   |-- Page79.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
 |   |   |   |-- Page80.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page81.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page82.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page83.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page84.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page85.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page86.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page87.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
+|   |   |   |-- Page88.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
 |   |   |   `-- ThemePage.jsx - 逻辑页薄包装组件,把 pageXX 映射到当前登记布局。
 |   |   |-- timelines/
 |   |   |   |-- index.jsx - 时间线与流程组件。

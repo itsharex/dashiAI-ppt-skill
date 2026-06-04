@@ -88,6 +88,14 @@ export const LAYOUT_ALIASES = {
   style2_04: 'page78',
   style2_05: 'page79',
   style2_06: 'page80',
+  ai_capital_01: 'page81',
+  ai_capital_02: 'page82',
+  ai_capital_03: 'page83',
+  ai_capital_04: 'page84',
+  ai_capital_05: 'page85',
+  ai_capital_06: 'page86',
+  ai_capital_07: 'page87',
+  ai_capital_08: 'page88',
 };
 
 export const LAYOUT_OPTIONS = {
@@ -170,6 +178,14 @@ export const LAYOUT_OPTIONS = {
   page78: { label: 'Page 78 · Style2 04 Editorial', dataLayout: 'ST2-04', component: ThemePages.Page78 },
   page79: { label: 'Page 79 · Style2 05 Visual', dataLayout: 'ST2-05', component: ThemePages.Page79 },
   page80: { label: 'Page 80 · Style2 06 End', dataLayout: 'ST2-06', component: ThemePages.Page80 },
+  page81: { label: 'Page 81 · AI Capital 01 Cover', dataLayout: 'AI-CAPITAL-01', component: ThemePages.Page81 },
+  page82: { label: 'Page 82 · AI Capital 02 Overview', dataLayout: 'AI-CAPITAL-02', component: ThemePages.Page82 },
+  page83: { label: 'Page 83 · AI Capital 03 Contents', dataLayout: 'AI-CAPITAL-03', component: ThemePages.Page83 },
+  page84: { label: 'Page 84 · AI Capital 04 Methodology', dataLayout: 'AI-CAPITAL-04', component: ThemePages.Page84 },
+  page85: { label: 'Page 85 · AI Capital 05 Market', dataLayout: 'AI-CAPITAL-05', component: ThemePages.Page85 },
+  page86: { label: 'Page 86 · AI Capital 06 Cross Section', dataLayout: 'AI-CAPITAL-06', component: ThemePages.Page86 },
+  page87: { label: 'Page 87 · AI Capital 07 Value Chain', dataLayout: 'AI-CAPITAL-07', component: ThemePages.Page87 },
+  page88: { label: 'Page 88 · AI Capital 08 Cases', dataLayout: 'AI-CAPITAL-08', component: ThemePages.Page88 },
 };
 
 export function resolveLayoutName(layoutName) {

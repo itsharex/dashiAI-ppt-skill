@@ -20,7 +20,7 @@ output/my-deck/ppt/
 - `theme`: `dark` 或 `light`
 - 每一页: 从页面版式选项中选一个
 
-页面版式登记在 [src/options.jsx](/Users/jadon7/Documents/SynologyDrive/code/项目研究/guizang-ppt-skill-main/src/options.jsx)。当前对外只有 `page01` 到 `page74`、`page76` 到 `page80` 这 79 个逻辑页。旧的 `bt`、`report`、`xhs`、`xhs2`、`xhs3`、`style1`、`style2` key 只是兼容别名,不再增加额外页面。
+页面版式登记在 [src/options.jsx](/Users/jadon7/Documents/SynologyDrive/code/项目研究/guizang-ppt-skill-main/src/options.jsx)。当前对外只有 `page01` 到 `page74`、`page76` 到 `page88` 这 87 个逻辑页。旧的 `bt`、`report`、`xhs`、`xhs2`、`xhs3`、`style1`、`style2` key 和 `ai_capital_01` 到 `ai_capital_08` 只是兼容别名,不再增加额外页面。
 
 ## 快速开始
 
@@ -71,7 +71,7 @@ npm run render:examples
 
 页面版式:
 
-- `page01` 到 `page74`、`page76` 到 `page80`: 当前完整逻辑页组件池
+- `page01` 到 `page74`、`page76` 到 `page88`: 当前完整逻辑页组件池
 
 兼容别名:
 
@@ -139,5 +139,5 @@ npm run validate:swiss -- output/goal-demo/ppt/index.html
 提交前 hook 还会运行 `npm run showcase:update`,确保 `all-layouts-showcase.jsx` 覆盖当前全部已登记布局,并刷新 `output/all-components-showcase/ppt/index.html`。
 
 - [ADR](docs/ADR.md): 当前架构决策记录
-- [项目文件作用说明](docs/project-files.md): 当前 272 个源码文件的主要作用
+- [项目文件作用说明](docs/project-files.md): 当前 281 个源码文件的主要作用
 <!-- project-docs:end -->

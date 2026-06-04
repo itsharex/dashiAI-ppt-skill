@@ -31,6 +31,7 @@ export function buildDeckViewModel(deck, registries) {
     chart: model.chart || {},
     icon: model.icon || {},
     shader: model.shader || {},
+    props: model.props || {},
   };
 
   return {
@@ -86,6 +87,7 @@ export function serializeDeckViewModel(viewModel) {
       chart: viewModel.state.chart || {},
       icon: viewModel.state.icon || {},
       shader: viewModel.state.shader || {},
+      props: viewModel.state.props || {},
     },
   };
 }
@@ -116,6 +118,7 @@ function normalizeDeckModel(deck) {
     chart: deck.chart || {},
     icon: deck.icon || {},
     shader: deck.shader || {},
+    props: deck.props || {},
     slides: (deck.slides || []).map((slide, index) => normalizeSlideModel(slide, index)),
   };
 }

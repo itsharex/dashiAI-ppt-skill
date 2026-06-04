@@ -59,7 +59,7 @@ npm run showcase:update
 2. 从该目录 `index.jsx` 导出。
 3. 布局 preset 通过对应目录的 `primitives.jsx` 或直接 import 复用,不要复制一份同类实现。
 
-当前对外布局池只有 `page01` 到 `page74`、`page76` 到 `page80`。旧的 `bt`、`report`、`xhs`、`xhs2`、`xhs3`、`style1`、`style2` layout key 只作为兼容别名。
+当前对外布局池只有 `page01` 到 `page74`、`page76` 到 `page88`。旧的 `bt`、`report`、`xhs`、`xhs2`、`xhs3`、`style1`、`style2` layout key 和 `ai_capital_01` 到 `ai_capital_08` 只作为兼容别名。
 
 历史 Style A / Swiss 参考资料仍保留在 `references/`,只作为追溯来源。新增布局以当前 `pageXX` 登记方式为准;涉及图片或截图时读 `image-prompts.md` 和 `screenshot-framing.md`。
 
