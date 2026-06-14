@@ -723,8 +723,8 @@ export const pages = [
         "default": true
       },
       {
-        "key": "diagramStyle",
-        "label": "图形类型",
+        "key": "diagramStyle1",
+        "label": "图形类型 1",
         "type": "select",
         "default": "auto",
         "options": [
@@ -756,7 +756,85 @@ export const pages = [
             "value": "constellation",
             "label": "星座"
           }
-        ]
+        ],
+        "countKey": "cardCount",
+        "countIndex": 0
+      },
+      {
+        "key": "diagramStyle2",
+        "label": "图形类型 2",
+        "type": "select",
+        "default": "auto",
+        "options": [
+          {
+            "value": "auto",
+            "label": "自动"
+          },
+          {
+            "value": "radial",
+            "label": "网格"
+          },
+          {
+            "value": "burst",
+            "label": "放射"
+          },
+          {
+            "value": "orbit",
+            "label": "环轨"
+          },
+          {
+            "value": "mesh",
+            "label": "矩阵"
+          },
+          {
+            "value": "spiral",
+            "label": "螺旋"
+          },
+          {
+            "value": "constellation",
+            "label": "星座"
+          }
+        ],
+        "countKey": "cardCount",
+        "countIndex": 1
+      },
+      {
+        "key": "diagramStyle3",
+        "label": "图形类型 3",
+        "type": "select",
+        "default": "auto",
+        "options": [
+          {
+            "value": "auto",
+            "label": "自动"
+          },
+          {
+            "value": "radial",
+            "label": "网格"
+          },
+          {
+            "value": "burst",
+            "label": "放射"
+          },
+          {
+            "value": "orbit",
+            "label": "环轨"
+          },
+          {
+            "value": "mesh",
+            "label": "矩阵"
+          },
+          {
+            "value": "spiral",
+            "label": "螺旋"
+          },
+          {
+            "value": "constellation",
+            "label": "星座"
+          }
+        ],
+        "countKey": "cardCount",
+        "countIndex": 2
       },
       {
         "key": "focusEnabled",
@@ -779,6 +857,9 @@ export const pages = [
       "cardCount": 2,
       "showDiagram": true,
       "diagramStyle": "auto",
+      "diagramStyle1": "auto",
+      "diagramStyle2": "auto",
+      "diagramStyle3": "auto",
       "focusEnabled": false,
       "focusIndex": 0,
       "eyebrow": "研究方法 / METHOD",

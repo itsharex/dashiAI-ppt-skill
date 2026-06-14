@@ -1,6 +1,6 @@
 import { THEME_PAGES } from './components/themes/index.jsx';
 
-const REMOVED_CONTROL_TYPES = new Set(['icons', 'text', 'string', 'input', 'url', 'email', 'textarea', 'multiline']);
+const REMOVED_CONTROL_TYPES = new Set(['text', 'string', 'input', 'url', 'email', 'textarea', 'multiline']);
 
 export const COUNT_ARRAY_BINDINGS = {
   barCount: ['bars'],
@@ -265,6 +265,9 @@ function normalizeControls(page) {
       max: control.max,
       step: control.step,
       options: control.options,
+      countKey: control.countKey,
+      countIndex: control.countIndex,
+      maxFromKey: control.maxFromKey,
     }, defaults));
   }
 
@@ -277,6 +280,9 @@ function normalizeControls(page) {
     max: control.max,
     step: control.step,
     options: control.options,
+    countKey: control.countKey,
+    countIndex: control.countIndex,
+    maxFromKey: control.maxFromKey,
   }, page.defaultProps || {}));
 }
 
@@ -294,6 +300,9 @@ function normalizeControl(control, defaults) {
     max: resolveControlValue(control.max, defaults),
     step: serializeValue(control.step),
     options: genericControlValue(serializeValue(control.options)),
+    countKey: serializeValue(control.countKey),
+    countIndex: serializeValue(control.countIndex),
+    maxFromKey: serializeValue(control.maxFromKey),
   };
 }
 
@@ -321,6 +330,7 @@ function genericControlValue(value) {
 
 function normalizeControlType(type) {
   if (type === 'slider' || type === 'number') return 'range';
+  if (type === 'icons') return 'icons';
   if (type === 'radio' || type === 'enum' || type === 'labelType' || type === 'segment' || type === 'color' || type === 'palette') return 'select';
   if (type === 'focus' || type === 'boolean') return 'toggle';
   return type || 'range';

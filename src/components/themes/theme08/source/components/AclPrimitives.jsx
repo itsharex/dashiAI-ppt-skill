@@ -222,6 +222,10 @@ function AdaptiveImageSlot({ id, box = 300, ratio = 0.8, placeholder = '拖入�
   };
 
   const stopSlotNavigation = (e) => { e.stopPropagation(); };
+  const openPicker = (e) => {
+    e.stopPropagation();
+    inputRef.current && inputRef.current.click();
+  };
 
   const currentData = data || readStored();
   const aspect = currentData ? currentData.w / currentData.h : ratio;
@@ -234,9 +238,9 @@ function AdaptiveImageSlot({ id, box = 300, ratio = 0.8, placeholder = '拖入�
          style={{ width: w, height: h, transform: `rotate(${rotate}deg)` }}
          onPointerDown={stopSlotNavigation}
          onMouseDown={stopSlotNavigation}
-         onClick={stopSlotNavigation}
+         onClick={openPicker}
          onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setDrag(true); }}
-         onDragLeave={() => setDrag(false)}
+         onDragLeave={(e) => { e.stopPropagation(); setDrag(false); }}
          onDrop={(e) => { e.preventDefault(); e.stopPropagation(); setDrag(false);
            readFile(e.dataTransfer.files && e.dataTransfer.files[0]); }}>
       <div className="acl-slot__frame" style={{ borderColor: accent }}>
@@ -245,12 +249,12 @@ function AdaptiveImageSlot({ id, box = 300, ratio = 0.8, placeholder = '拖入�
             ? <video className="acl-slot__img" src={currentData.src} muted playsInline loop autoPlay preload="metadata" />
             : <img className="acl-slot__img" src={currentData.src} alt="" />)
           : (
-            <div className="acl-slot__empty" onClick={() => inputRef.current && inputRef.current.click()}>
+            <div className="acl-slot__empty">
               <div className="acl-slot__plus">+</div>
               <div className="acl-slot__cap">{placeholder}</div>
             </div>
           )}
-        {currentData && <div className="acl-slot__hint" onClick={() => save(null)}>清除 ✕</div>}
+        {currentData && <div className="acl-slot__hint" onClick={(e) => { e.stopPropagation(); save(null); }}>清除 ✕</div>}
       </div>
       {sticker && (
         <div className="acl-slot__sticker">
@@ -258,7 +262,8 @@ function AdaptiveImageSlot({ id, box = 300, ratio = 0.8, placeholder = '拖入�
         </div>
       )}
       <input ref={inputRef} type="file" accept="image/*,video/mp4,video/webm,video/quicktime,video/*" style={{ display: 'none' }}
-             onChange={(e) => readFile(e.target.files && e.target.files[0])} />
+             onClick={(e) => e.stopPropagation()}
+             onChange={(e) => { readFile(e.target.files && e.target.files[0]); e.target.value = ''; }} />
     </div>
   );
 }

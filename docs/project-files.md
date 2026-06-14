@@ -7,6 +7,12 @@
 |-- .githooks/
 |   `-- pre-commit - 项目源码或配置文件。
 |-- assets/
+|   |-- unicorn/
+|   |   |-- automations_remix_scene.json - 静态模板或浏览器运行时资源。
+|   |   |-- blue_donut_remix_scene.json - 静态模板或浏览器运行时资源。
+|   |   |-- goey_balls_remix_scene.json - 静态模板或浏览器运行时资源。
+|   |   |-- moving_into_remix_scene.json - 静态模板或浏览器运行时资源。
+|   |   `-- tech_background_remix_scene.json - 静态模板或浏览器运行时资源。
 |   `-- template-swiss.html - 静态 PPT HTML 外壳模板,包含 16:9 舞台、翻页、控制面板、媒体替换、文本编辑、动画和导出运行时。
 |-- docs/
 |   |-- ADR.md - 项目文档。
@@ -302,6 +308,7 @@
 |   |   |   |   |       |   |-- WaffleSlide.jsx - Claude Design 导入主题组件、运行时、素材或登记元数据。
 |   |   |   |   |       |   `-- WaterfallSlide.jsx - Claude Design 导入主题组件、运行时、素材或登记元数据。
 |   |   |   |   |       |-- Decor.jsx - Claude Design 导入主题组件、运行时、素材或登记元数据。
+|   |   |   |   |       |-- icons.js - Claude Design 导入主题组件、运行时、素材或登记元数据。
 |   |   |   |   |       |-- ImageSlot.jsx - Claude Design 导入主题组件、运行时、素材或登记元数据。
 |   |   |   |   |       |-- preset3d.js - Claude Design 导入主题组件、运行时、素材或登记元数据。
 |   |   |   |   |       |-- presetBase.js - Claude Design 导入主题组件、运行时、素材或登记元数据。

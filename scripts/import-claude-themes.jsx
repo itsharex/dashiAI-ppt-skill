@@ -9,7 +9,7 @@ const DEFAULT_GOAL = path.join(ROOT, 'theme-import-goal.json');
 const THEMES_DIR = path.join(ROOT, 'src/components/themes');
 const OUTPUT_DIR = path.join(ROOT, 'output');
 const MIGRATION_ONLY_DIRS = new Set(['uploads', 'screens', 'screenshots', 'shots', 'scratch', 'scraps']);
-const REMOVED_CONTROL_TYPES = new Set(['icons', 'text', 'string', 'input', 'url', 'email', 'textarea', 'multiline']);
+const REMOVED_CONTROL_TYPES = new Set(['text', 'string', 'input', 'url', 'email', 'textarea', 'multiline']);
 
 const STRUCTURAL_BLOCKS = {};
 
@@ -565,11 +565,11 @@ function patchTheme08Source(sourceDir) {
       )
       .replace(
         '  const aspect = data ? data.w / data.h : ratio;\n',
-        '  const stopSlotNavigation = (e) => { e.stopPropagation(); };\n\n  const currentData = data || readStored();\n  const aspect = currentData ? currentData.w / currentData.h : ratio;\n',
+        '  const stopSlotNavigation = (e) => { e.stopPropagation(); };\n  const openPicker = (e) => {\n    e.stopPropagation();\n    inputRef.current && inputRef.current.click();\n  };\n\n  const currentData = data || readStored();\n  const aspect = currentData ? currentData.w / currentData.h : ratio;\n',
       )
       .replace(
         '         style={{ width: w, height: h, transform: `rotate(${rotate}deg)` }}\n         onDragOver={(e) => { e.preventDefault(); setDrag(true); }}\n         onDragLeave={() => setDrag(false)}\n         onDrop={(e) => { e.preventDefault(); setDrag(false);\n',
-        '         style={{ width: w, height: h, transform: `rotate(${rotate}deg)` }}\n         onPointerDown={stopSlotNavigation}\n         onMouseDown={stopSlotNavigation}\n         onClick={stopSlotNavigation}\n         onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setDrag(true); }}\n         onDragLeave={() => setDrag(false)}\n         onDrop={(e) => { e.preventDefault(); e.stopPropagation(); setDrag(false);\n',
+        '         style={{ width: w, height: h, transform: `rotate(${rotate}deg)` }}\n         onPointerDown={stopSlotNavigation}\n         onMouseDown={stopSlotNavigation}\n         onClick={openPicker}\n         onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setDrag(true); }}\n         onDragLeave={(e) => { e.stopPropagation(); setDrag(false); }}\n         onDrop={(e) => { e.preventDefault(); e.stopPropagation(); setDrag(false);\n',
       )
       .replace(
         '        {data\n          ? <img className="acl-slot__img" src={data.src} alt="" />\n',
@@ -577,7 +577,7 @@ function patchTheme08Source(sourceDir) {
       )
       .replace(
         '        {data && <div className="acl-slot__hint" onClick={() => save(null)}>清除 ✕</div>}\n',
-        '        {currentData && <div className="acl-slot__hint" onClick={() => save(null)}>清除 ✕</div>}\n',
+        '        {currentData && <div className="acl-slot__hint" onClick={(e) => { e.stopPropagation(); save(null); }}>清除 ✕</div>}\n',
       );
   });
 }
@@ -1210,6 +1210,7 @@ function serializeControls(controls) {
       step: serializeValue(control.step),
       options: genericControlValue(serializeValue(controlOptions(control))),
       countKey: control.countKey,
+      countIndex: control.countIndex,
       maxFromKey: control.maxFromKey,
       desc: genericControlText(control.desc || control.describe || control.description),
     };
@@ -1348,6 +1349,7 @@ function writeClientRuntime(themes) {
 import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { ImageSlotActions as theme01ImageSlotActions } from './theme01/source/slides/SlideKit.jsx';
+import { ImageSlotMediaContext as theme03ImageSlotMediaContext } from './theme03/source/src/ImageSlot.jsx';
 ${imports}
 
 const mountedRoots = new WeakMap();
@@ -1429,6 +1431,12 @@ function mediaItem(value) {
   return null;
 }
 
+function mediaWithAspect(value, ar) {
+  const item = mediaItem(value);
+  if (!item?.src) return null;
+  return { ...item, ar: ar ?? item.ar ?? item.ratio ?? null, ratio: item.ratio ?? ar ?? null };
+}
+
 function mediaSrc(value) {
   return mediaItem(value)?.src || '';
 }
@@ -1479,7 +1487,12 @@ function createMediaApi(slide, baseProps) {
   }
 
   return {
-    get: (key, index) => toArray(baseProps[key])[index] || null,
+    get: (key, index) => {
+      const slideId = slide.dataset.vmSlideId;
+      const currentProps = window.__deckViewModel?.getState?.().props?.[slideId] || {};
+      const sourceProps = { ...baseProps, ...currentProps };
+      return toArray(sourceProps[key])[index] || null;
+    },
     set: updateList,
     acceptFile,
     pick,
@@ -1491,6 +1504,7 @@ function HostImageSlot({ mediaApi, index, options = {} }) {
   const value = mediaApi.get('images', index);
   const filled = !!mediaSrc(value);
   const aspectRatio = options.ratioAR || (options.ratio ? String(options.ratio) : undefined);
+  const stopSlotNavigation = event => event.stopPropagation();
   const drop = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -1519,11 +1533,17 @@ function HostImageSlot({ mediaApi, index, options = {} }) {
         event.stopPropagation();
         mediaApi.pick('images', index);
       }}
+      onPointerDown={stopSlotNavigation}
+      onMouseDown={stopSlotNavigation}
       onDragOver={(event) => {
         event.preventDefault();
+        event.stopPropagation();
         setOver(true);
       }}
-      onDragLeave={() => setOver(false)}
+      onDragLeave={(event) => {
+        event.stopPropagation();
+        setOver(false);
+      }}
       onDrop={drop}
     >
       {filled ? (
@@ -1584,6 +1604,7 @@ function withMediaHostProps(slide, baseProps) {
     onSlotClear: index => mediaApi.set('images', index, null),
     onActivate: index => mediaApi.pick('images', index),
     onClear: index => mediaApi.set('images', index, null),
+    onImageChange: (index, src, ar) => mediaApi.set('images', index, mediaWithAspect(src, ar)),
     onMediaChange: (index, src) => mediaApi.set('media', index, src),
     renderSlot: (index, options) => (
       <HostImageSlot mediaApi={mediaApi} index={index} options={options} />
@@ -1593,13 +1614,20 @@ function withMediaHostProps(slide, baseProps) {
 }
 
 function withImageProviders(element, mediaApi) {
-  return React.createElement(theme01ImageSlotActions.Provider, {
-    value: {
+  const theme01Value = {
       pick: index => mediaApi.pick('images', index),
       clear: index => mediaApi.set('images', index, null),
       drop: (index, file) => mediaApi.acceptFile('images', index, file),
-    },
-  }, element);
+  };
+  const theme03Value = {
+    get: index => mediaApi.get('images', index),
+    set: (index, value) => mediaApi.set('images', index, value),
+    pick: index => mediaApi.pick('images', index),
+    drop: (index, file) => mediaApi.acceptFile('images', index, file),
+  };
+  return React.createElement(theme01ImageSlotActions.Provider, { value: theme01Value },
+    React.createElement(theme03ImageSlotMediaContext.Provider, { value: theme03Value }, element),
+  );
 }
 
 function getGxnSlotIndex(root, slot) {

@@ -55,7 +55,12 @@ function DeckImageSlot({ id, placeholder = 'IMAGE', fit = 'cover', radius = 18, 
     reader.readAsDataURL(file);
   };
 
-  const onDrop = (e) => { e.preventDefault(); setOver(false); ingest(e.dataTransfer.files && e.dataTransfer.files[0]); };
+  const stopSlotNavigation = (e) => e.stopPropagation();
+  const openPicker = (e) => {
+    e.stopPropagation();
+    inputRef.current && inputRef.current.click();
+  };
+  const onDrop = (e) => { e.preventDefault(); e.stopPropagation(); setOver(false); ingest(e.dataTransfer.files && e.dataTransfer.files[0]); };
   const clear = (e) => {
     e.stopPropagation();
     setMedia(null);
@@ -65,9 +70,11 @@ function DeckImageSlot({ id, placeholder = 'IMAGE', fit = 'cover', radius = 18, 
   return (
     <div className={`dslot ${over ? 'is-over' : ''} ${media?.src ? 'is-filled' : ''} ${className}`}
          style={{ borderRadius: radius }}
-         onClick={() => inputRef.current && inputRef.current.click()}
-         onDragOver={(e) => { e.preventDefault(); setOver(true); }}
-         onDragLeave={() => setOver(false)}
+         onPointerDown={stopSlotNavigation}
+         onMouseDown={stopSlotNavigation}
+         onClick={openPicker}
+         onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setOver(true); }}
+         onDragLeave={(e) => { e.stopPropagation(); setOver(false); }}
          onDrop={onDrop}>
       {media?.src ? (
         <>
@@ -83,7 +90,8 @@ function DeckImageSlot({ id, placeholder = 'IMAGE', fit = 'cover', radius = 18, 
         </div>
       )}
       <input ref={inputRef} type="file" accept="image/*,video/mp4,video/webm,video/quicktime,video/*" hidden
-             onChange={(e) => ingest(e.target.files && e.target.files[0])} />
+             onClick={(e) => e.stopPropagation()}
+             onChange={(e) => { ingest(e.target.files && e.target.files[0]); e.target.value = ''; }} />
     </div>
   );
 }

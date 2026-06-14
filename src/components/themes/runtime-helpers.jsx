@@ -24,7 +24,7 @@ export function normalizeRuntimePages(rawPages, { themeKey, layoutPrefix }) {
 }
 
 const TEXT_CONTROL_TYPES = new Set(['text', 'string', 'input', 'url', 'email', 'textarea', 'multiline']);
-const REMOVED_CONTROL_TYPES = new Set(['icons']);
+const REMOVED_CONTROL_TYPES = new Set();
 
 const GENERIC_CONTROL_LABELS = new Map([
   ['联系方式', '次级文案'],

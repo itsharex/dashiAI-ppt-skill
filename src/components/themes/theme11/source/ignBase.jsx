@@ -145,8 +145,15 @@ export function ImageSlot({ src, placeholder = '图片', mode = 'ratio', height,
     };
     rd.readAsDataURL(f);
   };
-  const onFile = (e) => ingest(e.target.files && e.target.files[0]);
-  const openPicker = () => inputRef.current && inputRef.current.click();
+  const onFile = (e) => {
+    ingest(e.target.files && e.target.files[0]);
+    e.target.value = '';
+  };
+  const stopSlotNavigation = (e) => e.stopPropagation();
+  const openPicker = (e) => {
+    e.stopPropagation();
+    inputRef.current && inputRef.current.click();
+  };
   const onDragOver = (e) => { e.preventDefault(); e.stopPropagation(); if (!drag) setDrag(true); };
   const onDragLeave = (e) => { e.preventDefault(); e.stopPropagation(); setDrag(false); };
   const onDrop = (e) => { e.preventDefault(); e.stopPropagation(); setDrag(false); ingest(e.dataTransfer.files && e.dataTransfer.files[0]); };
@@ -157,6 +164,8 @@ export function ImageSlot({ src, placeholder = '图片', mode = 'ratio', height,
   return (
     <div className={`ign-imgslot${uploadable ? ' ign-imgslot-up' : ''}${drag ? ' ign-imgslot-drag' : ''}`} style={boxStyle}
       onClick={uploadable ? openPicker : undefined}
+      onPointerDown={uploadable ? stopSlotNavigation : undefined}
+      onMouseDown={uploadable ? stopSlotNavigation : undefined}
       onDragOver={uploadable ? onDragOver : undefined}
       onDragLeave={uploadable ? onDragLeave : undefined}
       onDrop={uploadable ? onDrop : undefined}
@@ -171,6 +180,7 @@ export function ImageSlot({ src, placeholder = '图片', mode = 'ratio', height,
         <>
           <div className="ign-imgslot-hint"><span>{drag ? '释放以上传' : (eff ? '点击 / 拖拽更换' : '点击 / 拖拽上传')}</span></div>
           <input ref={inputRef} type="file" accept="image/*,video/mp4,video/webm,video/quicktime,video/*" onChange={onFile}
+            onClick={(e)=>e.stopPropagation()}
             style={{ position: 'absolute', width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} tabIndex={-1} />
         </>
       )}

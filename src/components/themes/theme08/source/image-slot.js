@@ -278,8 +278,15 @@
       this._subFn = () => this._render();
       // Shadow-DOM listeners live with the shadow DOM — bound once here so
       // disconnect/reconnect (e.g. React remount) doesn't stack handlers.
-      this._empty.addEventListener('click', () => this._input.click());
+      this.addEventListener('pointerdown', e => e.stopPropagation());
+      this.addEventListener('mousedown', e => e.stopPropagation());
+      this._empty.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this._input.click();
+      });
       root.addEventListener('click', (e) => {
+        e.stopPropagation();
         const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
         if (act === 'replace') { this._exitReframe(true); this._input.click(); }
         if (act === 'clear') {
@@ -288,6 +295,7 @@
           this._local = null;
           if (this.id) setSlot(this.id, null); else this._render();
         }
+        if (!act && !this._empty.contains(e.target) && e.target !== this._input) this._input.click();
       });
       this._input.addEventListener('change', () => {
         const f = this._input.files && this._input.files[0];

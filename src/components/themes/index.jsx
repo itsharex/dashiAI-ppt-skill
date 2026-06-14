@@ -1,7 +1,37 @@
 import React from 'react';
 import { useSlideViewModel } from '../../view-model/context.jsx';
 import { GENERATED_THEME_PAGES, GENERATED_THEME_PACKS } from './generated-metadata.js';
+import { ICONS as THEME03_DECOR_ICONS } from './theme03/source/src/icons.js';
 import { PRESET_3D as THEME03_PRESET_3D } from './theme03/source/src/preset3d.js';
+
+const THEME03_GLOBAL_ACCENT_CONTROL = {
+  key: 'accent',
+  label: '强调色',
+  type: 'select',
+  default: 'blue',
+  options: [
+    { value: 'blue', label: '电光蓝' },
+    { value: 'lime', label: '荧光绿' },
+  ],
+};
+
+const THEME03_DECOR_CONTROLS = [
+  { key: 'showDecor', label: '装饰图片', type: 'toggle', default: false },
+  {
+    key: 'decorSrc',
+    label: '装饰元素',
+    type: 'icons',
+    default: null,
+    options: THEME03_DECOR_ICONS.map(({ src, label }) => ({ value: src, label, image: src })),
+  },
+  { key: 'decorScale', label: '图片大小', type: 'range', default: 1, min: 0.6, max: 1.6, step: 0.05 },
+];
+
+const THEME03_DECOR_DEFAULTS = {
+  showDecor: false,
+  decorSrc: null,
+  decorScale: 1,
+};
 
 export const THEME_PAGES = GENERATED_THEME_PAGES.map(applyThemePageDefaults);
 export const THEME_PACK_OPTIONS = Object.fromEntries(
@@ -15,14 +45,22 @@ export const THEME_PACK_OPTIONS = Object.fromEntries(
 );
 
 const PAGES_BY_KEY = new Map(THEME_PAGES.map(page => [page.key, page]));
-const REMOVED_CONTROL_TYPES = new Set(['icons', 'text', 'string', 'input', 'url', 'email', 'textarea', 'multiline']);
+const REMOVED_CONTROL_TYPES = new Set(['text', 'string', 'input', 'url', 'email', 'textarea', 'multiline']);
 
 function applyThemePageDefaults(page) {
   if (page.themeKey !== 'theme03') return page;
+  const theme03InjectedKeys = new Set(['accent', 'showDecor', 'decorSrc', 'decorScale']);
   return {
     ...page,
+    controls: [
+      ...(page.controls || []).filter(control => !theme03InjectedKeys.has(control.key)),
+      ...THEME03_DECOR_CONTROLS,
+      THEME03_GLOBAL_ACCENT_CONTROL,
+    ],
     defaultProps: {
       ...(page.defaultProps || {}),
+      ...THEME03_DECOR_DEFAULTS,
+      accent: 'blue',
       ...(THEME03_PRESET_3D[page.slot] || {}),
     },
   };
@@ -75,6 +113,9 @@ function normalizeControls(controls, defaults) {
         max: serializeValue(resolveValue(control.max, defaults)),
         step: serializeValue(control.step),
         options: genericControlValue(serializeValue(control.options)),
+        countKey: serializeValue(control.countKey),
+        countIndex: serializeValue(control.countIndex),
+        maxFromKey: serializeValue(control.maxFromKey),
       };
       if (type === 'select' && (control.type === 'color' || control.type === 'palette')) {
         next.display = 'color';
@@ -86,6 +127,7 @@ function normalizeControls(controls, defaults) {
 
 function normalizeType(type) {
   if (type === 'slider' || type === 'number') return 'range';
+  if (type === 'icons') return 'icons';
   if (['enum', 'radio', 'select', 'segment', 'color', 'palette', 'labelType'].includes(type)) return 'select';
   if (['toggle', 'boolean', 'focus'].includes(type)) return 'toggle';
   return type || 'range';

@@ -2,6 +2,7 @@ import React from 'react';
 import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import { ImageSlotActions as theme01ImageSlotActions } from './theme01/source/slides/SlideKit.jsx';
+import { ImageSlotMediaContext as theme03ImageSlotMediaContext } from './theme03/source/src/ImageSlot.jsx';
 import { runtimePages as theme01Pages } from './theme01/runtime.jsx';
 import { runtimePages as theme02Pages } from './theme02/runtime.jsx';
 import { runtimePages as theme03Pages } from './theme03/runtime.jsx';
@@ -106,6 +107,12 @@ function mediaItem(value) {
   return null;
 }
 
+function mediaWithAspect(value, ar) {
+  const item = mediaItem(value);
+  if (!item?.src) return null;
+  return { ...item, ar: ar ?? item.ar ?? item.ratio ?? null, ratio: item.ratio ?? ar ?? null };
+}
+
 function mediaSrc(value) {
   return mediaItem(value)?.src || '';
 }
@@ -160,7 +167,12 @@ function createMediaApi(slide, baseProps) {
   }
 
   return {
-    get: (key, index) => toArray(baseProps[key])[index] || null,
+    get: (key, index) => {
+      const slideId = slide.dataset.vmSlideId;
+      const currentProps = window.__deckViewModel?.getState?.().props?.[slideId] || {};
+      const sourceProps = { ...baseProps, ...currentProps };
+      return toArray(sourceProps[key])[index] || null;
+    },
     set: updateList,
     acceptFile,
     pick,
@@ -172,6 +184,7 @@ function HostImageSlot({ mediaApi, index, options = {} }) {
   const value = mediaApi.get('images', index);
   const filled = !!mediaSrc(value);
   const aspectRatio = options.ratioAR || (options.ratio ? String(options.ratio) : undefined);
+  const stopSlotNavigation = event => event.stopPropagation();
   const drop = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -200,11 +213,17 @@ function HostImageSlot({ mediaApi, index, options = {} }) {
         event.stopPropagation();
         mediaApi.pick('images', index);
       }}
+      onPointerDown={stopSlotNavigation}
+      onMouseDown={stopSlotNavigation}
       onDragOver={(event) => {
         event.preventDefault();
+        event.stopPropagation();
         setOver(true);
       }}
-      onDragLeave={() => setOver(false)}
+      onDragLeave={(event) => {
+        event.stopPropagation();
+        setOver(false);
+      }}
       onDrop={drop}
     >
       {filled ? (
@@ -265,6 +284,7 @@ function withMediaHostProps(slide, baseProps) {
     onSlotClear: index => mediaApi.set('images', index, null),
     onActivate: index => mediaApi.pick('images', index),
     onClear: index => mediaApi.set('images', index, null),
+    onImageChange: (index, src, ar) => mediaApi.set('images', index, mediaWithAspect(src, ar)),
     onMediaChange: (index, src) => mediaApi.set('media', index, src),
     renderSlot: (index, options) => (
       <HostImageSlot mediaApi={mediaApi} index={index} options={options} />
@@ -274,13 +294,20 @@ function withMediaHostProps(slide, baseProps) {
 }
 
 function withImageProviders(element, mediaApi) {
-  return React.createElement(theme01ImageSlotActions.Provider, {
-    value: {
+  const theme01Value = {
       pick: index => mediaApi.pick('images', index),
       clear: index => mediaApi.set('images', index, null),
       drop: (index, file) => mediaApi.acceptFile('images', index, file),
-    },
-  }, element);
+  };
+  const theme03Value = {
+    get: index => mediaApi.get('images', index),
+    set: (index, value) => mediaApi.set('images', index, value),
+    pick: index => mediaApi.pick('images', index),
+    drop: (index, file) => mediaApi.acceptFile('images', index, file),
+  };
+  return React.createElement(theme01ImageSlotActions.Provider, { value: theme01Value },
+    React.createElement(theme03ImageSlotMediaContext.Provider, { value: theme03Value }, element),
+  );
 }
 
 function getGxnSlotIndex(root, slot) {

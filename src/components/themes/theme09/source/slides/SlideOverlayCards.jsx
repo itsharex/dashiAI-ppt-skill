@@ -103,6 +103,7 @@ function CardFill({ idPrefix, idx, placeholder, accent }){
   const [drag, setDrag] = React.useState(false);
   const [hover, setHover] = React.useState(false);
   const inputRef = React.useRef(null);
+  const openPicker = (e)=>{ e.stopPropagation(); inputRef.current && inputRef.current.click(); };
   const save = (d)=>{ setData(d); try{ d?localStorage.setItem(key, JSON.stringify(d)):localStorage.removeItem(key); }catch(e){} };
   const ingest = (file)=>{
     if(!file || !/^(image|video)\//.test(file.type || '')) return;
@@ -123,13 +124,15 @@ function CardFill({ idPrefix, idx, placeholder, accent }){
   return (
     <div
       onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
-      onDragOver={(e)=>{e.preventDefault(); setDrag(true);}} onDragLeave={()=>setDrag(false)}
-      onDrop={(e)=>{e.preventDefault(); setDrag(false); ingest(e.dataTransfer.files[0]);}}
-      onClick={()=> inputRef.current && inputRef.current.click()}
+      onPointerDown={(e)=>e.stopPropagation()}
+      onMouseDown={(e)=>e.stopPropagation()}
+      onDragOver={(e)=>{e.preventDefault(); e.stopPropagation(); setDrag(true);}} onDragLeave={(e)=>{e.stopPropagation(); setDrag(false);}}
+      onDrop={(e)=>{e.preventDefault(); e.stopPropagation(); setDrag(false); ingest(e.dataTransfer.files[0]);}}
+      onClick={openPicker}
       style={{position:'absolute', inset:0, cursor:'pointer', overflow:'hidden',
         background: data ? '#03081e' : 'repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 16px, rgba(255,255,255,.02) 16px 32px)',
         boxShadow: drag ? `inset 0 0 0 3px ${accent}` : 'none'}}>
-      <input ref={inputRef} type="file" accept="image/*,video/mp4,video/webm,video/quicktime,video/*" style={{display:'none'}} onChange={(e)=> ingest(e.target.files[0])} onClick={(e)=>e.stopPropagation()} />
+      <input ref={inputRef} type="file" accept="image/*,video/mp4,video/webm,video/quicktime,video/*" style={{display:'none'}} onChange={(e)=>{ ingest(e.target.files[0]); e.target.value=''; }} onClick={(e)=>e.stopPropagation()} />
       {data ? (
         data.kind === 'video'
           ? <video src={data.url} muted playsInline loop autoPlay preload="metadata" style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}} />

@@ -50,6 +50,7 @@
 
 (() => {
   const STATE_FILE = '.image-slots.state.json';
+  const STORAGE_PREFIX = 'dashi-ppt-image-slots';
   // 2× a ~600px slot in a 1920-wide deck — retina-sharp without making the
   // sidecar enormous. A 1200px WebP at q=0.85 is ~150-300KB.
   const MAX_DIM = 1200;
@@ -76,6 +77,8 @@
     loadP = fetch(STATE_FILE)
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
+        const saved = readSavedSlots();
+        if (saved) j = Object.assign({}, j || {}, saved);
         // Merge: sidecar loses to any in-memory change that raced ahead of
         // the fetch (drop or clear) so neither is clobbered by hydration.
         if (j && typeof j === 'object') {
@@ -107,11 +110,33 @@
   function save() {
     if (saving) { saveDirty = true; return; }
     const w = window.omelette && window.omelette.writeFile;
-    if (!w) return;
+    if (!w) {
+      writeSavedSlots();
+      return;
+    }
     saving = true;
     Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
       .catch(() => {})
       .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
+  }
+
+  function storageKey() {
+    const signature = window.__deckViewModel?.model?.state?.__deckSignature || location.pathname || 'deck';
+    return STORAGE_PREFIX + ':' + signature;
+  }
+
+  function readSavedSlots() {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey()) || '{}') || {};
+    } catch {
+      return {};
+    }
+  }
+
+  function writeSavedSlots() {
+    try {
+      localStorage.setItem(storageKey(), JSON.stringify(slots || {}));
+    } catch {}
   }
 
   const S_MAX = 5;
@@ -278,8 +303,15 @@
       this._subFn = () => this._render();
       // Shadow-DOM listeners live with the shadow DOM — bound once here so
       // disconnect/reconnect (e.g. React remount) doesn't stack handlers.
-      this._empty.addEventListener('click', () => this._input.click());
+      this.addEventListener('pointerdown', e => e.stopPropagation());
+      this.addEventListener('mousedown', e => e.stopPropagation());
+      this._empty.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this._input.click();
+      });
       root.addEventListener('click', (e) => {
+        e.stopPropagation();
         const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
         if (act === 'replace') { this._exitReframe(true); this._input.click(); }
         if (act === 'clear') {
@@ -288,6 +320,7 @@
           this._local = null;
           if (this.id) setSlot(this.id, null); else this._render();
         }
+        if (!act && !this._empty.contains(e.target) && e.target !== this._input) this._input.click();
       });
       this._input.addEventListener('change', () => {
         const f = this._input.files && this._input.files[0];
@@ -607,7 +640,7 @@
       this._ring.style.display = mask ? 'none' : '';
 
       // Controls and reframe entry gate on this so share links stay read-only.
-      const editable = !!(window.omelette && window.omelette.writeFile);
+      const editable = !!((window.omelette && window.omelette.writeFile) || window.__deckViewModel);
       this.toggleAttribute('data-editable', editable);
       this._sub.style.display = editable ? '' : 'none';
 

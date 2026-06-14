@@ -31,6 +31,12 @@ globalThis.React = React;
 
     const [over, setOver] = useState(false);
     const inputRef = useRef(null);
+    const stopSlotNavigation = useCallback((e) => { e.stopPropagation(); }, []);
+    const openPicker = useCallback((e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      inputRef.current && inputRef.current.click();
+    }, []);
 
     const ingest = useCallback((file) => {
       if (!file || !file.type || !/^(image|video)\//.test(file.type)) return;
@@ -59,7 +65,7 @@ globalThis.React = React;
     }, [onChange, minAR, maxAR, defaultAR]);
 
     const onDrop = useCallback((e) => {
-      e.preventDefault(); setOver(false);
+      e.preventDefault(); e.stopPropagation(); setOver(false);
       if (!editable) return;
       const file = e.dataTransfer.files && e.dataTransfer.files[0];
       ingest(file);
@@ -79,10 +85,12 @@ globalThis.React = React;
         style={fill
           ? { width: "100%", height: "100%" }
           : { aspectRatio: String(aspectRatio) }}
-        onDragOver={editable ? (e) => { e.preventDefault(); setOver(true); } : undefined}
-        onDragLeave={editable ? () => setOver(false) : undefined}
+        onPointerDown={stopSlotNavigation}
+        onMouseDown={stopSlotNavigation}
+        onDragOver={editable ? (e) => { e.preventDefault(); e.stopPropagation(); setOver(true); } : undefined}
+        onDragLeave={editable ? (e) => { e.stopPropagation(); setOver(false); } : undefined}
         onDrop={editable ? onDrop : undefined}
-        onClick={editable && empty ? () => inputRef.current && inputRef.current.click() : undefined}
+        onClick={editable ? openPicker : undefined}
       >
         {media ? (
           media.kind === "video"
@@ -105,7 +113,8 @@ globalThis.React = React;
             type="file"
             accept="image/*,video/mp4,video/webm,video/quicktime,video/*"
             style={{ display: "none" }}
-            onChange={(e) => ingest(e.target.files && e.target.files[0])}
+            onClick={(e) => e.stopPropagation()}
+            onChange={(e) => { ingest(e.target.files && e.target.files[0]); e.target.value = ""; }}
           />
         ) : null}
       </div>

@@ -7,6 +7,28 @@ import Decor, { decorControls, decorDefaults } from "../Decor.jsx";
    layout: label + title on the left, cards on the right.
    ========================================================================== */
 
+const DIAGRAM_AUTO_STYLES = ["radial", "burst", "orbit", "mesh", "spiral", "constellation"];
+const DIAGRAM_STYLE_OPTIONS = [
+  { value: "auto", label: "自动" },
+  { value: "radial", label: "网格" },
+  { value: "burst", label: "放射" },
+  { value: "orbit", label: "环轨" },
+  { value: "mesh", label: "矩阵" },
+  { value: "spiral", label: "螺旋" },
+  { value: "constellation", label: "星座" },
+];
+
+const diagramStyleControls = [0, 1, 2].map(index => ({
+  key: `diagramStyle${index + 1}`,
+  label: `图形类型 ${index + 1}`,
+  type: "select",
+  default: "auto",
+  options: DIAGRAM_STYLE_OPTIONS,
+  countKey: "cardCount",
+  countIndex: index,
+  help: `对应从左到右第 ${index + 1} 张卡片的图形样式`,
+}));
+
 export const controls = [
   { key: "showEyebrow", label: "装饰标签", type: "toggle", default: true,
     help: "左侧分类标签显示 / 隐藏" },
@@ -14,16 +36,7 @@ export const controls = [
     help: "展示的维度卡片数量" },
   { key: "showDiagram", label: "装饰图形", type: "toggle", default: true,
     help: "卡片中的生成式节点图显示 / 隐藏" },
-  { key: "diagramStyle", label: "图形类型", type: "select", default: "auto",
-    options: [
-      { value: "auto", label: "自动" },
-      { value: "radial", label: "网格" },
-      { value: "burst", label: "放射" },
-      { value: "orbit", label: "环轨" },
-      { value: "mesh", label: "矩阵" },
-      { value: "spiral", label: "螺旋" },
-      { value: "constellation", label: "星座" },
-    ], help: "生成式节点图的视觉样式（auto 按序轮换）" },
+  ...diagramStyleControls,
   { key: "focusEnabled", label: "重点突出", type: "toggle", default: false,
     help: "弱化其它卡片以突出某一张" },
   { key: "focusIndex", label: "突出项", type: "slider", default: 0, min: 0, max: 2, step: 1,
@@ -36,6 +49,9 @@ export const defaultProps = {
   cardCount: 2,
   showDiagram: true,
   diagramStyle: "auto",
+  diagramStyle1: "auto",
+  diagramStyle2: "auto",
+  diagramStyle3: "auto",
   focusEnabled: false,
   focusIndex: 0,
   // —— visible content (override per deck) ——
@@ -161,7 +177,10 @@ export default function MethodSlide(props) {
   const count = Math.max(1, Math.min(3, p.cardCount));
   const cards = CARDS.slice(0, count);
   const focusIndex = Math.min(p.focusIndex, count - 1);
-  const styleFor = (i) => (p.diagramStyle === "auto" ? ["radial", "burst", "orbit", "mesh", "spiral", "constellation"][i % 6] : p.diagramStyle);
+  const styleFor = (i) => {
+    const selected = p[`diagramStyle${i + 1}`] || p.diagramStyle || "auto";
+    return selected === "auto" ? DIAGRAM_AUTO_STYLES[i % DIAGRAM_AUTO_STYLES.length] : selected;
+  };
 
   return (
     <div className="rd-slide">

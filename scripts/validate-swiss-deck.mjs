@@ -50,6 +50,19 @@ if (/\.writeFile\s*\(\s*\{\s*fileName:/.test(html)) {
   errors.push('Deck export uses library writeFile download. Generate a blob and pass it through downloadBlob so LAN downloads can finish.');
 }
 
+const pdfExportStart = html.indexOf('window.__exportDeckPdf =');
+const pdfExportEnd = pdfExportStart >= 0 ? html.indexOf('window.__exportDeckPptx', pdfExportStart) : -1;
+const pdfExportSource = pdfExportStart >= 0 && pdfExportEnd > pdfExportStart
+  ? html.slice(pdfExportStart, pdfExportEnd)
+  : '';
+if (!/runBrowserPrint\s*\(/.test(pdfExportSource) || !/function runBrowserPrint\(\)[\s\S]*?window\.print\(\)/.test(html)) {
+  errors.push('PDF export must use the browser print flow.');
+}
+
+if (/(htmlToImage|captureSlide|buildPdfFromJpegs|toJpeg|toPng|downloadBlob)/.test(pdfExportSource)) {
+  errors.push('PDF export must not use screenshot capture, generated PDF blobs, or download blob flows.');
+}
+
 if (!html.includes('deck-export-cancel')) {
   errors.push('Deck export overlay is missing a cancel button.');
 }

@@ -73,9 +73,14 @@ export default function SwImageSlot({
   };
 
   const onDrop = (e) => {
-    e.preventDefault(); setOver(false);
+    e.preventDefault(); e.stopPropagation(); setOver(false);
     const f = e.dataTransfer.files && e.dataTransfer.files[0];
     readFile(f);
+  };
+  const stopSlotNavigation = (e) => e.stopPropagation();
+  const openPicker = (e) => {
+    e.stopPropagation();
+    inputRef.current && inputRef.current.click();
   };
 
   const clamp = (r) => Math.max(minRatio, Math.min(maxRatio, r));
@@ -90,9 +95,11 @@ export default function SwImageSlot({
 
   return (
     <div
-      onClick={() => inputRef.current && inputRef.current.click()}
-      onDragOver={(e) => { e.preventDefault(); setOver(true); }}
-      onDragLeave={() => setOver(false)}
+      onClick={openPicker}
+      onPointerDown={stopSlotNavigation}
+      onMouseDown={stopSlotNavigation}
+      onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setOver(true); }}
+      onDragLeave={(e) => { e.stopPropagation(); setOver(false); }}
       onDrop={onDrop}
       style={{
         position: 'relative', width: '100%', height: adaptive && boxAspect ? 'auto' : '100%',
@@ -104,7 +111,8 @@ export default function SwImageSlot({
       }}
     >
       <input ref={inputRef} type="file" accept="image/*,video/mp4,video/webm,video/quicktime,video/*" style={{ display: 'none' }}
-        onChange={(e) => readFile(e.target.files && e.target.files[0])} />
+        onClick={(e) => e.stopPropagation()}
+        onChange={(e) => { readFile(e.target.files && e.target.files[0]); e.target.value = ''; }} />
 
       {media?.src ? (
         <>
