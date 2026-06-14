@@ -98341,7 +98341,7 @@
           "key": "unicornScene",
           "label": "动态场景",
           "type": "select",
-          "default": "tech",
+          "default": "automations",
           "options": [
             {
               "value": "tech",
@@ -98487,7 +98487,7 @@
           "key": "unicornScene",
           "label": "动态场景",
           "type": "select",
-          "default": "tech",
+          "default": "moving",
           "options": [
             {
               "value": "tech",
@@ -98590,7 +98590,7 @@
           "key": "unicornScene",
           "label": "动态场景",
           "type": "select",
-          "default": "tech",
+          "default": "goey",
           "options": [
             {
               "value": "tech",
@@ -102629,7 +102629,7 @@
           "key": "unicornScene",
           "label": "动态场景",
           "type": "select",
-          "default": "tech",
+          "default": "donut",
           "options": [
             {
               "value": "tech",

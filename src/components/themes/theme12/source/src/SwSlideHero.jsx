@@ -10,7 +10,7 @@
 import React from 'react';
 import { swTheme } from './swTheme.js';
 import { SlideRoot, Hl, renderSwText } from './swBase.jsx';
-import { SwBackgroundLayer, SW_UNICORN_BACKGROUND_CONTROL, SW_UNICORN_SCENE_CONTROL } from './SwUnicornBackground.jsx';
+import { SwBackgroundLayer, SW_UNICORN_BACKGROUND_CONTROL, createSwUnicornSceneControl } from './SwUnicornBackground.jsx';
 
 const C = swTheme.color, F = swTheme.font;
 
@@ -19,7 +19,7 @@ export const meta = { id: 'hero', index: 16, label: '整版大图 / On Stage' };
 export const defaultProps = {
   accent: C.orange,
   backgroundMode: 'unicorn',
-  unicornScene: 'tech',
+  unicornScene: 'automations',
   mediaFit: 'cover',
   overlayPosition: 'bottom-left', // 'bottom-left' | 'bottom-right' | 'left'
   scrim: 'dark',                  // 'dark' | 'light'
@@ -45,7 +45,7 @@ export const defaultProps = {
 
 export const controls = [
   SW_UNICORN_BACKGROUND_CONTROL,
-  SW_UNICORN_SCENE_CONTROL,
+  createSwUnicornSceneControl(defaultProps.unicornScene),
   { key: 'overlayPosition', label: '文案位置', type: 'segment', def: 'bottom-left',
     options: [{ value: 'bottom-left', label: '左下' }, { value: 'bottom-right', label: '右下' }, { value: 'left', label: '左侧' }],
     desc: '叠加文案面板的位置' },

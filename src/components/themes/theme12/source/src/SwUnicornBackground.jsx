@@ -34,6 +34,10 @@ export const SW_UNICORN_SCENE_CONTROL = {
   desc: '选择固定 Unicorn shader 场景',
 };
 
+export function createSwUnicornSceneControl(def = DEFAULT_UNICORN_SCENE) {
+  return { ...SW_UNICORN_SCENE_CONTROL, def };
+}
+
 function getSwUnicornSceneFile(scene) {
   return SW_UNICORN_SCENES.find(item => item.value === scene)?.file || SW_UNICORN_SCENES[0].file;
 }

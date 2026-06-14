@@ -2462,8 +2462,8 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
-        "def": "tech",
+        "default": "automations",
+        "def": "automations",
         "options": [
           {
             "value": "tech",
@@ -2586,7 +2586,7 @@ export const pages = [
     "defaultProps": {
       "accent": "#f15a29",
       "backgroundMode": "unicorn",
-      "unicornScene": "tech",
+      "unicornScene": "automations",
       "mediaFit": "cover",
       "overlayPosition": "bottom-left",
       "scrim": "dark",
@@ -2648,8 +2648,8 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
-        "def": "tech",
+        "default": "moving",
+        "def": "moving",
         "options": [
           {
             "value": "tech",
@@ -2736,7 +2736,7 @@ export const pages = [
     "defaultProps": {
       "accent": "#f15a29",
       "backgroundMode": "unicorn",
-      "unicornScene": "tech",
+      "unicornScene": "moving",
       "mediaFit": "cover",
       "showCoverLines": true,
       "showBarcode": true,
@@ -2798,8 +2798,8 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
-        "def": "tech",
+        "default": "goey",
+        "def": "goey",
         "options": [
           {
             "value": "tech",
@@ -2916,7 +2916,7 @@ export const pages = [
       "showCaption": true,
       "showShapes": true,
       "backgroundMode": "unicorn",
-      "unicornScene": "tech",
+      "unicornScene": "goey",
       "mediaFit": "cover",
       "media": [],
       "brand": "声浪 SOUNDWAVE",
@@ -9718,8 +9718,8 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
-        "def": "tech",
+        "default": "donut",
+        "def": "donut",
         "options": [
           {
             "value": "tech",
@@ -9816,7 +9816,7 @@ export const pages = [
     "defaultProps": {
       "accent": "#f15a29",
       "backgroundMode": "unicorn",
-      "unicornScene": "tech",
+      "unicornScene": "donut",
       "tint": "dark",
       "quotePos": "bottom",
       "showMark": true,

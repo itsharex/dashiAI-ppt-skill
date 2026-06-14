@@ -12,7 +12,7 @@
 import React from 'react';
 import { swTheme } from './swTheme.js';
 import { injectBaseStyles, useSwReveal } from './swBase.jsx';
-import { SwBackgroundLayer, SW_UNICORN_BACKGROUND_CONTROL, SW_UNICORN_SCENE_CONTROL } from './SwUnicornBackground.jsx';
+import { SwBackgroundLayer, SW_UNICORN_BACKGROUND_CONTROL, createSwUnicornSceneControl } from './SwUnicornBackground.jsx';
 
 const C = swTheme.color, F = swTheme.font;
 
@@ -53,7 +53,7 @@ export const defaultProps = {
 
 export const controls = [
   SW_UNICORN_BACKGROUND_CONTROL,
-  SW_UNICORN_SCENE_CONTROL,
+  createSwUnicornSceneControl(defaultProps.unicornScene),
   { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '封面大图的填充方式' },
   { key: 'scrim', label: '蒙版', type: 'segment', def: 'dark',
