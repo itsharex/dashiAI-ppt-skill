@@ -45,6 +45,12 @@ const SAMPLE_TEXT_LAYOUT_ANCHORS = new Map([
     { text: 'CVC', align: 'r', maxWidth: 0.8 },
   ]],
 ]);
+const SAMPLE_HIGHLIGHT_ANCHORS = new Map([
+  ['theme02:1', [
+    { id: 'ai-company-research-report', text: 'AI 公司调研报告' },
+    { id: '970', text: '970' },
+  ]],
+]);
 const EDITED_TEXT = 'JAD-64 editable text sentinel';
 const INITIAL_IMAGE_BYTES = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="24"><rect width="32" height="24" fill="#e11d48"/><text x="4" y="16" font-size="8" fill="#ffffff">old</text></svg>');
 const REPLACEMENT_IMAGE_BYTES = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="24"><rect width="32" height="24" fill="#2563eb"/><text x="4" y="16" font-size="8" fill="#ffffff">new</text></svg>');
@@ -621,6 +627,7 @@ async function collectSampleVisualComparisons(page, expectations, visualDir) {
       window.__finishEditablePptxAnimations?.(document);
       await new Promise(resolve => requestAnimationFrame(resolve));
     }, sample.index - 1);
+    const highlightAnchors = await collectHighlightAnchorRects(page, sample);
     const pptxFile = path.join(sampleDir, `sample-slide-${String(sample.index).padStart(3, '0')}.pptx`);
     const reportFile = path.join(sampleDir, `sample-slide-${String(sample.index).padStart(3, '0')}.json`);
     await mod.exportEditablePptxFromPage(page, {
@@ -638,6 +645,7 @@ async function collectSampleVisualComparisons(page, expectations, visualDir) {
     await activeSlide.screenshot({ path: htmlScreenshot });
     const pptx = inspectPptx(pptxFile);
     const visual = runQuickLookVisualComparison(pptxFile, htmlScreenshot, sampleDir);
+    const highlightChecks = analyzeHighlightAnchors(highlightAnchors, visual);
     const textLayoutFailures = validateSampleTextLayout(sample, pptx);
     const expected = summarizeExpectation(expectations.find(item => item.index === sample.index));
     out.push({
@@ -646,6 +654,7 @@ async function collectSampleVisualComparisons(page, expectations, visualDir) {
       pptx: summarizeInspection(pptx),
       quickLook: visual,
       textLayoutFailures,
+      highlightChecks,
       htmlScreenshot,
       pptxFile,
       reportFile,
@@ -819,6 +828,179 @@ function validateSampleVisuals(samples) {
     if (visual.edgeRmse > VISUAL_EDGE_RMSE_LIMIT) failures.push(`${label} edge RMSE ${visual.edgeRmse.toFixed(4)} exceeds ${VISUAL_EDGE_RMSE_LIMIT.toFixed(4)}.`);
     if (visual.meanAbsoluteError > VISUAL_MAE_LIMIT) failures.push(`${label} MAE ${visual.meanAbsoluteError.toFixed(4)} exceeds ${VISUAL_MAE_LIMIT.toFixed(4)}.`);
     for (const textFailure of sample.textLayoutFailures || []) failures.push(`${label} ${textFailure}`);
+    for (const highlightFailure of validateHighlightChecks(sample.highlightChecks || [])) failures.push(`${label} ${highlightFailure}`);
+  }
+  return failures;
+}
+
+async function collectHighlightAnchorRects(page, sample) {
+  const anchors = SAMPLE_HIGHLIGHT_ANCHORS.get(`${cliThemePack || ''}:${sample.index}`) || [];
+  if (!anchors.length) return [];
+  return page.evaluate((items) => {
+    const slide = document.querySelector('#deck > .slide.active, #deck > .slide[data-deck-active]');
+    if (!slide) return items.map(item => ({ ...item, found: false, reason: 'missing-active-slide' }));
+    const slideRect = slide.getBoundingClientRect();
+    const normalize = value => String(value || '').replace(/\s+/g, '');
+    const visibleRect = (rect) => {
+      const left = Math.max(rect.left, slideRect.left);
+      const top = Math.max(rect.top, slideRect.top);
+      const right = Math.min(rect.right, slideRect.right);
+      const bottom = Math.min(rect.bottom, slideRect.bottom);
+      if (right <= left || bottom <= top) return null;
+      return { x: left - slideRect.left, y: top - slideRect.top, w: right - left, h: bottom - top };
+    };
+    const isVisible = (el) => {
+      if (!el) return false;
+      const style = getComputedStyle(el);
+      if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity || 1) <= 0.01) return false;
+      const rect = el.getBoundingClientRect();
+      return rect.width > 1 && rect.height > 1
+        && rect.right >= slideRect.left && rect.left <= slideRect.right
+        && rect.bottom >= slideRect.top && rect.top <= slideRect.bottom;
+    };
+
+    return items.map(item => {
+      const target = normalize(item.text);
+      const walker = document.createTreeWalker(slide, NodeFilter.SHOW_TEXT);
+      let best = null;
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        const parent = node.parentElement;
+        if (!isVisible(parent)) continue;
+        if (!normalize(node.textContent).includes(target)) continue;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        const rect = visibleRect(range.getBoundingClientRect());
+        range.detach?.();
+        if (!rect || rect.w < 2 || rect.h < 2) continue;
+        const style = getComputedStyle(parent);
+        const score = rect.w * rect.h + (parseFloat(style.fontSize || '0') || 0) * 100;
+        if (!best || score > best.score) {
+          best = {
+            ...item,
+            found: true,
+            rect,
+            slide: { w: slideRect.width, h: slideRect.height },
+            style: {
+              color: style.color,
+              backgroundImage: style.backgroundImage,
+              backgroundClip: style.backgroundClip,
+              webkitBackgroundClip: style.webkitBackgroundClip,
+              webkitTextFillColor: style.webkitTextFillColor,
+              fontSize: style.fontSize,
+            },
+            score,
+          };
+        }
+      }
+      return best || { ...item, found: false, reason: 'text-anchor-not-found' };
+    });
+  }, anchors);
+}
+
+function analyzeHighlightAnchors(anchors, visual) {
+  if (!anchors.length) return [];
+  return anchors.map(anchor => {
+    if (!anchor.found) return anchor;
+    if (!visual?.available) return { ...anchor, available: false, reason: 'quicklook-unavailable' };
+    const compareDir = path.dirname(visual.htmlImage);
+    const htmlCrop = path.join(compareDir, `html-anchor-${anchor.id}.png`);
+    const pptxCrop = path.join(compareDir, `pptx-anchor-${anchor.id}.png`);
+    const htmlStats = cropHighlightStats(visual.htmlImage, anchor, htmlCrop);
+    const pptxStats = cropHighlightStats(visual.pptxImage, anchor, pptxCrop);
+    return {
+      ...anchor,
+      available: Boolean(htmlStats && pptxStats),
+      htmlCrop,
+      pptxCrop,
+      htmlStats,
+      pptxStats,
+      reason: htmlStats && pptxStats ? undefined : 'crop-analysis-failed',
+    };
+  });
+}
+
+function cropHighlightStats(imagePath, anchor, outPath) {
+  if (!imagePath || !existsSync(imagePath) || !anchor?.rect || !anchor?.slide) return null;
+  const crop = anchorCropSpec(anchor);
+  const save = spawnSync('magick', [imagePath, '-crop', crop.spec, outPath], { encoding: 'utf8' });
+  if (save.status !== 0) return null;
+  const raw = spawnSync('magick', [imagePath, '-crop', crop.spec, '-depth', '8', 'rgb:-'], {
+    encoding: null,
+    maxBuffer: 32 * 1024 * 1024,
+  });
+  if (raw.status !== 0 || !raw.stdout?.length) return null;
+  return summarizeHighlightPixels(raw.stdout);
+}
+
+function anchorCropSpec(anchor) {
+  const scaleX = 960 / Number(anchor.slide.w || 1920);
+  const scaleY = 540 / Number(anchor.slide.h || 1080);
+  const padX = 5;
+  const padY = 4;
+  const x = Math.max(0, Math.floor(anchor.rect.x * scaleX - padX));
+  const y = Math.max(0, Math.floor(anchor.rect.y * scaleY - padY));
+  const right = Math.min(960, Math.ceil((anchor.rect.x + anchor.rect.w) * scaleX + padX));
+  const bottom = Math.min(540, Math.ceil((anchor.rect.y + anchor.rect.h) * scaleY + padY));
+  const w = Math.max(1, right - x);
+  const h = Math.max(1, bottom - y);
+  return { x, y, w, h, spec: `${w}x${h}+${x}+${y}` };
+}
+
+function summarizeHighlightPixels(buffer) {
+  const pixels = Math.floor(buffer.length / 3);
+  let highlightPixels = 0;
+  let nearBlackPixels = 0;
+  let brightPixels = 0;
+  let sumR = 0;
+  let sumG = 0;
+  let sumB = 0;
+  for (let i = 0; i < pixels; i += 1) {
+    const r = buffer[i * 3];
+    const g = buffer[i * 3 + 1];
+    const b = buffer[i * 3 + 2];
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    sumR += r;
+    sumG += g;
+    sumB += b;
+    if (max <= 52) nearBlackPixels += 1;
+    if (max >= 92) brightPixels += 1;
+    if (max >= 88 && max - min >= 24 && (g >= r + 18 || b >= r + 18) && (g >= 100 || b >= 100)) {
+      highlightPixels += 1;
+    }
+  }
+  return {
+    pixels,
+    highlightPixels,
+    highlightRatio: pixels ? highlightPixels / pixels : 0,
+    nearBlackRatio: pixels ? nearBlackPixels / pixels : 0,
+    brightRatio: pixels ? brightPixels / pixels : 0,
+    avgR: pixels ? sumR / pixels : 0,
+    avgG: pixels ? sumG / pixels : 0,
+    avgB: pixels ? sumB / pixels : 0,
+  };
+}
+
+function validateHighlightChecks(checks) {
+  const failures = [];
+  for (const check of checks) {
+    if (!check.found) {
+      failures.push(`is missing highlight anchor "${check.text}" in the HTML sample (${check.reason || 'not-found'}).`);
+      continue;
+    }
+    if (!check.available) {
+      failures.push(`could not analyze highlight anchor "${check.text}" (${check.reason || 'unavailable'}).`);
+      continue;
+    }
+    const htmlRatio = Number(check.htmlStats?.highlightRatio || 0);
+    const pptxRatio = Number(check.pptxStats?.highlightRatio || 0);
+    const requiredRatio = Math.max(0.006, htmlRatio * 0.35);
+    if (pptxRatio < requiredRatio) {
+      failures.push(`highlight anchor "${check.text}" lost cyan/green pixels in PPTX crop (${pptxRatio.toFixed(4)} < ${requiredRatio.toFixed(4)}; HTML ${htmlRatio.toFixed(4)}).`);
+    }
+    if (Number(check.pptxStats?.nearBlackRatio || 0) > 0.9 && Number(check.htmlStats?.nearBlackRatio || 0) < 0.9) {
+      failures.push(`highlight anchor "${check.text}" is near-black in the PPTX crop.`);
+    }
   }
   return failures;
 }

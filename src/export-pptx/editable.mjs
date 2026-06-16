@@ -418,7 +418,7 @@ function renderText(slide, node, slideRect, warnings, totals) {
   const c = coords(node, slideRect);
   if (c.w < 0.01 || c.h < 0.01) return;
   const style = node.style || {};
-  const color = textColorForStyle(style);
+  const color = textColorForStyle(style, node);
   const fontSizePx = Math.max(4, Math.min(140, parseFloat(style.fontSize || '16') || 16));
   const fontFace = firstFont(style.fontFamily);
   const weight = String(style.fontWeight || '');
@@ -729,6 +729,7 @@ function collectSvgTextNodes(svg, slideRect, slideIndex) {
       const style = readStyle(el);
       return {
         tag: '#text',
+        source: 'svg-text',
         slideIndex,
         rect: rectObject(clipped),
         style,
@@ -898,17 +899,18 @@ function isTextClippedBackground(style) {
   return clip.includes('text');
 }
 
-function textColorForStyle(style) {
+function textColorForStyle(style, node = {}) {
   const fill = parseCssColor(style?.webkitTextFillColor);
   if (fill) return fill;
-  const color = parseCssColor(style?.color);
-  if (color) return color;
-  const svgFill = parseCssColor(style?.fill);
-  if (svgFill) return svgFill;
   if (isTextClippedBackground(style)) {
     const gradientColor = colorFromBackgroundImage(style?.backgroundImage);
     if (gradientColor) return gradientColor;
   }
+  const svgFill = parseCssColor(style?.fill);
+  if (node.source === 'svg-text' && svgFill) return svgFill;
+  const color = parseCssColor(style?.color);
+  if (color) return color;
+  if (svgFill) return svgFill;
   return { color: '111111', alpha: 1 };
 }
 
