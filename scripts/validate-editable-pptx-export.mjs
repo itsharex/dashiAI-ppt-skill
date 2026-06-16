@@ -51,6 +51,11 @@ const SAMPLE_HIGHLIGHT_ANCHORS = new Map([
     { id: '970', text: '970' },
   ]],
 ]);
+const SAMPLE_SLOT_ANCHORS = new Map([
+  ['theme02:1', [
+    { id: 'cover-image-slot', selector: '.gxn-slot', text: '拖入配图 · IMAGE' },
+  ]],
+]);
 const EDITED_TEXT = 'JAD-64 editable text sentinel';
 const INITIAL_IMAGE_BYTES = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="24"><rect width="32" height="24" fill="#e11d48"/><text x="4" y="16" font-size="8" fill="#ffffff">old</text></svg>');
 const REPLACEMENT_IMAGE_BYTES = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="24"><rect width="32" height="24" fill="#2563eb"/><text x="4" y="16" font-size="8" fill="#ffffff">new</text></svg>');
@@ -628,6 +633,7 @@ async function collectSampleVisualComparisons(page, expectations, visualDir) {
       await new Promise(resolve => requestAnimationFrame(resolve));
     }, sample.index - 1);
     const highlightAnchors = await collectHighlightAnchorRects(page, sample);
+    const slotAnchors = await collectSlotAnchorRects(page, sample);
     const pptxFile = path.join(sampleDir, `sample-slide-${String(sample.index).padStart(3, '0')}.pptx`);
     const reportFile = path.join(sampleDir, `sample-slide-${String(sample.index).padStart(3, '0')}.json`);
     await mod.exportEditablePptxFromPage(page, {
@@ -646,6 +652,7 @@ async function collectSampleVisualComparisons(page, expectations, visualDir) {
     const pptx = inspectPptx(pptxFile);
     const visual = runQuickLookVisualComparison(pptxFile, htmlScreenshot, sampleDir);
     const highlightChecks = analyzeHighlightAnchors(highlightAnchors, visual);
+    const slotChecks = analyzeSlotAnchors(slotAnchors, visual, pptx);
     const textLayoutFailures = validateSampleTextLayout(sample, pptx);
     const expected = summarizeExpectation(expectations.find(item => item.index === sample.index));
     out.push({
@@ -655,6 +662,7 @@ async function collectSampleVisualComparisons(page, expectations, visualDir) {
       quickLook: visual,
       textLayoutFailures,
       highlightChecks,
+      slotChecks,
       htmlScreenshot,
       pptxFile,
       reportFile,
@@ -829,6 +837,7 @@ function validateSampleVisuals(samples) {
     if (visual.meanAbsoluteError > VISUAL_MAE_LIMIT) failures.push(`${label} MAE ${visual.meanAbsoluteError.toFixed(4)} exceeds ${VISUAL_MAE_LIMIT.toFixed(4)}.`);
     for (const textFailure of sample.textLayoutFailures || []) failures.push(`${label} ${textFailure}`);
     for (const highlightFailure of validateHighlightChecks(sample.highlightChecks || [])) failures.push(`${label} ${highlightFailure}`);
+    for (const slotFailure of validateSlotChecks(sample.slotChecks || [])) failures.push(`${label} ${slotFailure}`);
   }
   return failures;
 }
@@ -1000,6 +1009,177 @@ function validateHighlightChecks(checks) {
     }
     if (Number(check.pptxStats?.nearBlackRatio || 0) > 0.9 && Number(check.htmlStats?.nearBlackRatio || 0) < 0.9) {
       failures.push(`highlight anchor "${check.text}" is near-black in the PPTX crop.`);
+    }
+  }
+  return failures;
+}
+
+async function collectSlotAnchorRects(page, sample) {
+  const anchors = SAMPLE_SLOT_ANCHORS.get(`${cliThemePack || ''}:${sample.index}`) || [];
+  if (!anchors.length) return [];
+  return page.evaluate((items) => {
+    const slide = document.querySelector('#deck > .slide.active, #deck > .slide[data-deck-active]');
+    if (!slide) return items.map(item => ({ ...item, found: false, reason: 'missing-active-slide' }));
+    const slideRect = slide.getBoundingClientRect();
+    const toRect = (rect) => {
+      const left = Math.max(rect.left, slideRect.left);
+      const top = Math.max(rect.top, slideRect.top);
+      const right = Math.min(rect.right, slideRect.right);
+      const bottom = Math.min(rect.bottom, slideRect.bottom);
+      if (right <= left || bottom <= top) return null;
+      return { x: left - slideRect.left, y: top - slideRect.top, w: right - left, h: bottom - top };
+    };
+    return items.map(item => {
+      const el = slide.querySelector(item.selector);
+      if (!el) return { ...item, found: false, reason: 'slot-not-found' };
+      const rect = toRect(el.getBoundingClientRect());
+      if (!rect || rect.w < 4 || rect.h < 4) return { ...item, found: false, reason: 'slot-not-visible' };
+      const cap = el.querySelector('.gxn-slot-cap');
+      const capRect = cap ? toRect(cap.getBoundingClientRect()) : null;
+      const style = getComputedStyle(el);
+      return {
+        ...item,
+        found: true,
+        rect,
+        capRect,
+        slide: { w: slideRect.width, h: slideRect.height },
+        style: {
+          backgroundImage: style.backgroundImage,
+          backgroundColor: style.backgroundColor,
+          borderTopColor: style.borderTopColor,
+          borderTopWidth: style.borderTopWidth,
+          borderTopLeftRadius: style.borderTopLeftRadius,
+        },
+      };
+    });
+  }, anchors);
+}
+
+function analyzeSlotAnchors(anchors, visual, pptx) {
+  if (!anchors.length) return [];
+  return anchors.map(anchor => {
+    if (!anchor.found) return anchor;
+    if (!visual?.available) return { ...anchor, available: false, reason: 'quicklook-unavailable' };
+    const compareDir = path.dirname(visual.htmlImage);
+    const htmlCrop = path.join(compareDir, `html-slot-${anchor.id}.png`);
+    const pptxCrop = path.join(compareDir, `pptx-slot-${anchor.id}.png`);
+    const htmlBackgroundCrop = path.join(compareDir, `html-slot-${anchor.id}-background.png`);
+    const pptxBackgroundCrop = path.join(compareDir, `pptx-slot-${anchor.id}-background.png`);
+    const htmlStats = cropSlotStats(visual.htmlImage, anchor, htmlCrop, htmlBackgroundCrop);
+    const pptxStats = cropSlotStats(visual.pptxImage, anchor, pptxCrop, pptxBackgroundCrop);
+    return {
+      ...anchor,
+      available: Boolean(htmlStats && pptxStats),
+      htmlCrop,
+      pptxCrop,
+      htmlBackgroundCrop,
+      pptxBackgroundCrop,
+      htmlStats,
+      pptxStats,
+      textObjectPresent: Boolean(pptx?.slides?.[0]?.text?.includes(anchor.text)),
+      reason: htmlStats && pptxStats ? undefined : 'slot-crop-analysis-failed',
+    };
+  });
+}
+
+function cropSlotStats(imagePath, anchor, fullOutPath, backgroundOutPath) {
+  if (!imagePath || !existsSync(imagePath) || !anchor?.rect || !anchor?.slide) return null;
+  const full = slotCropSpec(anchor, { x: 0, y: 0, w: 1, h: 1 });
+  const background = slotCropSpec(anchor, { x: 0.08, y: 0.08, w: 0.84, h: 0.22 });
+  const fullSave = spawnSync('magick', [imagePath, '-crop', full.spec, fullOutPath], { encoding: 'utf8' });
+  if (fullSave.status !== 0) return null;
+  const bgSave = spawnSync('magick', [imagePath, '-crop', background.spec, backgroundOutPath], { encoding: 'utf8' });
+  if (bgSave.status !== 0) return null;
+  const raw = spawnSync('magick', [imagePath, '-crop', background.spec, '-depth', '8', 'rgb:-'], {
+    encoding: null,
+    maxBuffer: 32 * 1024 * 1024,
+  });
+  if (raw.status !== 0 || !raw.stdout?.length) return null;
+  return summarizeTexturePixels(raw.stdout, background.w, background.h);
+}
+
+function slotCropSpec(anchor, inset) {
+  const scaleX = 960 / Number(anchor.slide.w || 1920);
+  const scaleY = 540 / Number(anchor.slide.h || 1080);
+  const x = Math.max(0, Math.floor((anchor.rect.x + anchor.rect.w * inset.x) * scaleX));
+  const y = Math.max(0, Math.floor((anchor.rect.y + anchor.rect.h * inset.y) * scaleY));
+  const w = Math.max(1, Math.ceil(anchor.rect.w * inset.w * scaleX));
+  const h = Math.max(1, Math.ceil(anchor.rect.h * inset.h * scaleY));
+  return { x, y, w, h, spec: `${w}x${h}+${x}+${y}` };
+}
+
+function summarizeTexturePixels(buffer, width, height) {
+  const pixels = Math.min(width * height, Math.floor(buffer.length / 3));
+  const luma = new Float32Array(pixels);
+  let sum = 0;
+  let sum2 = 0;
+  let nearSolid = 0;
+  for (let i = 0; i < pixels; i += 1) {
+    const r = buffer[i * 3];
+    const g = buffer[i * 3 + 1];
+    const b = buffer[i * 3 + 2];
+    const value = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    luma[i] = value;
+    sum += value;
+    sum2 += value * value;
+  }
+  let edge = 0;
+  let edgeCount = 0;
+  let diagonal = 0;
+  let diagonalCount = 0;
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      const offset = y * width + x;
+      const current = luma[offset];
+      if (x + 1 < width) {
+        edge += Math.abs(current - luma[offset + 1]);
+        edgeCount += 1;
+      }
+      if (y + 1 < height) {
+        edge += Math.abs(current - luma[offset + width]);
+        edgeCount += 1;
+      }
+      if (x + 1 < width && y + 1 < height) {
+        diagonal += Math.abs(current - luma[offset + width + 1]);
+        diagonalCount += 1;
+      }
+      if (current < 18) nearSolid += 1;
+    }
+  }
+  const mean = pixels ? sum / pixels : 0;
+  const variance = pixels ? sum2 / pixels - mean * mean : 0;
+  return {
+    pixels,
+    mean,
+    sd: Math.sqrt(Math.max(0, variance)),
+    edgeMean: edgeCount ? edge / edgeCount : 0,
+    diagonalMean: diagonalCount ? diagonal / diagonalCount : 0,
+    nearDarkRatio: pixels ? nearSolid / pixels : 0,
+  };
+}
+
+function validateSlotChecks(checks) {
+  const failures = [];
+  for (const check of checks) {
+    if (!check.found) {
+      failures.push(`is missing image slot "${check.id}" in the HTML sample (${check.reason || 'not-found'}).`);
+      continue;
+    }
+    if (!check.available) {
+      failures.push(`could not analyze image slot "${check.id}" (${check.reason || 'unavailable'}).`);
+      continue;
+    }
+    if (!check.textObjectPresent) {
+      failures.push(`image slot "${check.id}" placeholder text "${check.text}" is not exported as an editable PPT text object.`);
+    }
+    const htmlEdge = Number(check.htmlStats?.edgeMean || 0);
+    const pptxEdge = Number(check.pptxStats?.edgeMean || 0);
+    const htmlSd = Number(check.htmlStats?.sd || 0);
+    const pptxSd = Number(check.pptxStats?.sd || 0);
+    const requiredEdge = Math.max(0.18, htmlEdge * 0.35);
+    const requiredSd = Math.max(0.7, htmlSd * 0.3);
+    if (pptxEdge < requiredEdge || pptxSd < requiredSd) {
+      failures.push(`image slot "${check.id}" lost the diagonal texture/background variation in PPTX crop (edge ${pptxEdge.toFixed(3)} < ${requiredEdge.toFixed(3)} or sd ${pptxSd.toFixed(3)} < ${requiredSd.toFixed(3)}; HTML edge ${htmlEdge.toFixed(3)}, sd ${htmlSd.toFixed(3)}).`);
     }
   }
   return failures;

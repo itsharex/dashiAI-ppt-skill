@@ -313,6 +313,10 @@ async function installBrowserCollector(page) {
         ${svgElementData.toString()}
         ${collectSvgTextNodes.toString()}
         ${cloneSvgWithComputedStyle.toString()}
+        ${patternBackgroundImageData.toString()}
+        ${parseRepeatingGradient.toString()}
+        ${rgbaString.toString()}
+        ${roundedRectPath.toString()}
         ${backgroundUrl.toString()}
         ${finishEditablePptxAnimations.toString()}
         ${fallbackTextRisk.toString()}
@@ -463,6 +467,7 @@ function renderText(slide, node, slideRect, warnings, totals) {
 
 function renderNodeImage(slide, node, slideRect, warnings, totals) {
   const items = [];
+  if (node.patternImageData) items.push({ data: node.patternImageData, kind: 'pattern-background' });
   if (node.backgroundImageData) items.push({ data: node.backgroundImageData, kind: 'background-image' });
   if (node.imageData) items.push({ data: node.imageData, kind: node.imageKind || node.tag });
   if (!items.length) return;
@@ -582,6 +587,9 @@ async function captureElement(el, slideRect, warnings, depth, slideIndex) {
   if (bg) {
     node.backgroundImageData = await fetchImageDataUrl(bg);
     if (!node.backgroundImageData) warnings.push({ slide: slideIndex, type: 'background-image-skipped', url: bg.slice(0, 160) });
+  } else if (String(style.backgroundImage || '').includes('repeating-linear-gradient')) {
+    node.patternImageData = patternBackgroundImageData(style.backgroundImage, clipped.width, clipped.height, parseFloat(style.borderTopLeftRadius || '0') || 0);
+    if (node.patternImageData) warnings.push({ slide: slideIndex, type: 'node-image-fallback', node: 'css-pattern-background', count: 1 });
   }
 
   for (const child of el.childNodes) {
@@ -663,6 +671,7 @@ function summarizeNode(node, summary, depth) {
   summary.maxDepth = Math.max(summary.maxDepth, depth);
   if (node.tag === '#text') summary.textNodes += 1;
   if (node.backgroundImageData) summary.backgroundImages += 1;
+  if (node.patternImageData) summary.backgroundImages += 1;
   if (node.imageKind === 'svg') summary.svgImages += 1;
   if (node.imageKind === 'canvas') summary.canvasImages += 1;
   if (node.imageData) summary.imageNodes += 1;
@@ -764,6 +773,93 @@ function cloneSvgWithComputedStyle(svg) {
     copy.setAttribute('style', `${copy.getAttribute('style') || ''};${inline}`);
   });
   return clone;
+}
+
+function patternBackgroundImageData(backgroundImage, width, height, radius = 0) {
+  const spec = parseRepeatingGradient(backgroundImage);
+  if (!spec) return null;
+  const scale = 2;
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.max(1, Math.round(width * scale));
+  canvas.height = Math.max(1, Math.round(height * scale));
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+  const w = canvas.width;
+  const h = canvas.height;
+  ctx.save();
+  roundedRectPath(ctx, 0, 0, w, h, Math.max(0, Number(radius || 0)) * scale);
+  ctx.clip();
+  ctx.translate(w / 2, h / 2);
+  ctx.rotate((Number(spec.angle || 135) - 90) * Math.PI / 180);
+  const span = Math.hypot(w, h) * 2;
+  const period = Math.max(2, spec.period * scale);
+  const split = Math.max(1, Math.min(period - 1, spec.split * scale));
+  for (let x = -span; x < span; x += period) {
+    ctx.fillStyle = rgbaString(spec.colors[0]);
+    ctx.fillRect(x, -span, split, span * 2);
+    ctx.fillStyle = rgbaString(spec.colors[1]);
+    ctx.fillRect(x + split, -span, period - split, span * 2);
+  }
+  ctx.restore();
+  return canvas.toDataURL('image/png');
+}
+
+function parseRepeatingGradient(backgroundImage) {
+  const raw = String(backgroundImage || '');
+  if (!raw.includes('repeating-linear-gradient')) return null;
+  const angle = Number(raw.match(/repeating-linear-gradient\(\s*([-\d.]+)deg/i)?.[1] || 135);
+  const matches = [...raw.matchAll(/rgba?\(([^)]+)\)\s+([\d.]+)px/ig)]
+    .map(match => {
+      const parts = match[1].split(',').map(part => Number(part.trim()));
+      return {
+        color: {
+          r: Math.max(0, Math.min(255, parts[0] || 255)),
+          g: Math.max(0, Math.min(255, parts[1] || 255)),
+          b: Math.max(0, Math.min(255, parts[2] || 255)),
+          a: parts[3] == null ? 1 : Math.max(0, Math.min(1, parts[3])),
+        },
+        stop: Number(match[2] || 0),
+      };
+    });
+  if (!matches.length) {
+    return {
+      angle,
+      colors: [{ r: 255, g: 255, b: 255, a: 0.04 }, { r: 255, g: 255, b: 255, a: 0.016 }],
+      split: 12,
+      period: 24,
+    };
+  }
+  const stops = [...new Set(matches.map(item => item.stop).filter(Number.isFinite))].sort((a, b) => a - b);
+  const split = stops.find(stop => stop > 0) || 12;
+  const period = stops.find(stop => stop > split) || split * 2;
+  return {
+    angle,
+    colors: [
+      matches[0]?.color,
+      matches.at(-1)?.color,
+    ].filter(Boolean),
+    split,
+    period,
+  };
+}
+
+function rgbaString(color) {
+  return `rgba(${Math.round(color.r)},${Math.round(color.g)},${Math.round(color.b)},${color.a})`;
+}
+
+function roundedRectPath(ctx, x, y, w, h, radius) {
+  const r = Math.min(radius, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
 }
 
 function backgroundUrl(backgroundImage) {
