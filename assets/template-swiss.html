@@ -3786,7 +3786,6 @@ refreshRailCatalog();
     if(window.__deckExportLocked) return;
     const button = document.getElementById('preview-export-pptx');
     const buttonLabel = button?.textContent;
-    let restoreState = null;
     let exportUi = null;
     try {
       exportUi = beginDeckExport('PPTX');
@@ -3798,71 +3797,40 @@ refreshRailCatalog();
       window.__syncDeckPageNumbers?.();
       window.__flushEditableTextState?.();
       window.__syncDeckViewModelFromDom?.();
-      await Promise.all([
-        loadExportScript('assets/vendor/pptxgen.bundle.js', () => window.PptxGenJS),
-        loadExportScript('assets/vendor/html-to-image.js', () => window.htmlToImage),
-      ]);
       throwIfDeckExportCancelled(exportUi);
 
-      const PptxGen = window.PptxGenJS;
-      const pptx = new PptxGen();
-      const PPT_W = 16;
-      const PPT_H = 9;
-      pptx.defineLayout({name: 'HTML_WIDE', width: PPT_W, height: PPT_H});
-      pptx.layout = 'HTML_WIDE';
-      pptx.author = 'Dashi PPT Skill';
-      pptx.subject = 'Exported from HTML preview';
-      pptx.title = document.title || 'Presentation';
-
-      restoreState = captureExportViewState();
-      setDeckMode('present');
-      window.__layoutDeck?.();
-      window.__restoreEffectIframes?.(document);
-      await window.__initUnicornScenes?.(document, {force:true});
-      await waitForUnicornFrames(document, 6000);
+      const slides = await materializeExportSlides(exportUi, 'PPTX');
+      updateDeckExport(exportUi, 0, slides.length || 1, '正在生成可编辑 PPTX...');
+      const response = await fetch('/api/export-editable-pptx', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({
+          title: document.title || 'Presentation',
+          fileName: getDeckFileName(),
+          sourcePath: location.pathname + location.search,
+          snapshot: buildEditablePptxExportSnapshot(),
+        }),
+      });
       throwIfDeckExportCancelled(exportUi);
-
-      const slides = window.__getVisibleSlides?.() || [...document.querySelectorAll('#deck > .slide:not([hidden])')];
-      for(let i = 0; i < slides.length; i++){
-        throwIfDeckExportCancelled(exportUi);
-        if(button) button.textContent = `PPTX ${i + 1}/${slides.length}`;
-        updateDeckExport(exportUi, i, slides.length, `正在截取第 ${i + 1} / ${slides.length} 页`);
-        go(i, {animate:false, force:true});
-        await nextFrame();
-        await nextFrame();
-        const slideEl = slides[i];
-        await waitForSlideCaptureReady(slideEl);
-        throwIfDeckExportCancelled(exportUi);
-
-        document.body.classList.add('pptx-export-capturing');
-        await nextFrame();
-        const imageData = await captureSlideImage(slideEl, {
-          cacheBust: true,
-          skipFonts: true,
-          pixelRatio: Math.min(2, Math.max(1.35, window.devicePixelRatio || 1.5)),
-          backgroundColor: getCaptureBackground(slideEl),
-        });
-        document.body.classList.remove('pptx-export-capturing');
-        throwIfDeckExportCancelled(exportUi);
-
-        const pptSlide = pptx.addSlide();
-        pptSlide.addImage({data: imageData, x: 0, y: 0, w: PPT_W, h: PPT_H});
+      if(!response.ok){
+        let detail = '';
+        try { detail = (await response.json())?.error || ''; } catch {}
+        throw new Error(detail || `Editable PPTX export endpoint failed (${response.status})`);
       }
-
+      const result = await response.json();
+      if(!result?.filePath) throw new Error('Editable PPTX export did not return a saved file path.');
+      window.__lastPptxExportResult = result;
       throwIfDeckExportCancelled(exportUi);
-      updateDeckExport(exportUi, slides.length, slides.length, '正在生成 PPTX 文件...');
-      restorePptxExportState(restoreState);
-      const pptxBlob = await pptx.write({outputType: 'blob'});
-      throwIfDeckExportCancelled(exportUi);
-      updateDeckExport(exportUi, slides.length, slides.length, '正在下载 PPTX...');
-      await downloadBlob(pptxBlob, `${getDeckFileName()}.pptx`);
+      const downloadStarted = startServerExportDownload(result.downloadUrl, result.downloadName || `${getDeckFileName()}.pptx`);
+      window.__lastPptxExportResult.downloadStarted = downloadStarted;
+      updateDeckExport(exportUi, slides.length, slides.length, downloadStarted ? 'PPTX 已开始下载' : `PPTX 已保存：${result.relativePath || result.filePath}`);
+      if(!downloadStarted) alert(`PPTX 已保存到：\n${result.filePath}`);
     } catch (error) {
       if(isDeckExportCancelledError(error)) return;
       console.error('[export pptx]', error);
-      alert('PPTX 导出失败，请在浏览器控制台查看错误。');
+      alert('可编辑 PPTX 导出失败，请确认当前预览服务支持服务端导出。');
     } finally {
       document.body.classList.remove('pptx-export-capturing');
-      restorePptxExportState(restoreState);
       endDeckExport(exportUi);
       if(button){
         button.disabled = false;
@@ -3871,6 +3839,55 @@ refreshRailCatalog();
       window.__syncActiveEffects?.();
     }
   };
+
+  function buildEditablePptxExportSnapshot(){
+    return {
+      themePack: document.documentElement.dataset.themePack || '',
+      currentIndex: window.__currentSlideIndex || 0,
+      state: window.__getDeckViewModelState?.() || {},
+      canvasSnapshots: collectEditablePptxCanvasSnapshots(),
+    };
+  }
+
+  function startServerExportDownload(downloadUrl, filename){
+    if(!downloadUrl) return false;
+    try {
+      const url = new URL(downloadUrl, location.href);
+      if(url.origin !== location.origin) return false;
+      location.assign(url.href);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function collectEditablePptxCanvasSnapshots(){
+    const slides = window.__getVisibleSlides?.() || [...document.querySelectorAll('#deck > .slide:not([hidden])')];
+    const out = [];
+    slides.forEach((slide, slideIndex) => {
+      const slideRect = slide.getBoundingClientRect();
+      if(!slideRect.width || !slideRect.height) return;
+      slide.querySelectorAll('canvas').forEach((canvas, canvasIndex) => {
+        const style = getComputedStyle(canvas);
+        const rect = canvas.getBoundingClientRect();
+        if(style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity || 1) <= 0.01) return;
+        if(rect.width <= 1 || rect.height <= 1) return;
+        try {
+          const data = canvas.toDataURL('image/png');
+          out.push({
+            slideIndex,
+            canvasIndex,
+            data,
+            left: (rect.left - slideRect.left) / slideRect.width * 100,
+            top: (rect.top - slideRect.top) / slideRect.height * 100,
+            width: rect.width / slideRect.width * 100,
+            height: rect.height / slideRect.height * 100,
+          });
+        } catch {}
+      });
+    });
+    return out;
+  }
 
   window.__exportDeckHtml = async function(){
     if(window.__deckExportLocked) return;

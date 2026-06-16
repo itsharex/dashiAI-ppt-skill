@@ -15,6 +15,7 @@ const CERT_DIR = path.join(ROOT, 'output/https-preview');
 const CERT_META = path.join(CERT_DIR, 'cert-meta.json');
 const CERT_KEY = path.join(CERT_DIR, 'localhost-key.pem');
 const CERT_FILE = path.join(CERT_DIR, 'localhost-cert.pem');
+const EXPORT_DIR = path.join(ROOT, 'output/exports');
 
 if (!existsSync(path.join(SERVE_ROOT, 'index.html'))) {
   console.error(`Preview index.html not found: ${path.join(SERVE_ROOT, 'index.html')}`);
@@ -28,7 +29,17 @@ const server = https.createServer(
     key: readFileSync(CERT_KEY),
     cert: readFileSync(CERT_FILE),
   },
-  (req, res) => {
+  async (req, res) => {
+    const requestUrl = new URL(req.url || '/', 'https://local.invalid');
+    if (req.method === 'POST' && requestUrl.pathname === '/api/export-editable-pptx') {
+      await handleEditablePptxExport(req, res);
+      return;
+    }
+    if ((req.method === 'GET' || req.method === 'HEAD') && requestUrl.pathname === '/api/export-editable-pptx-download') {
+      handleEditablePptxDownload(req, res, requestUrl);
+      return;
+    }
+
     const pathname = safePathname(req.url || '/');
     const requested = path.join(SERVE_ROOT, pathname === '/' ? 'index.html' : pathname);
     const file = resolveFile(requested);
@@ -145,6 +156,164 @@ function contentType(file) {
     '.woff': 'font/woff',
     '.woff2': 'font/woff2',
   }[ext] || 'application/octet-stream';
+}
+
+async function handleEditablePptxExport(req, res) {
+  try {
+    if (!isAllowedExportRequest(req)) {
+      res.writeHead(403, { 'content-type': 'application/json;charset=utf-8', 'cache-control': 'no-store' });
+      res.end(JSON.stringify({ error: 'Forbidden export origin' }));
+      return;
+    }
+    const payload = await readJsonBody(req);
+    const [{ chromium }, { exportEditablePptxFromUrl }] = await Promise.all([
+      import('playwright-core'),
+      import('../src/export-pptx/editable.mjs'),
+    ]);
+    const browser = await chromium.launch({ headless: true, executablePath: getChromePath() });
+    const baseName = `${timestampForFile()}-${safeDownloadName(payload.fileName || 'presentation')}`;
+    const outFile = path.join(EXPORT_DIR, `${baseName}.pptx`);
+    const reportFile = path.join(EXPORT_DIR, `${baseName}.json`);
+    try {
+      const sourcePath = typeof payload.sourcePath === 'string' && payload.sourcePath.startsWith('/') ? payload.sourcePath : '/';
+      const url = `https://localhost:${PORT}${sourcePath}`;
+      await exportEditablePptxFromUrl(browser, url, {
+        outFile,
+        reportFile,
+        title: payload.title || 'Editable Deck Export',
+        snapshot: payload.snapshot || null,
+      });
+    } finally {
+      await closeBrowser(browser);
+    }
+
+    res.writeHead(200, {
+      'content-type': 'application/json;charset=utf-8',
+      'cache-control': 'no-store',
+    });
+    res.end(JSON.stringify({
+      ok: true,
+      filePath: outFile,
+      reportPath: reportFile,
+      relativePath: path.relative(ROOT, outFile),
+      downloadUrl: `/api/export-editable-pptx-download?file=${encodeURIComponent(path.basename(outFile))}`,
+      downloadName: path.basename(outFile),
+    }));
+  } catch (error) {
+    console.error('[editable pptx export]', error);
+    res.writeHead(500, { 'content-type': 'application/json;charset=utf-8', 'cache-control': 'no-store' });
+    res.end(JSON.stringify({ error: error.message || 'Editable PPTX export failed' }));
+  }
+}
+
+function handleEditablePptxDownload(req, res, requestUrl) {
+  const name = path.basename(requestUrl.searchParams.get('file') || '');
+  if (!name || !/\.pptx$/i.test(name)) {
+    res.writeHead(404, { 'content-type': 'text/plain;charset=utf-8', 'cache-control': 'no-store' });
+    res.end('Not found');
+    return;
+  }
+  const file = path.resolve(EXPORT_DIR, name);
+  if (!file.startsWith(EXPORT_DIR + path.sep)) {
+    res.writeHead(404, { 'content-type': 'text/plain;charset=utf-8', 'cache-control': 'no-store' });
+    res.end('Not found');
+    return;
+  }
+  let stat;
+  try {
+    stat = statSync(file);
+    if (!stat.isFile()) throw new Error('not-file');
+  } catch {
+    res.writeHead(404, { 'content-type': 'text/plain;charset=utf-8', 'cache-control': 'no-store' });
+    res.end('Not found');
+    return;
+  }
+  res.writeHead(200, {
+    'content-type': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    'content-length': stat.size,
+    'content-disposition': `attachment; filename="${asciiDownloadName(name)}"; filename*=UTF-8''${encodeRFC5987(name)}`,
+    'cache-control': 'no-store',
+    'x-content-type-options': 'nosniff',
+  });
+  if (req.method === 'HEAD') {
+    res.end();
+    return;
+  }
+  createReadStream(file).pipe(res);
+}
+
+function asciiDownloadName(value) {
+  return String(value || 'presentation.pptx').replace(/[^\x20-\x7e]+/g, '_').replace(/["\\]/g, '_') || 'presentation.pptx';
+}
+
+function encodeRFC5987(value) {
+  return encodeURIComponent(value).replace(/['()*]/g, char => `%${char.charCodeAt(0).toString(16).toUpperCase()}`);
+}
+
+function isAllowedExportRequest(req) {
+  const origin = req.headers.origin;
+  if (!origin) return true;
+  const allowed = new Set([
+    `https://localhost:${PORT}`,
+    `https://127.0.0.1:${PORT}`,
+    `https://${LOCAL_HOSTNAME}.local:${PORT}`,
+    ...LAN_IPS.map(ip => `https://${ip}:${PORT}`),
+  ]);
+  return allowed.has(origin);
+}
+
+function readJsonBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    let size = 0;
+    req.on('data', chunk => {
+      size += chunk.length;
+      if (size > 80 * 1024 * 1024) {
+        reject(new Error('Request body is too large.'));
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on('end', () => {
+      try {
+        resolve(JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}'));
+      } catch (error) {
+        reject(error);
+      }
+    });
+    req.on('error', reject);
+  });
+}
+
+function safeDownloadName(value) {
+  return String(value || 'presentation')
+    .replace(/[\\/:*?"<>|]+/g, '')
+    .replace(/\s+/g, '-')
+    .trim()
+    .slice(0, 80) || 'presentation';
+}
+
+function timestampForFile() {
+  return new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, '');
+}
+
+function getChromePath() {
+  const chrome = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+  if (!existsSync(chrome)) throw new Error(`Chrome executable not found: ${chrome}`);
+  return chrome;
+}
+
+async function closeBrowser(browser) {
+  if (!browser) return;
+  const close = browser.close().catch(() => {});
+  const result = await Promise.race([
+    close.then(() => 'closed'),
+    new Promise(resolve => setTimeout(() => resolve('timeout'), 5000)),
+  ]);
+  if (result === 'timeout') {
+    try { browser.process?.()?.kill?.('SIGKILL'); } catch {}
+  }
 }
 
 function getLocalHostname() {
