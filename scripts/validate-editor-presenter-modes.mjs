@@ -34,7 +34,7 @@ try {
   page = await browser.newPage({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true });
   page.setDefaultTimeout(30000);
   await page.goto(`${url}?editor_presenter_modes=${Date.now()}`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('#deck > .slide');
+  await page.waitForSelector('#deck > .slide.active, #deck > .slide[data-deck-active]');
 
   const defaultEdit = await readEditorPresenterState(page);
   const layoutWidths = [];
@@ -47,6 +47,8 @@ try {
   const editNavigation = await runEditNavigationValidation(page);
   const editCapabilities = await readEditCapabilities(page);
   const rail = await runRailValidation(page);
+  const railPerformance = await runRailPerformanceValidation(page);
+  const themeSwitchRail = await runThemeSwitchRailValidation(page);
   const present = await runPresentValidation(page);
   const exportState = await readExportState(page);
 
@@ -59,6 +61,8 @@ try {
     editNavigation,
     editCapabilities,
     rail,
+    railPerformance,
+    themeSwitchRail,
     present,
     exportState,
   };
@@ -114,6 +118,18 @@ function runStaticChecks() {
   }
   if (!/data-rail-card|data-slide-rail-card|dataset\.railCard/.test(html)) {
     failures.push('Rail cards are not represented as first-class catalog items.');
+  }
+  if (!/requestFullscreen\s*\(/.test(previewController + html) || !/fullscreenchange/.test(previewController + html)) {
+    failures.push('Present mode must use the real Fullscreen API with fullscreenchange sync.');
+  }
+  if (/present-exit-btn/.test(html)) {
+    failures.push('Present mode should not render a custom exit button.');
+  }
+  if (!/scrollbar-color\s*:[^;]+transparent/.test(html) || !/#slide-rail-list::-[\w-]*scrollbar-track[\s\S]{0,120}transparent/.test(html)) {
+    failures.push('Rail scrollbar should use a transparent track and only show the thumb/bar.');
+  }
+  if (!/复制页面/.test(html) || !/duplicate|copyCatalog|cloneCatalog|copySlide/i.test(html)) {
+    failures.push('Rail context menu is missing a real copy-page action.');
   }
   return failures;
 }
@@ -240,6 +256,8 @@ async function readEditCapabilities(page) {
 
 async function runRailValidation(page) {
   await ensureEditMode(page);
+  await page.evaluate(() => window.__setActiveThemePack?.('theme01', { navigate: false }));
+  await settle(page);
   await page.evaluate(() => window.go?.(0, { animate: false, force: true }));
   await settle(page);
   const initial = await getRailState(page);
@@ -256,18 +274,134 @@ async function runRailValidation(page) {
   return { initial, clickJump, afterClick, afterScrollTarget, drag, afterDrag, context, dirty };
 }
 
+async function runRailPerformanceValidation(page) {
+  await ensureEditMode(page);
+  await page.evaluate(() => {
+    window.__setActiveThemePack?.('theme01', { navigate: false });
+    window.go?.(0, { animate: false, force: true });
+  });
+  await settle(page);
+  const click = await runRailInteractionWindow(page, async () => {
+    const locator = page.locator('[data-rail-card="true"][data-index="5"],[data-slide-rail-card="true"][data-index="5"]').first();
+    await locator.click();
+  });
+  const arrowDown = await runRailInteractionWindow(page, async () => {
+    await page.keyboard.press('ArrowDown');
+  });
+  const arrowUp = await runRailInteractionWindow(page, async () => {
+    await page.keyboard.press('ArrowUp');
+  });
+  return { click, arrowDown, arrowUp };
+}
+
+async function runRailInteractionWindow(page, action) {
+  await page.evaluate(() => {
+    window.__resetOverviewPerfMarks?.();
+    window.__editorModeLongTasks = [];
+    window.__editorModeLongTaskObserver?.disconnect?.();
+    try {
+      window.__editorModeLongTaskObserver = new PerformanceObserver(list => {
+        window.__editorModeLongTasks.push(...list.getEntries().map(entry => ({
+          startTime: entry.startTime,
+          duration: entry.duration,
+        })));
+      });
+      window.__editorModeLongTaskObserver.observe({ entryTypes: ['longtask'] });
+    } catch {}
+    window.__editorModeInteractionStart = performance.now();
+  });
+  const startedAt = Date.now();
+  await action();
+  const actionElapsedMs = Date.now() - startedAt;
+  await settle(page, 180);
+  return page.evaluate((elapsedMs) => {
+    const start = window.__editorModeInteractionStart || 0;
+    const perf = window.__getRailPerfState?.() || window.__getOverviewPerfState?.() || {};
+    const marks = perf.marks || {};
+    const stages = (marks.stages || []).filter(stage => Number(stage.startAt || 0) >= start);
+    const layoutReads = (marks.layoutReads || []).filter(read => Number(read.at || 0) >= start);
+    const captures = (marks.captures || []).filter(capture => Number(capture.startedAt || 0) >= start);
+    const longTasks = (window.__editorModeLongTasks || []).filter(task => Number(task.startTime || 0) >= start);
+    window.__editorModeLongTaskObserver?.disconnect?.();
+    return {
+      elapsedMs,
+      currentIndex: window.__currentSlideIndex || 0,
+      captureStarts: captures.length,
+      longTasksOver50: longTasks.filter(task => Number(task.duration || 0) > 50).length,
+      maxLongTaskMs: longTasks.reduce((max, task) => Math.max(max, Number(task.duration || 0)), 0),
+      buildStages: stages.filter(stage => /build-rail-catalog/.test(stage.type || '')).length,
+      heavyStageTypes: stages
+        .filter(stage => /fit-overview-thumbnails|observe-overview-thumbnails|queue-nearby-overview-thumbs|dom-preview-thumbnail|dom-derived-preview/.test(stage.type || ''))
+        .map(stage => stage.type),
+      layoutReadCount: layoutReads.reduce((sum, read) => sum + Number(read.count || 0), 0),
+      queueLength: perf.queueLength ?? null,
+    };
+  }, actionElapsedMs);
+}
+
+async function runThemeSwitchRailValidation(page) {
+  await ensureEditMode(page);
+  await page.evaluate(() => {
+    window.__deckViewModel?.setSkippedSlides?.([]);
+    window.__deckViewModel?.setDeletedSlides?.([]);
+    window.__setActiveThemePack?.('theme01', { navigate: false });
+    window.go?.(0, { animate: false, force: true });
+  });
+  await settle(page);
+  const before = await readRailThemeState(page);
+  const theme02 = await switchThemeThroughPanel(page, 'theme02');
+  const theme03 = await switchThemeThroughPanel(page, 'theme03');
+  return { before, theme02, theme03 };
+}
+
+async function switchThemeThroughPanel(page, themePack) {
+  const select = page.locator('#preview-theme-pack').first();
+  if (await select.count()) {
+    await select.selectOption(themePack);
+  } else {
+    await page.evaluate(themePack => window.__setActiveThemePack?.(themePack), themePack);
+  }
+  await settle(page, 450);
+  return readRailThemeState(page);
+}
+
+async function readRailThemeState(page) {
+  return page.evaluate(() => {
+    const activeThemePack = document.documentElement.dataset.themePack || '';
+    const allThemeSlides = [...document.querySelectorAll(`#deck > .slide[data-theme-pack="${activeThemePack}"]`)];
+    const cards = [...document.querySelectorAll('[data-rail-card="true"],[data-slide-rail-card="true"]')].map(card => ({
+      index: Number(card.dataset.index || -1),
+      slideId: card.dataset.slideId || card.dataset.slideKey || '',
+      themePack: card.__overviewSlide?.dataset.themePack || '',
+      cacheKey: card.querySelector('[data-overview-thumb="true"],[data-rail-thumb="true"]')?.dataset.overviewKey || '',
+    }));
+    const perf = window.__getRailPerfState?.() || window.__getOverviewPerfState?.() || {};
+    return {
+      activeThemePack,
+      expectedCount: allThemeSlides.filter(slide => !slide.hidden || slide.dataset.themePack === activeThemePack).length,
+      cardCount: cards.length,
+      wrongThemeCards: cards.filter(card => card.themePack && card.themePack !== activeThemePack).slice(0, 8),
+      theme01Cards: cards.filter(card => /^theme01/.test(card.slideId)).length,
+      cards: cards.slice(0, 12),
+      cacheKeys: (perf.cacheKeys || []).slice(0, 24),
+      activeSlideId: perf.activeSlideId || '',
+    };
+  });
+}
+
 async function runPresentValidation(page) {
   await ensureEditMode(page);
+  await page.evaluate(() => window.__setActiveThemePack?.('theme01', { navigate: false }));
+  await settle(page);
   await page.evaluate(() => window.go?.(1, { animate: false, force: true }));
   await settle(page);
   const before = await currentIndex(page);
-  const entered = await page.evaluate(() => {
-    const button = document.querySelector('#preview-present-btn,[data-present-toggle="true"],#preview-overview-btn');
-    button?.click();
-    return Boolean(button);
-  });
-  await settle(page, 250);
+  const presentButton = page.locator('#preview-present-btn,[data-present-toggle="true"],#preview-overview-btn').first();
+  const entered = Boolean(await presentButton.count());
+  if (entered) await presentButton.click();
+  await settle(page, 500);
   const presentState = await readEditorPresenterState(page);
+  const fullscreenState = await readFullscreenState(page);
   const presentLayout = await readLayoutState(page, page.viewportSize()?.width || 1440);
   await page.keyboard.press('ArrowRight');
   await settle(page);
@@ -277,11 +411,24 @@ async function runPresentValidation(page) {
   const afterClick = await currentIndex(page);
   const presentEditing = await readPresentEditGuards(page);
   const editBypass = await runPresentEditBypassValidation(page);
-  await page.keyboard.press('Escape');
-  await settle(page, 250);
+  const beforeExitIndex = await currentIndex(page);
+  await page.evaluate(() => document.fullscreenElement ? document.exitFullscreen() : window.__exitPresentMode?.());
+  await settle(page, 450);
   const afterEsc = await readEditorPresenterState(page);
   const afterEscIndex = await currentIndex(page);
-  return { entered, before, presentState, presentLayout, afterRight, afterClick, presentEditing, editBypass, afterEsc, afterEscIndex };
+  const clickTargets = await runPresentClickTargetsValidation(page);
+  return { entered, before, presentState, fullscreenState, presentLayout, afterRight, afterClick, presentEditing, editBypass, clickTargets, beforeExitIndex, afterEsc, afterEscIndex };
+}
+
+async function readFullscreenState(page) {
+  return page.evaluate(() => {
+    const fullscreen = document.fullscreenElement;
+    return {
+      hasFullscreenElement: Boolean(fullscreen),
+      fullscreenId: fullscreen?.id || '',
+      customExitButtonExists: Boolean(document.getElementById('present-exit-btn')),
+    };
+  });
 }
 
 async function readPresentEditGuards(page) {
@@ -308,6 +455,126 @@ async function readPresentEditGuards(page) {
       return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 2 && rect.height > 2;
     }
   });
+}
+
+async function runPresentClickTargetsValidation(page) {
+  const kinds = ['background', 'text', 'slot', 'media'];
+  const results = {};
+  for (const kind of kinds) {
+    results[kind] = await runPresentClickTargetValidation(page, kind);
+  }
+  return results;
+}
+
+async function runPresentClickTargetValidation(page, kind) {
+  await exitPresentForValidation(page);
+  await ensureEditMode(page);
+  const target = await preparePresentClickTarget(page, kind);
+  if (!target?.found) return { kind, found: false };
+  const button = page.locator('#preview-present-btn,[data-present-toggle="true"]').first();
+  if (!(await button.count())) return { kind, found: true, entered: false };
+  await page.evaluate(() => { window.__testFilePickerClicks = 0; });
+  await button.click();
+  await settle(page, 350);
+  const before = await currentIndex(page);
+  const targetBox = await getCurrentPresentTargetBox(page, kind);
+  if (!targetBox?.found) {
+    await exitPresentForValidation(page);
+    return { kind, found: true, entered: true, targetVisible: false };
+  }
+  const cursor = await page.evaluate(({ x, y }) => {
+    const element = document.elementFromPoint(x, y);
+    return element ? getComputedStyle(element).cursor : '';
+  }, targetBox);
+  await page.mouse.click(targetBox.x, targetBox.y, { button: 'left' });
+  await settle(page, 260);
+  const afterLeft = await currentIndex(page);
+  await page.mouse.click(targetBox.x, targetBox.y, { button: 'right' });
+  await settle(page, 260);
+  const afterRight = await currentIndex(page);
+  const filePickerClicks = await page.evaluate(() => window.__testFilePickerClicks || 0);
+  await exitPresentForValidation(page);
+  return {
+    kind,
+    found: true,
+    entered: true,
+    targetVisible: true,
+    before,
+    afterLeft,
+    afterRight,
+    cursor,
+    filePickerClicks,
+  };
+}
+
+async function preparePresentClickTarget(page, kind) {
+  const descriptor = await page.evaluate((kind) => {
+    const selectorMap = {
+      text: '[data-editable-id]',
+      slot: '[data-dashi-host-image-slot],image-slot,.gxn-slot,.pulse-imgframe,.acl-slot,.kx-imgslot,.dslot,.bt-image-slot',
+      media: 'video,iframe,canvas,.bt-unicorn-frame,[data-unicorn-json-file-path],[data-unicorn-project-id]',
+      background: '',
+    };
+    const selector = selectorMap[kind] || '';
+    const themePacks = [...new Set([...document.querySelectorAll('#deck > .slide')]
+      .map(slide => slide.dataset.themePack || '')
+      .filter(Boolean))];
+    for(const themePack of themePacks){
+      window.__setActiveThemePack?.(themePack, { navigate: false });
+      const visibleSlides = window.__getVisibleSlides?.() || [];
+      for(let index = 0; index < visibleSlides.length; index += 1){
+        const slide = visibleSlides[index];
+        const target = kind === 'background' ? slide : slide.querySelector(selector);
+        if(!target) continue;
+        window.go?.(index, { animate: false, force: true });
+        return {
+          found: true,
+          kind,
+          themePack,
+          index,
+          slideId: slide.dataset.vmSlideId || slide.dataset.slideId || '',
+        };
+      }
+    }
+    return { found: false, kind };
+  }, kind);
+  await settle(page, 320);
+  return descriptor;
+}
+
+async function getCurrentPresentTargetBox(page, kind) {
+  return page.evaluate((kind) => {
+    const slide = document.querySelector('#deck > .slide.active');
+    if(!slide) return { found: false };
+    const selectorMap = {
+      text: '[data-editable-id]',
+      slot: '[data-dashi-host-image-slot],image-slot,.gxn-slot,.pulse-imgframe,.acl-slot,.kx-imgslot,.dslot,.bt-image-slot',
+      media: 'video,iframe,canvas,.bt-unicorn-frame,[data-unicorn-json-file-path],[data-unicorn-project-id]',
+    };
+    let target = kind === 'background' ? slide : slide.querySelector(selectorMap[kind] || '');
+    if(!target) return { found: false };
+    const inputClick = HTMLInputElement.prototype.click;
+    if(!HTMLInputElement.prototype.__dashiPickerProbe){
+      HTMLInputElement.prototype.click = function patchedClick(){
+        if(this.type === 'file') window.__testFilePickerClicks = (window.__testFilePickerClicks || 0) + 1;
+        return inputClick.call(this);
+      };
+      HTMLInputElement.prototype.__dashiPickerProbe = true;
+    }
+    const rect = target.getBoundingClientRect();
+    const x = Math.max(rect.left + Math.min(rect.width / 2, Math.max(8, rect.width - 8)), rect.left + 2);
+    const y = Math.max(rect.top + Math.min(rect.height / 2, Math.max(8, rect.height - 8)), rect.top + 2);
+    return { found: rect.width > 1 && rect.height > 1, x, y, width: rect.width, height: rect.height };
+  }, kind);
+}
+
+async function exitPresentForValidation(page) {
+  await page.evaluate(() => {
+    if(document.fullscreenElement) return document.exitFullscreen();
+    if(document.body.dataset.mode === 'present') window.__exitPresentMode?.();
+    return null;
+  }).catch(() => {});
+  await settle(page, 260);
 }
 
 async function runPresentEditBypassValidation(page) {
@@ -411,10 +678,21 @@ async function runRailContextValidation(page) {
       menuVisible: Boolean(menu && getComputedStyle(menu).display !== 'none'),
       hasSkip: buttons.some(text => /跳过|取消跳过/.test(text)),
       hasDelete: buttons.some(text => /删除/.test(text)),
+      hasCopy: buttons.some(text => /复制/.test(text)),
     };
   });
   await page.keyboard.press('Escape').catch(() => {});
   await settle(page);
+
+  const beforeCopy = await readRailCatalogState(page);
+  const copyTarget = await chooseRailMutationTarget(page, { excludeSlideIds: [beforeCopy.activeSlideId], preferIndex: 4 });
+  const copy = copyTarget ? await clickRailContextAction(page, copyTarget.slideId, /复制页面|复制/) : { hasTarget: false };
+  const afterCopy = await readRailCatalogState(page);
+  await page.evaluate(() => window.__refreshRailCatalog?.());
+  await settle(page);
+  const afterCopyRefresh = await readRailCatalogState(page);
+  const copiedSlideId = findCopiedSlideId(beforeCopy, afterCopy, copyTarget?.slideId);
+  const copyTextIsolation = copiedSlideId ? await runCopyTextIsolation(page, copyTarget.slideId, copiedSlideId) : null;
 
   const beforeSkip = await readRailCatalogState(page);
   const skipTarget = await chooseRailMutationTarget(page, { excludeSlideIds: [beforeSkip.activeSlideId], preferIndex: 6 });
@@ -437,6 +715,15 @@ async function runRailContextValidation(page) {
 
   return {
     ...menuState,
+    copy: {
+      target: copyTarget,
+      action: copy,
+      before: beforeCopy,
+      after: afterCopy,
+      afterRefresh: afterCopyRefresh,
+      copiedSlideId,
+      textIsolation: copyTextIsolation,
+    },
     skip: {
       target: skipTarget,
       action: skip,
@@ -451,6 +738,73 @@ async function runRailContextValidation(page) {
       after: afterDelete,
       afterRefresh: afterDeleteRefresh,
     },
+  };
+}
+
+function findCopiedSlideId(before, after, sourceId) {
+  if (!sourceId) return '';
+  const beforeIds = new Set((before?.cards || []).map(card => card.slideId));
+  const added = (after?.cards || []).filter(card => card.slideId && !beforeIds.has(card.slideId));
+  if (added.length) return added[0].slideId;
+  const beforeCount = (before?.cards || []).filter(card => card.slideId === sourceId).length;
+  const repeated = (after?.cards || []).filter(card => card.slideId === sourceId);
+  return repeated.length > beforeCount ? sourceId : '';
+}
+
+async function runCopyTextIsolation(page, sourceId, copiedId) {
+  const prepare = await page.evaluate(({ sourceId, copiedId }) => {
+    const visibleSlides = window.__getVisibleSlides?.() || [];
+    const findIndex = id => visibleSlides.findIndex(slide => (slide.dataset.vmSlideId || slide.dataset.slideId || '') === id);
+    const sourceIndex = findIndex(sourceId);
+    const copyIndex = findIndex(copiedId);
+    const source = visibleSlides[sourceIndex];
+    const copy = visibleSlides[copyIndex];
+    const sourceText = source?.querySelector('[data-editable-id]');
+    const copyText = copy?.querySelector('[data-editable-id]');
+    return {
+      sourceIndex,
+      copyIndex,
+      sourceTextId: sourceText?.dataset.editableId || '',
+      copyTextId: copyText?.dataset.editableId || '',
+      sourceTextBefore: sourceText?.innerHTML || '',
+      copyTextBefore: copyText?.innerHTML || '',
+      sourceTextCount: source?.querySelectorAll('[data-editable-id]').length || 0,
+      copyTextCount: copy?.querySelectorAll('[data-editable-id]').length || 0,
+    };
+  }, { sourceId, copiedId });
+  if (prepare.sourceIndex < 0 || prepare.copyIndex < 0 || !prepare.sourceTextId || !prepare.copyTextId) {
+    return { ...prepare, exercised: false };
+  }
+  const replacement = `COPY_ISOLATION_${Date.now()}`;
+  await page.evaluate(({ copyIndex, replacement }) => {
+    window.go?.(copyIndex, { animate: false, force: true });
+    const active = document.querySelector('#deck > .slide.active');
+    const el = active?.querySelector('[data-editable-id]');
+    if(!el) return;
+    el.innerHTML = replacement;
+    el.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: replacement }));
+    el.dispatchEvent(new FocusEvent('blur', { bubbles: true }));
+    window.__flushEditableTextState?.(active);
+  }, { copyIndex: prepare.copyIndex, replacement });
+  await settle(page);
+  const after = await page.evaluate(({ sourceIndex, copyIndex }) => {
+    const visibleSlides = window.__getVisibleSlides?.() || [];
+    const source = visibleSlides[sourceIndex];
+    const copy = visibleSlides[copyIndex];
+    return {
+      sourceTextAfter: source?.querySelector('[data-editable-id]')?.innerHTML || '',
+      copyTextAfter: copy?.querySelector('[data-editable-id]')?.innerHTML || '',
+      textStateKeys: Object.keys(window.__deckViewModel?.getState?.().text || {}),
+    };
+  }, { sourceIndex: prepare.sourceIndex, copyIndex: prepare.copyIndex });
+  return {
+    ...prepare,
+    exercised: true,
+    replacement,
+    idsOverlap: prepare.sourceTextId === prepare.copyTextId,
+    sourceChanged: after.sourceTextAfter === replacement,
+    copyChanged: after.copyTextAfter === replacement,
+    textStateHasCopyKey: after.textStateKeys.includes(prepare.copyTextId),
   };
 }
 
@@ -585,6 +939,29 @@ function validateResult(result) {
   if (!result.editCapabilities.canEdit || result.editCapabilities.editableCount < 1) failures.push('Edit mode text editing capability is unavailable.');
   if (!result.editCapabilities.panelVisible || result.editCapabilities.propControlCount < 1) failures.push('Edit mode right-side property controls are unavailable.');
 
+  for (const [name, perf] of Object.entries(result.railPerformance || {})) {
+    if (perf.elapsedMs > 180) failures.push(`Rail ${name} interaction is too slow: ${perf.elapsedMs}ms.`);
+    if (perf.longTasksOver50 > 0 || perf.maxLongTaskMs > 50) failures.push(`Rail ${name} interaction caused a long task: ${JSON.stringify(perf)}.`);
+    if (perf.captureStarts > 0) failures.push(`Rail ${name} interaction started thumbnail capture work.`);
+    if (perf.buildStages > 0) failures.push(`Rail ${name} interaction rebuilt the rail catalog.`);
+    if (perf.heavyStageTypes?.length) failures.push(`Rail ${name} interaction triggered heavy thumbnail stages: ${perf.heavyStageTypes.join(', ')}`);
+    if (perf.layoutReadCount >= result.rail.initial.cardCount) failures.push(`Rail ${name} interaction performed full catalog layout reads.`);
+  }
+
+  for (const theme of ['theme02', 'theme03']) {
+    const state = result.themeSwitchRail?.[theme];
+    if (!state) {
+      failures.push(`Missing rail theme switch validation for ${theme}.`);
+      continue;
+    }
+    if (state.activeThemePack !== theme) failures.push(`Theme switch expected ${theme}, got ${state.activeThemePack || '(empty)'}.`);
+    if (state.cardCount !== state.expectedCount) failures.push(`${theme} rail card count mismatch: got ${state.cardCount}, expected ${state.expectedCount}.`);
+    if (state.wrongThemeCards?.length) failures.push(`${theme} rail still has cards bound to another theme: ${JSON.stringify(state.wrongThemeCards)}`);
+    if (state.theme01Cards > 0) failures.push(`${theme} rail still shows theme01 slide ids after theme switch.`);
+    const wrongCache = (state.cacheKeys || []).filter(key => key && !key.startsWith(`${theme}|`) && state.cards.some(card => card.cacheKey === key));
+    if (wrongCache.length) failures.push(`${theme} rail restored cache keys from the wrong theme: ${wrongCache.join(', ')}`);
+  }
+
   const rail = result.rail;
   if (!rail.initial.exists || !rail.initial.visible) failures.push('Rail is missing or hidden.');
   if (rail.initial.cardCount < 70) failures.push(`Rail should contain the slide catalog, got ${rail.initial.cardCount} card(s).`);
@@ -592,7 +969,23 @@ function validateResult(result) {
   if (!rail.clickJump.exists || rail.clickJump.after !== 3) failures.push('Rail card click should jump to the clicked page.');
   if (!rail.afterScrollTarget.activeVisible) failures.push('Rail should scroll the active card into view.');
   if (!rail.drag.attempted || Number(rail.drag.lastDrop?.deckMoveCount || 0) !== 1) failures.push('Rail drag reorder should commit the real deck with one moved slide.');
-  if (!rail.context.menuVisible || !rail.context.hasSkip || !rail.context.hasDelete) failures.push('Rail context menu should expose skip and delete actions.');
+  if (!rail.context.menuVisible || !rail.context.hasSkip || !rail.context.hasDelete || !rail.context.hasCopy) failures.push('Rail context menu should expose copy, skip, and delete actions.');
+  if (!rail.context.copy?.target || !rail.context.copy?.action?.clicked) failures.push('Rail context copy action was not exercised.');
+  else {
+    const sourceId = rail.context.copy.target.slideId;
+    const copiedId = rail.context.copy.copiedSlideId;
+    if (!copiedId || copiedId === sourceId) failures.push('Rail copy action did not create a new stable vmSlideId.');
+    if (rail.context.copy.after.cardCount !== rail.context.copy.before.cardCount + 1) failures.push('Rail copy action did not add one rail card.');
+    const sourceIndex = rail.context.copy.after.cards.findIndex(card => card.slideId === sourceId);
+    const copyIndex = rail.context.copy.after.cards.findIndex(card => card.slideId === copiedId);
+    if (sourceIndex < 0 || copyIndex !== sourceIndex + 1) failures.push('Copied slide should be inserted immediately after the source slide.');
+    if (!rail.context.copy.afterRefresh.cards.some(card => card.slideId === copiedId)) failures.push('Copied slide did not survive rail refresh.');
+    const isolation = rail.context.copy.textIsolation || {};
+    if (!isolation.exercised) failures.push('Copy text isolation validation was not exercised.');
+    if (isolation.idsOverlap) failures.push('Copied slide text IDs overlap with the source slide.');
+    if (!isolation.copyChanged || isolation.sourceChanged) failures.push('Editing copied slide text should not change the source slide.');
+    if (!isolation.textStateHasCopyKey) failures.push('Copied slide text edit did not persist under the copy text key.');
+  }
   if (!rail.context.skip?.target || !rail.context.skip?.action?.clicked) failures.push('Rail context skip action was not exercised.');
   else {
     const skippedId = rail.context.skip.target.slideId;
@@ -615,6 +1008,8 @@ function validateResult(result) {
   const present = result.present;
   if (!present.entered) failures.push('Present button could not be clicked.');
   if (present.presentState.mode !== 'present') failures.push(`Clicking play should enter present mode, got "${present.presentState.mode || '(empty)'}".`);
+  if (!present.fullscreenState.hasFullscreenElement) failures.push('Present mode must enter real browser fullscreen.');
+  if (present.fullscreenState.customExitButtonExists) failures.push('Present mode should not render a custom exit button.');
   if (present.presentState.railVisible || present.presentState.panelVisible) failures.push('Present mode should hide rail and right panel.');
   if (present.presentState.canEdit || present.presentEditing.canEdit || present.presentEditing.editableCount > 0) failures.push('Present mode must disable text editing.');
   if (present.editBypass.afterForceEditableCount > 0 || present.editBypass.focusedEditable) failures.push('Present mode editable text guard can be bypassed through __setEditableTextMode(true).');
@@ -625,6 +1020,14 @@ function validateResult(result) {
   if (present.afterClick <= present.afterRight) failures.push('Present mode click should advance.');
   if (present.afterEsc.mode !== 'edit') failures.push('Escape should return from present mode to edit mode.');
   if (present.afterEscIndex !== present.afterClick) failures.push('Exiting present mode should preserve the current page.');
+  for (const [kind, target] of Object.entries(present.clickTargets || {})) {
+    if (!target.found) failures.push(`Present click target not found for ${kind}.`);
+    if (!target.entered || !target.targetVisible) failures.push(`Present click target ${kind} was not clickable in present mode.`);
+    if (target.afterLeft <= target.before) failures.push(`Present left-click on ${kind} did not advance.`);
+    if (target.afterRight >= target.afterLeft) failures.push(`Present right-click on ${kind} did not go back.`);
+    if (target.filePickerClicks > 0) failures.push(`Present click on ${kind} triggered file picker/edit behavior.`);
+    if (/pointer|text|grab|move/i.test(target.cursor || '')) failures.push(`Present ${kind} cursor still looks editable: ${target.cursor}`);
+  }
 
   if (result.exportState.htmlContainsOverviewExportState) failures.push('Export capture/restore still contains legacy overview fields.');
   return failures;

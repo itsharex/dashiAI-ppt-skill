@@ -96,7 +96,7 @@ try {
   page = await browser.newPage({ viewport: { width: 1500, height: 950 }, ignoreHTTPSErrors: true });
   page.setDefaultTimeout(30000);
   await page.goto(`${url}?overview_perf=${Date.now()}`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('#deck > .slide');
+  await page.waitForSelector('#deck > .slide.active, #deck > .slide[data-deck-active]');
   await installLongTaskObserver(page);
   await assertPerfApi(page);
   await page.evaluate(async () => {
@@ -232,7 +232,7 @@ try {
   const sortReturnCache = await runSortReturnCacheValidation(page);
   const fullFrameFit = await runFullFrameFitValidation(page);
   await page.goto(`${url}?overview_perf=${Date.now()}&phase=visual`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('#deck > .slide');
+  await page.waitForSelector('#deck > .slide.active, #deck > .slide[data-deck-active]');
   await installLongTaskObserver(page);
   await assertPerfApi(page);
   const theme03Visual = await runTheme03VisualValidation(page);
@@ -453,7 +453,6 @@ async function nextFrame(page) {
 
 async function openRailForValidation(page) {
   await page.evaluate(() => {
-    window.__exitPresentMode?.();
     window.__refreshRailCatalog?.();
   });
   await nextFrame(page);
@@ -461,7 +460,8 @@ async function openRailForValidation(page) {
 
 async function closeRailForValidation(page) {
   await page.evaluate(() => {
-    window.__enterPresentMode?.();
+    window.__cancelOverviewThumbQueue?.();
+    window.__deferOverviewThumbs?.(650, 'validation-close');
   });
   await nextFrame(page);
 }
