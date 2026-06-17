@@ -35,6 +35,7 @@
 |   |-- render-goal-deck.jsx - 本地命令脚本。
 |   |-- serve-preview-https.mjs - 本地命令脚本。
 |   |-- skill-workflow-utils.mjs - 本地命令脚本。
+|   |-- start-preview-server.mjs - 本地命令脚本。
 |   |-- sync-skill.mjs - 本地命令脚本。
 |   |-- update-layout-manifest.jsx - 本地命令脚本。
 |   |-- update-project-docs.mjs - 本地命令脚本。

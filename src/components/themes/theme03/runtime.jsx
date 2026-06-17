@@ -132,10 +132,9 @@ function theme03ShouldShowToggle() {
   if (typeof document === 'undefined') return false;
   if (document.body?.classList.contains('overview-on') || document.body?.classList.contains('exporting-deck')) return false;
   try {
-    const options = JSON.parse(document.getElementById('preview-options')?.textContent || '{}');
     const activeThemePack = document.documentElement.dataset.themePack;
     const activeSlide = document.querySelector('[data-theme-pack="theme03"][data-deck-active]');
-    return Boolean(options.themePacks?.theme03 && (activeThemePack === 'theme03' || activeSlide));
+    return activeThemePack === 'theme03' || Boolean(activeSlide);
   } catch {
     return false;
   }

@@ -74,7 +74,7 @@ node scripts/check_latest_version.mjs
 7. 运行 `npm run render:goal -- output/<deck-name>/goal.json output/<deck-name>/ppt/index.html`。
 8. 运行 `npm run validate:swiss -- output/<deck-name>/ppt/index.html`。
 9. 运行 `npm run validate:goal-copy -- output/<deck-name>/goal.json output/<deck-name>/ppt/index.html`。
-10. 从项目目录启动或复用本地 HTTPS 预览服务: `npm run preview:https -- output/<deck-name>/ppt <port>`。
+10. 从项目目录启动本地 HTTPS 预览服务: `npm run preview:start -- output/<deck-name>/ppt <port>`。
 11. 最终回复必须给 `https://jadon.local:<port>/`;本地 HTML 路径只作为备用定位信息,不要只返回 `file://`。
 
 ## 返工与浏览器检查

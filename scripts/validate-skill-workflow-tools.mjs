@@ -271,6 +271,7 @@ function testTheme03GlobalDarkControls() {
   assert(!pageThemeControls.length, `theme03 exposes ineffective per-page theme controls: ${pageThemeControls.slice(0, 8).join(', ')}`);
 
   const tmp = mkdtempSync(path.join(tmpdir(), 'dashi-theme03-controls-'));
+  let server = null;
   try {
     const goalPath = path.join(tmp, 'goal.json');
     const outPath = path.join(tmp, 'ppt/index.html');
@@ -292,7 +293,14 @@ function testTheme03GlobalDarkControls() {
     assert(/theme03-theme-toggle/.test(runtime), 'theme03 runtime should include visible global dark icon toggle');
     assert(/__getTheme03GlobalDark/.test(runtime) && /__setTheme03GlobalDark/.test(runtime), 'theme03 runtime should expose global dark sync bridge');
     assert(/rd-themechange/.test(runtime), 'theme03 runtime should dispatch global dark sync events');
+
+    const port = 48000 + (process.pid % 1000);
+    server = startPreviewServer(path.dirname(outPath), port);
+    const url = `https://localhost:${port}/`;
+    fetchHttpsWithRetry(url);
+    runTheme03BrowserProbe(url);
   } finally {
+    if (server && !server.killed) server.kill('SIGTERM');
     rmSync(tmp, { recursive: true, force: true });
   }
 }
@@ -302,36 +310,87 @@ function testHttpPreviewDelivery() {
   const sync = readFileSync(path.join(ROOT, 'scripts/sync-skill.mjs'), 'utf8');
   const template = readFileSync(path.join(ROOT, 'assets/template-swiss.html'), 'utf8');
   const missing = [];
-  if (!/preview:https/.test(skill)) missing.push('skill preview:https workflow');
+  if (!/preview:start/.test(skill)) missing.push('skill preview:start workflow');
   if (!/https:\/\/jadon\.local:<port>\//.test(skill)) missing.push('jadon.local preview URL guidance');
   if (!/不要只返回.*file:\/\//.test(skill)) missing.push('do-not-return-file-only delivery rule');
-  if (!/preview:https/.test(sync)) missing.push('synced render shell preview command');
+  if (!/preview:start/.test(sync)) missing.push('synced render shell starts preview');
+  if (!/DASHI_PPT_PROJECT_ROOT/.test(sync)) missing.push('synced render shell project root override');
   if (!/location\.protocol\s*===\s*['"]file:/.test(template)) missing.push('file:// PPTX export guard');
+  if (!/preview:start/.test(template)) missing.push('file:// export message should point to preview:start');
   if (!/HTTP.*预览|HTTPS.*预览/.test(template)) missing.push('file:// export message should mention HTTP preview');
   assert(!missing.length, `HTTP preview delivery guidance missing: ${missing.join(', ')}`);
 
   const tmp = mkdtempSync(path.join(tmpdir(), 'dashi-http-preview-'));
   const port = 47000 + (process.pid % 1000);
-  let server = null;
   try {
     const goalPath = path.join(tmp, 'goal.json');
     const outPath = path.join(tmp, 'ppt/index.html');
     writeFileSync(goalPath, JSON.stringify({
       title: 'HTTP Preview Smoke',
-      goal: 'verify preview server',
-      themePack: 'theme03',
-      slides: [{ layout: 'theme03_page001', props: { forceDark: true, titlePrefix: '年终', titleAccent: '汇报', titleSuffix: '' } }],
+      goal: 'verify preview server delivery',
+      audience: 'workflow validation',
+      owner: 'Dashi Skill',
+      randomSeed: 'http-preview-smoke',
+      themePack: 'theme01',
+      slides: [
+        {
+          layout: 'theme01_page001',
+          props: {
+            kicker: 'PREVIEW · SMOKE',
+            titleTop: 'HTTP Preview',
+            titleBottom: 'Smoke',
+            en: 'Delivery Check',
+            lead: 'Verify the rendered deck is served through the local HTTPS preview URL.',
+            chips: ['HTTPS', 'Preview', 'Delivery'],
+            panelIndex: '01',
+            panelEn: 'LOCAL HTTPS',
+            meta: ['Workflow', 'Validation', 'JAD-141'],
+            footnote: 'Dashi Skill · Preview delivery smoke',
+          },
+        },
+        {
+          layout: 'theme01_page006',
+          props: {
+            kicker: 'Preview Result',
+            value: '200',
+            unit: 'OK',
+            sub: 'Local HTTPS preview responds with the generated deck.',
+            highlightWord: 'HTTPS',
+            secondaries: [
+              { value: '1', unit: 'URL', label: 'jadon.local preview' },
+              { value: '1', unit: 'PID', label: 'server process' },
+              { value: '0', unit: 'file://', label: 'not final delivery' },
+            ],
+            caption: 'HTTP Preview Smoke · Delivery Check',
+          },
+        },
+      ],
     }, null, 2));
-    renderGoal(goalPath, outPath);
-    server = spawn(process.execPath, ['scripts/serve-preview-https.mjs', path.dirname(outPath), String(port)], {
+    const skillRoot = path.join(tmp, 'skill');
+    execFileSync('node', ['scripts/sync-skill.mjs'], {
       cwd: ROOT,
-      env: { ...process.env, HOST: '127.0.0.1' },
-      stdio: ['ignore', 'ignore', 'pipe'],
+      env: { ...process.env, DASHI_PPT_SKILL_ROOT: skillRoot },
+      stdio: 'pipe',
     });
+    const shell = path.join(skillRoot, 'scripts/render_goal_deck.sh');
+    const output = execFileSync(shell, [goalPath, outPath], {
+      cwd: ROOT,
+      env: {
+        ...process.env,
+        DASHI_PPT_PROJECT_ROOT: ROOT,
+        DASHI_PPT_PREVIEW_HOST: '127.0.0.1',
+        DASHI_PPT_PREVIEW_PORT: String(port),
+      },
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    assert(output.includes(`https://jadon.local:${port}/`), 'render shell should print the final jadon.local preview URL');
     const html = fetchHttpsWithRetry(`https://localhost:${port}/`);
-    assert(html.includes('HTTP Preview Smoke'), 'HTTPS preview should serve the rendered deck');
+    assert(html.includes('HTTP Preview'), 'HTTPS preview should serve the rendered deck');
+    const previewState = JSON.parse(readFileSync(path.join(tmp, 'ppt/.preview-server.json'), 'utf8'));
+    assert(previewState.pid, 'preview state should include server pid');
+    cleanupPreviewProcess(previewState.pid);
   } finally {
-    if (server && !server.killed) server.kill('SIGTERM');
     rmSync(tmp, { recursive: true, force: true });
   }
 }
@@ -434,6 +493,158 @@ function runJson(script, args) {
 
 function renderGoal(goalPath, outPath) {
   execFileSync('npm', ['run', 'render:goal', '--', goalPath, outPath], { cwd: ROOT, stdio: 'pipe' });
+}
+
+function startPreviewServer(dir, port) {
+  return spawn(process.execPath, ['scripts/serve-preview-https.mjs', dir, String(port)], {
+    cwd: ROOT,
+    env: { ...process.env, HOST: '127.0.0.1' },
+    stdio: ['ignore', 'ignore', 'pipe'],
+  });
+}
+
+function runTheme03BrowserProbe(url) {
+  execFileSync(process.execPath, ['--input-type=module', '-e', `
+    import { existsSync } from 'node:fs';
+    import { chromium } from 'playwright-core';
+
+    const chromePath = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+    if (!existsSync(chromePath)) throw new Error('Chrome executable not found: ' + chromePath);
+
+    const browser = await chromium.launch({ headless: true, executablePath: chromePath });
+    try {
+      const context = await browser.newContext({
+        ignoreHTTPSErrors: true,
+        viewport: { width: 1920, height: 1080 },
+      });
+      const page = await context.newPage();
+      page.setDefaultTimeout(5000);
+      page.setDefaultNavigationTimeout(8000);
+      await page.goto(${JSON.stringify(url)}, { waitUntil: 'domcontentloaded' });
+      await page.waitForSelector('#deck > .slide[data-theme-pack="theme03"]', { timeout: 5000 });
+      if (await page.locator('#preview-toggle').getAttribute('aria-expanded') !== 'true') {
+        await page.locator('#preview-toggle').click({ force: true });
+      }
+      await page.waitForFunction(() => {
+        const panel = document.querySelector('#preview-props');
+        return panel && panel.textContent.includes('全局深色');
+      });
+      await page.waitForFunction(() => {
+        const panel = document.querySelector('#preview-panel');
+        if (!panel) return false;
+        const rect = panel.getBoundingClientRect();
+        const matrix = new DOMMatrixReadOnly(getComputedStyle(panel).transform);
+        return Math.abs(rect.right - window.innerWidth) <= 1 && Math.abs(matrix.m41) <= 1;
+      });
+
+      const panelText = await page.locator('#preview-props').innerText();
+      if (panelText.includes('背景主题') || /(^|\\s)theme(\\s|$)/i.test(panelText)) {
+        throw new Error('theme03 side panel still exposes per-page theme control: ' + panelText);
+      }
+      if (!panelText.includes('全局深色')) throw new Error('theme03 side panel missing global dark control');
+
+      const forceDarkRow = page.locator('#preview-props .preview-prop-row', { hasText: '全局深色' });
+      const forceDarkInput = forceDarkRow.locator('input[type="checkbox"]');
+      if (await forceDarkInput.count() !== 1) throw new Error('expected one global dark checkbox');
+      const forceDarkSwitchBox = await forceDarkRow.locator('.pp-switch').boundingBox();
+      const viewport = page.viewportSize();
+      if (!forceDarkSwitchBox || forceDarkSwitchBox.width <= 0 || forceDarkSwitchBox.height <= 0) {
+        throw new Error('theme03 global dark switch has no visible hit area');
+      }
+      if (
+        viewport &&
+        (forceDarkSwitchBox.x < 0 ||
+          forceDarkSwitchBox.y < 0 ||
+          forceDarkSwitchBox.x + forceDarkSwitchBox.width > viewport.width ||
+          forceDarkSwitchBox.y + forceDarkSwitchBox.height > viewport.height)
+      ) {
+        throw new Error('theme03 global dark switch is outside the viewport: ' + JSON.stringify({ switch: forceDarkSwitchBox, viewport }));
+      }
+
+      const toggle = page.locator('.theme03-theme-toggle');
+      await toggle.waitFor({ state: 'visible', timeout: 5000 });
+      const geometry = await page.evaluate(() => {
+        const button = document.querySelector('.theme03-theme-toggle');
+        const stage = document.querySelector('#deck-viewport');
+        if (!button || !stage) return null;
+        const b = button.getBoundingClientRect();
+        const s = stage.getBoundingClientRect();
+        return {
+          button: { left: b.left, top: b.top, right: b.right, bottom: b.bottom, width: b.width, height: b.height },
+          stage: { left: s.left, top: s.top, right: s.right, bottom: s.bottom, width: s.width, height: s.height },
+          display: getComputedStyle(button).display,
+          visibility: getComputedStyle(button).visibility,
+          hidden: button.hidden,
+        };
+      });
+      if (!geometry) throw new Error('missing theme03 toggle or deck viewport');
+      if (geometry.hidden || geometry.display === 'none' || geometry.visibility === 'hidden') throw new Error('theme03 toggle is hidden');
+      if (geometry.button.width <= 0 || geometry.button.height <= 0) throw new Error('theme03 toggle has zero bbox');
+      if (
+        geometry.button.left < geometry.stage.left ||
+        geometry.button.top < geometry.stage.top ||
+        geometry.button.right > geometry.stage.right ||
+        geometry.button.bottom > geometry.stage.bottom
+      ) {
+        throw new Error('theme03 toggle is outside the deck stage: ' + JSON.stringify(geometry));
+      }
+
+      const before = await page.evaluate(() => ({
+        dark: window.__getTheme03GlobalDark?.(),
+        bodyDark: document.body.classList.contains('rd-force-dark'),
+        pressed: document.querySelector('.theme03-theme-toggle')?.getAttribute('aria-pressed'),
+        checked: document.querySelector('#preview-props .preview-prop-row input[type="checkbox"]')?.checked,
+      }));
+
+      await toggle.click();
+      await page.waitForFunction(previous => window.__getTheme03GlobalDark?.() !== previous, before.dark);
+      const afterIcon = await page.evaluate(() => ({
+        dark: window.__getTheme03GlobalDark?.(),
+        bodyDark: document.body.classList.contains('rd-force-dark'),
+        pressed: document.querySelector('.theme03-theme-toggle')?.getAttribute('aria-pressed'),
+        checked: document.querySelector('#preview-props .preview-prop-row input[type="checkbox"]')?.checked,
+      }));
+      if (afterIcon.dark === before.dark) throw new Error('icon click did not change global dark state');
+      if (afterIcon.bodyDark !== afterIcon.dark) throw new Error('body dark class did not sync with icon click');
+      if (afterIcon.checked !== afterIcon.dark) throw new Error('side panel checkbox did not sync after icon click');
+      if (afterIcon.pressed !== String(afterIcon.dark)) throw new Error('icon aria-pressed did not sync after icon click');
+      await page.waitForFunction(() => document.documentElement.dataset.themeVt !== 'active');
+
+      const forceDarkSwitchBoxAfterIcon = await forceDarkRow.locator('.pp-switch').boundingBox();
+      if (!forceDarkSwitchBoxAfterIcon) throw new Error('theme03 global dark switch disappeared after icon click');
+      await page.waitForFunction(({ x, y }) => {
+        return document.elementFromPoint(x, y)?.matches?.('#preview-props .preview-prop-row input[type="checkbox"]');
+      }, {
+        x: forceDarkSwitchBoxAfterIcon.x + forceDarkSwitchBoxAfterIcon.width / 2,
+        y: forceDarkSwitchBoxAfterIcon.y + forceDarkSwitchBoxAfterIcon.height / 2,
+      });
+      await page.mouse.click(
+        forceDarkSwitchBoxAfterIcon.x + forceDarkSwitchBoxAfterIcon.width / 2,
+        forceDarkSwitchBoxAfterIcon.y + forceDarkSwitchBoxAfterIcon.height / 2,
+      );
+      await page.waitForFunction(previous => window.__getTheme03GlobalDark?.() !== previous, afterIcon.dark);
+      const afterPanel = await page.evaluate(() => ({
+        dark: window.__getTheme03GlobalDark?.(),
+        bodyDark: document.body.classList.contains('rd-force-dark'),
+        pressed: document.querySelector('.theme03-theme-toggle')?.getAttribute('aria-pressed'),
+        checked: document.querySelector('#preview-props .preview-prop-row input[type="checkbox"]')?.checked,
+      }));
+      if (afterPanel.dark === afterIcon.dark) throw new Error('side panel click did not change global dark state');
+      if (afterPanel.bodyDark !== afterPanel.dark) throw new Error('body dark class did not sync with panel click');
+      if (afterPanel.checked !== afterPanel.dark) throw new Error('side panel checkbox state is stale after panel click');
+      if (afterPanel.pressed !== String(afterPanel.dark)) throw new Error('icon aria-pressed did not sync after panel click');
+    } finally {
+      await browser.close();
+    }
+  `], { cwd: ROOT, stdio: 'pipe', timeout: 30000 });
+}
+
+function cleanupPreviewProcess(pid) {
+  const value = Number(pid);
+  if (!Number.isFinite(value) || value <= 0) return;
+  try {
+    process.kill(value, 'SIGTERM');
+  } catch {}
 }
 
 function assert(condition, message) {
