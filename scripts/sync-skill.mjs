@@ -10,7 +10,7 @@ const MIGRATION_ONLY_DIRS = new Set(['uploads', 'screens', 'screenshots', 'shots
 const STYLE_GRID_ASSET = path.join('assets', 'skill', 'theme-style-grid.png');
 
 const themeMetadata = loadThemeMetadata();
-const source = renderThemeList(fs.readFileSync(sourcePath, 'utf8'), themeMetadata);
+const source = renderThemeChoiceHints(renderThemeList(fs.readFileSync(sourcePath, 'utf8'), themeMetadata), themeMetadata);
 const preservedSkillAssets = preserveSkillAssets();
 
 writeIfChanged(sourcePath, source);
@@ -37,10 +37,12 @@ function syncProjectFiles() {
   copyPath(path.join(ROOT, 'scripts/skill-workflow-utils.mjs'), path.join(projectRoot, 'scripts/skill-workflow-utils.mjs'));
   copyPath(path.join(ROOT, 'scripts/layout-query.mjs'), path.join(projectRoot, 'scripts/layout-query.mjs'));
   copyPath(path.join(ROOT, 'scripts/inspect-layout.mjs'), path.join(projectRoot, 'scripts/inspect-layout.mjs'));
+  copyPath(path.join(ROOT, 'scripts/stage-media.mjs'), path.join(projectRoot, 'scripts/stage-media.mjs'));
   copyPath(path.join(ROOT, 'scripts/write-safe-props.mjs'), path.join(projectRoot, 'scripts/write-safe-props.mjs'));
   copyPath(path.join(ROOT, 'scripts/validate-goal-spec.mjs'), path.join(projectRoot, 'scripts/validate-goal-spec.mjs'));
   copyPath(path.join(ROOT, 'scripts/validate-skill-workflow-tools.mjs'), path.join(projectRoot, 'scripts/validate-skill-workflow-tools.mjs'));
   copyPath(path.join(ROOT, 'scripts/render-goal-deck.jsx'), path.join(projectRoot, 'scripts/render-goal-deck.jsx'));
+  copyPath(path.join(ROOT, 'scripts/start-preview-server.mjs'), path.join(projectRoot, 'scripts/start-preview-server.mjs'));
   copyPath(path.join(ROOT, 'scripts/serve-preview-https.mjs'), path.join(projectRoot, 'scripts/serve-preview-https.mjs'));
   copyPath(path.join(ROOT, 'scripts/validate-swiss-deck.mjs'), path.join(projectRoot, 'scripts/validate-swiss-deck.mjs'));
   copyPath(path.join(ROOT, 'scripts/validate-goal-copy.mjs'), path.join(projectRoot, 'scripts/validate-goal-copy.mjs'));
@@ -56,11 +58,13 @@ function renderRuntimePackage() {
     scripts: {
       'layout:query': 'node scripts/layout-query.mjs',
       'inspect:layout': 'node scripts/inspect-layout.mjs',
+      'media:stage': 'node scripts/stage-media.mjs',
       'props:safe': 'node scripts/write-safe-props.mjs',
       'validate:goal-spec': 'node scripts/validate-goal-spec.mjs',
       'validate:skill-workflow-tools': 'node scripts/validate-skill-workflow-tools.mjs',
       'render:goal': 'tsx scripts/render-goal-deck.jsx',
       'preview:https': 'node scripts/serve-preview-https.mjs',
+      'preview:start': 'node scripts/start-preview-server.mjs',
       'validate:swiss': 'node scripts/validate-swiss-deck.mjs',
       'validate:goal-copy': 'node scripts/validate-goal-copy.mjs',
     },
@@ -230,13 +234,15 @@ function renderInstalledSkill(content) {
       '7. 运行 `npm run render:goal -- output/<deck-name>/goal.json output/<deck-name>/ppt/index.html`。',
       '8. 运行 `npm run validate:swiss -- output/<deck-name>/ppt/index.html`。',
       '9. 运行 `npm run validate:goal-copy -- output/<deck-name>/goal.json output/<deck-name>/ppt/index.html`。',
-      '10. 两项校验通过后返回本地预览路径或当前服务地址。',
+      '10. 从项目目录启动本地 HTTPS 预览服务: `npm run preview:start -- output/<deck-name>/ppt <port>`。',
+      '11. 最终回复必须给 `https://jadon.local:<port>/`;本地 HTML 路径只作为备用定位信息,不要只返回 `file://`。',
     ].join('\n'),
     [
       '7. 运行渲染脚本输出 `output/<deck-name>/ppt/index.html`;脚本会使用 Skill 内置生成器,不要切回外部项目目录。',
       '8. 确认脚本完成 `validate:swiss` 和 `validate:goal-copy`。',
       '9. 运行 `node <skill-root>/scripts/check_latest_version.mjs` 做静默版本检查。',
-      '10. 两项校验通过后把本地 HTML 路径或预览地址返回给用户;只有版本检查脚本有输出时才附加更新提醒。',
+      '10. 渲染脚本会启动本地 HTTPS 预览服务并输出 `https://jadon.local:<port>/`;需要指定端口时设置 `DASHI_PPT_PREVIEW_PORT` 后再运行脚本。',
+      '11. 最终回复必须给该 `https://jadon.local:<port>/` 地址;本地 HTML 路径只作为备用定位信息,不要只返回 `file://`。只有版本检查脚本有输出时才附加更新提醒。',
     ].join('\n')
   );
 
@@ -356,13 +362,23 @@ function renderThemeList(content, { packs }) {
   );
 }
 
+function renderThemeChoiceHints(content, { packs }) {
+  const lines = packs.map(theme => {
+    return `  - \`${theme.key}\` ${themeDisplayName(theme)} | 适合: ${shortThemeText(theme.scenario)} | 人群: ${shortThemeText(theme.audience)}`;
+  }).join('\n');
+  return content.replace(
+    /<!-- theme-choice-hints:start -->[\s\S]*?<!-- theme-choice-hints:end -->/,
+    `<!-- theme-choice-hints:start -->\n${lines}\n<!-- theme-choice-hints:end -->`,
+  );
+}
+
 function syncRunnerScript() {
   const scriptPath = path.join(SKILL_ROOT, 'scripts/render_goal_deck.sh');
   writeIfChanged(scriptPath, `#!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/../project" && pwd)"
+PROJECT_ROOT="\${DASHI_PPT_PROJECT_ROOT:-$(cd "$SCRIPT_DIR/../project" && pwd)}"
 CALLER_CWD="$(pwd)"
 
 if [[ $# -ne 2 ]]; then
@@ -390,6 +406,9 @@ npm run validate:goal-spec -- "$SPEC_PATH"
 npm run render:goal -- "$SPEC_PATH" "$OUT_PATH"
 npm run validate:swiss -- "$OUT_PATH"
 npm run validate:goal-copy -- "$SPEC_PATH" "$OUT_PATH"
+OUT_DIR="$(dirname "$OUT_PATH")"
+PREVIEW_PORT="\${DASHI_PPT_PREVIEW_PORT:-4178}"
+npm run preview:start -- "$OUT_DIR" "$PREVIEW_PORT"
 `);
   fs.chmodSync(scriptPath, 0o755);
 }
@@ -421,6 +440,9 @@ function renderOptionsReference({ packs }) {
     '|---|---|---|---|',
     ...packs.map(theme => `| \`${theme.key}\` | ${themeDisplayName(theme)} | ${theme.scenario} | ${theme.audience} |`),
   ].join('\n');
+  const themeHints = packs.map(theme => {
+    return `- \`${theme.key}\` ${themeDisplayName(theme)}: 适合 ${shortThemeText(theme.scenario)}; 人群 ${shortThemeText(theme.audience)}`;
+  }).join('\n');
   const firstLayout = packs[0] ? `${packs[0].key}_page001` : 'theme01_page001';
   const lastLayout = packs.at(-1) ? `${packs.at(-1).key}_page001` : firstLayout;
   return `# Current Options
@@ -430,6 +452,10 @@ function renderOptionsReference({ packs }) {
 ${themes}
 
 用户没有明确指定风格时,先列出以上风格并询问。
+
+默认风格选择回复只给极简适配提示:
+
+${themeHints}
 
 ## slide
 
@@ -511,4 +537,13 @@ function copyPath(from, to) {
 
 function themeDisplayName(theme) {
   return theme.displayName || theme.label || theme.name || theme.key;
+}
+
+function shortThemeText(value) {
+  return String(value || '')
+    .split(/[、,，]/)
+    .map(item => item.trim())
+    .filter(Boolean)
+    .slice(0, 2)
+    .join(' / ');
 }
