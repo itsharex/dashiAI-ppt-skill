@@ -568,7 +568,8 @@ function renderBox(slide, node, slideRect, warnings, totals) {
   const fill = borderTriangle?.fill || (isTextClippedBackground(style)
     ? parseCssColor(style.backgroundColor)
     : parseCssColor(style.backgroundColor) || (hasLocalBackgroundImage ? null : colorFromBackgroundImage(style.backgroundImage)));
-  const radius = Math.min(maxRadiusPx(style), 48) / slideRect.w * PPT_W;
+  const radiusPx = maxCssRadius(style, node.rect?.w || 0, node.rect?.h || 0);
+  const radius = Math.min(radiusPx, 48) / slideRect.w * PPT_W;
   const borders = readBorders(style);
   const hasBorder = borders.some(border => border.width > 0 && border.color);
   const shadow = parseBoxShadow(style.boxShadow);
@@ -583,6 +584,7 @@ function renderBox(slide, node, slideRect, warnings, totals) {
   const isDecorativeGradient = fill?.gradient && !isLargeGradient && !isNarrowGradientLine && !(node.children || []).length;
   const fillAlpha = isDecorativeGradient ? Math.min(fill.alpha, 0.08) : fill?.alpha;
   const shapeName = polygonPoints ? 'custGeom'
+    : isCircleLikeBox(node, radiusPx) ? 'ellipse'
     : isDecorativeGradient && radius > Math.min(c.w, c.h) * 0.2
     ? 'ellipse'
     : radius > 0.02 ? 'roundRect' : 'rect';
@@ -990,6 +992,23 @@ function pseudoRect(el, style, slideRect) {
   const top = cssPx(style.top);
   const right = cssPx(style.right);
   const bottom = cssPx(style.bottom);
+  const parentStyle = getComputedStyle(el);
+  const parentRotation = rotateFromTransform(parentStyle.transform);
+  if (parentRotation && (left != null || right != null) && (top != null || bottom != null)) {
+    const parentWidth = el.offsetWidth || parent.width / stageScaleX;
+    const parentHeight = el.offsetHeight || parent.height / stageScaleY;
+    const [originXRaw = '0', originYRaw = '0'] = String(parentStyle.transformOrigin || '').split(/\s+/);
+    const originX = cssPx(originXRaw) ?? parentWidth / 2;
+    const originY = cssPx(originYRaw) ?? parentHeight / 2;
+    const localX = left != null ? left : parentWidth - (right + width);
+    const localY = top != null ? top : parentHeight - (bottom + height);
+    const dx = (localX + width / 2 - originX) * stageScaleX;
+    const dy = (localY + height / 2 - originY) * stageScaleY;
+    const angle = parentRotation * Math.PI / 180;
+    const cx = parent.left + parent.width / 2 + dx * Math.cos(angle) - dy * Math.sin(angle);
+    const cy = parent.top + parent.height / 2 + dx * Math.sin(angle) + dy * Math.cos(angle);
+    return { x: cx - width * stageScaleX / 2, y: cy - height * stageScaleY / 2, w: width * stageScaleX, h: height * stageScaleY };
+  }
   const x = left != null ? parent.left + left * stageScaleX : right != null ? parent.right - (right + width) * stageScaleX : parent.left;
   const y = top != null ? parent.top + top * stageScaleY : bottom != null ? parent.bottom - (bottom + height) * stageScaleY : parent.top;
   return { x, y, w: width * stageScaleX, h: height * stageScaleY };
@@ -2048,13 +2067,14 @@ function readBorders(style) {
   });
 }
 
-function maxRadiusPx(style) {
-  return Math.max(
-    parseFloat(style.borderTopLeftRadius || '0') || 0,
-    parseFloat(style.borderTopRightRadius || '0') || 0,
-    parseFloat(style.borderBottomRightRadius || '0') || 0,
-    parseFloat(style.borderBottomLeftRadius || '0') || 0,
-  );
+function isCircleLikeBox(node = {}, radiusPx = 0) {
+  const rect = node.rect || {};
+  const width = Number(rect.w || 0);
+  const height = Number(rect.h || 0);
+  const minSide = Math.min(width, height);
+  const maxSide = Math.max(width, height);
+  if (!minSide || maxSide / minSide > 1.18) return false;
+  return radiusPx >= minSide * 0.42;
 }
 
 function parseBoxShadow(value) {

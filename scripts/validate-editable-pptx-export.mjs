@@ -170,11 +170,11 @@ async function runTheme10UserRegressionValidation() {
       screenshot: 5,
       slide: 87,
       layout: 'SlideBalance',
-    failureType: 'rotated gradient line and pseudo geometry mismatch',
-    currentExporterGap: 'The tilted gradient beam and triangle support required cumulative transform and border-triangle mapping; card shadows may still differ from browser rendering.',
-    suggestedFix: 'Render the beam as a rotated native narrow gradient shape and the pivot as a custom triangle; keep card shadow drift as a separate visual polish item if still visible.',
-    sharedMechanism: true,
-    status: 'partially-fixed',
+      failureType: 'rotated gradient line and pseudo geometry mismatch',
+      currentExporterGap: 'The tilted gradient beam, triangle support, and small circular pseudo/bullet elements required cumulative transform, border-triangle mapping, and ellipse geometry for circle-like boxes.',
+      suggestedFix: 'Render the beam as a rotated native narrow gradient shape, the pivot as a custom triangle, and tiny circular controls/bullets as PPT ellipses instead of tiny roundRects.',
+      sharedMechanism: true,
+      status: 'fixed',
     },
     {
       screenshot: 6,
@@ -363,12 +363,30 @@ async function runTheme10UserRegressionValidation() {
         });
         const samplePptx = inspectPptx(pptxFile);
         const details = samplePptx.slides[0]?.shapeDetails || [];
+        const pptRect = rect => rect ? ({
+          x: rect.x / 1356 * 16,
+          y: rect.y / 762.75 * 9,
+          w: rect.w / 1356 * 16,
+          h: rect.h / 762.75 * 9,
+        }) : null;
+        const expectedPivot = pptRect(dom.pivot);
         const rotatedBeam = details.find(shape => {
           const narrow = Math.min(shape.w || 0, shape.h || 0) <= 0.16 && Math.max(shape.w || 0, shape.h || 0) >= 4.5;
           return narrow && Math.abs(shape.rotate || 0) >= 4;
         });
-        const trianglePivot = details.find(shape => shape.geom === 'custGeom' || shape.geom === 'triangle' || shape.geom === 'rtTriangle');
-        const passed = Boolean(rotatedBeam) && Boolean(trianglePivot);
+        const trianglePivot = expectedPivot && details.find(shape => {
+          if (!['custGeom', 'triangle', 'rtTriangle'].includes(shape.geom)) return false;
+          return Math.abs(shape.x - expectedPivot.x) <= 0.08
+            && Math.abs(shape.y - expectedPivot.y) <= 0.08
+            && Math.abs(shape.w - expectedPivot.w) <= 0.08
+            && Math.abs(shape.h - expectedPivot.h) <= 0.12;
+        });
+        const artifactRoundRects = details.filter(shape => {
+          if (shape.geom !== 'roundRect') return false;
+          const maxSide = Math.max(shape.w || 0, shape.h || 0);
+          return maxSide > 0 && maxSide <= 0.26;
+        });
+        const passed = Boolean(rotatedBeam) && Boolean(trianglePivot) && artifactRoundRects.length === 0;
         balanceChecks.push({
           slide: sample.slide,
           key: sample.key,
@@ -376,12 +394,15 @@ async function runTheme10UserRegressionValidation() {
           pptxFile,
           reportFile,
           dom,
+          expectedPivot,
           rotatedBeam: rotatedBeam || null,
           trianglePivot: trianglePivot || null,
+          artifactRoundRects,
           passed,
         });
         if (!rotatedBeam) failures.push(`${sample.label} did not export the tilted balance beam as a rotated narrow PPT shape.`);
-        if (!trianglePivot) failures.push(`${sample.label} did not export the balance pivot as a triangle/custom PPT shape.`);
+        if (!trianglePivot) failures.push(`${sample.label} did not export the balance pivot as a triangle/custom PPT shape at the DOM pivot position.`);
+        if (artifactRoundRects.length) failures.push(`${sample.label} exported ${artifactRoundRects.length} tiny roundRect shape(s), which render as visible spike artifacts in PowerPoint/Quick Look.`);
       }
     }
   } finally {
