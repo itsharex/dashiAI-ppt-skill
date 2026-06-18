@@ -195,6 +195,7 @@ async function readPanelCollapseState(page, phase) {
     const buttonStyle = button ? getComputedStyle(button) : null;
     const buttonSvg = button?.querySelector('svg');
     const buttonIcon = button?.querySelector('img[data-ui-icon="sidebar-collapse"]');
+    const buttonIconStyle = buttonIcon ? getComputedStyle(buttonIcon) : null;
     const iconRect = buttonIcon?.getBoundingClientRect();
     const iconSrc = buttonIcon?.getAttribute('src') || '';
     const iconAbsoluteSrc = buttonIcon?.src || '';
@@ -233,6 +234,10 @@ async function readPanelCollapseState(page, phase) {
       buttonInViewport: Boolean(buttonRect && buttonRect.left >= -1 && buttonRect.top >= -1 && buttonRect.right <= innerWidth + 1 && buttonRect.bottom <= innerHeight + 1),
       buttonOverlapsDeck: Boolean(buttonRect && deckRect && buttonRect.left < deckRect.right - 1 && buttonRect.right > deckRect.left + 1 && buttonRect.top < deckRect.bottom - 1 && buttonRect.bottom > deckRect.top + 1),
       buttonDisplay: buttonStyle?.display || '',
+      buttonBackground: buttonStyle?.backgroundColor || '',
+      buttonIconFilter: buttonIconStyle?.filter || '',
+      buttonIconOpacity: buttonIconStyle?.opacity || '',
+      buttonIconTransform: buttonIconStyle?.transform || '',
     };
 
     function isVisible(el) {
@@ -1463,6 +1468,15 @@ function validateResult(result) {
     if (collapsed.buttonHasInlineSvg || !collapsed.buttonHasAssetIcon || !collapsed.buttonIconSrcMatches || !collapsed.buttonIconFetchOk || !collapsed.buttonIconVisible) {
       failures.push(`Collapsed mode should keep the project-local SVG asset icon visible: ${JSON.stringify(collapsed)}`);
     }
+    if (!isUnrotatedIconTransform(collapsed.buttonIconTransform)) {
+      failures.push(`Collapsed panel icon should not rotate: ${JSON.stringify(collapsed)}`);
+    }
+    if (!isSemiTransparentBlack(collapsed.buttonBackground)) {
+      failures.push(`Collapsed panel button should use a semi-transparent black background block: ${JSON.stringify(collapsed)}`);
+    }
+    if (!/invert\(/.test(collapsed.buttonIconFilter || '')) {
+      failures.push(`Collapsed panel icon should be inverted/white on the dark block: ${JSON.stringify(collapsed)}`);
+    }
     if (!collapsed.buttonInViewport || collapsed.buttonOverlapsDeck) failures.push(`Collapsed button should stay in a safe viewport position: ${JSON.stringify(collapsed)}`);
     if (Math.abs((collapsed.deckAspect || 0) - 16 / 9) > 0.025) failures.push(`Collapsed deck should stay 16:9: ${JSON.stringify(collapsed)}`);
     if (!restored.railVisible || !restored.panelVisible || !restored.panelOpenClass || restored.collapsedClass) {
@@ -1558,6 +1572,23 @@ function hasVisibleState(state) {
     || state.boxShadow && state.boxShadow !== 'none'
     || state.outline && !/^0px none/.test(state.outline)
   );
+}
+
+function isUnrotatedIconTransform(value) {
+  if (!value || value === 'none') return true;
+  const numbers = value.match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi)?.map(Number) || [];
+  return numbers.length >= 6
+    && Math.abs(numbers[0] - 1) < 0.01
+    && Math.abs(numbers[1]) < 0.01
+    && Math.abs(numbers[2]) < 0.01
+    && Math.abs(numbers[3] - 1) < 0.01;
+}
+
+function isSemiTransparentBlack(value) {
+  const numbers = value.match(/[\d.]+/g)?.map(Number) || [];
+  if (numbers.length < 4) return false;
+  const [r, g, b, a] = numbers;
+  return r <= 12 && g <= 12 && b <= 12 && a >= 0.35 && a <= 0.85;
 }
 
 function rectOf(rect) {
