@@ -53,14 +53,14 @@
     --pp-fg:#1e1e1e; --pp-fg2:#6b6b6b; --pp-muted:#b3b3b3; --pp-icon:#444;
     --pp-bg:#fff; --pp-chip:#f4f4f5; --pp-chip-h:#ececed; --pp-border:#e3e3e4; --pp-divider:#ededee;
     --pp-sel-bg:#fff; --pp-sel-bd:#e1e1e1; --pp-sel-sh:0 1px 2px rgba(0,0,0,.08);
-    --pp-rail:#e2e2e3; --pp-off:#d9d9db; --pp-blue:#0d99ff; --pp-blue-h:#0c87e0; --pp-blue-soft:#e8f4ff;
+    --pp-rail:#e2e2e3; --pp-off:#d9d9db; --pp-blue:#0d99ff; --pp-blue-h:#0c87e0; --pp-blue-soft:#e8f4ff; --pp-ui-icon-filter:none;
   }
   @media (prefers-color-scheme:dark){
     :root{
       --pp-fg:#fff; --pp-fg2:#a0a0a0; --pp-muted:#6f6f6f; --pp-icon:#cfcfcf;
       --pp-bg:#2c2c2c; --pp-chip:#383838; --pp-chip-h:#434343; --pp-border:#222; --pp-divider:#1f1f1f;
       --pp-sel-bg:#4a4a4a; --pp-sel-bd:#5a5a5a; --pp-sel-sh:0 1px 2px rgba(0,0,0,.35);
-      --pp-rail:#565656; --pp-off:#565656; --pp-blue:#0d99ff; --pp-blue-h:#2aa5ff; --pp-blue-soft:rgba(13,153,255,.16);
+      --pp-rail:#565656; --pp-off:#565656; --pp-blue:#0d99ff; --pp-blue-h:#2aa5ff; --pp-blue-soft:rgba(13,153,255,.16); --pp-ui-icon-filter:invert(1);
     }
   }
   #preview-toggle{position:fixed;right:18px;top:18px;z-index:25;width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--pp-border);border-radius:9px;background:var(--pp-bg);color:var(--pp-icon);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:opacity .2s var(--ease-prod),transform .2s var(--ease-prod),background .15s}
@@ -73,11 +73,9 @@
   body.preview-panel-open #preview-panel-collapse,body.editor-panels-collapsed #preview-panel-collapse{display:grid}
   #preview-panel-collapse:hover{background:var(--pp-chip);color:var(--pp-fg);border-color:var(--pp-border)}
   #preview-panel-collapse:focus-visible{outline:2px solid var(--pp-blue);outline-offset:2px}
-  #preview-panel-collapse svg{width:18px;height:18px}
-  #preview-panel-collapse .panel-collapse-closed{display:none}
+  #preview-panel-collapse img{width:20px;height:20px;display:block;object-fit:contain;filter:var(--pp-ui-icon-filter);opacity:.78;transition:transform .18s var(--ease-prod),opacity .15s}
   body.editor-panels-collapsed #preview-panel-collapse{right:18px;top:8px;width:36px;height:36px;border-color:var(--pp-border);border-radius:9px;background:var(--pp-bg);box-shadow:0 2px 8px rgba(0,0,0,.12)}
-  body.editor-panels-collapsed #preview-panel-collapse .panel-collapse-open{display:none}
-  body.editor-panels-collapsed #preview-panel-collapse .panel-collapse-closed{display:inline}
+  body.editor-panels-collapsed #preview-panel-collapse img{transform:rotate(180deg)}
   body[data-mode="present"] #preview-panel-collapse{display:none}
   #slide-rail{position:fixed;left:0;top:0;z-index:24;width:var(--slide-rail-w);min-width:var(--slide-rail-min-w);max-width:var(--slide-rail-max-w);height:100vh;display:flex;flex-direction:column;background:var(--pp-bg);color:var(--pp-fg);border-right:1px solid var(--pp-divider);box-shadow:none;font-family:var(--sans);overflow:hidden}
   body.editor-panels-collapsed #slide-rail{display:none}
@@ -315,19 +313,7 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="10" y2="7"/><line x1="14" y1="7" x2="20" y2="7"/><circle cx="12" cy="7" r="2"/><line x1="4" y1="12" x2="6" y2="12"/><line x1="10" y1="12" x2="20" y2="12"/><circle cx="8" cy="12" r="2"/><line x1="4" y1="17" x2="13" y2="17"/><line x1="17" y1="17" x2="20" y2="17"/><circle cx="15" cy="17" r="2"/></svg>
 </button>
 <button id="preview-panel-collapse" type="button" aria-controls="preview-panel slide-rail" aria-expanded="true" aria-label="收起面板" title="收起面板">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <rect x="3.5" y="4.5" width="17" height="15" rx="2"/>
-    <path d="M8 4.5v15"/>
-    <path d="M16 4.5v15"/>
-    <g class="panel-collapse-open">
-      <path d="m10 9-3 3 3 3"/>
-      <path d="m14 9 3 3-3 3"/>
-    </g>
-    <g class="panel-collapse-closed">
-      <path d="m7 9 3 3-3 3"/>
-      <path d="m17 9-3 3 3 3"/>
-    </g>
-  </svg>
+  <img src="assets/ui-icons/sidebar.svg" data-ui-icon="sidebar-collapse" alt="" aria-hidden="true">
 </button>
 <aside id="preview-panel" aria-label="预览控制器">
   <div class="preview-head">

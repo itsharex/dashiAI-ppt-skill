@@ -12,6 +12,7 @@ const ROOT = path.resolve(__dirname, '..');
 const PREVIEW_INDEX = path.join(ROOT, 'output/theme-preview/ppt/index.html');
 const CHROME_PATH = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const cliUrl = getArg('--url');
+const EXPECTED_PANEL_COLLAPSE_ICON = 'assets/ui-icons/sidebar.svg';
 const EXPECTED_AUTHOR_LINKS = {
   github: {
     label: 'GitHub',
@@ -183,7 +184,7 @@ async function runPanelCollapseValidation(page) {
 }
 
 async function readPanelCollapseState(page, phase) {
-  return page.evaluate((phase) => {
+  return page.evaluate(async ({ phase, expectedIcon }) => {
     const rail = document.getElementById('slide-rail');
     const panel = document.getElementById('preview-panel');
     const deck = document.getElementById('deck-viewport');
@@ -193,6 +194,10 @@ async function readPanelCollapseState(page, phase) {
     const buttonRect = button?.getBoundingClientRect();
     const buttonStyle = button ? getComputedStyle(button) : null;
     const buttonSvg = button?.querySelector('svg');
+    const buttonIcon = button?.querySelector('img[data-ui-icon="sidebar-collapse"]');
+    const iconRect = buttonIcon?.getBoundingClientRect();
+    const iconSrc = buttonIcon?.getAttribute('src') || '';
+    const iconAbsoluteSrc = buttonIcon?.src || '';
     return {
       phase,
       mode: document.body.dataset.mode || '',
@@ -209,7 +214,18 @@ async function readPanelCollapseState(page, phase) {
       editableCount: document.querySelectorAll('#deck > .slide.active [contenteditable="true"]').length,
       canEdit: Boolean(window.__canEditDeck?.()),
       buttonVisible: isVisible(button),
-      buttonHasIcon: Boolean(buttonSvg),
+      buttonHasIcon: Boolean(buttonSvg || buttonIcon),
+      buttonHasInlineSvg: Boolean(buttonSvg),
+      buttonHasAssetIcon: Boolean(buttonIcon),
+      buttonIconAttr: buttonIcon?.dataset.uiIcon || '',
+      buttonIconSrc: iconSrc,
+      buttonIconSrcMatches: iconSrc === expectedIcon,
+      buttonIconComplete: Boolean(buttonIcon?.complete),
+      buttonIconNaturalWidth: buttonIcon?.naturalWidth || 0,
+      buttonIconNaturalHeight: buttonIcon?.naturalHeight || 0,
+      buttonIconFetchOk: iconAbsoluteSrc ? await fetch(iconAbsoluteSrc).then(response => response.ok).catch(() => false) : false,
+      buttonIconVisible: isVisible(buttonIcon),
+      buttonIconRect: rectOf(iconRect),
       buttonAriaLabel: button?.getAttribute('aria-label') || '',
       buttonTitle: button?.getAttribute('title') || '',
       buttonExpanded: button?.getAttribute('aria-expanded') || '',
@@ -230,7 +246,7 @@ async function readPanelCollapseState(page, phase) {
       if (!rect) return null;
       return { left: rect.left, top: rect.top, width: rect.width, height: rect.height, right: rect.right, bottom: rect.bottom };
     }
-  }, phase);
+  }, { phase, expectedIcon: EXPECTED_PANEL_COLLAPSE_ICON });
 }
 
 async function runAuthorLinksValidation(page) {
@@ -1429,6 +1445,12 @@ function validateResult(result) {
     const collapsed = collapse.collapsed || {};
     const restored = collapse.restored || {};
     if (!before.buttonVisible || !before.buttonHasIcon) failures.push(`Collapse button should be visible as an icon in the open right panel: ${JSON.stringify(before)}`);
+    if (before.buttonHasInlineSvg || !before.buttonHasAssetIcon || !before.buttonIconSrcMatches || !before.buttonIconFetchOk) {
+      failures.push(`Collapse button should use project-local SVG asset ${EXPECTED_PANEL_COLLAPSE_ICON}: ${JSON.stringify(before)}`);
+    }
+    if (!before.buttonIconVisible || before.buttonIconNaturalWidth < 12 || before.buttonIconNaturalHeight < 12) {
+      failures.push(`Collapse button asset icon should load visibly in the open right panel: ${JSON.stringify(before)}`);
+    }
     if (!/收起/.test(before.buttonAriaLabel) || !/收起/.test(before.buttonTitle) || before.buttonExpanded !== 'true') {
       failures.push(`Collapse button should expose the open-state label and expanded state: ${JSON.stringify(before)}`);
     }
@@ -1437,6 +1459,9 @@ function validateResult(result) {
     }
     if (!collapsed.buttonVisible || !collapsed.buttonHasIcon || !/展开/.test(collapsed.buttonAriaLabel) || collapsed.buttonExpanded !== 'false') {
       failures.push(`Collapsed mode should keep a visible expand icon button: ${JSON.stringify(collapsed)}`);
+    }
+    if (collapsed.buttonHasInlineSvg || !collapsed.buttonHasAssetIcon || !collapsed.buttonIconSrcMatches || !collapsed.buttonIconFetchOk || !collapsed.buttonIconVisible) {
+      failures.push(`Collapsed mode should keep the project-local SVG asset icon visible: ${JSON.stringify(collapsed)}`);
     }
     if (!collapsed.buttonInViewport || collapsed.buttonOverlapsDeck) failures.push(`Collapsed button should stay in a safe viewport position: ${JSON.stringify(collapsed)}`);
     if (Math.abs((collapsed.deckAspect || 0) - 16 / 9) > 0.025) failures.push(`Collapsed deck should stay 16:9: ${JSON.stringify(collapsed)}`);

@@ -14,6 +14,8 @@
 |   |   |-- douyin.svg - 静态模板或浏览器运行时资源。
 |   |   |-- github.svg - 静态模板或浏览器运行时资源。
 |   |   `-- redbook.svg - 静态模板或浏览器运行时资源。
+|   |-- ui-icons/
+|   |   `-- sidebar.svg - 静态模板或浏览器运行时资源。
 |   |-- unicorn/
 |   |   |-- automations_remix_scene.json - 静态模板或浏览器运行时资源。
 |   |   |-- goey_balls_remix_scene.json - 静态模板或浏览器运行时资源。
