@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import https from 'node:https';
 import net from 'node:net';
 import path from 'node:path';
@@ -11,12 +11,26 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const TEMPLATE = path.join(ROOT, 'assets/template-swiss.html');
 const PREVIEW_INDEX = path.join(ROOT, 'output/theme-preview/ppt/index.html');
+const ARTIFACT_ROOT = path.join(ROOT, 'output/page-transition-validation/latest');
 const CHROME_PATH = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const cliUrl = getArg('--url');
 const REQUIRED_MODES = [
-  { value: 'pixelReveal', family: 'pixel/grid reveal' },
-  { value: 'sliceReveal', family: 'slice reveal' },
-  { value: 'canvasWipe', family: 'shader/canvas/video-style wipe' },
+  { value: 'pixelReveal', family: 'codrops/PixelTransition demo 1 row-random grid', type: 'pixel', reference: 'codrops/PixelTransition', variant: 'demo1-row-grid', minRows: 8, minColumns: 14, minCells: 112, axis: 'scale' },
+  { value: 'pixelStretch', family: 'codrops/PixelTransition demo 2 side stretch grid', type: 'pixel', reference: 'codrops/PixelTransition', variant: 'demo2-side-stretch', minRows: 9, minColumns: 17, minCells: 153, axis: 'scale' },
+  { value: 'pixelZoom', family: 'codrops/PixelTransition demo 3 center zoom grid', type: 'pixel', reference: 'codrops/PixelTransition', variant: 'demo3-center-zoom', minRows: 7, minColumns: 13, minCells: 91, axis: 'scale' },
+  { value: 'pixelTight', family: 'codrops/PixelTransition demo 4 dense zoom grid', type: 'pixel', reference: 'codrops/PixelTransition', variant: 'demo4-dense-zoom', minRows: 9, minColumns: 17, minCells: 153, axis: 'scale' },
+  { value: 'pixelBarsY', family: 'codrops/PixelTransition demo 5 vertical bar cells', type: 'pixel', reference: 'codrops/PixelTransition', variant: 'demo5-vertical-bars', minRows: 20, minColumns: 4, minCells: 80, axis: 'scaleY' },
+  { value: 'pixelBarsX', family: 'codrops/PixelTransition demo 6 horizontal bar cells', type: 'pixel', reference: 'codrops/PixelTransition', variant: 'demo6-horizontal-bars', minRows: 6, minColumns: 11, minCells: 66, axis: 'scaleX' },
+  { value: 'sliceReveal', family: 'codrops/SliceRevealer demo 1 mixed cover/uncover', type: 'slice', reference: 'codrops/SliceRevealer', variant: 'demo1-mixed-origins', minSlices: 7 },
+  { value: 'sliceHorizontal', family: 'codrops/SliceRevealer demo 2 horizontal sequence', type: 'slice', reference: 'codrops/SliceRevealer', variant: 'demo2-horizontal-sequence', minSlices: 8, orientation: 'horizontal' },
+  { value: 'sliceGallery', family: 'codrops/SliceRevealer demo 3 gallery stagger', type: 'slice', reference: 'codrops/SliceRevealer', variant: 'demo3-gallery-stagger', minSlices: 16 },
+  { value: 'canvasWipe', family: 'akella/videoTransitions demo 1 circle texture mix', type: 'texture', reference: 'akella/videoTransitions', variant: 'demo1-circle', effect: 'circle' },
+  { value: 'videoBands', family: 'akella/videoTransitions demo 2 striped slide texture mix', type: 'texture', reference: 'akella/videoTransitions', variant: 'demo2-bands', effect: 'bands' },
+  { value: 'videoDisplace', family: 'akella/videoTransitions demo 3 grid displacement texture mix', type: 'texture', reference: 'akella/videoTransitions', variant: 'demo3-displace', effect: 'displace' },
+  { value: 'videoZoom', family: 'akella/videoTransitions demo 4 cross-zoom texture mix', type: 'texture', reference: 'akella/videoTransitions', variant: 'demo4-cross-zoom', effect: 'crossZoom' },
+  { value: 'videoRotate', family: 'akella/videoTransitions demo 5 rotating wipe texture mix', type: 'texture', reference: 'akella/videoTransitions', variant: 'demo5-rotate-wipe', effect: 'rotateWipe' },
+  { value: 'containerClip', family: 'blenkcode/codrops-demo default clip movement', type: 'container', reference: 'blenkcode/codrops-demo', variant: 'default-clip' },
+  { value: 'containerSlide', family: 'blenkcode/codrops-demo alternative horizontal movement', type: 'container', reference: 'blenkcode/codrops-demo', variant: 'alternative-slide' },
 ];
 
 if (!existsSync(CHROME_PATH)) {
@@ -28,6 +42,9 @@ if (!cliUrl && !existsSync(PREVIEW_INDEX)) {
   throw new Error(`Preview file missing: ${PREVIEW_INDEX}
 Run npm run render:themes first, or pass --url to an existing preview.`);
 }
+
+rmSync(ARTIFACT_ROOT, { recursive: true, force: true });
+mkdirSync(ARTIFACT_ROOT, { recursive: true });
 
 const staticChecks = runStaticChecks();
 const server = cliUrl ? null : await startPreviewServer();
@@ -63,6 +80,8 @@ try {
   const result = {
     url,
     passed: false,
+    artifactRoot: ARTIFACT_ROOT,
+    contactSheet: path.join(ARTIFACT_ROOT, 'contact-sheet.html'),
     staticChecks,
     options,
     setMode,
@@ -74,6 +93,7 @@ try {
   };
   const failures = validateResult(result);
   result.passed = failures.length === 0;
+  writeArtifacts(result);
   if (failures.length) {
     console.error(JSON.stringify({ ...result, failures }, null, 2));
     throw new Error(failures.join('\n'));
@@ -95,6 +115,8 @@ function runStaticChecks() {
   }
   if (!options.includes('none')) failures.push('Template transition select is missing existing "none" mode.');
   if (!options.includes('liquidMorph')) failures.push('Template transition select is missing existing "liquidMorph" mode.');
+  if (!/transitionReference/.test(html)) failures.push('Transition runtime does not mark stages with reference-specific mechanisms.');
+  if (!/transitionVariant/.test(html)) failures.push('Transition runtime does not expose demo-specific variants.');
   return { options, failures };
 }
 
@@ -122,70 +144,43 @@ async function probeSetMode(page, mode) {
 async function runModeTransition(page, mode) {
   await resetToIndex(page, 0);
   const selection = await selectTransitionMode(page, mode);
-  return page.evaluate(async mode => {
-    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-    const nextFrame = () => new Promise(resolve => requestAnimationFrame(() => resolve()));
-    const waitFor = async (predicate, timeoutMs) => {
-      const deadline = performance.now() + timeoutMs;
-      while (performance.now() < deadline) {
-        if (predicate()) return true;
-        await wait(40);
-      }
-      return predicate();
+  await page.evaluate(() => {
+    window.__pageTransitionValidation = { commitCount: 0 };
+    window.__pageTransitionValidation.onChange = () => {
+      window.__pageTransitionValidation.commitCount += 1;
     };
-    const rectOf = rect => rect ? ({
-      left: rect.left,
-      top: rect.top,
-      right: rect.right,
-      bottom: rect.bottom,
-      width: rect.width,
-      height: rect.height,
-    }) : null;
-    const readStageState = () => {
-      const stage = document.querySelector('.page-transition-stage');
-      const deck = document.getElementById('deck-viewport');
-      const stageRect = stage?.getBoundingClientRect();
-      const deckRect = deck?.getBoundingClientRect();
-      const visualProbeCount = stage?.querySelectorAll?.('[data-transition-probe="true"], .page-transition-pixel, .page-transition-slice, canvas[data-transition-probe="true"]').length || 0;
-      return {
-        exists: Boolean(stage),
-        mode: stage?.dataset.transitionMode || '',
-        roleCount: stage?.querySelectorAll?.('[data-transition-role]').length || 0,
-        visualProbeCount,
-        hasVisualProbe: visualProbeCount > 0,
-        stageRect: rectOf(stageRect),
-        deckRect: rectOf(deckRect),
-        stageWithinDeck: Boolean(stageRect && deckRect
-          && stageRect.left >= deckRect.left - 1
-          && stageRect.top >= deckRect.top - 1
-          && stageRect.right <= deckRect.right + 1
-          && stageRect.bottom <= deckRect.bottom + 1),
-      };
-    };
-    const targetIndex = 1;
-    const initialIndex = window.__currentSlideIndex || 0;
-    let commitCount = 0;
-    const onChange = () => { commitCount += 1; };
-    addEventListener('swiss-slide-change', onChange);
-    window.go?.(targetIndex, { skipThumbPause: true });
-    await nextFrame();
-    const earlyStage = readStageState();
-    await wait(150);
-    const midStage = readStageState();
-    await waitFor(() => !document.querySelector('.page-transition-stage'), 1600);
-    removeEventListener('swiss-slide-change', onChange);
+    addEventListener('swiss-slide-change', window.__pageTransitionValidation.onChange);
+    window.go?.(1, { skipThumbPause: true });
+  });
+  await page.waitForTimeout(40);
+  const earlyStage = await readStageState(page);
+  await page.waitForTimeout(650);
+  const midStage = await readStageState(page);
+  const screenshot = await captureStageScreenshot(page, mode);
+  await waitForStageGone(page, 2600);
+  const final = await page.evaluate(() => {
+    const commitCount = window.__pageTransitionValidation?.commitCount || 0;
+    if (window.__pageTransitionValidation?.onChange) {
+      removeEventListener('swiss-slide-change', window.__pageTransitionValidation.onChange);
+    }
+    delete window.__pageTransitionValidation;
     return {
-      mode,
-      initialIndex,
-      targetIndex,
       currentIndex: window.__currentSlideIndex || 0,
-      commitCount,
-      earlyStage,
-      midStage,
       stageCountAfter: document.querySelectorAll('.page-transition-stage').length,
       transitionRoleCountAfter: document.querySelectorAll('[data-transition-role]').length,
+      commitCount,
     };
-  }, mode).then(result => ({ ...result, selection }));
+  });
+  return {
+    mode,
+    selection,
+    initialIndex: 0,
+    targetIndex: 1,
+    earlyStage,
+    midStage,
+    screenshot,
+    ...final,
+  };
 }
 
 async function runRapidNavigation(page) {
@@ -211,7 +206,7 @@ async function runRapidNavigation(page) {
       window.go?.(index, { skipThumbPause: true });
       await wait(45);
     }
-    await waitFor(() => !document.querySelector('.page-transition-stage'), 1800);
+    await waitFor(() => !document.querySelector('.page-transition-stage'), 2200);
     removeEventListener('swiss-slide-change', onChange);
     return {
       mode,
@@ -289,6 +284,112 @@ async function resetToIndex(page, index) {
   await settle(page, 180);
 }
 
+async function readStageState(page) {
+  return page.evaluate(() => {
+    const stage = document.querySelector('.page-transition-stage');
+    const deck = document.getElementById('deck-viewport');
+    const stageRect = stage?.getBoundingClientRect();
+    const deckRect = deck?.getBoundingClientRect();
+    const pixelCells = [...(stage?.querySelectorAll?.('.page-transition-pixel') || [])];
+    const sliceCells = [...(stage?.querySelectorAll?.('.page-transition-slice') || [])];
+    const textureCanvas = stage?.querySelector?.('canvas[data-transition-texture="true"]') || null;
+    const containerCurrent = stage?.querySelector?.('[data-container-role="current"]') || null;
+    const containerNext = stage?.querySelector?.('[data-container-role="next"]') || null;
+    return {
+      exists: Boolean(stage),
+      mode: stage?.dataset.transitionMode || '',
+      reference: stage?.dataset.transitionReference || '',
+      variant: stage?.dataset.transitionVariant || '',
+      roleCount: stage?.querySelectorAll?.('[data-transition-role]').length || 0,
+      stageRect: rectOf(stageRect),
+      deckRect: rectOf(deckRect),
+      stageWithinDeck: Boolean(stageRect && deckRect
+        && stageRect.left >= deckRect.left - 1
+        && stageRect.top >= deckRect.top - 1
+        && stageRect.right <= deckRect.right + 1
+        && stageRect.bottom <= deckRect.bottom + 1),
+      pixel: {
+        count: pixelCells.length,
+        rows: uniqueCount(pixelCells, 'pixelRow'),
+        columns: uniqueCount(pixelCells, 'pixelColumn'),
+        phase: stage?.querySelector?.('[data-pixel-cover="true"]')?.dataset.pixelPhase || '',
+        axis: stage?.querySelector?.('[data-pixel-cover="true"]')?.dataset.pixelAxis || '',
+        coverage: visibleCoverage(pixelCells, stageRect),
+      },
+      slice: {
+        count: sliceCells.length,
+        orientation: stage?.querySelector?.('[data-slice-cover="true"]')?.dataset.sliceOrientation || '',
+        originShow: stage?.querySelector?.('[data-slice-cover="true"]')?.dataset.sliceOriginShow || '',
+        originHide: stage?.querySelector?.('[data-slice-cover="true"]')?.dataset.sliceOriginHide || '',
+        variant: stage?.querySelector?.('[data-slice-cover="true"]')?.dataset.sliceVariant || '',
+        coverage: visibleCoverage(sliceCells, stageRect),
+      },
+      texture: {
+        exists: Boolean(textureCanvas),
+        effect: textureCanvas?.dataset.transitionEffect || '',
+        frames: Number(textureCanvas?.dataset.transitionFrames || 0),
+        hasCurrentTexture: textureCanvas?.dataset.currentTexture === 'true',
+        hasNextTexture: textureCanvas?.dataset.nextTexture === 'true',
+        width: textureCanvas?.width || 0,
+        height: textureCanvas?.height || 0,
+      },
+      container: {
+        variant: stage?.querySelector?.('[data-container-transition="true"]')?.dataset.containerVariant || '',
+        hasCurrent: Boolean(containerCurrent),
+        hasNext: Boolean(containerNext),
+        currentTransform: containerCurrent ? getComputedStyle(containerCurrent).transform : '',
+        nextClipPath: containerNext ? getComputedStyle(containerNext).clipPath : '',
+        currentOpacity: containerCurrent ? Number(getComputedStyle(containerCurrent).opacity || 0) : 0,
+      },
+    };
+
+    function rectOf(rect) {
+      if (!rect) return null;
+      return { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height };
+    }
+    function uniqueCount(elements, key) {
+      return new Set(elements.map(el => el.dataset[key] || '').filter(Boolean)).size;
+    }
+    function visibleCoverage(elements, rootRect) {
+      if (!rootRect?.width || !rootRect?.height || !elements.length) return 0;
+      let area = 0;
+      for (const el of elements) {
+        const style = getComputedStyle(el);
+        const opacity = Number(style.opacity || 0);
+        if (opacity < 0.18 || style.visibility === 'hidden' || style.display === 'none') continue;
+        const rect = el.getBoundingClientRect();
+        const width = Math.max(0, Math.min(rect.right, rootRect.right) - Math.max(rect.left, rootRect.left));
+        const height = Math.max(0, Math.min(rect.bottom, rootRect.bottom) - Math.max(rect.top, rootRect.top));
+        area += width * height * Math.min(1, opacity);
+      }
+      return area / (rootRect.width * rootRect.height);
+    }
+  });
+}
+
+async function captureStageScreenshot(page, mode) {
+  const safeMode = mode.replace(/[^a-z0-9_-]/gi, '-');
+  const file = path.join(ARTIFACT_ROOT, `${safeMode}-mid.png`);
+  const stage = page.locator('.page-transition-stage').first();
+  if (!(await stage.count())) return '';
+  try {
+    await stage.screenshot({ path: file });
+    return file;
+  } catch {
+    return '';
+  }
+}
+
+async function waitForStageGone(page, timeoutMs) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const count = await page.locator('.page-transition-stage').count();
+    if (count === 0) return true;
+    await page.waitForTimeout(50);
+  }
+  return false;
+}
+
 function validateResult(result) {
   const failures = [...(result.staticChecks.failures || [])];
   const optionValues = result.options.map(option => option.value);
@@ -302,11 +403,14 @@ function validateResult(result) {
     if (lifecycle.selection.selectedValue !== lifecycle.mode || lifecycle.selection.stored !== lifecycle.mode) failures.push(`${lifecycle.mode} could not be selected through #preview-transition.`);
     if (!lifecycle.earlyStage.exists && !lifecycle.midStage.exists) failures.push(`${lifecycle.mode} did not create a transition stage.`);
     if (lifecycle.earlyStage.exists && !lifecycle.earlyStage.stageWithinDeck) failures.push(`${lifecycle.mode} transition stage is not confined to the slide stage.`);
-    if (lifecycle.midStage.exists && !lifecycle.midStage.hasVisualProbe) failures.push(`${lifecycle.mode} did not expose a mode-specific mid-transition visual probe.`);
     if (lifecycle.commitCount !== 1) failures.push(`${lifecycle.mode} committed ${lifecycle.commitCount} time(s), expected 1.`);
     if (lifecycle.currentIndex !== lifecycle.targetIndex) failures.push(`${lifecycle.mode} finished on slide ${lifecycle.currentIndex}, expected ${lifecycle.targetIndex}.`);
     if (lifecycle.stageCountAfter !== 0) failures.push(`${lifecycle.mode} left ${lifecycle.stageCountAfter} transition stage(s) after completion.`);
     if (lifecycle.transitionRoleCountAfter !== 0) failures.push(`${lifecycle.mode} left ${lifecycle.transitionRoleCountAfter} transition clone(s) after completion.`);
+    if (!lifecycle.screenshot) failures.push(`${lifecycle.mode} did not produce a mid-transition screenshot artifact.`);
+  }
+  for (const config of REQUIRED_MODES) {
+    validateModeMechanism(result, config, failures);
   }
   if (result.rapidNavigation.selection.selectedValue !== result.rapidNavigation.mode || result.rapidNavigation.selection.stored !== result.rapidNavigation.mode) failures.push('Rapid navigation mode could not be selected through #preview-transition.');
   if (result.rapidNavigation.currentIndex !== result.rapidNavigation.targetIndex) failures.push(`Rapid navigation ended on slide ${result.rapidNavigation.currentIndex}, expected ${result.rapidNavigation.targetIndex}.`);
@@ -316,6 +420,87 @@ function validateResult(result) {
   if (result.reducedMotion.currentIndex !== 1 || result.reducedMotion.stageCountAfter !== 0) failures.push('Reduced motion did not switch directly without a transition stage.');
   if (result.consoleErrors.length) failures.push(`Console errors were emitted: ${result.consoleErrors.join(' | ')}`);
   return failures;
+}
+
+function validateModeMechanism(result, config, failures) {
+  const lifecycle = result.lifecycles.find(item => item.mode === config.value);
+  const state = lifecycle?.midStage;
+  if (!state?.exists) {
+    failures.push(`${config.value} did not keep its reference mechanism visible at mid-transition.`);
+    return;
+  }
+  if (state.reference !== config.reference) failures.push(`${config.value} is marked "${state.reference}", expected "${config.reference}".`);
+  if (state.variant !== config.variant) failures.push(`${config.value} variant is "${state.variant}", expected "${config.variant}".`);
+  if (config.type === 'pixel') validatePixelMode(state, config, failures);
+  if (config.type === 'slice') validateSliceMode(state, config, failures);
+  if (config.type === 'texture') validateTextureMode(state, config, failures);
+  if (config.type === 'container') validateContainerMode(state, config, failures);
+}
+
+function validatePixelMode(state, config, failures) {
+  if (state.pixel.count < config.minCells) failures.push(`${config.value} uses ${state.pixel.count} cells, expected at least ${config.minCells}.`);
+  if (state.pixel.rows < config.minRows || state.pixel.columns < config.minColumns) failures.push(`${config.value} grid is ${state.pixel.rows}x${state.pixel.columns}, expected at least ${config.minRows}x${config.minColumns}.`);
+  if (state.pixel.coverage < 0.45) failures.push(`${config.value} grid coverage at mid-transition is ${state.pixel.coverage.toFixed(2)}, expected cells to dominate the frame.`);
+  if (state.pixel.phase !== 'cover-uncover') failures.push(`${config.value} does not expose a cover/uncover pixel phase.`);
+  if (state.pixel.axis !== config.axis) failures.push(`${config.value} pixel axis is "${state.pixel.axis}", expected "${config.axis}".`);
+}
+
+function validateSliceMode(state, config, failures) {
+  if (state.slice.count < config.minSlices) failures.push(`${config.value} uses ${state.slice.count} slices, expected at least ${config.minSlices}.`);
+  if (config.orientation && state.slice.orientation !== config.orientation) failures.push(`${config.value} orientation is "${state.slice.orientation}", expected "${config.orientation}".`);
+  if (state.slice.variant !== config.variant) failures.push(`${config.value} slice variant is "${state.slice.variant}", expected "${config.variant}".`);
+  if (!state.slice.orientation || !state.slice.originShow || !state.slice.originHide) failures.push(`${config.value} does not expose orientation/show/hide slice origins.`);
+  if (state.slice.coverage < 0.42) failures.push(`${config.value} slice coverage at mid-transition is ${state.slice.coverage.toFixed(2)}, expected slices to actively cover/reveal the slide.`);
+}
+
+function validateTextureMode(state, config, failures) {
+  if (!state.texture.exists) failures.push(`${config.value} does not use a transition texture canvas.`);
+  if (state.texture.effect !== config.effect) failures.push(`${config.value} texture effect is "${state.texture.effect}", expected "${config.effect}".`);
+  if (!state.texture.hasCurrentTexture || !state.texture.hasNextTexture) failures.push(`${config.value} does not capture both current and next slide textures.`);
+  if (state.texture.frames < 4) failures.push(`${config.value} redrew ${state.texture.frames} texture frame(s), expected repeated shader-style redraw.`);
+  if (state.texture.width < 480 || state.texture.height < 270) failures.push(`${config.value} texture canvas is too small (${state.texture.width}x${state.texture.height}).`);
+}
+
+function validateContainerMode(state, config, failures) {
+  if (state.container.variant !== config.variant) failures.push(`${config.value} container variant is "${state.container.variant}", expected "${config.variant}".`);
+  if (!state.container.hasCurrent || !state.container.hasNext) failures.push(`${config.value} does not use explicit current/next transition containers.`);
+  if (config.variant === 'default-clip' && (!state.container.nextClipPath || state.container.nextClipPath === 'none')) failures.push(`${config.value} next container does not use clip-path reveal.`);
+  if (!state.container.currentTransform || state.container.currentTransform === 'none') failures.push(`${config.value} current container is not moving/scaling during the transition.`);
+  if (state.container.currentOpacity > 0.75) failures.push(`${config.value} current container is not dimmed during the transition.`);
+}
+
+function writeArtifacts(result) {
+  writeFileSync(path.join(ARTIFACT_ROOT, 'result.json'), `${JSON.stringify(result, null, 2)}\n`);
+  const cards = result.lifecycles.map(item => {
+    const relative = item.screenshot ? path.basename(item.screenshot) : '';
+    const image = relative ? `<img src="./${relative}" alt="${item.mode} mid-transition">` : '<div class="missing">No screenshot</div>';
+    return `<section><h2>${item.mode}</h2>${image}<pre>${escapeHtml(JSON.stringify(item.midStage, null, 2))}</pre></section>`;
+  }).join('\n');
+  writeFileSync(path.join(ARTIFACT_ROOT, 'contact-sheet.html'), `<!doctype html>
+<meta charset="utf-8">
+<title>Page Transition Validation Contact Sheet</title>
+<style>
+body{margin:0;padding:24px;background:#111;color:#eee;font:14px system-ui,sans-serif}
+main{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px}
+section{border:1px solid #333;background:#181818;padding:14px}
+h1,h2{margin:0 0 12px}
+img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
+pre{max-height:240px;overflow:auto;font-size:11px;line-height:1.35;color:#bbb}
+.missing{display:grid;place-items:center;aspect-ratio:16/9;background:#280b0b;color:#ffb4b4}
+</style>
+<h1>Page Transition Validation Contact Sheet</h1>
+<main>${cards}</main>
+`);
+}
+
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[char]));
 }
 
 async function settle(page, ms = 180) {
