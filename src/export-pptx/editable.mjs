@@ -526,6 +526,7 @@ async function installBrowserCollector(page) {
         ${shouldUseNativeGradientShape.toString()}
         ${patternBackgroundImageData.toString()}
         ${parseRepeatingGradient.toString()}
+        ${backgroundCropForClippedRect.toString()}
         ${gradientBackgroundImageData.toString()}
         ${drawLinearGradient.toString()}
         ${drawRadialGradient.toString()}
@@ -973,7 +974,8 @@ async function captureElement(el, slideRect, warnings, depth, slideIndex) {
   if (!(el instanceof Element) || isMediaChrome(el)) return null;
   const style = styleWithCumulativeRotation(readStyle(el), el);
   if (!isVisibleElement(el, slideRect, style)) return null;
-  const clipped = clippedRect(el.getBoundingClientRect(), slideRect);
+  const rawRect = el.getBoundingClientRect();
+  const clipped = clippedRect(rawRect, slideRect);
   if (!clipped) return null;
   const tag = el.tagName.toLowerCase();
   const node = {
@@ -1077,7 +1079,13 @@ async function captureElement(el, slideRect, warnings, depth, slideIndex) {
     node.patternImageData = patternBackgroundImageData(style.backgroundImage, clipped.width, clipped.height, maxCssRadius(style, clipped.width, clipped.height));
     if (node.patternImageData) warnings.push({ slide: slideIndex, type: 'node-image-fallback', node: 'css-pattern-background', count: 1 });
   } else if (!isTextClippedBackground(style) && String(style.backgroundImage || '').includes('gradient') && !shouldSkipDecorativeGradientFallback(el, style, clipped, slideRect) && !shouldUseNativeGradientShape(style, clipped.width, clipped.height) && !shouldUseNativeGradientShape(style, (el.offsetWidth || clipped.width) * (slideRect.w || 1920) / 1920, (el.offsetHeight || clipped.height) * (slideRect.h || 1080) / 1080) && !String(style.clipPath || '').includes('polygon(')) {
-    node.backgroundImageData = gradientBackgroundImageData(style.backgroundImage, clipped.width, clipped.height, maxCssRadius(style, clipped.width, clipped.height));
+    node.backgroundImageData = gradientBackgroundImageData(
+      style.backgroundImage,
+      rawRect.width || clipped.width,
+      rawRect.height || clipped.height,
+      maxCssRadius(style, rawRect.width || clipped.width, rawRect.height || clipped.height),
+      backgroundCropForClippedRect(rawRect, clipped),
+    );
     if (node.backgroundImageData) warnings.push({ slide: slideIndex, type: 'node-image-fallback', node: 'css-gradient-background', count: 1 });
   }
 
@@ -1511,12 +1519,12 @@ function shouldUseLocalMaterialFallback(el, style, clipped, slideRect) {
   const background = String(style.backgroundImage || '');
   if (!background.includes('gradient') && !background.includes('url(')) return false;
   if (backgroundUrl(background)) return false;
+  if (style.mixBlendMode && style.mixBlendMode !== 'normal') return false;
   if (shouldUseNativeGradientShape(style, clipped.width, clipped.height)) return false;
   const areaRatio = clipped.width * clipped.height / Math.max(1, slideRect.w * slideRect.h);
   if (areaRatio <= 0.0002 || areaRatio > 0.12) return false;
   const hasDepth = (style.boxShadow && style.boxShadow !== 'none')
     || (style.filter && style.filter !== 'none')
-    || (style.mixBlendMode && style.mixBlendMode !== 'normal')
     || maxCssRadius(style, clipped.width, clipped.height) >= 10
     || splitCssLayers(background).filter(layer => layer.includes('gradient')).length > 1;
   return Boolean(hasDepth);
@@ -1825,7 +1833,16 @@ function parseRepeatingGradient(backgroundImage) {
   };
 }
 
-function gradientBackgroundImageData(backgroundImage, width, height, radius = 0) {
+function backgroundCropForClippedRect(rawRect, clipped) {
+  const width = rawRect.width || clipped.width;
+  const height = rawRect.height || clipped.height;
+  const x = Math.max(0, clipped.left - rawRect.left);
+  const y = Math.max(0, clipped.top - rawRect.top);
+  if (Math.abs(x) < 0.5 && Math.abs(y) < 0.5 && Math.abs(clipped.width - width) < 0.5 && Math.abs(clipped.height - height) < 0.5) return null;
+  return { x, y, width: clipped.width, height: clipped.height };
+}
+
+function gradientBackgroundImageData(backgroundImage, width, height, radius = 0, crop = null) {
   const layers = splitCssLayers(backgroundImage).filter(layer => /(?:linear|radial)-gradient/i.test(layer));
   if (!layers.length) return null;
   const scale = Math.max(1, Math.min(2, Math.ceil(900 / Math.max(width, height))));
@@ -1844,6 +1861,25 @@ function gradientBackgroundImageData(backgroundImage, width, height, radius = 0)
     else drawLinearGradient(ctx, layer, w, h);
   }
   ctx.restore();
+  if (crop) {
+    const cropCanvas = document.createElement('canvas');
+    cropCanvas.width = Math.max(1, Math.round(crop.width * scale));
+    cropCanvas.height = Math.max(1, Math.round(crop.height * scale));
+    const cropCtx = cropCanvas.getContext('2d');
+    if (!cropCtx) return null;
+    cropCtx.drawImage(
+      canvas,
+      Math.round(crop.x * scale),
+      Math.round(crop.y * scale),
+      cropCanvas.width,
+      cropCanvas.height,
+      0,
+      0,
+      cropCanvas.width,
+      cropCanvas.height,
+    );
+    return cropCanvas.toDataURL('image/png');
+  }
   return canvas.toDataURL('image/png');
 }
 
@@ -2674,17 +2710,12 @@ function firstFont(value) {
     .split(',')
     .map(item => item.replace(/^["']|["']$/g, '').trim())
     .filter(Boolean);
-  for (const family of families) {
-    if (/space mono|monospace/i.test(family)) return 'Menlo';
-    if (/noto sans sc|pingfang|system-ui|-apple-system|blinkmacsystemfont|sans-serif/i.test(family)) return 'PingFang SC';
-    if (/noto serif sc|songti|serif/i.test(family)) return 'Songti SC';
-  }
   return families[0] || 'Arial';
 }
 
 function pptFontSize(px, fontFace, style = {}) {
-  const scale = /PingFang SC|Songti SC/i.test(fontFace) ? 0.60
-    : /Menlo/i.test(fontFace) ? 0.66
+  const scale = /Noto Sans SC|PingFang SC|Songti SC|Microsoft YaHei/i.test(fontFace) ? 0.60
+    : /Space Mono|Menlo|ui-monospace|monospace/i.test(fontFace) ? 0.66
       : PX_TO_PT;
   return px * scale;
 }

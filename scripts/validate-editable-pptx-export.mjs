@@ -171,6 +171,23 @@ async function runJad64MaterialLayerRegressionValidation() {
       screenshot: '/Users/jadon7/Library/Application Support/CleanShot/media/media_YN7SZF3Wmz/CleanShot 2026-06-18 at 14.24.48@2x.png',
       minTextCount: 8,
     },
+    {
+      id: 'theme07-cover-sweep-clipped-gradient',
+      themePack: 'theme07',
+      key: 'theme07_page001',
+      screenshot: '/Users/jadon7/Library/Application Support/CleanShot/media/media_LjOBnNxvCE/CleanShot 2026-06-19 at 11.46.04@2x.png',
+      minTextCount: 10,
+      minOffSlideGradientRegions: 1,
+    },
+    {
+      id: 'theme07-cover-lens-transparent-background',
+      themePack: 'theme07',
+      key: 'theme07_page005',
+      screenshot: '/Users/jadon7/Library/Application Support/CleanShot/media/media_agfAuem3VL/CleanShot 2026-06-19 at 11.47.02@2x.png',
+      minTextCount: 18,
+      minMixBlendGradientRegions: 3,
+      maxOpaqueMixBlendRasterFallbacks: 0,
+    },
   ];
   const browser = await chromium.launch({ headless: true, executablePath: CHROME_PATH });
   let context;
@@ -221,7 +238,7 @@ async function runJad64MaterialLayerRegressionValidation() {
       const materialText = hiddenMaterial
         ? analyzeMaterialTextInRaster(sample, { pptx, media, dom, hiddenMaterial, sampleDir })
         : null;
-      const checks = validateMaterialLayerSample(sample, { pptx, dom, materialText });
+      const checks = validateMaterialLayerSample(sample, { pptx, dom, media, materialText });
       failures.push(...checks.failures);
       if (sample.screenshot && existsSync(sample.screenshot) && pairImage && commandAvailable('magick')) {
         spawnSync('magick', [
@@ -3790,7 +3807,7 @@ function resolveRandom30Samples(selection, sampleSpecs) {
   return sampleSpecs.map(spec => {
     const theme = themes.get(spec.themePack);
     const selected = theme?.selectedPages || [];
-    const selectedIndex = selected.findIndex(page => page.key === spec.key);
+    const selectedIndex = selected.findIndex(page => page.key === spec.key || String(page.key || '').startsWith(`${spec.key}-`));
     return {
       ...spec,
       sourcePackage: selection.outDir || path.dirname(cliSelectionSummary),
@@ -3950,7 +3967,7 @@ async function collectCutoutDomProbe(page) {
 async function collectMaterialLayerDomProbe(page, sample) {
   return await page.evaluate(({ textProbe }) => {
     const slide = document.querySelector('#deck > .slide.active, #deck > .slide[data-deck-active]');
-    if (!slide) return { key: '', slide: null, materialTextRegion: null, decorativeGradientRegions: [] };
+    if (!slide) return { key: '', slide: null, materialTextRegion: null, decorativeGradientRegions: [], mixBlendGradientRegions: [], offSlideGradientRegions: [] };
     const slideRect = slide.getBoundingClientRect();
     const normalizedProbe = String(textProbe || '').replace(/\s+/g, '');
     const localRect = rect => {
@@ -4046,11 +4063,71 @@ async function collectMaterialLayerDomProbe(page, sample) {
       .filter(Boolean)
       .sort((a, b) => b.areaRatio - a.areaRatio)
       .slice(0, 8);
+    const mixBlendGradientRegions = elements
+      .map(el => {
+        const style = getComputedStyle(el);
+        const background = String(style.backgroundImage || '');
+        if (!background.includes('gradient')) return null;
+        if (!style.mixBlendMode || style.mixBlendMode === 'normal') return null;
+        if (textOf(el)) return null;
+        if (visibleChildren(el).length) return null;
+        const rect = localRect(el.getBoundingClientRect());
+        if (rect.w <= 4 || rect.h <= 4) return null;
+        const areaRatio = rect.w * rect.h / Math.max(1, slideRect.width * slideRect.height);
+        if (areaRatio < 0.001) return null;
+        return {
+          tag: el.tagName.toLowerCase(),
+          className: String(el.className || ''),
+          rect,
+          pptRect: pptRect(rect),
+          areaRatio,
+          backgroundImage: background.slice(0, 180),
+          opacity: style.opacity,
+          mixBlendMode: style.mixBlendMode,
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.areaRatio - a.areaRatio)
+      .slice(0, 12);
+    const offSlideGradientRegions = elements
+      .map(el => {
+        const style = getComputedStyle(el);
+        const background = String(style.backgroundImage || '');
+        if (!background.includes('gradient')) return null;
+        if (textOf(el)) return null;
+        if (visibleChildren(el).length) return null;
+        const rawRect = el.getBoundingClientRect();
+        const offSlide = rawRect.left < slideRect.left - 1
+          || rawRect.top < slideRect.top - 1
+          || rawRect.right > slideRect.right + 1
+          || rawRect.bottom > slideRect.bottom + 1;
+        if (!offSlide) return null;
+        const rect = localRect(rawRect);
+        if (rect.w <= 4 || rect.h <= 4) return null;
+        const areaRatio = rect.w * rect.h / Math.max(1, slideRect.width * slideRect.height);
+        if (areaRatio < 0.01) return null;
+        return {
+          tag: el.tagName.toLowerCase(),
+          className: String(el.className || ''),
+          rawRect: { x: rawRect.x, y: rawRect.y, w: rawRect.width, h: rawRect.height },
+          rect,
+          pptRect: pptRect(rect),
+          areaRatio,
+          backgroundImage: background.slice(0, 180),
+          opacity: style.opacity,
+          filter: String(style.filter || ''),
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.areaRatio - a.areaRatio)
+      .slice(0, 12);
     return {
       key: slide.dataset.vmSlideId || slide.dataset.layoutKey || slide.id || '',
       slide: { w: slideRect.width, h: slideRect.height },
       materialTextRegion,
       decorativeGradientRegions,
+      mixBlendGradientRegions,
+      offSlideGradientRegions,
     };
   }, sample);
 }
@@ -4187,7 +4264,7 @@ function analyzeMaterialTextInRaster(sample, { pptx, media, dom, hiddenMaterial,
   };
 }
 
-function validateMaterialLayerSample(sample, { pptx, dom, materialText }) {
+function validateMaterialLayerSample(sample, { pptx, dom, media, materialText }) {
   const failures = [];
   if (pptx.fullSlideImageOnlySlides.length) failures.push(`${sample.id} became full-slide-image-only: ${pptx.fullSlideImageOnlySlides.join(', ')}.`);
   if (Number.isFinite(sample.minTextCount) && pptx.textCount < sample.minTextCount) {
@@ -4197,6 +4274,18 @@ function validateMaterialLayerSample(sample, { pptx, dom, materialText }) {
   if (Number.isFinite(sample.maxLargeDecorativeGradientShapes) && largeDecorativeGradientShapes.length > sample.maxLargeDecorativeGradientShapes) {
     failures.push(`${sample.id} exported ${largeDecorativeGradientShapes.length} large decorative radial gradient region(s) as hard-edged native shape(s).`);
   }
+  const offSlideGradientRegions = dom.offSlideGradientRegions || [];
+  if (Number.isFinite(sample.minOffSlideGradientRegions) && offSlideGradientRegions.length < sample.minOffSlideGradientRegions) {
+    failures.push(`${sample.id} found only ${offSlideGradientRegions.length} off-slide gradient region(s), expected at least ${sample.minOffSlideGradientRegions}.`);
+  }
+  const mixBlendGradientRegions = dom.mixBlendGradientRegions || [];
+  if (Number.isFinite(sample.minMixBlendGradientRegions) && mixBlendGradientRegions.length < sample.minMixBlendGradientRegions) {
+    failures.push(`${sample.id} found only ${mixBlendGradientRegions.length} mix-blend gradient region(s), expected at least ${sample.minMixBlendGradientRegions}.`);
+  }
+  const opaqueMixBlendRasterFallbacks = countOpaqueMixBlendRasterFallbacks(pptx, media, dom);
+  if (Number.isFinite(sample.maxOpaqueMixBlendRasterFallbacks) && opaqueMixBlendRasterFallbacks.length > sample.maxOpaqueMixBlendRasterFallbacks) {
+    failures.push(`${sample.id} exported ${opaqueMixBlendRasterFallbacks.length} mix-blend gradient raster fallback(s) without transparency.`);
+  }
   const materialTextFailures = materialText?.rows?.filter(row => row.failed) || [];
   if (materialTextFailures.length) {
     failures.push(`${sample.id} has ${materialTextFailures.length} material raster fallback(s) that still include editable text.`);
@@ -4205,6 +4294,9 @@ function validateMaterialLayerSample(sample, { pptx, dom, materialText }) {
     passed: failures.length === 0,
     failures,
     largeDecorativeGradientShapes,
+    offSlideGradientRegions,
+    mixBlendGradientRegions,
+    opaqueMixBlendRasterFallbacks,
     materialText,
   };
 }
@@ -4216,6 +4308,37 @@ function countDecorativeGradientShapes(pptx, dom) {
     .map(region => {
       const match = shapes.find(shape => rectSimilarity(shape, region.pptRect) > 0.78);
       return match ? { region, shape: match, similarity: rectSimilarity(match, region.pptRect) } : null;
+    })
+    .filter(Boolean);
+}
+
+function countOpaqueMixBlendRasterFallbacks(pptx, media, dom) {
+  const mediaByHash = new Map((media || []).map(item => [item.hash, item]));
+  const pictures = pptx.slides?.[0]?.pictures || [];
+  const hashes = pptx.slides?.[0]?.pictureMediaHashes || [];
+  return (dom.mixBlendGradientRegions || [])
+    .map(region => {
+      const match = pictures
+        .map((picture, index) => ({ picture, index, similarity: rectSimilarity(picture, region.pptRect) }))
+        .filter(item => !item.picture.nearFullSlide && item.similarity > 0.55)
+        .sort((a, b) => b.similarity - a.similarity)[0];
+      if (!match) return null;
+      const mediaItem = mediaByHash.get(hashes[match.index]);
+      if (!mediaItem) return null;
+      const channels = String(mediaItem.channels || '').toLowerCase();
+      const hasAlpha = channels.includes('a');
+      const fullyOpaque = mediaItem.opaque === true || (Number.isFinite(mediaItem.minAlpha) && mediaItem.minAlpha >= 0.99);
+      if (hasAlpha && !fullyOpaque) return null;
+      return {
+        region,
+        pictureIndex: match.index + 1,
+        similarity: match.similarity,
+        mediaFile: mediaItem.file,
+        channels: mediaItem.channels,
+        opaque: mediaItem.opaque,
+        minAlpha: mediaItem.minAlpha,
+        maxAlpha: mediaItem.maxAlpha,
+      };
     })
     .filter(Boolean);
 }
@@ -5879,15 +6002,24 @@ function inspectExtractedMedia(dir) {
   walk(dir);
   return files.map(file => {
     const identified = commandAvailable('magick')
-      ? spawnSync('magick', ['identify', '-format', '%w %h %[mean]', file], { encoding: 'utf8' })
+      ? spawnSync('magick', ['identify', '-format', '%w\t%h\t%[mean]\t%[channels]\t%[opaque]\t%[fx:minima.a]\t%[fx:maxima.a]', file], { encoding: 'utf8' })
       : null;
-    const [width, height, mean] = String(identified?.stdout || '').trim().split(/\s+/).map(Number);
+    const [widthValue, heightValue, meanValue, channels = '', opaqueValue = '', minAlphaValue = '', maxAlphaValue = ''] = String(identified?.stdout || '').trim().split(/\t/);
+    const width = Number(widthValue);
+    const height = Number(heightValue);
+    const mean = Number(meanValue);
+    const minAlpha = Number(minAlphaValue);
+    const maxAlpha = Number(maxAlphaValue);
     return {
       file,
       relativePath: path.relative(ROOT, file),
       width: Number.isFinite(width) ? width : 0,
       height: Number.isFinite(height) ? height : 0,
       mean: Number.isFinite(mean) ? mean : null,
+      channels,
+      opaque: /^true$/i.test(opaqueValue),
+      minAlpha: Number.isFinite(minAlpha) ? minAlpha : null,
+      maxAlpha: Number.isFinite(maxAlpha) ? maxAlpha : null,
       hash: hashBuffer(readFileSync(file)),
       size: readFileSync(file).length,
     };
