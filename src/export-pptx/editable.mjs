@@ -769,7 +769,6 @@ async function installBrowserCollector(page) {
         ${hasCssMask.toString()}
         ${visibleElementChildren.toString()}
         ${shouldScreenshotBlendGroup.toString()}
-        ${shouldScreenshotTextSticker.toString()}
         ${shouldScreenshotRoundedVisual.toString()}
         ${cornerRadiiPx.toString()}
         ${hasNonUniformCssRadius.toString()}
@@ -904,7 +903,7 @@ function renderBox(slide, node, slideRect, warnings, totals) {
     ? parseCssColor(style.backgroundColor)
     : parseCssColor(style.backgroundColor) || (allowGradientFillApproximation ? colorFromBackgroundImage(style.backgroundImage) : null));
   const radiusPx = maxCssRadius(style, node.rect?.w || 0, node.rect?.h || 0);
-  const radius = Math.min(radiusPx, 48) / slideRect.w * PPT_W;
+  const radius = Math.min(radiusPx, Math.min(node.rect?.w || 0, node.rect?.h || 0) / 2) / slideRect.w * PPT_W;
   const borders = readBorders(style);
   const hasBorder = borders.some(border => border.width > 0 && border.color);
   const uniformBorder = uniformBorderStyle(borders);
@@ -1274,7 +1273,7 @@ function normalizeTransparentPngDataUrl(dataUrl, options = {}) {
 }
 
 function isBrowserVisualImageKind(kind) {
-  return ['material-background', 'unicorn-background', 'effect-background', 'masked-element', 'blend-group', 'text-sticker'].includes(kind);
+  return ['material-background', 'unicorn-background', 'effect-background', 'masked-element', 'blend-group'].includes(kind);
 }
 
 function shouldPreserveTransparentEdges(node, kind) {
@@ -1429,19 +1428,17 @@ async function captureElement(el, slideRect, warnings, depth, slideIndex, clipRe
     node.rect = rectObject(screenshotRect);
     node.screenshotRect = rectObject(screenshotRect);
     node.screenshotMode = 'screenshot-rect';
-    if (visualFallback !== 'text-sticker') {
-      const textNodes = collectDomFallbackTextNodes(el, slideRect, slideIndex);
-      const overlayText = visibleTextInScreenshotRect(el, slideRect, screenshotRect);
-      const overlayPaint = visibleOverlayPaintInScreenshotRect(el, slideRect, screenshotRect);
-      if (textNodes.length) node.children.push(...textNodes);
-      node.stripTextForScreenshot = textNodes.length > 0 || overlayText.count > 0;
-      node.stripOverlayForScreenshot = overlayPaint.count > 0;
-      if (textNodes.length || overlayText.count) {
-        warnings.push({ slide: slideIndex, type: 'node-image-fallback-text-extracted', node: visualFallback, textCount: Math.max(textNodes.length, overlayText.count), sample: overlayText.sample });
-      }
-      if (overlayPaint.count) {
-        warnings.push({ slide: slideIndex, type: 'node-image-fallback-overlay-extracted', node: visualFallback, overlayCount: overlayPaint.count, sample: overlayPaint.sample, scope: 'screenshot-rect' });
-      }
+    const textNodes = collectDomFallbackTextNodes(el, slideRect, slideIndex);
+    const overlayText = visibleTextInScreenshotRect(el, slideRect, screenshotRect);
+    const overlayPaint = visibleOverlayPaintInScreenshotRect(el, slideRect, screenshotRect);
+    if (textNodes.length) node.children.push(...textNodes);
+    node.stripTextForScreenshot = textNodes.length > 0 || overlayText.count > 0;
+    node.stripOverlayForScreenshot = overlayPaint.count > 0;
+    if (textNodes.length || overlayText.count) {
+      warnings.push({ slide: slideIndex, type: 'node-image-fallback-text-extracted', node: visualFallback, textCount: Math.max(textNodes.length, overlayText.count), sample: overlayText.sample });
+    }
+    if (overlayPaint.count) {
+      warnings.push({ slide: slideIndex, type: 'node-image-fallback-overlay-extracted', node: visualFallback, overlayCount: overlayPaint.count, sample: overlayPaint.sample, scope: 'screenshot-rect' });
     }
     warnings.push({ slide: slideIndex, type: 'node-image-fallback', node: visualFallback, count: 1, source: 'browser-visual-effect' });
     return node;
@@ -1483,7 +1480,7 @@ async function captureElement(el, slideRect, warnings, depth, slideIndex, clipRe
   } else if (String(style.backgroundImage || '').includes('repeating-linear-gradient')) {
     node.patternImageData = patternBackgroundImageData(style.backgroundImage, clipped.width, clipped.height, maxCssRadius(style, clipped.width, clipped.height));
     if (node.patternImageData) warnings.push({ slide: slideIndex, type: 'node-image-fallback', node: 'css-pattern-background', count: 1 });
-  } else if (!isTextClippedBackground(style) && String(style.backgroundImage || '').includes('gradient') && !shouldSkipDecorativeGradientFallback(el, style, clipped, slideRect) && !shouldUseNativeGradientShape(style, clipped.width, clipped.height) && !shouldUseNativeGradientShape(style, (el.offsetWidth || clipped.width) * (slideRect.w || 1920) / 1920, (el.offsetHeight || clipped.height) * (slideRect.h || 1080) / 1080) && !String(style.clipPath || '').includes('polygon(')) {
+  } else if (!isTextClippedBackground(style) && String(style.backgroundImage || '').includes('gradient') && !(el.innerText || el.textContent || '').trim() && !shouldSkipDecorativeGradientFallback(el, style, clipped, slideRect) && !shouldUseNativeGradientShape(style, clipped.width, clipped.height) && !shouldUseNativeGradientShape(style, (el.offsetWidth || clipped.width) * (slideRect.w || 1920) / 1920, (el.offsetHeight || clipped.height) * (slideRect.h || 1080) / 1080) && !String(style.clipPath || '').includes('polygon(')) {
     node.backgroundImageData = gradientBackgroundImageData(
       style.backgroundImage,
       rawRect.width || clipped.width,
@@ -1913,7 +1910,6 @@ function visualScreenshotFallbackKind(el, style, clipped, rawRect, slideRect) {
   const hasVisualBackground = (background && background !== 'none') || hasPaint(style.backgroundColor) || hasAnyBorder(style) || (style.boxShadow && style.boxShadow !== 'none');
   if ((masked || clippedByPath) && hasVisualBackground) return 'masked-element';
   if (shouldScreenshotBlendGroup(el, style, clipped, rawRect, slideRect)) return 'blend-group';
-  if (shouldScreenshotTextSticker(el, style, clipped, rawRect, slideRect)) return 'text-sticker';
   if (shouldScreenshotRoundedVisual(el, style, clipped, rawRect, slideRect)) return 'masked-element';
   if (shouldScreenshotGradientEffect(el, style, clipped, rawRect, slideRect)) return 'effect-background';
   return null;
@@ -1960,24 +1956,6 @@ function shouldScreenshotBlendGroup(el, style, clipped, rawRect, slideRect) {
   return blendVisualCount >= 2;
 }
 
-function shouldScreenshotTextSticker(el, style, clipped, rawRect, slideRect) {
-  const tag = el.tagName.toLowerCase();
-  if (!['h1', 'h2', 'h3', 'div', 'span', 'strong', 'b', 'em'].includes(tag)) return false;
-  if (isEditableTextContainer(el)) return false;
-  const text = normalizeText(el.innerText || el.textContent || '');
-  if (!text) return false;
-  const fontSizePx = parseFloat(style.fontSize || '0') || 0;
-  if (fontSizePx < 72) return false;
-  const areaRatio = clipped.width * clipped.height / Math.max(1, slideRect.w * slideRect.h);
-  if (areaRatio <= 0.0002 || areaRatio > 0.28) return false;
-  const background = String(style.backgroundImage || '');
-  const ownStickerBox = ((background && background !== 'none') || hasPaint(style.backgroundColor) || hasAnyBorder(style) || (style.boxShadow && style.boxShadow !== 'none'))
-    && (maxCssRadius(style, clipped.width, clipped.height) >= 4 || Math.abs(rotateFromTransform(style.transform)) >= 0.5 || tag === 'span');
-  if (ownStickerBox) return true;
-  if (!/^h[1-3]$/.test(tag) || fontSizePx < 96) return false;
-  return visibleElementChildren(el, slideRect).some(child => hasInlineVisualTreatment(child));
-}
-
 function shouldScreenshotRoundedVisual(el, style, clipped, rawRect, slideRect) {
   const areaRatio = clipped.width * clipped.height / Math.max(1, slideRect.w * slideRect.h);
   if (areaRatio <= 0.0002 || areaRatio > 0.22) return false;
@@ -1986,15 +1964,8 @@ function shouldScreenshotRoundedVisual(el, style, clipped, rawRect, slideRect) {
   const hasVisualBackground = (background && background !== 'none') || hasPaint(style.backgroundColor) || hasAnyBorder(style) || (style.boxShadow && style.boxShadow !== 'none');
   if (!hasVisualBackground) return false;
   if (hasNonUniformCssRadius(style, clipped.width, clipped.height)) return true;
-  const radius = maxCssRadius(style, clipped.width, clipped.height);
-  const children = visibleElementChildren(el, slideRect);
-  const paintedRoundedContainer = radius >= 6
-    && (hasAnyBorder(style) || (style.boxShadow && style.boxShadow !== 'none'))
-    && children.length > 0
-    && !hasOnlyInlineTextChildren(el)
-    && !isEditableTextContainer(el);
-  if (paintedRoundedContainer) return true;
   if (!hasRoundedClipStyle(style, clipped.width, clipped.height)) return false;
+  const children = visibleElementChildren(el, slideRect);
   if (!children.length || hasOnlyInlineTextChildren(el)) return false;
   return Boolean(el.querySelector?.('image-slot,[data-dashi-host-image-slot="true"],svg,canvas,img,video'))
     || background.includes('gradient')
