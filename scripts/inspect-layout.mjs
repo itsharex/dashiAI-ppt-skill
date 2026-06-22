@@ -7,7 +7,7 @@ import {
 const { layouts, compact } = parseCliLayouts(process.argv.slice(2));
 
 if (!layouts.length) {
-  console.error('Usage: node scripts/inspect-layout.mjs [--compact] [--layout <layout>] <layout...>');
+  printUsage();
   process.exit(2);
 }
 
@@ -30,6 +30,10 @@ function parseCliLayouts(argv) {
   const result = { layouts: [], compact: false };
   for (let index = 0; index < argv.length; index += 1) {
     const item = argv[index];
+    if (item === '--help' || item === '-h') {
+      printUsage();
+      process.exit(0);
+    }
     if (item === '--compact') {
       result.compact = true;
       continue;
@@ -62,4 +66,11 @@ function parseCliLayouts(argv) {
 
 function splitLayoutArg(value) {
   return String(value || '').split(',').map(item => item.trim()).filter(Boolean);
+}
+
+function printUsage() {
+  console.error('Usage: node scripts/inspect-layout.mjs [--compact] [--layout <layout>] <layout...>');
+  console.error('Examples:');
+  console.error('  node scripts/inspect-layout.mjs theme01_page020');
+  console.error('  node scripts/inspect-layout.mjs --layout theme01_page020 --layout theme01_page031');
 }

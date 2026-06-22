@@ -91,6 +91,12 @@ function testControlNaming() {
 }
 
 function testInspectLayout() {
+  const help = spawnSync('node', ['scripts/inspect-layout.mjs', '--help'], {
+    cwd: ROOT,
+    encoding: 'utf8',
+  });
+  assert(help.status === 0 && `${help.stdout}\n${help.stderr}`.includes('Usage:'), 'inspect-layout --help should print usage');
+
   const result = runJson('scripts/inspect-layout.mjs', ['theme01_page020']);
   assert(result.layout === 'theme01_page020', 'unexpected layout');
   assert(result.copyKeys?.includes('title'), 'missing title copy key');
@@ -135,6 +141,40 @@ function testWriteSafeProps() {
   assert(itemTail[0].tone === 'green', 'expected non-copy visual fields to stay intact');
   const unknown = runJson('scripts/write-safe-props.mjs', ['theme01_page020', JSON.stringify({ madeUpProp: true })]);
   assert(unknown.warnings?.some(item => item.includes('madeUpProp')), 'expected unknown prop warning');
+
+  const backgroundMedia = runJson('scripts/write-safe-props.mjs', ['theme12_page020', JSON.stringify({
+    media: ['assets/user-media/hero.webp'],
+  })]);
+  assert(backgroundMedia.props?.backgroundMode === 'media', 'authored media should switch supported backgroundMode to media');
+
+  const tmp = mkdtempSync(path.join(tmpdir(), 'dashi-props-goal-'));
+  try {
+    const goalPath = path.join(tmp, 'goal.json');
+    writeFileSync(goalPath, JSON.stringify({
+      title: 'Props Safe Goal',
+      goal: 'should pass whole-goal props safety check',
+      themePack: 'theme01',
+      slides: [{ layout: 'theme01_page020', props: { title: '整份检查', images: ['x.png'] } }],
+    }, null, 2));
+    const goalSafe = runJson('scripts/write-safe-props.mjs', ['--goal', goalPath]);
+    assert(goalSafe.ok === true && goalSafe.slideCount === 1, 'props:safe --goal should validate a complete goal');
+
+    const badGoalPath = path.join(tmp, 'bad-goal.json');
+    writeFileSync(badGoalPath, JSON.stringify({
+      title: 'Bad Props Safe Goal',
+      goal: 'should fail whole-goal props safety check',
+      themePack: 'theme01',
+      slides: [{ layout: 'theme01_page020', props: { madeUpProp: true } }],
+    }, null, 2));
+    const badGoal = spawnSync('node', ['scripts/write-safe-props.mjs', '--goal', badGoalPath], {
+      cwd: ROOT,
+      encoding: 'utf8',
+    });
+    assert(badGoal.status !== 0, 'props:safe --goal should fail on unsafe goal props');
+    assert(`${badGoal.stdout}\n${badGoal.stderr}`.includes('madeUpProp'), 'props:safe --goal failure should mention bad prop');
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
 
   const badNested = spawnSync('node', ['scripts/write-safe-props.mjs', 'theme01_page031', JSON.stringify({
     quadrants: [{ name: '高频低风险', desc: '错误字段应该被拒绝' }],
@@ -200,6 +240,11 @@ function testMediaWorkflow() {
     writeFileSync(pngPath, PNG.sync.write(png));
     const staged = runJson('scripts/stage-media.mjs', [path.join(tmp, 'ppt'), pngPath]);
     assert(staged.items?.[0]?.relative === 'assets/user-media/sample-media.png', 'media:stage should copy image assets with stable relative paths');
+    assert(existsSync(path.join(tmp, 'ppt/assets/user-media/sample-media.png')), 'media:stage should write under ppt assets directory');
+
+    const stagedFromDeckRoot = runJson('scripts/stage-media.mjs', [path.join(tmp, 'deck-root'), pngPath]);
+    assert(stagedFromDeckRoot.outDir === path.join(tmp, 'deck-root/ppt'), 'media:stage should treat a deck root as deck-root/ppt');
+    assert(existsSync(path.join(tmp, 'deck-root/ppt/assets/user-media/sample-media.png')), 'media:stage deck root mode should write under ppt assets directory');
 
     const avifPath = path.join(tmp, 'sample-media.avif');
     if (tryCreateAvif(pngPath, avifPath)) {
@@ -308,6 +353,7 @@ function testSkillPromptGuidance() {
   if (!(/文案长度/.test(skill) && /短词/.test(skill) && /短句/.test(skill))) missing.push('copy length guidance');
   if (!(/copyBudgets/.test(skill) && /display/.test(skill) && /metric/.test(skill))) missing.push('copyBudgets display/metric guidance');
   if (!(/media:stage/.test(skill) && /relative/.test(skill) && /AVIF/.test(skill))) missing.push('media:stage AVIF relative-path guidance');
+  if (!(/props:safe -- --goal/.test(skill) || /props:safe --goal/.test(skill))) missing.push('whole-goal props:safe guidance');
   if (!(/图片\/视频素材每个最多使用一次/.test(skill) && /不要重复填充同一素材/.test(skill))) missing.push('provided media one-time-use guidance');
   if (!(/素材用完/.test(skill) && /媒体插槽留空/.test(skill) && /无媒体插槽页面/.test(skill))) missing.push('media exhausted empty-or-no-media guidance');
   if (!skill.includes('--planned-images <n>')) missing.push('planned-images workflow guidance');
@@ -334,7 +380,7 @@ function testSkillPromptGuidance() {
     if (skill.includes(oldName)) missing.push(`old theme name ${oldName}`);
   }
   if (!sync.includes('theme-style-grid.png')) missing.push('sync style grid asset handling');
-  if (!(/copyBudgets/.test(sync) && /media:stage/.test(sync))) missing.push('sync reference copy/media tool guidance');
+  if (!(/copyBudgets/.test(sync) && /media:stage/.test(sync) && /props:safe -- --goal/.test(sync))) missing.push('sync reference copy/media/whole-goal props tool guidance');
   if (/THEME_CHOICE_HINTS/.test(sync)) missing.push('hardcoded THEME_CHOICE_HINTS table');
   assert(!missing.length, `Skill prompt guidance missing: ${missing.join(', ')}`);
 }

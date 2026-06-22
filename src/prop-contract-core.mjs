@@ -43,6 +43,7 @@ export function normalizeSlidePropsForContract(layout, props = {}, contract = nu
   const authoredCounts = deriveAuthoredCounts(authoredProps, contract?.countBindings || []);
   const shapeErrors = contract ? validateAuthoredPropShape(authoredProps, contract.defaultProps) : [];
   const next = contract ? mergeDefaultArrayProps(authoredProps, contract) : { ...authoredProps };
+  if (contract) applyMediaBackgroundMode(next, authoredProps, contract);
   if (!contract) return next;
 
   const errors = [...shapeErrors];
@@ -171,6 +172,33 @@ function mergePlainObject(defaultValue, value) {
     }
   }
   return next;
+}
+
+function applyMediaBackgroundMode(props, authoredProps, contract) {
+  if (Object.prototype.hasOwnProperty.call(authoredProps || {}, 'backgroundMode')) return;
+  if (!Object.prototype.hasOwnProperty.call(contract.defaultProps || {}, 'backgroundMode')) return;
+  if (!backgroundModeSupportsMedia(contract.controls)) return;
+  if (!hasAuthoredMedia(authoredProps)) return;
+  props.backgroundMode = 'media';
+}
+
+function backgroundModeSupportsMedia(controls = []) {
+  const control = controls.find(item => item?.key === 'backgroundMode' || item?.publicKey === 'backgroundMode');
+  const options = Array.isArray(control?.options) ? control.options : [];
+  return options.some(option => {
+    if (typeof option === 'string') return option === 'media';
+    return option?.value === 'media' || option?.key === 'media';
+  });
+}
+
+function hasAuthoredMedia(props = {}) {
+  return Object.entries(props || {}).some(([key, value]) => {
+    if (!isMediaArrayKey(key)) return false;
+    if (typeof value === 'string') return value.trim() !== '';
+    if (Array.isArray(value)) return value.length > 0;
+    if (isPlainObject(value)) return typeof value.src === 'string' && value.src.trim() !== '';
+    return false;
+  });
 }
 
 export function neutralizeDefaultCopy(value, field = '') {

@@ -5,12 +5,17 @@ import path from 'node:path';
 
 const [, , outDirArg, ...sourceArgs] = process.argv;
 
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+  printUsage();
+  process.exit(0);
+}
+
 if (!outDirArg || !sourceArgs.length) {
-  console.error('Usage: stage-media.mjs <output-ppt-dir> <media-file...>');
+  printUsage();
   process.exit(2);
 }
 
-const outDir = path.resolve(outDirArg);
+const outDir = resolveOutputPptDir(outDirArg);
 const targetDir = path.join(outDir, 'assets/user-media');
 fs.mkdirSync(targetDir, { recursive: true });
 
@@ -33,7 +38,25 @@ const items = sourceArgs.map(sourceArg => {
   };
 });
 
-process.stdout.write(`${JSON.stringify({ outDir, items }, null, 2)}\n`);
+process.stdout.write(`${JSON.stringify({
+  input: path.resolve(outDirArg),
+  outDir,
+  deckRoot: path.basename(outDir) === 'ppt' ? path.dirname(outDir) : outDir,
+  items,
+}, null, 2)}\n`);
+
+function printUsage() {
+  console.error('Usage: stage-media.mjs <output-deck-dir|output-ppt-dir|output-ppt-index.html> <media-file...>');
+  console.error('Writes media under the HTML output directory: <ppt>/assets/user-media/.');
+}
+
+function resolveOutputPptDir(value) {
+  const target = path.resolve(value);
+  if (/\.html?$/i.test(target)) return path.dirname(target);
+  if (path.basename(target) === 'ppt') return target;
+  if (fs.existsSync(path.join(target, 'index.html'))) return target;
+  return path.join(target, 'ppt');
+}
 
 function uniqueName(base, ext, used) {
   const safeBase = base || 'media';
