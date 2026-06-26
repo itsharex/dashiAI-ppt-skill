@@ -23,6 +23,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_SANKEY_SOURCES = 5;
+const MAX_SANKEY_FOCUS_INDEX = 4;
+
 export const slideSankeyDefaults = {
   kicker: 'FLOW · 资金流向',
   title: '970 亿美元 ',
@@ -50,12 +53,12 @@ export const slideSankeyDefaults = {
 };
 
 export const slideSankeyControls = [
-  { key: 'sourceCount', type: 'number', label: '来源数量', default: 5, min: 2, step: 1,
-    maxFrom: (p) => (p.sources ? p.sources.length : 5), describe: '左列展示的来源数量' },
+  { key: 'sourceCount', type: 'number', label: '来源数量', default: 5, min: 2, max: MAX_SANKEY_SOURCES, step: 1,
+    maxFrom: (p) => Math.min(MAX_SANKEY_SOURCES, p.sources ? p.sources.length : MAX_SANKEY_SOURCES), describe: '左列展示的来源数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '辉光强调某一来源（其丝带高亮、其余淡出）' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.sourceCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_SANKEY_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_SANKEY_FOCUS_INDEX + 1, p.sourceCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调来源的序号' },
   { key: 'showValueLabels', type: 'toggle', label: '金额标签', default: true,
     describe: '来源金额 + 占比显隐' },
@@ -220,9 +223,9 @@ export function SlideSankey(props) {
   const palette = sc.palette || ['#2fe07f', '#b9f24a', '#2fe0c4', '#4ea2ff', '#9b7dff', '#ff6fae', '#ffc24a'];
   const glow = sc.glow || '47,224,127';
 
-  const count = Math.max(2, Math.min(p.sources.length, p.sourceCount));
+  const count = Math.max(2, Math.min(MAX_SANKEY_SOURCES, p.sources.length, p.sourceCount));
   const sources = p.sources.slice(0, count);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_SANKEY_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const fp = fIdx >= 0 ? sources[fIdx] : null;
   const ft = fp ? p.targets[fp.to] : null;
   const total = sources.reduce((a, s) => a + s.value, 0) || 1;

@@ -20,6 +20,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_RANKING_ROWS = 6;
+const MAX_RANKING_FOCUS_INDEX = 5;
+
 export const slideRankingDefaults = {
   kicker: 'LEADERBOARD · 头部玩家',
   title: '头部公司融资榜单 ',
@@ -49,12 +52,12 @@ export const slideRankingDefaults = {
 };
 
 export const slideRankingControls = [
-  { key: 'rowCount', type: 'number', label: '行数', default: 6, min: 3, step: 1,
-    maxFrom: (p) => (p.rows ? p.rows.length : 10), describe: '展示的榜单行数' },
+  { key: 'rowCount', type: 'number', label: '行数', default: 6, min: 3, max: MAX_RANKING_ROWS, step: 1,
+    describe: '展示的榜单行数' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮其中一行' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.rowCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_RANKING_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_RANKING_FOCUS_INDEX + 1, p.rowCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调行的序号' },
   { key: 'showRank', type: 'toggle', label: '名次徽章', default: true,
     describe: '显示/隐藏左侧名次徽章' },
@@ -68,9 +71,9 @@ export const slideRankingControls = [
 
 export function SlideRanking(props) {
   const p = { ...slideRankingDefaults, ...props };
-  const count = Math.max(1, Math.min(p.rows.length, p.rowCount));
+  const count = Math.max(1, Math.min(MAX_RANKING_ROWS, p.rows.length, p.rowCount));
   const rows = p.rows.slice(0, count);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_RANKING_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const maxV = Math.max(...rows.map((r) => r.value), 1);
 
   // grid template tracks, built from the active column toggles

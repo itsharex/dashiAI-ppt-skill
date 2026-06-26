@@ -11,7 +11,7 @@
  *  itemCount       number 展示的赛道条数(3–6)     默认 6
  *  chartVariant    enum   图表类型                默认 'slope' 可选 'slope'|'bars'
  *  focusEnabled    bool   重点赛道高亮开关          默认 true
- *  focusIndex      number 重点赛道序号(从1起)      默认 1   范围 1–itemCount
+ *  focusIndex      number 重点赛道序号(从1起)      默认 2   范围 1–itemCount
  *  showDelta       bool   升降徽标(▲n/▼n/=)显隐    默认 true
  *  showRankNum     bool   两端名次数字显隐          默认 true
  *  showDecorations bool   星芒等点缀显隐           默认 true
@@ -74,7 +74,7 @@ function Slide55Slope(props) {
     itemCount = 6,
     chartVariant = 'slope',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showDelta = true,
     showRankNum = true,
     showDecorations = true,
@@ -270,7 +270,7 @@ const META = {
     itemCount: 6,
     chartVariant: 'slope',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showDelta: true,
     showRankNum: true,
     showDecorations: true,
@@ -283,7 +283,7 @@ const META = {
     { key: 'itemCount', type: 'slider', label: '赛道条数', min: 3, max: 6, step: 1, default: 6, desc: '展示的赛道数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['slope', 'bars'], optionLabels: ['斜率图', '横向柱'], default: 'slope', desc: '斜率图 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一赛道' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道的序号' },
     { key: 'showDelta', type: 'toggle', label: '升降徽标', default: true, desc: '▲n / ▼n / = 升降标记' },
     { key: 'showRankNum', type: 'toggle', label: '名次数字', default: true, desc: '两端名次数字', showIf: (v) => v.chartVariant === 'slope' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

@@ -19,6 +19,7 @@ export const meta = { id: 'editorial', index: 14, label: '图文交错 / Editori
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   rowCount: 3,             // 2–3 alternating bands
   imageSide: 'left',       // which side the FIRST band's image sits on
   showNumbers: true,       // big band index
@@ -46,6 +47,8 @@ export const controls = [
     desc: '第一段图片在左还是右（逐段交替）' },
   { key: 'showNumbers', label: '段落编号', type: 'toggle', def: true, desc: '显示/隐藏每段的大编号' },
   { key: 'showCaption', label: '段落正文', type: 'toggle', def: true, desc: '显示/隐藏每段说明文字' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '导语 / 编号 / 页脚强调色' },
 ];
@@ -53,13 +56,19 @@ export const controls = [
 export default function SwSlideEditorial(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(2, Math.min(3, p.rowCount));
   const bands = (p.bands || []).slice(0, count);
   const startLeft = p.imageSide === 'left';
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : '#5a4f54';
+  const lineC = dark ? C.lineD : C.line;
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, margin: '24px 0 18px' }}>
         <Kicker accent={accent}>{p.kicker}</Kicker>
@@ -69,13 +78,14 @@ export default function SwSlideEditorial(props) {
       </div>
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 18,
-        gridTemplateRows: 'repeat(' + count + ',1fr)' }}>
+        gridTemplateRows: 'repeat(' + count + ', minmax(0, 1fr))' }}>
         {bands.map((b, i) => {
           const imgLeft = startLeft ? i % 2 === 0 : i % 2 === 1;
           const Img = (
             <div style={{ minWidth: 0, minHeight: 0 }}>
               <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-                fit="cover" accent={accent} radius={swTheme.radius} label={p.showNumbers ? i + 1 : null}
+                fit="cover" accent={accent} radius={swTheme.radius} tone={dark ? 'dark' : 'light'}
+                label={p.showNumbers ? i + 1 : null}
                 placeholder={'拖入图片 · ' + b.k.split(' / ')[1]} />
             </div>
           );
@@ -93,21 +103,21 @@ export default function SwSlideEditorial(props) {
                   textTransform: 'uppercase', color: accent }}>{b.k}</div>
                 <div style={{ fontWeight: 900, fontSize: 36, letterSpacing: '-.6px', marginTop: 10, lineHeight: 1.12 }}>{b.t}</div>
                 {p.showCaption && (
-                  <p style={{ fontSize: 23, lineHeight: 1.62, color: '#5a4f54', marginTop: 12, maxWidth: 560 }}>{b.d}</p>
+                  <p style={{ fontSize: 23, lineHeight: 1.62, color: mut, marginTop: 12, maxWidth: 560 }}>{b.d}</p>
                 )}
               </div>
             </div>
           );
           return (
-            <div key={b.t} style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 0,
-              borderTop: i ? '1px solid ' + C.line : 'none', paddingTop: i ? 16 : 0 }}>
+            <div key={b.t} style={{ display: 'grid', gridTemplateColumns: '1.15fr minmax(0, 1fr)', gap: 0,
+              borderTop: i ? '1px solid ' + lineC : 'none', paddingTop: i ? 16 : 0 }}>
               {imgLeft ? <>{Img}{Txt}</> : <>{Txt}{Img}</>}
             </div>
           );
         })}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} divider={false} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} divider={false} />
     </SlideRoot>
   );
 }

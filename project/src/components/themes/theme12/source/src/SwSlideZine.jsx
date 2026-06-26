@@ -18,6 +18,7 @@ export const meta = { id: 'zine', index: 62, label: '拼贴海报 / Zine' };
 
 export const defaultProps = {
   accent: C.lime,
+  theme: 'dark',           // 'light' | 'dark'
   scrapCount: 3,           // 2–4 photo scraps
   mediaFit: 'cover',
   showTape: true,
@@ -45,6 +46,8 @@ export const controls = [
   { key: 'showTape', label: '胶带', type: 'toggle', def: true, desc: '显示/隐藏贴在碎片上的胶带' },
   { key: 'tilt', label: '倾斜角度', type: 'slider', def: 5, min: 0, max: 10, step: 1, unit: '°',
     desc: '碎片随机倾斜的基准角度' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.lime,
     options: [C.lime, C.orange, C.cyan, C.magenta], desc: '标语高亮 / 页脚强调色' },
 ];
@@ -63,18 +66,29 @@ export default function SwSlideZine(props) {
   const count = Math.max(2, Math.min(4, p.scrapCount));
   const SCRAP_TINT = p.scrapTint;
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const introC = dark ? '#c8c0bd' : '#5a4f54';
+  const boardBg = dark ? '#120d0f' : '#e4d4d6';
+  const boardLine = dark ? 'rgba(255,255,255,.03)' : 'rgba(27,21,24,.04)';
+  const tapeBg = dark ? 'rgba(245,225,227,.55)' : 'rgba(27,21,24,.14)';
+  const tapeBlend = dark ? 'screen' : 'multiply';
+  // Heavy black drop on the dark board; a softer, lighter cast on the blush board.
+  const scrapShadow = dark ? '0 18px 40px rgba(0,0,0,.5)' : '0 12px 30px rgba(27,21,24,.18)';
+
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, margin: '22px 0 20px', display: 'grid',
-        gridTemplateColumns: '1.25fr 1fr', gap: 36, position: 'relative', zIndex: 3 }}>
+        gridTemplateColumns: '1.25fr minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1fr)', gap: 36, position: 'relative', zIndex: 3 }}>
 
         {/* collage stage */}
         <div style={{ position: 'relative', minWidth: 0 }}>
           {/* clipped textured backdrop */}
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: '#120d0f',
-            backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 2px, transparent 2px 26px)',
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: boardBg,
+            backgroundImage: 'repeating-linear-gradient(0deg, ' + boardLine + ' 0 2px, transparent 2px 26px)',
             borderRadius: 18, overflow: 'hidden' }} />
           {Array.from({ length: count }).map((_, i) => {
             const s = SCRAPS[i];
@@ -82,8 +96,8 @@ export default function SwSlideZine(props) {
             return (
               <div key={i} style={{ position: 'absolute', left: s.left, top: s.top, width: s.w, height: s.h,
                 transform: 'rotate(' + rot + 'deg)', background: '#fff', padding: 12, paddingBottom: 34,
-                boxShadow: '0 18px 40px rgba(0,0,0,.5)', zIndex: 10 + i }}>
-                <div style={{ width: '100%', height: '100%' }}>
+                boxShadow: scrapShadow, zIndex: 10 + i }}>
+                <div style={{ width: '100%', height: '100%', minWidth: 0, minHeight: 0 }}>
                   <SwImageSlot value={p.media[i] || null} onChange={(src) => p.onMediaChange(i, src)}
                     fit={p.mediaFit} accent={SCRAP_TINT[i % SCRAP_TINT.length]} radius={0} tone="light"
                     label={i + 1} placeholder={p.mediaPlaceholder} />
@@ -91,7 +105,7 @@ export default function SwSlideZine(props) {
                 {p.showTape && (
                   <div style={{ position: 'absolute', top: -12, left: '50%', width: 86, height: 26,
                     transform: 'translateX(-50%) rotate(' + (-rot * 1.4) + 'deg)',
-                    background: 'rgba(245,225,227,.55)', mixBlendMode: 'screen',
+                    background: tapeBg, mixBlendMode: tapeBlend,
                     boxShadow: '0 1px 4px rgba(0,0,0,.25)' }} />
                 )}
               </div>
@@ -108,13 +122,13 @@ export default function SwSlideZine(props) {
             <Hl tone="g" block style={{ transform: 'rotate(-2deg)', display: 'inline-block' }}>{p.line2}</Hl><br />
             <Hl tone="o" block style={{ transform: 'rotate(1.5deg)', display: 'inline-block', marginTop: 8 }}>{p.line3}</Hl><span>。</span>
           </h2>
-          <p style={{ fontSize: 24, lineHeight: 1.62, color: '#c8c0bd', marginTop: 26 }}>
+          <p style={{ fontSize: 24, lineHeight: 1.62, color: introC, marginTop: 26 }}>
             {p.intro}
           </p>
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

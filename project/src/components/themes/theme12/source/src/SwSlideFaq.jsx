@@ -21,7 +21,7 @@ export const defaultProps = {
   theme: 'light',          // 'light' | 'dark'
   itemCount: 4,            // 3–6
   columns: 2,              // 1 | 2
-  focus: false,
+  focus: true,
   focusIndex: 1,
   showLede: true,
   // —— content ——
@@ -46,7 +46,7 @@ export const controls = [
     desc: '问答条目的数量' },
   { key: 'columns', label: '栏数', type: 'segment', def: 2,
     options: [{ value: 1, label: '1 栏' }, { value: 2, label: '2 栏' }], desc: '问答条目的列数' },
-  { key: 'focus', label: '重点强调', type: 'toggle', def: false, desc: '把某一条提升为强调色卡片' },
+  { key: 'focus', label: '重点强调', type: 'toggle', def: true, desc: '把某一条提升为强调色卡片' },
   { key: 'focusIndex', label: '强调第几条', type: 'slider', def: 1, min: 1, max: 6, step: 1,
     dependsOn: 'focus', desc: '被强调条目的序号（1 起）' },
   { key: 'theme', label: '配色', type: 'segment', def: 'light',

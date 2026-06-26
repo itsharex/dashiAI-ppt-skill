@@ -26,6 +26,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_STREAM_POINTS = 6;
+const MAX_STREAM_FOCUS_INDEX = 3;
+
 export const slideStreamDefaults = {
   kicker: 'STREAM · 月度赛道节律',
   title: '一条会呼吸的 ',
@@ -52,7 +55,7 @@ export const slideStreamDefaults = {
     { label: '11', values: { llm: 66, app: 34, infra: 30, chip: 14 } },
     { label: '12', values: { llm: 72, app: 40, infra: 33, chip: 16 } },
   ],
-  pointCount: 12,
+  pointCount: MAX_STREAM_POINTS,
   baseline: 'center',
   focusEnabled: true,
   focusIndex: 0,
@@ -67,12 +70,12 @@ export const slideStreamControls = [
   { key: 'baseline', type: 'enum', label: '基线形态', default: 'center',
     options: [{ value: 'center', label: '中心河流' }, { value: 'bottom', label: '底部堆叠' }],
     describe: '中心对称基线(ThemeRiver) / 底部堆叠面积' },
-  { key: 'pointCount', type: 'number', label: '时点数量', default: 12, min: 4, step: 1,
-    maxFrom: (p) => (p.groups ? p.groups.length : 12), describe: '展示的时点（月/期）数量' },
+  { key: 'pointCount', type: 'number', label: '时点数量', default: MAX_STREAM_POINTS, min: 4, max: MAX_STREAM_POINTS, step: 1,
+    maxFrom: (p) => Math.min(MAX_STREAM_POINTS, (p.groups ? p.groups.length : MAX_STREAM_POINTS)), describe: '展示的时点（月/期）数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '辉光强调某一条带（其余淡出 + 峰值读数）' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.series ? p.series.length : 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_STREAM_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_STREAM_FOCUS_INDEX, (p.series ? p.series.length : 1) - 1)),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调分项的序号' },
   { key: 'showBaseline', type: 'toggle', label: '基线', default: true,
     describe: '中心基线 / 底轴显隐' },
@@ -283,10 +286,10 @@ export function SlideStream(props) {
   const glow = sc.glow || '47,224,127';
   const palette = sc.palette || ['#2fe07f', '#2fe0c4', '#4ea2ff', '#9b7dff', '#b9f24a', '#ff6fae'];
 
-  const count = Math.max(4, Math.min(p.groups.length, p.pointCount));
+  const count = Math.max(4, Math.min(MAX_STREAM_POINTS, p.groups.length, p.pointCount));
   const groups = p.groups.slice(0, count);
   const series = p.series;
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(series.length - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_STREAM_FOCUS_INDEX, series.length - 1, p.focusIndex)) : -1;
 
   return (
     <div className={cx(THEME_CLASS, 'gxn-slide')}>

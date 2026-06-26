@@ -17,6 +17,7 @@ export const meta = { id: 'calendar', index: 31, label: '发布排期 / Schedule
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   eventCount: 4,           // 1–5 highlighted release dates
   showWeekdays: true,      // weekday header row
   showLegend: true,        // legend of event types
@@ -48,6 +49,8 @@ export const controls = [
   { key: 'showWeekdays', label: '星期表头', type: 'toggle', def: true, desc: '显示/隐藏星期表头行' },
   { key: 'showLegend', label: '图例', type: 'toggle', def: true, desc: '显示/隐藏右上角事件图例' },
   { key: 'markToday', label: '今日标记', type: 'toggle', def: true, desc: '在“今日”加圆环标记' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '主事件 / 今日 / 页脚强调色' },
 ];
@@ -55,6 +58,12 @@ export const controls = [
 export default function SwSlideCalendar(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const lineC = dark ? C.lineD : C.line;
   const WEEK = p.weekdays;
   const OFFSET = p.monthOffset, DAYS = p.monthDays, TODAY = p.today;
   const ec = Math.max(1, Math.min(5, p.eventCount));
@@ -69,10 +78,10 @@ export default function SwSlideCalendar(props) {
   const rows = cells.length / 7;
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '36px 44px 34px', display: 'flex', flexDirection: 'column' }}>
 
         {/* header */}
@@ -87,7 +96,7 @@ export default function SwSlideCalendar(props) {
           <div style={{ textAlign: 'right' }}>
             <div style={{ fontWeight: 900, fontSize: 40, letterSpacing: '-1px', lineHeight: 1 }}>{p.monthTitle}</div>
             <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.12em', textTransform: 'uppercase',
-              color: C.inkMut, marginTop: 4 }}>{p.monthSub}</div>
+              color: mutedC, marginTop: 4 }}>{p.monthSub}</div>
           </div>
         </div>
 
@@ -101,7 +110,7 @@ export default function SwSlideCalendar(props) {
                   <span style={{ width: 14, height: 14, borderRadius: 4, background: col }} />
                   <span style={{ fontWeight: 700, fontSize: 21 }}>{e.cn}</span>
                   <span style={{ fontFamily: F.mono, fontSize: 16, letterSpacing: '.06em', textTransform: 'uppercase',
-                    color: C.inkMut }}>{String(e.day).padStart(2, '0')}</span>
+                    color: mutedC }}>{String(e.day).padStart(2, '0')}</span>
                 </div>
               );
             })}
@@ -113,7 +122,7 @@ export default function SwSlideCalendar(props) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 8, marginBottom: 8 }}>
             {WEEK.map((w, i) => (
               <div key={w} style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.08em',
-                color: i >= 5 ? accent : C.inkMut, fontWeight: 700, paddingLeft: 4 }}>{w}</div>
+                color: i >= 5 ? accent : mutedC, fontWeight: 700, paddingLeft: 4 }}>{w}</div>
             ))}
           </div>
         )}
@@ -126,24 +135,24 @@ export default function SwSlideCalendar(props) {
             const today = p.markToday && d === TODAY;
             return (
               <div key={i} style={{ position: 'relative', minWidth: 0, borderRadius: 14, padding: '8px 10px',
-                background: ev ? (ev.color === accent ? 'rgba(241,90,41,.10)' : 'rgba(27,21,24,.035)') : (d ? 'rgba(27,21,24,.022)' : 'transparent'),
-                border: ev ? '2px solid ' + ev.color : '1px solid ' + (d ? C.line : 'transparent'),
+                background: ev ? (ev.color === accent ? 'rgba(241,90,41,.10)' : (dark ? 'rgba(245,225,227,.06)' : 'rgba(27,21,24,.035)')) : (d ? (dark ? 'rgba(245,225,227,.03)' : 'rgba(27,21,24,.022)') : 'transparent'),
+                border: ev ? '2px solid ' + ev.color : '1px solid ' + (d ? lineC : 'transparent'),
                 display: 'flex', flexDirection: 'column' }}>
                 {d && (
                   <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 21,
-                    color: ev ? ev.color : C.ink, display: 'inline-flex', alignItems: 'center',
+                    color: ev ? ev.color : fg, display: 'inline-flex', alignItems: 'center',
                     justifyContent: 'center', width: 34, height: 34, marginLeft: -2,
                     borderRadius: '50%', border: today ? '2px solid ' + accent : 'none',
-                    background: today ? accent : 'transparent', color: today ? '#fff' : (ev ? ev.color : C.ink) }}>
+                    background: today ? accent : 'transparent', color: today ? '#fff' : (ev ? ev.color : fg) }}>
                     {String(d).padStart(2, '0')}
                   </span>
                 )}
                 {ev && (
                   <div style={{ marginTop: 'auto' }}>
                     <div style={{ fontWeight: 900, fontSize: 19, letterSpacing: '-.2px', lineHeight: 1.1,
-                      color: C.ink }}>{ev.cn}</div>
+                      color: fg }}>{ev.cn}</div>
                     <div style={{ fontFamily: F.mono, fontSize: 13, letterSpacing: '.06em', textTransform: 'uppercase',
-                      color: C.inkMut, marginTop: 2 }}>{ev.en}</div>
+                      color: mutedC, marginTop: 2 }}>{ev.en}</div>
                   </div>
                 )}
               </div>
@@ -152,7 +161,7 @@ export default function SwSlideCalendar(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

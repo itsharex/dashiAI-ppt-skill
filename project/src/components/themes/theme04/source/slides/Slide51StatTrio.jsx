@@ -10,7 +10,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  statCount       number 展示的巨数列数(1–3)   默认 3
  *  focusEnabled    bool   重点列高亮开关         默认 false
- *  focusIndex      number 重点列序号(从1起)     默认 1   范围 1–statCount
+ *  focusIndex      number 重点列序号(从1起)     默认 2   范围 1–statCount
  *  showDelta       bool   数字下方趋势徽标显隐    默认 true
  *  showDivider     bool   列间分隔线显隐         默认 true
  *  showDecorations bool   星芒等点缀显隐         默认 true
@@ -60,7 +60,7 @@ function Slide51StatTrio(props) {
       statsData = XHST3_STATS,
     statCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showDelta = true,
     showDivider = true,
     showDecorations = true,
@@ -170,7 +170,7 @@ const META = {
     ...hlDefaults,
     statCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showDelta: true,
     showDivider: true,
     showDecorations: true,
@@ -182,7 +182,7 @@ const META = {
     ...hlControls,
     { key: 'statCount', type: 'slider', label: '巨数列数', min: 1, max: 3, step: 1, default: 3, desc: '并置展示的巨型数字列数' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一列' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'statCount', showIf: (v) => v.focusEnabled, desc: '被高亮列的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'statCount', showIf: (v) => v.focusEnabled, desc: '被高亮列的序号' },
     { key: 'showDelta', type: 'toggle', label: '趋势徽标', default: true, desc: '数字下方趋势徽标' },
     { key: 'showDivider', type: 'toggle', label: '列间分隔', default: true, desc: '列与列之间的分隔线' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

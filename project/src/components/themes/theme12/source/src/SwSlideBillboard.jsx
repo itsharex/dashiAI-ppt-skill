@@ -18,6 +18,7 @@ export const meta = { id: 'billboard', index: 19, label: '灯箱海报 / Lightbo
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'dark',           // 'light' | 'dark'
   mediaFit: 'cover',
   showSpotlights: true,
   showBrandStrip: true,
@@ -40,6 +41,8 @@ export const controls = [
   { key: 'showSpotlights', label: '射灯', type: 'toggle', def: true, desc: '显示/隐藏顶部射灯与光晕' },
   { key: 'showBrandStrip', label: '品牌条', type: 'toggle', def: true, desc: '显示/隐藏灯箱顶部品牌条' },
   { key: 'showCaption', label: '位置说明', type: 'toggle', def: true, desc: '显示/隐藏底部投放位置说明' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '灯箱边框 / 品牌条 / 页脚强调色' },
 ];
@@ -47,12 +50,19 @@ export const controls = [
 export default function SwSlideBillboard(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+
+  // The wall the lightbox is mounted on flips; the illuminated panel housing
+  // itself stays dark in both modes (it is a physical lightbox).
+  const bg = dark ? '#161013' : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const captionC = dark ? 'rgba(245,225,227,.66)' : 'rgba(27,21,24,.6)';
 
   return (
-    <SlideRoot bg="#161013" color={C.blush} style={{ padding: 0 }}>
+    <SlideRoot bg={bg} color={fg} style={{ padding: 0 }}>
       <div style={{ position: 'absolute', inset: 0, padding: '54px 96px 48px', display: 'flex',
         flexDirection: 'column' }}>
-        <Bar meta={p.barMeta} accent={accent} dark />
+        <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
         {/* spotlights — mounted above the panel (zIndex 3) so the beams and
             pooled glow actually fall on the poster; toggling is clearly visible. */}
@@ -104,14 +114,14 @@ export default function SwSlideBillboard(props) {
         {p.showCaption && (
           <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16,
             fontFamily: F.mono, fontSize: 21, letterSpacing: '.14em', textTransform: 'uppercase',
-            color: 'rgba(245,225,227,.66)', marginBottom: 10, position: 'relative', zIndex: 2 }}>
+            color: captionC, marginBottom: 10, position: 'relative', zIndex: 2 }}>
             <span style={{ width: 9, height: 9, borderRadius: '50%', background: accent }} />
             {p.caption}
           </div>
         )}
 
         <div style={{ position: 'relative', zIndex: 2 }}>
-          <Footer page={p.page} total={p.total} accent={accent} dark />
+          <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
         </div>
       </div>
     </SlideRoot>

@@ -22,6 +22,8 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_DELTA_SUPPORT = 3;
+
 export const slideDeltaDefaults = {
   kicker: 'SHIFT · 一年之变',
   from: { value: '305', unit: '亿', label: '2023 全年' },
@@ -49,7 +51,8 @@ export const slideDeltaControls = [
   { key: 'showLabels', type: 'toggle', label: '时点标签', default: true,
     describe: '起点 / 终点的时点标签显隐' },
   { key: 'supportCount', type: 'number', label: '支撑数据', default: 3, min: 0, step: 1,
-    maxFrom: (p) => (p.support ? p.support.length : 3), describe: '底部支撑小数据数量（0 = 不显示）' },
+    max: MAX_DELTA_SUPPORT,
+    maxFrom: (p) => Math.min(MAX_DELTA_SUPPORT, p.support ? p.support.length : MAX_DELTA_SUPPORT), describe: '底部支撑小数据数量（0 = 不显示）' },
   { key: 'showCaption', type: 'toggle', label: '底部说明', default: true,
     describe: '底部一句话说明显隐' },
 ];
@@ -81,7 +84,7 @@ export function SlideDelta(props) {
   const emFrom = p.emphasize === 'from' || p.emphasize === 'both';
   const emTo = p.emphasize === 'to' || p.emphasize === 'both';
   const up = !p.delta || p.delta.dir !== 'down';
-  const sCount = Math.max(0, Math.min(p.support.length, p.supportCount));
+  const sCount = Math.max(0, Math.min(MAX_DELTA_SUPPORT, p.support.length, p.supportCount));
   const support = p.support.slice(0, sCount);
 
   return (

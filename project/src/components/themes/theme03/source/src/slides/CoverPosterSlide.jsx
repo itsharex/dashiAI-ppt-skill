@@ -73,7 +73,7 @@ export default function CoverPosterSlide(props) {
   return (
     <div className={`rd-slide${p.theme === "dark" ? " rd-dark" : ""}`}>
       {(useUnicorn || hasImg) && (
-        <div style={{ position: "absolute", inset: 0, background: p.theme === "dark" ? "#161513" : "#d6d6d3" }}>
+        <div style={{ position: "absolute", inset: 0, background: "var(--rd-bg)" }}>
           {useUnicorn ? (
             <UnicornBackground scene={p.unicornScene} accent={accent} />
           ) : (
@@ -83,7 +83,7 @@ export default function CoverPosterSlide(props) {
       )}
       {(useUnicorn || hasImg) && (
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none",
-          background: p.theme === "dark" ? "rgba(22,21,19,0.58)" : "rgba(214,214,211,0.72)" }} />
+          background: "color-mix(in srgb, var(--rd-bg) 72%, transparent)" }} />
       )}
       <div className="rd-frame" style={{ padding: 64 }}>
         {/* inner outline + corner labels */}

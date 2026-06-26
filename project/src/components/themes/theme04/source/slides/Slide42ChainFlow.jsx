@@ -10,7 +10,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  groupCount       number 展示的产业层数      默认 3   可选 1–3
  *  focusEnabled     bool   重点层高亮开关        默认 false
- *  focusIndex       number 重点层序号(从1起)    默认 2   范围 1–groupCount
+ *  focusIndex       number 重点层序号(从1起)    默认 3   范围 1–groupCount
  *  showShareBar     bool   右栏资本占比显隐       默认 true
  *  showCompanyTags  bool   公司芯片显隐(关=纯文本) 默认 true
  *  showLevelBadge   bool   层级大徽章显隐         默认 true
@@ -79,7 +79,7 @@ function Slide42ChainFlow(props) {
       layersData = XHSCF_LAYERS,
     groupCount = 3,
     focusEnabled = false,
-    focusIndex = 2,
+    focusIndex = 3,
     showShareBar = true,
     showCompanyTags = true,
     showLevelBadge = true,
@@ -232,7 +232,7 @@ const META = {
     ...hlDefaults,
     groupCount: 3,
     focusEnabled: false,
-    focusIndex: 2,
+    focusIndex: 3,
     showShareBar: true,
     showCompanyTags: true,
     showLevelBadge: true,
@@ -246,7 +246,7 @@ const META = {
     ...hlControls,
     { key: 'groupCount', type: 'slider', label: '产业层数', min: 1, max: 3, step: 1, default: 3, desc: '展示的产业层级数（上中下游）' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一层级' },
-    { key: 'focusIndex', type: 'slider', label: '重点层序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'groupCount', showIf: (v) => v.focusEnabled, desc: '被高亮层级的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点层序号', min: 1, max: 3, step: 1, default: 3, maxFromKey: 'groupCount', showIf: (v) => v.focusEnabled, desc: '被高亮层级的序号' },
     { key: 'showShareBar', type: 'toggle', label: '资本占比', default: true, desc: '右栏资本占比大数字 + 进度条' },
     { key: 'showCompanyTags', type: 'toggle', label: '公司芯片', default: true, desc: '公司用霓虹芯片（关=纯文本）' },
     { key: 'showLevelBadge', type: 'toggle', label: '层级徽章', default: true, desc: '层级大徽章 + 英文' },

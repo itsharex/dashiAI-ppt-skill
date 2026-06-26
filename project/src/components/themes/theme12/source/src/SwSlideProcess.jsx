@@ -18,6 +18,7 @@ export const meta = { id: 'process', index: 7, label: '流程 / How It Works' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   stepCount: 4,            // 3–5 steps
   focus: true,             // promote one step to the accent colour
   focusIndex: 4,
@@ -46,6 +47,8 @@ export const controls = [
     dependsOn: 'focus', desc: '被强调步骤的序号（1 起）' },
   { key: 'showConnector', label: '连接箭头', type: 'toggle', def: true, desc: '显示/隐藏步骤间的箭头' },
   { key: 'showLede', label: '显示导语', type: 'toggle', def: true, desc: '显示/隐藏标题区导语' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '焦点卡 / 导语 / 页脚强调色' },
 ];
@@ -64,13 +67,14 @@ function Chevron({ color }) {
 export default function SwSlideProcess(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(5, p.stepCount));
   const focusN = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) : 0;
   const steps = (p.steps || []).slice(0, count);
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={dark ? C.dark : C.blush} color={dark ? C.blush : C.ink}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} divider={p.showLede} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 3 }}>
 
@@ -122,7 +126,7 @@ export default function SwSlideProcess(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} divider={false} />
     </SlideRoot>
   );
 }

@@ -12,7 +12,7 @@
  *  itemCount       number 展示的公司气泡数(3–6)  默认 6
  *  chartVariant    enum   图表类型               默认 'scatter' 可选 'scatter'|'bars'
  *  focusEnabled    bool   重点公司高亮开关        默认 true
- *  focusIndex      number 重点公司序号(从1起)    默认 1   范围 1–itemCount
+ *  focusIndex      number 重点公司序号(从1起)    默认 2   范围 1–itemCount
  *  showZones       bool   背景对角分区淡色块      默认 true（scatter 生效）
  *  showAxisLabels  bool   坐标轴文字显隐         默认 true
  *  showDecorations bool   星芒等点缀显隐         默认 true
@@ -78,7 +78,7 @@ function Slide63Scatter(props) {
     itemCount = 6,
     chartVariant = 'scatter',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showZones = true,
     showAxisLabels = true,
     showDecorations = true,
@@ -258,7 +258,7 @@ const META = {
     itemCount: 6,
     chartVariant: 'scatter',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showZones: true,
     showAxisLabels: true,
     showDecorations: true,
@@ -271,7 +271,7 @@ const META = {
     { key: 'itemCount', type: 'slider', label: '公司气泡数', min: 3, max: 6, step: 1, default: 6, desc: '展示的公司气泡数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['scatter', 'bars'], optionLabels: ['散点', '柱状'], default: 'scatter', desc: '气泡散点 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一公司' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮公司的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮公司的序号' },
     { key: 'showZones', type: 'toggle', label: '对角分区', default: true, showIf: (v) => v.chartVariant === 'scatter', desc: '背景估值兑现 / 跑前淡色块' },
     { key: 'showAxisLabels', type: 'toggle', label: '坐标轴文字', default: true, showIf: (v) => v.chartVariant === 'scatter', desc: '横纵坐标轴文字' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

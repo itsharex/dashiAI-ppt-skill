@@ -11,7 +11,7 @@
  *  tileCount       number 玻璃糖果瓷砖数量(2–4)       默认 4
  *  paletteVariant  enum   瓷砖配色: 多彩 / 单色        默认 'multi' multi/mono
  *  focusEnabled    bool   是否高亮某一块瓷砖          默认 false
- *  focusIndex      number 被高亮瓷砖序号(1–tileCount) 默认 1
+ *  focusIndex      number 被高亮瓷砖序号(1–tileCount) 默认 2
  *  showIssue       bool   期号徽标显隐                默认 true
  *  showKicker      bool   瓷砖角标(英文小标)显隐      默认 true
  *  showDecorations bool   星芒等点缀显隐              默认 true
@@ -45,7 +45,7 @@ function Slide76CoverBento(props) {
     tileCount = 4,
     paletteVariant = 'multi',
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showIssue = true,
     showKicker = true,
     showDecorations = true,
@@ -174,7 +174,7 @@ const META = {
     tileCount: 4,
     paletteVariant: 'multi',
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showIssue: true,
     showKicker: true,
     showDecorations: true,
@@ -193,7 +193,7 @@ const META = {
     { key: 'tileCount', type: 'slider', label: '瓷砖数量', min: 2, max: 4, step: 1, default: 4, desc: '玻璃糖果数据瓷砖数量(自动重排)' },
     { key: 'paletteVariant', type: 'radio', label: '瓷砖配色', options: ['multi', 'mono'], optionLabels: ['多彩', '单色'], default: 'multi', desc: '瓷砖多彩 / 统一主色' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一块瓷砖' },
-    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'tileCount', desc: '被高亮瓷砖序号', showIf: (v) => v.focusEnabled },
+    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'tileCount', desc: '被高亮瓷砖序号', showIf: (v) => v.focusEnabled },
     { key: 'showIssue', type: 'toggle', label: '期号徽标', default: true, desc: '期号徽标显隐' },
     { key: 'showKicker', type: 'toggle', label: '瓷砖角标', default: true, desc: '瓷砖英文小标显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

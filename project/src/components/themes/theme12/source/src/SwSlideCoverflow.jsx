@@ -20,6 +20,7 @@ export const meta = { id: 'coverflow', index: 26, label: '封面流 / Coverflow'
 
 export const defaultProps = {
   accent: C.cyan,
+  theme: 'dark',           // 'light' | 'dark'
   mediaCount: 5,           // 3–7 covers
   focusIndex: 3,           // 1-based, which cover stands upright
   mediaFit: 'cover',
@@ -55,6 +56,8 @@ export const controls = [
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '封面图填充方式' },
   { key: 'showReflection', label: '倒影', type: 'toggle', def: true, desc: '显示/隐藏封面下方倒影' },
   { key: 'showCaption', label: '焦点图注', type: 'toggle', def: true, desc: '显示/隐藏焦点封面的曲目标签' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.cyan,
     options: [C.cyan, C.orange, C.purple, C.green], desc: '导语 / 高亮 / 页脚强调色' },
 ];
@@ -62,6 +65,7 @@ export const controls = [
 export default function SwSlideCoverflow(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const TITLES = p.titles;
   const count = Math.max(3, Math.min(7, p.mediaCount));
   const focus = Math.max(1, Math.min(count, p.focusIndex)) - 1;
@@ -74,9 +78,13 @@ export default function SwSlideCoverflow(props) {
   const size = Math.max(180, Math.min(sizeCap, Math.floor(880 / (stepFactor * maxSide + 0.55))));
   const step = size * stepFactor;          // horizontal spacing between covers
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? 'rgba(245,225,227,.6)' : C.inkMut;
+
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 18, display: 'flex', alignItems: 'flex-end',
         justifyContent: 'space-between', gap: 40 }}>
@@ -87,7 +95,7 @@ export default function SwSlideCoverflow(props) {
           </h2>
         </div>
         <div style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.12em', textTransform: 'uppercase',
-          color: 'rgba(245,225,227,.6)', textAlign: 'right', paddingBottom: 6 }}>
+          color: mut, textAlign: 'right', paddingBottom: 6 }}>
           {String(count).padStart(2, '0')} {p.hint}<br />drag to fill
         </div>
       </div>
@@ -115,22 +123,28 @@ export default function SwSlideCoverflow(props) {
                   boxShadow: isFocus ? '0 40px 90px rgba(0,0,0,.6)' : '0 18px 40px rgba(0,0,0,.5)',
                   borderRadius: 8, outline: isFocus ? '4px solid ' + accent : 'none', outlineOffset: 0 }}>
                   <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-                    fit={p.mediaFit} accent={COVER_TINT[i % COVER_TINT.length]} radius={8} tone="dark"
+                    fit={p.mediaFit} accent={COVER_TINT[i % COVER_TINT.length]} radius={8} tone={dark ? 'dark' : 'light'}
                     placeholder={isFocus ? p.mediaPlaceholder : ''} />
                 </div>
-                {/* reflection */}
-                {p.showReflection && (
-                  <div aria-hidden="true" style={{ position: 'absolute', top: '100%', left: 0, width: '100%',
-                    height: '46%', transform: 'scaleY(-1)', transformOrigin: 'top',
-                    opacity: 0.3, borderRadius: 8, overflow: 'hidden',
-                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,.7), transparent)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,.7), transparent)',
-                    background: reflectionMedia?.src ? '#000' : 'transparent' }}>
-                    {reflectionMedia?.src && (
-                      reflectionMedia.kind === 'video'
-                        ? <video src={reflectionMedia.src} muted playsInline loop autoPlay preload="metadata" style={{ width: '100%', height: '100%', objectFit: p.mediaFit }} />
-                        : <img src={reflectionMedia.src} alt="" style={{ width: '100%', height: '100%', objectFit: p.mediaFit }} />
-                    )}
+                {/* floor reflection — a vertically-mirrored copy sitting on the
+                    ground directly beneath the cover, fading out downward. The
+                    box is anchored to the cover's bottom edge (top:100%) and only
+                    the MEDIA is flipped (scaleY(-1)); flipping the box itself —
+                    as it did before — pivots it about its top edge and throws the
+                    mirror up over the artwork instead of onto the floor. The
+                    media keeps the cover's full height (size) so the slice next
+                    to the card is the cover's bottom edge: a true reflection. */}
+                {p.showReflection && reflectionMedia?.src && (
+                  <div aria-hidden="true" style={{ position: 'absolute', top: '100%', left: 0,
+                    width: '100%', height: '44%', borderRadius: 8, overflow: 'hidden',
+                    pointerEvents: 'none', opacity: 0.32, background: '#000',
+                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,.8), transparent 88%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,.8), transparent 88%)' }}>
+                    {reflectionMedia.kind === 'video'
+                      ? <video src={reflectionMedia.src} muted playsInline loop autoPlay preload="metadata"
+                          style={{ width: '100%', height: size, objectFit: p.mediaFit, transform: 'scaleY(-1)', display: 'block' }} />
+                      : <img src={reflectionMedia.src} alt=""
+                          style={{ width: '100%', height: size, objectFit: p.mediaFit, transform: 'scaleY(-1)', display: 'block' }} />}
                   </div>
                 )}
               </div>
@@ -149,7 +163,7 @@ export default function SwSlideCoverflow(props) {
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

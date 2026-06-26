@@ -11,7 +11,7 @@
  *  mediaCount      number 拍立得照片数量        默认 4   可选 0–4
  *  mediaLayout     enum   排布方式            默认 'scatter' 可选 'scatter'|'row'
  *  focusEnabled    bool   重点照片高亮开关       默认 false
- *  focusIndex      number 重点照片序号(从1起)    默认 2
+ *  focusIndex      number 重点照片序号(从1起)    默认 3
  *  showCaptions    bool   照片底部手写标签显隐    默认 true
  *  showTape        bool   顶部彩色胶带显隐       默认 true
  *  showDecorations bool   星芒 / 圆环等点缀     默认 true
@@ -63,7 +63,7 @@ function Slide31Polaroid(props) {
     mediaCount = 4,
     mediaLayout = 'scatter',
     focusEnabled = false,
-    focusIndex = 2,
+    focusIndex = 3,
     showCaptions = true,
     showTape = true,
     showDecorations = true,
@@ -178,7 +178,7 @@ const META = {
     mediaCount: 4,
     mediaLayout: 'scatter',
     focusEnabled: false,
-    focusIndex: 2,
+    focusIndex: 3,
     showCaptions: true,
     showTape: true,
     showDecorations: true,
@@ -191,7 +191,7 @@ const META = {
     { key: 'mediaCount', type: 'slider', label: '照片数量', min: 0, max: 4, step: 1, default: 4, desc: '拍立得照片数量(图片槽)' },
     { key: 'mediaLayout', type: 'radio', label: '排布方式', options: ['scatter', 'row'], optionLabels: ['散落', '整齐'], default: 'scatter', desc: '散落倾斜 / 整齐排列' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一张照片' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'mediaCount', showIf: (v) => v.focusEnabled, desc: '被高亮照片的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 3, maxFromKey: 'mediaCount', showIf: (v) => v.focusEnabled, desc: '被高亮照片的序号' },
     { key: 'showCaptions', type: 'toggle', label: '手写标签', default: true, desc: '照片底部标签显隐' },
     { key: 'showTape', type: 'toggle', label: '彩色胶带', default: true, desc: '顶部彩色胶带显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

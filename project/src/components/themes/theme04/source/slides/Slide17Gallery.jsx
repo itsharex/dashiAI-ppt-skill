@@ -13,7 +13,7 @@
  *  mediaLayout     enum   排布构图           默认 'mosaic' 可选 'mosaic'|'grid'
  *  showCaptions    bool   浮层标注显隐         默认 true
  *  focusEnabled    bool   重点图高亮开关        默认 true
- *  focusIndex      number 重点图序号(从1起)    默认 1
+ *  focusIndex      number 重点图序号(从1起)    默认 2
  *  showDecorations bool   装饰元素显隐         默认 true
  *
  * 所有可见文案 / 数据均由 props 暴露（defaults 给完整默认值），controls 与 props 一一对应。
@@ -79,7 +79,7 @@ function Slide17Gallery(props) {
     mediaLayout = 'mosaic',
     showCaptions = true,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showDecorations = true,
     hlStyle = 'glass',
     hlTilt = 2,
@@ -187,7 +187,7 @@ const META = {
     mediaLayout: 'mosaic',
     showCaptions: true,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showDecorations: true,
     kicker: '地区分布 · GEO HUBS',
     titleLead: '资本与算力，',
@@ -203,7 +203,7 @@ const META = {
     { key: 'mediaLayout', type: 'radio', label: '排布构图', options: ['mosaic', 'grid'], optionLabels: ['特写网格', '等比网格'], default: 'mosaic', desc: '特写网格(首图大) / 等比网格' },
     { key: 'showCaptions', type: 'toggle', label: '浮层标注', default: true, desc: '图片底部城市/占比标注' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一张图片' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'mediaCount', showIf: (v) => v.focusEnabled, desc: '被高亮图片的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'mediaCount', showIf: (v) => v.focusEnabled, desc: '被高亮图片的序号' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
     { type: 'section', label: '文案' },
     { key: 'kicker', type: 'text', label: '眉标', default: '地区分布 · GEO HUBS', desc: '顶部 kicker' },

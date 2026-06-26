@@ -16,6 +16,7 @@ export const meta = { id: 'radar', index: 55, label: '能力雷达 / Radar' };
 
 export const defaultProps = {
   accent: C.purple,
+  theme: 'light',          // 'light' | 'dark'
   axisCount: 6,            // 4–6 capability axes
   seriesCount: 2,          // 1–2 series
   showGrid: true,
@@ -46,6 +47,8 @@ export const controls = [
     desc: '对比的系列数（声浪 / 传统）' },
   { key: 'showGrid', label: '网格环', type: 'toggle', def: true, desc: '显示/隐藏背景网格环与刻度' },
   { key: 'showLabels', label: '维度标签', type: 'toggle', def: true, desc: '显示/隐藏外圈维度名称' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.purple,
     options: [C.purple, C.orange, C.cyan, C.green], desc: '主系列 / 页脚强调色' },
 ];
@@ -60,16 +63,25 @@ export default function SwSlideRadar(props) {
   const axes = (p.axes || []).slice(0, n);
   const secondary = C.inkMut;
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const gridStroke = dark ? 'rgba(245,225,227,.12)' : 'rgba(27,21,24,.12)';
+  const bodyMut = dark ? '#c8c0bd' : '#5a4f54';
+  const labelMut = dark ? '#c8c0bd' : '#9a8f8c';
+  const rule = dark ? C.lineD : C.line;
+
   const angle = (i) => -Math.PI / 2 + (i * 2 * Math.PI) / n;
   const pt = (i, r) => [CX + Math.cos(angle(i)) * R * r, CY + Math.sin(angle(i)) * R * r];
   const poly = (key) => axes.map((ax, i) => pt(i, ax[key]).join(',')).join(' ');
   const rings = [0.25, 0.5, 0.75, 1];
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '36px 52px 30px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }}>
 
         {/* chart */}
@@ -77,11 +89,11 @@ export default function SwSlideRadar(props) {
           <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" style={{ width: '100%', height: '100%', maxHeight: 560 }}>
             {p.showGrid && rings.map((r) => (
               <polygon key={r} points={axes.map((_, i) => pt(i, r).join(',')).join(' ')}
-                fill="none" stroke="rgba(27,21,24,.12)" strokeWidth="1.5" />
+                fill="none" stroke={gridStroke} strokeWidth="1.5" />
             ))}
             {axes.map((ax, i) => {
               const [x, y] = pt(i, 1);
-              return <line key={i} x1={CX} y1={CY} x2={x} y2={y} stroke="rgba(27,21,24,.12)" strokeWidth="1.5" />;
+              return <line key={i} x1={CX} y1={CY} x2={x} y2={y} stroke={gridStroke} strokeWidth="1.5" />;
             })}
 
             {two && (
@@ -91,7 +103,7 @@ export default function SwSlideRadar(props) {
             <polygon points={poly('a')} fill={accent + '2e'} stroke={accent} strokeWidth="4" strokeLinejoin="round" />
             {axes.map((ax, i) => {
               const [x, y] = pt(i, ax.a);
-              return <circle key={i} cx={x} cy={y} r="7" fill={accent} stroke={C.paper} strokeWidth="2.5" />;
+              return <circle key={i} cx={x} cy={y} r="7" fill={accent} stroke={cardBg} strokeWidth="2.5" />;
             })}
 
             {p.showLabels && axes.map((ax, i) => {
@@ -99,9 +111,9 @@ export default function SwSlideRadar(props) {
               const anchor = Math.abs(x - CX) < 24 ? 'middle' : (x > CX ? 'start' : 'end');
               return (
                 <g key={i}>
-                  <text x={x} y={y - 4} textAnchor={anchor} fontWeight="900" fontSize="30" fill={C.ink}>{ax.cn}</text>
+                  <text x={x} y={y - 4} textAnchor={anchor} fontWeight="900" fontSize="30" fill={fg}>{ax.cn}</text>
                   <text x={x} y={y + 22} textAnchor={anchor} fontFamily={F.mono} fontSize="18"
-                    letterSpacing="1" fill="#9a8f8c">{ax.en.toUpperCase()}</text>
+                    letterSpacing="1" fill={labelMut}>{ax.en.toUpperCase()}</text>
                 </g>
               );
             })}
@@ -114,12 +126,12 @@ export default function SwSlideRadar(props) {
           <h2 style={{ fontWeight: 900, fontSize: 46, lineHeight: 1.1, letterSpacing: '-1px', marginTop: 14 }}>
             {renderSwText(p.title, { hl: { tone: 'p' } })}
           </h2>
-          <p style={{ fontSize: T.body, lineHeight: 1.66, color: '#5a4f54', marginTop: 18, maxWidth: 460 }}>
+          <p style={{ fontSize: T.body, lineHeight: 1.66, color: bodyMut, marginTop: 18, maxWidth: 460 }}>
             {p.intro}
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 28,
-            paddingTop: 24, borderTop: '1px solid ' + C.line }}>
+            paddingTop: 24, borderTop: '1px solid ' + rule }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
               <span style={{ width: 28, height: 14, borderRadius: 4, background: accent + '2e',
                 border: '3px solid ' + accent }} />
@@ -129,14 +141,14 @@ export default function SwSlideRadar(props) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
                 <span style={{ width: 28, height: 14, borderRadius: 4, background: secondary + '22',
                   border: '3px dashed ' + secondary }} />
-                <span style={{ fontWeight: 700, fontSize: 24, color: '#5a4f54' }}>{p.seriesBName}</span>
+                <span style={{ fontWeight: 700, fontSize: 24, color: bodyMut }}>{p.seriesBName}</span>
               </div>
             )}
           </div>
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

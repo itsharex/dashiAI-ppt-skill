@@ -13,7 +13,7 @@ import Decor, { decorControls, decorDefaults } from "../Decor.jsx";
 export const controls = [
   { key: "showEyebrow", label: "装饰标签", type: "toggle", default: true,
     help: "顶部分类标签显示 / 隐藏" },
-  { key: "imageCount", label: "图片数量", type: "slider", default: 2, min: 0, max: 4, step: 1,
+  { key: "imageCount", label: "图片数量", type: "slider", default: 2, min: 0, max: 2, step: 1,
     help: "图片槽数量（按真实比例对齐排布，0 为纯文字）" },
   { key: "layout", label: "图片排布", type: "select", default: "row",
     options: [{ value: "row", label: "横排" }, { value: "column", label: "竖排" }],

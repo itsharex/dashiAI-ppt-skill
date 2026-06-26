@@ -13,7 +13,7 @@
  *  accentTone      enum   主色调(通用命名)            默认 'green' green/yellow/blue/pink
  *  statCount       number 底部数据芯片数量(0–3)       默认 3
  *  focusEnabled    bool   是否高亮某一枚芯片          默认 false
- *  focusIndex      number 被高亮芯片序号(1–statCount) 默认 1
+ *  focusIndex      number 被高亮芯片序号(1–statCount) 默认 3
  *  showSub         bool   副标题显隐                  默认 true
  *  showBrand       bool   顶部刊名显隐                默认 true
  *  showDecorations bool   星芒等点缀显隐              默认 true
@@ -49,7 +49,7 @@ function Slide73CoverHero(props) {
     accentTone = 'green',
     statCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 3,
     showSub = true,
     showBrand = true,
     showDecorations = true,
@@ -153,7 +153,7 @@ const META = {
     accentTone: 'green',
     statCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 3,
     showSub: true,
     showBrand: true,
     showDecorations: true,
@@ -170,7 +170,7 @@ const META = {
     { key: 'accentTone', type: 'radio', label: '主色调', options: ['green', 'yellow', 'blue', 'pink'], optionLabels: ['绿', '黄', '蓝', '粉'], default: 'green', desc: '页面主色调(通用命名)' },
     { key: 'statCount', type: 'slider', label: '数据芯片数量', min: 0, max: 3, step: 1, default: 3, desc: '底部并置数据芯片数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一枚芯片' },
-    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'statCount', desc: '被高亮芯片序号', showIf: (v) => v.focusEnabled },
+    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 3, step: 1, default: 3, maxFromKey: 'statCount', desc: '被高亮芯片序号', showIf: (v) => v.focusEnabled },
     { key: 'showSub', type: 'toggle', label: '副标题', default: true, desc: '副标题显隐' },
     { key: 'showBrand', type: 'toggle', label: '顶部刊名', default: true, desc: '顶部刊名显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

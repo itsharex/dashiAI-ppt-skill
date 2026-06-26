@@ -17,6 +17,7 @@ export const meta = { id: 'slope', index: 46, label: '斜率图 / Slope' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   lineCount: 5,            // 3–6 metrics
   focus: true,
   focusIndex: 1,           // 1-based, which metric to emphasise
@@ -50,6 +51,8 @@ export const controls = [
     dependsOn: 'focus', desc: '高亮的指标线（自上而下）' },
   { key: 'showGrid', label: '刻度网格', type: 'toggle', def: true, desc: '显示/隐藏两端刻度与基线' },
   { key: 'showDelta', label: '变化标注', type: 'toggle', def: true, desc: '显示/隐藏每条线的变化百分比' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '聚焦线 / 导语 / 页脚强调色' },
 ];
@@ -89,11 +92,29 @@ export default function SwSlideSlope(props) {
   const lblL = spread(data.map((m) => yAt(m.a)), 36, M.t + 12, M.t + PH);
   const lblR = spread(data.map((m) => yAt(m.b)), 58, M.t + 24, M.t + PH - 6);
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  // Page / card surfaces flip with theme; grid, axes, leaders and dimmed lines
+  // mirror their ink alphas to blush. Slope line colours (swSeriesColors) and
+  // the accent stay fixed. The semantic "up" green lifts to lime in dark so the
+  // delta chips read on the dark card; orange already reads on both.
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const gridC = dark ? 'rgba(245,225,227,.08)' : 'rgba(27,21,24,.08)';
+  const axisC = dark ? 'rgba(245,225,227,.28)' : 'rgba(27,21,24,.28)';
+  const dimLine = dark ? 'rgba(245,225,227,.18)' : 'rgba(27,21,24,.18)';
+  const leaderC = dark ? 'rgba(245,225,227,.2)' : 'rgba(27,21,24,.2)';
+  const labelOn = dark ? C.blush : C.ink;
+  const labelOff = dark ? 'rgba(245,225,227,.32)' : 'rgba(27,21,24,.32)';
+  const deltaOff = dark ? 'rgba(245,225,227,.3)' : 'rgba(27,21,24,.3)';
+  const upC = dark ? C.lime : C.green;
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '34px 48px 26px', display: 'flex', flexDirection: 'column' }}>
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 30 }}>
@@ -107,8 +128,8 @@ export default function SwSlideSlope(props) {
             {[[p.periodLeft.y, p.periodLeft.s], [p.periodRight.y, p.periodRight.s]].map(([y, s], i) => (
               <div key={y} style={{ textAlign: 'center' }}>
                 <div style={{ fontWeight: 900, fontSize: 30, letterSpacing: '-.5px',
-                  color: i === 1 ? accent : C.ink }}>{y}</div>
-                <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', color: C.inkMut }}>{s}</div>
+                  color: i === 1 ? accent : fg }}>{y}</div>
+                <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', color: mutedC }}>{s}</div>
               </div>
             ))}
           </div>
@@ -119,18 +140,18 @@ export default function SwSlideSlope(props) {
             style={{ width: '100%', height: '100%', display: 'block' }}>
             {/* grid + axes */}
             {p.showGrid && ticks.map((t) => (
-              <line key={t} x1={xL} y1={yAt(t)} x2={xR} y2={yAt(t)} stroke="rgba(27,21,24,.08)"
+              <line key={t} x1={xL} y1={yAt(t)} x2={xR} y2={yAt(t)} stroke={gridC}
                 strokeWidth="1" strokeDasharray={t === 0 ? '0' : '3 7'} />
             ))}
-            <line x1={xL} y1={M.t} x2={xL} y2={M.t + PH} stroke="rgba(27,21,24,.28)" strokeWidth="2" />
-            <line x1={xR} y1={M.t} x2={xR} y2={M.t + PH} stroke="rgba(27,21,24,.28)" strokeWidth="2" />
+            <line x1={xL} y1={M.t} x2={xL} y2={M.t + PH} stroke={axisC} strokeWidth="2" />
+            <line x1={xR} y1={M.t} x2={xR} y2={M.t + PH} stroke={axisC} strokeWidth="2" />
 
             {/* connector lines + endpoint dots */}
             {data.map((m, i) => {
               const col = swSeriesColors[i % swSeriesColors.length];
               const on = fi === -1 || fi === i;
               const yl = yAt(m.a), yr = yAt(m.b);
-              const stroke = on ? (fi === i ? accent : col) : 'rgba(27,21,24,.18)';
+              const stroke = on ? (fi === i ? accent : col) : dimLine;
               return (
                 <g key={m.t} opacity={on ? 1 : 0.9}>
                   <line x1={xL} y1={yl} x2={xR} y2={yr} stroke={stroke}
@@ -146,16 +167,16 @@ export default function SwSlideSlope(props) {
               const col = swSeriesColors[i % swSeriesColors.length];
               const on = fi === -1 || fi === i;
               const yl = yAt(m.a), yr = yAt(m.b);
-              const tcol = on ? C.ink : 'rgba(27,21,24,.32)';
+              const tcol = on ? labelOn : labelOff;
               const up = m.b >= m.a;
               const tyl = lblL[i], tyr = lblR[i];
               return (
                 <g key={m.t} opacity={on ? 1 : 0.9}>
                   {Math.abs(tyl - yl) > 7 && (
-                    <line x1={xL - 14} y1={yl} x2={xL - 18} y2={tyl} stroke="rgba(27,21,24,.2)" strokeWidth="1" />
+                    <line x1={xL - 14} y1={yl} x2={xL - 18} y2={tyl} stroke={leaderC} strokeWidth="1" />
                   )}
                   {Math.abs(tyr - yr) > 7 && (
-                    <line x1={xR + 14} y1={yr} x2={xR + 18} y2={tyr - 7} stroke="rgba(27,21,24,.2)" strokeWidth="1" />
+                    <line x1={xR + 14} y1={yr} x2={xR + 18} y2={tyr - 7} stroke={leaderC} strokeWidth="1" />
                   )}
                   {/* left name */}
                   <text x={xL - 24} y={tyl + 7} textAnchor="end" fontFamily={F.sans} fontWeight={fi === i ? 700 : 600}
@@ -165,7 +186,7 @@ export default function SwSlideSlope(props) {
                     fontSize="24" fill={tcol}>{m.b}%</text>
                   {p.showDelta && (
                     <text x={xR + 24} y={tyr - 18} textAnchor="start" fontFamily={F.mono} fontSize="18"
-                      fill={on ? (up ? C.green : C.orange) : 'rgba(27,21,24,.3)'}>
+                      fill={on ? (up ? upC : C.orange) : deltaOff}>
                       {(up ? '▲ +' : '▼ ') + (m.b - m.a) + 'pt'}</text>
                   )}
                 </g>
@@ -174,11 +195,11 @@ export default function SwSlideSlope(props) {
           </svg>
         </div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', color: C.inkMut,
+        <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', color: mutedC,
           textAlign: 'center', marginTop: 2 }}>{p.axisLabel}</div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

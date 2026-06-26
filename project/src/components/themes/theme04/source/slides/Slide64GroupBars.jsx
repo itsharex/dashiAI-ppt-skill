@@ -11,7 +11,7 @@
  *  columnCount     number 展示的赛道组数(3–5)   默认 5
  *  chartVariant    enum   图表类型               默认 'group' 可选 'group'|'total'
  *  focusEnabled    bool   重点赛道高亮开关        默认 true
- *  focusIndex      number 重点赛道序号(从1起)    默认 1   范围 1–columnCount
+ *  focusIndex      number 重点赛道序号(从1起)    默认 2   范围 1–columnCount
  *  showValues      bool   柱顶数值标签显隐        默认 true
  *  showLegend      bool   上 / 下半年图例显隐     默认 true
  *  showDecorations bool   星芒等点缀显隐         默认 true
@@ -68,7 +68,7 @@ function Slide64GroupBars(props) {
     columnCount = 5,
     chartVariant = 'group',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showValues = true,
     showLegend = true,
     showDecorations = true,
@@ -219,7 +219,7 @@ const META = {
     columnCount: 5,
     chartVariant: 'group',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showValues: true,
     showLegend: true,
     showDecorations: true,
@@ -232,7 +232,7 @@ const META = {
     { key: 'columnCount', type: 'slider', label: '赛道组数', min: 3, max: 5, step: 1, default: 5, desc: '展示的赛道组数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['group', 'total'], optionLabels: ['双柱', '合计'], default: 'group', desc: '上下半年双柱 / 合计单柱' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一赛道组' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 1, maxFromKey: 'columnCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 2, maxFromKey: 'columnCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道的序号' },
     { key: 'showValues', type: 'toggle', label: '柱顶数值', default: true, desc: '柱顶数值标签' },
     { key: 'showLegend', type: 'toggle', label: '图例', default: true, desc: '上 / 下半年图例', showIf: (v) => v.chartVariant === 'group' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

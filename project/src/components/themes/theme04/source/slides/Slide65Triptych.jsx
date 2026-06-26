@@ -11,7 +11,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  mediaCount      number 显示图片槽的条数(0–3)  默认 3
  *  focusEnabled    bool   重点条高亮开关          默认 false
- *  focusIndex      number 重点条序号(从1起)      默认 2   范围 1–3
+ *  focusIndex      number 重点条序号(从1起)      默认 3   范围 1–3
  *  showCaptions    bool   每条底部现场注解显隐     默认 true
  *  showHeader      bool   顶部总标题浮层显隐       默认 true
  *  showDecorations bool   星芒等点缀显隐          默认 true
@@ -57,7 +57,7 @@ function Slide65Triptych(props) {
       panelsData = XHSTP_PANELS,
     mediaCount = 3,
     focusEnabled = false,
-    focusIndex = 2,
+    focusIndex = 3,
     showCaptions = true,
     showHeader = true,
     showDecorations = true,
@@ -156,7 +156,7 @@ const META = {
       panelsData: XHSTP_PANELS,
     mediaCount: 3,
     focusEnabled: false,
-    focusIndex: 2,
+    focusIndex: 3,
     showCaptions: true,
     showHeader: true,
     showDecorations: true,
@@ -167,7 +167,7 @@ const META = {
     { key: 'panelsData', type: 'list', label: 'panelsData', itemLabel: '数据', fields: [{ key: "no", label: "no" }, { key: "zh", label: "zh" }, { key: "en", label: "en" }, { key: "note", label: "note" }, { key: "color", label: "color" }, { key: "glyph", label: "glyph" }], default: XHSTP_PANELS, desc: '默认数据内容' },
     { key: 'mediaCount', type: 'slider', label: '图片槽条数', min: 0, max: 3, step: 1, default: 3, desc: '显示图片槽的条数(其余转霓虹占位)' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一条' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, showIf: (v) => v.focusEnabled, desc: '被高亮条的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 3, showIf: (v) => v.focusEnabled, desc: '被高亮条的序号' },
     { key: 'showCaptions', type: 'toggle', label: '现场注解', default: true, desc: '每条底部现场注解' },
     { key: 'showHeader', type: 'toggle', label: '顶部标题', default: true, desc: '顶部总标题浮层' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

@@ -7,7 +7,7 @@
  *  stageCount      number 漏斗层级数量          默认 5   可选 3–5
  *  chartVariant    enum   图表类型            默认 'funnel' 可选 'funnel'|'bars'
  *  focusEnabled    bool   重点层级高亮开关       默认 true
- *  focusIndex      number 重点层级序号(从1起)    默认 4
+ *  focusIndex      number 重点层级序号(从1起)    默认 5
  *  showConversion  bool   层级间转化率显隐       默认 true
  *  showStageIndex  bool   漏斗内层级编号显隐      默认 true（funnel 生效）
  *  showDecorations bool   星芒 / 圆环等点缀     默认 true
@@ -64,7 +64,7 @@ function Slide32Funnel(props) {
     stageCount = 5,
     chartVariant = 'funnel',
     focusEnabled = true,
-    focusIndex = 4,
+    focusIndex = 5,
     showConversion = true,
     showStageIndex = true,
     showDecorations = true,
@@ -205,7 +205,7 @@ const META = {
     stageCount: 5,
     chartVariant: 'funnel',
     focusEnabled: true,
-    focusIndex: 4,
+    focusIndex: 5,
     showConversion: true,
     showStageIndex: true,
     showDecorations: true,
@@ -218,7 +218,7 @@ const META = {
     { key: 'stageCount', type: 'slider', label: '层级数量', min: 3, max: 5, step: 1, default: 5, desc: '漏斗层级数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['funnel', 'bars'], optionLabels: ['漏斗', '横向柱'], default: 'funnel', desc: '梯形漏斗 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一层级' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 4, maxFromKey: 'stageCount', showIf: (v) => v.focusEnabled, desc: '被高亮层级的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 5, maxFromKey: 'stageCount', showIf: (v) => v.focusEnabled, desc: '被高亮层级的序号' },
     { key: 'showConversion', type: 'toggle', label: '层级转化率', default: true, desc: '层级间通过率显隐' },
     { key: 'showStageIndex', type: 'toggle', label: '层级编号', default: true, desc: '漏斗内层级编号(funnel/bars)' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

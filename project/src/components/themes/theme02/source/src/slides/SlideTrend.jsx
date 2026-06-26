@@ -25,10 +25,18 @@ export const slideTrendDefaults = {
   title: '逐季度融资走势 ',
   titleEm: '前高后稳',
   data: [
-    { label: 'Q1', value: 162, secondary: 18 },
-    { label: 'Q2', value: 284, secondary: 26 },
-    { label: 'Q3', value: 318, secondary: 31 },
-    { label: 'Q4', value: 206, secondary: 22 },
+    { label: 'M01', value: 58, secondary: 6 },
+    { label: 'M02', value: 47, secondary: 5 },
+    { label: 'M03', value: 57, secondary: 7 },
+    { label: 'M04', value: 78, secondary: 8 },
+    { label: 'M05', value: 92, secondary: 9 },
+    { label: 'M06', value: 114, secondary: 9 },
+    { label: 'M07', value: 108, secondary: 10 },
+    { label: 'M08', value: 104, secondary: 11 },
+    { label: 'M09', value: 106, secondary: 10 },
+    { label: 'M10', value: 88, secondary: 8 },
+    { label: 'M11', value: 118, secondary: 14 },
+    { label: 'M12', value: 96, secondary: 9 },
   ],
   chartType: 'line',
   showSecondary: true,
@@ -36,7 +44,7 @@ export const slideTrendDefaults = {
   focusEnabled: true,
   focusIndex: 2,
   showAnnotation: true,
-  annotation: 'Q2–Q3 为融资高峰，Q4 回落但仍处高位。平均单笔约 10 亿美元，市场对头部标的高度追捧。',
+  annotation: 'M04–M09 进入融资密集窗口，M11 再次抬升。月度拆分保留总额与事件数口径，便于逐项编辑和强调。',
   stats: [
     { value: '970', unit: '亿美元', caption: '全年融资总额' },
     { value: '97', unit: '笔', caption: '大额融资事件' },
@@ -52,7 +60,7 @@ export const slideTrendControls = [
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮某一数据点' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 2, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.data ? p.data.length : 1) - 1),
+    oneBased: true, maxFrom: (p) => Math.max(0, ((p.data && p.data.length) || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调数据点的序号' },
   { key: 'showSecondary', type: 'toggle', label: '次要指标', default: true,
     describe: '叠加显示次要系列（事件笔数）' },
@@ -62,9 +70,11 @@ export const slideTrendControls = [
     describe: '显示/隐藏右下角的趋势解读' },
 ];
 
+
 export function SlideTrend(props) {
   const p = { ...slideTrendDefaults, ...props };
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(p.data.length - 1, p.focusIndex)) : -1;
+  const emphasisMax = Math.max(0, p.data.length - 1);
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(emphasisMax, p.focusIndex)) : -1;
   const sch = p.gxnScheme || {};
 
   return (

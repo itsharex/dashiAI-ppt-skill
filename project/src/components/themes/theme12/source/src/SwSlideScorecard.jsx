@@ -17,6 +17,7 @@ export const meta = { id: 'scorecard', index: 57, label: '评分表 / Scorecard'
 
 export const defaultProps = {
   accent: C.purple,
+  theme: 'light',          // 'light' | 'dark'
   columnCount: 3,          // 2–4 options
   rowCount: 5,             // 4–6 criteria
   focusIndex: 1,           // 1-based highlighted column
@@ -53,16 +54,19 @@ export const controls = [
   { key: 'focusIndex', label: '高亮方案', type: 'slider', def: 1, min: 1, max: 4, step: 1,
     desc: '高亮强调的方案列' },
   { key: 'showTotals', label: '合计得分', type: 'toggle', def: true, desc: '显示/隐藏底部合计得分' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.purple,
     options: [C.purple, C.orange, C.cyan, C.green], desc: '高亮列 / 导语 / 页脚强调色' },
 ];
 
-function Dots({ n, on, accent }) {
+function Dots({ n, on, accent, dark }) {
+  const empty = on ? 'rgba(255,255,255,.28)' : (dark ? 'rgba(245,225,227,.16)' : 'rgba(27,21,24,.13)');
   return (
     <div style={{ display: 'flex', gap: 7, justifyContent: 'center' }}>
       {[0, 1, 2, 3, 4].map((i) => (
         <span key={i} style={{ width: 18, height: 18, borderRadius: '50%',
-          background: i < n ? (on ? '#fff' : accent) : (on ? 'rgba(255,255,255,.28)' : 'rgba(27,21,24,.13)') }} />
+          background: i < n ? (on ? '#fff' : accent) : empty }} />
       ))}
     </div>
   );
@@ -81,9 +85,17 @@ export default function SwSlideScorecard(props) {
 
   const grid = '1.5fr ' + cols.map(() => '1fr').join(' ');
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const headRule = dark ? C.lineD2 : 'rgba(27,21,24,.12)';
+  const rowRule = dark ? C.lineD : 'rgba(27,21,24,.08)';
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 18 }}>
         <Kicker accent={accent}>{p.kicker}</Kicker>
@@ -92,19 +104,19 @@ export default function SwSlideScorecard(props) {
         </h2>
       </div>
 
-      <div style={{ flex: 1, minHeight: 0, marginTop: 20, background: C.paper, borderRadius: 28,
+      <div style={{ flex: 1, minHeight: 0, marginTop: 20, background: cardBg, borderRadius: 28,
         padding: '12px 26px 18px', display: 'flex', flexDirection: 'column' }}>
         {/* header */}
         <div style={{ display: 'grid', gridTemplateColumns: grid, gap: 16, alignItems: 'end',
-          padding: '14px 8px 14px', borderBottom: '2px solid rgba(27,21,24,.12)' }}>
+          padding: '14px 8px 14px', borderBottom: '2px solid ' + headRule }}>
           <div style={{ fontFamily: F.mono, fontSize: 17, letterSpacing: '.14em', textTransform: 'uppercase',
-            color: C.inkMut }}>{p.dimensionLabel}</div>
+            color: mut }}>{p.dimensionLabel}</div>
           {cols.map((c, i) => (
             <div key={c.t} style={{ textAlign: 'center', borderRadius: '12px 12px 0 0', padding: '8px 4px',
-              background: i === hi ? accent : 'transparent', color: i === hi ? '#fff' : C.ink }}>
+              background: i === hi ? accent : 'transparent', color: i === hi ? '#fff' : fg }}>
               <div style={{ fontWeight: 900, fontSize: 26, letterSpacing: '-.4px' }}>{c.t}</div>
               <div style={{ fontFamily: F.mono, fontSize: 15, letterSpacing: '.1em',
-                color: i === hi ? 'rgba(255,255,255,.8)' : C.inkMut }}>{c.s}</div>
+                color: i === hi ? 'rgba(255,255,255,.8)' : mut }}>{c.s}</div>
             </div>
           ))}
         </div>
@@ -113,15 +125,15 @@ export default function SwSlideScorecard(props) {
         <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateRows: 'repeat(' + rc + ', 1fr)' }}>
           {rows.map((r, ri) => (
             <div key={r.t} style={{ display: 'grid', gridTemplateColumns: grid, gap: 16, alignItems: 'center',
-              padding: '0 8px', borderBottom: '1px solid rgba(27,21,24,.08)' }}>
+              padding: '0 8px', borderBottom: '1px solid ' + rowRule }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 24, letterSpacing: '-.3px' }}>{r.t}</div>
-                <div style={{ fontFamily: F.mono, fontSize: 14, letterSpacing: '.1em', color: C.inkMut }}>{r.s}</div>
+                <div style={{ fontFamily: F.mono, fontSize: 14, letterSpacing: '.1em', color: mut }}>{r.s}</div>
               </div>
               {cols.map((_, ci) => (
                 <div key={ci} style={{ height: '78%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                   borderRadius: 10, background: ci === hi ? accent : 'transparent' }}>
-                  <Dots n={r.v[ci]} on={ci === hi} accent={accent} />
+                  <Dots n={r.v[ci]} on={ci === hi} accent={accent} dark={dark} />
                 </div>
               ))}
             </div>
@@ -131,12 +143,12 @@ export default function SwSlideScorecard(props) {
         {/* totals */}
         {p.showTotals && (
           <div style={{ display: 'grid', gridTemplateColumns: grid, gap: 16, alignItems: 'center',
-            padding: '14px 8px 6px', borderTop: '2px solid rgba(27,21,24,.12)' }}>
+            padding: '14px 8px 6px', borderTop: '2px solid ' + headRule }}>
             <div style={{ fontFamily: F.mono, fontSize: 17, letterSpacing: '.14em', textTransform: 'uppercase',
-              color: C.inkMut }}>{p.totalLabel} / {maxTotal}</div>
+              color: mut }}>{p.totalLabel} / {maxTotal}</div>
             {cols.map((_, ci) => (
               <div key={ci} style={{ textAlign: 'center', borderRadius: '0 0 12px 12px', padding: '6px 4px',
-                background: ci === hi ? accent : 'transparent', color: ci === hi ? '#fff' : C.ink }}>
+                background: ci === hi ? accent : 'transparent', color: ci === hi ? '#fff' : fg }}>
                 <span style={{ fontWeight: 900, fontSize: 38, letterSpacing: '-1px' }}>{totals[ci]}</span>
               </div>
             ))}
@@ -144,7 +156,7 @@ export default function SwSlideScorecard(props) {
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

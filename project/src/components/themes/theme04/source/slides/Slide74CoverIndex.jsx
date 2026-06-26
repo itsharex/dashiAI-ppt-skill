@@ -10,7 +10,7 @@
  *  accentTone      enum   主色调(通用命名)            默认 'blue' green/yellow/blue/pink
  *  itemCount       number 右侧索引卡数量(2–4)         默认 4
  *  focusEnabled    bool   是否高亮某一张索引卡        默认 false
- *  focusIndex      number 被高亮索引卡序号(1–itemCount) 默认 1
+ *  focusIndex      number 被高亮索引卡序号(1–itemCount) 默认 2
  *  showIssue       bool   期号徽标显隐                默认 true
  *  showSub         bool   副标题显隐                  默认 true
  *  showDecorations bool   星芒等点缀显隐              默认 true
@@ -45,7 +45,7 @@ function Slide74CoverIndex(props) {
     accentTone = 'blue',
     itemCount = 4,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showIssue = true,
     showSub = true,
     showDecorations = true,
@@ -158,7 +158,7 @@ const META = {
     accentTone: 'blue',
     itemCount: 4,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showIssue: true,
     showSub: true,
     showDecorations: true,
@@ -179,7 +179,7 @@ const META = {
     { key: 'accentTone', type: 'radio', label: '主色调', options: ['green', 'yellow', 'blue', 'pink'], optionLabels: ['绿', '黄', '蓝', '粉'], default: 'blue', desc: '页面主色调(通用命名)' },
     { key: 'itemCount', type: 'slider', label: '索引卡数量', min: 2, max: 4, step: 1, default: 4, desc: '右侧索引卡数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一张索引卡' },
-    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'itemCount', desc: '被高亮索引卡序号', showIf: (v) => v.focusEnabled },
+    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'itemCount', desc: '被高亮索引卡序号', showIf: (v) => v.focusEnabled },
     { key: 'showIssue', type: 'toggle', label: '期号徽标', default: true, desc: '期号徽标显隐' },
     { key: 'showSub', type: 'toggle', label: '副标题', default: true, desc: '副标题显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

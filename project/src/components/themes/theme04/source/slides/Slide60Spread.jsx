@@ -11,7 +11,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  rowCount        number 展示的赛道行数(3–6)    默认 6
  *  focusEnabled    bool   重点行高亮开关          默认 true
- *  focusIndex      number 重点行序号(从1起)      默认 1   范围 1–rowCount
+ *  focusIndex      number 重点行序号(从1起)      默认 2   范围 1–rowCount
  *  showDelta       bool   Δ 升降徽标列显隐         默认 true
  *  showMiniBar     bool   H1/H2 并置双柱列显隐     默认 true
  *  showTotalRow    bool   底部合计行显隐          默认 true
@@ -82,7 +82,7 @@ function Slide60Spread(props) {
       rowsData = XHSSPD_ROWS,
     rowCount = 6,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showDelta = true,
     showMiniBar = true,
     showTotalRow = true,
@@ -253,7 +253,7 @@ const META = {
     ...hlDefaults,
     rowCount: 6,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showDelta: true,
     showMiniBar: true,
     showTotalRow: true,
@@ -266,7 +266,7 @@ const META = {
     ...hlControls,
     { key: 'rowCount', type: 'slider', label: '赛道行数', min: 3, max: 6, step: 1, default: 6, desc: '展示的赛道行数' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一行' },
-    { key: 'focusIndex', type: 'slider', label: '重点行序号', min: 1, max: 6, step: 1, default: 1, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点行序号', min: 1, max: 6, step: 1, default: 2, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
     { key: 'showDelta', type: 'toggle', label: '环比徽标', default: true, desc: 'Δ 升降徽标列' },
     { key: 'showMiniBar', type: 'toggle', label: '双柱对比', default: true, desc: '上 / 下半年并置双柱列' },
     { key: 'showTotalRow', type: 'toggle', label: '合计行', default: true, desc: '底部全市场合计行' },

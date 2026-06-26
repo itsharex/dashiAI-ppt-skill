@@ -14,7 +14,7 @@
  *  accentTone      enum   主色调(通用命名)      默认 'blue' 可选 green/yellow/blue/pink
  *  pinCount        number 浮层标注数量          默认 3   可选 0–3
  *  focusEnabled    bool   重点标注放大开关       默认 true
- *  focusIndex      number 重点标注序号(从1起)    默认 1
+ *  focusIndex      number 重点标注序号(从1起)    默认 2
  *  showDecorations bool   星芒 / 圆环等点缀     默认 true
  *
  * 文本/数据写死在组件内，不做参数化。
@@ -104,7 +104,7 @@ function Slide33Annotated(props) {
     accentTone = 'blue',
     pinCount = 3,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showDecorations = true,
     hlStyle = 'glass',
     hlTilt = 2,
@@ -235,7 +235,7 @@ const META = {
     accentTone: 'blue',
     pinCount: 3,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showDecorations: true,
   },
   controls: [
@@ -248,7 +248,7 @@ const META = {
     { key: 'accentTone', type: 'radio', label: '主色调', options: ['green', 'yellow', 'blue', 'pink'], optionLabels: ['绿', '黄', '蓝', '粉'], default: 'blue', desc: '页面主色调(通用命名)' },
     { key: 'pinCount', type: 'slider', label: '标注数量', min: 0, max: 3, step: 1, default: 3, desc: '浮层标注 pin 数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点放大', default: true, desc: '是否放大某一标注' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'pinCount', showIf: (v) => v.focusEnabled, desc: '被放大标注的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'pinCount', showIf: (v) => v.focusEnabled, desc: '被放大标注的序号' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },
   ],
 };

@@ -17,6 +17,7 @@ export const meta = { id: 'dotplot', index: 48, label: '点阵单位 / Units' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   categoryCount: 4,        // 2–4 categories
   dotValue: 20,            // units (万) per dot
   showValues: true,        // numeric value beside each row
@@ -46,6 +47,8 @@ export const controls = [
   { key: 'focus', label: '高亮某行', type: 'toggle', def: true, desc: '高亮某一类目、弱化其余' },
   { key: 'focusIndex', label: '高亮第几行', type: 'slider', def: 1, min: 1, max: 4, step: 1,
     dependsOn: 'focus', desc: '被高亮类目的序号（1 起）' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '高亮行 / 页脚强调色' },
 ];
@@ -57,13 +60,21 @@ export default function SwSlideDotPlot(props) {
   const cats = (p.cats || []).slice(0, n);
   const per = p.dotValue;
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const rowRule = dark ? C.lineD : C.line;
+  const decoFill = dark ? 'rgba(245,225,227,.05)' : 'rgba(196,78,224,.10)';
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '40px 54px 38px', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
-        <Shape kind="pentagon" size={104} color="rgba(196,78,224,.10)" style={{ bottom: -26, right: -20, zIndex: 0 }} />
+        <Shape kind="pentagon" size={104} color={decoFill} style={{ bottom: -26, right: -20, zIndex: 0 }} />
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 40,
           marginBottom: 30, position: 'relative', zIndex: 2 }}>
@@ -75,7 +86,7 @@ export default function SwSlideDotPlot(props) {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 11, paddingBottom: 6 }}>
             <span style={{ width: 26, height: 26, borderRadius: '50%', background: accent }} />
-            <span style={{ fontFamily: F.mono, fontSize: 21, letterSpacing: '.06em', color: C.inkMut }}>
+            <span style={{ fontFamily: F.mono, fontSize: 21, letterSpacing: '.06em', color: mutedC }}>
               = {per} {p.unit}
             </span>
           </div>
@@ -90,11 +101,11 @@ export default function SwSlideDotPlot(props) {
             return (
               <div key={c.en} style={{ display: 'grid', gridTemplateColumns: '230px 1fr auto', alignItems: 'center',
                 gap: 24, opacity: on ? 1 : 0.42, transition: 'opacity .2s',
-                borderTop: ci ? '1px solid ' + C.line : 'none', paddingTop: ci ? 18 : 0, paddingBottom: 4 }}>
+                borderTop: ci ? '1px solid ' + rowRule : 'none', paddingTop: ci ? 18 : 0, paddingBottom: 4 }}>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontWeight: 900, fontSize: 30, letterSpacing: '-.4px' }}>{c.cn}</div>
                   <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', textTransform: 'uppercase',
-                    color: C.inkMut, marginTop: 3 }}>{c.en}</div>
+                    color: mutedC, marginTop: 3 }}>{c.en}</div>
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignContent: 'center', minWidth: 0 }}>
                   {Array.from({ length: dots }).map((_, di) => (
@@ -105,8 +116,8 @@ export default function SwSlideDotPlot(props) {
                 {p.showValues && (
                   <div style={{ textAlign: 'right', minWidth: 120 }}>
                     <span style={{ fontWeight: 900, fontSize: 44, letterSpacing: '-1px',
-                      color: on ? color : C.ink, fontVariantNumeric: 'tabular-nums' }}>{c.value}</span>
-                    <span style={{ fontSize: 22, fontWeight: 700, color: C.inkMut, marginLeft: 4 }}>{p.unit}</span>
+                      color: on ? color : fg, fontVariantNumeric: 'tabular-nums' }}>{c.value}</span>
+                    <span style={{ fontSize: 22, fontWeight: 700, color: mutedC, marginLeft: 4 }}>{p.unit}</span>
                   </div>
                 )}
               </div>
@@ -115,7 +126,7 @@ export default function SwSlideDotPlot(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

@@ -11,7 +11,7 @@
  *  rowCount        number 展示的赛道行数        默认 4   可选 2–4
  *  chartVariant    enum   编码方式             默认 'heat' 可选 'heat'|'bubble'
  *  focusEnabled    bool   重点月份高亮开关       默认 true
- *  focusIndex      number 重点月份序号(从1起)   默认 5   范围 1–columnCount
+ *  focusIndex      number 重点月份序号(从1起)   默认 6   范围 1–columnCount
  *  showRowTotal    bool   行尾赛道合计显隐       默认 true
  *  showScale       bool   底部强度图例显隐       默认 true
  *  showDecorations bool   星芒 / 圆环等点缀      默认 true
@@ -70,7 +70,7 @@ function Slide38Heatmap(props) {
     rowCount = 4,
     chartVariant = 'heat',
     focusEnabled = true,
-    focusIndex = 5,
+    focusIndex = 6,
     showRowTotal = true,
     showScale = true,
     showDecorations = true,
@@ -243,7 +243,7 @@ const META = {
     rowCount: 4,
     chartVariant: 'heat',
     focusEnabled: true,
-    focusIndex: 5,
+    focusIndex: 6,
     showRowTotal: true,
     showScale: true,
     showDecorations: true,
@@ -258,7 +258,7 @@ const META = {
     { key: 'rowCount', type: 'slider', label: '赛道行数', min: 2, max: 4, step: 1, default: 4, desc: '展示的赛道行数' },
     { key: 'chartVariant', type: 'radio', label: '编码方式', options: ['heat', 'bubble'], optionLabels: ['热力格', '气泡'], default: 'heat', desc: '颜色深浅 / 气泡大小' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一月份' },
-    { key: 'focusIndex', type: 'slider', label: '重点月份', min: 1, max: 12, step: 1, default: 5, maxFromKey: 'columnCount', showIf: (v) => v.focusEnabled, desc: '被高亮月份的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点月份', min: 1, max: 12, step: 1, default: 6, maxFromKey: 'columnCount', showIf: (v) => v.focusEnabled, desc: '被高亮月份的序号' },
     { key: 'showRowTotal', type: 'toggle', label: '赛道合计', default: true, desc: '行尾赛道合计列' },
     { key: 'showScale', type: 'toggle', label: '强度图例', default: true, desc: '底部强度图例' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

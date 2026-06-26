@@ -12,7 +12,7 @@
  *  itemCount       number 章节卡数量(4–6)        默认 6
  *  mediaCount      number 显示缩略图的卡数(0–6)   默认 6
  *  focusEnabled    bool   重点章节高亮开关         默认 true
- *  focusIndex      number 重点章节序号(从1起)     默认 1   范围 1–itemCount
+ *  focusIndex      number 重点章节序号(从1起)     默认 2   范围 1–itemCount
  *  showDesc        bool   卡片导读一句话显隐       默认 true
  *  showDecorations bool   星芒等点缀显隐          默认 true
  *
@@ -60,7 +60,7 @@ function Slide66Contents(props) {
     itemCount = 6,
     mediaCount = 6,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showDesc = true,
     showDecorations = true,
   } = props;
@@ -165,7 +165,7 @@ const META = {
     itemCount: 6,
     mediaCount: 6,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showDesc: true,
     showDecorations: true,
   },
@@ -176,7 +176,7 @@ const META = {
     { key: 'itemCount', type: 'slider', label: '章节卡数量', min: 4, max: 6, step: 1, default: 6, desc: '展示的章节卡数量' },
     { key: 'mediaCount', type: 'slider', label: '缩略图卡数', min: 0, max: 6, step: 1, default: 6, maxFromKey: 'itemCount', desc: '显示缩略图的卡数(其余转霓虹编号)' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一章节' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮章节的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮章节的序号' },
     { key: 'showDesc', type: 'toggle', label: '导读', default: true, desc: '卡片导读一句话' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
   ],

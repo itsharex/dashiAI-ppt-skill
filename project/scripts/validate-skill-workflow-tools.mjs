@@ -14,6 +14,7 @@ import {
 import { RUNTIME_ASSET_PATHS } from '../src/runtime-assets.mjs';
 import { isSerializedReactElementLike } from '../src/prop-contract-core.mjs';
 import { inspectLayout } from './skill-workflow-utils.mjs';
+import { npmCommand, npmCommandOptions } from './command-paths.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ACCEPTED_THEME_PACKS = filterAcceptedThemePacks(GENERATED_THEME_PACKS);
@@ -595,14 +596,14 @@ function testValidateSwissMissingAsset() {
       slides: [{ layout: 'theme01_page001', props: { kicker: 'ASSET', titleTop: 'Missing', titleBottom: 'Asset' } }],
     }, null, 2));
 
-    execFileSync('npm', ['run', 'render:goal', '--', goalPath, outPath], { cwd: ROOT, stdio: 'pipe' });
-    execFileSync('npm', ['run', 'validate:swiss', '--', outPath], { cwd: ROOT, stdio: 'pipe' });
+    execFileSync(npmCommand(), ['run', 'render:goal', '--', goalPath, outPath], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
+    execFileSync(npmCommand(), ['run', 'validate:swiss', '--', outPath], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
     rmSync(path.join(tmp, 'ppt/assets/ui-icons/sidebar.svg'), { force: true });
 
-    const result = spawnSync('npm', ['run', 'validate:swiss', '--', outPath], {
+    const result = spawnSync(npmCommand(), ['run', 'validate:swiss', '--', outPath], npmCommandOptions({
       cwd: ROOT,
       encoding: 'utf8',
-    });
+    }));
     assert(result.status !== 0, 'validate:swiss should fail after deleting a referenced runtime asset');
     assert(`${result.stdout}\n${result.stderr}`.includes('assets/ui-icons/sidebar.svg'), 'missing asset error should mention sidebar.svg');
   } finally {
@@ -748,14 +749,14 @@ function testGoalScaffold() {
   try {
     for (const themeKey of ACCEPTED_THEME_KEYS) {
       const goalPath = path.join(tmp, `${themeKey}.json`);
-      execFileSync('npm', ['run', 'goal:scaffold', '--',
+      execFileSync(npmCommand(), ['run', 'goal:scaffold', '--',
         '--title', '20 页骨架',
         '--goal', '验证长 deck 先生成具体 layout 骨架',
         '--theme', themeKey,
         '--pages', '20',
         '--chunk-size', '5',
         '--out', goalPath,
-      ], { cwd: ROOT, stdio: 'pipe' });
+      ], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
       const spec = JSON.parse(readFileSync(goalPath, 'utf8'));
       assert(spec.themePack === themeKey, 'scaffold should preserve requested theme');
       assert(spec.pageCount === 20, 'scaffold should preserve requested page count');
@@ -775,14 +776,14 @@ function testGoalScaffold() {
     }
 
     const goalPath = path.join(tmp, 'theme09-media.json');
-    execFileSync('npm', ['run', 'goal:scaffold', '--',
+    execFileSync(npmCommand(), ['run', 'goal:scaffold', '--',
       '--title', '20 页骨架',
       '--goal', '验证长 deck 先生成具体 layout 骨架',
       '--theme', 'theme09',
       '--pages', '20',
       '--chunk-size', '5',
       '--out', goalPath,
-    ], { cwd: ROOT, stdio: 'pipe' });
+    ], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
     const spec = JSON.parse(readFileSync(goalPath, 'utf8'));
     assert(spec.themePack === 'theme09', 'scaffold should preserve requested theme');
     assert(spec.pageCount === 20, 'scaffold should preserve requested page count');
@@ -998,8 +999,8 @@ function testValidateGoalCopyPlaceholders() {
         props: normalized.props,
       }],
     }, null, 2));
-    execFileSync('npm', ['run', 'render:goal', '--', hiddenGoalPath, hiddenOutPath], { cwd: ROOT, stdio: 'pipe' });
-    execFileSync('npm', ['run', 'validate:goal-copy', '--', hiddenGoalPath, hiddenOutPath], { cwd: ROOT, stdio: 'pipe' });
+    execFileSync(npmCommand(), ['run', 'render:goal', '--', hiddenGoalPath, hiddenOutPath], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
+    execFileSync(npmCommand(), ['run', 'validate:goal-copy', '--', hiddenGoalPath, hiddenOutPath], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
 
     const visibleGoalPath = path.join(tmp, 'visible-placeholder.json');
     const visibleOutPath = path.join(tmp, 'visible-placeholder/ppt/index.html');
@@ -1017,11 +1018,11 @@ function testValidateGoalCopyPlaceholders() {
         },
       }],
     }, null, 2));
-    execFileSync('npm', ['run', 'render:goal', '--', visibleGoalPath, visibleOutPath], { cwd: ROOT, stdio: 'pipe' });
-    const result = spawnSync('npm', ['run', 'validate:goal-copy', '--', visibleGoalPath, visibleOutPath], {
+    execFileSync(npmCommand(), ['run', 'render:goal', '--', visibleGoalPath, visibleOutPath], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
+    const result = spawnSync(npmCommand(), ['run', 'validate:goal-copy', '--', visibleGoalPath, visibleOutPath], npmCommandOptions({
       cwd: ROOT,
       encoding: 'utf8',
-    });
+    }));
     assert(result.status !== 0, 'validate:goal-copy should fail when rendered deck still contains neutral placeholder copy');
     assert(`${result.stdout}\n${result.stderr}`.includes('请输入文本'), 'placeholder failure should mention 请输入文本');
   } finally {
@@ -1059,8 +1060,8 @@ function testValidateGoalCopyNestedHiddenTails() {
       themePack: 'theme11',
       slides: [{ layout: 'theme11_page027', props: normalized.props }],
     }, null, 2));
-    execFileSync('npm', ['run', 'render:goal', '--', goalPath, outPath], { cwd: ROOT, stdio: 'pipe' });
-    execFileSync('npm', ['run', 'validate:goal-copy', '--', goalPath, outPath], { cwd: ROOT, stdio: 'pipe' });
+    execFileSync(npmCommand(), ['run', 'render:goal', '--', goalPath, outPath], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
+    execFileSync(npmCommand(), ['run', 'validate:goal-copy', '--', goalPath, outPath], npmCommandOptions({ cwd: ROOT, stdio: 'pipe' }));
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }

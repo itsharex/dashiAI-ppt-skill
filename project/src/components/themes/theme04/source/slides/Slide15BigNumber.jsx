@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  statCount       number 支撑数据卡数量       默认 3   可选 0–3
  *  focusEnabled    bool   支撑卡重点高亮开关     默认 false
- *  focusIndex      number 重点卡序号(从1起)     默认 1
+ *  focusIndex      number 重点卡序号(从1起)     默认 2
  *  showUnit        bool   主数字单位后缀显隐     默认 true
  *  showCaption     bool   底部说明文案显隐       默认 true
  *  showDecorations bool   装饰元素显隐          默认 true
@@ -44,7 +44,7 @@ function Slide15BigNumber(props) {
   const {
     statCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showUnit = true,
     showCaption = true,
     showDecorations = true,
@@ -155,7 +155,7 @@ const META = {
   defaults: {
     statCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showUnit: true,
     showCaption: true,
     showDecorations: true,
@@ -170,7 +170,7 @@ const META = {
   controls: [
     { key: 'statCount', type: 'slider', label: '支撑卡数量', min: 0, max: 3, step: 1, default: 3, desc: '主数字下方支撑数据卡数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, showIf: (v) => v.statCount > 0, desc: '是否高亮某一张支撑卡' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'statCount', showIf: (v) => v.statCount > 0 && v.focusEnabled, desc: '被高亮支撑卡的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'statCount', showIf: (v) => v.statCount > 0 && v.focusEnabled, desc: '被高亮支撑卡的序号' },
     { key: 'showUnit', type: 'toggle', label: '单位后缀', default: true, desc: '主数字「亿美元」单位' },
     { key: 'showCaption', type: 'toggle', label: '底部说明', default: true, desc: '底部数据口径说明' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

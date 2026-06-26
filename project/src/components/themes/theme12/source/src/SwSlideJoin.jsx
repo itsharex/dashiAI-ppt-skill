@@ -12,6 +12,7 @@ export const meta = { id: 'join', index: 82, label: '加入声浪 / Join Us' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   showDirectory: true,
   directoryColumns: 4,
   showMarquee: true,
@@ -42,6 +43,8 @@ export const controls = [
   { key: 'marqueeSpeed', label: '跑马灯速度', type: 'slider', def: 20, min: 8, max: 40, step: 1, unit: 's',
     dependsOn: 'showMarquee', desc: '滚动一圈的秒数（越小越快）' },
   { key: 'showDecorations', label: '显示装饰', type: 'toggle', def: true, desc: '显示/隐藏几何装饰图形' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '高亮/按钮等强调色' },
 ];
@@ -57,8 +60,16 @@ function Eq() {
 export default function SwSlideJoin(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const cols = Math.max(2, Math.min(4, p.directoryColumns));
   const dirs = (p.directory || []).slice(0, cols);
+
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const linkC = dark ? '#c8c0bd' : '#4f444a';
+  const dirLine = dark ? C.lineD2 : C.line2;
+  const marqueeBg = dark ? '#241e20' : C.dark;
 
   const seg = (
     <>
@@ -68,7 +79,7 @@ export default function SwSlideJoin(props) {
   );
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
+    <SlideRoot bg={bg} color={fg}>
       {p.showDecorations && (
         <>
           <Shape kind="circle" size={70} color={C.magenta} style={{ top: 150, right: 260 }} />
@@ -76,7 +87,7 @@ export default function SwSlideJoin(props) {
         </>
       )}
 
-      <Bar meta={p.barMeta} accent={accent} />
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center',
         paddingTop: 18, position: 'relative', zIndex: 3 }}>
@@ -85,29 +96,29 @@ export default function SwSlideJoin(props) {
           {renderSwText(p.title, { hl: { tone: 'o', style: { background: accent, color: '#fff' } } })}
         </h1>
         <div style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.14em', textTransform: 'uppercase',
-          color: C.inkMut, marginTop: 26 }}>{p.subtitle}</div>
+          color: mut, marginTop: 26 }}>{p.subtitle}</div>
 
         {/* CTA — editorial underlined headline, not a web button */}
         <div style={{ display: 'flex', alignItems: 'flex-end', flexWrap: 'wrap', gap: '14px 34px', marginTop: 42 }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 20, fontWeight: 900, fontSize: 50,
-            letterSpacing: '-1.5px', color: C.ink, lineHeight: 1,
+            letterSpacing: '-1.5px', color: fg, lineHeight: 1,
             borderBottom: '7px solid ' + accent, paddingBottom: 10 }}>
             {p.ctaText}
             <span aria-hidden="true" style={{ color: accent, fontSize: 46 }}>→</span>
           </span>
-          <span style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.08em', color: C.inkMut,
+          <span style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.08em', color: mut,
             paddingBottom: 12 }}>{p.ctaUrl}</span>
         </div>
 
         {p.showDirectory && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' + cols + ',1fr)', gap: 36, flexShrink: 0,
-            borderTop: '1px solid ' + C.line2, paddingTop: 26, marginTop: 34 }}>
+            borderTop: '1px solid ' + dirLine, paddingTop: 26, marginTop: 34 }}>
             {dirs.map((col) => (
               <div key={col.h}>
                 <h4 style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.14em', textTransform: 'uppercase',
                   color: accent, marginBottom: 15 }}>{col.h}</h4>
                 {col.links.map((l) => (
-                  <span key={l} style={{ display: 'block', fontSize: 24, color: '#4f444a', lineHeight: 1.95 }}>{l}</span>
+                  <span key={l} style={{ display: 'block', fontSize: 24, color: linkC, lineHeight: 1.95 }}>{l}</span>
                 ))}
               </div>
             ))}
@@ -116,7 +127,7 @@ export default function SwSlideJoin(props) {
       </div>
 
       {p.showMarquee && (
-        <div style={{ flexShrink: 0, background: C.dark, color: C.blush, overflow: 'hidden',
+        <div style={{ flexShrink: 0, background: marqueeBg, color: C.blush, overflow: 'hidden',
           margin: '24px -96px -48px', padding: '22px 0', display: 'flex', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 40, whiteSpace: 'nowrap',
             animation: 'sw-marquee ' + p.marqueeSpeed + 's linear infinite' }}>

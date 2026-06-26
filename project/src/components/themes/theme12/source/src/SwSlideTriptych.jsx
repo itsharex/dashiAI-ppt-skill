@@ -74,7 +74,7 @@ export default function SwSlideTriptych(props) {
 
   const Panel = (
     <div style={{ position: 'relative', overflow: 'hidden', borderRadius: swTheme.radius, background: accent,
-      color: '#fff', padding: '40px 36px 34px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+      color: '#fff', padding: '40px 36px 34px', display: 'flex', flexDirection: 'column', minWidth: 0, minHeight: 0 }}>
       <DeckPageCurrent aria-hidden="true" as="div" value={p.page} style={{ position: 'absolute', top: -70, right: -16, fontFamily: F.mono,
         fontWeight: 700, fontSize: 240, lineHeight: 0.8, color: 'rgba(255,255,255,.14)', pointerEvents: 'none' }} />
       <Shape kind="ring" size={64} border={13} color="rgba(255,255,255,.4)" style={{ top: 34, right: 30, zIndex: 1 }} />
@@ -96,13 +96,13 @@ export default function SwSlideTriptych(props) {
   );
 
   const Frames = (
-    <div style={{ flex: 1, minWidth: 0, display: 'grid', gap: 18,
-      gridTemplateColumns: 'repeat(' + count + ',1fr)' }}>
+    <div style={{ flex: 1, minWidth: 0, minHeight: 0, display: 'grid', gap: 18,
+      gridTemplateColumns: 'repeat(' + count + ',1fr)', gridTemplateRows: 'minmax(0, 1fr)' }}>
       {Array.from({ length: count }).map((_, i) => {
         const pal = swCardPalette[i % swCardPalette.length];
         const cap = CAPS[i % CAPS.length];
         return (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', minWidth: 0, minHeight: 0 }}>
             <div style={{ flex: 1, minHeight: 0, position: 'relative' }}>
               <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
                 fit={p.mediaFit} accent={pal.bg} radius={20} tone={dark ? 'dark' : 'light'}
@@ -129,7 +129,8 @@ export default function SwSlideTriptych(props) {
       <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 24, padding: '24px 0 22px',
-        gridTemplateColumns: left ? '0.62fr 1.38fr' : '1.38fr 0.62fr', position: 'relative', zIndex: 3 }}>
+        gridTemplateColumns: left ? '0.62fr 1.38fr' : '1.38fr 0.62fr',
+        gridTemplateRows: 'minmax(0, 1fr)', position: 'relative', zIndex: 3 }}>
         {left ? <>{Panel}{Frames}</> : <>{Frames}{Panel}</>}
       </div>
 

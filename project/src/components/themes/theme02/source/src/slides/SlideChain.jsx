@@ -16,6 +16,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_CHAIN_LAYERS = 3;
+const MAX_CHAIN_FOCUS_INDEX = 2;
+
 export const slideChainDefaults = {
   kicker: 'VALUE CHAIN · 产业链分层',
   title: '上游 · 中游 · 下游 ',
@@ -47,12 +50,12 @@ export const slideChainDefaults = {
 };
 
 export const slideChainControls = [
-  { key: 'layerCount', type: 'number', label: '层级数量', default: 3, min: 2, step: 1,
-    maxFrom: (p) => (p.layers ? p.layers.length : 3), describe: '展示的产业链层级数量' },
+  { key: 'layerCount', type: 'number', label: '层级数量', default: 3, min: 2, max: MAX_CHAIN_LAYERS, step: 1,
+    maxFrom: (p) => Math.min(MAX_CHAIN_LAYERS, p.layers ? p.layers.length : MAX_CHAIN_LAYERS), describe: '展示的产业链层级数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮某一层级' },
-  { key: 'focusIndex', type: 'number', label: '强调层级', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.layerCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调层级', default: 0, min: 0, max: MAX_CHAIN_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_CHAIN_FOCUS_INDEX + 1, p.layerCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调层级的序号' },
   { key: 'showCompanies', type: 'toggle', label: '代表公司', default: true,
     describe: '显示/隐藏各环节代表公司' },
@@ -64,9 +67,9 @@ export const slideChainControls = [
 
 export function SlideChain(props) {
   const p = { ...slideChainDefaults, ...props };
-  const count = Math.max(2, Math.min(p.layers.length, p.layerCount));
+  const count = Math.max(2, Math.min(MAX_CHAIN_LAYERS, p.layers.length, p.layerCount));
   const layers = p.layers.slice(0, count);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_CHAIN_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
 
   return (
     <div className={cx(THEME_CLASS, 'gxn-slide')}>

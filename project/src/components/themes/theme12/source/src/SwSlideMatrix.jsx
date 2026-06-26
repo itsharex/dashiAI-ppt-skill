@@ -17,6 +17,7 @@ export const meta = { id: 'matrix', index: 56, label: '定位矩阵 / Positionin
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   pointCount: 5,           // 3–6 rival points (besides 声浪)
   showQuadrants: true,     // tint the winning quadrant + labels
   showGrid: true,
@@ -52,6 +53,8 @@ export const controls = [
   { key: 'showQuadrants', label: '象限标注', type: 'toggle', def: true, desc: '显示/隐藏象限底色与标签' },
   { key: 'showGrid', label: '坐标网格', type: 'toggle', def: true, desc: '显示/隐藏坐标轴与网格' },
   { key: 'showRivalLabels', label: '对手标签', type: 'toggle', def: true, desc: '显示/隐藏对照点名称' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '声浪点 / 高亮 / 页脚强调色' },
 ];
@@ -65,9 +68,19 @@ export default function SwSlideMatrix(props) {
   // helper: x,y (0..100, y up) → CSS positions inside the plot
   const at = (x, y) => ({ left: x + '%', bottom: y + '%' });
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const introC = dark ? '#c8c0bd' : '#5a4f54';
+  const ghostText = dark ? 'rgba(245,225,227,.34)' : 'rgba(27,21,24,.34)';
+  const line = dark ? C.lineD : C.line;
+  const line2 = dark ? C.lineD2 : C.line2;
+  const dotFill = dark ? '#241e20' : '#fff';
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 0.92fr', gap: 56,
         alignItems: 'center', padding: '20px 0', position: 'relative', zIndex: 3 }}>
@@ -82,19 +95,19 @@ export default function SwSlideMatrix(props) {
               <div style={{ position: 'absolute', right: 14, top: 12, fontFamily: F.mono, fontSize: 19,
                 fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: accent }}>{p.quadrantTop}</div>
               <div style={{ position: 'absolute', left: 14, bottom: 44, fontFamily: F.mono, fontSize: 18,
-                letterSpacing: '.08em', textTransform: 'uppercase', color: 'rgba(27,21,24,.34)' }}>{p.quadrantBottom}</div>
+                letterSpacing: '.08em', textTransform: 'uppercase', color: ghostText }}>{p.quadrantBottom}</div>
             </>
           )}
 
           {/* axes */}
           {p.showGrid && (
             <>
-              <div style={{ position: 'absolute', left: 0, bottom: 0, width: '100%', height: 2.5, background: C.line2 }} />
-              <div style={{ position: 'absolute', left: 0, bottom: 0, width: 2.5, height: '100%', background: C.line2 }} />
+              <div style={{ position: 'absolute', left: 0, bottom: 0, width: '100%', height: 2.5, background: line2 }} />
+              <div style={{ position: 'absolute', left: 0, bottom: 0, width: 2.5, height: '100%', background: line2 }} />
               <div style={{ position: 'absolute', left: '50%', bottom: 0, width: 1, height: '100%',
-                borderLeft: '1px dashed ' + C.line }} />
+                borderLeft: '1px dashed ' + line }} />
               <div style={{ position: 'absolute', left: 0, bottom: '50%', width: '100%', height: 1,
-                borderTop: '1px dashed ' + C.line }} />
+                borderTop: '1px dashed ' + line }} />
             </>
           )}
 
@@ -102,10 +115,10 @@ export default function SwSlideMatrix(props) {
           {rivals.map((r, i) => (
             <div key={r.en} style={{ position: 'absolute', ...at(r.x, r.y), transform: 'translate(-50%, 50%)',
               display: 'flex', alignItems: 'center', gap: 10, zIndex: 2 }}>
-              <span style={{ width: 22, height: 22, borderRadius: '50%', background: '#fff',
+              <span style={{ width: 22, height: 22, borderRadius: '50%', background: dotFill,
                 border: '3px solid ' + C.inkMut, flexShrink: 0 }} />
               {p.showRivalLabels && (
-                <span style={{ fontSize: 21, fontWeight: 700, color: C.inkMut, whiteSpace: 'nowrap' }}>{r.cn}</span>
+                <span style={{ fontSize: 21, fontWeight: 700, color: mut, whiteSpace: 'nowrap' }}>{r.cn}</span>
               )}
             </div>
           ))}
@@ -116,7 +129,7 @@ export default function SwSlideMatrix(props) {
               width: 74, height: 74, borderRadius: '50%', background: accent + '26' }} />
             <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 12 }}>
               <span style={{ width: 38, height: 38, borderRadius: '50%', background: accent,
-                border: '4px solid #fff', boxShadow: '0 6px 18px rgba(241,90,41,.4)', flexShrink: 0 }} />
+                border: '4px solid ' + dotFill, boxShadow: '0 6px 18px rgba(241,90,41,.4)', flexShrink: 0 }} />
               <span style={{ background: accent, color: '#fff', fontWeight: 900, fontSize: 24,
                 letterSpacing: '-.3px', padding: '6px 16px', borderRadius: 10, whiteSpace: 'nowrap' }}>{OWN.cn}</span>
             </div>
@@ -124,10 +137,10 @@ export default function SwSlideMatrix(props) {
 
           {/* axis captions */}
           <div style={{ position: 'absolute', left: '50%', bottom: -38, transform: 'translateX(-50%)',
-            fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', textTransform: 'uppercase', color: C.inkMut }}>{p.axisX}</div>
+            fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', textTransform: 'uppercase', color: mut }}>{p.axisX}</div>
           <div style={{ position: 'absolute', left: -38, top: '50%', transform: 'rotate(-90deg) translateX(50%)',
             transformOrigin: 'left center', fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em',
-            textTransform: 'uppercase', color: C.inkMut }}>{p.axisY}</div>
+            textTransform: 'uppercase', color: mut }}>{p.axisY}</div>
         </div>
 
         {/* copy rail */}
@@ -136,24 +149,24 @@ export default function SwSlideMatrix(props) {
           <h2 style={{ fontWeight: 900, fontSize: 56, lineHeight: 1.08, letterSpacing: '-1.4px', marginTop: 16 }}>
             {renderSwText(p.title, { hl: { tone: 'o', block: true } })}
           </h2>
-          <p style={{ fontSize: 25, lineHeight: 1.66, color: '#5a4f54', marginTop: 24, maxWidth: 520 }}>
+          <p style={{ fontSize: 25, lineHeight: 1.66, color: introC, marginTop: 24, maxWidth: 520 }}>
             {p.intro}
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 30 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <span style={{ width: 26, height: 26, borderRadius: '50%', background: accent, border: '3px solid #fff',
+              <span style={{ width: 26, height: 26, borderRadius: '50%', background: accent, border: '3px solid ' + dotFill,
                 boxShadow: '0 0 0 1px ' + accent }} />
               <span style={{ fontSize: 24, fontWeight: 700 }}>{p.ownLegend}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <span style={{ width: 26, height: 26, borderRadius: '50%', background: '#fff', border: '3px solid ' + C.inkMut }} />
-              <span style={{ fontSize: 24, color: C.inkMut }}>{p.rivalLegend} {rivals.length} 家对照</span>
+              <span style={{ width: 26, height: 26, borderRadius: '50%', background: dotFill, border: '3px solid ' + C.inkMut }} />
+              <span style={{ fontSize: 24, color: mut }}>{p.rivalLegend} {rivals.length} 家对照</span>
             </div>
           </div>
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  itemCount        number 展示条目数量      默认 6   可选 3–10
  *  focusEnabled     bool   重点突出开关       默认 true
- *  focusIndex       number 重点项序号(从1起)  默认 1   范围 1–itemCount
+ *  focusIndex       number 重点项序号(从1起)  默认 2   范围 1–itemCount
  *  sortDir          enum   排序方向          默认 'desc'  可选 'desc' | 'asc'
  *  showValue        bool   数值显示          默认 true
  *  showCategory     bool   类别标签显隐       默认 true
@@ -61,7 +61,7 @@ function Slide05Ranking(props) {
   const {
     itemCount = 6,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     sortDir = 'desc',
     showValue = true,
     showCategory = true,
@@ -186,7 +186,7 @@ const META = {
     ...hlDefaults,
     itemCount: 6,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     sortDir: 'desc',
     showValue: true,
     showCategory: true,
@@ -202,7 +202,7 @@ const META = {
     ...hlControls,
     { key: 'itemCount', type: 'slider', label: '条目数量', min: 3, max: 10, step: 1, default: 6, desc: '展示的排行条目数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一名次' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 10, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮条目的名次' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 10, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮条目的名次' },
     { key: 'sortDir', type: 'radio', label: '排序方向', options: ['desc', 'asc'], optionLabels: ['从高到低', '从低到高'], default: 'desc', desc: '展示顺序方向' },
     { key: 'showValue', type: 'toggle', label: '数值显示', default: true, desc: '条末数值标签' },
     { key: 'showCategory', type: 'toggle', label: '类别标签', default: true, desc: '名称下方的赛道标签' },

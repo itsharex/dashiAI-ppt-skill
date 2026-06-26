@@ -11,7 +11,7 @@
  *  itemCount       number 展示的公司数量(2–5)   默认 5
  *  chartVariant    enum   编码方式             默认 'dumbbell' 可选 'dumbbell'|'bar'
  *  focusEnabled    bool   重点行高亮开关         默认 true
- *  focusIndex      number 重点行序号(从1起)     默认 1   范围 1–itemCount
+ *  focusIndex      number 重点行序号(从1起)     默认 2   范围 1–itemCount
  *  showStartDot    bool   起点估值端点显隐       默认 true
  *  showMultiplier  bool   ×倍数徽标显隐         默认 true
  *  showScale       bool   底部刻度参考线显隐     默认 true
@@ -66,7 +66,7 @@ function Slide48Dumbbell(props) {
     itemCount = 5,
     chartVariant = 'dumbbell',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showStartDot = true,
     showMultiplier = true,
     showScale = true,
@@ -234,7 +234,7 @@ const META = {
     itemCount: 5,
     chartVariant: 'dumbbell',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showStartDot: true,
     showMultiplier: true,
     showScale: true,
@@ -248,7 +248,7 @@ const META = {
     { key: 'itemCount', type: 'slider', label: '公司数', min: 2, max: 5, step: 1, default: 5, desc: '展示的公司哑铃条数' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['dumbbell', 'bar'], optionLabels: ['哑铃图', '横向柱'], default: 'dumbbell', desc: '哑铃区间 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一行' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
     { key: 'showStartDot', type: 'toggle', label: '起点端点', default: true, desc: '起投估值端点显隐（哑铃生效）' },
     { key: 'showMultiplier', type: 'toggle', label: '倍数徽标', default: true, desc: '×倍数徽标显隐（哑铃生效）' },
     { key: 'showScale', type: 'toggle', label: '刻度参考', default: true, desc: '底部刻度参考线显隐' },

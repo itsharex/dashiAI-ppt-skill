@@ -18,6 +18,7 @@ export const meta = { id: 'panorama', index: 20, label: '全景宽幅 / Panorama
 
 export const defaultProps = {
   accent: C.cyan,
+  theme: 'dark',           // 'light' | 'dark'
   mediaCount: 1,           // 1 = single gate-fold, 2 = split panorama
   mediaFit: 'cover',
   showMeta: true,          // facts strip under the image
@@ -49,6 +50,8 @@ export const controls = [
   { key: 'metaCount', label: '事实条数', type: 'slider', def: 3, min: 2, max: 3, step: 1,
     dependsOn: 'showMeta', desc: '事实条目数量' },
   { key: 'showCaption', label: '图注', type: 'toggle', def: true, desc: '显示/隐藏图片下方图注' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.cyan,
     options: [C.cyan, C.orange, C.purple, C.green], desc: '标题侧栏 / 事实 / 页脚强调色' },
 ];
@@ -56,25 +59,33 @@ export const controls = [
 export default function SwSlidePanorama(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(1, Math.min(2, p.mediaCount));
   const facts = (p.facts || []).slice(0, Math.max(2, Math.min(3, p.metaCount)));
 
-  return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#b7adaa' : '#4f444a';
+  const mut2 = dark ? '#9a8f8c' : C.inkMut;
+  const lineA = dark ? C.lineD : C.line;
+  const lineB = dark ? C.lineD2 : C.line2;
 
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '512px 1fr',
-        gap: 40, padding: '26px 0 20px' }}>
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '512px minmax(0, 1fr)',
+        gridTemplateRows: 'minmax(0, 1fr)', gap: 40, padding: '26px 0 20px' }}>
 
         {/* vertical title rail */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minWidth: 0 }}>
           <Kicker accent={accent}>{p.kicker}</Kicker>
           <h2 style={{ fontWeight: 900, fontSize: 54, lineHeight: 1.05, letterSpacing: '-1.4px',
-            marginTop: 16, color: C.blush }}>
+            marginTop: 16, color: fg }}>
             {renderSwText(p.title, { hl: { tone: 'c' } })}
           </h2>
           {p.showCaption && (
-            <p style={{ fontSize: 22, lineHeight: 1.62, color: '#b7adaa', marginTop: 20 }}>
+            <p style={{ fontSize: 22, lineHeight: 1.62, color: mut, marginTop: 20 }}>
               {p.caption}
             </p>
           )}
@@ -83,11 +94,11 @@ export default function SwSlidePanorama(props) {
         {/* panorama frame + facts */}
         <div style={{ minWidth: 0, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
           <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 10,
-            gridTemplateColumns: count === 2 ? '1fr 1fr' : '1fr' }}>
+            gridTemplateColumns: count === 2 ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1fr)' }}>
             {Array.from({ length: count }).map((_, i) => (
               <div key={i} style={{ minWidth: 0, minHeight: 0 }}>
                 <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-                  fit={p.mediaFit} accent={accent} radius={swTheme.radius} tone="dark"
+                  fit={p.mediaFit} accent={accent} radius={swTheme.radius} tone={dark ? 'dark' : 'light'}
                   label={count === 2 ? i + 1 : null} placeholder={p.mediaPlaceholder} />
               </div>
             ))}
@@ -95,13 +106,13 @@ export default function SwSlidePanorama(props) {
 
           {p.showMeta && (
             <div style={{ flexShrink: 0, marginTop: 16, display: 'grid',
-              gridTemplateColumns: 'repeat(' + facts.length + ',1fr)', borderTop: '1px solid ' + C.lineD2 }}>
+              gridTemplateColumns: 'repeat(' + facts.length + ',1fr)', borderTop: '1px solid ' + lineB }}>
               {facts.map((f, i) => (
                 <div key={f.u} style={{ padding: '16px 24px 2px',
-                  borderLeft: i ? '1px solid ' + C.lineD : 'none' }}>
-                  <div style={{ fontWeight: 900, fontSize: 46, letterSpacing: '-1px', color: i === 0 ? accent : C.blush }}>{f.v}</div>
+                  borderLeft: i ? '1px solid ' + lineA : 'none' }}>
+                  <div style={{ fontWeight: 900, fontSize: 46, letterSpacing: '-1px', color: i === 0 ? accent : fg }}>{f.v}</div>
                   <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', textTransform: 'uppercase',
-                    color: '#9a8f8c', marginTop: 4 }}>{f.u}</div>
+                    color: mut2, marginTop: 4 }}>{f.u}</div>
                 </div>
               ))}
             </div>
@@ -109,7 +120,7 @@ export default function SwSlidePanorama(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

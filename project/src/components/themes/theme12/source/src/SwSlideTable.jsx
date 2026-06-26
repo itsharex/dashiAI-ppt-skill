@@ -16,6 +16,7 @@ export const meta = { id: 'table', index: 28, label: '表格 / Compare' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   columnCount: 3,          // number of plan columns (2–4)
   rowCount: 6,             // number of feature rows (3–6)
   highlight: true,         // emphasise one column
@@ -55,23 +56,25 @@ export const controls = [
     dependsOn: 'highlight', desc: '被突出列的序号（1 起）' },
   { key: 'zebra', label: '斑马纹', type: 'toggle', def: true, desc: '行间隔底色，便于横向阅读' },
   { key: 'showLede', label: '显示导语', type: 'toggle', def: true, desc: '显示/隐藏表格上方说明句' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '高亮列 / 对勾 / 页脚强调色' },
 ];
 
-function Cell({ v, on, accent }) {
+function Cell({ v, on, accent, dark }) {
   const mark = (ok) => (
     <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
       width: 30, height: 30, borderRadius: '50%',
       background: ok ? (on ? accent : 'rgba(31,107,42,.12)') : 'transparent',
-      color: ok ? (on ? '#fff' : C.green) : 'rgba(27,21,24,.32)',
+      color: ok ? (on ? '#fff' : C.green) : (dark ? 'rgba(245,225,227,.32)' : 'rgba(27,21,24,.32)'),
       fontFamily: F.mono, fontWeight: 700, fontSize: 19 }}>{ok ? '✓' : '—'}</span>
   );
   if (v === true) return mark(true);
   if (v === false) return mark(false);
   return (
     <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 25,
-      color: on ? accent : '#2c2528' }}>{v}</span>
+      color: on ? accent : (dark ? C.blush : '#2c2528') }}>{v}</span>
   );
 }
 
@@ -86,11 +89,20 @@ export default function SwSlideTable(props) {
   const data = (p.rows || []).slice(0, rows);
   const grid = '1.3fr ' + 'repeat(' + cols + ',1fr)';
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const headRule = dark ? C.lineD2 : C.line2;
+  const rowRule = dark ? C.lineD : C.line;
+  const zebraC = dark ? 'rgba(245,225,227,.04)' : 'rgba(27,21,24,.028)';
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '40px 48px 44px', display: 'flex', flexDirection: 'column' }}>
 
         {p.showLede && (
@@ -102,17 +114,17 @@ export default function SwSlideTable(props) {
 
         {/* Header row */}
         <div style={{ display: 'grid', gridTemplateColumns: grid, alignItems: 'end',
-          borderBottom: '2px solid ' + C.line2, paddingBottom: 16 }}>
+          borderBottom: '2px solid ' + headRule, paddingBottom: 16 }}>
           <div style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.12em',
-            textTransform: 'uppercase', color: C.inkMut }}>{p.featureLabel}</div>
+            textTransform: 'uppercase', color: mutedC }}>{p.featureLabel}</div>
           {plans.map((pl, c) => {
             const on = (c + 1) === hi;
             return (
               <div key={pl.en} style={{ textAlign: 'center', padding: '0 6px' }}>
                 <div style={{ fontWeight: 900, fontSize: 30, letterSpacing: '-.5px',
-                  color: on ? accent : C.ink }}>{pl.name}</div>
+                  color: on ? accent : fg }}>{pl.name}</div>
                 <div style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.08em',
-                  textTransform: 'uppercase', color: C.inkMut, marginTop: 5 }}>{pl.en}</div>
+                  textTransform: 'uppercase', color: mutedC, marginTop: 5 }}>{pl.en}</div>
               </div>
             );
           })}
@@ -122,22 +134,22 @@ export default function SwSlideTable(props) {
         <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
           {data.map((r, ri) => (
             <div key={r.en} style={{ flex: 1, display: 'grid', gridTemplateColumns: grid,
-              alignItems: 'center', borderBottom: ri < data.length - 1 ? '1px solid ' + C.line : 'none',
-              background: p.zebra && ri % 2 ? 'rgba(27,21,24,.028)' : 'transparent' }}>
+              alignItems: 'center', borderBottom: ri < data.length - 1 ? '1px solid ' + rowRule : 'none',
+              background: p.zebra && ri % 2 ? zebraC : 'transparent' }}>
               <div style={{ paddingLeft: 6 }}>
                 <span style={{ fontWeight: 700, fontSize: 27, letterSpacing: '-.3px' }}>{r.cn}</span>
                 <span style={{ fontFamily: F.mono, fontSize: 21, letterSpacing: '.08em',
-                  textTransform: 'uppercase', color: C.inkMut, marginLeft: 12 }}>{r.en}</span>
+                  textTransform: 'uppercase', color: mutedC, marginLeft: 12 }}>{r.en}</span>
               </div>
               {plans.map((pl, c) => {
                 const on = (c + 1) === hi;
                 return (
                   <div key={pl.en} style={{ height: '100%', display: 'flex', alignItems: 'center',
                     justifyContent: 'center',
-                    background: on ? (accent === C.orange ? 'rgba(241,90,41,.07)' : 'rgba(27,21,24,.04)') : 'transparent',
+                    background: on ? (accent === C.orange ? 'rgba(241,90,41,.07)' : (dark ? 'rgba(245,225,227,.06)' : 'rgba(27,21,24,.04)')) : 'transparent',
                     borderLeft: on ? '2px solid ' + accent : '1px solid transparent',
                     borderRight: on ? '2px solid ' + accent : '1px solid transparent' }}>
-                    <Cell v={r.vals[c]} on={on} accent={accent} />
+                    <Cell v={r.vals[c]} on={on} accent={accent} dark={dark} />
                   </div>
                 );
               })}
@@ -146,7 +158,7 @@ export default function SwSlideTable(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

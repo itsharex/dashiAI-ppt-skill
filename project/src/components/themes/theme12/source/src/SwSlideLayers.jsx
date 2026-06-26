@@ -18,6 +18,7 @@ export const meta = { id: 'layers', index: 12, label: '叠影 / Layered' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'dark',           // 'light' | 'dark'
   mediaCount: 3,           // 2–4 photos
   spread: 64,              // overlap offset (px)
   tilt: 5,                 // base tilt (deg)
@@ -47,6 +48,8 @@ export const controls = [
     desc: '照片的倾斜强度' },
   { key: 'showFrame', label: '白边相纸', type: 'toggle', def: true, desc: '为照片添加白色相纸边框' },
   { key: 'showCaptions', label: '编号角标', type: 'toggle', def: true, desc: '显示/隐藏照片编号角标' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '图片的填充方式' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
@@ -56,16 +59,24 @@ export const controls = [
 export default function SwSlideLayers(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(2, Math.min(4, p.mediaCount));
   const mid = (count - 1) / 2;
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const introC = dark ? 'rgba(245,225,227,.74)' : '#4f444a';
+  const hintC = dark ? 'rgba(245,225,227,.5)' : 'rgba(27,21,24,.45)';
+  // Heavy black drop on the dark stage; a softer, lighter cast on the blush page.
+  const cardShadow = dark ? '0 24px 60px rgba(0,0,0,.5)' : '0 16px 40px rgba(27,21,24,.18)';
+
   return (
-    <SlideRoot bg={C.dark} color={C.blush} style={{ padding: '64px 80px' }}>
+    <SlideRoot bg={bg} color={fg} style={{ padding: '64px 80px' }}>
       <Shape kind="ring" size={110} border={16} color={accent} style={{ top: 70, left: 40, opacity: .85, zIndex: 0 }} />
       <Shape kind="pentagon" size={56} color={C.magenta} style={{ bottom: 80, left: 150, zIndex: 0, opacity: .9 }} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '0.92fr 1.08fr',
-        gap: 40, alignItems: 'center', position: 'relative', zIndex: 2 }}>
+        gridTemplateRows: 'minmax(0, 1fr)', gap: 40, alignItems: 'center', position: 'relative', zIndex: 2 }}>
 
         {/* copy */}
         <div style={{ minWidth: 0 }}>
@@ -78,11 +89,11 @@ export default function SwSlideLayers(props) {
           <h2 style={{ fontWeight: 900, fontSize: 78, lineHeight: 1.04, letterSpacing: '-2px' }}>
             {renderSwText(p.title, { hl: { tone: 'o', block: true } })}
           </h2>
-          <p style={{ fontSize: 25, lineHeight: 1.6, color: 'rgba(245,225,227,.74)', marginTop: 26, maxWidth: 420 }}>
+          <p style={{ fontSize: 25, lineHeight: 1.6, color: introC, marginTop: 26, maxWidth: 420 }}>
             {p.intro}
           </p>
           <p style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', textTransform: 'uppercase',
-            color: 'rgba(245,225,227,.5)', marginTop: 28 }}>
+            color: hintC, marginTop: 28 }}>
             {p.hint} {String(count).padStart(2, '0')} prints
           </p>
         </div>
@@ -98,10 +109,10 @@ export default function SwSlideLayers(props) {
                 width: '62%', aspectRatio: '4 / 5',
                 transform: 'translate(-50%,-50%) translateX(' + off + 'px) rotate(' + rot + 'deg)',
                 background: p.showFrame ? '#fbf7f3' : 'transparent', padding: fr, paddingBottom: p.showFrame ? 46 : fr,
-                borderRadius: 8, boxShadow: '0 24px 60px rgba(0,0,0,.5)', zIndex: 3 + i }}>
-                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                borderRadius: 8, boxShadow: cardShadow, zIndex: 3 + i }}>
+                <div style={{ position: 'relative', width: '100%', height: '100%', minWidth: 0, minHeight: 0 }}>
                   <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-                    fit={p.mediaFit} accent={accent} radius={p.showFrame ? 3 : 8} tone="dark"
+                    fit={p.mediaFit} accent={accent} radius={p.showFrame ? 3 : 8} tone={dark ? 'dark' : 'light'}
                     label={p.showCaptions ? i + 1 : null} placeholder={p.mediaPlaceholder} />
                 </div>
                 {p.showFrame && (

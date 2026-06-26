@@ -1,16 +1,16 @@
 // SwSlideFullBleed.jsx — "满版出血 / Full Bleed" single-image page.
 //
 // One edge-to-edge image owns the entire canvas; a solid colour-blocked title
-// card floats in a corner, with a legibility scrim and floating shapes over the
-// image. Distinct from Showcase (image + text columns), Hero and Spotlight
-// (annotated single image). Card corner, scrim, caption, mediaFit, accent and
-// shapes are props-controlled, 1:1 with controls; all visible copy/data defaults
-// live in `defaultProps`. The single image slot is fully
-// controlled (media + onMediaChange). No global side effects, no host dependency.
+// card floats in a corner, with a legibility scrim over the image. Distinct from
+// Showcase (image + text columns), Hero and Spotlight (annotated single image).
+// Card corner, scrim, caption, mediaFit and accent are props-controlled, 1:1 with
+// controls; all visible copy/data defaults live in `defaultProps`. The single
+// image slot is fully controlled (media + onMediaChange). No global side effects,
+// no host dependency.
 
 import React from 'react';
 import { swTheme } from './swTheme.js';
-import { DeckPageCurrent, DeckPageNumber, Hl, Shape, injectBaseStyles, useSwReveal, renderSwText } from './swBase.jsx';
+import { DeckPageCurrent, DeckPageNumber, Hl, injectBaseStyles, useSwReveal, renderSwText } from './swBase.jsx';
 import { SwBackgroundLayer, SW_UNICORN_BACKGROUND_CONTROL, createSwUnicornSceneControl } from './SwUnicornBackground.jsx';
 
 const C = swTheme.color, F = swTheme.font;
@@ -22,7 +22,6 @@ export const defaultProps = {
   cardCorner: 'bl',        // 'bl' | 'br' | 'tl' | 'tr'
   showScrim: true,         // legibility gradient behind the card
   showCaption: true,
-  showShapes: true,
   backgroundMode: 'unicorn',
   unicornScene: 'goey',
   mediaFit: 'cover',
@@ -47,7 +46,6 @@ export const controls = [
     desc: '实色文字卡所在的画面角落' },
   { key: 'showScrim', label: '压暗渐变', type: 'toggle', def: true, desc: '文字卡后的压暗渐变，提升可读性' },
   { key: 'showCaption', label: '副文案', type: 'toggle', def: true, desc: '显示/隐藏卡片副文案' },
-  { key: 'showShapes', label: '几何装饰', type: 'toggle', def: true, desc: '显示/隐藏漂浮的几何装饰' },
   { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '图片填充方式' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
@@ -97,13 +95,6 @@ export default function SwSlideFullBleed(props) {
       <div style={{ position: 'absolute', top: 40, right: 48, zIndex: 4, fontFamily: F.mono,
         fontSize: 22, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,.8)',
         textShadow: '0 1px 8px rgba(0,0,0,.5)' }}>{p.metaLine}</div>
-
-      {p.showShapes && (
-        <>
-          <Shape kind="pentagon" size={66} color={accent} style={{ top: 130, right: 90, zIndex: 3, opacity: .92 }} />
-          <Shape kind="ring" size={74} border={14} color="rgba(255,255,255,.5)" style={{ top: 200, right: 180, zIndex: 3 }} />
-        </>
-      )}
 
       {/* title card */}
       <div style={cardPos}>

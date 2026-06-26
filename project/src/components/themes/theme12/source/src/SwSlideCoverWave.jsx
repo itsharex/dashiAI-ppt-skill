@@ -19,6 +19,7 @@ export const meta = { id: 'coverWave', index: 2, label: '封面 · 声波 / Spec
 
 export const defaultProps = {
   accent: C.magenta,
+  theme: 'dark',         // 'light' | 'dark'
   align: 'left',         // 'left' | 'center'
   barCount: 34,          // 18–52 spectrum bars
   showReflection: true,
@@ -43,6 +44,8 @@ export const controls = [
   { key: 'showAxis', label: '频率刻度', type: 'toggle', def: true, desc: '显示/隐藏基线与频率刻度' },
   { key: 'showPlayhead', label: '播放游标', type: 'toggle', def: true, desc: '显示/隐藏扫过频谱的播放游标' },
   { key: 'showTagline', label: '副标语', type: 'toggle', def: true, desc: '显示/隐藏一行副标语' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.magenta,
     options: [C.magenta, C.orange, C.cyan, C.lime], desc: '主高亮 / 频谱主色 / 游标色' },
 ];
@@ -63,6 +66,10 @@ function injectWaveAnim() {
 export default function SwSlideCoverWave(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+  const fg = dark ? C.blush : C.ink;
+  const tickC = dark ? 'rgba(245,225,227,.4)' : 'rgba(27,21,24,.42)';
+  const playheadC = dark ? 'rgba(245,225,227,.5)' : 'rgba(27,21,24,.5)';
   const center = p.align === 'center';
   const n = Math.max(18, Math.min(52, Math.round(p.barCount)));
   const rootRef = React.useRef(null);
@@ -120,7 +127,7 @@ export default function SwSlideCoverWave(props) {
   );
 
   return (
-    <SlideRoot bg={C.dark} color={C.blush} className={'sw-cvw-root' + (entered ? ' is-in' : '')}>
+    <SlideRoot bg={dark ? C.dark : C.blush} color={fg} className={'sw-cvw-root' + (entered ? ' is-in' : '')}>
       <div ref={rootRef} data-sw-no-reveal="" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
 
       {/* accent glow wash behind the spectrum */}
@@ -137,13 +144,13 @@ export default function SwSlideCoverWave(props) {
         {p.showReflection && <Bars reflect />}
         {p.showAxis && (
           <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: F.mono, fontSize: 18,
-            letterSpacing: '.12em', color: 'rgba(245,225,227,.4)', marginTop: 4 }}>
+            letterSpacing: '.12em', color: tickC, marginTop: 4 }}>
             {p.ticks.map((t) => <span key={t}>{t}</span>)}
           </div>
         )}
         {p.showPlayhead && (
           <div aria-hidden="true" style={{ position: 'absolute', top: -10, bottom: 30, left: '62%', width: 2,
-            background: 'linear-gradient(180deg, rgba(245,225,227,.5), rgba(245,225,227,.5) 70%, transparent)' }}>
+            background: 'linear-gradient(180deg, ' + playheadC + ', ' + playheadC + ' 70%, transparent)' }}>
             <span style={{ position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%)', width: 12,
               height: 12, borderRadius: '50%', background: accent, boxShadow: '0 0 12px ' + accent }} />
           </div>
@@ -152,9 +159,11 @@ export default function SwSlideCoverWave(props) {
 
       {/* gentle top wash for headline legibility — sits BELOW the spectrum so the bars stay vivid */}
       <div data-sw-no-reveal="" aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none',
-        background: 'linear-gradient(180deg, rgba(20,16,20,.6) 0%, rgba(20,16,20,.18) 30%, rgba(20,16,20,0) 50%)' }} />
+        background: dark
+          ? 'linear-gradient(180deg, rgba(20,16,20,.6) 0%, rgba(20,16,20,.18) 30%, rgba(20,16,20,0) 50%)'
+          : 'linear-gradient(180deg, rgba(245,225,227,.6) 0%, rgba(245,225,227,.18) 30%, rgba(245,225,227,0) 50%)' }} />
 
-      <div style={{ position: 'relative', zIndex: 4 }}><Bar meta={p.barMeta} accent={accent} dark /></div>
+      <div style={{ position: 'relative', zIndex: 4 }}><Bar meta={p.barMeta} accent={accent} dark={dark} /></div>
 
       {/* hero — top-aligned so the spectrum owns the lower half */}
       <div style={{ position: 'relative', zIndex: 4, flex: 1, minHeight: 0, display: 'flex',
@@ -163,20 +172,20 @@ export default function SwSlideCoverWave(props) {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, padding: '8px 16px 8px 12px',
           borderRadius: 999, border: '1px solid ' + accent + '66', background: accent + '1f' }}>
           <span style={{ width: 11, height: 11, borderRadius: '50%', background: accent, boxShadow: '0 0 0 4px ' + accent + '33' }} />
-          <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.2em', color: C.blush }}>{p.badge}</span>
+          <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.2em', color: fg }}>{p.badge}</span>
         </div>
-        <h1 style={{ fontWeight: 900, fontSize: 138, lineHeight: 0.98, letterSpacing: '-3px', margin: '26px 0 0', color: C.blush }}>
+        <h1 style={{ fontWeight: 900, fontSize: 138, lineHeight: 0.98, letterSpacing: '-3px', margin: '26px 0 0', color: fg }}>
           {renderSwText(p.title, { hl: { tone: 'o', block: true, style: { background: accent, color: '#fff' } } })}
         </h1>
         {p.showTagline && (
-          <p style={{ fontSize: 29, lineHeight: 1.55, color: 'rgba(245,225,227,.72)', marginTop: 28,
+          <p style={{ fontSize: 29, lineHeight: 1.55, color: dark ? 'rgba(245,225,227,.72)' : '#4f444a', marginTop: 28,
             maxWidth: 900, marginLeft: center ? 'auto' : 0, marginRight: center ? 'auto' : 0 }}>
             {p.tagline}
           </p>
         )}
       </div>
 
-      <div style={{ position: 'relative', zIndex: 4 }}><Footer page={p.page} total={p.total} accent={accent} dark /></div>
+      <div style={{ position: 'relative', zIndex: 4 }}><Footer page={p.page} total={p.total} accent={accent} dark={dark} /></div>
     </SlideRoot>
   );
 }

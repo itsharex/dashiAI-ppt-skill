@@ -2,7 +2,7 @@
 //
 // Nested rectangles sized by each segment's share of total revenue, packed by a
 // deterministic slice-and-dice split (largest block leads). Distinct from Donut
-// (radial share) and StackBars (stacked columns). Block count (4–6), a focused
+// (radial share) and StackBars (stacked columns). Block count (1–6), a focused
 // block, the share labels and accent are props-controlled, 1:1 with `controls`;
 // all visible copy/data defaults live in `defaultProps`.
 // No global side effects, no host dependency.
@@ -17,7 +17,8 @@ export const meta = { id: 'treemap', index: 41, label: '占比方块 / Treemap' 
 
 export const defaultProps = {
   accent: C.green,
-  blockCount: 6,           // 4–6 segments
+  theme: 'dark',           // 'light' | 'dark'
+  blockCount: 6,           // 1–6 segments
   focus: false,
   focusIndex: 1,           // 1-based (largest = 1)
   showShare: true,
@@ -41,12 +42,14 @@ export const defaultProps = {
 };
 
 export const controls = [
-  { key: 'blockCount', label: '方块数量', type: 'slider', def: 6, min: 4, max: 6, step: 1,
+  { key: 'blockCount', label: '方块数量', type: 'slider', def: 6, min: 1, max: 6, step: 1,
     desc: '占比方块（收入来源）的数量' },
   { key: 'focus', label: '聚焦高亮', type: 'toggle', def: false, desc: '突出其中一个方块，其余淡化' },
   { key: 'focusIndex', label: '聚焦第几块', type: 'slider', def: 1, min: 1, max: 6, step: 1,
     dependsOn: 'focus', desc: '高亮的方块（按占比从大到小）' },
   { key: 'showShare', label: '占比数字', type: 'toggle', def: true, desc: '显示/隐藏每块的占比百分比' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.green,
     options: [C.green, C.orange, C.purple, C.cyan], desc: '聚焦方块 / 导语 / 页脚强调色' },
 ];
@@ -74,7 +77,13 @@ function layout(items, x, y, w, h, out) {
 export default function SwSlideTreemap(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
-  const count = Math.max(4, Math.min(6, p.blockCount));
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const introC = dark ? '#c8c0bd' : C.inkMut;
+  const labelC = dark ? '#9a8f8c' : C.inkMut;
+  const ruleC = dark ? C.lineD2 : C.line2;
+  const count = Math.max(1, Math.min(6, p.blockCount));
   const data = (p.sources || []).slice(0, count);
   const sum = data.reduce((s, d) => s + d.v, 0);
   const fi = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) - 1 : -1;
@@ -84,8 +93,8 @@ export default function SwSlideTreemap(props) {
   layout(data.map((d, i) => ({ ...d, i })), 0, 0, W, H, rects);
 
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, margin: '24px 0 22px', display: 'grid',
         gridTemplateColumns: '320px 1fr', gap: 44, position: 'relative', zIndex: 3 }}>
@@ -96,14 +105,14 @@ export default function SwSlideTreemap(props) {
           <h2 style={{ fontWeight: 900, fontSize: 54, lineHeight: 1.04, letterSpacing: '-1.4px', marginTop: 14 }}>
             {renderSwText(p.title, { hl: { tone: 'g' } })}
           </h2>
-          <p style={{ fontSize: 24, lineHeight: 1.62, color: '#c8c0bd', marginTop: 22 }}>
+          <p style={{ fontSize: 24, lineHeight: 1.62, color: introC, marginTop: 22 }}>
             {p.intro}
           </p>
-          <div style={{ marginTop: 28, paddingTop: 22, borderTop: '1px solid ' + C.lineD2,
+          <div style={{ marginTop: 28, paddingTop: 22, borderTop: '1px solid ' + ruleC,
             display: 'flex', alignItems: 'baseline', gap: 14 }}>
             <div style={{ fontWeight: 900, fontSize: 64, letterSpacing: '-1.5px', color: accent }}>{p.totalValue}</div>
             <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', textTransform: 'uppercase',
-              color: '#9a8f8c' }}>{renderSwText(p.totalLabel)}</div>
+              color: labelC }}>{renderSwText(p.totalLabel)}</div>
           </div>
         </div>
 
@@ -140,7 +149,7 @@ export default function SwSlideTreemap(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

@@ -12,7 +12,7 @@
  *  tierCount       number 展示的分层数(2–4)        默认 4
  *  chartVariant    enum   图表类型                  默认 'pyramid' 可选 'pyramid'|'bars'
  *  focusEnabled    bool   重点层高亮开关            默认 true
- *  focusIndex      number 重点层序号(从1起·顶为1)   默认 1   范围 1–tierCount
+ *  focusIndex      number 重点层序号(从1起·顶为1)   默认 2   范围 1–tierCount
  *  showCount       bool   层内家数数字显隐          默认 true
  *  showExamples    bool   右栏代表公司芯片显隐       默认 true
  *  showDecorations bool   星芒等点缀显隐           默认 true
@@ -67,7 +67,7 @@ function Slide58Pyramid(props) {
     tierCount = 4,
     chartVariant = 'pyramid',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showCount = true,
     showExamples = true,
     showDecorations = true,
@@ -260,7 +260,7 @@ const META = {
     tierCount: 4,
     chartVariant: 'pyramid',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showCount: true,
     showExamples: true,
     showDecorations: true,
@@ -273,7 +273,7 @@ const META = {
     { key: 'tierCount', type: 'slider', label: '分层数', min: 2, max: 4, step: 1, default: 4, desc: '展示的估值分层数' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['pyramid', 'bars'], optionLabels: ['金字塔', '横向柱'], default: 'pyramid', desc: '金字塔 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一层' },
-    { key: 'focusIndex', type: 'slider', label: '重点层序号', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'tierCount', showIf: (v) => v.focusEnabled, desc: '被高亮层的序号（顶为1）' },
+    { key: 'focusIndex', type: 'slider', label: '重点层序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'tierCount', showIf: (v) => v.focusEnabled, desc: '被高亮层的序号（顶为1）' },
     { key: 'showCount', type: 'toggle', label: '家数数字', default: true, desc: '层内家数数字' },
     { key: 'showExamples', type: 'toggle', label: '代表公司', default: true, desc: '右栏代表公司芯片' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

@@ -17,6 +17,7 @@ export const meta = { id: 'quotewall', index: 81, label: '群言 / Quote Wall' }
 
 export const defaultProps = {
   accent: C.purple,
+  theme: 'dark',           // 'light' | 'dark'
   quoteCount: 4,           // 2–4 quotes
   showBadge: true,
   focus: false,
@@ -42,6 +43,8 @@ export const controls = [
   { key: 'focus', label: '聚焦高亮', type: 'toggle', def: false, desc: '突出其中一条引言，其余淡化' },
   { key: 'focusIndex', label: '聚焦第几条', type: 'slider', def: 1, min: 1, max: 4, step: 1,
     dependsOn: 'focus', desc: '高亮的引言序号' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.purple,
     options: [C.purple, C.orange, C.cyan, C.green], desc: '主引言 / 导语 / 页脚强调色' },
 ];
@@ -56,15 +59,23 @@ const SPANS = {
 export default function SwSlideQuoteWall(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(2, Math.min(4, p.quoteCount));
-  const data = (p.quotes || []).slice(0, count).map((d, i) => (i === 0 ? { ...d, c: accent } : d));
-  const spans = SPANS[count];
   const fi = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) - 1 : -1;
+  // The "hero" card (accent fill + white text + larger quote layout) is the
+  // focused card when focus is on, otherwise the first card. Applying the same
+  // emphasis to whichever card is the hero keeps the highlighted style identical
+  // across every focusIndex instead of leaving it tied to position 0.
+  const heroIndex = fi === -1 ? 0 : fi;
+  const data = (p.quotes || []).slice(0, count).map((d, i) => (
+    i === heroIndex ? { ...d, c: accent, fg: '#fff', sub: '#f3b8ec', big: true } : { ...d, big: false }
+  ));
+  const spans = SPANS[count];
   const rows = count <= 2 ? '1fr' : '1fr 1fr';
 
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={dark ? C.dark : C.blush} color={dark ? C.blush : C.ink}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 20 }}>
         <Kicker accent={accent}>{p.kicker}</Kicker>
@@ -108,7 +119,7 @@ export default function SwSlideQuoteWall(props) {
       </div>
 
       <div style={{ marginTop: 22 }}>
-        <Footer page={p.page} total={p.total} accent={accent} dark />
+        <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
       </div>
     </SlideRoot>
   );

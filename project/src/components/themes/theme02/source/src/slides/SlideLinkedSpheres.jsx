@@ -20,6 +20,11 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const LINKED_SPHERES_MIN_NODE_COUNT = 2;
+const LINKED_SPHERES_MAX_NODE_COUNT = 3;
+const LINKED_SPHERES_DEFAULT_NODE_COUNT = 3;
+const LINKED_SPHERES_MAX_FOCUS_INDEX = 2;
+
 export const slideLinkedSpheresDefaults = {
   kicker: 'THESIS · 资本主线',
   title: '资本逻辑 ',
@@ -32,22 +37,22 @@ export const slideLinkedSpheresDefaults = {
     { tag: 'PHASE 02', label: '分化验证', desc: '资本开始分辨商业闭环，头部集中、长尾承压。' },
     { tag: 'PHASE 03', label: '兑现驱动', desc: '收入确定性、客户留存成为新的估值标尺。' },
   ],
-  nodeCount: 3,
+  nodeCount: LINKED_SPHERES_DEFAULT_NODE_COUNT,
   connectors: [{ label: '估值高企' }, { label: '理性回归' }, { label: '价值重估' }],
   focusEnabled: true,
-  focusIndex: 2,
+  focusIndex: LINKED_SPHERES_MAX_FOCUS_INDEX,
   showConnectors: true,
   showDesc: true,
   showGhost: true,
 };
 
 export const slideLinkedSpheresControls = [
-  { key: 'nodeCount', type: 'number', label: '球体数量', default: 3, min: 2, max: 4, step: 1,
-    maxFrom: (p) => (p.nodes ? p.nodes.length : 3), describe: '横向并列的阶段球数量' },
+  { key: 'nodeCount', type: 'number', label: '球体数量', default: LINKED_SPHERES_DEFAULT_NODE_COUNT, min: LINKED_SPHERES_MIN_NODE_COUNT, max: LINKED_SPHERES_MAX_NODE_COUNT, step: 1,
+    maxFrom: (p) => Math.min(LINKED_SPHERES_MAX_NODE_COUNT, p.nodes ? p.nodes.length : LINKED_SPHERES_DEFAULT_NODE_COUNT), describe: '横向并列的阶段球数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮其中一个阶段' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 2, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.nodeCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: LINKED_SPHERES_MAX_FOCUS_INDEX, min: 0, max: LINKED_SPHERES_MAX_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.min(LINKED_SPHERES_MAX_FOCUS_INDEX, Math.max(0, (p.nodeCount || 1) - 1)),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调阶段的序号' },
   { key: 'showConnectors', type: 'toggle', label: '连接标签', default: true,
     describe: '球之间的连接标签显隐' },
@@ -71,11 +76,16 @@ function Marker({ focus }) {
 
 export function SlideLinkedSpheres(props) {
   const p = { ...slideLinkedSpheresDefaults, ...props };
-  const count = Math.max(2, Math.min(p.nodes.length, p.nodeCount));
+  const maxNodeCount = Math.min(LINKED_SPHERES_MAX_NODE_COUNT, p.nodes.length);
+  const count = maxNodeCount <= LINKED_SPHERES_MIN_NODE_COUNT
+    ? maxNodeCount
+    : Math.max(LINKED_SPHERES_MIN_NODE_COUNT, Math.min(maxNodeCount, p.nodeCount));
   const nodes = p.nodes.slice(0, count);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled && count > 0
+    ? Math.max(0, Math.min(Math.min(count - 1, LINKED_SPHERES_MAX_FOCUS_INDEX), p.focusIndex))
+    : -1;
   const conns = (p.connectors || []).slice(0, Math.max(0, count - 1));
-  const dia = count >= 4 ? 318 : count === 3 ? 372 : 420;
+  const dia = count === LINKED_SPHERES_MAX_NODE_COUNT ? 372 : 420;
 
   return (
     <div className={cx(THEME_CLASS, 'gxn-slide')}>

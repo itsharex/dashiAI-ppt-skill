@@ -2,9 +2,9 @@
 //
 // A full-bleed chapter break dominated by a giant section number with a short
 // title and a thin rule. Distinct from Section (kicker + decorations layout) and
-// Interlude (quiet centred line). theme, the number, the rule, alignment and
-// accent are props-controlled, 1:1 with `controls`; all visible copy/data
-// defaults live in `defaultProps`. No global side effects.
+// Interlude (quiet centred line). theme, the rule, alignment and accent are
+// props-controlled, 1:1 with `controls`; all visible copy/data (incl. the
+// editable section number) defaults live in `defaultProps`. No global side effects.
 
 import React from 'react';
 import { swTheme } from './swTheme.js';
@@ -17,7 +17,7 @@ export const meta = { id: 'divider', index: 76, label: '大间章 / Divider' };
 export const defaultProps = {
   accent: C.orange,
   theme: 'accent',         // 'dark' | 'accent'
-  sectionNo: 3,            // chapter number
+  sectionLabel: '03',      // chapter number — editable text
   align: 'left',           // 'left' | 'center'
   showRule: true,
   showGhost: true,         // oversized ghost numeral behind
@@ -33,8 +33,6 @@ export const defaultProps = {
 export const controls = [
   { key: 'theme', label: '配色', type: 'segment', def: 'accent',
     options: [{ value: 'dark', label: '深色' }, { value: 'accent', label: '强调色' }], desc: '间章整体配色' },
-  { key: 'sectionNo', label: '章节序号', type: 'slider', def: 3, min: 1, max: 9, step: 1,
-    desc: '本章的序号' },
   { key: 'align', label: '对齐', type: 'segment', def: 'left',
     options: [{ value: 'left', label: '居左' }, { value: 'center', label: '居中' }], desc: '标题对齐方式' },
   { key: 'showRule', label: '分隔线', type: 'toggle', def: true, desc: '显示/隐藏标题下方分隔线' },
@@ -53,7 +51,6 @@ export default function SwSlideDivider(props) {
   const fg = '#fff';
   const sub = onAccent ? 'rgba(255,255,255,.82)' : 'rgba(245,225,227,.7)';
   const numColor = onAccent ? '#fff' : accent;
-  const no = String(p.sectionNo).padStart(2, '0');
 
   return (
     <SlideRoot bg={bg} color={fg}>
@@ -63,7 +60,7 @@ export default function SwSlideDivider(props) {
           transform: center ? 'translate(-50%,-50%)' : 'translateY(-50%)',
           fontFamily: F.mono, fontWeight: 700, fontSize: 720, lineHeight: 0.7,
           color: onAccent ? 'rgba(255,255,255,.12)' : 'rgba(245,225,227,.06)', pointerEvents: 'none',
-          whiteSpace: 'nowrap' }}>{no}</div>
+          whiteSpace: 'nowrap' }}>{p.sectionLabel}</div>
       )}
 
       <Bar meta={p.barMeta} accent={onAccent ? '#fff' : accent} dark />
@@ -76,7 +73,7 @@ export default function SwSlideDivider(props) {
           <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 30, letterSpacing: '.3em',
             color: sub }}>{p.chapterLabel}</span>
           <span style={{ fontWeight: 900, fontSize: 220, lineHeight: 0.82, letterSpacing: '-6px',
-            color: numColor }}>{no}</span>
+            color: numColor }}>{p.sectionLabel}</span>
         </div>
 
         {p.showRule && (

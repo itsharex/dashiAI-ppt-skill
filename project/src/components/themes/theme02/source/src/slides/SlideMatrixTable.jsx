@@ -20,6 +20,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_MATRIX_TABLE_ROWS = 5;
+const MAX_MATRIX_TABLE_FOCUS_INDEX = 4;
+
 export const slideMatrixTableDefaults = {
   kicker: 'MATRIX · 赛道评级',
   title: '五大赛道 ',
@@ -32,7 +35,7 @@ export const slideMatrixTableDefaults = {
     { label: 'AI 芯片', sub: 'Hardware', scores: [3, 4, 3], verdict: '卖铲长线 · 中性', tone: 'mid' },
     { label: '其他工具链', sub: 'Tools / Safety', scores: [2, 2, 3], verdict: '等待验证区 · 谨慎', tone: 'warn' },
   ],
-  rowCount: 5,
+  rowCount: MAX_MATRIX_TABLE_ROWS,
   scaleMax: 5,
   focusEnabled: true,
   focusIndex: 2,
@@ -41,14 +44,14 @@ export const slideMatrixTableDefaults = {
 };
 
 export const slideMatrixTableControls = [
-  { key: 'rowCount', type: 'number', label: '行数', default: 5, min: 2, step: 1,
-    maxFrom: (p) => (p.rows ? p.rows.length : 5), describe: '展示的数据行数' },
+  { key: 'rowCount', type: 'number', label: '行数', default: MAX_MATRIX_TABLE_ROWS, min: 2, max: MAX_MATRIX_TABLE_ROWS, step: 1,
+    describe: '展示的数据行数' },
   { key: 'scaleMax', type: 'number', label: '评分满分', default: 5, min: 3, max: 5, step: 1,
     describe: '点阵评分的满分点数' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮其中一行' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 2, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.rowCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 2, min: 0, max: MAX_MATRIX_TABLE_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_MATRIX_TABLE_FOCUS_INDEX + 1, p.rowCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调行的序号' },
   { key: 'showSub', type: 'toggle', label: '副标题', default: true,
     describe: '行名下方英文/副标显隐' },
@@ -83,10 +86,10 @@ function Dots({ score, max, accent, dim }) {
 
 export function SlideMatrixTable(props) {
   const p = { ...slideMatrixTableDefaults, ...props };
-  const count = Math.max(1, Math.min(p.rows.length, p.rowCount));
+  const count = Math.max(1, Math.min(MAX_MATRIX_TABLE_ROWS, p.rows.length, p.rowCount));
   const rows = p.rows.slice(0, count);
   const max = Math.max(3, Math.min(5, p.scaleMax));
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_MATRIX_TABLE_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const dims = p.dims;
 
   const cols = [`minmax(0, 1.4fr)`, ...dims.map(() => '1fr')];

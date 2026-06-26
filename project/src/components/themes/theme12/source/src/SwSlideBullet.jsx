@@ -17,6 +17,7 @@ export const meta = { id: 'bullet', index: 53, label: '子弹图 / Bullet' };
 
 export const defaultProps = {
   accent: C.green,
+  theme: 'light',          // 'light' | 'dark'
   rowCount: 4,             // 3–5 KPIs
   showBands: true,
   showTarget: true,
@@ -50,6 +51,8 @@ export const controls = [
   { key: 'focus', label: '聚焦高亮', type: 'toggle', def: false, desc: '突出其中一行，其余淡化' },
   { key: 'focusIndex', label: '聚焦第几行', type: 'slider', def: 1, min: 1, max: 5, step: 1,
     dependsOn: 'focus', desc: '高亮的指标行序号' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.green,
     options: [C.green, C.orange, C.cyan, C.purple], desc: '达成条 / 导语 / 页脚强调色' },
 ];
@@ -57,13 +60,24 @@ export const controls = [
 export default function SwSlideBullet(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(5, p.rowCount));
   const data = (p.kpis || []).slice(0, count);
   const fi = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) - 1 : -1;
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? 'rgba(245,225,227,.7)' : C.inkMut;
+  const faint = dark ? 'rgba(245,225,227,.5)' : '#9a8f8c';
+  const tick = dark ? '#fff' : C.ink;
+  const trackEmpty = dark ? 'rgba(245,225,227,.1)' : 'rgba(27,21,24,.06)';
+  const band1 = dark ? 'rgba(245,225,227,.07)' : 'rgba(27,21,24,.05)';
+  const band2 = dark ? 'rgba(245,225,227,.13)' : 'rgba(27,21,24,.10)';
+  const band3 = dark ? 'rgba(245,225,227,.2)' : 'rgba(27,21,24,.16)';
+
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 20, display: 'flex', alignItems: 'flex-end',
         justifyContent: 'space-between', gap: 40 }}>
@@ -74,11 +88,11 @@ export default function SwSlideBullet(props) {
           </h2>
         </div>
         <div style={{ display: 'flex', gap: 22, alignItems: 'center', fontFamily: F.mono, fontSize: 19,
-          letterSpacing: '.08em', color: 'rgba(245,225,227,.7)', paddingBottom: 6 }}>
+          letterSpacing: '.08em', color: mut, paddingBottom: 6 }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ width: 22, height: 10, borderRadius: 3, background: accent }} />{p.legendDone}</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ width: 3, height: 18, background: '#fff' }} />{p.legendTarget}</span>
+            <span style={{ width: 3, height: 18, background: tick }} />{p.legendTarget}</span>
         </div>
       </div>
 
@@ -95,16 +109,16 @@ export default function SwSlideBullet(props) {
                 <div style={{ fontWeight: 700, fontSize: 26, letterSpacing: '-.3px', overflow: 'hidden',
                   textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{kpi.t}</div>
                 <div style={{ fontFamily: F.mono, fontSize: 16, letterSpacing: '.12em', textTransform: 'uppercase',
-                  color: 'rgba(245,225,227,.5)' }}>{kpi.s}</div>
+                  color: faint }}>{kpi.s}</div>
               </div>
               {/* bullet track */}
               <div style={{ position: 'relative', height: 34, borderRadius: 8, overflow: 'hidden',
-                background: p.showBands ? 'transparent' : 'rgba(245,225,227,.1)' }}>
+                background: p.showBands ? 'transparent' : trackEmpty }}>
                 {p.showBands && (
                   <div style={{ position: 'absolute', inset: 0, display: 'flex' }}>
-                    <div style={{ width: '50%', background: 'rgba(245,225,227,.07)' }} />
-                    <div style={{ width: '30%', background: 'rgba(245,225,227,.13)' }} />
-                    <div style={{ width: '20%', background: 'rgba(245,225,227,.2)' }} />
+                    <div style={{ width: '50%', background: band1 }} />
+                    <div style={{ width: '30%', background: band2 }} />
+                    <div style={{ width: '20%', background: band3 }} />
                   </div>
                 )}
                 {/* measure bar */}
@@ -114,21 +128,21 @@ export default function SwSlideBullet(props) {
                 {/* target tick */}
                 {p.showTarget && (
                   <div style={{ position: 'absolute', top: 4, bottom: 4, left: kpi.target + '%', width: 3,
-                    background: '#fff', borderRadius: 2 }} />
+                    background: tick, borderRadius: 2 }} />
                 )}
               </div>
               {/* value */}
               <div style={{ textAlign: 'right' }}>
                 <div style={{ fontWeight: 900, fontSize: 30, letterSpacing: '-.5px',
                   color: hit ? accent : C.orange }}>{kpi.disp}</div>
-                <div style={{ fontFamily: F.mono, fontSize: 15, color: 'rgba(245,225,227,.5)' }}>{hit ? p.hitLabel : p.missLabel}</div>
+                <div style={{ fontFamily: F.mono, fontSize: 15, color: faint }}>{hit ? p.hitLabel : p.missLabel}</div>
               </div>
             </div>
           );
         })}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

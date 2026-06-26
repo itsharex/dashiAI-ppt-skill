@@ -17,6 +17,7 @@ export const meta = { id: 'pyramid', index: 54, label: '受众分层 / Pyramid' 
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   tierCount: 5,            // 4–6 tiers
   showValues: true,        // % label on each bar
   showAxis: false,         // center axis line
@@ -49,6 +50,8 @@ export const controls = [
   { key: 'focus', label: '高亮某层', type: 'toggle', def: true, desc: '高亮某一分层、弱化其余' },
   { key: 'focusIndex', label: '高亮第几层', type: 'slider', def: 2, min: 1, max: 6, step: 1,
     dependsOn: 'focus', desc: '被高亮分层的序号（自上而下，1 起）' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '左列 / 高亮 / 页脚强调色' },
 ];
@@ -61,28 +64,35 @@ export default function SwSlidePyramid(props) {
   const max = Math.max(...tiers.flatMap((t) => [t.l, t.r]));
   const rightColor = accent === C.cyan ? C.purple : C.cyan;
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const axisC = dark ? C.lineD2 : C.line2;
+
   const HalfBar = ({ v, color, side, on }) => (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: side === 'l' ? 'flex-end' : 'flex-start',
       minWidth: 0, gap: 14 }}>
       {side === 'l' && p.showValues && (
-        <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, color: on ? color : C.inkMut,
+        <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, color: on ? color : mutedC,
           fontVariantNumeric: 'tabular-nums' }}>{v}%</span>
       )}
       <div style={{ width: (v / max * 100) + '%', height: 38, background: color,
         borderRadius: side === 'l' ? '10px 0 0 10px' : '0 10px 10px 0',
         boxShadow: on ? '0 4px 12px ' + color + '44' : 'none' }} />
       {side === 'r' && p.showValues && (
-        <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, color: on ? color : C.inkMut,
+        <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, color: on ? color : mutedC,
           fontVariantNumeric: 'tabular-nums' }}>{v}%</span>
       )}
     </div>
   );
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '40px 54px 36px', display: 'flex', flexDirection: 'column' }}>
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 40,
@@ -99,7 +109,7 @@ export default function SwSlidePyramid(props) {
                 <span style={{ width: 22, height: 14, borderRadius: 4, background: s.c }} />
                 <span style={{ fontSize: 22, fontWeight: 700 }}>{s.t}</span>
                 <span style={{ fontFamily: F.mono, fontSize: 16, letterSpacing: '.08em', textTransform: 'uppercase',
-                  color: C.inkMut }}>{s.e}</span>
+                  color: mutedC }}>{s.e}</span>
               </div>
             ))}
           </div>
@@ -110,7 +120,7 @@ export default function SwSlidePyramid(props) {
           justifyContent: 'space-around' }}>
           {p.showAxis && (
             <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', width: 2,
-              background: C.line2, transform: 'translateX(-50%)' }} />
+              background: axisC, transform: 'translateX(-50%)' }} />
           )}
           {tiers.map((t, i) => {
             const on = !p.focus || (i + 1) === p.focusIndex;
@@ -122,9 +132,9 @@ export default function SwSlidePyramid(props) {
                 <HalfBar v={t.l} color={lc} side="l" on={on} />
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 26,
-                    color: on && p.focus ? accent : C.ink }}>{t.age}</div>
+                    color: on && p.focus ? accent : fg }}>{t.age}</div>
                   <div style={{ fontFamily: F.mono, fontSize: 15, letterSpacing: '.1em', textTransform: 'uppercase',
-                    color: C.inkMut, marginTop: 2 }}>{p.ageUnit}</div>
+                    color: mutedC, marginTop: 2 }}>{p.ageUnit}</div>
                 </div>
                 <HalfBar v={t.r} color={rc} side="r" on={on} />
               </div>
@@ -133,7 +143,7 @@ export default function SwSlidePyramid(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

@@ -11,7 +11,7 @@
  *  accentTone      enum   主色调(通用命名)       默认 'green' 可选 green/yellow/blue/pink
  *  metricCount     number 右栏支撑变化卡数(0–3)  默认 3
  *  focusEnabled    bool   重点支撑卡高亮开关      默认 false
- *  focusIndex      number 重点卡序号(从1起)      默认 1   范围 1–metricCount
+ *  focusIndex      number 重点卡序号(从1起)      默认 2   范围 1–metricCount
  *  showTrack       bool   去年→今年跃迁条显隐     默认 true
  *  showUnit        bool   主数字单位后缀显隐      默认 true
  *  showDecorations bool   星芒等点缀显隐         默认 true
@@ -74,7 +74,7 @@ function Slide70DeltaHero(props) {
     accentTone = 'green',
     metricCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showTrack = true,
     showUnit = true,
     showDecorations = true,
@@ -226,7 +226,7 @@ const META = {
     accentTone: 'green',
     metricCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showTrack: true,
     showUnit: true,
     showDecorations: true,
@@ -239,7 +239,7 @@ const META = {
     { key: 'accentTone', type: 'radio', label: '主色调', options: ['green', 'yellow', 'blue', 'pink'], optionLabels: ['绿', '黄', '蓝', '粉'], default: 'green', desc: '页面主色调(通用命名)' },
     { key: 'metricCount', type: 'slider', label: '支撑变化卡', min: 0, max: 3, step: 1, default: 3, desc: '右栏支撑变化卡数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, showIf: (v) => v.metricCount > 0, desc: '是否高亮某一张支撑卡' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'metricCount', showIf: (v) => v.metricCount > 0 && v.focusEnabled, desc: '被高亮支撑卡序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'metricCount', showIf: (v) => v.metricCount > 0 && v.focusEnabled, desc: '被高亮支撑卡序号' },
     { key: 'showTrack', type: 'toggle', label: '跃迁条', default: true, desc: '去年→今年体量跃迁条' },
     { key: 'showUnit', type: 'toggle', label: '单位后缀', default: true, desc: '主数字 % 单位后缀' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

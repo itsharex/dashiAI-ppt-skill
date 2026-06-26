@@ -14,7 +14,7 @@
  *  segmentCount    number 展示的赛道分段数     默认 5   可选 2–5
  *  chartVariant    enum   图表类型            默认 'donut'('环形'=同心放射) | 'bar'(纵向柱)
  *  focusEnabled    bool   重点分段高亮开关      默认 true
- *  focusIndex      number 重点分段序号(从1起)   默认 1
+ *  focusIndex      number 重点分段序号(从1起)   默认 2
  *  showCenterTotal bool   环形中心总额显隐       默认 true（环形生效）
  *  showLegend      bool   右侧图例列表显隐       默认 true（环形生效）
  *  showDecorations bool   星芒 / 圆环等点缀     默认 true
@@ -169,7 +169,7 @@ function Slide22Donut(props) {
     segmentCount = 5,
     chartVariant = 'donut',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showCenterTotal = true,
     showLegend = true,
     showDecorations = true,
@@ -354,7 +354,7 @@ const META = {
     segmentCount: 5,
     chartVariant: 'donut',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showCenterTotal: true,
     showLegend: true,
     showDecorations: true,
@@ -373,7 +373,7 @@ const META = {
     { key: 'segmentCount', type: 'slider', label: '分段数量', min: 2, max: 5, step: 1, default: 5, desc: '展示的赛道分段数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['donut', 'bar'], optionLabels: ['环形', '柱状'], default: 'donut', desc: '同心放射环 / 纵向渐变柱' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一分段' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 1, maxFromKey: 'segmentCount', showIf: (v) => v.focusEnabled, desc: '被高亮分段的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 2, maxFromKey: 'segmentCount', showIf: (v) => v.focusEnabled, desc: '被高亮分段的序号' },
     { key: 'showCenterTotal', type: 'toggle', label: '中心总额', default: true, showIf: (v) => v.chartVariant === 'donut', desc: '环形中心总融资额(环形生效)' },
     { key: 'showLegend', type: 'toggle', label: '图例列表', default: true, showIf: (v) => v.chartVariant === 'donut', desc: '右侧图例列表(环形生效)' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

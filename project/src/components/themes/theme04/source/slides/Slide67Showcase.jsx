@@ -13,7 +13,7 @@
  *  mediaCount      number 显示图片槽的画框数(0–4) 默认 4（主图+缩略图共 1+thumbCount）
  *  imageSide       enum   主图位置               默认 'left' 可选 'left'|'right'
  *  focusEnabled    bool   缩略图选中环开关         默认 true
- *  focusIndex      number 选中缩略图序号(从1起)   默认 1   范围 1–thumbCount
+ *  focusIndex      number 选中缩略图序号(从1起)   默认 2   范围 1–thumbCount
  *  showHeroCaption bool   主图底部浮层注解显隐     默认 true
  *  showDecorations bool   星芒等点缀显隐          默认 true
  *
@@ -66,7 +66,7 @@ function Slide67Showcase(props) {
     mediaCount = 4,
     imageSide = 'left',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showHeroCaption = true,
     showDecorations = true,
   } = props;
@@ -217,7 +217,7 @@ const META = {
     mediaCount: 4,
     imageSide: 'left',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showHeroCaption: true,
     showDecorations: true,
   },
@@ -230,7 +230,7 @@ const META = {
     { key: 'mediaCount', type: 'slider', label: '图片槽画框数', min: 0, max: 4, step: 1, default: 4, desc: '显示图片槽的画框数(主图优先)' },
     { key: 'imageSide', type: 'radio', label: '主图位置', options: ['left', 'right'], optionLabels: ['左侧', '右侧'], default: 'left', desc: '主图在左 / 右' },
     { key: 'focusEnabled', type: 'toggle', label: '选中环', default: true, showIf: (v) => v.thumbCount > 0, desc: '缩略图选中环' },
-    { key: 'focusIndex', type: 'slider', label: '选中序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'thumbCount', showIf: (v) => v.thumbCount > 0 && v.focusEnabled, desc: '被选中缩略图序号' },
+    { key: 'focusIndex', type: 'slider', label: '选中序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'thumbCount', showIf: (v) => v.thumbCount > 0 && v.focusEnabled, desc: '被选中缩略图序号' },
     { key: 'showHeroCaption', type: 'toggle', label: '主图注解', default: true, desc: '主图底部浮层注解' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
   ],

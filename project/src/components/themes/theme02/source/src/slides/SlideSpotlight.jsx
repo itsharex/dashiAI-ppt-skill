@@ -92,10 +92,22 @@ export function SlideSpotlight(props) {
   );
 
   const imgCol = (
-    <ImageSlots count={1} items={p.images}
-                captions={p.showCaption ? [p.caption] : []}
-                onActivate={p.onSlotActivate} onClear={p.onSlotClear}
-                placeholder="拖入案例配图 · IMAGE" />
+    <div className="gxn-spotlight-media" style={{
+      width: '100%',
+      maxWidth: '100%',
+      minWidth: 0,
+      minHeight: 0,
+      maxHeight: '100%',
+      aspectRatio: '3 / 2',
+      alignSelf: 'center',
+      overflow: 'hidden',
+    }}>
+      <ImageSlots count={1} items={p.images}
+                  captions={p.showCaption ? [p.caption] : []}
+                  onActivate={p.onSlotActivate} onClear={p.onSlotClear}
+                  boundSingle
+                  placeholder="拖入案例配图 · IMAGE" />
+    </div>
   );
 
   return (
@@ -110,8 +122,8 @@ export function SlideSpotlight(props) {
           ) : (
             <div style={{ height: '100%', display: 'grid', gridTemplateColumns: '1.26fr 0.74fr', gap: 60, alignItems: 'stretch', minHeight: 0 }}>
               {p.imageSide === 'left'
-                ? <><div style={{ minHeight: 0 }}>{imgCol}</div>{textCol}</>
-                : <>{textCol}<div style={{ minHeight: 0 }}>{imgCol}</div></>}
+                ? <><div style={{ minHeight: 0, display: 'flex', alignItems: 'center' }}>{imgCol}</div>{textCol}</>
+                : <>{textCol}<div style={{ minHeight: 0, display: 'flex', alignItems: 'center' }}>{imgCol}</div></>}
             </div>
           )}
         </div>

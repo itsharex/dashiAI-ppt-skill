@@ -22,6 +22,8 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_BENTO_STATS = 4;
+
 export const slideBentoDefaults = {
   kicker: 'DASHBOARD · 数据看板',
   title: '一屏读懂 ',
@@ -44,7 +46,8 @@ export const slideBentoDefaults = {
 
 export const slideBentoControls = [
   { key: 'statCount', type: 'number', label: '支撑数字', default: 4, min: 2, step: 1,
-    maxFrom: (p) => (p.stats ? p.stats.length : 4), describe: '右侧支撑小数字数量' },
+    max: MAX_BENTO_STATS,
+    maxFrom: (p) => Math.min(MAX_BENTO_STATS, p.stats ? p.stats.length : MAX_BENTO_STATS), describe: '右侧支撑小数字数量' },
   { key: 'layout', type: 'enum', label: '版式', default: 'hero-left',
     options: [{ value: 'hero-left', label: '主单元在左' }, { value: 'hero-right', label: '主单元在右' }],
     describe: '主单元位于左侧或右侧' },
@@ -79,7 +82,7 @@ export function SlideBento(props) {
   const accent = sc.accent || '#2fe07f';
   const glow = sc.glow || '47,224,127';
 
-  const sCount = Math.max(2, Math.min(p.stats.length, p.statCount));
+  const sCount = Math.max(2, Math.min(MAX_BENTO_STATS, p.stats.length, p.statCount));
   const stats = p.stats.slice(0, sCount);
   const heroRight = p.layout === 'hero-right';
   const statCols = sCount <= 2 ? 1 : 2;

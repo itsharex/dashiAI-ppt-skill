@@ -8,7 +8,7 @@
  *
  * ── Props (see slideShowcaseDefaults) ───────────────────────────────────────
  *   kicker, title, titleEm, lead      strings
- *   imageCount   number   0–4 image slots (0 → text-only composition)
+ *   imageCount   number   0–5 image slots (0 → text-only composition)
  *   layout       'split' | 'full'   text+gallery, or gallery-dominant
  *   captions     string[] per-slot caption text
  *   focusEnabled boolean  highlight one image (accent ring)
@@ -25,6 +25,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader, ImageSlots, Stat, TagRow } from '../gxnPrimitives.jsx';
 
+const MAX_SHOWCASE_IMAGE_COUNT = 5;
+const MAX_SHOWCASE_FOCUS_INDEX = MAX_SHOWCASE_IMAGE_COUNT - 1;
+
 export const slideShowcaseDefaults = {
   kicker: 'CASES · 案例图景',
   title: '典型案例图景 ',
@@ -32,7 +35,7 @@ export const slideShowcaseDefaults = {
   lead: '从模型层到基础设施，头部玩家以不同路径吸纳资本——技术领先、安全对齐、算力卡位，共同构成 2024 的资本图景。',
   imageCount: 3,
   layout: 'split',
-  captions: ['OpenAI · 通用大模型', 'Anthropic · 安全对齐', 'xAI · 实时多模态', 'CoreWeave · 算力云'],
+  captions: ['OpenAI · 通用大模型', 'Anthropic · 安全对齐', 'xAI · 实时多模态', 'CoreWeave · 算力云', 'Perplexity · AI 搜索'],
   focusEnabled: false,
   focusIndex: 0,
   showCaptions: true,
@@ -43,15 +46,15 @@ export const slideShowcaseDefaults = {
 };
 
 export const slideShowcaseControls = [
-  { key: 'imageCount', type: 'number', label: '图片数量', default: 3, min: 0, max: 4, step: 1,
+  { key: 'imageCount', type: 'number', label: '图片数量', default: 3, min: 0, max: MAX_SHOWCASE_IMAGE_COUNT, step: 1,
     describe: '配图槽位数量（0 = 纯文字版式）' },
   { key: 'layout', type: 'enum', label: '版式', default: 'split',
     options: [{ value: 'split', label: '图文分栏' }, { value: 'full', label: '满幅图廊' }],
     describe: '图文分栏，或图片占主导的满幅图廊' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: false,
     describe: '是否高亮其中一张配图' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.imageCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_SHOWCASE_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_SHOWCASE_FOCUS_INDEX + 1, p.imageCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled && p.imageCount > 0, describe: '被强调配图的序号' },
   { key: 'showCaptions', type: 'toggle', label: '图注', default: true,
     visibleWhen: (p) => p.imageCount > 0, describe: '显示/隐藏图片上的说明文字' },
@@ -61,11 +64,12 @@ export const slideShowcaseControls = [
 
 export function SlideShowcase(props) {
   const p = { ...slideShowcaseDefaults, ...props };
-  const hasImages = p.imageCount > 0;
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(p.imageCount - 1, p.focusIndex)) : -1;
+  const imageCount = Math.max(0, Math.min(MAX_SHOWCASE_IMAGE_COUNT, p.imageCount));
+  const hasImages = imageCount > 0;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_SHOWCASE_FOCUS_INDEX, imageCount - 1, p.focusIndex)) : -1;
 
   const gallery = hasImages ? (
-    <ImageSlots count={p.imageCount} items={p.images}
+    <ImageSlots count={imageCount} items={p.images}
                 captions={p.showCaptions ? p.captions : []}
                 focusIndex={fIdx}
                 onActivate={p.onSlotActivate} onClear={p.onSlotClear}

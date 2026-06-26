@@ -16,10 +16,11 @@ export const meta = { id: 'manifesto', index: 1, label: '封面 / Manifesto' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   showDecorations: true,
   showKicker: true,
   mediaCount: 0,
-  mediaFit: 'cover',
+  mediaFit: 'contain',
   indexCount: 4,
   focus: false,
   focusIndex: 1,
@@ -46,11 +47,13 @@ export const defaultProps = {
 };
 
 export const controls = [
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '主强调色，作用于编号、页脚、装饰条' },
   { key: 'mediaCount', label: '图片数量', type: 'slider', def: 0, min: 0, max: 3, step: 1,
-    desc: '右栏图片槽数量；0 时显示文字说明卡，1 时图片按原始比例自适应' },
-  { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
+    desc: '右栏图片槽数量；0 时显示文字说明卡，1 时图片完整显示' },
+  { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'contain',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }],
     dependsOn: 'mediaCount', desc: '多图时图片的填充方式' },
   { key: 'indexCount', label: '目录条目', type: 'slider', def: 4, min: 2, max: 4, step: 1,
@@ -79,26 +82,28 @@ function injectCoverAnim() {
   document.head.appendChild(s);
 }
 
-function Gallery({ count, media, onMediaChange, fit, accent, placeholderHero, placeholder }) {
+function Gallery({ count, media, onMediaChange, fit, accent, placeholderHero, placeholder, tone = 'light' }) {
   if (count === 1) {
     return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',
+        height: '100%', minHeight: 0, minWidth: 0, overflow: 'hidden' }}>
         <SwImageSlot value={media[0] || null} onChange={(s) => onMediaChange(0, s)}
-          adaptive fit="contain" accent={accent} radius={swTheme.radius} placeholder={placeholderHero} />
+          fit="contain" accent={accent} radius={swTheme.radius} tone={tone} placeholder={placeholderHero} />
       </div>
     );
   }
   const layout = count === 2
-    ? { display: 'grid', gridTemplateRows: '1fr 1fr', gap: 16, height: '100%' }
-    : { display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1.3fr 1fr',
-        gridTemplateAreas: '"a a" "b c"', gap: 16, height: '100%' };
+    ? { display: 'grid', gridTemplateRows: 'repeat(2, minmax(0, 1fr))', gap: 16, height: '100%', minHeight: 0, minWidth: 0 }
+    : { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+        gridTemplateRows: 'minmax(0, 1.3fr) minmax(0, 1fr)',
+        gridTemplateAreas: '"a a" "b c"', gap: 16, height: '100%', minHeight: 0, minWidth: 0 };
   const areas = ['a', 'b', 'c'];
   return (
     <div style={layout}>
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} style={{ gridArea: count === 3 ? areas[i] : undefined, minHeight: 0 }}>
+        <div key={i} style={{ gridArea: count === 3 ? areas[i] : undefined, minHeight: 0, minWidth: 0, overflow: 'hidden' }}>
           <SwImageSlot value={media[i] || null} onChange={(s) => onMediaChange(i, s)}
-            fit={fit} accent={accent} radius={swTheme.radius} label={i + 1} placeholder={placeholder} />
+            fit={fit} accent={accent} radius={swTheme.radius} tone={tone} label={i + 1} placeholder={placeholder} />
         </div>
       ))}
     </div>
@@ -108,7 +113,14 @@ function Gallery({ count, media, onMediaChange, fit, accent, placeholderHero, pl
 export default function SwSlideManifesto(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const line = dark ? C.lineD : C.line;
+  const line2 = dark ? C.lineD2 : C.line2;
   const items = (p.index || []).slice(0, Math.max(2, Math.min(4, p.indexCount)));
+  const focusIndex = Math.max(1, Math.min(items.length, Number(p.focusIndex) || 1));
   const rootRef = React.useRef(null);
   const [entered, setEntered] = React.useState(false);
   React.useEffect(() => { injectCoverAnim(); }, []);
@@ -127,7 +139,7 @@ export default function SwSlideManifesto(props) {
   }, []);
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink} className={'sw-cover-root' + (entered ? ' is-in' : '')}>
+    <SlideRoot bg={dark ? C.dark : C.blush} color={fg} className={'sw-cover-root' + (entered ? ' is-in' : '')}>
       <div ref={rootRef} data-sw-no-reveal="" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
       {p.showDecorations && (
         <div className="sw-cover-anim">
@@ -138,9 +150,10 @@ export default function SwSlideManifesto(props) {
         </div>
       )}
 
-      <Bar meta={p.barMeta} accent={accent} />
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1.5fr 1fr',
+      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) minmax(0, 1fr)',
+        gridTemplateRows: 'minmax(0, 1fr)',
         gap: 64, alignItems: 'center', padding: '6px 0', position: 'relative', zIndex: 3 }}>
         <div>
           {p.showKicker && <div className="sw-cover-anim" style={{ transitionDelay: '.06s' }}><Kicker accent={accent}>{p.kicker}</Kicker></div>}
@@ -148,47 +161,48 @@ export default function SwSlideManifesto(props) {
             {renderSwText(p.title, { hl: { tone: 'p' } })}
           </h1>
           <div className="sw-cover-anim" style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.1em', textTransform: 'uppercase',
-            color: C.inkMut, marginTop: 28, lineHeight: 1.6, transitionDelay: '.24s' }}>
+            color: mut, marginTop: 28, lineHeight: 1.6, transitionDelay: '.24s' }}>
             {renderSwText(p.titleEn)}
           </div>
         </div>
 
         {p.mediaCount > 0 ? (
           <Gallery count={p.mediaCount} media={p.media} onMediaChange={p.onMediaChange}
-            fit={p.mediaFit} accent={accent} placeholderHero={p.mediaPlaceholderHero} placeholder={p.mediaPlaceholder} />
+            fit={p.mediaFit} accent={accent} tone={dark ? 'dark' : 'light'} placeholderHero={p.mediaPlaceholderHero} placeholder={p.mediaPlaceholder} />
         ) : (
-          <div className="sw-cover-anim" style={{ background: C.paper, borderRadius: swTheme.radius, padding: '44px 46px', alignSelf: 'center', transitionDelay: '.32s' }}>
+          <div className="sw-cover-anim" style={{ background: cardBg, borderRadius: swTheme.radius, padding: '44px 46px', alignSelf: 'center', transitionDelay: '.32s' }}>
             <div style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.14em', textTransform: 'uppercase',
               color: accent, marginBottom: 20 }}>{p.aboutLabel}</div>
-            <p style={{ fontSize: T.body, lineHeight: 1.78, color: '#2c2528' }}>
+            <p style={{ fontSize: T.body, lineHeight: 1.78, color: dark ? C.blush : '#2c2528' }}>
               {renderSwText(p.aboutBody, { hl: { tone: 'o' } })}
             </p>
-            <div style={{ height: 1, background: C.line, margin: '26px 0' }} />
-            <p style={{ fontSize: 24, lineHeight: 1.6, color: '#54494e' }}>{p.aboutFoot}</p>
+            <div style={{ height: 1, background: line, margin: '26px 0' }} />
+            <p style={{ fontSize: 24, lineHeight: 1.6, color: dark ? '#c8c0bd' : '#54494e' }}>{p.aboutFoot}</p>
           </div>
         )}
       </div>
 
       <div className="sw-cover-anim" style={{ display: 'grid', gridTemplateColumns: 'repeat(' + items.length + ',1fr)',
-        borderTop: '1px solid ' + C.line2, marginTop: 30, flexShrink: 0, position: 'relative', zIndex: 3, transitionDelay: '.4s' }}>
+        borderTop: '1px solid ' + line2, marginTop: 30, flexShrink: 0, position: 'relative', zIndex: 3, transitionDelay: '.4s' }}>
         {items.map((it, i) => {
-          const dim = p.focus && (i + 1) !== p.focusIndex;
+          const dim = p.focus && (i + 1) !== focusIndex;
           return (
             <div key={it.n} style={{ padding: i === 0 ? '22px 26px 2px 0' : '22px 26px 2px 30px',
-              borderLeft: i === 0 ? 'none' : '1px solid ' + C.line, opacity: dim ? 0.32 : 1,
-              transition: 'opacity .2s' }}>
-              <div style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.08em', color: it.c }}>{it.n}</div>
-              <div style={{ fontWeight: 900, fontSize: 32, letterSpacing: '-.5px', marginTop: 11 }}>{it.t}</div>
-              <div style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.1em', textTransform: 'uppercase',
-                color: C.inkMut, marginTop: 7 }}>{it.e}</div>
-              <p style={{ fontSize: 24, color: '#5a4f54', lineHeight: 1.5, marginTop: 12 }}>{it.d}</p>
+              borderLeft: i === 0 ? 'none' : '1px solid ' + line }}>
+              <div style={{ opacity: dim ? 0.32 : 1, transition: 'opacity .2s' }}>
+                <div style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.08em', color: it.c }}>{it.n}</div>
+                <div style={{ fontWeight: 900, fontSize: 32, letterSpacing: '-.5px', marginTop: 11 }}>{it.t}</div>
+                <div style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.1em', textTransform: 'uppercase',
+                  color: mut, marginTop: 7 }}>{it.e}</div>
+                <p style={{ fontSize: 24, color: dark ? '#c8c0bd' : '#5a4f54', lineHeight: 1.5, marginTop: 12 }}>{it.d}</p>
+              </div>
             </div>
           );
         })}
       </div>
 
       <div style={{ marginTop: 18 }}>
-        <Footer page={p.page} total={p.total} accent={accent} />
+        <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
       </div>
     </SlideRoot>
   );

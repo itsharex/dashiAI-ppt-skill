@@ -12,6 +12,7 @@ export const meta = { id: 'stack', index: 5, label: '产品矩阵 / The Stack' }
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   cardCount: 4,
   columns: 2,
   focus: false,
@@ -41,6 +42,8 @@ export const controls = [
     dependsOn: 'focus', desc: '被强调卡片的序号（1 起）' },
   { key: 'showLede', label: '显示导语', type: 'toggle', def: true, desc: '显示/隐藏顶部高亮短句' },
   { key: 'showDeco', label: '显示装饰', type: 'toggle', def: true, desc: '显示/隐藏卡片内的图形装饰' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '页脚等强调色' },
 ];
@@ -109,6 +112,7 @@ function Deco({ i, pal, compact = false, corner = false }) {
 export default function SwSlideStack(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(2, Math.min(4, p.cardCount));
   const isGrid = p.columns === 'grid';
   const cols = p.columns === 1 ? 1 : 2;
@@ -117,10 +121,10 @@ export default function SwSlideStack(props) {
   const cards = (p.cards || []).slice(0, count);
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={dark ? C.dark : C.blush} color={dark ? C.blush : C.ink}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: dark ? '#241e20' : C.paper, borderRadius: 38, margin: '24px 0 22px',
         padding: isGrid ? '38px 46px 44px' : singleColumn ? '34px 46px 40px' : '44px 52px 50px',
         display: 'flex', flexDirection: 'column' }}>
         {p.showLede && (
@@ -142,36 +146,45 @@ export default function SwSlideStack(props) {
             const gridStyle = gridTypeStyle(gridType);
             const cardRadius = isGrid ? gridStyle.radius : singleColumn ? 22 : 26;
             const cardPadding = isGrid ? gridStyle.pad : singleColumn ? '20px 28px' : '34px 38px';
-            const cardDisplay = singleColumn && !isGrid ? 'grid' : 'flex';
+            const singleStack = singleColumn && !isGrid;
+            const cardDisplay = singleStack ? 'grid' : 'flex';
+            const singleStackColumns = singleStack
+              ? (p.showDeco ? '88px 250px minmax(0,1fr) 108px 150px' : '88px 250px minmax(0,1fr) 150px')
+              : undefined;
+            const tagColumn = singleStack ? (p.showDeco ? 5 : 4) : undefined;
             const isSmallGridCard = isGrid && gridType === 'small';
             return (
               <div key={`${layoutSignature}-${card.num}`} style={{ borderRadius: cardRadius, padding: cardPadding,
                 position: 'relative', overflow: 'hidden', display: cardDisplay,
                 gridArea: isGrid ? area : undefined,
-                gridTemplateColumns: singleColumn && !isGrid ? '88px 250px minmax(0,1fr) 108px 150px' : undefined,
-                columnGap: singleColumn && !isGrid ? 24 : undefined,
-                alignItems: singleColumn && !isGrid ? 'center' : undefined,
-                flexDirection: singleColumn && !isGrid ? undefined : 'column', background: pal.bg, color: pal.body,
+                gridTemplateColumns: singleStackColumns,
+                columnGap: singleStack ? 24 : undefined,
+                alignItems: singleStack ? 'center' : undefined,
+                flexDirection: singleStack ? undefined : 'column', background: pal.bg, color: pal.body,
                 opacity: dim ? 0.4 : 1, transform: p.focus && !dim ? 'scale(1)' : 'none',
                 outline: p.focus && !dim ? '3px solid ' + accent : 'none', outlineOffset: -3,
                 transition: 'opacity .2s, transform .24s ease',
                 animation: `sw-rise .44s cubic-bezier(.22,.61,.36,1) ${(i * 0.035).toFixed(3)}s both` }}>
                 <div style={{ position: 'relative', zIndex: 1, minWidth: 0, display: 'flex',
-                  flexDirection: singleColumn && !isGrid ? 'column' : 'row', alignItems: singleColumn && !isGrid ? 'flex-start' : 'baseline',
-                  justifyContent: singleColumn && !isGrid ? 'center' : 'space-between', gap: singleColumn && !isGrid ? 8 : undefined }}>
+                  gridColumn: singleStack ? 1 : undefined,
+                  flexDirection: singleStack ? 'column' : 'row', alignItems: singleStack ? 'flex-start' : 'baseline',
+                  justifyContent: singleStack ? 'center' : 'space-between', gap: singleStack ? 8 : undefined }}>
                   <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: isGrid ? gridStyle.meta : singleColumn ? 22 : 25, color: pal.name }}>{card.num}</span>
                   <span style={{ fontFamily: F.mono, fontSize: isGrid ? gridStyle.en : singleColumn ? 18 : 24, letterSpacing: '.14em',
                     textTransform: 'uppercase', color: pal.sub }}>{card.en}</span>
                 </div>
                 <h3 style={{ position: 'relative', zIndex: 1, minWidth: 0, fontWeight: 900,
+                  gridColumn: singleStack ? 2 : undefined,
                   fontSize: isGrid ? gridStyle.h3 : singleColumn ? 36 : T.h3, lineHeight: 1.04, letterSpacing: '-.5px',
-                  marginTop: singleColumn && !isGrid ? 0 : isSmallGridCard ? 12 : 18, color: pal.title }}>{card.cn}</h3>
+                  marginTop: singleStack ? 0 : isSmallGridCard ? 12 : 18, color: pal.title }}>{card.cn}</h3>
                 <p style={{ position: 'relative', zIndex: 1, minWidth: 0, fontSize: isGrid ? gridStyle.body : singleColumn ? 21 : 24,
-                  lineHeight: isGrid ? 1.42 : singleColumn ? 1.38 : 1.6, marginTop: singleColumn && !isGrid ? 0 : isSmallGridCard ? 10 : 12,
+                  gridColumn: singleStack ? 3 : undefined,
+                  lineHeight: isGrid ? 1.42 : singleColumn ? 1.38 : 1.6, marginTop: singleStack ? 0 : isSmallGridCard ? 10 : 12,
                   maxWidth: isGrid ? gridStyle.bodyMax : singleColumn ? 'none' : '74%' }}>{card.body}</p>
                 {p.showDeco && <Deco i={i} pal={pal} compact={isGrid ? gridStyle.decoCompact : singleColumn} corner={isGrid} />}
-                <span style={{ position: 'relative', zIndex: 1, marginTop: singleColumn && !isGrid ? 0 : 'auto',
-                  justifySelf: singleColumn && !isGrid ? 'end' : undefined, alignSelf: singleColumn && !isGrid ? 'center' : 'flex-start',
+                <span style={{ position: 'relative', zIndex: 1, marginTop: singleStack ? 0 : 'auto',
+                  gridColumn: tagColumn,
+                  justifySelf: singleStack ? 'end' : undefined, alignSelf: singleStack ? 'center' : 'flex-start',
                   whiteSpace: 'nowrap', fontFamily: F.mono, fontWeight: 700, fontSize: isGrid ? gridStyle.tag : singleColumn ? 20 : 24,
                   letterSpacing: '.04em', padding: isGrid ? '8px 17px' : singleColumn ? '8px 16px' : '9px 20px', borderRadius: 999,
                   background: pal.tagBg, color: pal.tagFg }}>{card.tag}</span>
@@ -181,7 +194,7 @@ export default function SwSlideStack(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

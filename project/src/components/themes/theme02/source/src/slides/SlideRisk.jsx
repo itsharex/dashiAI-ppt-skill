@@ -17,6 +17,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MIN_RISK_COUNT = 2;
+const MAX_RISK_COUNT = 3;
+
 export const slideRiskDefaults = {
   kicker: 'RISK · 风险研判',
   title: '盛宴之下 ',
@@ -29,7 +32,7 @@ export const slideRiskDefaults = {
     { title: '监管不确定', desc: '安全与合规政策走向，影响落地节奏。', level: 'mid' },
     { title: '头部过度集中', desc: '资金与人才高度集中，长尾公司承压。', level: 'low' },
   ],
-  riskCount: 5,
+  riskCount: MAX_RISK_COUNT,
   layout: 'list',
   focusEnabled: true,
   focusIndex: 0,
@@ -38,15 +41,15 @@ export const slideRiskDefaults = {
 };
 
 export const slideRiskControls = [
-  { key: 'riskCount', type: 'number', label: '风险数量', default: 5, min: 3, step: 1,
-    maxFrom: (p) => (p.risks ? p.risks.length : 5), describe: '展示的风险条数' },
+  { key: 'riskCount', type: 'number', label: '风险数量', default: MAX_RISK_COUNT, min: MIN_RISK_COUNT, step: 1,
+    maxFrom: (p) => Math.min(MAX_RISK_COUNT, p.risks ? p.risks.length : MAX_RISK_COUNT), describe: '展示的风险条数' },
   { key: 'layout', type: 'enum', label: '版式', default: 'list',
     options: [{ value: 'list', label: '清单' }, { value: 'grid', label: '卡片网格' }],
     describe: '竖排清单或双列卡片' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮某一风险' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.riskCount || 1) - 1),
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_RISK_COUNT, p.riskCount || MIN_RISK_COUNT) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调风险的序号' },
   { key: 'showLevel', type: 'toggle', label: '严重度', default: true,
     describe: '显示/隐藏严重度徽章' },
@@ -62,7 +65,7 @@ const LEVEL_COLOR = {
 
 export function SlideRisk(props) {
   const p = { ...slideRiskDefaults, ...props };
-  const count = Math.max(1, Math.min(p.risks.length, p.riskCount));
+  const count = Math.max(MIN_RISK_COUNT, Math.min(MAX_RISK_COUNT, p.risks.length, p.riskCount));
   const risks = p.risks.slice(0, count);
   const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
   const grid = p.layout === 'grid';

@@ -16,6 +16,7 @@ export const meta = { id: 'sankey', index: 42, label: '资金流向 / Flow' };
 
 export const defaultProps = {
   accent: C.green,
+  theme: 'light',          // 'light' | 'dark'
   bucketCount: 5,          // 3–5 destinations
   focus: true,
   focusIndex: 1,           // 1-based
@@ -46,6 +47,8 @@ export const controls = [
   { key: 'focusIndex', label: '聚焦第几条', type: 'slider', def: 1, min: 1, max: 5, step: 1,
     dependsOn: 'focus', desc: '高亮的资金流序号' },
   { key: 'showValues', label: '金额占比', type: 'toggle', def: true, desc: '显示/隐藏每条流向的占比' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.green,
     options: [C.green, C.orange, C.cyan, C.purple], desc: '聚焦流 / 导语 / 页脚强调色' },
 ];
@@ -62,6 +65,17 @@ export default function SwSlideSankey(props) {
   const data = (p.buckets || []).slice(0, count);
   const sum = data.reduce((s, d) => s + d.v, 0);
   const fi = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) - 1 : -1;
+
+  // Page / card surfaces flip with theme; the dark card lifts to #241e20 so it
+  // reads as a raised panel on the C.dark page. The source node keeps C.ink —
+  // darker than the dark card, so it stays a recessed block under its white
+  // label. Ribbon / target colours are data-driven and never themed.
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const textC = dark ? C.blush : C.ink;
 
   // left segments (stacked, proportional, contiguous) + right nodes (stacked
   // with gaps). Right nodes get a minimum height so even tiny buckets stay
@@ -90,10 +104,10 @@ export default function SwSlideSankey(props) {
   };
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '32px 46px 24px', display: 'flex', flexDirection: 'column' }}>
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 30 }}>
@@ -105,7 +119,7 @@ export default function SwSlideSankey(props) {
           </div>
           <div style={{ textAlign: 'right', paddingBottom: 4 }}>
             <div style={{ fontWeight: 900, fontSize: 34, letterSpacing: '-.5px', color: accent }}>{p.totalValue}</div>
-            <div style={{ fontFamily: F.mono, fontSize: 18, letterSpacing: '.1em', color: C.inkMut }}>{p.totalLabel}</div>
+            <div style={{ fontFamily: F.mono, fontSize: 18, letterSpacing: '.1em', color: mutedC }}>{p.totalLabel}</div>
           </div>
         </div>
 
@@ -136,9 +150,9 @@ export default function SwSlideSankey(props) {
                   <rect x={RX0} y={r.rs} width={RX1 - RX0} height={Math.max(3, r.re - r.rs)} rx="6"
                     fill={fi === i ? accent : r.c} />
                   <text x={RX1 + 18} y={cy - 4} textAnchor="start" fontFamily={F.sans} fontWeight="700"
-                    fontSize="24" fill={C.ink}>{r.t}</text>
+                    fontSize="24" fill={textC}>{r.t}</text>
                   <text x={RX1 + 18} y={cy + 22} textAnchor="start" fontFamily={F.mono} fontSize="17"
-                    letterSpacing="1.5" fill={C.inkMut}>{r.s}{p.showValues ? ' · ' + pct + '%' : ''}</text>
+                    letterSpacing="1.5" fill={mutedC}>{r.s}{p.showValues ? ' · ' + pct + '%' : ''}</text>
                 </g>
               );
             })}
@@ -146,7 +160,7 @@ export default function SwSlideSankey(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

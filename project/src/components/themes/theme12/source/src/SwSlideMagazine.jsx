@@ -63,7 +63,7 @@ export default function SwSlideMagazine(props) {
   const mut = dark ? '#c8c0bd' : '#4f444a';
 
   const Image = (
-    <div style={{ position: 'relative', minWidth: 0, height: '100%' }}>
+    <div style={{ position: 'relative', minWidth: 0, minHeight: 0, height: '100%' }}>
       <SwImageSlot value={p.media[0] || null} onChange={(s) => p.onMediaChange(0, s)}
         fit={p.mediaFit} accent={accent} radius={swTheme.radius} tone={dark ? 'dark' : 'light'}
         placeholder={p.mediaPlaceholder} />
@@ -74,7 +74,7 @@ export default function SwSlideMagazine(props) {
   );
 
   const Body = (
-    <div style={{ position: 'relative', minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <div style={{ position: 'relative', minWidth: 0, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <Kicker accent={accent}>{p.kicker}</Kicker>
       <h2 style={{ fontWeight: 900, fontSize: 60, lineHeight: 1.06, letterSpacing: '-1.6px', marginTop: 16 }}>
         {renderSwText(p.title)}
@@ -105,7 +105,8 @@ export default function SwSlideMagazine(props) {
       <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 64, padding: '24px 0 22px',
-        gridTemplateColumns: left ? '1.04fr 0.96fr' : '0.96fr 1.04fr', alignItems: 'stretch',
+        gridTemplateColumns: left ? '1.04fr 0.96fr' : '0.96fr 1.04fr',
+        gridTemplateRows: 'minmax(0, 1fr)', alignItems: 'stretch',
         position: 'relative', zIndex: 3 }}>
         {left ? <>{Image}{Body}</> : <>{Body}{Image}</>}
       </div>

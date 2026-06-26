@@ -18,73 +18,73 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "metaCount",
         "prop": "metaCount",
-        "label": "元信息数量",
         "type": "slider",
+        "label": "元信息数量",
         "default": 4,
         "min": 1,
         "max": 4,
         "step": 1,
+        "key": "metaCount",
         "publicKey": "metaCount",
         "publicLabel": "元信息数量"
       },
       {
-        "key": "showRule",
         "prop": "showRule",
-        "label": "刊头分隔线",
         "type": "toggle",
+        "label": "刊头分隔线",
         "default": true,
         "desc": "装饰",
+        "key": "showRule",
         "publicKey": "showRule",
         "publicLabel": "刊头分隔线",
         "description": "装饰"
       },
       {
-        "key": "showGhostYear",
         "prop": "showGhostYear",
-        "label": "幽灵年份",
         "type": "toggle",
+        "label": "幽灵年份",
         "default": true,
         "desc": "装饰",
+        "key": "showGhostYear",
         "publicKey": "showGhostYear",
         "publicLabel": "幽灵年份",
         "description": "装饰"
       },
       {
-        "key": "showChip",
         "prop": "showChip",
-        "label": "质感方块",
         "type": "toggle",
+        "label": "质感方块",
         "default": true,
         "desc": "玻璃芯片装饰",
+        "key": "showChip",
         "publicKey": "showChip",
         "publicLabel": "质感方块",
         "description": "玻璃芯片装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "metaCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -140,22 +140,21 @@ export const pages = [
     "bgClass": "bg-night",
     "controls": [
       {
-        "key": "indexCount",
         "prop": "indexCount",
-        "label": "篇章索引数量",
         "type": "slider",
+        "label": "篇章索引数量",
         "default": 5,
         "min": 0,
         "max": 6,
         "step": 1,
+        "key": "indexCount",
         "publicKey": "indexCount",
         "publicLabel": "篇章索引数量"
       },
       {
-        "key": "splitDir",
         "prop": "splitDir",
-        "label": "斜切方向",
         "type": "radio",
+        "label": "斜切方向",
         "default": "右",
         "options": [
           {
@@ -167,65 +166,66 @@ export const pages = [
             "label": "左"
           }
         ],
+        "key": "splitDir",
         "publicKey": "splitDir",
         "publicLabel": "斜切方向"
       },
       {
-        "key": "showSpine",
         "prop": "showSpine",
-        "label": "竖排书脊",
         "type": "toggle",
+        "label": "竖排书脊",
         "default": true,
         "desc": "装饰",
+        "key": "showSpine",
         "publicKey": "showSpine",
         "publicLabel": "竖排书脊",
         "description": "装饰"
       },
       {
-        "key": "showSeam",
         "prop": "showSeam",
-        "label": "斜边亮线",
         "type": "toggle",
+        "label": "斜边亮线",
         "default": true,
         "desc": "装饰",
+        "key": "showSeam",
         "publicKey": "showSeam",
         "publicLabel": "斜边亮线",
         "description": "装饰"
       },
       {
-        "key": "showChip",
         "prop": "showChip",
-        "label": "质感方块",
         "type": "toggle",
+        "label": "质感方块",
         "default": true,
         "desc": "玻璃芯片装饰",
+        "key": "showChip",
         "publicKey": "showChip",
         "publicLabel": "质感方块",
         "description": "玻璃芯片装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "indexCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -282,84 +282,84 @@ export const pages = [
     "bgClass": "bg-electric",
     "controls": [
       {
-        "key": "fieldCount",
         "prop": "fieldCount",
-        "label": "档案字段数量",
         "type": "slider",
+        "label": "档案字段数量",
         "default": 6,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "fieldCount",
         "publicKey": "fieldCount",
         "publicLabel": "档案字段数量"
       },
       {
-        "key": "showFrame",
         "prop": "showFrame",
-        "label": "内框定位标",
         "type": "toggle",
+        "label": "内框定位标",
         "default": true,
         "desc": "装饰",
+        "key": "showFrame",
         "publicKey": "showFrame",
         "publicLabel": "内框定位标",
         "description": "装饰"
       },
       {
-        "key": "showBarcode",
         "prop": "showBarcode",
-        "label": "条形码",
         "type": "toggle",
+        "label": "条形码",
         "default": true,
         "desc": "装饰",
+        "key": "showBarcode",
         "publicKey": "showBarcode",
         "publicLabel": "条形码",
         "description": "装饰"
       },
       {
-        "key": "showStamp",
         "prop": "showStamp",
-        "label": "钢印章",
         "type": "toggle",
+        "label": "钢印章",
         "default": true,
         "desc": "装饰",
+        "key": "showStamp",
         "publicKey": "showStamp",
         "publicLabel": "钢印章",
         "description": "装饰"
       },
       {
-        "key": "showChip",
         "prop": "showChip",
-        "label": "质感方块",
         "type": "toggle",
+        "label": "质感方块",
         "default": true,
         "desc": "玻璃芯片装饰",
+        "key": "showChip",
         "publicKey": "showChip",
         "publicLabel": "质感方块",
         "description": "玻璃芯片装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "fieldCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -417,62 +417,62 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "bandCount",
         "prop": "bandCount",
-        "label": "层带数量",
         "type": "slider",
+        "label": "层带数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "bandCount",
         "publicKey": "bandCount",
         "publicLabel": "层带数量"
       },
       {
-        "key": "showLabels",
         "prop": "showLabels",
-        "label": "篇章刻度",
         "type": "toggle",
+        "label": "篇章刻度",
         "default": true,
         "desc": "装饰",
+        "key": "showLabels",
         "publicKey": "showLabels",
         "publicLabel": "篇章刻度",
         "description": "装饰"
       },
       {
-        "key": "showChip",
         "prop": "showChip",
-        "label": "质感方块",
         "type": "toggle",
+        "label": "质感方块",
         "default": true,
         "desc": "玻璃芯片装饰",
+        "key": "showChip",
         "publicKey": "showChip",
         "publicLabel": "质感方块",
         "description": "玻璃芯片装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 2,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "bandCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -526,56 +526,56 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "ringCount",
         "prop": "ringCount",
-        "label": "同心环数量",
         "type": "slider",
+        "label": "同心环数量",
         "default": 4,
-        "min": 1,
+        "min": 2,
         "max": 5,
         "step": 1,
+        "key": "ringCount",
         "publicKey": "ringCount",
         "publicLabel": "同心环数量"
       },
       {
-        "key": "showBlades",
         "prop": "showBlades",
-        "label": "光圈刀叶",
         "type": "toggle",
+        "label": "光圈刀叶",
         "default": true,
         "desc": "装饰",
+        "key": "showBlades",
         "publicKey": "showBlades",
         "publicLabel": "光圈刀叶",
         "description": "装饰"
       },
       {
-        "key": "showGlow",
         "prop": "showGlow",
-        "label": "圆心辉光",
         "type": "toggle",
+        "label": "圆心辉光",
         "default": true,
         "desc": "装饰",
+        "key": "showGlow",
         "publicKey": "showGlow",
         "publicLabel": "圆心辉光",
         "description": "装饰"
       },
       {
-        "key": "showChip",
         "prop": "showChip",
-        "label": "质感方块",
         "type": "toggle",
+        "label": "质感方块",
         "default": true,
         "desc": "玻璃芯片装饰",
+        "key": "showChip",
         "publicKey": "showChip",
         "publicLabel": "质感方块",
         "description": "玻璃芯片装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       }
@@ -606,73 +606,73 @@ export const pages = [
     "bgClass": "bg-night",
     "controls": [
       {
-        "key": "tickerCount",
         "prop": "tickerCount",
-        "label": "Ticker 数量",
         "type": "slider",
+        "label": "Ticker 数量",
         "default": 5,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "tickerCount",
         "publicKey": "tickerCount",
         "publicLabel": "Ticker 数量"
       },
       {
-        "key": "showGrid",
         "prop": "showGrid",
-        "label": "终端网格",
         "type": "toggle",
+        "label": "终端网格",
         "default": true,
         "desc": "装饰",
+        "key": "showGrid",
         "publicKey": "showGrid",
         "publicLabel": "终端网格",
         "description": "装饰"
       },
       {
-        "key": "showCaret",
         "prop": "showCaret",
-        "label": "光标块",
         "type": "toggle",
+        "label": "光标块",
         "default": true,
         "desc": "装饰",
+        "key": "showCaret",
         "publicKey": "showCaret",
         "publicLabel": "光标块",
         "description": "装饰"
       },
       {
-        "key": "showChip",
         "prop": "showChip",
-        "label": "质感方块",
         "type": "toggle",
+        "label": "质感方块",
         "default": true,
         "desc": "玻璃芯片装饰",
+        "key": "showChip",
         "publicKey": "showChip",
         "publicLabel": "质感方块",
         "description": "玻璃芯片装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "tickerCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -733,30 +733,30 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
         "desc": "年号选择框高亮开关",
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus",
         "description": "年号选择框高亮开关"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
         "max": 1,
         "step": 1,
         "desc": "高亮第几条出处信息",
+        "displayOffset": 1,
+        "key": "focusIndex",
         "publicKey": "focusIndex",
         "publicLabel": "焦点序号",
-        "description": "高亮第几条出处信息",
-        "displayOffset": 1
+        "description": "高亮第几条出处信息"
       }
     ],
     "defaultProps": {
@@ -796,27 +796,24 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "statCount",
         "prop": "statCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
         "desc": "底部指标块数量",
+        "key": "statCount",
         "publicKey": "statCount",
         "publicLabel": "数量",
         "description": "底部指标块数量"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
-        "default": "数字",
-        "publicKey": "labelType",
-        "publicLabel": "标签类型",
+        "label": "标签类型",
+        "default": "number",
         "options": [
           {
             "value": "number",
@@ -830,31 +827,34 @@ export const pages = [
             "value": "keyword",
             "label": "关键词"
           }
-        ]
+        ],
+        "key": "labelType",
+        "publicKey": "labelType",
+        "publicLabel": "标签类型"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "statCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -929,47 +929,47 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "total",
         "prop": "total",
-        "label": "总单元数",
         "type": "slider",
+        "label": "总单元数",
         "default": 97,
         "min": 20,
         "max": 140,
         "step": 1,
+        "key": "total",
         "publicKey": "total",
         "publicLabel": "总单元数"
       },
       {
-        "key": "active",
         "prop": "active",
-        "label": "点亮数量",
         "type": "slider",
+        "label": "点亮数量",
         "default": 42,
         "min": 0,
+        "max": 97,
         "maxFromKey": "total",
         "maxFromKeyOffset": 0,
         "step": 1,
+        "key": "active",
         "publicKey": "active",
         "publicLabel": "点亮数量"
       },
       {
-        "key": "columns",
         "prop": "columns",
-        "label": "每行数量",
         "type": "slider",
+        "label": "每行数量",
         "default": 14,
         "min": 8,
         "max": 16,
         "step": 1,
+        "key": "columns",
         "publicKey": "columns",
         "publicLabel": "每行数量"
       },
       {
-        "key": "dotShape",
         "prop": "dotShape",
-        "label": "颗粒形状",
         "type": "radio",
+        "label": "颗粒形状",
         "default": "圆",
         "options": [
           {
@@ -985,16 +985,17 @@ export const pages = [
             "label": "菱"
           }
         ],
+        "key": "dotShape",
         "publicKey": "dotShape",
         "publicLabel": "颗粒形状"
       },
       {
-        "key": "showLegend",
         "prop": "showLegend",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "图例",
+        "key": "showLegend",
         "publicKey": "showLegend",
         "publicLabel": "装饰文案",
         "description": "图例"
@@ -1006,7 +1007,6 @@ export const pages = [
       "columns": 14,
       "dotShape": "圆",
       "showLegend": true,
-      "focus": true,
       "kicker": "COUNTING · 一格一笔",
       "readout": {
         "value": "97",
@@ -1029,23 +1029,23 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "cardCount",
         "prop": "cardCount",
-        "label": "卡片数量",
         "type": "slider",
+        "label": "卡片数量",
         "default": 4,
         "min": 2,
         "max": 7,
         "step": 1,
+        "key": "cardCount",
         "publicKey": "cardCount",
         "publicLabel": "卡片数量"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -1064,28 +1064,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 1,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "cardCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -1151,25 +1151,25 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "stackCount",
         "prop": "stackCount",
-        "label": "堆叠数量",
         "type": "slider",
+        "label": "堆叠数量",
         "default": 5,
         "min": 2,
         "max": 6,
         "step": 1,
         "desc": "背后叠层玻璃卡数量",
+        "key": "stackCount",
         "publicKey": "stackCount",
         "publicLabel": "堆叠数量",
         "description": "背后叠层玻璃卡数量"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -1188,26 +1188,26 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
         "max": 2,
         "step": 1,
+        "displayOffset": 1,
+        "key": "focusIndex",
         "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -1257,10 +1257,9 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "granularity",
         "prop": "granularity",
-        "label": "数据粒度",
         "type": "radio",
+        "label": "数据粒度",
         "default": "季度",
         "options": [
           {
@@ -1272,14 +1271,14 @@ export const pages = [
             "label": "月度"
           }
         ],
+        "key": "granularity",
         "publicKey": "granularity",
         "publicLabel": "数据粒度"
       },
       {
-        "key": "chartType",
         "prop": "chartType",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "面积",
         "options": [
           {
@@ -1295,33 +1294,34 @@ export const pages = [
             "label": "柱状"
           }
         ],
+        "key": "chartType",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showCount",
         "prop": "showCount",
-        "label": "副指标线",
         "type": "toggle",
+        "label": "副指标线",
         "default": true,
+        "key": "showCount",
         "publicKey": "showCount",
         "publicLabel": "副指标线"
       },
       {
-        "key": "callout",
         "prop": "callout",
-        "label": "解读卡",
         "type": "toggle",
+        "label": "解读卡",
         "default": true,
+        "key": "callout",
         "publicKey": "callout",
         "publicLabel": "解读卡"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -1340,26 +1340,31 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 2,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 3,
+        "maxByKey": "granularity",
+        "maxByValue": {
+          "季度": 3,
+          "月度": 11
+        },
         "displayOffset": 1,
-        "max": 9
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -1395,17 +1400,17 @@ export const pages = [
         {
           "label": "1月",
           "amt": 45,
-          "cnt": 5
+          "cnt": 4
         },
         {
           "label": "2月",
           "amt": 58,
-          "cnt": 6
+          "cnt": 5
         },
         {
           "label": "3月",
           "amt": 59,
-          "cnt": 7
+          "cnt": 6
         },
         {
           "label": "4月",
@@ -1415,7 +1420,7 @@ export const pages = [
         {
           "label": "5月",
           "amt": 105,
-          "cnt": 9
+          "cnt": 10
         },
         {
           "label": "6月",
@@ -1425,12 +1430,12 @@ export const pages = [
         {
           "label": "7月",
           "amt": 92,
-          "cnt": 10
+          "cnt": 9
         },
         {
           "label": "8月",
           "amt": 118,
-          "cnt": 10
+          "cnt": 12
         },
         {
           "label": "9月",
@@ -1440,17 +1445,17 @@ export const pages = [
         {
           "label": "10月",
           "amt": 73,
-          "cnt": 7
+          "cnt": 8
         },
         {
           "label": "11月",
           "amt": 81,
-          "cnt": 8
+          "cnt": 9
         },
         {
           "label": "12月",
           "amt": 52,
-          "cnt": 7
+          "cnt": 6
         }
       ],
       "focusIndex": 2
@@ -1466,24 +1471,23 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "seriesCount",
         "prop": "seriesCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 2,
         "max": 5,
         "step": 1,
         "desc": "序列数",
+        "key": "seriesCount",
         "publicKey": "seriesCount",
         "publicLabel": "数量",
         "description": "序列数"
       },
       {
-        "key": "offset",
         "prop": "offset",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "居中",
         "options": [
           {
@@ -1495,35 +1499,36 @@ export const pages = [
             "label": "基线"
           }
         ],
+        "key": "offset",
         "publicKey": "offset",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showLegend",
         "prop": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
+        "key": "showLegend",
         "publicKey": "showLegend",
         "publicLabel": "图例"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读图条",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读图条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -1542,28 +1547,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "seriesCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -1673,46 +1678,46 @@ export const pages = [
     "bgClass": "bg-night",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 1,
         "min": 1,
         "max": 3,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "tickCount",
         "prop": "tickCount",
-        "label": "装饰文案",
         "type": "slider",
+        "label": "装饰文案",
         "default": 5,
         "min": 0,
         "max": 6,
         "step": 1,
         "desc": "底部走马灯刻度数",
+        "key": "tickCount",
         "publicKey": "tickCount",
         "publicLabel": "装饰文案",
         "description": "底部走马灯刻度数"
       },
       {
-        "key": "showLetterbox",
         "prop": "showLetterbox",
-        "label": "影院黑边",
         "type": "toggle",
+        "label": "影院黑边",
         "default": false,
+        "key": "showLetterbox",
         "publicKey": "showLetterbox",
         "publicLabel": "影院黑边"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -1731,28 +1736,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 0,
         "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -1803,48 +1808,48 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 1,
         "min": 1,
         "max": 3,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "chipCount",
         "prop": "chipCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 0,
         "max": 4,
         "step": 1,
         "desc": "浮动标注片",
+        "key": "chipCount",
         "publicKey": "chipCount",
         "publicLabel": "数量",
         "description": "浮动标注片"
       },
       {
-        "key": "showSpotlight",
         "prop": "showSpotlight",
-        "label": "装饰元素",
         "type": "toggle",
+        "label": "装饰元素",
         "default": true,
         "desc": "聚光 + 倒影",
+        "key": "showSpotlight",
         "publicKey": "showSpotlight",
         "publicLabel": "装饰元素",
         "description": "聚光 + 倒影"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -1863,28 +1868,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 2,
+        "maxFromKey": "chipCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 0,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -1928,22 +1933,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "segCount",
         "prop": "segCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "segCount",
         "publicKey": "segCount",
         "publicLabel": "数量"
       },
       {
-        "key": "shape",
         "prop": "shape",
-        "label": "图形",
         "type": "radio",
+        "label": "图形",
         "default": "环形",
         "options": [
           {
@@ -1955,45 +1959,46 @@ export const pages = [
             "label": "饼图"
           }
         ],
+        "key": "shape",
         "publicKey": "shape",
         "publicLabel": "图形"
       },
       {
-        "key": "showRounds",
         "prop": "showRounds",
-        "label": "结构面板",
         "type": "toggle",
+        "label": "结构面板",
         "default": true,
+        "key": "showRounds",
         "publicKey": "showRounds",
         "publicLabel": "结构面板"
       },
       {
-        "key": "roundCount",
         "prop": "roundCount",
-        "label": "结构条目数",
         "type": "slider",
+        "label": "结构条目数",
         "default": 6,
         "min": 2,
         "max": 12,
         "step": 1,
+        "key": "roundCount",
         "publicKey": "itemCount",
         "publicLabel": "结构条目数"
       },
       {
-        "key": "callout",
         "prop": "callout",
-        "label": "解读卡",
         "type": "toggle",
+        "label": "解读卡",
         "default": true,
+        "key": "callout",
         "publicKey": "callout",
         "publicLabel": "解读卡"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -2012,28 +2017,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 4,
+        "maxFromKey": "segCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 5,
-        "maxFromKey": "roundCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -2109,9 +2114,9 @@ export const pages = [
           "avg": 6.8
         },
         {
-          "lb": "D+",
-          "n": 22,
-          "avg": 15.2
+          "lb": "D",
+          "n": 13,
+          "avg": 10.4
         },
         {
           "lb": "E",
@@ -2156,54 +2161,54 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 3,
         "max": 6,
         "step": 1,
         "desc": "板块数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "板块数"
       },
       {
-        "key": "showRibbon",
         "prop": "showRibbon",
-        "label": "联投环带",
         "type": "toggle",
+        "label": "联投环带",
         "default": true,
+        "key": "showRibbon",
         "publicKey": "showRibbon",
         "publicLabel": "联投环带"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "强度数值",
         "type": "toggle",
+        "label": "强度数值",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "强度数值"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "圆心读数",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "圆心读数"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -2222,28 +2227,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -2349,54 +2354,54 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 5,
         "step": 1,
         "desc": "大类数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "大类数"
       },
       {
-        "key": "showOuter",
         "prop": "showOuter",
-        "label": "外环细分",
         "type": "toggle",
+        "label": "外环细分",
         "default": true,
+        "key": "showOuter",
         "publicKey": "showOuter",
         "publicLabel": "外环细分"
       },
       {
-        "key": "showLabels",
         "prop": "showLabels",
-        "label": "弧上标注",
         "type": "toggle",
+        "label": "弧上标注",
         "default": true,
+        "key": "showLabels",
         "publicKey": "showLabels",
         "publicLabel": "弧上标注"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "圆心读数",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "圆心读数"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -2415,28 +2420,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -2561,41 +2566,41 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "showConclusion",
         "prop": "showConclusion",
-        "label": "推论块",
         "type": "toggle",
+        "label": "推论块",
         "default": true,
+        "key": "showConclusion",
         "publicKey": "showConclusion",
         "publicLabel": "推论块"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -2614,28 +2619,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 1,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -2692,43 +2697,43 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "分段数量",
         "type": "slider",
+        "label": "分段数量",
         "default": 4,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "分段数量"
       },
       {
-        "key": "showPct",
         "prop": "showPct",
-        "label": "段内占比",
         "type": "toggle",
+        "label": "段内占比",
         "default": true,
+        "key": "showPct",
         "publicKey": "showPct",
         "publicLabel": "段内占比"
       },
       {
-        "key": "showScale",
         "prop": "showScale",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "刻度基线",
+        "key": "showScale",
         "publicKey": "showScale",
         "publicLabel": "装饰文案",
         "description": "刻度基线"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -2747,28 +2752,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -2833,53 +2838,53 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "layers",
         "prop": "layers",
-        "label": "层级数量",
         "type": "slider",
+        "label": "层级数量",
         "default": 3,
         "min": 1,
         "max": 3,
         "step": 1,
+        "key": "layers",
         "publicKey": "layers",
         "publicLabel": "层级数量"
       },
       {
-        "key": "perLayer",
         "prop": "perLayer",
-        "label": "每层数量",
         "type": "slider",
+        "label": "每层数量",
         "default": 4,
         "min": 1,
         "max": 5,
         "step": 1,
+        "key": "perLayer",
         "publicKey": "perLayer",
         "publicLabel": "每层数量"
       },
       {
-        "key": "showGeo",
         "prop": "showGeo",
-        "label": "分布面板",
         "type": "toggle",
+        "label": "分布面板",
         "default": true,
+        "key": "showGeo",
         "publicKey": "showGeo",
         "publicLabel": "分布面板"
       },
       {
-        "key": "callout",
         "prop": "callout",
-        "label": "解读卡",
         "type": "toggle",
+        "label": "解读卡",
         "default": true,
+        "key": "callout",
         "publicKey": "callout",
         "publicLabel": "解读卡"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -2898,26 +2903,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 1,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 2,
+        "maxFromKey": "layers",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 9
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -3012,44 +3019,44 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "caseCount",
         "prop": "caseCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 1,
         "max": 3,
         "step": 1,
+        "key": "caseCount",
         "publicKey": "caseCount",
         "publicLabel": "数量"
       },
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 3,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "quote",
         "prop": "quote",
-        "label": "引用",
         "type": "toggle",
+        "label": "引用",
         "default": true,
+        "key": "quote",
         "publicKey": "quote",
         "publicLabel": "引用"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -3068,28 +3075,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKey": "caseCount",
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -3158,22 +3165,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "supportCount",
         "prop": "supportCount",
-        "label": "支撑指标数量",
         "type": "slider",
+        "label": "支撑指标数量",
         "default": 3,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "supportCount",
         "publicKey": "supportCount",
         "publicLabel": "支撑指标数量"
       },
       {
-        "key": "splitDir",
         "prop": "splitDir",
-        "label": "斜切方向",
         "type": "radio",
+        "label": "斜切方向",
         "default": "左下",
         "options": [
           {
@@ -3185,26 +3191,27 @@ export const pages = [
             "label": "右下"
           }
         ],
+        "key": "splitDir",
         "publicKey": "splitDir",
         "publicLabel": "斜切方向"
       },
       {
-        "key": "showGhost",
         "prop": "showGhost",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "幽灵大字",
+        "key": "showGhost",
         "publicKey": "showGhost",
         "publicLabel": "装饰文案",
         "description": "幽灵大字"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -3223,28 +3230,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "supportCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -3288,43 +3295,43 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 4,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "showFlow",
         "prop": "showFlow",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "单排流向箭头",
+        "key": "showFlow",
         "publicKey": "showFlow",
         "publicLabel": "装饰文案",
         "description": "单排流向箭头"
       },
       {
-        "key": "showDesc",
         "prop": "showDesc",
-        "label": "镜头说明",
         "type": "toggle",
+        "label": "镜头说明",
         "default": true,
+        "key": "showDesc",
         "publicKey": "showDesc",
         "publicLabel": "镜头说明"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -3343,28 +3350,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -3417,22 +3424,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 1,
         "min": 1,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "imgSide",
         "prop": "imgSide",
-        "label": "图片位置",
         "type": "radio",
+        "label": "图片位置",
         "default": "左",
         "options": [
           {
@@ -3444,40 +3450,41 @@ export const pages = [
             "label": "右"
           }
         ],
+        "key": "imgSide",
         "publicKey": "imgSide",
         "publicLabel": "图片位置"
       },
       {
-        "key": "pointCount",
         "prop": "pointCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 0,
         "max": 4,
         "step": 1,
         "desc": "图说条数",
+        "key": "pointCount",
         "publicKey": "pointCount",
         "publicLabel": "数量",
         "description": "图说条数"
       },
       {
-        "key": "showCaption",
         "prop": "showCaption",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "图底字幕条",
+        "key": "showCaption",
         "publicKey": "showCaption",
         "publicLabel": "装饰文案",
         "description": "图底字幕条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -3496,28 +3503,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 2,
+        "maxFromKey": "pointCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 0,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -3567,43 +3574,43 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 4,
         "min": 1,
         "max": 6,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "scatter",
         "prop": "scatter",
-        "label": "散落排布",
         "type": "toggle",
+        "label": "散落排布",
         "default": true,
+        "key": "scatter",
         "publicKey": "scatter",
         "publicLabel": "散落排布"
       },
       {
-        "key": "showTape",
         "prop": "showTape",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "胶带装饰",
+        "key": "showTape",
         "publicKey": "showTape",
         "publicLabel": "装饰文案",
         "description": "胶带装饰"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -3622,26 +3629,26 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "max": 5,
+        "max": 3,
         "maxFromKey": "imgCount",
         "maxFromKeyOffset": -1,
         "displayOffset": 1,
         "step": 1,
+        "key": "focusIndex",
         "publicKey": "focusIndex",
         "publicLabel": "焦点序号"
       }
@@ -3689,22 +3696,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "条目数量",
         "type": "slider",
+        "label": "条目数量",
         "default": 4,
         "min": 1,
         "max": 4,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
       {
-        "key": "variant",
         "prop": "variant",
-        "label": "布局方式",
         "type": "radio",
+        "label": "布局方式",
         "default": "网格",
         "options": [
           {
@@ -3716,24 +3722,25 @@ export const pages = [
             "label": "列表"
           }
         ],
+        "key": "variant",
         "publicKey": "variant",
         "publicLabel": "布局方式"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -3752,28 +3759,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 1,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -3844,34 +3851,34 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 1,
         "max": 3,
         "step": 1,
         "desc": "每组条目数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "每组条目数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "时间轴",
         "type": "toggle",
+        "label": "时间轴",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "时间轴"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -3890,19 +3897,18 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点分组",
         "type": "radio",
+        "label": "焦点分组",
         "default": "左侧",
         "options": [
           {
@@ -3914,6 +3920,7 @@ export const pages = [
             "label": "右侧"
           }
         ],
+        "key": "focusIndex",
         "publicKey": "focusIndex",
         "publicLabel": "焦点分组"
       }
@@ -3992,32 +3999,32 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "条目数量",
         "type": "slider",
+        "label": "条目数量",
         "default": 3,
         "min": 1,
         "max": 3,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -4036,28 +4043,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -4102,24 +4109,23 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 1,
         "max": 6,
         "step": 1,
         "desc": "主题索引条目数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "主题索引条目数"
       },
       {
-        "key": "align",
         "prop": "align",
-        "label": "对齐",
         "type": "radio",
+        "label": "对齐",
         "default": "居左",
         "options": [
           {
@@ -4131,26 +4137,27 @@ export const pages = [
             "label": "居中"
           }
         ],
+        "key": "align",
         "publicKey": "align",
         "publicLabel": "对齐"
       },
       {
-        "key": "showIndex",
         "prop": "showIndex",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "底部主题索引",
+        "key": "showIndex",
         "publicKey": "showIndex",
         "publicLabel": "装饰文案",
         "description": "底部主题索引"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -4169,28 +4176,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -4242,22 +4249,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 1,
         "min": 1,
         "max": 2,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "align",
         "prop": "align",
-        "label": "对齐",
         "type": "radio",
+        "label": "对齐",
         "default": "居中",
         "options": [
           {
@@ -4269,47 +4275,48 @@ export const pages = [
             "label": "居左"
           }
         ],
+        "key": "align",
         "publicKey": "align",
         "publicLabel": "对齐"
       },
       {
-        "key": "scale",
         "prop": "scale",
-        "label": "主题词字号",
         "type": "slider",
+        "label": "主题词字号",
         "default": 58,
         "min": 44,
         "max": 72,
         "step": 2,
+        "key": "scale",
         "publicKey": "scale",
         "publicLabel": "主题词字号"
       },
       {
-        "key": "showMark",
         "prop": "showMark",
-        "label": "幽灵引号",
         "type": "toggle",
+        "label": "幽灵引号",
         "default": true,
+        "key": "showMark",
         "publicKey": "showMark",
         "publicLabel": "幽灵引号"
       },
       {
-        "key": "showRule",
         "prop": "showRule",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "上下花线",
+        "key": "showRule",
         "publicKey": "showRule",
         "publicLabel": "装饰文案",
         "description": "上下花线"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       }
@@ -4348,22 +4355,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "side",
         "prop": "side",
-        "label": "收敛方向",
         "type": "radio",
+        "label": "收敛方向",
         "default": "左归右",
         "options": [
           {
@@ -4375,26 +4381,27 @@ export const pages = [
             "label": "右归左"
           }
         ],
+        "key": "side",
         "publicKey": "side",
         "publicLabel": "收敛方向"
       },
       {
-        "key": "showBrace",
         "prop": "showBrace",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "中缝花括号",
+        "key": "showBrace",
         "publicKey": "showBrace",
         "publicLabel": "装饰文案",
         "description": "中缝花括号"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -4413,28 +4420,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -4486,7 +4493,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -4507,7 +4513,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
         "def": "tech",
         "options": [
           {
@@ -4535,24 +4540,23 @@ export const pages = [
         "description": "选择固定 Unicorn shader 场景"
       },
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 3,
         "min": 1,
         "max": 4,
         "step": 1,
         "desc": "1=纯满幅；>1 加侧栏小图",
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量",
         "description": "1=纯满幅；>1 加侧栏小图"
       },
       {
-        "key": "textPos",
         "prop": "textPos",
-        "label": "文字位置",
         "type": "radio",
+        "label": "文字位置",
         "default": "左",
         "options": [
           {
@@ -4564,38 +4568,39 @@ export const pages = [
             "label": "右"
           }
         ],
+        "key": "textPos",
         "publicKey": "textPos",
         "publicLabel": "文字位置"
       },
       {
-        "key": "tagCount",
         "prop": "tagCount",
-        "label": "标签数量",
         "type": "slider",
+        "label": "标签数量",
         "default": 3,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "tagCount",
         "publicKey": "tagCount",
         "publicLabel": "标签数量"
       },
       {
-        "key": "showMasthead",
         "prop": "showMasthead",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "顶部刊头条",
+        "key": "showMasthead",
         "publicKey": "showMasthead",
         "publicLabel": "装饰文案",
         "description": "顶部刊头条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -4614,11 +4619,11 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       }
@@ -4659,22 +4664,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "条目数量",
         "type": "slider",
+        "label": "条目数量",
         "default": 6,
         "min": 2,
         "max": 24,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
       {
-        "key": "chartType",
         "prop": "chartType",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "柱状",
         "options": [
           {
@@ -4690,14 +4694,14 @@ export const pages = [
             "label": "面积"
           }
         ],
+        "key": "chartType",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
       {
-        "key": "metric",
         "prop": "metric",
-        "label": "展示指标",
         "type": "radio",
+        "label": "展示指标",
         "default": "双指标",
         "options": [
           {
@@ -4713,24 +4717,25 @@ export const pages = [
             "label": "双指标"
           }
         ],
+        "key": "metric",
         "publicKey": "metric",
         "publicLabel": "展示指标"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -4749,28 +4754,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 4,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -4846,22 +4851,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "条目数量",
         "type": "slider",
+        "label": "条目数量",
         "default": 6,
         "min": 3,
         "max": 8,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
       {
-        "key": "sort",
         "prop": "sort",
-        "label": "排序方式",
         "type": "radio",
+        "label": "排序方式",
         "default": "降序",
         "options": [
           {
@@ -4877,33 +4881,34 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "sort",
         "publicKey": "sort",
         "publicLabel": "排序方式"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "数值显示",
         "type": "toggle",
+        "label": "数值显示",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "数值显示"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -4922,28 +4927,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -5026,59 +5031,59 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 7,
         "min": 4,
         "max": 8,
         "step": 1,
         "desc": "分类数",
+        "key": "itemCount",
         "publicKey": "categoryCount",
         "publicLabel": "数量",
         "description": "分类数"
       },
       {
-        "key": "periodCount",
         "prop": "periodCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
         "desc": "时期数",
+        "key": "periodCount",
         "publicKey": "periodCount",
         "publicLabel": "列数量",
         "description": "时期数"
       },
       {
-        "key": "showBadge",
         "prop": "showBadge",
-        "label": "名次徽标",
         "type": "toggle",
+        "label": "名次徽标",
         "default": true,
+        "key": "showBadge",
         "publicKey": "showBadge",
         "publicLabel": "名次徽标"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "升降解读",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "升降解读"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -5097,28 +5102,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 6,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -5244,22 +5249,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 7,
         "min": 3,
         "max": 7,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "sort",
         "prop": "sort",
-        "label": "排序",
         "type": "radio",
+        "label": "排序",
         "default": "合计",
         "options": [
           {
@@ -5275,35 +5279,36 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "sort",
         "publicKey": "sort",
         "publicLabel": "排序"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "条末读数",
         "type": "toggle",
+        "label": "条末读数",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValue",
         "publicLabel": "条末读数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读图条",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读图条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -5322,28 +5327,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 6,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -5420,47 +5425,47 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "supportCount",
         "prop": "supportCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 0,
         "max": 3,
         "step": 1,
         "desc": "底部支撑指标数",
+        "key": "supportCount",
         "publicKey": "supportCount",
         "publicLabel": "数量",
         "description": "底部支撑指标数"
       },
       {
-        "key": "accentNumber",
         "prop": "accentNumber",
-        "label": "强调主数字",
         "type": "toggle",
+        "label": "强调主数字",
         "default": false,
         "desc": "关则金属字",
+        "key": "accentNumber",
         "publicKey": "accentNumber",
         "publicLabel": "强调主数字",
         "description": "关则金属字"
       },
       {
-        "key": "showGhost",
         "prop": "showGhost",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "背景巨号幽灵数字",
+        "key": "showGhost",
         "publicKey": "showGhost",
         "publicLabel": "装饰文案",
         "description": "背景巨号幽灵数字"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -5479,28 +5484,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "supportCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -5545,34 +5550,34 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "showCaption",
         "prop": "showCaption",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "叠印图说",
+        "key": "showCaption",
         "publicKey": "showCaption",
         "publicLabel": "装饰文案",
         "description": "叠印图说"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -5591,28 +5596,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -5664,67 +5669,67 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "rowCount",
         "prop": "rowCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 6,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "rowCount",
         "publicKey": "rowCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "colCount",
         "prop": "colCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 5,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "colCount",
         "publicKey": "colCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "heat",
         "prop": "heat",
-        "label": "热力着色",
         "type": "toggle",
+        "label": "热力着色",
         "default": true,
+        "key": "heat",
         "publicKey": "heat",
         "publicLabel": "热力着色"
       },
       {
-        "key": "highlightCol",
         "prop": "highlightCol",
-        "label": "高亮列 (-1 关闭)",
         "type": "slider",
+        "label": "高亮列 (-1 关闭)",
         "default": 0,
         "min": -1,
-        "step": 1,
-        "publicKey": "highlightCol",
-        "publicLabel": "高亮列 (-1 关闭)",
         "max": 4,
         "maxFromKey": "colCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "step": 1,
+        "key": "highlightCol",
+        "publicKey": "highlightCol",
+        "publicLabel": "高亮列 (-1 关闭)"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -5743,28 +5748,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "rowCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -5886,10 +5891,9 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "pivot",
         "prop": "pivot",
-        "label": "中枢符",
         "type": "radio",
+        "label": "中枢符",
         "default": "VS",
         "options": [
           {
@@ -5909,50 +5913,51 @@ export const pages = [
             "label": "/"
           }
         ],
+        "key": "pivot",
         "publicKey": "pivot",
         "publicLabel": "中枢符"
       },
       {
-        "key": "showBar",
         "prop": "showBar",
-        "label": "对比条",
         "type": "toggle",
+        "label": "对比条",
         "default": true,
+        "key": "showBar",
         "publicKey": "showBar",
         "publicLabel": "对比条"
       },
       {
-        "key": "showNote",
         "prop": "showNote",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "底部结论",
+        "key": "showNote",
         "publicKey": "showNote",
         "publicLabel": "装饰文案",
         "description": "底部结论"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
         "max": 1,
         "step": 1,
+        "displayOffset": 1,
+        "key": "focusIndex",
         "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -5992,22 +5997,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "wordCount",
         "prop": "wordCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "wordCount",
         "publicKey": "wordCount",
         "publicLabel": "数量"
       },
       {
-        "key": "align",
         "prop": "align",
-        "label": "对齐",
         "type": "radio",
+        "label": "对齐",
         "default": "居左",
         "options": [
           {
@@ -6019,52 +6023,53 @@ export const pages = [
             "label": "居中"
           }
         ],
+        "key": "align",
         "publicKey": "align",
         "publicLabel": "对齐"
       },
       {
-        "key": "showAxis",
         "prop": "showAxis",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "左侧竖轴",
+        "key": "showAxis",
         "publicKey": "showAxis",
         "publicLabel": "装饰文案",
         "description": "左侧竖轴"
       },
       {
-        "key": "showLead",
         "prop": "showLead",
-        "label": "导语小标",
         "type": "toggle",
+        "label": "导语小标",
         "default": true,
+        "key": "showLead",
         "publicKey": "showLead",
         "publicLabel": "导语小标"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 1,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "wordCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -6116,24 +6121,23 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 3,
         "max": 8,
         "step": 1,
         "desc": "节点数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "节点数"
       },
       {
-        "key": "orientation",
         "prop": "orientation",
-        "label": "方向",
         "type": "radio",
+        "label": "方向",
         "default": "横向",
         "options": [
           {
@@ -6145,36 +6149,37 @@ export const pages = [
             "label": "纵向"
           }
         ],
+        "key": "orientation",
         "publicKey": "orientation",
         "publicLabel": "方向"
       },
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 0,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -6193,28 +6198,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 4,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -6296,54 +6301,54 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 7,
         "min": 4,
         "max": 8,
         "step": 1,
         "desc": "节点数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "节点数"
       },
       {
-        "key": "showSpine",
         "prop": "showSpine",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "螺线轨迹",
+        "key": "showSpine",
         "publicKey": "showSpine",
         "publicLabel": "装饰文案",
         "description": "螺线轨迹"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "节点说明",
         "type": "toggle",
+        "label": "节点说明",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValue",
         "publicLabel": "节点说明"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "枢轴文案",
         "type": "toggle",
+        "label": "枢轴文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "枢轴文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -6362,28 +6367,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 6,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -6465,41 +6470,41 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 8,
         "min": 3,
         "max": 8,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showZones",
         "prop": "showZones",
-        "label": "区域底色",
         "type": "toggle",
+        "label": "区域底色",
         "default": true,
+        "key": "showZones",
         "publicKey": "showZones",
         "publicLabel": "区域底色"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -6518,28 +6523,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 7,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -6636,24 +6641,23 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 8,
         "min": 1,
         "max": 8,
         "step": 1,
         "desc": "气泡数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "气泡数"
       },
       {
-        "key": "sort",
         "prop": "sort",
-        "label": "排序",
         "type": "radio",
+        "label": "排序",
         "default": "降序",
         "options": [
           {
@@ -6665,52 +6669,53 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "sort",
         "publicKey": "sort",
         "publicLabel": "排序"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "泡内数值",
         "type": "toggle",
+        "label": "泡内数值",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "泡内数值"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读图条",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读图条"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": false,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 7,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -6788,24 +6793,23 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
         "desc": "漏斗层数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "漏斗层数"
       },
       {
-        "key": "orientation",
         "prop": "orientation",
-        "label": "方向",
         "type": "radio",
+        "label": "方向",
         "default": "纵向",
         "options": [
           {
@@ -6817,33 +6821,34 @@ export const pages = [
             "label": "横向"
           }
         ],
+        "key": "orientation",
         "publicKey": "orientation",
         "publicLabel": "方向"
       },
       {
-        "key": "showRate",
         "prop": "showRate",
-        "label": "转化率",
         "type": "toggle",
+        "label": "转化率",
         "default": true,
+        "key": "showRate",
         "publicKey": "showRate",
         "publicLabel": "转化率"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -6862,28 +6867,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 3,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -6939,55 +6944,55 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "catCount",
         "prop": "catCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "catCount",
         "publicKey": "catCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "segCount",
         "prop": "segCount",
-        "label": "分段数量",
         "type": "slider",
+        "label": "分段数量",
         "default": 4,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "segCount",
         "publicKey": "segCount",
         "publicLabel": "分段数量"
       },
       {
-        "key": "showSegPct",
         "prop": "showSegPct",
-        "label": "段内占比",
         "type": "toggle",
+        "label": "段内占比",
         "default": true,
+        "key": "showSegPct",
         "publicKey": "showSegPct",
         "publicLabel": "段内占比"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读图条",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读图条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -7006,28 +7011,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 4,
+        "maxFromKey": "catCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 3,
-        "maxFromKey": "segCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -7125,43 +7130,43 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showTarget",
         "prop": "showTarget",
-        "label": "装饰元素",
         "type": "toggle",
+        "label": "装饰元素",
         "default": true,
         "desc": "目标刻度线",
+        "key": "showTarget",
         "publicKey": "showTarget",
         "publicLabel": "装饰元素",
         "description": "目标刻度线"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "末端读数",
         "type": "toggle",
+        "label": "末端读数",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValue",
         "publicLabel": "末端读数"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -7180,28 +7185,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -7272,34 +7277,33 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "columns",
         "prop": "columns",
-        "label": "每行数量",
         "type": "slider",
+        "label": "每行数量",
         "default": 3,
         "min": 2,
         "max": 3,
         "step": 1,
+        "key": "columns",
         "publicKey": "columns",
         "publicLabel": "每行数量"
       },
       {
-        "key": "miniChart",
         "prop": "miniChart",
-        "label": "迷你图",
         "type": "radio",
+        "label": "迷你图",
         "default": "迷你柱",
         "options": [
           {
@@ -7319,24 +7323,25 @@ export const pages = [
             "label": "迷你线"
           }
         ],
+        "key": "miniChart",
         "publicKey": "miniChart",
         "publicLabel": "迷你图"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -7355,28 +7360,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -7487,78 +7492,78 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "rowCount",
         "prop": "rowCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 6,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "rowCount",
         "publicKey": "rowCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "colCount",
         "prop": "colCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "colCount",
         "publicKey": "colCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "highlightCol",
         "prop": "highlightCol",
-        "label": "高亮列 (-1 关闭)",
         "type": "slider",
+        "label": "高亮列 (-1 关闭)",
         "default": -1,
         "min": -1,
-        "step": 1,
-        "publicKey": "highlightCol",
-        "publicLabel": "高亮列 (-1 关闭)",
         "max": 3,
         "maxFromKey": "colCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "step": 1,
+        "key": "highlightCol",
+        "publicKey": "highlightCol",
+        "publicLabel": "高亮列 (-1 关闭)"
       },
       {
-        "key": "heat",
         "prop": "heat",
-        "label": "热力着色",
         "type": "toggle",
+        "label": "热力着色",
         "default": true,
+        "key": "heat",
         "publicKey": "heat",
         "publicLabel": "热力着色"
       },
       {
-        "key": "showTotals",
         "prop": "showTotals",
-        "label": "边际合计",
         "type": "toggle",
+        "label": "边际合计",
         "default": true,
+        "key": "showTotals",
         "publicKey": "showTotals",
         "publicLabel": "边际合计"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读表提示",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读表提示"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -7577,28 +7582,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "rowCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -7699,53 +7704,53 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 1,
         "max": 4,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 0,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "showSource",
         "prop": "showSource",
-        "label": "署名",
         "type": "toggle",
+        "label": "署名",
         "default": true,
+        "key": "showSource",
         "publicKey": "showSource",
         "publicLabel": "署名"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -7764,28 +7769,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -7835,10 +7840,9 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "align",
         "prop": "align",
-        "label": "对齐",
         "type": "radio",
+        "label": "对齐",
         "default": "居中",
         "options": [
           {
@@ -7850,47 +7854,48 @@ export const pages = [
             "label": "居左"
           }
         ],
+        "key": "align",
         "publicKey": "align",
         "publicLabel": "对齐"
       },
       {
-        "key": "scale",
         "prop": "scale",
-        "label": "字号",
         "type": "slider",
+        "label": "字号",
         "default": 64,
         "min": 40,
         "max": 80,
         "step": 2,
+        "key": "scale",
         "publicKey": "scale",
         "publicLabel": "字号"
       },
       {
-        "key": "showMark",
         "prop": "showMark",
-        "label": "引号装饰",
         "type": "toggle",
+        "label": "引号装饰",
         "default": true,
+        "key": "showMark",
         "publicKey": "showMark",
         "publicLabel": "引号装饰"
       },
       {
-        "key": "showRule",
         "prop": "showRule",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "上下贯通细线",
+        "key": "showRule",
         "publicKey": "showRule",
         "publicLabel": "装饰文案",
         "description": "上下贯通细线"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       }
@@ -7936,41 +7941,41 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "noteCount",
         "prop": "noteCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "noteCount",
         "publicKey": "noteCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showConnector",
         "prop": "showConnector",
-        "label": "装饰元素",
         "type": "toggle",
+        "label": "装饰元素",
         "default": true,
+        "key": "showConnector",
         "publicKey": "showConnector",
         "publicLabel": "装饰元素"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "题注条",
         "type": "toggle",
+        "label": "题注条",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "题注条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -7989,28 +7994,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "noteCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -8085,34 +8090,34 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
         "desc": "来源数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "来源数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -8131,28 +8136,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -8236,54 +8241,54 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 7,
         "min": 4,
         "max": 8,
         "step": 1,
         "desc": "节点数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "节点数"
       },
       {
-        "key": "showArc",
         "prop": "showArc",
-        "label": "连弧",
         "type": "toggle",
+        "label": "连弧",
         "default": true,
+        "key": "showArc",
         "publicKey": "showArc",
         "publicLabel": "连弧"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "体量数值",
         "type": "toggle",
+        "label": "体量数值",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "体量数值"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "关联解读",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "关联解读"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -8302,28 +8307,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 6,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -8446,54 +8451,54 @@ export const pages = [
     "bgClass": "bg-night",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 7,
         "min": 4,
         "max": 8,
         "step": 1,
         "desc": "节点数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "节点数"
       },
       {
-        "key": "showCrossLinks",
         "prop": "showCrossLinks",
-        "label": "交叉关联",
         "type": "toggle",
+        "label": "交叉关联",
         "default": true,
+        "key": "showCrossLinks",
         "publicKey": "showCrossLinks",
         "publicLabel": "交叉关联"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "节点数值",
         "type": "toggle",
+        "label": "节点数值",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "节点数值"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读图条",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读图条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -8512,28 +8517,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 6,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -8641,34 +8646,34 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 5,
         "step": 1,
         "desc": "梯队层数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "梯队层数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -8687,28 +8692,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -8786,34 +8791,33 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "rowCount",
         "prop": "rowCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 6,
         "min": 3,
         "max": 8,
         "step": 1,
+        "key": "rowCount",
         "publicKey": "rowCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "colCount",
         "prop": "colCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "colCount",
         "publicKey": "colCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "sort",
         "prop": "sort",
-        "label": "排序",
         "type": "radio",
+        "label": "排序",
         "default": "降序",
         "options": [
           {
@@ -8829,49 +8833,50 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "sort",
         "publicKey": "sort",
         "publicLabel": "排序"
       },
       {
-        "key": "highlightCol",
         "prop": "highlightCol",
-        "label": "高亮列 (-1 关闭)",
         "type": "slider",
+        "label": "高亮列 (-1 关闭)",
         "default": -1,
         "min": -1,
-        "step": 1,
-        "publicKey": "highlightCol",
-        "publicLabel": "高亮列 (-1 关闭)",
         "max": 3,
         "maxFromKey": "colCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "step": 1,
+        "key": "highlightCol",
+        "publicKey": "highlightCol",
+        "publicLabel": "高亮列 (-1 关闭)"
       },
       {
-        "key": "showBar",
         "prop": "showBar",
-        "label": "行内比例条",
         "type": "toggle",
+        "label": "行内比例条",
         "default": true,
+        "key": "showBar",
         "publicKey": "showBar",
         "publicLabel": "行内比例条"
       },
       {
-        "key": "showTotal",
         "prop": "showTotal",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "合计/均值行",
+        "key": "showTotal",
         "publicKey": "showTotal",
         "publicLabel": "装饰文案",
         "description": "合计/均值行"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -8890,28 +8895,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "rowCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -9047,24 +9052,23 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "panelCount",
         "prop": "panelCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 2,
         "min": 2,
         "max": 3,
         "step": 1,
         "desc": "联数",
+        "key": "panelCount",
         "publicKey": "panelCount",
         "publicLabel": "图片槽数量",
         "description": "联数"
       },
       {
-        "key": "pivot",
         "prop": "pivot",
-        "label": "中缝枢标",
         "type": "radio",
+        "label": "中缝枢标",
         "default": "对照",
         "options": [
           {
@@ -9084,35 +9088,36 @@ export const pages = [
             "label": "/"
           }
         ],
+        "key": "pivot",
         "publicKey": "pivot",
         "publicLabel": "中缝枢标"
       },
       {
-        "key": "showSeam",
         "prop": "showSeam",
-        "label": "中缝枢标显隐",
         "type": "toggle",
+        "label": "中缝枢标显隐",
         "default": true,
+        "key": "showSeam",
         "publicKey": "showSeam",
         "publicLabel": "中缝枢标显隐"
       },
       {
-        "key": "showCaption",
         "prop": "showCaption",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "各联图说",
+        "key": "showCaption",
         "publicKey": "showCaption",
         "publicLabel": "装饰文案",
         "description": "各联图说"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -9131,28 +9136,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 1,
         "maxFromKey": "panelCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -9203,34 +9208,34 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 5,
         "step": 1,
         "desc": "用途项数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "用途项数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -9249,28 +9254,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -9324,56 +9329,56 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 8,
         "min": 4,
         "max": 8,
         "step": 1,
         "desc": "扇瓣数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "扇瓣数"
       },
       {
-        "key": "areaTrue",
         "prop": "areaTrue",
-        "label": "面积真实",
         "type": "toggle",
+        "label": "面积真实",
         "default": true,
         "desc": "半径∝√值",
+        "key": "areaTrue",
         "publicKey": "areaTrue",
         "publicLabel": "面积真实",
         "description": "半径∝√值"
       },
       {
-        "key": "showScale",
         "prop": "showScale",
-        "label": "刻度环",
         "type": "toggle",
+        "label": "刻度环",
         "default": true,
+        "key": "showScale",
         "publicKey": "showScale",
         "publicLabel": "刻度环"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "圆心读数",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "圆心读数"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -9392,28 +9397,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 7,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -9484,24 +9489,23 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 3,
         "max": 7,
         "step": 1,
         "desc": "节点数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "节点数"
       },
       {
-        "key": "chartType",
         "prop": "chartType",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "扇形",
         "options": [
           {
@@ -9513,35 +9517,36 @@ export const pages = [
             "label": "整环"
           }
         ],
+        "key": "chartType",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showSpokes",
         "prop": "showSpokes",
-        "label": "辐条连线",
         "type": "toggle",
+        "label": "辐条连线",
         "default": true,
+        "key": "showSpokes",
         "publicKey": "showSpokes",
         "publicLabel": "辐条连线"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "枢轴文案",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "枢轴文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -9560,28 +9565,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -9657,64 +9662,64 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "tickerCount",
         "prop": "tickerCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 0,
         "max": 6,
         "step": 1,
         "desc": "数据带条目",
+        "key": "tickerCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "数据带条目"
       },
       {
-        "key": "accentNumber",
         "prop": "accentNumber",
-        "label": "强调主数字",
         "type": "toggle",
+        "label": "强调主数字",
         "default": false,
         "desc": "关则金属字",
+        "key": "accentNumber",
         "publicKey": "accentNumber",
         "publicLabel": "强调主数字",
         "description": "关则金属字"
       },
       {
-        "key": "showTag",
         "prop": "showTag",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "旋转贴标",
+        "key": "showTag",
         "publicKey": "showTag",
         "publicLabel": "装饰文案",
         "description": "旋转贴标"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "tickerCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -9752,34 +9757,34 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 1,
         "max": 3,
         "step": 1,
         "desc": "区域数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "区域数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -9798,28 +9803,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -9890,59 +9895,59 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 3,
         "max": 7,
         "step": 1,
         "desc": "对象数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "对象数"
       },
       {
-        "key": "axisCount",
         "prop": "axisCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 5,
         "min": 3,
         "max": 5,
         "step": 1,
         "desc": "维度数",
+        "key": "axisCount",
         "publicKey": "axisCount",
         "publicLabel": "列数量",
         "description": "维度数"
       },
       {
-        "key": "showDots",
         "prop": "showDots",
-        "label": "轴上节点",
         "type": "toggle",
+        "label": "轴上节点",
         "default": true,
+        "key": "showDots",
         "publicKey": "showDots",
         "publicLabel": "轴上节点"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "画像解读",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "画像解读"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -9961,28 +9966,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -10109,69 +10114,69 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "rowCount",
         "prop": "rowCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 6,
         "min": 3,
         "max": 8,
         "step": 1,
+        "key": "rowCount",
         "publicKey": "rowCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "colCount",
         "prop": "colCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 5,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "colCount",
         "publicKey": "colCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "highlightCol",
         "prop": "highlightCol",
-        "label": "高亮列 (-1 关闭)",
         "type": "slider",
+        "label": "高亮列 (-1 关闭)",
         "default": -1,
         "min": -1,
-        "step": 1,
-        "publicKey": "highlightCol",
-        "publicLabel": "高亮列 (-1 关闭)",
         "max": 4,
         "maxFromKey": "colCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "step": 1,
+        "key": "highlightCol",
+        "publicKey": "highlightCol",
+        "publicLabel": "高亮列 (-1 关闭)"
       },
       {
-        "key": "showComposite",
         "prop": "showComposite",
-        "label": "综合评级",
         "type": "toggle",
+        "label": "综合评级",
         "default": true,
+        "key": "showComposite",
         "publicKey": "showComposite",
         "publicLabel": "综合评级"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "等级图例",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "等级图例"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -10190,28 +10195,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "rowCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -10348,60 +10353,60 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "setCount",
         "prop": "setCount",
-        "label": "集合数量",
         "type": "slider",
+        "label": "集合数量",
         "default": 3,
         "min": 2,
         "max": 3,
         "step": 1,
+        "key": "setCount",
         "publicKey": "setCount",
         "publicLabel": "集合数量"
       },
       {
-        "key": "showCore",
         "prop": "showCore",
-        "label": "交集结论",
         "type": "toggle",
+        "label": "交集结论",
         "default": true,
+        "key": "showCore",
         "publicKey": "showCore",
         "publicLabel": "交集结论"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "右侧导读",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "右侧导读"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "setCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -10452,46 +10457,46 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 8,
         "min": 4,
         "max": 8,
         "step": 1,
         "desc": "分类数",
+        "key": "itemCount",
         "publicKey": "categoryCount",
         "publicLabel": "数量",
         "description": "分类数"
       },
       {
-        "key": "columns",
         "prop": "columns",
-        "label": "每行数量",
         "type": "slider",
+        "label": "每行数量",
         "default": 4,
         "min": 3,
         "max": 4,
         "step": 1,
+        "key": "columns",
         "publicKey": "columns",
         "publicLabel": "每行数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -10510,28 +10515,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 7,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -10620,34 +10625,33 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 5,
         "min": 0,
         "max": 6,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "maxH",
         "prop": "maxH",
-        "label": "拼贴最大高",
         "type": "slider",
+        "label": "拼贴最大高",
         "default": 540,
         "min": 360,
         "max": 640,
         "step": 20,
+        "key": "maxH",
         "publicKey": "maxH",
         "publicLabel": "拼贴最大高"
       },
       {
-        "key": "layout",
         "prop": "layout",
-        "label": "排布",
         "type": "radio",
+        "label": "排布",
         "default": "双排",
         "options": [
           {
@@ -10659,66 +10663,67 @@ export const pages = [
             "label": "双排"
           }
         ],
+        "key": "layout",
         "publicKey": "layout",
         "publicLabel": "排布"
       },
       {
-        "key": "tagCount",
         "prop": "tagCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 0,
         "max": 6,
         "step": 1,
         "desc": "标签数",
+        "key": "tagCount",
         "publicKey": "tagCount",
         "publicLabel": "数量",
         "description": "标签数"
       },
       {
-        "key": "showFrame",
         "prop": "showFrame",
-        "label": "裁切角框",
         "type": "toggle",
+        "label": "裁切角框",
         "default": true,
+        "key": "showFrame",
         "publicKey": "showFrame",
         "publicLabel": "裁切角框"
       },
       {
-        "key": "showMeta",
         "prop": "showMeta",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "元信息 + 标签",
+        "key": "showMeta",
         "publicKey": "showMeta",
         "publicLabel": "装饰文案",
         "description": "元信息 + 标签"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 3,
+        "maxFromKey": "tagCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 4,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -10754,22 +10759,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "chartType",
         "prop": "chartType",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "径向条",
         "options": [
           {
@@ -10781,37 +10785,38 @@ export const pages = [
             "label": "极柱"
           }
         ],
+        "key": "chartType",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showScale",
         "prop": "showScale",
-        "label": "刻度网格",
         "type": "toggle",
+        "label": "刻度网格",
         "default": true,
         "desc": "装饰",
+        "key": "showScale",
         "publicKey": "showScale",
         "publicLabel": "刻度网格",
         "description": "装饰"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "口径说明",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "口径说明"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -10830,28 +10835,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": false,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -10924,32 +10929,32 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 12,
         "min": 5,
         "max": 12,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -10968,28 +10973,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 11,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -11085,54 +11090,54 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 5,
         "step": 1,
         "desc": "大类数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "大类数"
       },
       {
-        "key": "showChildren",
         "prop": "showChildren",
-        "label": "子项列",
         "type": "toggle",
+        "label": "子项列",
         "default": true,
+        "key": "showChildren",
         "publicKey": "showChildren",
         "publicLabel": "子项列"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "数值标注",
         "type": "toggle",
+        "label": "数值标注",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标注"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "根列读数",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "根列读数"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -11151,28 +11156,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": false,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -11300,22 +11305,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "matStyle",
         "prop": "matStyle",
-        "label": "裱衬色",
         "type": "radio",
+        "label": "裱衬色",
         "default": "浅裱",
         "options": [
           {
@@ -11327,26 +11331,27 @@ export const pages = [
             "label": "深裱"
           }
         ],
+        "key": "matStyle",
         "publicKey": "matStyle",
         "publicLabel": "裱衬色"
       },
       {
-        "key": "showPlacard",
         "prop": "showPlacard",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "展签牌",
+        "key": "showPlacard",
         "publicKey": "showPlacard",
         "publicLabel": "装饰文案",
         "description": "展签牌"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -11365,28 +11370,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -11431,74 +11436,74 @@ export const pages = [
     "bgClass": "bg-night",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 5,
         "min": 0,
         "max": 6,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "tagCount",
         "prop": "tagCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 0,
         "max": 5,
         "step": 1,
         "desc": "走带标签",
+        "key": "tagCount",
         "publicKey": "tagCount",
         "publicLabel": "数量",
         "description": "走带标签"
       },
       {
-        "key": "showSprockets",
         "prop": "showSprockets",
-        "label": "齿孔带",
         "type": "toggle",
+        "label": "齿孔带",
         "default": true,
+        "key": "showSprockets",
         "publicKey": "showSprockets",
         "publicLabel": "齿孔带"
       },
       {
-        "key": "showCaption",
         "prop": "showCaption",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "帧号 + 标签",
+        "key": "showCaption",
         "publicKey": "showCaption",
         "publicLabel": "装饰文案",
         "description": "帧号 + 标签"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 2,
+        "maxFromKey": "tagCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 4,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -11532,50 +11537,50 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showConnector",
         "prop": "showConnector",
-        "label": "连接线",
         "type": "toggle",
+        "label": "连接线",
         "default": true,
+        "key": "showConnector",
         "publicKey": "showConnector",
         "publicLabel": "连接线"
       },
       {
-        "key": "showTotal",
         "prop": "showTotal",
-        "label": "合计柱",
         "type": "toggle",
+        "label": "合计柱",
         "default": true,
+        "key": "showTotal",
         "publicKey": "showTotal",
         "publicLabel": "合计柱"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -11594,28 +11599,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -11672,67 +11677,67 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "rowCount",
         "prop": "rowCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 6,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "rowCount",
         "publicKey": "rowCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "colCount",
         "prop": "colCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 12,
         "min": 6,
         "max": 12,
         "step": 1,
+        "key": "colCount",
         "publicKey": "colCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "highlightCol",
         "prop": "highlightCol",
-        "label": "高亮列（-1关）",
         "type": "slider",
+        "label": "高亮列（-1关）",
         "default": -1,
         "min": -1,
-        "step": 1,
-        "publicKey": "highlightCol",
-        "publicLabel": "高亮列（-1关）",
         "max": 11,
         "maxFromKey": "colCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "step": 1,
+        "key": "highlightCol",
+        "publicKey": "highlightCol",
+        "publicLabel": "高亮列（-1关）"
       },
       {
-        "key": "showScale",
         "prop": "showScale",
-        "label": "色阶图例",
         "type": "toggle",
+        "label": "色阶图例",
         "default": true,
+        "key": "showScale",
         "publicKey": "showScale",
         "publicLabel": "色阶图例"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -11751,28 +11756,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "rowCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -11901,71 +11906,71 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "seed",
         "prop": "seed",
-        "label": "分布种子",
         "type": "slider",
+        "label": "分布种子",
         "default": 7,
         "min": 1,
         "max": 40,
         "step": 1,
         "desc": "确定性逐日强度",
+        "key": "seed",
         "publicKey": "seed",
         "publicLabel": "分布种子",
         "description": "确定性逐日强度"
       },
       {
-        "key": "showMonths",
         "prop": "showMonths",
-        "label": "月名标注",
         "type": "toggle",
+        "label": "月名标注",
         "default": true,
+        "key": "showMonths",
         "publicKey": "showMonths",
         "publicLabel": "月名标注"
       },
       {
-        "key": "showLegend",
         "prop": "showLegend",
-        "label": "色阶图例",
         "type": "toggle",
+        "label": "色阶图例",
         "default": true,
+        "key": "showLegend",
         "publicKey": "showLegend",
         "publicLabel": "色阶图例"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读数面板",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读数面板"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 2,
         "min": 0,
         "max": 11,
         "step": 1,
         "desc": "高亮月份",
+        "displayOffset": 1,
+        "key": "focusIndex",
         "publicKey": "focusIndex",
         "publicLabel": "焦点序号",
-        "description": "高亮月份",
-        "displayOffset": 1
+        "description": "高亮月份"
       }
     ],
     "defaultProps": {
@@ -12007,24 +12012,23 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 9,
         "min": 4,
         "max": 10,
         "step": 1,
         "desc": "蜂格数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "蜂格数"
       },
       {
-        "key": "sort",
         "prop": "sort",
-        "label": "排序",
         "type": "radio",
+        "label": "排序",
         "default": "降序",
         "options": [
           {
@@ -12036,44 +12040,45 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "sort",
         "publicKey": "sort",
         "publicLabel": "排序"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "格内数值",
         "type": "toggle",
+        "label": "格内数值",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "格内数值"
       },
       {
-        "key": "showScale",
         "prop": "showScale",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "热力色阶",
+        "key": "showScale",
         "publicKey": "showScale",
         "publicLabel": "装饰文案",
         "description": "热力色阶"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "读图条",
         "type": "toggle",
+        "label": "读图条",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "读图条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -12092,28 +12097,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 8,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -12156,6 +12161,12 @@ export const pages = [
           "unit": "%"
         },
         {
+          "label": "数据",
+          "sub": "Data",
+          "value": 2.5,
+          "unit": "%"
+        },
+        {
           "label": "机器人",
           "sub": "Robotics",
           "value": 4,
@@ -12171,12 +12182,6 @@ export const pages = [
           "label": "自动驾驶",
           "sub": "AV",
           "value": 3,
-          "unit": "%"
-        },
-        {
-          "label": "数据",
-          "sub": "Data",
-          "value": 2.5,
           "unit": "%"
         },
         {
@@ -12204,46 +12209,46 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 6,
         "min": 3,
         "max": 8,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "columns",
         "prop": "columns",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "columns",
         "publicKey": "columns",
         "publicLabel": "列数量"
       },
       {
-        "key": "showCaption",
         "prop": "showCaption",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "叠印图说",
+        "key": "showCaption",
         "publicKey": "showCaption",
         "publicLabel": "装饰文案",
         "description": "叠印图说"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -12262,28 +12267,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -12344,28 +12349,27 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 6,
         "min": 3,
         "max": 8,
         "step": 1,
         "desc": "阶段数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "阶段数"
       },
       {
-        "key": "axis",
         "prop": "axis",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "季度",
         "options": [
           {
-            "value": "时间段",
+            "value": "季度",
             "label": "时间段"
           },
           {
@@ -12373,35 +12377,36 @@ export const pages = [
             "label": "月度"
           }
         ],
+        "key": "axis",
         "publicKey": "axis",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showAxis",
         "prop": "showAxis",
-        "label": "轴线网格",
         "type": "toggle",
+        "label": "轴线网格",
         "default": true,
+        "key": "showAxis",
         "publicKey": "showAxis",
         "publicLabel": "轴线网格"
       },
       {
-        "key": "showMilestone",
         "prop": "showMilestone",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "里程碑菱标",
+        "key": "showMilestone",
         "publicKey": "showMilestone",
         "publicLabel": "装饰文案",
         "description": "里程碑菱标"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -12420,28 +12425,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -12541,36 +12546,36 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
         "desc": "节点数",
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量",
         "description": "节点数"
       },
       {
-        "key": "showAxis",
         "prop": "showAxis",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "轴线 + 节点",
+        "key": "showAxis",
         "publicKey": "showAxis",
         "publicLabel": "装饰文案",
         "description": "轴线 + 节点"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -12589,28 +12594,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -12662,41 +12667,41 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 8,
         "min": 3,
         "max": 8,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -12715,28 +12720,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 7,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -12804,22 +12809,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 6,
         "min": 3,
         "max": 7,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "sort",
         "prop": "sort",
-        "label": "排序",
         "type": "radio",
+        "label": "排序",
         "default": "跨度",
         "options": [
           {
@@ -12835,35 +12839,36 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "sort",
         "publicKey": "sort",
         "publicLabel": "排序"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "端点数值",
         "type": "toggle",
+        "label": "端点数值",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "端点数值"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读图条",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读图条"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -12882,28 +12887,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 5,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -12980,22 +12985,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "gaugeStyle",
         "prop": "gaugeStyle",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "半环",
         "options": [
           {
@@ -13007,24 +13011,25 @@ export const pages = [
             "label": "整环"
           }
         ],
+        "key": "gaugeStyle",
         "publicKey": "gaugeStyle",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -13043,28 +13048,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -13117,43 +13122,43 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showDelta",
         "prop": "showDelta",
-        "label": "同比片",
         "type": "toggle",
+        "label": "同比片",
         "default": true,
+        "key": "showDelta",
         "publicKey": "showDelta",
         "publicLabel": "同比片"
       },
       {
-        "key": "showScan",
         "prop": "showScan",
-        "label": "装饰元素",
         "type": "toggle",
+        "label": "装饰元素",
         "default": true,
         "desc": "LED 扫描线质感",
+        "key": "showScan",
         "publicKey": "showScan",
         "publicLabel": "装饰元素",
         "description": "LED 扫描线质感"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -13172,28 +13177,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -13261,36 +13266,36 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "cardCount",
         "prop": "cardCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
         "desc": "图卡数",
+        "key": "cardCount",
         "publicKey": "cardCount",
         "publicLabel": "图片槽数量",
         "description": "图卡数"
       },
       {
-        "key": "showCaption",
         "prop": "showCaption",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "卡面叠印标题/图说",
+        "key": "showCaption",
         "publicKey": "showCaption",
         "publicLabel": "装饰文案",
         "description": "卡面叠印标题/图说"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -13309,28 +13314,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "cardCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -13374,24 +13379,23 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "colCount",
         "prop": "colCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
         "desc": "下半栏列数",
+        "key": "colCount",
         "publicKey": "colCount",
         "publicLabel": "数量",
         "description": "下半栏列数"
       },
       {
-        "key": "titlePos",
         "prop": "titlePos",
-        "label": "图片位置",
         "type": "radio",
+        "label": "图片位置",
         "default": "左",
         "options": [
           {
@@ -13404,27 +13408,28 @@ export const pages = [
           }
         ],
         "desc": "大图上标题位置",
+        "key": "titlePos",
         "publicKey": "titlePos",
         "publicLabel": "图片位置",
         "description": "大图上标题位置"
       },
       {
-        "key": "showScrim",
         "prop": "showScrim",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "大图压暗层",
+        "key": "showScrim",
         "publicKey": "showScrim",
         "publicLabel": "装饰文案",
         "description": "大图压暗层"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -13443,28 +13448,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 2,
         "maxFromKey": "colCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -13508,22 +13513,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "seriesCount",
         "prop": "seriesCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "seriesCount",
         "publicKey": "seriesCount",
         "publicLabel": "数量"
       },
       {
-        "key": "chartType",
         "prop": "chartType",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "折线",
         "options": [
           {
@@ -13535,33 +13539,34 @@ export const pages = [
             "label": "面积"
           }
         ],
+        "key": "chartType",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showLegend",
         "prop": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
+        "key": "showLegend",
         "publicKey": "showLegend",
         "publicLabel": "图例"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -13580,28 +13585,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "seriesCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -13690,71 +13695,71 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 8,
         "min": 4,
         "max": 8,
         "step": 1,
         "desc": "行数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "行数"
       },
       {
-        "key": "bins",
         "prop": "bins",
-        "label": "采样点数",
         "type": "slider",
+        "label": "采样点数",
         "default": 15,
         "min": 11,
         "max": 19,
         "step": 2,
         "desc": "曲线平滑度",
+        "key": "bins",
         "publicKey": "bins",
         "publicLabel": "采样点数",
         "description": "曲线平滑度"
       },
       {
-        "key": "seed",
         "prop": "seed",
-        "label": "形态种子",
         "type": "slider",
+        "label": "形态种子",
         "default": 5,
         "min": 1,
         "max": 30,
         "step": 1,
+        "key": "seed",
         "publicKey": "seed",
         "publicLabel": "形态种子"
       },
       {
-        "key": "showAxis",
         "prop": "showAxis",
-        "label": "横轴刻度",
         "type": "toggle",
+        "label": "横轴刻度",
         "default": true,
+        "key": "showAxis",
         "publicKey": "showAxis",
         "publicLabel": "横轴刻度"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "演进解读",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "演进解读"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -13773,28 +13778,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 7,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 7,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -13874,66 +13879,66 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "showBand",
         "prop": "showBand",
-        "label": "置信带",
         "type": "toggle",
+        "label": "置信带",
         "default": true,
+        "key": "showBand",
         "publicKey": "showBand",
         "publicLabel": "置信带"
       },
       {
-        "key": "showMedian",
         "prop": "showMedian",
-        "label": "预测中值",
         "type": "toggle",
+        "label": "预测中值",
         "default": true,
+        "key": "showMedian",
         "publicKey": "showMedian",
         "publicLabel": "预测中值"
       },
       {
-        "key": "showGrid",
         "prop": "showGrid",
-        "label": "网格刻度",
         "type": "toggle",
+        "label": "网格刻度",
         "default": true,
+        "key": "showGrid",
         "publicKey": "showGrid",
         "publicLabel": "网格刻度"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "读图条",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "读图条"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 2,
         "min": 0,
         "max": 2,
         "step": 1,
         "desc": "标注第几个预测年",
+        "displayOffset": 1,
+        "key": "focusIndex",
         "publicKey": "focusIndex",
         "publicLabel": "焦点序号",
-        "description": "标注第几个预测年",
-        "displayOffset": 1
+        "description": "标注第几个预测年"
       }
     ],
     "defaultProps": {
@@ -14007,67 +14012,67 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "planCount",
         "prop": "planCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
         "desc": "方案数",
+        "key": "planCount",
         "publicKey": "planCount",
         "publicLabel": "列数量",
         "description": "方案数"
       },
       {
-        "key": "rowCount",
         "prop": "rowCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 5,
         "min": 2,
         "max": 6,
         "step": 1,
         "desc": "维度数",
+        "key": "rowCount",
         "publicKey": "rowCount",
         "publicLabel": "行数量",
         "description": "维度数"
       },
       {
-        "key": "showBadge",
         "prop": "showBadge",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "推荐徽标",
+        "key": "showBadge",
         "publicKey": "showBadge",
         "publicLabel": "装饰文案",
         "description": "推荐徽标"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 2,
+        "maxFromKey": "planCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 4,
-        "maxFromKey": "rowCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -14169,22 +14174,21 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "stepCount",
         "prop": "stepCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "stepCount",
         "publicKey": "stepCount",
         "publicLabel": "数量"
       },
       {
-        "key": "direction",
         "prop": "direction",
-        "label": "排序",
         "type": "radio",
+        "label": "排序",
         "default": "升序",
         "options": [
           {
@@ -14196,35 +14200,36 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "direction",
         "publicKey": "direction",
         "publicLabel": "排序"
       },
       {
-        "key": "showRidge",
         "prop": "showRidge",
-        "label": "装饰线",
         "type": "toggle",
+        "label": "装饰线",
         "default": true,
         "desc": "上升轮廓线",
+        "key": "showRidge",
         "publicKey": "showRidge",
         "publicLabel": "装饰线",
         "description": "上升轮廓线"
       },
       {
-        "key": "showValue",
         "prop": "showValue",
-        "label": "阶面数值",
         "type": "toggle",
+        "label": "阶面数值",
         "default": true,
+        "key": "showValue",
         "publicKey": "showValueLabels",
         "publicLabel": "阶面数值"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -14243,28 +14248,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 4,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "stepCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -14324,34 +14329,33 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 5,
         "min": 3,
         "max": 5,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "segCount",
         "prop": "segCount",
-        "label": "分段数量",
         "type": "slider",
+        "label": "分段数量",
         "default": 5,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "segCount",
         "publicKey": "segCount",
         "publicLabel": "分段数量"
       },
       {
-        "key": "mode",
         "prop": "mode",
-        "label": "图表类型",
         "type": "radio",
+        "label": "图表类型",
         "default": "占比",
         "options": [
           {
@@ -14363,24 +14367,25 @@ export const pages = [
             "label": "绝对值"
           }
         ],
+        "key": "mode",
         "publicKey": "mode",
         "publicLabel": "图表类型"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -14399,28 +14404,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 4,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -14504,45 +14509,45 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 5,
         "step": 1,
         "desc": "分期数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "分期数"
       },
       {
-        "key": "showConnector",
         "prop": "showConnector",
-        "label": "脊柱连线",
         "type": "toggle",
+        "label": "脊柱连线",
         "default": true,
+        "key": "showConnector",
         "publicKey": "showConnector",
         "publicLabel": "脊柱连线"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "节奏解读",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案",
         "description": "节奏解读"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -14561,28 +14566,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -14683,22 +14688,21 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 3,
         "min": 1,
         "max": 3,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "layout",
         "prop": "layout",
-        "label": "左右布局",
         "type": "radio",
+        "label": "左右布局",
         "default": "图左文右",
         "options": [
           {
@@ -14710,26 +14714,27 @@ export const pages = [
             "label": "图右文左"
           }
         ],
+        "key": "layout",
         "publicKey": "layout",
         "publicLabel": "左右布局"
       },
       {
-        "key": "showPull",
         "prop": "showPull",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "抽言条",
+        "key": "showPull",
         "publicKey": "showPull",
         "publicLabel": "装饰文案",
         "description": "抽言条"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       }
@@ -14768,7 +14773,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -14789,7 +14793,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "moving",
         "def": "moving",
         "options": [
           {
@@ -14817,22 +14820,21 @@ export const pages = [
         "description": "选择固定 Unicorn shader 场景"
       },
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 1,
         "min": 1,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "textPos",
         "prop": "textPos",
-        "label": "文案位置",
         "type": "radio",
+        "label": "文案位置",
         "default": "左下",
         "options": [
           {
@@ -14848,49 +14850,50 @@ export const pages = [
             "label": "居中"
           }
         ],
+        "key": "textPos",
         "publicKey": "textPos",
         "publicLabel": "文案位置"
       },
       {
-        "key": "tagCount",
         "prop": "tagCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 2,
         "min": 0,
         "max": 4,
         "step": 1,
         "desc": "浮板标签数",
+        "key": "tagCount",
         "publicKey": "tagCount",
         "publicLabel": "数量",
         "description": "浮板标签数"
       },
       {
-        "key": "showScrim",
         "prop": "showScrim",
-        "label": "压暗层",
         "type": "toggle",
+        "label": "压暗层",
         "default": true,
+        "key": "showScrim",
         "publicKey": "showScrim",
         "publicLabel": "压暗层"
       },
       {
-        "key": "showRail",
         "prop": "showRail",
-        "label": "装饰图片",
         "type": "toggle",
+        "label": "装饰图片",
         "default": true,
         "desc": "底部缩略轨",
+        "key": "showRail",
         "publicKey": "showRail",
         "publicLabel": "装饰图片",
         "description": "底部缩略轨"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "描边高亮",
         "type": "focus",
+        "label": "描边高亮",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "描边高亮"
       }
@@ -14927,53 +14930,53 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "laneCount",
         "prop": "laneCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "laneCount",
         "publicKey": "laneCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "phaseCount",
         "prop": "phaseCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 6,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "phaseCount",
         "publicKey": "phaseCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "showMilestone",
         "prop": "showMilestone",
-        "label": "里程碑标记",
         "type": "toggle",
+        "label": "里程碑标记",
         "default": true,
+        "key": "showMilestone",
         "publicKey": "showMilestone",
         "publicLabel": "里程碑标记"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -14992,28 +14995,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "laneCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -15105,34 +15108,33 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "criteriaCount",
         "prop": "criteriaCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 6,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "criteriaCount",
         "publicKey": "criteriaCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "sort",
         "prop": "sort",
-        "label": "排序",
         "type": "radio",
+        "label": "排序",
         "default": "降序",
         "options": [
           {
@@ -15144,33 +15146,34 @@ export const pages = [
             "label": "原序"
           }
         ],
+        "key": "sort",
         "publicKey": "sort",
         "publicLabel": "排序"
       },
       {
-        "key": "showComposite",
         "prop": "showComposite",
-        "label": "综合分环",
         "type": "toggle",
+        "label": "综合分环",
         "default": true,
+        "key": "showComposite",
         "publicKey": "showComposite",
         "publicLabel": "综合分环"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -15189,28 +15192,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -15305,10 +15308,9 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgSide",
         "prop": "imgSide",
-        "label": "图片位置",
         "type": "radio",
+        "label": "图片位置",
         "default": "左",
         "options": [
           {
@@ -15320,28 +15322,28 @@ export const pages = [
             "label": "右"
           }
         ],
+        "key": "imgSide",
         "publicKey": "imgSide",
         "publicLabel": "图片位置"
       },
       {
-        "key": "credCount",
         "prop": "credCount",
-        "label": "富文本数量",
         "type": "slider",
+        "label": "富文本数量",
         "default": 3,
         "min": 0,
         "max": 3,
         "step": 1,
         "desc": "资历标签数",
+        "key": "credCount",
         "publicKey": "credCount",
         "publicLabel": "富文本数量",
         "description": "资历标签数"
       },
       {
-        "key": "mediaFit",
         "prop": "mediaFit",
-        "label": "媒体填充类型",
         "type": "radio",
+        "label": "媒体填充类型",
         "default": "原始比例",
         "options": [
           {
@@ -15353,24 +15355,25 @@ export const pages = [
             "label": "自适应"
           }
         ],
+        "key": "mediaFit",
         "publicKey": "mediaFit",
         "publicLabel": "媒体填充类型"
       },
       {
-        "key": "showMark",
         "prop": "showMark",
-        "label": "引号装饰",
         "type": "toggle",
+        "label": "引号装饰",
         "default": true,
+        "key": "showMark",
         "publicKey": "showMark",
         "publicLabel": "引号装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "描边高亮",
         "type": "focus",
+        "label": "描边高亮",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "描边高亮"
       }
@@ -15404,36 +15407,36 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 1,
         "max": 6,
         "step": 1,
         "desc": "议程小节数",
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量",
         "description": "议程小节数"
       },
       {
-        "key": "showProgress",
         "prop": "showProgress",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
         "desc": "进度点",
+        "key": "showProgress",
         "publicKey": "showProgress",
         "publicLabel": "装饰文案",
         "description": "进度点"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -15452,28 +15455,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -15524,32 +15527,32 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 5,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -15568,28 +15571,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 1,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -15645,58 +15648,58 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "rowCount",
         "prop": "rowCount",
-        "label": "行数量",
         "type": "slider",
+        "label": "行数量",
         "default": 5,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "rowCount",
         "publicKey": "rowCount",
         "publicLabel": "行数量"
       },
       {
-        "key": "columnCount",
         "prop": "columnCount",
-        "label": "列数量",
         "type": "slider",
+        "label": "列数量",
         "default": 5,
         "min": 2,
         "max": 5,
         "step": 1,
+        "key": "columnCount",
         "publicKey": "columnCount",
         "publicLabel": "列数量"
       },
       {
-        "key": "highlightCol",
         "prop": "highlightCol",
-        "label": "高亮列 (-1 关闭)",
         "type": "slider",
+        "label": "高亮列 (-1 关闭)",
         "default": -1,
         "min": -1,
-        "step": 1,
-        "publicKey": "highlightCol",
-        "publicLabel": "高亮列 (-1 关闭)",
         "max": 3,
         "maxFromKey": "columnCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "step": 1,
+        "key": "highlightCol",
+        "publicKey": "highlightCol",
+        "publicLabel": "高亮列 (-1 关闭)"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -15715,28 +15718,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 4,
         "maxFromKey": "rowCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -15857,34 +15860,34 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "stepCount",
         "prop": "stepCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 6,
         "step": 1,
         "desc": "步骤数",
+        "key": "stepCount",
         "publicKey": "stepCount",
         "publicLabel": "数量",
         "description": "步骤数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -15903,28 +15906,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "stepCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -15980,44 +15983,44 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "itemCount",
         "prop": "itemCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 3,
         "max": 6,
         "step": 1,
+        "key": "itemCount",
         "publicKey": "itemCount",
         "publicLabel": "数量"
       },
       {
-        "key": "columns",
         "prop": "columns",
-        "label": "每行数量",
         "type": "slider",
+        "label": "每行数量",
         "default": 2,
         "min": 1,
         "max": 2,
         "step": 1,
+        "key": "columns",
         "publicKey": "columns",
         "publicLabel": "每行数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -16036,28 +16039,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "itemCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -16111,82 +16114,86 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 2,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "imgSide",
         "prop": "imgSide",
-        "label": "图片位置",
         "type": "radio",
+        "label": "图片位置",
         "default": "left",
         "options": [
           {
             "value": "left",
-            "label": "左"
+            "label": "左",
+            "image": "",
+            "color": ""
           },
           {
             "value": "right",
-            "label": "右"
+            "label": "右",
+            "image": "",
+            "color": ""
           }
         ],
+        "key": "imgSide",
         "publicKey": "imgSide",
         "publicLabel": "图片位置"
       },
       {
-        "key": "statCount",
         "prop": "statCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 3,
         "min": 0,
         "max": 3,
         "step": 1,
         "desc": "关键数字数",
+        "key": "statCount",
         "publicKey": "statCount",
         "publicLabel": "数量",
         "description": "关键数字数"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 2,
+        "maxFromKey": "statCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 1,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -16237,73 +16244,73 @@ export const pages = [
     "bgClass": "bg-deep",
     "controls": [
       {
-        "key": "memberCount",
         "prop": "memberCount",
-        "label": "数量",
         "type": "slider",
+        "label": "数量",
         "default": 4,
         "min": 2,
         "max": 6,
         "step": 1,
+        "key": "memberCount",
         "publicKey": "memberCount",
         "publicLabel": "数量"
       },
       {
-        "key": "columns",
         "prop": "columns",
-        "label": "每行数量",
         "type": "slider",
+        "label": "每行数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
+        "key": "columns",
         "publicKey": "columns",
         "publicLabel": "每行数量"
       },
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 4,
         "min": 0,
         "max": 6,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "装饰文案",
         "type": "toggle",
+        "label": "装饰文案",
         "default": true,
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "装饰文案"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKey": "memberCount",
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -16363,32 +16370,32 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 4,
         "min": 1,
         "max": 5,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "arc",
         "prop": "arc",
-        "label": "弧形排列",
         "type": "toggle",
+        "label": "弧形排列",
         "default": true,
+        "key": "arc",
         "publicKey": "arc",
         "publicLabel": "弧形排列"
       },
       {
-        "key": "labelType",
         "prop": "labelType",
-        "label": "标签类型",
         "type": "labelType",
+        "label": "标签类型",
         "default": "数字",
+        "key": "labelType",
         "publicKey": "labelType",
         "publicLabel": "标签类型",
         "options": [
@@ -16407,28 +16414,28 @@ export const pages = [
         ]
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
-        "displayOffset": 1,
         "max": 3,
         "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "maxFromKeyOffset": -1,
+        "displayOffset": 1,
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -16476,109 +16483,109 @@ export const pages = [
     "bgClass": "bg-electric",
     "controls": [
       {
-        "key": "expCount",
         "prop": "expCount",
-        "label": "经历条数",
         "type": "slider",
+        "label": "经历条数",
         "default": 2,
         "min": 1,
         "max": 3,
         "step": 1,
+        "key": "expCount",
         "publicKey": "expCount",
         "publicLabel": "经历条数"
       },
       {
-        "key": "statCount",
         "prop": "statCount",
-        "label": "数据条数",
         "type": "slider",
+        "label": "数据条数",
         "default": 4,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "statCount",
         "publicKey": "statCount",
         "publicLabel": "数据条数"
       },
       {
-        "key": "skillCount",
         "prop": "skillCount",
-        "label": "能力条数",
         "type": "slider",
+        "label": "能力条数",
         "default": 4,
         "min": 0,
         "max": 5,
         "step": 1,
+        "key": "skillCount",
         "publicKey": "skillCount",
         "publicLabel": "能力条数"
       },
       {
-        "key": "infoCount",
         "prop": "infoCount",
-        "label": "信息条数",
         "type": "slider",
+        "label": "信息条数",
         "default": 3,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "infoCount",
         "publicKey": "infoCount",
         "publicLabel": "信息条数"
       },
       {
-        "key": "pillCount",
         "prop": "pillCount",
-        "label": "标签数量",
         "type": "slider",
+        "label": "标签数量",
         "default": 6,
         "min": 0,
         "max": 8,
         "step": 1,
+        "key": "pillCount",
         "publicKey": "pillCount",
         "publicLabel": "标签数量"
       },
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 1,
         "min": 0,
         "max": 2,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "showBarcode",
         "prop": "showBarcode",
-        "label": "条形码装饰",
         "type": "toggle",
+        "label": "条形码装饰",
         "default": true,
+        "key": "showBarcode",
         "publicKey": "showBarcode",
         "publicLabel": "条形码装饰"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 3,
+        "maxFromKey": "skillCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 0,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -16704,61 +16711,61 @@ export const pages = [
     "bgClass": "bg-electric",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 3,
         "min": 0,
         "max": 6,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "tagCount",
         "prop": "tagCount",
-        "label": "标签数量",
         "type": "slider",
+        "label": "标签数量",
         "default": 4,
         "min": 0,
         "max": 6,
         "step": 1,
+        "key": "tagCount",
         "publicKey": "tagCount",
         "publicLabel": "标签数量"
       },
       {
-        "key": "showMeta",
         "prop": "showMeta",
-        "label": "说明与标签",
         "type": "toggle",
+        "label": "说明与标签",
         "default": true,
+        "key": "showMeta",
         "publicKey": "showMeta",
         "publicLabel": "说明与标签"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       },
       {
-        "key": "focusIndex",
         "prop": "focusIndex",
-        "label": "焦点序号",
         "type": "slider",
+        "label": "焦点序号",
         "default": 0,
         "min": 0,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "焦点序号",
+        "max": 3,
+        "maxFromKey": "tagCount",
+        "maxFromKeyOffset": -1,
         "displayOffset": 1,
-        "max": 2,
-        "maxFromKey": "imgCount",
-        "maxFromKeyOffset": -1
+        "step": 1,
+        "key": "focusIndex",
+        "publicKey": "focusIndex",
+        "publicLabel": "焦点序号"
       }
     ],
     "defaultProps": {
@@ -16792,43 +16799,43 @@ export const pages = [
     "bgClass": "bg-blue",
     "controls": [
       {
-        "key": "imgCount",
         "prop": "imgCount",
-        "label": "图片槽数量",
         "type": "slider",
+        "label": "图片槽数量",
         "default": 0,
         "min": 0,
         "max": 4,
         "step": 1,
+        "key": "imgCount",
         "publicKey": "imgCount",
         "publicLabel": "图片槽数量"
       },
       {
-        "key": "showAside",
         "prop": "showAside",
-        "label": "附属面板",
         "type": "toggle",
+        "label": "附属面板",
         "default": true,
         "desc": "数据来源面板",
+        "key": "showAside",
         "publicKey": "showAside",
         "publicLabel": "附属面板",
         "description": "数据来源面板"
       },
       {
-        "key": "showOrnament",
         "prop": "showOrnament",
-        "label": "装饰图形",
         "type": "toggle",
+        "label": "装饰图形",
         "default": true,
+        "key": "showOrnament",
         "publicKey": "showOrnament",
         "publicLabel": "装饰图形"
       },
       {
-        "key": "focus",
         "prop": "focus",
-        "label": "重点信息 Focus",
         "type": "focus",
+        "label": "重点信息 Focus",
         "default": true,
+        "key": "focus",
         "publicKey": "focus",
         "publicLabel": "重点信息 Focus"
       }

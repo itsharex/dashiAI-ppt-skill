@@ -23,6 +23,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_ROSE_PETALS = 6;
+const MAX_ROSE_FOCUS_INDEX = 5;
+
 export const slideRoseDefaults = {
   kicker: 'ROSE · 节律',
   title: '资本的 ',
@@ -36,25 +39,25 @@ export const slideRoseDefaults = {
     { label: '10月', value: 73 }, { label: '11月', value: 81 }, { label: '12月', value: 52 },
   ],
   unit: '亿美元',
-  petalCount: 12,
+  petalCount: MAX_ROSE_PETALS,
   scaleMode: 'radius',
   focusEnabled: true,
-  focusIndex: 7,
+  focusIndex: 4,
   showRings: true,
   showLabels: true,
   showValueLabels: true,
 };
 
 export const slideRoseControls = [
-  { key: 'petalCount', type: 'number', label: '花瓣数量', default: 12, min: 3, step: 1,
-    maxFrom: (p) => (p.items ? p.items.length : 12), describe: '玫瑰图展示的花瓣（周期）数量' },
+  { key: 'petalCount', type: 'number', label: '花瓣数量', default: MAX_ROSE_PETALS, min: 3, step: 1,
+    max: MAX_ROSE_PETALS, maxFrom: (p) => Math.min(MAX_ROSE_PETALS, (p.items ? p.items.length : MAX_ROSE_PETALS)), describe: '玫瑰图展示的花瓣（周期）数量' },
   { key: 'scaleMode', type: 'enum', label: '半径映射', default: 'radius',
     options: [{ value: 'radius', label: '线性' }, { value: 'area', label: '面积守恒' }],
     describe: '半径 ∝ 数值，或面积 ∝ 数值（√）' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '辉光强调某一瓣（其余淡出）' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 7, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.petalCount || 1) - 1),
+    oneBased: true, max: MAX_ROSE_FOCUS_INDEX, maxFrom: (p) => Math.max(0, Math.min(MAX_ROSE_FOCUS_INDEX, (p.petalCount || 1) - 1)),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调花瓣的序号' },
   { key: 'showRings', type: 'toggle', label: '背景环网', default: true, describe: '同心环 + 刻度显隐' },
   { key: 'showLabels', type: 'toggle', label: '周期标签', default: true, describe: '外圈周期标签显隐' },
@@ -154,9 +157,9 @@ export function SlideRose(props) {
   const accent = sc.accent || '#2fe07f';
   const glow = sc.glow || '47,224,127';
 
-  const count = Math.max(3, Math.min(p.items.length, p.petalCount));
+  const count = Math.max(3, Math.min(MAX_ROSE_PETALS, p.items.length, p.petalCount));
   const items = p.items.slice(0, count);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_ROSE_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const total = items.reduce((s, d) => s + d.value, 0);
   const peak = items.reduce((m, d) => d.value > m.value ? d : m, items[0]);
 

@@ -17,6 +17,7 @@ export const meta = { id: 'donut', index: 40, label: '收益构成 / Composition
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   segmentCount: 5,         // 3–5 wedges
   chartType: 'donut',      // 'donut' | 'pie'
   showCenter: true,        // centre total label (donut only)
@@ -41,7 +42,7 @@ export const defaultProps = {
 };
 
 export const controls = [
-  { key: 'segmentCount', label: '分段数量', type: 'slider', def: 5, min: 3, max: 5, step: 1,
+  { key: 'segmentCount', label: '分段数量', type: 'slider', def: 5, min: 1, max: 5, step: 1,
     desc: '收益构成的分段数量' },
   { key: 'chartType', label: '图表类型', type: 'segment', def: 'donut',
     options: [{ value: 'donut', label: '环形' }, { value: 'pie', label: '扇形' }], desc: '环形或实心扇形' },
@@ -50,6 +51,8 @@ export const controls = [
   { key: 'focus', label: '重点强调', type: 'toggle', def: false, desc: '放大并高亮某一分段' },
   { key: 'focusIndex', label: '强调第几段', type: 'slider', def: 1, min: 1, max: 5, step: 1,
     dependsOn: 'focus', desc: '被强调分段的序号（1 起）' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '主分段 / 导语 / 页脚强调色' },
 ];
@@ -66,8 +69,16 @@ function arc(cx, cy, r, a0, a1) {
 export default function SwSlideDonut(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
-  const count = Math.max(3, Math.min(5, p.segmentCount));
+  const dark = p.theme === 'dark';
+  const count = Math.max(1, Math.min(5, p.segmentCount));
   const isDonut = p.chartType === 'donut';
+
+  // Page surface. The feature panel is dark in BOTH modes; in dark mode it
+  // lifts to a slightly lighter card (#241e20) so it reads as a raised panel
+  // on the C.dark page instead of merging into it.
+  const pageBg = dark ? C.dark : C.blush;
+  const pageFg = dark ? C.blush : C.ink;
+  const panelBg = dark ? '#241e20' : C.dark;
 
   const raw = (p.sources || []).slice(0, count);
   const sum = raw.reduce((a, b) => a + b.v, 0);
@@ -85,6 +96,15 @@ export default function SwSlideDonut(props) {
     const on = p.focus && (i + 1) === p.focusIndex;
     const dim = p.focus && !on;
     const rOut = on ? R + 14 : R;
+    const opacity = dim ? 0.32 : 1;
+    // A wedge spanning the full circle (notably count === 1) collapses to a
+    // degenerate 2-point arc — start point == end point, so the path draws
+    // nothing. Render a complete ring/disc as a <circle> instead.
+    if (count === 1 || (a1 - a0) >= 359.999) {
+      return isDonut
+        ? { full: true, r: (rOut + rInner) / 2, strokeWidth: rOut - rInner, color: s.color, opacity, on }
+        : { full: true, r: rOut, strokeWidth: 0, color: s.color, opacity, on };
+    }
     const o = arc(cx, cy, rOut, a0, a1);
     let d;
     if (isDonut) {
@@ -93,14 +113,14 @@ export default function SwSlideDonut(props) {
     } else {
       d = `M ${cx} ${cy} L ${o.x0} ${o.y0} A ${rOut} ${rOut} 0 ${o.large} 1 ${o.x1} ${o.y1} Z`;
     }
-    return { d, color: s.color, opacity: dim ? 0.32 : 1, on };
+    return { d, color: s.color, opacity, on };
   });
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={pageBg} color={pageFg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.dark, color: C.blush, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: panelBg, color: C.blush, borderRadius: 38, margin: '24px 0 22px',
         padding: '44px 54px', display: 'grid', gridTemplateColumns: '440px 1fr', gap: 56, alignItems: 'center',
         position: 'relative', overflow: 'hidden' }}>
 
@@ -112,8 +132,15 @@ export default function SwSlideDonut(props) {
         <div style={{ position: 'relative', minWidth: 0, zIndex: 2 }}>
           <svg viewBox="0 0 400 400" style={{ width: '100%', height: 'auto', display: 'block', overflow: 'visible' }}>
             {wedges.map((w, i) => (
-              <path key={i} d={w.d} fill={w.color} opacity={w.opacity}
-                stroke={C.dark} strokeWidth="3" strokeLinejoin="round" />
+              w.full ? (
+                <circle key={i} cx={cx} cy={cy} r={w.r} opacity={w.opacity}
+                  fill={isDonut ? 'none' : w.color}
+                  stroke={isDonut ? w.color : 'none'}
+                  strokeWidth={isDonut ? w.strokeWidth : 0} />
+              ) : (
+                <path key={i} d={w.d} fill={w.color} opacity={w.opacity}
+                  stroke={panelBg} strokeWidth="3" strokeLinejoin="round" />
+              )
             ))}
           </svg>
           {isDonut && p.showCenter && (
@@ -154,7 +181,7 @@ export default function SwSlideDonut(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

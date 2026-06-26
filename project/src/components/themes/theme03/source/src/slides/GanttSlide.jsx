@@ -26,7 +26,7 @@ export const controls = [
     help: "底部关键路径 / 节奏解读条显示 / 隐藏" },
   { key: "focusEnabled", label: "重点突出", type: "toggle", default: false,
     help: "高亮某一个任务条" },
-  { key: "focusIndex", label: "突出项", type: "slider", default: 2, min: 0, max: 7, step: 1,
+  { key: "focusIndex", label: "突出项", type: "slider", default: 2, min: 0, max: 6, step: 1,
     help: "被高亮的任务序号（自动随任务数量收敛）" },
   { key: "theme", label: "主题", type: "select", default: "light",
     options: [{ value: "light", label: "浅色" }, { value: "dark", label: "深色" }],

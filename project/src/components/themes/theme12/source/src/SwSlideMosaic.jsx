@@ -18,6 +18,7 @@ export const meta = { id: 'mosaic', index: 61, label: '影像拼贴 / Gallery' }
 
 export const defaultProps = {
   accent: C.green,
+  theme: 'dark',           // 'light' | 'dark'
   mediaCount: 4,           // 2–5 image tiles
   mediaFit: 'cover',
   gap: 14,
@@ -41,6 +42,8 @@ export const controls = [
   { key: 'gap', label: '间距', type: 'slider', def: 14, min: 4, max: 28, step: 2, unit: 'px',
     desc: '拼贴块之间的间距' },
   { key: 'showCaptions', label: '图块编号', type: 'toggle', def: true, desc: '显示/隐藏图块上的编号角标' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.green,
     options: [C.green, C.purple, C.orange, C.cyan], desc: '文字块 / 角标强调色' },
 ];
@@ -60,8 +63,12 @@ export default function SwSlideMosaic(props) {
   const count = Math.max(2, Math.min(5, p.mediaCount));
   const L = LAYOUTS[count] || LAYOUTS[4];
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+
   return (
-    <SlideRoot bg={C.dark} color={C.blush} style={{ padding: 36 }}>
+    <SlideRoot bg={bg} color={fg} style={{ padding: 36 }}>
       <div style={{ position: 'absolute', inset: 0, display: 'grid', gap: p.gap, padding: 36,
         gridTemplateColumns: L.cols, gridTemplateRows: L.rows, gridTemplateAreas: L.areas }}>
 
@@ -89,7 +96,7 @@ export default function SwSlideMosaic(props) {
         {Array.from({ length: count }).map((_, i) => (
           <div key={i} style={{ gridArea: IMG_AREAS[i], minWidth: 0, minHeight: 0 }}>
             <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-              fit={p.mediaFit} accent={accent} radius={swTheme.radius} tone="dark"
+              fit={p.mediaFit} accent={accent} radius={swTheme.radius} tone={dark ? 'dark' : 'light'}
               label={p.showCaptions ? i + 1 : null} placeholder={p.mediaPlaceholder} />
           </div>
         ))}

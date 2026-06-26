@@ -18,6 +18,7 @@ export const meta = { id: 'stackbars', index: 50, label: '堆叠柱状 / Stacked
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   periodCount: 6,          // 4–8 periods
   seriesCount: 3,          // 2–3 stacked series
   chartType: 'stacked',    // 'stacked' | 'grouped'
@@ -56,6 +57,8 @@ export const controls = [
     dependsOn: 'focus', desc: '被高亮周期的序号（1 起）' },
   { key: 'showValues', label: '数值标签', type: 'toggle', def: true, desc: '显示/隐藏每柱顶部合计' },
   { key: 'showGrid', label: '网格线', type: 'toggle', def: true, desc: '显示/隐藏背景横向网格线' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '主分项 / 高亮 / 页脚强调色' },
 ];
@@ -78,14 +81,32 @@ export default function SwSlideStackBars(props) {
   const ceil = Math.ceil(max / 20) * 20;
   const gridLines = [0, 0.25, 0.5, 0.75, 1];
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  // —— shared plot rect ——
+  // A single vertical band drives BOTH the gridlines and the bars so the "0"
+  // line sits exactly on the bar baseline and the top line maps to `ceil`.
+  // VALUE_H = top headroom (value totals + clearance below the title); the top
+  // gridline starts this far below the plot top. AXIS_H = bottom band reserved
+  // for the period labels; the "0" gridline / bar baseline sits this far up.
+  const VALUE_H = p.showValues ? 46 : 24;
+  const AXIS_H = 32;
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const gridZero = dark ? C.lineD2 : C.line2;
+  const gridLine = dark ? C.lineD : C.line;
+  const decoFill = dark ? 'rgba(245,225,227,.05)' : 'rgba(58,182,236,.12)';
+
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '40px 54px 36px', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
 
-        <Shape kind="circle" size={120} color="rgba(58,182,236,.12)" style={{ top: -34, right: -28, zIndex: 0 }} />
+        <Shape kind="circle" size={120} color={decoFill} style={{ top: -34, right: -28, zIndex: 0 }} />
 
         {/* header + legend */}
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 40,
@@ -101,7 +122,7 @@ export default function SwSlideStackBars(props) {
               <div key={s.en} style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
                 <span style={{ width: 22, height: 14, borderRadius: 4, background: colors[i] }} />
                 <span style={{ fontSize: 22, fontWeight: 700 }}>{s.cn}</span>
-                <span style={{ fontFamily: F.mono, fontSize: 17, letterSpacing: '.08em', color: C.inkMut,
+                <span style={{ fontFamily: F.mono, fontSize: 17, letterSpacing: '.08em', color: mutedC,
                   textTransform: 'uppercase' }}>{s.en}</span>
               </div>
             ))}
@@ -110,15 +131,15 @@ export default function SwSlideStackBars(props) {
 
         {/* plot */}
         <div style={{ flex: 1, minHeight: 0, position: 'relative', display: 'flex', flexDirection: 'column', zIndex: 2 }}>
-          {/* gridlines */}
+          {/* gridlines — share the exact bar plot rect: top headroom (VALUE_H)
+              for value totals, bottom band (AXIS_H) for period labels. */}
           {p.showGrid && (
-            <div style={{ position: 'absolute', inset: '0 0 32px 0', zIndex: 0 }}>
+            <div style={{ position: 'absolute', left: 0, right: 0, top: VALUE_H, bottom: AXIS_H, zIndex: 0 }}>
               {gridLines.map((g) => (
-                <div key={g} style={{ position: 'absolute', left: 0, right: 0, bottom: 'calc(' + (g * 100) + '% )',
-                  borderTop: '1px solid ' + (g === 0 ? C.line2 : C.line),
-                  display: 'flex', alignItems: 'center' }}>
-                  <span style={{ position: 'absolute', left: -44, transform: 'translateY(-50%)',
-                    fontFamily: F.mono, fontSize: 17, color: C.inkMut }}>{Math.round(ceil * g)}</span>
+                <div key={g} style={{ position: 'absolute', left: 0, right: 0, bottom: (g * 100) + '%', height: 0,
+                  borderTop: '1px solid ' + (g === 0 ? gridZero : gridLine) }}>
+                  <span style={{ position: 'absolute', left: -44, top: 0, transform: 'translateY(-50%)',
+                    fontFamily: F.mono, fontSize: 17, color: mutedC }}>{Math.round(ceil * g)}</span>
                 </div>
               ))}
             </div>
@@ -132,11 +153,14 @@ export default function SwSlideStackBars(props) {
               const total = totals[pi];
               return (
                 <div key={pi} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
-                  height: '100%', justifyContent: 'flex-end', opacity: on ? 1 : 0.4, transition: 'opacity .2s' }}>
-                  {p.showValues && (
-                    <div style={{ fontWeight: 900, fontSize: on ? 27 : 23, letterSpacing: '-.5px',
-                      color: on && p.focus ? accent : C.ink, marginBottom: 8, fontVariantNumeric: 'tabular-nums' }}>{total}</div>
-                  )}
+                  height: '100%', opacity: on ? 1 : 0.4, transition: 'opacity .2s' }}>
+                  {/* value-total band — same height as the gridlines' top headroom */}
+                  <div style={{ height: VALUE_H, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: 6 }}>
+                    {p.showValues && (
+                      <span style={{ fontWeight: 900, fontSize: on ? 27 : 23, letterSpacing: '-.5px',
+                        color: on && p.focus ? accent : fg, fontVariantNumeric: 'tabular-nums' }}>{total}</span>
+                    )}
+                  </div>
                   {grouped ? (
                     <div style={{ flex: 1, minHeight: 0, width: '100%', display: 'flex', gap: 4,
                       alignItems: 'flex-end', justifyContent: 'center' }}>
@@ -155,14 +179,15 @@ export default function SwSlideStackBars(props) {
                           <div key={si} style={{ height: (v / ceil * 100) + '%', minHeight: 3, background: colors[si],
                             borderRadius: first ? '7px 7px 0 0' : 0,
                             boxShadow: on && (pi + 1) === p.focusIndex && first ? '0 -2px 0 rgba(0,0,0,.04)' : 'none',
-                            outline: !first ? '1px solid ' + C.paper : 'none', outlineOffset: -0.5 }} />
+                            outline: !first ? '1px solid ' + cardBg : 'none', outlineOffset: -0.5 }} />
                         );
                       })}
                     </div>
                   )}
+                  {/* period band — same height as the gridlines' bottom axis band */}
                   <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.04em',
-                    color: on && p.focus ? C.ink : C.inkMut, fontWeight: on && p.focus ? 700 : 400,
-                    marginTop: 12, height: 20 }}>{PERIODS[pi]}</div>
+                    color: on && p.focus ? fg : mutedC, fontWeight: on && p.focus ? 700 : 400,
+                    height: AXIS_H, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{PERIODS[pi]}</div>
                 </div>
               );
             })}
@@ -170,7 +195,7 @@ export default function SwSlideStackBars(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

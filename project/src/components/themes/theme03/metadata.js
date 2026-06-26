@@ -19,34 +19,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "showFigure",
-        "label": "重点数字",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showFigure",
-        "publicLabel": "重点数字"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -58,8 +42,28 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签的显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "showFigure",
+        "label": "重点数字",
+        "type": "toggle",
+        "default": true,
+        "help": "右侧核心数据是否突出展示",
+        "publicKey": "showFigure",
+        "publicLabel": "重点数字"
       },
       {
         "key": "imageCount",
@@ -69,6 +73,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "封面图片槽数量，0 为纯文字封面",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -77,314 +82,7 @@ export const pages = [
         "label": "页脚信息",
         "type": "toggle",
         "default": true,
-        "publicKey": "showMeta",
-        "publicLabel": "页脚信息"
-      }
-    ],
-    "defaultProps": {
-      "showEyebrow": true,
-      "showFigure": true,
-      "accent": "blue",
-      "imageCount": 1,
-      "showMeta": true,
-      "eyebrow": "调研报告 · 2024",
-      "kicker": "AI · VENTURE CAPITAL // USA",
-      "titlePrefix": "2024 美国大额融资",
-      "titleAccent": "AI",
-      "titleSuffix": " 公司调研报告",
-      "lead": "2024 年是美国人工智能产业的「资本大年」。本报告聚焦单笔 ≥1 亿美元的大额融资事件，以横纵分析法梳理市场全景、行业分布、轮次结构与典型案例。",
-      "figureValue": "970",
-      "figureUnit": "亿美元",
-      "figureLabel": "全年 AI 风险投资额",
-      "figureCaption": "占全美风险投资近 ⅓ · 97 笔大额融资事件",
-      "galleryCaption": "封面配图 / DROP IMAGE",
-      "meta": [
-        "编制 · 2026.06",
-        "口径 · ≥1 亿美元公开融资",
-        "横纵分析法",
-        "仅供研究参考"
-      ],
-      "forceDark": true
-    }
-  },
-  {
-    "key": "theme03_page002",
-    "themeKey": "theme03",
-    "pageNumber": 2,
-    "layout": "THEME03-002",
-    "slot": "coverband",
-    "label": "封面·横向",
-    "bgClass": "",
-    "controls": [
-      {
-        "key": "forceDark",
-        "label": "全局深色",
-        "type": "toggle",
-        "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
-        "publicKey": "forceDark",
-        "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
-      },
-      {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
-        "options": [
-          {
-            "value": "blue",
-            "label": "电光蓝"
-          },
-          {
-            "value": "lime",
-            "label": "荧光绿"
-          }
-        ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
-      },
-      {
-        "key": "statCount",
-        "label": "数据条目",
-        "type": "slider",
-        "default": 3,
-        "min": 0,
-        "max": 4,
-        "step": 1,
-        "publicKey": "itemCount",
-        "publicLabel": "数据条目"
-      },
-      {
-        "key": "showMeta",
-        "label": "页脚信息",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showMeta",
-        "publicLabel": "页脚信息"
-      }
-    ],
-    "defaultProps": {
-      "showEyebrow": true,
-      "theme": "light",
-      "accent": "blue",
-      "statCount": 3,
-      "showMeta": true,
-      "eyebrow": "行业研究报告 · 年度",
-      "kicker": "SMART HARDWARE // CHINA 2026",
-      "titleA": "2026 中国",
-      "titleAccent": "智能硬件",
-      "titleB": " 产业",
-      "titleC": "增长报告",
-      "sub": "供应链、终端体验与生态格局的全景扫描 —— 一份关于「谁在增长、增长从何而来」的结构化研究。",
-      "stats": [
-        {
-          "v": "4820",
-          "u": "亿元",
-          "k": "市场规模 / 2026E"
-        },
-        {
-          "v": "+38",
-          "u": "%",
-          "k": "整体同比增速"
-        },
-        {
-          "v": "97",
-          "u": "家",
-          "k": "头部厂商样本"
-        },
-        {
-          "v": "12",
-          "u": "类",
-          "k": "覆盖核心品类"
-        }
-      ],
-      "meta": [
-        "编制 · 2026.06",
-        "口径 · 公开市场数据 + 厂商调研",
-        "样本 · 2,400+",
-        "仅供研究参考"
-      ],
-      "forceDark": true
-    }
-  },
-  {
-    "key": "theme03_page003",
-    "themeKey": "theme03",
-    "pageNumber": 3,
-    "layout": "THEME03-003",
-    "slot": "coverposter",
-    "label": "封面·海报",
-    "bgClass": "",
-    "controls": [
-      {
-        "key": "backgroundMode",
-        "label": "背景替换",
-        "type": "segment",
-        "default": "unicorn",
-        "def": "unicorn",
-        "options": [
-          {
-            "value": "unicorn",
-            "label": "动态"
-          },
-          {
-            "value": "media",
-            "label": "上传"
-          }
-        ],
-        "desc": "动态 shader 或自定义背景媒体",
-        "publicKey": "backgroundMode",
-        "publicLabel": "背景替换",
-        "description": "动态 shader 或自定义背景媒体"
-      },
-      {
-        "key": "unicornScene",
-        "label": "动态场景",
-        "type": "segment",
-        "default": "automations",
-        "def": "automations",
-        "options": [
-          {
-            "value": "tech",
-            "label": "科技"
-          },
-          {
-            "value": "automations",
-            "label": "自动化"
-          },
-          {
-            "value": "moving",
-            "label": "流动"
-          },
-          {
-            "value": "goey",
-            "label": "黏球"
-          }
-        ],
-        "dependsOn": "backgroundMode",
-        "dependsOnValue": "unicorn",
-        "desc": "选择固定 Unicorn shader 场景",
-        "publicKey": "dynamicVisual",
-        "publicLabel": "动态场景",
-        "description": "选择固定 Unicorn shader 场景"
-      },
-      {
-        "key": "forceDark",
-        "label": "全局深色",
-        "type": "toggle",
-        "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
-        "publicKey": "forceDark",
-        "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
-        "options": [
-          {
-            "value": "blue",
-            "label": "电光蓝"
-          },
-          {
-            "value": "lime",
-            "label": "荧光绿"
-          }
-        ],
-        "desc": "theme03 全局强调色，作用于该主题所有页面。",
-        "publicKey": "accent",
-        "publicLabel": "强调色",
-        "description": "theme03 全局强调色，作用于该主题所有页面。"
-      },
-      {
-        "key": "imageCount",
-        "label": "背景图",
-        "type": "slider",
-        "default": 1,
-        "min": 0,
-        "max": 1,
-        "step": 1,
-        "dependsOn": "backgroundMode",
-        "dependsOnValue": "media",
-        "publicKey": "imageCount",
-        "publicLabel": "背景图"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "中央标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "中央标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
-      },
-      {
-        "key": "showFrame",
-        "label": "描边边框",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showFrame",
-        "publicLabel": "描边边框"
-      },
-      {
-        "key": "showFigure",
-        "label": "核心数字",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showFigure",
-        "publicLabel": "核心数字"
-      },
-      {
-        "key": "showMeta",
-        "label": "页脚信息",
-        "type": "toggle",
-        "default": true,
+        "help": "底部数据口径说明的显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "页脚信息"
       },
@@ -393,6 +91,7 @@ export const pages = [
         "label": "装饰图片",
         "type": "toggle",
         "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
         "publicKey": "showDecor",
         "publicLabel": "装饰图片"
       },
@@ -400,6 +99,7 @@ export const pages = [
         "key": "decorSrc",
         "label": "装饰元素",
         "type": "icons",
+        "default": null,
         "options": [
           {
             "value": "assets/3d/01.png",
@@ -462,6 +162,7 @@ export const pages = [
             "image": "assets/3d/12.png"
           }
         ],
+        "help": "从 theme03 内置装饰元素中选择",
         "publicKey": "decorSrc",
         "publicLabel": "装饰元素"
       },
@@ -473,6 +174,477 @@ export const pages = [
         "min": 0.6,
         "max": 1.6,
         "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
+      }
+    ],
+    "defaultProps": {
+      "showEyebrow": true,
+      "showFigure": true,
+      "accent": "blue",
+      "imageCount": 1,
+      "showMeta": true,
+      "eyebrow": "调研报告 · 2024",
+      "kicker": "AI · VENTURE CAPITAL // USA",
+      "titlePrefix": "2024 美国大额融资",
+      "titleAccent": "AI",
+      "titleSuffix": " 公司调研报告",
+      "lead": "2024 年是美国人工智能产业的「资本大年」。本报告聚焦单笔 ≥1 亿美元的大额融资事件，以横纵分析法梳理市场全景、行业分布、轮次结构与典型案例。",
+      "figureValue": "970",
+      "figureUnit": "亿美元",
+      "figureLabel": "全年 AI 风险投资额",
+      "figureCaption": "占全美风险投资近 ⅓ · 97 笔大额融资事件",
+      "galleryCaption": "封面配图 / DROP IMAGE",
+      "meta": [
+        "编制 · 2026.06",
+        "口径 · ≥1 亿美元公开融资",
+        "横纵分析法",
+        "仅供研究参考"
+      ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true
+    }
+  },
+  {
+    "key": "theme03_page002",
+    "themeKey": "theme03",
+    "pageNumber": 2,
+    "layout": "THEME03-002",
+    "slot": "coverband",
+    "label": "封面·横向",
+    "bgClass": "",
+    "controls": [
+      {
+        "key": "forceDark",
+        "type": "toggle",
+        "label": "全局深色",
+        "default": true,
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
+        "publicKey": "forceDark",
+        "publicLabel": "全局深色",
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签的显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "statCount",
+        "label": "数据条目",
+        "type": "slider",
+        "default": 3,
+        "min": 0,
+        "max": 4,
+        "step": 1,
+        "help": "底部数据带的统计条目数量，0 为纯标题封面",
+        "publicKey": "itemCount",
+        "publicLabel": "数据条目"
+      },
+      {
+        "key": "showMeta",
+        "label": "页脚信息",
+        "type": "toggle",
+        "default": true,
+        "help": "底部数据口径说明的显示 / 隐藏",
+        "publicKey": "showMeta",
+        "publicLabel": "页脚信息"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
+      }
+    ],
+    "defaultProps": {
+      "showEyebrow": true,
+      "theme": "light",
+      "accent": "blue",
+      "statCount": 3,
+      "showMeta": true,
+      "eyebrow": "行业研究报告 · 年度",
+      "kicker": "SMART HARDWARE // CHINA 2026",
+      "titleA": "2026 中国",
+      "titleAccent": "智能硬件",
+      "titleB": " 产业",
+      "titleC": "增长报告",
+      "sub": "供应链、终端体验与生态格局的全景扫描 —— 一份关于「谁在增长、增长从何而来」的结构化研究。",
+      "stats": [
+        {
+          "v": "4820",
+          "u": "亿元",
+          "k": "市场规模 / 2026E"
+        },
+        {
+          "v": "+38",
+          "u": "%",
+          "k": "整体同比增速"
+        },
+        {
+          "v": "97",
+          "u": "家",
+          "k": "头部厂商样本"
+        },
+        {
+          "v": "12",
+          "u": "类",
+          "k": "覆盖核心品类"
+        }
+      ],
+      "meta": [
+        "编制 · 2026.06",
+        "口径 · 公开市场数据 + 厂商调研",
+        "样本 · 2,400+",
+        "仅供研究参考"
+      ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true
+    }
+  },
+  {
+    "key": "theme03_page003",
+    "themeKey": "theme03",
+    "pageNumber": 3,
+    "layout": "THEME03-003",
+    "slot": "coverposter",
+    "label": "封面·海报",
+    "bgClass": "",
+    "controls": [
+      {
+        "key": "backgroundMode",
+        "label": "背景替换",
+        "type": "segment",
+        "def": "unicorn",
+        "options": [
+          {
+            "value": "unicorn",
+            "label": "动态"
+          },
+          {
+            "value": "media",
+            "label": "上传"
+          }
+        ],
+        "desc": "动态 shader 或自定义背景媒体",
+        "publicKey": "backgroundMode",
+        "publicLabel": "背景替换",
+        "description": "动态 shader 或自定义背景媒体"
+      },
+      {
+        "key": "unicornScene",
+        "label": "动态场景",
+        "type": "segment",
+        "def": "automations",
+        "options": [
+          {
+            "value": "tech",
+            "label": "科技"
+          },
+          {
+            "value": "automations",
+            "label": "自动化"
+          },
+          {
+            "value": "moving",
+            "label": "流动"
+          },
+          {
+            "value": "goey",
+            "label": "黏球"
+          }
+        ],
+        "dependsOn": "backgroundMode",
+        "dependsOnValue": "unicorn",
+        "desc": "选择固定 Unicorn shader 场景",
+        "publicKey": "dynamicVisual",
+        "publicLabel": "动态场景",
+        "description": "选择固定 Unicorn shader 场景"
+      },
+      {
+        "key": "forceDark",
+        "type": "toggle",
+        "label": "全局深色",
+        "default": true,
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
+        "publicKey": "forceDark",
+        "publicLabel": "全局深色",
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "imageCount",
+        "label": "背景图",
+        "type": "slider",
+        "default": 1,
+        "min": 0,
+        "max": 1,
+        "step": 1,
+        "dependsOn": "backgroundMode",
+        "dependsOnValue": "media",
+        "help": "上传模式下的整页背景图槽",
+        "publicKey": "imageCount",
+        "publicLabel": "背景图"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "中央标签",
+        "type": "toggle",
+        "default": true,
+        "help": "居中分类标签的显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "中央标签"
+      },
+      {
+        "key": "showFrame",
+        "label": "描边边框",
+        "type": "toggle",
+        "default": true,
+        "help": "海报内描边框与四角标注的显示 / 隐藏",
+        "publicKey": "showFrame",
+        "publicLabel": "描边边框"
+      },
+      {
+        "key": "showFigure",
+        "label": "核心数字",
+        "type": "toggle",
+        "default": true,
+        "help": "标题下方核心数据徽标的显示 / 隐藏",
+        "publicKey": "showFigure",
+        "publicLabel": "核心数字"
+      },
+      {
+        "key": "showMeta",
+        "label": "页脚信息",
+        "type": "toggle",
+        "default": true,
+        "help": "底部数据口径说明的显示 / 隐藏",
+        "publicKey": "showMeta",
+        "publicLabel": "页脚信息"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
         "publicKey": "decorScale",
         "publicLabel": "图片大小"
       }
@@ -548,44 +720,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -597,14 +743,26 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签的显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
       },
       {
         "key": "showFigure",
         "label": "巨数模块",
         "type": "toggle",
         "default": true,
+        "help": "右侧竖向巨型数字模块的显示 / 隐藏",
         "publicKey": "showFigure",
         "publicLabel": "巨数模块"
       },
@@ -613,6 +771,7 @@ export const pages = [
         "label": "荧光绿块",
         "type": "toggle",
         "default": true,
+        "help": "左下荧光绿主张色块的显示 / 隐藏",
         "publicKey": "showPunch",
         "publicLabel": "荧光绿块"
       },
@@ -621,193 +780,16 @@ export const pages = [
         "label": "元数据块",
         "type": "toggle",
         "default": true,
+        "help": "底部等宽元数据模块的显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "元数据块"
-      }
-    ],
-    "defaultProps": {
-      "showEyebrow": true,
-      "theme": "light",
-      "accent": "blue",
-      "showFigure": true,
-      "showPunch": true,
-      "showMeta": true,
-      "eyebrow": "行业研究报告 · 04",
-      "kicker": "SMART HARDWARE // CHINA · 2026",
-      "titleKicker": "ANNUAL · 年度增长研究",
-      "titleA": "2026 中国",
-      "titleAccent": "智能硬件",
-      "titleC": "增长报告",
-      "titleBody": "供应链、终端体验与生态格局的全景扫描。",
-      "figureLabel": "市场规模 / 2026E",
-      "figureValue": "4820",
-      "figureUnit": "亿元 · 同比 +38%",
-      "figureNote": "— 97 家头部厂商样本",
-      "punchKicker": "核心判断 / THESIS",
-      "punchText": "增长来自结构性升级，\n而非总量扩张。",
-      "metaLines": [
-        "编制 · 2026.06",
-        "口径 · 公开市场数据 + 厂商调研",
-        "样本 · 2,400+ · 仅供研究参考"
-      ],
-      "metaStrip": [
-        "编制 · 2026.06",
-        "口径 · 公开市场数据 + 厂商调研",
-        "样本 · 2,400+",
-        "仅供研究参考"
-      ],
-      "forceDark": true
-    }
-  },
-  {
-    "key": "theme03_page005",
-    "themeKey": "theme03",
-    "pageNumber": 5,
-    "layout": "THEME03-005",
-    "slot": "coverimage",
-    "label": "封面·影像",
-    "bgClass": "",
-    "controls": [
-      {
-        "key": "backgroundMode",
-        "label": "背景替换",
-        "type": "segment",
-        "default": "unicorn",
-        "def": "unicorn",
-        "options": [
-          {
-            "value": "unicorn",
-            "label": "动态"
-          },
-          {
-            "value": "media",
-            "label": "上传"
-          }
-        ],
-        "desc": "动态 shader 或自定义背景媒体",
-        "publicKey": "backgroundMode",
-        "publicLabel": "背景替换",
-        "description": "动态 shader 或自定义背景媒体"
-      },
-      {
-        "key": "unicornScene",
-        "label": "动态场景",
-        "type": "segment",
-        "default": "moving",
-        "def": "moving",
-        "options": [
-          {
-            "value": "tech",
-            "label": "科技"
-          },
-          {
-            "value": "automations",
-            "label": "自动化"
-          },
-          {
-            "value": "moving",
-            "label": "流动"
-          },
-          {
-            "value": "goey",
-            "label": "黏球"
-          }
-        ],
-        "dependsOn": "backgroundMode",
-        "dependsOnValue": "unicorn",
-        "desc": "选择固定 Unicorn shader 场景",
-        "publicKey": "dynamicVisual",
-        "publicLabel": "动态场景",
-        "description": "选择固定 Unicorn shader 场景"
-      },
-      {
-        "key": "forceDark",
-        "label": "全局深色",
-        "type": "toggle",
-        "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
-        "publicKey": "forceDark",
-        "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
-        "options": [
-          {
-            "value": "blue",
-            "label": "电光蓝"
-          },
-          {
-            "value": "lime",
-            "label": "荧光绿"
-          }
-        ],
-        "desc": "theme03 全局强调色，作用于该主题所有页面。",
-        "publicKey": "accent",
-        "publicLabel": "强调色",
-        "description": "theme03 全局强调色，作用于该主题所有页面。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
-      },
-      {
-        "key": "imageCount",
-        "label": "图片数量",
-        "type": "slider",
-        "default": 1,
-        "min": 0,
-        "max": 1,
-        "step": 1,
-        "publicKey": "imageCount",
-        "publicLabel": "图片数量"
-      },
-      {
-        "key": "showFigure",
-        "label": "核心数字",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showFigure",
-        "publicLabel": "核心数字"
-      },
-      {
-        "key": "showMeta",
-        "label": "底部数据",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showMeta",
-        "publicLabel": "底部数据"
       },
       {
         "key": "showDecor",
         "label": "装饰图片",
         "type": "toggle",
         "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
         "publicKey": "showDecor",
         "publicLabel": "装饰图片"
       },
@@ -815,6 +797,7 @@ export const pages = [
         "key": "decorSrc",
         "label": "装饰元素",
         "type": "icons",
+        "default": null,
         "options": [
           {
             "value": "assets/3d/01.png",
@@ -877,6 +860,7 @@ export const pages = [
             "image": "assets/3d/12.png"
           }
         ],
+        "help": "从 theme03 内置装饰元素中选择",
         "publicKey": "decorSrc",
         "publicLabel": "装饰元素"
       },
@@ -888,6 +872,265 @@ export const pages = [
         "min": 0.6,
         "max": 1.6,
         "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
+      }
+    ],
+    "defaultProps": {
+      "showEyebrow": true,
+      "theme": "light",
+      "accent": "blue",
+      "showFigure": true,
+      "showPunch": true,
+      "showMeta": true,
+      "eyebrow": "行业研究报告 · 04",
+      "kicker": "SMART HARDWARE // CHINA · 2026",
+      "titleKicker": "ANNUAL · 年度增长研究",
+      "titleA": "2026 中国",
+      "titleAccent": "智能硬件",
+      "titleC": "增长报告",
+      "titleBody": "供应链、终端体验与生态格局的全景扫描。",
+      "figureLabel": "市场规模 / 2026E",
+      "figureValue": "4820",
+      "figureUnit": "亿元 · 同比 +38%",
+      "figureNote": "— 97 家头部厂商样本",
+      "punchKicker": "核心判断 / THESIS",
+      "punchText": "增长来自结构性升级，\n而非总量扩张。",
+      "metaLines": [
+        "编制 · 2026.06",
+        "口径 · 公开市场数据 + 厂商调研",
+        "样本 · 2,400+ · 仅供研究参考"
+      ],
+      "metaStrip": [
+        "编制 · 2026.06",
+        "口径 · 公开市场数据 + 厂商调研",
+        "样本 · 2,400+",
+        "仅供研究参考"
+      ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true
+    }
+  },
+  {
+    "key": "theme03_page005",
+    "themeKey": "theme03",
+    "pageNumber": 5,
+    "layout": "THEME03-005",
+    "slot": "coverimage",
+    "label": "封面·影像",
+    "bgClass": "",
+    "controls": [
+      {
+        "key": "backgroundMode",
+        "label": "背景替换",
+        "type": "segment",
+        "def": "unicorn",
+        "options": [
+          {
+            "value": "unicorn",
+            "label": "动态"
+          },
+          {
+            "value": "media",
+            "label": "上传"
+          }
+        ],
+        "desc": "动态 shader 或自定义背景媒体",
+        "publicKey": "backgroundMode",
+        "publicLabel": "背景替换",
+        "description": "动态 shader 或自定义背景媒体"
+      },
+      {
+        "key": "unicornScene",
+        "label": "动态场景",
+        "type": "segment",
+        "def": "moving",
+        "options": [
+          {
+            "value": "tech",
+            "label": "科技"
+          },
+          {
+            "value": "automations",
+            "label": "自动化"
+          },
+          {
+            "value": "moving",
+            "label": "流动"
+          },
+          {
+            "value": "goey",
+            "label": "黏球"
+          }
+        ],
+        "dependsOn": "backgroundMode",
+        "dependsOnValue": "unicorn",
+        "desc": "选择固定 Unicorn shader 场景",
+        "publicKey": "dynamicVisual",
+        "publicLabel": "动态场景",
+        "description": "选择固定 Unicorn shader 场景"
+      },
+      {
+        "key": "forceDark",
+        "type": "toggle",
+        "label": "全局深色",
+        "default": true,
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
+        "publicKey": "forceDark",
+        "publicLabel": "全局深色",
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "左上角分类标签的显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "imageCount",
+        "label": "图片数量",
+        "type": "slider",
+        "default": 1,
+        "min": 0,
+        "max": 1,
+        "step": 1,
+        "help": "全幅背景图槽数量（0 为纯色封面）",
+        "publicKey": "imageCount",
+        "publicLabel": "图片数量"
+      },
+      {
+        "key": "showFigure",
+        "label": "核心数字",
+        "type": "toggle",
+        "default": true,
+        "help": "右上角核心数字徽标的显示 / 隐藏",
+        "publicKey": "showFigure",
+        "publicLabel": "核心数字"
+      },
+      {
+        "key": "showMeta",
+        "label": "底部数据",
+        "type": "toggle",
+        "default": true,
+        "help": "底部支撑数据带的显示 / 隐藏",
+        "publicKey": "showMeta",
+        "publicLabel": "底部数据"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
         "publicKey": "decorScale",
         "publicLabel": "图片大小"
       }
@@ -943,19 +1186,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -967,6 +1231,7 @@ export const pages = [
         "min": 4,
         "max": 7,
         "step": 1,
+        "help": "展示的章节数量",
         "publicKey": "itemCount",
         "publicLabel": "章节数量"
       },
@@ -985,6 +1250,7 @@ export const pages = [
             "label": "双栏"
           }
         ],
+        "help": "目录的栏数布局",
         "publicKey": "columns",
         "publicLabel": "栏目布局"
       },
@@ -993,6 +1259,7 @@ export const pages = [
         "label": "分隔线",
         "type": "toggle",
         "default": true,
+        "help": "条目之间的分隔细线显示 / 隐藏",
         "publicKey": "showRule",
         "publicLabel": "分隔线"
       },
@@ -1001,6 +1268,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "弱化其它章节以突出某一章",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -1012,26 +1280,101 @@ export const pages = [
         "min": 0,
         "max": 6,
         "step": 1,
+        "help": "被突出的章节序号（自动随章节数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -1083,6 +1426,9 @@ export const pages = [
           "en": "CONCLUSION"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -1097,19 +1443,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "左侧分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -1121,6 +1488,7 @@ export const pages = [
         "min": 1,
         "max": 3,
         "step": 1,
+        "help": "展示的维度卡片数量",
         "publicKey": "cardCount",
         "publicLabel": "卡片数量"
       },
@@ -1129,6 +1497,7 @@ export const pages = [
         "label": "装饰图形",
         "type": "toggle",
         "default": true,
+        "help": "卡片中的生成式节点图显示 / 隐藏",
         "publicKey": "showDiagram",
         "publicLabel": "装饰图形"
       },
@@ -1169,6 +1538,7 @@ export const pages = [
         ],
         "countKey": "cardCount",
         "countIndex": 0,
+        "help": "对应从左到右第 1 张卡片的图形样式",
         "publicKey": "diagramStyle1",
         "publicLabel": "图形类型 1"
       },
@@ -1209,6 +1579,7 @@ export const pages = [
         ],
         "countKey": "cardCount",
         "countIndex": 1,
+        "help": "对应从左到右第 2 张卡片的图形样式",
         "publicKey": "diagramStyle2",
         "publicLabel": "图形类型 2"
       },
@@ -1249,6 +1620,7 @@ export const pages = [
         ],
         "countKey": "cardCount",
         "countIndex": 2,
+        "help": "对应从左到右第 3 张卡片的图形样式",
         "publicKey": "diagramStyle3",
         "publicLabel": "图形类型 3"
       },
@@ -1257,6 +1629,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "弱化其它卡片以突出某一张",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -1268,8 +1641,101 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被突出的卡片序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -1307,7 +1773,11 @@ export const pages = [
           "desc": "两个维度交叉后，识别产业链的层级结构与因果传导关系，定位结构性机会所在。"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -1321,19 +1791,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -1356,6 +1847,7 @@ export const pages = [
             "label": "面积"
           }
         ],
+        "help": "主数据系列的呈现方式",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
@@ -1364,6 +1856,7 @@ export const pages = [
         "label": "次级系列",
         "type": "toggle",
         "default": true,
+        "help": "叠加「事件笔数」次级折线及右轴",
         "publicKey": "showSecondary",
         "publicLabel": "次级系列"
       },
@@ -1372,6 +1865,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "图表背景的水平网格线",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -1380,6 +1874,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某个数据点并显示数值",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -1391,6 +1886,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的数据点序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -1399,8 +1895,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "右侧趋势解读文案显示 / 隐藏",
         "publicKey": "showAnnotation",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -1443,7 +2032,11 @@ export const pages = [
           "count": 22
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -1457,19 +2050,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -1481,6 +2095,7 @@ export const pages = [
         "min": 3,
         "max": 6,
         "step": 1,
+        "help": "展示的编年节点数量",
         "publicKey": "itemCount",
         "publicLabel": "节点数量"
       },
@@ -1489,6 +2104,7 @@ export const pages = [
         "label": "连接轨道",
         "type": "toggle",
         "default": true,
+        "help": "时间轴主轨与节点引线显示 / 隐藏",
         "publicKey": "showConnector",
         "publicLabel": "连接轨道"
       },
@@ -1497,6 +2113,7 @@ export const pages = [
         "label": "关键数字",
         "type": "toggle",
         "default": true,
+        "help": "各节点的关键数字显示 / 隐藏",
         "publicKey": "showMetric",
         "publicLabel": "关键数字"
       },
@@ -1505,6 +2122,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "弱化其它节点以突出某一个",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -1516,6 +2134,7 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "被突出的节点序号（自动随节点数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -1524,26 +2143,101 @@ export const pages = [
         "label": "底部口径",
         "type": "toggle",
         "default": true,
+        "help": "底部数据口径 / 提示显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "底部口径"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -1607,7 +2301,11 @@ export const pages = [
           "unit": "亿 · 97 笔"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -1621,19 +2319,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -1656,6 +2375,7 @@ export const pages = [
             "label": "条形"
           }
         ],
+        "help": "占比数据的呈现方式",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
@@ -1664,6 +2384,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一赛道（环形 / 饼图会微微外移）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -1675,6 +2396,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的赛道序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -1683,6 +2405,7 @@ export const pages = [
         "label": "点阵填充",
         "type": "toggle",
         "default": true,
+        "help": "高亮赛道叠加点阵 / 半调网点纹理（需开启重点突出）",
         "publicKey": "dotFill",
         "publicLabel": "点阵填充"
       },
@@ -1691,6 +2414,7 @@ export const pages = [
         "label": "中心数据",
         "type": "toggle",
         "default": true,
+        "help": "环形图中心的合计数值（仅环形）",
         "publicKey": "showCenter",
         "publicLabel": "中心数据"
       },
@@ -1699,6 +2423,7 @@ export const pages = [
         "label": "图例明细",
         "type": "toggle",
         "default": true,
+        "help": "右侧赛道明细列表",
         "publicKey": "showLegend",
         "publicLabel": "图例明细"
       },
@@ -1707,8 +2432,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部核心发现文案显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -1762,7 +2580,11 @@ export const pages = [
       "copy": {
         "t001": "亿"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -1776,19 +2598,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -1800,6 +2643,7 @@ export const pages = [
         "min": 5,
         "max": 10,
         "step": 1,
+        "help": "排名展示的公司数量（Top N）",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
@@ -1818,6 +2662,7 @@ export const pages = [
             "label": "棒棒糖"
           }
         ],
+        "help": "排名条的呈现方式",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
@@ -1826,6 +2671,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一名公司",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -1837,6 +2683,7 @@ export const pages = [
         "min": 0,
         "max": 9,
         "step": 1,
+        "help": "被高亮的名次（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -1845,8 +2692,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部集中度解读文案显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -1914,7 +2854,11 @@ export const pages = [
           "sector": "垂直应用"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -1928,19 +2872,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -1952,6 +2917,7 @@ export const pages = [
         "min": 5,
         "max": 10,
         "step": 1,
+        "help": "展示的公司数量（Top N）",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
@@ -1960,6 +2926,7 @@ export const pages = [
         "label": "数值条",
         "type": "toggle",
         "default": true,
+        "help": "「最大单笔」列内嵌数值量级条",
         "publicKey": "showValueLabels",
         "publicLabel": "数值条"
       },
@@ -1968,6 +2935,7 @@ export const pages = [
         "label": "附加列",
         "type": "toggle",
         "default": true,
+        "help": "「产业链层级」附加列显示 / 隐藏",
         "publicKey": "showSecondary",
         "publicLabel": "附加列"
       },
@@ -1976,6 +2944,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一行公司",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -1987,6 +2956,7 @@ export const pages = [
         "min": 0,
         "max": 9,
         "step": 1,
+        "help": "被高亮的名次（自动随条目数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -1995,8 +2965,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部集中度解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -2081,7 +3144,11 @@ export const pages = [
           "layer": "下游"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -2095,19 +3162,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -2116,6 +3204,7 @@ export const pages = [
         "label": "数值标注",
         "type": "toggle",
         "default": true,
+        "help": "各气泡的融资额数值显示 / 隐藏",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标注"
       },
@@ -2124,6 +3213,7 @@ export const pages = [
         "label": "分类图例",
         "type": "toggle",
         "default": true,
+        "help": "右上角赛道配色图例显示 / 隐藏",
         "publicKey": "showLegend",
         "publicLabel": "分类图例"
       },
@@ -2132,6 +3222,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一家公司气泡",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -2143,6 +3234,7 @@ export const pages = [
         "min": 0,
         "max": 9,
         "step": 1,
+        "help": "被高亮的公司序号（0 = 融资额最大，自动随数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -2151,26 +3243,101 @@ export const pages = [
         "label": "结构解读",
         "type": "toggle",
         "default": true,
+        "help": "底部「赢家通吃」解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "结构解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -2247,7 +3414,11 @@ export const pages = [
           "s": 2
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -2261,19 +3432,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -2282,6 +3474,7 @@ export const pages = [
         "label": "坐标轴标注",
         "type": "toggle",
         "default": true,
+        "help": "四周的坐标轴文字显示 / 隐藏",
         "publicKey": "showAxis",
         "publicLabel": "坐标轴标注"
       },
@@ -2290,6 +3483,7 @@ export const pages = [
         "label": "对象标签",
         "type": "toggle",
         "default": true,
+        "help": "各象限内代表公司标签显示 / 隐藏",
         "publicKey": "showChips",
         "publicLabel": "对象标签"
       },
@@ -2298,6 +3492,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个象限",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -2309,8 +3504,101 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的象限序号（从 0 起，左上→右上→左下→右下）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -2371,7 +3659,11 @@ export const pages = [
           ]
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -2385,19 +3677,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -2409,6 +3722,7 @@ export const pages = [
         "min": 1,
         "max": 3,
         "step": 1,
+        "help": "展示的产业链层级数量（上游→下游）",
         "publicKey": "layerCount",
         "publicLabel": "层级数量"
       },
@@ -2417,6 +3731,7 @@ export const pages = [
         "label": "对象标签",
         "type": "toggle",
         "default": true,
+        "help": "各环节代表公司标签显示 / 隐藏",
         "publicKey": "showChips",
         "publicLabel": "对象标签"
       },
@@ -2425,6 +3740,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一层级",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -2436,8 +3752,101 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被高亮的层级序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -2523,7 +3932,11 @@ export const pages = [
           ]
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -2537,19 +3950,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -2558,6 +3992,7 @@ export const pages = [
         "label": "代表公司",
         "type": "toggle",
         "default": true,
+        "help": "各环节代表公司标签显示 / 隐藏",
         "publicKey": "showCompanies",
         "publicLabel": "代表公司"
       },
@@ -2566,6 +4001,7 @@ export const pages = [
         "label": "层资金量级",
         "type": "toggle",
         "default": true,
+        "help": "各层级融资额（亿美元）显示 / 隐藏",
         "publicKey": "showAmount",
         "publicLabel": "层资金量级"
       },
@@ -2574,6 +4010,7 @@ export const pages = [
         "label": "确定性标记",
         "type": "toggle",
         "default": true,
+        "help": "各层级确定性 / 竞争定性标记显示 / 隐藏",
         "publicKey": "showCertainty",
         "publicLabel": "确定性标记"
       },
@@ -2582,6 +4019,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "弱化其它层级以突出某一层",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -2593,6 +4031,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被突出的层级序号（0 上游 · 1 中游 · 2 下游）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -2601,26 +4040,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分层小结显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -2742,7 +4256,11 @@ export const pages = [
       "copy": {
         "t001": "亿"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -2756,19 +4274,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -2778,8 +4317,9 @@ export const pages = [
         "type": "slider",
         "default": 2,
         "min": 0,
-        "max": 4,
+        "max": 2,
         "step": 1,
+        "help": "图片槽数量（按真实比例对齐，0 为纯文字）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -2798,6 +4338,7 @@ export const pages = [
             "label": "竖排"
           }
         ],
+        "help": "图片画廊的排布方式",
         "publicKey": "layout",
         "publicLabel": "图片排布"
       },
@@ -2806,6 +4347,7 @@ export const pages = [
         "label": "核心数字",
         "type": "toggle",
         "default": true,
+        "help": "垂直应用赛道融资额核心数字显示 / 隐藏",
         "publicKey": "showFigure",
         "publicLabel": "核心数字"
       },
@@ -2817,6 +4359,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "底部特征标签数量",
         "publicKey": "chipCount",
         "publicLabel": "特征标签"
       },
@@ -2825,26 +4368,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部「隐形价值」解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -2878,6 +4496,9 @@ export const pages = [
         "看付费留存与客户续约",
         "嵌入刚性业务流程"
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -2892,19 +4513,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -2916,6 +4558,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "左侧图片槽数量，0 为纯文字案例",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -2924,6 +4567,7 @@ export const pages = [
         "label": "时间轴",
         "type": "toggle",
         "default": true,
+        "help": "右侧融资里程碑时间轴显示 / 隐藏",
         "publicKey": "showTimeline",
         "publicLabel": "时间轴"
       },
@@ -2932,6 +4576,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个里程碑",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -2943,6 +4588,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的里程碑序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -2951,8 +4597,101 @@ export const pages = [
         "label": "装饰引言",
         "type": "toggle",
         "default": true,
+        "help": "底部创始人引言显示 / 隐藏",
         "publicKey": "showQuote",
         "publicLabel": "装饰引言"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -2992,7 +4731,11 @@ export const pages = [
           "detail": "预计年内上市"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -3006,19 +4749,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -3028,8 +4792,9 @@ export const pages = [
         "type": "slider",
         "default": 2,
         "min": 0,
-        "max": 4,
+        "max": 2,
         "step": 1,
+        "help": "图片槽数量（按真实比例对齐排布，0 为纯文字）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -3048,6 +4813,7 @@ export const pages = [
             "label": "竖排"
           }
         ],
+        "help": "图片画廊的排布方式",
         "publicKey": "layout",
         "publicLabel": "图片排布"
       },
@@ -3059,6 +4825,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "展示的关键数字数量",
         "publicKey": "statCount",
         "publicLabel": "关键数字"
       },
@@ -3067,6 +4834,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个关键数字",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -3078,6 +4846,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被高亮的关键数字序号（自动随关键数字数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -3086,26 +4855,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部差异化优势解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -3148,6 +4992,9 @@ export const pages = [
           "note": "从成立到头部梯队"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -3162,19 +5009,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -3183,6 +5051,7 @@ export const pages = [
         "label": "转型对比",
         "type": "toggle",
         "default": true,
+        "help": "「矿场 → 算力云」转型对比块显示 / 隐藏",
         "publicKey": "showPivot",
         "publicLabel": "转型对比"
       },
@@ -3194,6 +5063,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "图片槽数量（按真实比例对齐排布，0 为纯文字）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -3212,6 +5082,7 @@ export const pages = [
             "label": "竖排"
           }
         ],
+        "help": "图片画廊的排布方式",
         "publicKey": "layout",
         "publicLabel": "图片排布"
       },
@@ -3223,6 +5094,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "展示的关键数字数量",
         "publicKey": "statCount",
         "publicLabel": "关键数字"
       },
@@ -3231,6 +5103,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个关键数字",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -3242,6 +5115,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被高亮的关键数字序号（自动随关键数字数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -3250,26 +5124,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部「卖铲子」逻辑解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "lime",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -3281,7 +5230,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "showCallout": true,
-      "accent": "lime",
+      "accent": "blue",
       "eyebrow": "典型案例 / 03",
       "kicker": "CoreWeave · 估值 190 亿美元+",
       "caseTag": "CASE STUDY · CoreWeave",
@@ -3314,6 +5263,9 @@ export const pages = [
           "note": "矿场 → 算力云"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -3328,19 +5280,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -3352,6 +5325,7 @@ export const pages = [
         "min": 2,
         "max": 3,
         "step": 1,
+        "help": "参与对比的公司数量",
         "publicKey": "itemCount",
         "publicLabel": "公司数量"
       },
@@ -3360,6 +5334,7 @@ export const pages = [
         "label": "差异化行",
         "type": "toggle",
         "default": true,
+        "help": "「差异化优势」对比行显示 / 隐藏",
         "publicKey": "showEdge",
         "publicLabel": "差异化行"
       },
@@ -3368,6 +5343,7 @@ export const pages = [
         "label": "指标标记",
         "type": "toggle",
         "default": true,
+        "help": "表头公司的估值梯队标记显示 / 隐藏",
         "publicKey": "showRank",
         "publicLabel": "指标标记"
       },
@@ -3376,6 +5352,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一家公司列",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -3387,6 +5364,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被高亮的公司序号（自动随公司数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -3395,8 +5373,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部对比小结显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -3481,7 +5552,11 @@ export const pages = [
           "edge": true
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -3495,44 +5570,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -3544,14 +5593,26 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签的显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
       },
       {
         "key": "showIndex",
         "label": "章节序号",
         "type": "toggle",
         "default": true,
+        "help": "超大章节序号的显示 / 隐藏",
         "publicKey": "showIndex",
         "publicLabel": "章节序号"
       },
@@ -3563,6 +5624,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "右侧图片槽数量，0 为纯文字章节页（改为巨型描边序号）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -3571,8 +5633,101 @@ export const pages = [
         "label": "页脚信息",
         "type": "toggle",
         "default": true,
+        "help": "底部小节索引的显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "页脚信息"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -3601,6 +5756,9 @@ export const pages = [
         "轮次结构",
         "核心数据"
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -3615,19 +5773,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -3646,6 +5825,7 @@ export const pages = [
             "label": "棒棒糖"
           }
         ],
+        "help": "主数据系列（事件笔数）的呈现方式",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
@@ -3654,6 +5834,7 @@ export const pages = [
         "label": "次级系列",
         "type": "toggle",
         "default": true,
+        "help": "叠加「平均单笔金额」折线及右轴",
         "publicKey": "showSecondary",
         "publicLabel": "次级系列"
       },
@@ -3662,6 +5843,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "图表背景的水平网格线",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -3670,6 +5852,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某个轮次并显示数值",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -3681,6 +5864,7 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "被高亮的轮次序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -3689,8 +5873,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "右侧结构解读文案显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -3748,7 +6025,11 @@ export const pages = [
           "avg": 18.6
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -3762,19 +6043,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -3786,6 +6088,7 @@ export const pages = [
         "min": 10,
         "max": 16,
         "step": 1,
+        "help": "单位图每行的方格数量（影响排布密度）",
         "publicKey": "columns",
         "publicLabel": "每行格数"
       },
@@ -3794,6 +6097,7 @@ export const pages = [
         "label": "阶段图例",
         "type": "toggle",
         "default": true,
+        "help": "右侧各轮次明细（笔数 / 平均单笔）显示 / 隐藏",
         "publicKey": "showLegend",
         "publicLabel": "阶段图例"
       },
@@ -3802,6 +6106,7 @@ export const pages = [
         "label": "平均单笔",
         "type": "toggle",
         "default": true,
+        "help": "图例中各轮平均单笔金额显示 / 隐藏",
         "publicKey": "showAvg",
         "publicLabel": "平均单笔"
       },
@@ -3810,6 +6115,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一轮次（其余格子弱化）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -3821,6 +6127,7 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "被高亮的轮次序号（0 = 种子轮）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -3829,26 +6136,101 @@ export const pages = [
         "label": "核心发现",
         "type": "toggle",
         "default": true,
+        "help": "底部结构解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "核心发现"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -3929,7 +6311,11 @@ export const pages = [
         "t002": "均",
         "t003": "亿"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -3943,19 +6329,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -3964,6 +6371,7 @@ export const pages = [
         "label": "热力底色",
         "type": "toggle",
         "default": true,
+        "help": "按数值大小为每行铺设热力底色",
         "publicKey": "showHeat",
         "publicLabel": "热力底色"
       },
@@ -3972,6 +6380,7 @@ export const pages = [
         "label": "数值条",
         "type": "toggle",
         "default": true,
+        "help": "每行内嵌的数值量级条",
         "publicKey": "showValueLabels",
         "publicLabel": "数值条"
       },
@@ -3980,6 +6389,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个月份（峰值）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -3991,6 +6401,7 @@ export const pages = [
         "min": 0,
         "max": 11,
         "step": 1,
+        "help": "被高亮的月份序号（0 = 1 月）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -3999,8 +6410,101 @@ export const pages = [
         "label": "侧栏汇总",
         "type": "toggle",
         "default": true,
+        "help": "右侧季度 / 峰值汇总面板显示 / 隐藏",
         "publicKey": "showSummary",
         "publicLabel": "侧栏汇总"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -4052,7 +6556,11 @@ export const pages = [
           206
         ]
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -4066,45 +6574,19 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "dark",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
-        "default": "lime",
+        "label": "强调色",
+        "default": "blue",
         "options": [
           {
             "value": "blue",
@@ -4115,14 +6597,26 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
       },
       {
         "key": "showUnit",
         "label": "数字单位",
         "type": "toggle",
         "default": true,
+        "help": "巨型数字后缀单位显示 / 隐藏",
         "publicKey": "showUnit",
         "publicLabel": "数字单位"
       },
@@ -4131,6 +6625,7 @@ export const pages = [
         "label": "辅助说明",
         "type": "toggle",
         "default": true,
+        "help": "右侧辅助解读文案显示 / 隐藏",
         "publicKey": "showSupport",
         "publicLabel": "辅助说明"
       },
@@ -4139,6 +6634,7 @@ export const pages = [
         "label": "月度节奏",
         "type": "toggle",
         "default": true,
+        "help": "底部 12 个月微型柱条显示 / 隐藏",
         "publicKey": "showChart",
         "publicLabel": "月度节奏"
       },
@@ -4147,14 +6643,107 @@ export const pages = [
         "label": "次峰标记",
         "type": "toggle",
         "default": true,
+        "help": "5 月次峰是否同样以强调色标记",
         "publicKey": "showSecondPeak",
         "publicLabel": "次峰标记"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
       "showEyebrow": true,
       "theme": "dark",
-      "accent": "lime",
+      "accent": "blue",
       "showUnit": true,
       "showSupport": true,
       "showChart": true,
@@ -4238,6 +6827,9 @@ export const pages = [
       "copy": {
         "t001": "月"
       },
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -4252,19 +6844,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -4283,6 +6896,7 @@ export const pages = [
             "label": "折线"
           }
         ],
+        "help": "累计主系列呈现方式",
         "publicKey": "chartType",
         "publicLabel": "主系列样式"
       },
@@ -4291,6 +6905,7 @@ export const pages = [
         "label": "月度增量",
         "type": "toggle",
         "default": true,
+        "help": "叠加各月新增融资额 mini 柱（次级尺度）",
         "publicKey": "showSecondary",
         "publicLabel": "月度增量"
       },
@@ -4299,6 +6914,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "背景水平网格线显示 / 隐藏",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -4307,6 +6923,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个月并显示累计 / 增量数值",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -4318,6 +6935,7 @@ export const pages = [
         "min": 0,
         "max": 11,
         "step": 1,
+        "help": "被高亮的月份序号（0 = 1 月）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -4326,26 +6944,101 @@ export const pages = [
         "label": "趋势解读",
         "type": "toggle",
         "default": true,
+        "help": "底部累积节奏解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "趋势解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -4412,7 +7105,11 @@ export const pages = [
       "copy": {
         "t001": "累计 · +"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -4426,44 +7123,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -4475,14 +7146,26 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
       },
       {
         "key": "showUnit",
         "label": "数字单位",
         "type": "toggle",
         "default": true,
+        "help": "巨型数字后缀单位（如 %）显示 / 隐藏",
         "publicKey": "showUnit",
         "publicLabel": "数字单位"
       },
@@ -4491,6 +7174,7 @@ export const pages = [
         "label": "辅助说明",
         "type": "toggle",
         "default": true,
+        "help": "右侧辅助解读文案显示 / 隐藏",
         "publicKey": "showSupport",
         "publicLabel": "辅助说明"
       },
@@ -4502,8 +7186,101 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "底部佐证微数据的数量（0 为隐藏）",
         "publicKey": "statCount",
         "publicLabel": "佐证数据"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -4540,6 +7317,9 @@ export const pages = [
           "label": "平均单笔融资额"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -4554,19 +7334,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -4578,6 +7379,7 @@ export const pages = [
         "min": 3,
         "max": 5,
         "step": 1,
+        "help": "展示的地区数量（按融资额排序）",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
@@ -4596,6 +7398,7 @@ export const pages = [
             "label": "棒棒糖"
           }
         ],
+        "help": "地区占比的呈现方式",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
@@ -4604,6 +7407,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个地区",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -4615,6 +7419,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的地区序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -4626,6 +7431,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "右侧图片槽数量，0 为纯数据布局",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -4634,8 +7440,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部集聚效应解读文案显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -4693,7 +7592,11 @@ export const pages = [
           "pct": 6.2
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -4707,71 +7610,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "imageCount",
-        "label": "图片数量",
-        "type": "slider",
-        "default": 4,
-        "min": 2,
-        "max": 5,
-        "step": 1,
-        "publicKey": "imageCount",
-        "publicLabel": "图片数量"
-      },
-      {
-        "key": "showFigure",
-        "label": "主视觉数字",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showFigure",
-        "publicLabel": "主视觉数字"
-      },
-      {
-        "key": "showMeta",
-        "label": "地区明细",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showMeta",
-        "publicLabel": "地区明细"
-      },
-      {
-        "key": "theme",
-        "label": "明暗主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "light",
-            "label": "浅色"
-          },
-          {
-            "value": "dark",
-            "label": "深色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "明暗主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -4783,8 +7633,141 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "imageCount",
+        "label": "图片数量",
+        "type": "slider",
+        "default": 4,
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "help": "马赛克图块数量（构图随数量自动重排）",
+        "publicKey": "imageCount",
+        "publicLabel": "图片数量"
+      },
+      {
+        "key": "showFigure",
+        "label": "主视觉数字",
+        "type": "toggle",
+        "default": true,
+        "help": "焦点图块上的超大占比数字显示 / 隐藏",
+        "publicKey": "showFigure",
+        "publicLabel": "主视觉数字"
+      },
+      {
+        "key": "showMeta",
+        "label": "地区明细",
+        "type": "toggle",
+        "default": true,
+        "help": "底部各地区占比条显示 / 隐藏",
+        "publicKey": "showMeta",
+        "publicLabel": "地区明细"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -4832,6 +7815,9 @@ export const pages = [
           "pct": 6.2
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -4846,19 +7832,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -4881,6 +7888,7 @@ export const pages = [
             "label": "面积"
           }
         ],
+        "help": "估值主系列的呈现方式",
         "publicKey": "chartType",
         "publicLabel": "图表类型"
       },
@@ -4889,6 +7897,7 @@ export const pages = [
         "label": "次级系列",
         "type": "toggle",
         "default": true,
+        "help": "叠加「单轮融资额」标记及右轴",
         "publicKey": "showSecondary",
         "publicLabel": "次级系列"
       },
@@ -4897,6 +7906,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "图表背景的水平网格线",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -4905,6 +7915,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一轮并显示数值",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -4916,6 +7927,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被高亮的轮次序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -4924,8 +7936,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "右侧反超解读文案显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -4966,7 +8071,11 @@ export const pages = [
           "raise": 190
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -4980,45 +8089,19 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "dark",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
-        "default": "lime",
+        "label": "强调色",
+        "default": "blue",
         "options": [
           {
             "value": "blue",
@@ -5029,14 +8112,26 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
       },
       {
         "key": "showInputs",
         "label": "构成项",
         "type": "toggle",
         "default": true,
+        "help": "右侧「估值 / 收入」构成项显示 / 隐藏",
         "publicKey": "showInputs",
         "publicLabel": "构成项"
       },
@@ -5045,6 +8140,7 @@ export const pages = [
         "label": "量级条",
         "type": "toggle",
         "default": true,
+        "help": "构成项内的量级对比条显示 / 隐藏",
         "publicKey": "showBar",
         "publicLabel": "量级条"
       },
@@ -5053,14 +8149,107 @@ export const pages = [
         "label": "辅助说明",
         "type": "toggle",
         "default": true,
+        "help": "底部泡沫风险解读显示 / 隐藏",
         "publicKey": "showSupport",
         "publicLabel": "辅助说明"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
       "showEyebrow": true,
       "theme": "dark",
-      "accent": "lime",
+      "accent": "blue",
       "showInputs": true,
       "showBar": true,
       "showSupport": true,
@@ -5105,6 +8294,9 @@ export const pages = [
           "mag": 0.0008290155440414508
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -5119,19 +8311,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -5143,6 +8356,7 @@ export const pages = [
         "min": 1,
         "max": 4,
         "step": 1,
+        "help": "展示的风险卡片数量",
         "publicKey": "cardCount",
         "publicLabel": "卡片数量"
       },
@@ -5161,6 +8375,7 @@ export const pages = [
             "label": "四列"
           }
         ],
+        "help": "卡片网格的列数布局",
         "publicKey": "columns",
         "publicLabel": "网格列数"
       },
@@ -5169,6 +8384,7 @@ export const pages = [
         "label": "卡片序号",
         "type": "toggle",
         "default": true,
+        "help": "卡片角标序号显示 / 隐藏",
         "publicKey": "showIndex",
         "publicLabel": "卡片序号"
       },
@@ -5177,6 +8393,7 @@ export const pages = [
         "label": "状态等级",
         "type": "toggle",
         "default": true,
+        "help": "每张卡片的风险等级标记显示 / 隐藏",
         "publicKey": "showStatusRating",
         "publicLabel": "状态等级"
       },
@@ -5185,6 +8402,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "弱化其它卡片以突出某一张",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -5196,8 +8414,101 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被突出的卡片序号（从 0 起）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -5243,7 +8554,11 @@ export const pages = [
           "desc": "NVIDIA GPU 供应紧张，叠加出口管制加码，算力成本居高不下，中小公司难以承受长期烧钱。"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -5257,19 +8572,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -5281,6 +8617,7 @@ export const pages = [
         "min": 1,
         "max": 3,
         "step": 1,
+        "help": "展示的风险传导链数量",
         "publicKey": "chainCount",
         "publicLabel": "链条数量"
       },
@@ -5289,6 +8626,7 @@ export const pages = [
         "label": "传导箭头",
         "type": "toggle",
         "default": true,
+        "help": "节点之间的传导箭头显示 / 隐藏",
         "publicKey": "showConnector",
         "publicLabel": "传导箭头"
       },
@@ -5297,6 +8635,7 @@ export const pages = [
         "label": "终局结果",
         "type": "toggle",
         "default": true,
+        "help": "主链末端「估值回调 / 倒闭潮」结果分叉显示 / 隐藏",
         "publicKey": "showOutcome",
         "publicLabel": "终局结果"
       },
@@ -5305,6 +8644,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "弱化其它链条以突出某一条",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -5316,8 +8656,101 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被突出的链条序号（自动随链条数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -5367,7 +8800,11 @@ export const pages = [
           ]
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -5381,19 +8818,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -5405,6 +8863,7 @@ export const pages = [
         "min": 1,
         "max": 3,
         "step": 1,
+        "help": "每栏展示的条目数量",
         "publicKey": "itemCount",
         "publicLabel": "条目数量"
       },
@@ -5427,6 +8886,7 @@ export const pages = [
             "label": "谨慎"
           }
         ],
+        "help": "弱化另一栏以突出某一栏",
         "publicKey": "focusSide",
         "publicLabel": "突出栏目"
       },
@@ -5435,6 +8895,7 @@ export const pages = [
         "label": "栏目标记",
         "type": "toggle",
         "default": true,
+        "help": "每栏顶部的方向标记（✓ / !）显示 / 隐藏",
         "publicKey": "showTag",
         "publicLabel": "栏目标记"
       },
@@ -5443,8 +8904,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部策略小结文案显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -5490,7 +9044,11 @@ export const pages = [
           "desc": "用户迁移成本低，易被大厂复制。"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -5504,19 +9062,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -5535,6 +9114,7 @@ export const pages = [
             "label": "纵向"
           }
         ],
+        "help": "时间轴的排布方向",
         "publicKey": "orientation",
         "publicLabel": "排布方向"
       },
@@ -5546,6 +9126,7 @@ export const pages = [
         "min": 1,
         "max": 3,
         "step": 1,
+        "help": "展示的阶段数量",
         "publicKey": "itemCount",
         "publicLabel": "阶段数量"
       },
@@ -5554,6 +9135,7 @@ export const pages = [
         "label": "连接轨道",
         "type": "toggle",
         "default": true,
+        "help": "阶段之间的连接轨道与箭头显示 / 隐藏",
         "publicKey": "showConnector",
         "publicLabel": "连接轨道"
       },
@@ -5562,6 +9144,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "弱化其它阶段以突出某一阶段",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -5573,6 +9156,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被突出的阶段序号（自动随阶段数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -5581,8 +9165,101 @@ export const pages = [
         "label": "页脚说明",
         "type": "toggle",
         "default": true,
+        "help": "底部数据口径 / 风险提示显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "页脚说明"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -5623,7 +9300,11 @@ export const pages = [
           "cue": "窗口：行业洗牌期"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -5637,19 +9318,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -5658,6 +9360,7 @@ export const pages = [
         "label": "雄心包络",
         "type": "toggle",
         "default": true,
+        "help": "贯穿三视野的虚线包络（整体增长曲线）显示 / 隐藏",
         "publicKey": "showEnvelope",
         "publicLabel": "雄心包络"
       },
@@ -5666,6 +9369,7 @@ export const pages = [
         "label": "视野卡片",
         "type": "toggle",
         "default": true,
+        "help": "底部三个视野说明卡显示 / 隐藏",
         "publicKey": "showCards",
         "publicLabel": "视野卡片"
       },
@@ -5674,6 +9378,7 @@ export const pages = [
         "label": "定性标尺",
         "type": "toggle",
         "default": true,
+        "help": "卡片内确定性 / 赔率 / 现金流定性标尺显示 / 隐藏",
         "publicKey": "showMeter",
         "publicLabel": "定性标尺"
       },
@@ -5682,6 +9387,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个视野（曲线 + 卡片）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -5693,6 +9399,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被高亮的视野序号（0 = H1 守正）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -5701,26 +9408,101 @@ export const pages = [
         "label": "底部小结",
         "type": "toggle",
         "default": true,
+        "help": "底部组合配置解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "底部小结"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -5809,7 +9591,11 @@ export const pages = [
         "3–5 年",
         "未来"
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -5823,64 +9609,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "itemCount",
-        "label": "结论数量",
-        "type": "slider",
-        "default": 3,
-        "min": 1,
-        "max": 3,
-        "step": 1,
-        "publicKey": "itemCount",
-        "publicLabel": "结论数量"
-      },
-      {
-        "key": "showIndex",
-        "label": "巨型序号",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showIndex",
-        "publicLabel": "巨型序号"
-      },
-      {
-        "key": "focusEnabled",
-        "label": "重点突出",
-        "type": "toggle",
-        "default": false,
-        "publicKey": "focusEnabled",
-        "publicLabel": "重点突出"
-      },
-      {
-        "key": "focusIndex",
-        "label": "突出项",
-        "type": "slider",
-        "default": 0,
-        "min": 0,
-        "max": 2,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "突出项"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -5892,16 +9632,162 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "itemCount",
+        "label": "结论数量",
+        "type": "slider",
+        "default": 3,
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "help": "展示的核心结论数量",
+        "publicKey": "itemCount",
+        "publicLabel": "结论数量"
+      },
+      {
+        "key": "showIndex",
+        "label": "巨型序号",
+        "type": "toggle",
+        "default": true,
+        "help": "每列的巨型描边序号显示 / 隐藏",
+        "publicKey": "showIndex",
+        "publicLabel": "巨型序号"
+      },
+      {
+        "key": "focusEnabled",
+        "label": "重点突出",
+        "type": "toggle",
+        "default": false,
+        "help": "弱化其它结论以突出某一条",
+        "publicKey": "focusEnabled",
+        "publicLabel": "重点突出"
+      },
+      {
+        "key": "focusIndex",
+        "label": "突出项",
+        "type": "slider",
+        "default": 0,
+        "min": 0,
+        "max": 2,
+        "step": 1,
+        "help": "被突出的结论序号（自动随结论数量收敛）",
+        "publicKey": "focusIndex",
+        "publicLabel": "突出项"
       },
       {
         "key": "showMeta",
         "label": "底部口径",
         "type": "toggle",
         "default": true,
+        "help": "底部数据口径 / 出处显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "底部口径"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -5943,6 +9829,9 @@ export const pages = [
           "desc": "上游基础设施确定性最强，中游模型层竞争最激烈，下游应用层潜力最大但尚需时间验证。"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -5957,44 +9846,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "light",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -6006,14 +9869,26 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
       },
       {
         "key": "showMark",
         "label": "引号装饰",
         "type": "toggle",
         "default": true,
+        "help": "巨型装饰引号显示 / 隐藏",
         "publicKey": "showMark",
         "publicLabel": "引号装饰"
       },
@@ -6032,6 +9907,7 @@ export const pages = [
             "label": "居中"
           }
         ],
+        "help": "金句的对齐方式",
         "publicKey": "align",
         "publicLabel": "对齐方式"
       },
@@ -6040,8 +9916,101 @@ export const pages = [
         "label": "署名出处",
         "type": "toggle",
         "default": true,
+        "help": "底部署名 / 出处显示 / 隐藏",
         "publicKey": "showAttribution",
         "publicLabel": "署名出处"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -6066,6 +10035,9 @@ export const pages = [
         "t012": "《2024 美国大额融资 AI 公司调研报告》",
         "t013": "横向看集中 · 纵向看节奏 · 结构看分层"
       },
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -6080,19 +10052,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -6104,6 +10097,7 @@ export const pages = [
         "min": 3,
         "max": 5,
         "step": 1,
+        "help": "展示的漏斗阶段数量（A→A→R→R→R）",
         "publicKey": "stageCount",
         "publicLabel": "阶段数量"
       },
@@ -6112,6 +10106,7 @@ export const pages = [
         "label": "指标数值",
         "type": "toggle",
         "default": true,
+        "help": "各阶段样例指标数值显示 / 隐藏",
         "publicKey": "showValueLabels",
         "publicLabel": "指标数值"
       },
@@ -6120,6 +10115,7 @@ export const pages = [
         "label": "转化率",
         "type": "toggle",
         "default": true,
+        "help": "阶段之间的转化率显示 / 隐藏",
         "publicKey": "showRate",
         "publicLabel": "转化率"
       },
@@ -6128,6 +10124,7 @@ export const pages = [
         "label": "策略解读",
         "type": "toggle",
         "default": true,
+        "help": "右侧各环节优化策略文字显示 / 隐藏",
         "publicKey": "showStrategy",
         "publicLabel": "策略解读"
       },
@@ -6136,6 +10133,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个阶段",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -6147,26 +10145,101 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的阶段序号（从 0 起，自动随阶段数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -6233,7 +10306,11 @@ export const pages = [
           "note": "产品内置分享激励，用口碑摊薄获客成本。"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -6247,19 +10324,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -6268,6 +10366,7 @@ export const pages = [
         "label": "方位立方体",
         "type": "toggle",
         "default": true,
+        "help": "左侧 RFM 三维方位立方体显示 / 隐藏",
         "publicKey": "showCube",
         "publicLabel": "方位立方体"
       },
@@ -6276,6 +10375,7 @@ export const pages = [
         "label": "坐标轴标注",
         "type": "toggle",
         "default": true,
+        "help": "R / F / M 三轴文字标注显示 / 隐藏",
         "publicKey": "showAxis",
         "publicLabel": "坐标轴标注"
       },
@@ -6284,6 +10384,7 @@ export const pages = [
         "label": "行动策略",
         "type": "toggle",
         "default": true,
+        "help": "每类标的的行动策略一行字显示 / 隐藏",
         "publicKey": "showAction",
         "publicLabel": "行动策略"
       },
@@ -6292,6 +10393,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -6300,6 +10402,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一类标的（同时点亮其立方体）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -6311,26 +10414,101 @@ export const pages = [
         "min": 0,
         "max": 7,
         "step": 1,
+        "help": "被高亮的标的序号（0 = 头部吸金兽）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -6433,7 +10611,11 @@ export const pages = [
           "act": "低优先级 · 接受自然淘汰"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -6447,19 +10629,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -6468,6 +10671,7 @@ export const pages = [
         "label": "坐标轴标注",
         "type": "toggle",
         "default": true,
+        "help": "两轴（赛道吸引力 / 竞争实力）文字标注显示 / 隐藏",
         "publicKey": "showAxis",
         "publicLabel": "坐标轴标注"
       },
@@ -6476,6 +10680,7 @@ export const pages = [
         "label": "三区配色",
         "type": "toggle",
         "default": true,
+        "help": "投资 / 选择 / 收获 三个对角区的配色显示 / 隐藏",
         "publicKey": "showZones",
         "publicLabel": "三区配色"
       },
@@ -6487,6 +10692,7 @@ export const pages = [
         "min": 1,
         "max": 6,
         "step": 1,
+        "help": "矩阵中展示的赛道气泡数量",
         "publicKey": "categoryCount",
         "publicLabel": "分类数量"
       },
@@ -6495,6 +10701,7 @@ export const pages = [
         "label": "分类读解",
         "type": "toggle",
         "default": true,
+        "help": "右侧每个赛道一行投资读解显示 / 隐藏",
         "publicKey": "showReads",
         "publicLabel": "分类读解"
       },
@@ -6503,6 +10710,7 @@ export const pages = [
         "label": "策略解读",
         "type": "toggle",
         "default": true,
+        "help": "底部重点结论条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "策略解读"
       },
@@ -6511,6 +10719,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个赛道气泡",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -6522,26 +10731,101 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "被高亮的赛道序号（自动随赛道数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -6638,7 +10922,11 @@ export const pages = [
           "strat": "控制投入，收获或退出"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -6652,19 +10940,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -6676,6 +10985,7 @@ export const pages = [
         "min": 3,
         "max": 8,
         "step": 1,
+        "help": "展示的投资执行任务行数",
         "publicKey": "taskCount",
         "publicLabel": "任务数量"
       },
@@ -6684,6 +10994,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "时间轴竖向网格线显示 / 隐藏",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -6692,6 +11003,7 @@ export const pages = [
         "label": "配置进度",
         "type": "toggle",
         "default": true,
+        "help": "任务条上的配置完成度填充显示 / 隐藏",
         "publicKey": "showProgress",
         "publicLabel": "配置进度"
       },
@@ -6700,6 +11012,7 @@ export const pages = [
         "label": "关键节点",
         "type": "toggle",
         "default": true,
+        "help": "里程碑菱形标记显示 / 隐藏",
         "publicKey": "showMilestones",
         "publicLabel": "关键节点"
       },
@@ -6708,6 +11021,7 @@ export const pages = [
         "label": "当前基准线",
         "type": "toggle",
         "default": true,
+        "help": "「当前」竖向基准线显示 / 隐藏",
         "publicKey": "showToday",
         "publicLabel": "当前基准线"
       },
@@ -6716,6 +11030,7 @@ export const pages = [
         "label": "节奏解读",
         "type": "toggle",
         "default": true,
+        "help": "底部关键路径 / 节奏解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "节奏解读"
       },
@@ -6724,6 +11039,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个任务条",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -6733,28 +11049,103 @@ export const pages = [
         "type": "slider",
         "default": 2,
         "min": 0,
-        "max": 7,
+        "max": 6,
         "step": 1,
+        "help": "被高亮的任务序号（自动随任务数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -6851,7 +11242,11 @@ export const pages = [
           "phase": 2
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -6865,19 +11260,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -6886,6 +11302,7 @@ export const pages = [
         "label": "空间括注",
         "type": "toggle",
         "default": true,
+        "help": "「问题空间 / 解决方案空间」顶部括注显示 / 隐藏",
         "publicKey": "showSpaces",
         "publicLabel": "空间括注"
       },
@@ -6894,6 +11311,7 @@ export const pages = [
         "label": "发散收敛标注",
         "type": "toggle",
         "default": true,
+        "help": "各阶段「发散 / 收敛」方向标注显示 / 隐藏",
         "publicKey": "showFlow",
         "publicLabel": "发散收敛标注"
       },
@@ -6902,6 +11320,7 @@ export const pages = [
         "label": "阶段说明",
         "type": "toggle",
         "default": true,
+        "help": "底部四阶段说明卡显示 / 隐藏",
         "publicKey": "showCards",
         "publicLabel": "阶段说明"
       },
@@ -6910,6 +11329,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -6918,6 +11338,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个阶段（发现 / 定义 / 开发 / 交付）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -6929,26 +11350,101 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的阶段序号（0 发现 → 3 交付）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -7006,7 +11502,11 @@ export const pages = [
           "accent": "#7ba80c"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -7020,19 +11520,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -7041,6 +11562,7 @@ export const pages = [
         "label": "坐标轴标注",
         "type": "toggle",
         "default": true,
+        "help": "「内部 / 外部 · 增益 / 损害」坐标轴标注显示 / 隐藏",
         "publicKey": "showAxis",
         "publicLabel": "坐标轴标注"
       },
@@ -7049,6 +11571,7 @@ export const pages = [
         "label": "象限字母",
         "type": "toggle",
         "default": true,
+        "help": "各象限的巨型水印字母 (S / W / O / T) 显示 / 隐藏",
         "publicKey": "showLetter",
         "publicLabel": "象限字母"
       },
@@ -7060,6 +11583,7 @@ export const pages = [
         "min": 2,
         "max": 4,
         "step": 1,
+        "help": "每个象限展示的要点数量",
         "publicKey": "itemCount",
         "publicLabel": "每象限条目"
       },
@@ -7068,6 +11592,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -7076,6 +11601,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个象限",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -7087,26 +11613,101 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的象限序号（0 S → 1 W → 2 O → 3 T）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -7196,7 +11797,11 @@ export const pages = [
         "#9ccb3a",
         "#e07a5a"
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -7210,19 +11815,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -7231,6 +11857,7 @@ export const pages = [
         "label": "传导箭头",
         "type": "toggle",
         "default": true,
+        "help": "四方力量指向中心的箭头显示 / 隐藏",
         "publicKey": "showArrows",
         "publicLabel": "传导箭头"
       },
@@ -7239,6 +11866,7 @@ export const pages = [
         "label": "强度标尺",
         "type": "toggle",
         "default": true,
+        "help": "各力量的强弱标尺（高 / 中 / 低）显示 / 隐藏",
         "publicKey": "showMeter",
         "publicLabel": "强度标尺"
       },
@@ -7247,6 +11875,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -7255,6 +11884,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一股力量（含中心同业竞争）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -7266,26 +11896,101 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的力量序号（0 同业竞争 · 1 新进入者 · 2 替代品 · 3 供应商 · 4 购买方）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -7343,7 +12048,11 @@ export const pages = [
         "中",
         "高"
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -7357,19 +12066,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -7378,6 +12108,7 @@ export const pages = [
         "label": "要点条目",
         "type": "toggle",
         "default": true,
+        "help": "各模块内的要点条目显示 / 隐藏",
         "publicKey": "showItems",
         "publicLabel": "要点条目"
       },
@@ -7386,6 +12117,7 @@ export const pages = [
         "label": "模块编号",
         "type": "toggle",
         "default": true,
+        "help": "每个模块的序号显示 / 隐藏",
         "publicKey": "showIndex",
         "publicLabel": "模块编号"
       },
@@ -7394,6 +12126,7 @@ export const pages = [
         "label": "三区配色",
         "type": "toggle",
         "default": true,
+        "help": "按「效率 / 价值 / 客户」三区给模块上色",
         "publicKey": "groupColor",
         "publicLabel": "三区配色"
       },
@@ -7402,6 +12135,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -7410,6 +12144,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个模块",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -7421,26 +12156,101 @@ export const pages = [
         "min": 0,
         "max": 8,
         "step": 1,
+        "help": "被高亮的模块序号（0–8，按画布从左到右、上到下）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -7553,7 +12363,11 @@ export const pages = [
       "copy": {
         "t001": "0"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -7567,19 +12381,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -7591,6 +12426,7 @@ export const pages = [
         "min": 3,
         "max": 5,
         "step": 1,
+        "help": "旅程阶段数量",
         "publicKey": "stageCount",
         "publicLabel": "阶段数量"
       },
@@ -7599,6 +12435,7 @@ export const pages = [
         "label": "行为",
         "type": "toggle",
         "default": true,
+        "help": "各阶段「用户行为」行显示 / 隐藏",
         "publicKey": "showBehaviour",
         "publicLabel": "行为"
       },
@@ -7607,6 +12444,7 @@ export const pages = [
         "label": "情绪曲线",
         "type": "toggle",
         "default": true,
+        "help": "贯穿各阶段的情绪曲线显示 / 隐藏",
         "publicKey": "showCurve",
         "publicLabel": "情绪曲线"
       },
@@ -7615,6 +12453,7 @@ export const pages = [
         "label": "机会点",
         "type": "toggle",
         "default": true,
+        "help": "各阶段「机会点」行显示 / 隐藏",
         "publicKey": "showOpportunity",
         "publicLabel": "机会点"
       },
@@ -7623,6 +12462,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个阶段",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -7634,26 +12474,101 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的阶段序号（自动随阶段数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -7717,7 +12632,11 @@ export const pages = [
           "opp": "会员体系 · 裂变激励"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -7731,19 +12650,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -7755,6 +12695,7 @@ export const pages = [
         "min": 3,
         "max": 6,
         "step": 1,
+        "help": "金字塔层级数量（自顶向下）",
         "publicKey": "layerCount",
         "publicLabel": "层级数量"
       },
@@ -7763,6 +12704,7 @@ export const pages = [
         "label": "层级解读",
         "type": "toggle",
         "default": true,
+        "help": "右侧各层级名称 + 释义面板显示 / 隐藏",
         "publicKey": "showSideNote",
         "publicLabel": "层级解读"
       },
@@ -7771,6 +12713,7 @@ export const pages = [
         "label": "层级序号",
         "type": "toggle",
         "default": true,
+        "help": "每层左侧层级序号标记显示 / 隐藏",
         "publicKey": "showTierTag",
         "publicLabel": "层级序号"
       },
@@ -7779,6 +12722,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -7787,6 +12731,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个层级",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -7798,26 +12743,101 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "被高亮的层级序号（0 = 顶层，自动随层级数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -7869,7 +12889,11 @@ export const pages = [
           "note": "人才、资本、数据与技术底座"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -7883,19 +12907,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -7904,6 +12949,7 @@ export const pages = [
         "label": "坐标轴标注",
         "type": "toggle",
         "default": true,
+        "help": "两轴（市场增长率 / 相对市场份额）文字标注显示 / 隐藏",
         "publicKey": "showAxis",
         "publicLabel": "坐标轴标注"
       },
@@ -7912,6 +12958,7 @@ export const pages = [
         "label": "象限水印",
         "type": "toggle",
         "default": true,
+        "help": "各象限的名称 + 巨型水印符号显示 / 隐藏",
         "publicKey": "showQuadLabel",
         "publicLabel": "象限水印"
       },
@@ -7920,6 +12967,7 @@ export const pages = [
         "label": "3D 象限元素",
         "type": "toggle",
         "default": true,
+        "help": "用 3D 元素作为四象限标识（明星 / 问题 / 现金牛 / 瘦狗）；关闭则用简洁图标（需宿主提供 3D 素材，保持可迁移）",
         "publicKey": "showEmblem",
         "publicLabel": "3D 象限元素"
       },
@@ -7931,6 +12979,7 @@ export const pages = [
         "min": 1,
         "max": 6,
         "step": 1,
+        "help": "矩阵中展示的业务气泡数量",
         "publicKey": "bubbleCount",
         "publicLabel": "气泡数量"
       },
@@ -7939,6 +12988,7 @@ export const pages = [
         "label": "策略面板",
         "type": "toggle",
         "default": true,
+        "help": "右侧四象限策略 + 重点结论显示 / 隐藏",
         "publicKey": "showPanel",
         "publicLabel": "策略面板"
       },
@@ -7947,6 +12997,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个象限（同时点亮落在其中的气泡）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -7958,26 +13009,101 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的象限序号（0 明星 · 1 问题 · 2 现金牛 · 3 瘦狗）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -8084,7 +13210,11 @@ export const pages = [
           "q": 3
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -8098,19 +13228,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -8122,6 +13273,7 @@ export const pages = [
         "min": 4,
         "max": 6,
         "step": 1,
+        "help": "飞轮上的环节数量（沿环均匀分布）",
         "publicKey": "stageCount",
         "publicLabel": "环节数量"
       },
@@ -8130,6 +13282,7 @@ export const pages = [
         "label": "传导箭头",
         "type": "toggle",
         "default": true,
+        "help": "环节之间顺时针的循环箭头显示 / 隐藏",
         "publicKey": "showArrows",
         "publicLabel": "传导箭头"
       },
@@ -8138,6 +13291,7 @@ export const pages = [
         "label": "环节解读",
         "type": "toggle",
         "default": true,
+        "help": "右侧各环节名称 + 释义列表显示 / 隐藏",
         "publicKey": "showLegend",
         "publicLabel": "环节解读"
       },
@@ -8146,6 +13300,7 @@ export const pages = [
         "label": "中心枢纽",
         "type": "toggle",
         "default": true,
+        "help": "飞轮中心的「增长飞轮」枢纽显示 / 隐藏",
         "publicKey": "showHub",
         "publicLabel": "中心枢纽"
       },
@@ -8154,6 +13309,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -8162,6 +13318,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个环节",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -8173,26 +13330,101 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "被高亮的环节序号（自动随环节数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -8247,7 +13479,11 @@ export const pages = [
           "note": "成本与价格持续优化"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -8261,19 +13497,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -8285,6 +13542,7 @@ export const pages = [
         "min": 4,
         "max": 6,
         "step": 1,
+        "help": "环境因素维度数量（4 = PEST · 6 = PESTEL）",
         "publicKey": "factorCount",
         "publicLabel": "因素维度"
       },
@@ -8296,6 +13554,7 @@ export const pages = [
         "min": 2,
         "max": 4,
         "step": 1,
+        "help": "每个维度展示的要点数量",
         "publicKey": "itemCount",
         "publicLabel": "每维条目"
       },
@@ -8304,6 +13563,7 @@ export const pages = [
         "label": "维度字母",
         "type": "toggle",
         "default": true,
+        "help": "各列的巨型水印字母（P / E / S / T …）显示 / 隐藏",
         "publicKey": "showLetter",
         "publicLabel": "维度字母"
       },
@@ -8312,6 +13572,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -8320,6 +13581,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个维度列",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -8331,26 +13593,101 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "被高亮的维度序号（自动随因素维度数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -8446,7 +13783,11 @@ export const pages = [
           ]
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -8460,19 +13801,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -8491,6 +13853,7 @@ export const pages = [
             "label": "棒棒糖"
           }
         ],
+        "help": "融资额主系列的呈现方式",
         "publicKey": "chartType",
         "publicLabel": "柱样式"
       },
@@ -8499,6 +13862,7 @@ export const pages = [
         "label": "累计曲线",
         "type": "toggle",
         "default": true,
+        "help": "叠加各赛道累计占比折线及右轴",
         "publicKey": "showCumulative",
         "publicLabel": "累计曲线"
       },
@@ -8507,6 +13871,7 @@ export const pages = [
         "label": "80% 基准线",
         "type": "toggle",
         "default": true,
+        "help": "帕累托 80% 参考线显示 / 隐藏",
         "publicKey": "showThreshold",
         "publicLabel": "80% 基准线"
       },
@@ -8515,6 +13880,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "背景水平网格线显示 / 隐藏",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -8523,6 +13889,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一赛道并显示数值",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -8534,6 +13901,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的赛道序号（0 = 通用大模型）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -8542,26 +13910,101 @@ export const pages = [
         "label": "核心发现",
         "type": "toggle",
         "default": true,
+        "help": "底部头部集中度解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "核心发现"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -8640,7 +14083,11 @@ export const pages = [
           "pct": 5.1
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -8654,19 +14101,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -8675,6 +14143,7 @@ export const pages = [
         "label": "强度刻度环",
         "type": "toggle",
         "default": true,
+        "help": "雷达图同心强度刻度环显示 / 隐藏",
         "publicKey": "showRings",
         "publicLabel": "强度刻度环"
       },
@@ -8683,6 +14152,7 @@ export const pages = [
         "label": "强度数值",
         "type": "toggle",
         "default": true,
+        "help": "各风险顶点的强度数值显示 / 隐藏",
         "publicKey": "showValueLabels",
         "publicLabel": "强度数值"
       },
@@ -8691,6 +14161,7 @@ export const pages = [
         "label": "状态解读",
         "type": "toggle",
         "default": true,
+        "help": "右侧四类风险释义 + 强度标尺显示 / 隐藏",
         "publicKey": "showPanel",
         "publicLabel": "状态解读"
       },
@@ -8699,6 +14170,7 @@ export const pages = [
         "label": "模型解读",
         "type": "toggle",
         "default": true,
+        "help": "底部分析解读条显示 / 隐藏",
         "publicKey": "showAnalysis",
         "publicLabel": "模型解读"
       },
@@ -8707,6 +14179,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一类风险（轴 + 释义）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -8718,26 +14191,101 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的风险序号（0 估值泡沫 · 1 算力卡脖子 · 2 大厂/开源 · 3 监管压力）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -8797,7 +14345,11 @@ export const pages = [
         "高",
         "极高"
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -8811,19 +14363,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -8835,6 +14408,7 @@ export const pages = [
         "min": 2,
         "max": 4,
         "step": 1,
+        "help": "登记册展示的风险条目数量",
         "publicKey": "itemCount",
         "publicLabel": "状态项数量"
       },
@@ -8843,6 +14417,7 @@ export const pages = [
         "label": "可能性列",
         "type": "toggle",
         "default": true,
+        "help": "「可能性」评分列显示 / 隐藏",
         "publicKey": "showLikelihood",
         "publicLabel": "可能性列"
       },
@@ -8851,6 +14426,7 @@ export const pages = [
         "label": "主要影响列",
         "type": "toggle",
         "default": true,
+        "help": "「主要影响」列显示 / 隐藏",
         "publicKey": "showImpact",
         "publicLabel": "主要影响列"
       },
@@ -8859,6 +14435,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一行风险",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -8870,6 +14447,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的风险序号（自动随数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -8878,26 +14456,101 @@ export const pages = [
         "label": "结论解读",
         "type": "toggle",
         "default": true,
+        "help": "底部登记册小结显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "结论解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -8953,7 +14606,11 @@ export const pages = [
           "impact": "合规成本激增"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -8967,19 +14624,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -8988,6 +14666,7 @@ export const pages = [
         "label": "判断标准",
         "type": "toggle",
         "default": true,
+        "help": "每侧底部「判断标准」标签条显示 / 隐藏",
         "publicKey": "showCriteria",
         "publicLabel": "判断标准"
       },
@@ -8996,6 +14675,7 @@ export const pages = [
         "label": "转变中枢",
         "type": "toggle",
         "default": true,
+        "help": "中间「→」转变中枢与主线文案显示 / 隐藏",
         "publicKey": "showBridge",
         "publicLabel": "转变中枢"
       },
@@ -9018,6 +14698,7 @@ export const pages = [
             "label": "兑现侧"
           }
         ],
+        "help": "弱化另一侧以突出某一侧",
         "publicKey": "focusSide",
         "publicLabel": "重点突出"
       },
@@ -9026,26 +14707,101 @@ export const pages = [
         "label": "底部小结",
         "type": "toggle",
         "default": true,
+        "help": "底部「内容重点」小结显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "底部小结"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -9115,7 +14871,11 @@ export const pages = [
           "v": "是否嵌入刚性业务流程"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -9129,19 +14889,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -9150,6 +14931,7 @@ export const pages = [
         "label": "阶段分区",
         "type": "toggle",
         "default": true,
+        "help": "五个成熟阶段的底部色带与名称显示 / 隐藏",
         "publicKey": "showPhases",
         "publicLabel": "阶段分区"
       },
@@ -9158,6 +14940,7 @@ export const pages = [
         "label": "分类读解",
         "type": "toggle",
         "default": true,
+        "help": "右侧各赛道一行定位读解显示 / 隐藏",
         "publicKey": "showReads",
         "publicLabel": "分类读解"
       },
@@ -9166,6 +14949,7 @@ export const pages = [
         "label": "量级标注",
         "type": "toggle",
         "default": true,
+        "help": "各赛道融资额量级标注显示 / 隐藏",
         "publicKey": "showValue",
         "publicLabel": "量级标注"
       },
@@ -9174,6 +14958,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个赛道（曲线点 + 读解）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -9185,6 +14970,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的赛道序号（0 = 具身智能）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -9193,26 +14979,101 @@ export const pages = [
         "label": "底部小结",
         "type": "toggle",
         "default": true,
+        "help": "底部周期解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "底部小结"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -9323,7 +15184,11 @@ export const pages = [
           "b": 1
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -9337,19 +15202,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -9358,6 +15244,7 @@ export const pages = [
         "label": "坐标轴标注",
         "type": "toggle",
         "default": true,
+        "help": "两轴（兑现确定性 / 竞争壁垒）标注显示 / 隐藏",
         "publicKey": "showAxis",
         "publicLabel": "坐标轴标注"
       },
@@ -9366,6 +15253,7 @@ export const pages = [
         "label": "优选/规避区",
         "type": "toggle",
         "default": true,
+        "help": "对角「优选区 / 规避区」配色与角标显示 / 隐藏",
         "publicKey": "showZones",
         "publicLabel": "优选/规避区"
       },
@@ -9374,6 +15262,7 @@ export const pages = [
         "label": "规避标的",
         "type": "toggle",
         "default": true,
+        "help": "规避类标的（左下）显示 / 隐藏",
         "publicKey": "showAvoid",
         "publicLabel": "规避标的"
       },
@@ -9382,6 +15271,7 @@ export const pages = [
         "label": "策略小结",
         "type": "toggle",
         "default": true,
+        "help": "底部投资策略小结显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "策略小结"
       },
@@ -9390,6 +15280,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一个标的",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -9401,26 +15292,101 @@ export const pages = [
         "min": 0,
         "max": 10,
         "step": 1,
+        "help": "被高亮的标的序号（自动随显示数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -9523,7 +15489,11 @@ export const pages = [
           "w": 0.52
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -9537,61 +15507,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "showRing",
-        "label": "占比圆环",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showRing",
-        "publicLabel": "占比圆环"
-      },
-      {
-        "key": "showSupport",
-        "label": "支撑微数据",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showSupport",
-        "publicLabel": "支撑微数据"
-      },
-      {
-        "key": "statCount",
-        "label": "微数据条数",
-        "type": "slider",
-        "default": 3,
-        "min": 0,
-        "max": 3,
-        "step": 1,
-        "publicKey": "statCount",
-        "publicLabel": "微数据条数"
-      },
-      {
-        "key": "showNote",
-        "label": "口径注记",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showNote",
-        "publicLabel": "口径注记"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -9603,26 +15530,150 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "dark",
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "showRing",
+        "label": "占比圆环",
+        "type": "toggle",
+        "default": true,
+        "help": "左侧占比圆环显示 / 隐藏（隐藏则仅留巨型数字）",
+        "publicKey": "showRing",
+        "publicLabel": "占比圆环"
+      },
+      {
+        "key": "showSupport",
+        "label": "支撑微数据",
+        "type": "toggle",
+        "default": true,
+        "help": "右侧支撑性微数据列显示 / 隐藏",
+        "publicKey": "showSupport",
+        "publicLabel": "支撑微数据"
+      },
+      {
+        "key": "statCount",
+        "label": "微数据条数",
+        "type": "slider",
+        "default": 3,
+        "min": 0,
+        "max": 3,
+        "step": 1,
+        "help": "右侧支撑微数据的条数",
+        "publicKey": "statCount",
+        "publicLabel": "微数据条数"
+      },
+      {
+        "key": "showNote",
+        "label": "口径注记",
+        "type": "toggle",
+        "default": true,
+        "help": "底部数据口径注记显示 / 隐藏",
+        "publicKey": "showNote",
+        "publicLabel": "口径注记"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -9674,6 +15725,9 @@ export const pages = [
           "k": "平均单笔融资额（美元）"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -9688,19 +15742,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -9709,6 +15784,7 @@ export const pages = [
         "label": "桥接连线",
         "type": "toggle",
         "default": true,
+        "help": "相邻季度之间的桥接虚线显示 / 隐藏",
         "publicKey": "showConnector",
         "publicLabel": "桥接连线"
       },
@@ -9717,6 +15793,7 @@ export const pages = [
         "label": "环比变化",
         "type": "toggle",
         "default": true,
+        "help": "各季度环比增减数值显示 / 隐藏",
         "publicKey": "showDelta",
         "publicLabel": "环比变化"
       },
@@ -9725,6 +15802,7 @@ export const pages = [
         "label": "事件笔数",
         "type": "toggle",
         "default": true,
+        "help": "各季度事件笔数显示 / 隐藏",
         "publicKey": "showCount",
         "publicLabel": "事件笔数"
       },
@@ -9733,6 +15811,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "背景水平网格线显示 / 隐藏",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -9741,6 +15820,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一季度",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -9752,6 +15832,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的季度序号（0 = Q1）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -9760,26 +15841,101 @@ export const pages = [
         "label": "趋势解读",
         "type": "toggle",
         "default": true,
+        "help": "底部节奏解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "趋势解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -9841,7 +15997,11 @@ export const pages = [
       "copy": {
         "t001": "笔"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -9855,19 +16015,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -9876,6 +16057,7 @@ export const pages = [
         "label": "数值/占比",
         "type": "toggle",
         "default": true,
+        "help": "各赛道金额与占比显示 / 隐藏",
         "publicKey": "showValueLabels",
         "publicLabel": "数值/占比"
       },
@@ -9884,6 +16066,7 @@ export const pages = [
         "label": "代表公司",
         "type": "toggle",
         "default": true,
+        "help": "各赛道代表公司标签显示 / 隐藏",
         "publicKey": "showCompanies",
         "publicLabel": "代表公司"
       },
@@ -9892,6 +16075,7 @@ export const pages = [
         "label": "核心发现",
         "type": "toggle",
         "default": true,
+        "help": "底部资金版图解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "核心发现"
       },
@@ -9900,6 +16084,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": false,
+        "help": "高亮某一赛道块",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -9911,26 +16096,101 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的赛道序号（0 = 通用大模型）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -9985,7 +16245,11 @@ export const pages = [
           "firms": "工具链 · 安全"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -9999,19 +16263,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -10020,6 +16305,7 @@ export const pages = [
         "label": "阶梯连线",
         "type": "toggle",
         "default": true,
+        "help": "贯穿各柱顶的阶梯连线显示 / 隐藏",
         "publicKey": "showStep",
         "publicLabel": "阶梯连线"
       },
@@ -10028,6 +16314,7 @@ export const pages = [
         "label": "放大倍数",
         "type": "toggle",
         "default": true,
+        "help": "各轮相对种子轮的 ×倍数显示 / 隐藏",
         "publicKey": "showMultiple",
         "publicLabel": "放大倍数"
       },
@@ -10036,6 +16323,7 @@ export const pages = [
         "label": "事件笔数",
         "type": "toggle",
         "default": true,
+        "help": "各轮事件笔数显示 / 隐藏",
         "publicKey": "showCount",
         "publicLabel": "事件笔数"
       },
@@ -10044,6 +16332,7 @@ export const pages = [
         "label": "网格线",
         "type": "toggle",
         "default": true,
+        "help": "背景水平网格线显示 / 隐藏",
         "publicKey": "showGrid",
         "publicLabel": "网格线"
       },
@@ -10052,6 +16341,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一轮次并显示数值",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -10063,6 +16353,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的轮次序号（0 = 种子轮）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -10071,26 +16362,101 @@ export const pages = [
         "label": "结构解读",
         "type": "toggle",
         "default": true,
+        "help": "底部巨额化解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "结构解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -10147,7 +16513,11 @@ export const pages = [
       "copy": {
         "t001": "笔 ·"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -10161,19 +16531,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -10185,6 +16576,7 @@ export const pages = [
         "min": 0,
         "max": 5,
         "step": 1,
+        "help": "图片槽数量（按真实比例对齐排布，0 为纯文字）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -10203,6 +16595,7 @@ export const pages = [
             "label": "竖排"
           }
         ],
+        "help": "图片画廊的排布方式",
         "publicKey": "layout",
         "publicLabel": "图片排布"
       },
@@ -10214,6 +16607,7 @@ export const pages = [
         "min": 2,
         "max": 5,
         "step": 1,
+        "help": "底部实验室档案条目数量",
         "publicKey": "labCount",
         "publicLabel": "实验室数量"
       },
@@ -10222,6 +16616,7 @@ export const pages = [
         "label": "指标标记",
         "type": "toggle",
         "default": true,
+        "help": "各实验室估值 / 定位标记显示 / 隐藏",
         "publicKey": "showMetricMarker",
         "publicLabel": "指标标记"
       },
@@ -10230,6 +16625,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一家实验室",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -10241,26 +16637,101 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的实验室序号（自动随实验室数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -10310,6 +16781,9 @@ export const pages = [
           "note": "欧洲 · 开源专用"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -10324,19 +16798,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -10345,6 +16840,7 @@ export const pages = [
         "label": "产业链分层",
         "type": "toggle",
         "default": true,
+        "help": "右侧「上 / 中 / 下游」汇聚列显示 / 隐藏（关闭则仅看赛道分流）",
         "publicKey": "showLayers",
         "publicLabel": "产业链分层"
       },
@@ -10353,6 +16849,7 @@ export const pages = [
         "label": "数值标注",
         "type": "toggle",
         "default": true,
+        "help": "各节点金额 / 占比显示 / 隐藏",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标注"
       },
@@ -10361,6 +16858,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一条赛道流",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -10372,6 +16870,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的赛道序号（0 = 通用大模型）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -10380,26 +16879,101 @@ export const pages = [
         "label": "趋势解读",
         "type": "toggle",
         "default": true,
+        "help": "底部流向解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "趋势解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -10490,7 +17064,11 @@ export const pages = [
         "t001": "亿 ·",
         "t002": "亿 ·"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -10504,19 +17082,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -10528,6 +17127,7 @@ export const pages = [
         "min": 4,
         "max": 8,
         "step": 1,
+        "help": "记分卡展示的公司数量（Top N）",
         "publicKey": "itemCount",
         "publicLabel": "公司数量"
       },
@@ -10536,6 +17136,7 @@ export const pages = [
         "label": "象限定位",
         "type": "toggle",
         "default": true,
+        "help": "「四象限定位」列显示 / 隐藏",
         "publicKey": "showQuadrant",
         "publicLabel": "象限定位"
       },
@@ -10544,6 +17145,7 @@ export const pages = [
         "label": "竞争壁垒",
         "type": "toggle",
         "default": true,
+        "help": "「竞争壁垒」评分列显示 / 隐藏",
         "publicKey": "showBarrier",
         "publicLabel": "竞争壁垒"
       },
@@ -10552,6 +17154,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一行公司",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -10563,6 +17166,7 @@ export const pages = [
         "min": 0,
         "max": 7,
         "step": 1,
+        "help": "被高亮的公司序号（自动随公司数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -10571,26 +17175,101 @@ export const pages = [
         "label": "结论解读",
         "type": "toggle",
         "default": true,
+        "help": "底部记分卡小结显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "结论解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -10697,7 +17376,11 @@ export const pages = [
           "c": "#5c5b57"
         }
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -10711,58 +17394,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "showZones",
-        "label": "区间色带",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showZones",
-        "publicLabel": "区间色带"
-      },
-      {
-        "key": "showTicks",
-        "label": "刻度标注",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showTicks",
-        "publicLabel": "刻度标注"
-      },
-      {
-        "key": "showSupport",
-        "label": "佐证数据",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showSupport",
-        "publicLabel": "佐证数据"
-      },
-      {
-        "key": "showCallout",
-        "label": "状态解读",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showCallout",
-        "publicLabel": "状态解读"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -10774,26 +17417,147 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "dark",
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "showZones",
+        "label": "区间色带",
+        "type": "toggle",
+        "default": true,
+        "help": "理性 / 偏热 / 过热 / 泡沫 四段色带显示 / 隐藏",
+        "publicKey": "showZones",
+        "publicLabel": "区间色带"
+      },
+      {
+        "key": "showTicks",
+        "label": "刻度标注",
+        "type": "toggle",
+        "default": true,
+        "help": "P/S 倍数刻度标注显示 / 隐藏",
+        "publicKey": "showTicks",
+        "publicLabel": "刻度标注"
+      },
+      {
+        "key": "showSupport",
+        "label": "佐证数据",
+        "type": "toggle",
+        "default": true,
+        "help": "右侧估值 / 收入 / 倍数佐证显示 / 隐藏",
+        "publicKey": "showSupport",
+        "publicLabel": "佐证数据"
+      },
+      {
+        "key": "showCallout",
+        "label": "状态解读",
+        "type": "toggle",
+        "default": true,
+        "help": "底部泡沫风险解读显示 / 隐藏",
+        "publicKey": "showCallout",
+        "publicLabel": "状态解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -10855,6 +17619,9 @@ export const pages = [
           "note": "P/S 市销率"
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -10869,19 +17636,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -10891,8 +17679,9 @@ export const pages = [
         "type": "slider",
         "default": 2,
         "min": 0,
-        "max": 4,
+        "max": 2,
         "step": 1,
+        "help": "图片槽数量（按真实比例对齐排布，0 为纯文字）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -10911,6 +17700,7 @@ export const pages = [
             "label": "竖排"
           }
         ],
+        "help": "图片画廊的排布方式",
         "publicKey": "layout",
         "publicLabel": "图片排布"
       },
@@ -10919,6 +17709,7 @@ export const pages = [
         "label": "核心数字",
         "type": "toggle",
         "default": true,
+        "help": "Figure AI 最大单笔核心数字显示 / 隐藏",
         "publicKey": "showFigure",
         "publicLabel": "核心数字"
       },
@@ -10930,6 +17721,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "「看好理由」特征标签数量",
         "publicKey": "chipCount",
         "publicLabel": "理由标签"
       },
@@ -10938,26 +17730,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部看好逻辑解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "lime",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -10967,7 +17834,7 @@ export const pages = [
       "showFigure": true,
       "chipCount": 3,
       "showCallout": true,
-      "accent": "lime",
+      "accent": "blue",
       "copy": {
         "t001": "下游应用层 / FRONTIER",
         "t002": "看好方向 · 具身智能 / EMBODIED AI",
@@ -10991,6 +17858,9 @@ export const pages = [
         "长周期硬科技壁垒",
         "与自动驾驶协同感知"
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -11005,19 +17875,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -11026,6 +17917,7 @@ export const pages = [
         "label": "刻度环",
         "type": "toggle",
         "default": true,
+        "help": "同心刻度环 + 数值标注显示 / 隐藏",
         "publicKey": "showRings",
         "publicLabel": "刻度环"
       },
@@ -11034,6 +17926,7 @@ export const pages = [
         "label": "花瓣数值",
         "type": "toggle",
         "default": true,
+        "help": "各月融资额数值显示 / 隐藏",
         "publicKey": "showValueLabels",
         "publicLabel": "花瓣数值"
       },
@@ -11042,6 +17935,7 @@ export const pages = [
         "label": "时间面板",
         "type": "toggle",
         "default": true,
+        "help": "右侧季度汇总面板显示 / 隐藏",
         "publicKey": "showLegend",
         "publicLabel": "时间面板"
       },
@@ -11050,6 +17944,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个月份花瓣",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -11061,6 +17956,7 @@ export const pages = [
         "min": 0,
         "max": 11,
         "step": 1,
+        "help": "被高亮的月份序号（0 = 1 月）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -11069,26 +17965,101 @@ export const pages = [
         "label": "趋势解读",
         "type": "toggle",
         "default": true,
+        "help": "底部双峰节奏解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "趋势解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -11147,7 +18118,11 @@ export const pages = [
       "copy": {
         "t001": "月"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -11161,19 +18136,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -11182,6 +18178,7 @@ export const pages = [
         "label": "数值标注",
         "type": "toggle",
         "default": true,
+        "help": "各赛道金额显示 / 隐藏",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标注"
       },
@@ -11190,6 +18187,7 @@ export const pages = [
         "label": "占比标注",
         "type": "toggle",
         "default": true,
+        "help": "各赛道占全年总额的百分比显示 / 隐藏",
         "publicKey": "showPercent",
         "publicLabel": "占比标注"
       },
@@ -11198,6 +18196,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个赛道块",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -11209,6 +18208,7 @@ export const pages = [
         "min": 0,
         "max": 4,
         "step": 1,
+        "help": "被高亮的赛道序号（0 = 通用大模型）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -11217,26 +18217,101 @@ export const pages = [
         "label": "结构解读",
         "type": "toggle",
         "default": true,
+        "help": "底部资金结构解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "结构解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -11304,7 +18379,11 @@ export const pages = [
       "copy": {
         "t001": "亿 ·"
       },
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -11318,19 +18397,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -11342,6 +18442,7 @@ export const pages = [
         "min": 2,
         "max": 3,
         "step": 1,
+        "help": "展示的集中度圆环数量",
         "publicKey": "ringCount",
         "publicLabel": "圆环数量"
       },
@@ -11350,6 +18451,7 @@ export const pages = [
         "label": "环形进度",
         "type": "toggle",
         "default": true,
+        "help": "圆环进度弧显示 / 隐藏（关闭则仅留巨型数字）",
         "publicKey": "showArc",
         "publicLabel": "环形进度"
       },
@@ -11358,6 +18460,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个集中度维度",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -11369,6 +18472,7 @@ export const pages = [
         "min": 0,
         "max": 2,
         "step": 1,
+        "help": "被高亮的维度序号（自动随圆环数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -11377,252 +18481,16 @@ export const pages = [
         "label": "结论解读",
         "type": "toggle",
         "default": true,
+        "help": "底部「赢家通吃」结论显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "结论解读"
-      },
-      {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
-        "options": [
-          {
-            "value": "blue",
-            "label": "电光蓝"
-          },
-          {
-            "value": "lime",
-            "label": "荧光绿"
-          }
-        ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
-      },
-      {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "dark",
-        "options": [
-          {
-            "value": "light",
-            "label": "浅色"
-          },
-          {
-            "value": "dark",
-            "label": "深色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
-      }
-    ],
-    "defaultProps": {
-      "showEyebrow": true,
-      "ringCount": 3,
-      "showArc": true,
-      "focusEnabled": true,
-      "focusIndex": 2,
-      "showCallout": true,
-      "accent": "blue",
-      "theme": "dark",
-      "eyebrow": "结论 · 横向看集中 / WINNER-TAKE-ALL",
-      "kicker": "2024 · 资本高度集聚",
-      "titlePre": "资本大年的",
-      "titleAccent": "三重集中",
-      "titleNote": "资金向赛道、地区、头部三向收敛",
-      "shareLabel": "占比 / SHARE",
-      "calloutLabel": "↳ 结论一",
-      "calloutPre": "资金高度向",
-      "calloutStrong": "头部公司、通用大模型赛道、旧金山湾区",
-      "calloutPost": "集中，「赢家通吃」格局确立——人才、资本、算力的虹吸效应短期内难以撆动。",
-      "dims": [
-        {
-          "pct": 33,
-          "label": "AI 占全美风投",
-          "sub": "近三分之一 · 资本大年"
-        },
-        {
-          "pct": 43.3,
-          "label": "通用大模型",
-          "sub": "占 AI 大额融资 · 赛道集中"
-        },
-        {
-          "pct": 63.9,
-          "label": "旧金山湾区",
-          "sub": "占 AI 大额融资 · 地理集中"
-        }
-      ],
-      "forceDark": true
-    }
-  },
-  {
-    "key": "theme03_page071",
-    "themeKey": "theme03",
-    "pageNumber": 71,
-    "layout": "THEME03-071",
-    "slot": "statement",
-    "label": "资本主张",
-    "bgClass": "",
-    "controls": [
-      {
-        "key": "backgroundMode",
-        "label": "背景替换",
-        "type": "segment",
-        "default": "unicorn",
-        "def": "unicorn",
-        "options": [
-          {
-            "value": "unicorn",
-            "label": "动态"
-          },
-          {
-            "value": "media",
-            "label": "上传"
-          }
-        ],
-        "desc": "动态 shader 或自定义背景媒体",
-        "publicKey": "backgroundMode",
-        "publicLabel": "背景替换",
-        "description": "动态 shader 或自定义背景媒体"
-      },
-      {
-        "key": "unicornScene",
-        "label": "动态场景",
-        "type": "segment",
-        "default": "goey",
-        "def": "goey",
-        "options": [
-          {
-            "value": "tech",
-            "label": "科技"
-          },
-          {
-            "value": "automations",
-            "label": "自动化"
-          },
-          {
-            "value": "moving",
-            "label": "流动"
-          },
-          {
-            "value": "goey",
-            "label": "黏球"
-          }
-        ],
-        "dependsOn": "backgroundMode",
-        "dependsOnValue": "unicorn",
-        "desc": "选择固定 Unicorn shader 场景",
-        "publicKey": "dynamicVisual",
-        "publicLabel": "动态场景",
-        "description": "选择固定 Unicorn shader 场景"
-      },
-      {
-        "key": "forceDark",
-        "label": "全局深色",
-        "type": "toggle",
-        "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
-        "publicKey": "forceDark",
-        "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
-        "options": [
-          {
-            "value": "blue",
-            "label": "电光蓝"
-          },
-          {
-            "value": "lime",
-            "label": "荧光绿"
-          }
-        ],
-        "desc": "theme03 全局强调色，作用于该主题所有页面。",
-        "publicKey": "accent",
-        "publicLabel": "强调色",
-        "description": "theme03 全局强调色，作用于该主题所有页面。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "imageCount",
-        "label": "图片数量",
-        "type": "slider",
-        "default": 1,
-        "min": 0,
-        "max": 1,
-        "step": 1,
-        "publicKey": "imageCount",
-        "publicLabel": "图片数量"
-      },
-      {
-        "key": "showFigure",
-        "label": "核心数字",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showFigure",
-        "publicLabel": "核心数字"
-      },
-      {
-        "key": "showMeta",
-        "label": "支撑数据",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showMeta",
-        "publicLabel": "支撑数据"
-      },
-      {
-        "key": "align",
-        "label": "文案对齐",
-        "type": "select",
-        "default": "left",
-        "options": [
-          {
-            "value": "left",
-            "label": "左下"
-          },
-          {
-            "value": "center",
-            "label": "居中"
-          }
-        ],
-        "publicKey": "align",
-        "publicLabel": "文案对齐"
-      },
-      {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "dark",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
       },
       {
         "key": "showDecor",
         "label": "装饰图片",
         "type": "toggle",
         "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
         "publicKey": "showDecor",
         "publicLabel": "装饰图片"
       },
@@ -11630,6 +18498,7 @@ export const pages = [
         "key": "decorSrc",
         "label": "装饰元素",
         "type": "icons",
+        "default": null,
         "options": [
           {
             "value": "assets/3d/01.png",
@@ -11692,6 +18561,7 @@ export const pages = [
             "image": "assets/3d/12.png"
           }
         ],
+        "help": "从 theme03 内置装饰元素中选择",
         "publicKey": "decorSrc",
         "publicLabel": "装饰元素"
       },
@@ -11703,6 +18573,289 @@ export const pages = [
         "min": 0.6,
         "max": 1.6,
         "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
+      }
+    ],
+    "defaultProps": {
+      "showEyebrow": true,
+      "ringCount": 3,
+      "showArc": true,
+      "focusEnabled": true,
+      "focusIndex": 2,
+      "showCallout": true,
+      "accent": "blue",
+      "theme": "dark",
+      "eyebrow": "结论 · 横向看集中 / WINNER-TAKE-ALL",
+      "kicker": "2024 · 资本高度集聚",
+      "titlePre": "资本大年的",
+      "titleAccent": "三重集中",
+      "titleNote": "资金向赛道、地区、头部三向收敛",
+      "shareLabel": "占比 / SHARE",
+      "calloutLabel": "↳ 结论一",
+      "calloutPre": "资金高度向",
+      "calloutStrong": "头部公司、通用大模型赛道、旧金山湾区",
+      "calloutPost": "集中，「赢家通吃」格局确立——人才、资本、算力的虹吸效应短期内难以撆动。",
+      "dims": [
+        {
+          "pct": 33,
+          "label": "AI 占全美风投",
+          "sub": "近三分之一 · 资本大年"
+        },
+        {
+          "pct": 43.3,
+          "label": "通用大模型",
+          "sub": "占 AI 大额融资 · 赛道集中"
+        },
+        {
+          "pct": 63.9,
+          "label": "旧金山湾区",
+          "sub": "占 AI 大额融资 · 地理集中"
+        }
+      ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true
+    }
+  },
+  {
+    "key": "theme03_page071",
+    "themeKey": "theme03",
+    "pageNumber": 71,
+    "layout": "THEME03-071",
+    "slot": "statement",
+    "label": "资本主张",
+    "bgClass": "",
+    "controls": [
+      {
+        "key": "backgroundMode",
+        "label": "背景替换",
+        "type": "segment",
+        "def": "unicorn",
+        "options": [
+          {
+            "value": "unicorn",
+            "label": "动态"
+          },
+          {
+            "value": "media",
+            "label": "上传"
+          }
+        ],
+        "desc": "动态 shader 或自定义背景媒体",
+        "publicKey": "backgroundMode",
+        "publicLabel": "背景替换",
+        "description": "动态 shader 或自定义背景媒体"
+      },
+      {
+        "key": "unicornScene",
+        "label": "动态场景",
+        "type": "segment",
+        "def": "goey",
+        "options": [
+          {
+            "value": "tech",
+            "label": "科技"
+          },
+          {
+            "value": "automations",
+            "label": "自动化"
+          },
+          {
+            "value": "moving",
+            "label": "流动"
+          },
+          {
+            "value": "goey",
+            "label": "黏球"
+          }
+        ],
+        "dependsOn": "backgroundMode",
+        "dependsOnValue": "unicorn",
+        "desc": "选择固定 Unicorn shader 场景",
+        "publicKey": "dynamicVisual",
+        "publicLabel": "动态场景",
+        "description": "选择固定 Unicorn shader 场景"
+      },
+      {
+        "key": "forceDark",
+        "type": "toggle",
+        "label": "全局深色",
+        "default": true,
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
+        "publicKey": "forceDark",
+        "publicLabel": "全局深色",
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "imageCount",
+        "label": "图片数量",
+        "type": "slider",
+        "default": 1,
+        "min": 0,
+        "max": 1,
+        "step": 1,
+        "help": "全幅背景图槽数量（0 为纯文字主张海报）",
+        "publicKey": "imageCount",
+        "publicLabel": "图片数量"
+      },
+      {
+        "key": "showFigure",
+        "label": "核心数字",
+        "type": "toggle",
+        "default": true,
+        "help": "右下角核心数字（≈1/3）显示 / 隐藏",
+        "publicKey": "showFigure",
+        "publicLabel": "核心数字"
+      },
+      {
+        "key": "showMeta",
+        "label": "支撑数据",
+        "type": "toggle",
+        "default": true,
+        "help": "底部支撑微数据条显示 / 隐藏",
+        "publicKey": "showMeta",
+        "publicLabel": "支撑数据"
+      },
+      {
+        "key": "align",
+        "label": "文案对齐",
+        "type": "select",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "左下"
+          },
+          {
+            "value": "center",
+            "label": "居中"
+          }
+        ],
+        "help": "主张文案的版面位置",
+        "publicKey": "align",
+        "publicLabel": "文案对齐"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
         "publicKey": "decorScale",
         "publicLabel": "图片大小"
       }
@@ -11759,69 +18912,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "showValues",
-        "label": "数值标注",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showValueLabels",
-        "publicLabel": "数值标注"
-      },
-      {
-        "key": "showAxis",
-        "label": "两侧轴名",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showAxis",
-        "publicLabel": "两侧轴名"
-      },
-      {
-        "key": "focusEnabled",
-        "label": "重点突出",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "focusEnabled",
-        "publicLabel": "重点突出"
-      },
-      {
-        "key": "focusIndex",
-        "label": "突出项",
-        "type": "slider",
-        "default": 4,
-        "min": 0,
-        "max": 5,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "突出项"
-      },
-      {
-        "key": "showCallout",
-        "label": "结构解读",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showCallout",
-        "publicLabel": "结构解读"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -11833,26 +18935,159 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "showValues",
+        "label": "数值标注",
+        "type": "toggle",
+        "default": true,
+        "help": "两侧条形末端数值显示 / 隐藏",
+        "publicKey": "showValueLabels",
+        "publicLabel": "数值标注"
+      },
+      {
+        "key": "showAxis",
+        "label": "两侧轴名",
+        "type": "toggle",
+        "default": true,
+        "help": "左右两栏「笔数 / 金额」轴名显示 / 隐藏",
+        "publicKey": "showAxis",
+        "publicLabel": "两侧轴名"
+      },
+      {
+        "key": "focusEnabled",
+        "label": "重点突出",
+        "type": "toggle",
+        "default": true,
+        "help": "高亮某一个轮次",
+        "publicKey": "focusEnabled",
+        "publicLabel": "重点突出"
+      },
+      {
+        "key": "focusIndex",
+        "label": "突出项",
+        "type": "slider",
+        "default": 4,
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "help": "被高亮的轮次序号（0 = 种子轮）",
+        "publicKey": "focusIndex",
+        "publicLabel": "突出项"
+      },
+      {
+        "key": "showCallout",
+        "label": "结构解读",
+        "type": "toggle",
+        "default": true,
+        "help": "底部「少笔数、多资金」解读显示 / 隐藏",
+        "publicKey": "showCallout",
+        "publicLabel": "结构解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -11906,6 +19141,9 @@ export const pages = [
           "avg": 18.6
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -11920,80 +19158,18 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "itemCount",
-        "label": "公司数量",
-        "type": "slider",
-        "default": 3,
-        "min": 2,
-        "max": 3,
-        "step": 1,
-        "publicKey": "itemCount",
-        "publicLabel": "公司数量"
-      },
-      {
-        "key": "showType",
-        "label": "壁垒类型",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showType",
-        "publicLabel": "壁垒类型"
-      },
-      {
-        "key": "showMeter",
-        "label": "护城河深度",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showMeter",
-        "publicLabel": "护城河深度"
-      },
-      {
-        "key": "focusEnabled",
-        "label": "重点突出",
-        "type": "toggle",
-        "default": false,
-        "publicKey": "focusEnabled",
-        "publicLabel": "重点突出"
-      },
-      {
-        "key": "focusIndex",
-        "label": "突出项",
-        "type": "slider",
-        "default": 2,
-        "min": 0,
-        "max": 2,
-        "step": 1,
-        "publicKey": "focusIndex",
-        "publicLabel": "突出项"
-      },
-      {
-        "key": "showCallout",
-        "label": "结构解读",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showCallout",
-        "publicLabel": "结构解读"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
+        "label": "强调色",
         "default": "blue",
         "options": [
           {
@@ -12005,26 +19181,171 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
+      },
+      {
+        "key": "itemCount",
+        "label": "公司数量",
+        "type": "slider",
+        "default": 3,
+        "min": 2,
+        "max": 3,
+        "step": 1,
+        "help": "参与剖析的公司数量",
+        "publicKey": "itemCount",
+        "publicLabel": "公司数量"
+      },
+      {
+        "key": "showType",
+        "label": "壁垒类型",
+        "type": "toggle",
+        "default": true,
+        "help": "各公司「护城河类型」标记显示 / 隐藏",
+        "publicKey": "showType",
+        "publicLabel": "壁垒类型"
+      },
+      {
+        "key": "showMeter",
+        "label": "护城河深度",
+        "type": "toggle",
+        "default": true,
+        "help": "护城河深度量表显示 / 隐藏",
+        "publicKey": "showMeter",
+        "publicLabel": "护城河深度"
+      },
+      {
+        "key": "focusEnabled",
+        "label": "重点突出",
+        "type": "toggle",
+        "default": false,
+        "help": "高亮某一家公司列",
+        "publicKey": "focusEnabled",
+        "publicLabel": "重点突出"
+      },
+      {
+        "key": "focusIndex",
+        "label": "突出项",
+        "type": "slider",
+        "default": 2,
+        "min": 0,
+        "max": 2,
+        "step": 1,
+        "help": "被高亮的公司序号（自动随公司数量收敛）",
+        "publicKey": "focusIndex",
+        "publicLabel": "突出项"
+      },
+      {
+        "key": "showCallout",
+        "label": "结构解读",
+        "type": "toggle",
+        "default": true,
+        "help": "底部护城河小结显示 / 隐藏",
+        "publicKey": "showCallout",
+        "publicLabel": "结构解读"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -12085,6 +19406,9 @@ export const pages = [
           ]
         }
       ],
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -12099,19 +19423,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -12123,6 +19468,7 @@ export const pages = [
         "min": 2,
         "max": 4,
         "step": 1,
+        "help": "供应链约束环节数量",
         "publicKey": "stageCount",
         "publicLabel": "环节数量"
       },
@@ -12131,6 +19477,7 @@ export const pages = [
         "label": "传导箭头",
         "type": "toggle",
         "default": true,
+        "help": "环节之间的传导箭头显示 / 隐藏",
         "publicKey": "showConnector",
         "publicLabel": "传导箭头"
       },
@@ -12139,6 +19486,7 @@ export const pages = [
         "label": "赢家条",
         "type": "toggle",
         "default": true,
+        "help": "底部「卖铲子赢家 · CoreWeave」条显示 / 隐藏",
         "publicKey": "showWinner",
         "publicLabel": "赢家条"
       },
@@ -12147,6 +19495,7 @@ export const pages = [
         "label": "重点突出",
         "type": "toggle",
         "default": true,
+        "help": "高亮某一个约束环节（默认瓶颈）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点突出"
       },
@@ -12158,6 +19507,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "被高亮的环节序号（自动随环节数量收敛）",
         "publicKey": "focusIndex",
         "publicLabel": "突出项"
       },
@@ -12166,26 +19516,101 @@ export const pages = [
         "label": "结构解读",
         "type": "toggle",
         "default": true,
+        "help": "底部「卖铲子」逻辑解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "结构解读"
       },
       {
-        "key": "theme",
-        "label": "主题",
-        "type": "select",
-        "default": "light",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "light",
-            "label": "浅色"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "dark",
-            "label": "深色"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "theme",
-        "publicLabel": "主题"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -12231,7 +19656,11 @@ export const pages = [
           "note": "长期烧钱被迫退出"
         }
       ],
-      "forceDark": true
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
+      "forceDark": true,
+      "accent": "blue"
     }
   },
   {
@@ -12245,19 +19674,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -12267,8 +19717,9 @@ export const pages = [
         "type": "slider",
         "default": 2,
         "min": 0,
-        "max": 4,
+        "max": 2,
         "step": 1,
+        "help": "图片槽数量（按真实比例对齐，0 为纯文字）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -12287,6 +19738,7 @@ export const pages = [
             "label": "竖排"
           }
         ],
+        "help": "图片画廊的排布方式",
         "publicKey": "layout",
         "publicLabel": "图片排布"
       },
@@ -12295,6 +19747,7 @@ export const pages = [
         "label": "核心数字",
         "type": "toggle",
         "default": true,
+        "help": "芯片赛道融资额核心数字显示 / 隐藏",
         "publicKey": "showFigure",
         "publicLabel": "核心数字"
       },
@@ -12306,6 +19759,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "底部特征标签数量",
         "publicKey": "chipCount",
         "publicLabel": "特征标签"
       },
@@ -12314,26 +19768,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部上游确定性解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -12364,6 +19893,9 @@ export const pages = [
       "galleryCaption": "芯片 / 硬件配图 / DROP IMAGE",
       "galleryNote": "↗ 晶圆 · 推理芯片 · 算力机柜",
       "emptyText": "纯文字版式 · 无配图",
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -12378,19 +19910,40 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
+      },
+      {
+        "key": "accent",
+        "type": "select",
+        "label": "强调色",
+        "default": "blue",
+        "options": [
+          {
+            "value": "blue",
+            "label": "电光蓝"
+          },
+          {
+            "value": "lime",
+            "label": "荧光绿"
+          }
+        ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
+        "publicKey": "accent",
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
       },
       {
         "key": "showEyebrow",
         "label": "装饰标签",
         "type": "toggle",
         "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
         "publicKey": "showEyebrow",
         "publicLabel": "装饰标签"
       },
@@ -12400,8 +19953,9 @@ export const pages = [
         "type": "slider",
         "default": 2,
         "min": 0,
-        "max": 4,
+        "max": 2,
         "step": 1,
+        "help": "图片槽数量（按真实比例对齐，0 为纯文字）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量"
       },
@@ -12420,6 +19974,7 @@ export const pages = [
             "label": "竖排"
           }
         ],
+        "help": "图片画廊的排布方式",
         "publicKey": "layout",
         "publicLabel": "图片排布"
       },
@@ -12428,6 +19983,7 @@ export const pages = [
         "label": "核心数字",
         "type": "toggle",
         "default": true,
+        "help": "基础设施赛道融资额核心数字显示 / 隐藏",
         "publicKey": "showFigure",
         "publicLabel": "核心数字"
       },
@@ -12439,6 +19995,7 @@ export const pages = [
         "min": 0,
         "max": 3,
         "step": 1,
+        "help": "底部特征标签数量",
         "publicKey": "chipCount",
         "publicLabel": "特征标签"
       },
@@ -12447,26 +20004,101 @@ export const pages = [
         "label": "装饰解读",
         "type": "toggle",
         "default": true,
+        "help": "底部算力卡位解读显示 / 隐藏",
         "publicKey": "showCallout",
         "publicLabel": "装饰解读"
       },
       {
-        "key": "accent",
-        "label": "强调色",
-        "type": "select",
-        "default": "blue",
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
         "options": [
           {
-            "value": "blue",
-            "label": "电光蓝"
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
           },
           {
-            "value": "lime",
-            "label": "荧光绿"
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
           }
         ],
-        "publicKey": "accent",
-        "publicLabel": "强调色"
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
@@ -12497,6 +20129,9 @@ export const pages = [
       "galleryCaption": "数据中心 / GPU 机柜 / DROP IMAGE",
       "galleryNote": "↗ 机房 · GPU 机柜 · 算力集群",
       "emptyText": "纯文字版式 · 无配图",
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   },
@@ -12511,45 +20146,19 @@ export const pages = [
     "controls": [
       {
         "key": "forceDark",
-        "label": "全局深色",
         "type": "toggle",
+        "label": "全局深色",
         "default": true,
-        "desc": "复刻 Claude Design 右上角深浅配色切换。",
+        "description": "复刻 Claude Design 右上角深浅配色切换。",
         "publicKey": "forceDark",
         "publicLabel": "全局深色",
-        "description": "复刻 Claude Design 右上角深浅配色切换。"
-      },
-      {
-        "key": "showEyebrow",
-        "label": "装饰标签",
-        "type": "toggle",
-        "default": true,
-        "publicKey": "showEyebrow",
-        "publicLabel": "装饰标签"
-      },
-      {
-        "key": "theme",
-        "label": "背景主题",
-        "type": "select",
-        "default": "dark",
-        "options": [
-          {
-            "value": "dark",
-            "label": "深色"
-          },
-          {
-            "value": "light",
-            "label": "浅色"
-          }
-        ],
-        "publicKey": "theme",
-        "publicLabel": "背景主题"
+        "desc": "复刻 Claude Design 右上角深浅配色切换。"
       },
       {
         "key": "accent",
-        "label": "强调色",
         "type": "select",
-        "default": "lime",
+        "label": "强调色",
+        "default": "blue",
         "options": [
           {
             "value": "blue",
@@ -12560,14 +20169,26 @@ export const pages = [
             "label": "荧光绿"
           }
         ],
+        "description": "theme03 全局强调色，作用于该主题所有页面。",
         "publicKey": "accent",
-        "publicLabel": "强调色"
+        "publicLabel": "强调色",
+        "desc": "theme03 全局强调色，作用于该主题所有页面。"
+      },
+      {
+        "key": "showEyebrow",
+        "label": "装饰标签",
+        "type": "toggle",
+        "default": true,
+        "help": "顶部分类标签显示 / 隐藏",
+        "publicKey": "showEyebrow",
+        "publicLabel": "装饰标签"
       },
       {
         "key": "showSources",
         "label": "来源说明",
         "type": "toggle",
         "default": true,
+        "help": "数据口径 / 来源说明列表显示 / 隐藏",
         "publicKey": "showSources",
         "publicLabel": "来源说明"
       },
@@ -12579,6 +20200,7 @@ export const pages = [
         "min": 1,
         "max": 3,
         "step": 1,
+        "help": "底部研究提示 / 免责声明条数",
         "publicKey": "noteCount",
         "publicLabel": "提示条数"
       },
@@ -12587,14 +20209,107 @@ export const pages = [
         "label": "页脚信息",
         "type": "toggle",
         "default": true,
+        "help": "底部编制信息显示 / 隐藏",
         "publicKey": "showMeta",
         "publicLabel": "页脚信息"
+      },
+      {
+        "key": "showDecor",
+        "label": "装饰图片",
+        "type": "toggle",
+        "default": false,
+        "help": "显示或隐藏页面上的装饰图片元素",
+        "publicKey": "showDecor",
+        "publicLabel": "装饰图片"
+      },
+      {
+        "key": "decorSrc",
+        "label": "装饰元素",
+        "type": "icons",
+        "default": null,
+        "options": [
+          {
+            "value": "assets/3d/01.png",
+            "label": "胜利手势",
+            "image": "assets/3d/01.png"
+          },
+          {
+            "value": "assets/3d/02.png",
+            "label": "是 按键",
+            "image": "assets/3d/02.png"
+          },
+          {
+            "value": "assets/3d/03.png",
+            "label": "404 方块",
+            "image": "assets/3d/03.png"
+          },
+          {
+            "value": "assets/3d/04.png",
+            "label": "像素 幽灵",
+            "image": "assets/3d/04.png"
+          },
+          {
+            "value": "assets/3d/05.png",
+            "label": "是 气泡",
+            "image": "assets/3d/05.png"
+          },
+          {
+            "value": "assets/3d/06.png",
+            "label": "掌机图表",
+            "image": "assets/3d/06.png"
+          },
+          {
+            "value": "assets/3d/07.png",
+            "label": "像素显示器",
+            "image": "assets/3d/07.png"
+          },
+          {
+            "value": "assets/3d/08.png",
+            "label": "复古电脑",
+            "image": "assets/3d/08.png"
+          },
+          {
+            "value": "assets/3d/09.png",
+            "label": "拍立得",
+            "image": "assets/3d/09.png"
+          },
+          {
+            "value": "assets/3d/10.png",
+            "label": "奖杯",
+            "image": "assets/3d/10.png"
+          },
+          {
+            "value": "assets/3d/11.png",
+            "label": "文件夹",
+            "image": "assets/3d/11.png"
+          },
+          {
+            "value": "assets/3d/12.png",
+            "label": "番茄箱",
+            "image": "assets/3d/12.png"
+          }
+        ],
+        "help": "从 theme03 内置装饰元素中选择",
+        "publicKey": "decorSrc",
+        "publicLabel": "装饰元素"
+      },
+      {
+        "key": "decorScale",
+        "label": "图片大小",
+        "type": "slider",
+        "default": 1,
+        "min": 0.6,
+        "max": 1.6,
+        "step": 0.05,
+        "help": "装饰图片的缩放比例",
+        "publicKey": "decorScale",
+        "publicLabel": "图片大小"
       }
     ],
     "defaultProps": {
       "showEyebrow": true,
       "theme": "dark",
-      "accent": "lime",
+      "accent": "blue",
       "showSources": true,
       "noteCount": 3,
       "showMeta": true,
@@ -12635,6 +20350,9 @@ export const pages = [
       "copy": {
         "t001": "从"
       },
+      "showDecor": false,
+      "decorSrc": null,
+      "decorScale": 1,
       "forceDark": true
     }
   }

@@ -12,6 +12,7 @@ export const meta = { id: 'whynow', index: 39, label: '为什么是现在 / Why 
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   statCount: 4,
   chartType: 'number',
   focus: false,
@@ -48,11 +49,13 @@ export const controls = [
     dependsOn: 'focus', desc: '被强调指标的序号（1 起）' },
   { key: 'showIntro', label: '显示引言', type: 'toggle', def: true, desc: '显示/隐藏右上引言段落' },
   { key: 'showArgument', label: '显示论述', type: 'toggle', def: true, desc: '显示/隐藏底部现状/解法两栏' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '导语/页脚等强调色' },
 ];
 
-function StatViz({ type, s, color }) {
+function StatViz({ type, s, color, centerBg = C.dark }) {
   if (type === 'bar') {
     return (
       <div>
@@ -70,7 +73,7 @@ function StatViz({ type, s, color }) {
       <div style={{ width: 132, height: 132, borderRadius: '50%',
         background: 'conic-gradient(' + color + ' ' + (s.pct * 360) + 'deg, rgba(245,225,227,.12) 0)',
         display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ width: 90, height: 90, borderRadius: '50%', background: C.dark, display: 'flex',
+        <div style={{ width: 90, height: 90, borderRadius: '50%', background: centerBg, display: 'flex',
           alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 34, letterSpacing: '-1px', color }}>
           {s.v}<span style={{ fontSize: 20 }}>{s.u}</span>
         </div>
@@ -87,14 +90,21 @@ function StatViz({ type, s, color }) {
 export default function SwSlideWhyNow(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+  // Light shell + a permanently dark feature panel (like Donut). In dark mode the
+  // page surface goes dark and the panel lifts to a slightly raised dark tone so
+  // it still reads as a panel rather than merging into the page.
+  const pageBg = dark ? C.dark : C.blush;
+  const pageFg = dark ? C.blush : C.ink;
+  const panelBg = dark ? '#241e20' : C.dark;
   const count = Math.max(2, Math.min(4, p.statCount));
   const stats = (p.stats || []).slice(0, count);
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={pageBg} color={pageFg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.dark, color: C.blush, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: panelBg, color: C.blush, borderRadius: 38, margin: '24px 0 22px',
         padding: '46px 54px 44px', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
 
         <Shape kind="circle" size={140} color="rgba(196,78,224,.28)" style={{ top: -40, right: -40, zIndex: 0 }} />
@@ -123,7 +133,7 @@ export default function SwSlideWhyNow(props) {
               <div key={s.lb} style={{ padding: i === 0 ? '30px 24px 24px 0' : '30px 24px 24px 32px',
                 borderLeft: i === 0 ? 'none' : '1px solid ' + C.lineD, opacity: dim ? 0.32 : 1,
                 minHeight: 196, transition: 'opacity .2s' }}>
-                <StatViz type={p.chartType} s={s} color={color} />
+                <StatViz type={p.chartType} s={s} color={color} centerBg={panelBg} />
                 <div style={{ fontFamily: F.mono, fontSize: 24, letterSpacing: '.14em', textTransform: 'uppercase',
                   color: '#9a8f8c', marginTop: 16 }}>{s.lb}</div>
                 <div style={{ fontSize: 24, lineHeight: 1.5, color: '#c8c0bd', marginTop: 9 }}>{s.ds}</div>
@@ -153,7 +163,7 @@ export default function SwSlideWhyNow(props) {
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark={false} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

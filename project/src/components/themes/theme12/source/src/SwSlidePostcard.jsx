@@ -18,6 +18,7 @@ export const meta = { id: 'postcard', index: 22, label: '明信片 / Postcard' }
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   imageSide: 'left',       // photo on 'left' | 'right'
   showStamp: true,         // stamp slot + postmark
   showPostmark: true,
@@ -47,6 +48,8 @@ export const controls = [
   { key: 'showDivider', label: '分隔竖线', type: 'toggle', def: true, desc: '信息区与地址区之间的竖线' },
   { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '照片的填充方式' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '邮戳 / 标记 / 页脚强调色' },
 ];
@@ -54,17 +57,27 @@ export const controls = [
 export default function SwSlidePostcard(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const imgLeft = p.imageSide !== 'right';
   const ADDR = p.addr;
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : '#5a4f54';
+  const cardBg = dark ? '#241e20' : C.paper;   // postcard body + stamp frame (white → dark)
+  const matBg = dark ? '#241e20' : '#fbf7f3';  // photo mat (off-white → dark)
+  const line = dark ? C.lineD : C.line;
+  const line2 = dark ? C.lineD2 : C.line2;
+  const tone = dark ? 'dark' : 'light';
+
   const PhotoSide = (
     <div style={{ position: 'relative', minWidth: 0, height: '100%', padding: 18,
-      background: '#fbf7f3', borderRight: imgLeft ? '2px dashed ' + C.line2 : 'none',
-      borderLeft: imgLeft ? 'none' : '2px dashed ' + C.line2 }}>
+      background: matBg, borderRight: imgLeft ? '2px dashed ' + line2 : 'none',
+      borderLeft: imgLeft ? 'none' : '2px dashed ' + line2 }}>
       <SwImageSlot value={p.media[0] || null} onChange={(s) => p.onMediaChange(0, s)}
-        fit={p.mediaFit} accent={accent} radius={6} tone="light" placeholder={p.mediaPlaceholder} />
-      <div style={{ position: 'absolute', left: 30, bottom: 30, padding: '7px 15px', background: '#fbf7f3',
-        fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', textTransform: 'uppercase', color: '#1b1518',
+        fit={p.mediaFit} accent={accent} radius={6} tone={tone} placeholder={p.mediaPlaceholder} />
+      <div style={{ position: 'absolute', left: 30, bottom: 30, padding: '7px 15px', background: matBg,
+        fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', textTransform: 'uppercase', color: fg,
         boxShadow: '0 4px 14px rgba(0,0,0,.16)' }}>{p.photoTag}</div>
     </div>
   );
@@ -75,11 +88,11 @@ export default function SwSlidePostcard(props) {
       {/* postmark + stamp, anchored top-right */}
       {p.showStamp && (
         <div style={{ position: 'absolute', top: 34, right: 40, width: 120, zIndex: 3 }}>
-          <div style={{ width: 120, height: 144, padding: 6, background: '#fff',
+          <div style={{ width: 120, height: 144, padding: 6, background: cardBg,
             boxShadow: '0 2px 10px rgba(0,0,0,.12)',
             clipPath: 'polygon(0% 4%,4% 0,8% 4%,12% 0,16% 4%,20% 0,24% 4%,28% 0,32% 4%,36% 0,40% 4%,44% 0,48% 4%,52% 0,56% 4%,60% 0,64% 4%,68% 0,72% 4%,76% 0,80% 4%,84% 0,88% 4%,92% 0,96% 4%,100% 0,100% 96%,96% 100%,92% 96%,88% 100%,84% 96%,80% 100%,76% 96%,72% 100%,68% 96%,64% 100%,60% 96%,56% 100%,52% 96%,48% 100%,44% 96%,40% 100%,36% 96%,32% 100%,28% 96%,24% 100%,20% 96%,16% 100%,12% 96%,8% 100%,4% 96%,0 100%)' }}>
             <SwImageSlot value={p.media[1] || null} onChange={(s) => p.onMediaChange(1, s)}
-              fit="cover" accent={accent} radius={2} tone="light" placeholder={p.stampPlaceholder} />
+              fit="cover" accent={accent} radius={2} tone={tone} placeholder={p.stampPlaceholder} />
           </div>
           {p.showPostmark && (
             <div aria-hidden="true" style={{ position: 'absolute', top: -20, left: -28, opacity: .76,
@@ -104,24 +117,24 @@ export default function SwSlidePostcard(props) {
       <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.24em', textTransform: 'uppercase',
           color: accent, marginBottom: 22 }}>{p.eyebrow}</div>
-        <h2 style={{ fontWeight: 900, fontSize: 50, lineHeight: 1.16, letterSpacing: '-1px', color: C.ink }}>
+        <h2 style={{ fontWeight: 900, fontSize: 50, lineHeight: 1.16, letterSpacing: '-1px', color: fg }}>
           {renderSwText(p.title)}
         </h2>
-        <p style={{ fontSize: 23, lineHeight: 1.7, color: '#5a4f54', marginTop: 22, maxWidth: 460 }}>
+        <p style={{ fontSize: 23, lineHeight: 1.7, color: mut, marginTop: 22, maxWidth: 460 }}>
           {p.message}
         </p>
       </div>
 
       {/* address column */}
       {p.showDivider && (
-        <div style={{ minWidth: 0, borderLeft: '2px solid ' + C.line, paddingLeft: 36,
+        <div style={{ minWidth: 0, borderLeft: '2px solid ' + line, paddingLeft: 36,
           display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: 8 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
             {ADDR.map((a, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-end', gap: 14 }}>
                 <span style={{ flexShrink: 0, width: 26, fontFamily: F.mono, fontSize: 18, color: accent, fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</span>
-                <span style={{ flex: 1, borderBottom: '1.5px solid ' + C.line2, paddingBottom: 4,
-                  fontSize: 18, color: C.ink, lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden',
+                <span style={{ flex: 1, borderBottom: '1.5px solid ' + line2, paddingBottom: 4,
+                  fontSize: 18, color: fg, lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden',
                   textOverflow: 'ellipsis' }}>{a}</span>
               </div>
             ))}
@@ -132,16 +145,17 @@ export default function SwSlidePostcard(props) {
   );
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, margin: '24px 0 22px', background: C.paper, borderRadius: 20,
+      <div style={{ flex: 1, minHeight: 0, margin: '24px 0 22px', background: cardBg, borderRadius: 20,
         overflow: 'hidden', boxShadow: '0 26px 60px rgba(27,21,24,.16)', display: 'grid',
-        gridTemplateColumns: '1.05fr 1fr', position: 'relative' }}>
+        gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1fr)',
+        alignItems: 'stretch', position: 'relative' }}>
         {imgLeft ? <>{PhotoSide}{MessageSide}</> : <>{MessageSide}{PhotoSide}</>}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

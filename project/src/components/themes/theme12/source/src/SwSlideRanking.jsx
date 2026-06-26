@@ -17,6 +17,7 @@ export const meta = { id: 'ranking', index: 51, label: '平台排行 / Ranking' 
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   barCount: 6,             // 4–7 bars
   showValue: true,
   showAxis: true,
@@ -42,13 +43,15 @@ export const defaultProps = {
 };
 
 export const controls = [
-  { key: 'barCount', label: '条目数量', type: 'slider', def: 6, min: 4, max: 7, step: 1,
+  { key: 'barCount', label: '条目数量', type: 'slider', def: 6, min: 2, max: 7, step: 1,
     desc: '排行展示的平台条目数量' },
   { key: 'showValue', label: '数值标签', type: 'toggle', def: true, desc: '显示/隐藏每条末端的数值' },
   { key: 'showAxis', label: '刻度网格', type: 'toggle', def: true, desc: '显示/隐藏背景刻度网格' },
   { key: 'focus', label: '重点强调', type: 'toggle', def: true, desc: '高亮某一条，弱化其余' },
   { key: 'focusIndex', label: '强调第几条', type: 'slider', def: 1, min: 1, max: 7, step: 1,
     dependsOn: 'focus', desc: '被强调条目的序号（1 起）' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '榜首 / 导语 / 页脚强调色' },
 ];
@@ -56,20 +59,29 @@ export const controls = [
 export default function SwSlideRanking(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
-  const count = Math.max(4, Math.min(7, p.barCount));
+  const dark = p.theme === 'dark';
+  const count = Math.max(2, Math.min(7, p.barCount));
   const rows = (p.rows || []).slice(0, count);
   const max = Math.max(...rows.map((r) => r.v));
   const ticks = [0, 0.25, 0.5, 0.75, 1];
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const gridLine = dark ? C.lineD : C.line;
+  const gridLine2 = dark ? C.lineD2 : C.line2;
+  const ghostStroke = dark ? '2px rgba(245,225,227,.05)' : '2px rgba(27,21,24,.05)';
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '42px 56px 38px', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
 
         <div aria-hidden="true" style={{ position: 'absolute', top: -40, right: 38, fontFamily: F.mono, fontWeight: 700,
-          fontSize: 220, lineHeight: 0.8, color: 'transparent', WebkitTextStroke: '2px rgba(27,21,24,.05)', pointerEvents: 'none' }}>{p.ghost}</div>
+          fontSize: 220, lineHeight: 0.8, color: 'transparent', WebkitTextStroke: ghostStroke, pointerEvents: 'none' }}>{p.ghost}</div>
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 40, marginBottom: 26, position: 'relative', zIndex: 2 }}>
           <div>
@@ -79,7 +91,7 @@ export default function SwSlideRanking(props) {
             </h2>
           </div>
           <div style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.1em', textTransform: 'uppercase',
-            color: C.inkMut, textAlign: 'right', paddingBottom: 4 }}>{renderSwText(p.caption)}</div>
+            color: mut, textAlign: 'right', paddingBottom: 4 }}>{renderSwText(p.caption)}</div>
         </div>
 
         {/* bars */}
@@ -89,7 +101,7 @@ export default function SwSlideRanking(props) {
             <div style={{ position: 'absolute', inset: '0 0 26px 286px', pointerEvents: 'none' }}>
               {ticks.map((t) => (
                 <div key={t} style={{ position: 'absolute', top: 0, bottom: 0, left: (t * 100) + '%',
-                  borderLeft: '1px dashed ' + (t === 0 ? C.line2 : C.line) }} />
+                  borderLeft: '1px dashed ' + (t === 0 ? gridLine2 : gridLine) }} />
               ))}
             </div>
           )}
@@ -103,13 +115,13 @@ export default function SwSlideRanking(props) {
                 gap: 0, opacity: dim ? 0.4 : 1, transition: 'opacity .2s' }}>
                 {/* label */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, paddingRight: 24 }}>
-                  <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 26, color: C.inkMut,
+                  <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 26, color: mut,
                     width: 34, flex: '0 0 auto' }}>{String(i + 1).padStart(2, '0')}</span>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontWeight: 700, fontSize: 26, letterSpacing: '-.3px', whiteSpace: 'nowrap',
                       overflow: 'hidden', textOverflow: 'ellipsis' }}>{r.cn}</div>
                     <div style={{ fontFamily: F.mono, fontSize: 18, letterSpacing: '.1em', textTransform: 'uppercase',
-                      color: C.inkMut }}>{r.en}</div>
+                      color: mut }}>{r.en}</div>
                   </div>
                 </div>
                 {/* bar */}
@@ -118,7 +130,7 @@ export default function SwSlideRanking(props) {
                     background: color, minWidth: 8, transition: 'width .3s' }} />
                   {p.showValue && (
                     <span style={{ fontWeight: 900, fontSize: 28, letterSpacing: '-.5px',
-                      color: on ? accent : C.ink, fontVariantNumeric: 'tabular-nums' }}>{r.share}</span>
+                      color: on ? accent : fg, fontVariantNumeric: 'tabular-nums' }}>{r.share}</span>
                   )}
                 </div>
               </div>
@@ -127,7 +139,7 @@ export default function SwSlideRanking(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

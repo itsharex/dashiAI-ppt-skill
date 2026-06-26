@@ -11,7 +11,7 @@
  *  segmentCount    number 展示的赛道瓷砖数(2–5)  默认 5
  *  chartVariant    enum   编码方式            默认 'treemap' 可选 'treemap'|'bar'
  *  focusEnabled    bool   重点赛道高亮开关      默认 true
- *  focusIndex      number 重点赛道序号(从1起)  默认 1   范围 1–segmentCount
+ *  focusIndex      number 重点赛道序号(从1起)  默认 2   范围 1–segmentCount
  *  showShare       bool   瓷砖内占比百分比显隐   默认 true
  *  showTotal       bool   角落总额徽标显隐      默认 true
  *  showDecorations bool   星芒等点缀显隐        默认 true
@@ -89,7 +89,7 @@ function Slide43Treemap(props) {
     segmentCount = 5,
     chartVariant = 'treemap',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showShare = true,
     showTotal = true,
     showDecorations = true,
@@ -281,7 +281,7 @@ const META = {
     segmentCount: 5,
     chartVariant: 'treemap',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showShare: true,
     showTotal: true,
     showDecorations: true,
@@ -294,7 +294,7 @@ const META = {
     { key: 'segmentCount', type: 'slider', label: '赛道瓷砖', min: 2, max: 5, step: 1, default: 5, desc: '展示的赛道瓷砖数' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['treemap', 'bar'], optionLabels: ['矩形树图', '横向柱'], default: 'treemap', desc: '矩形树图 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一赛道' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 1, maxFromKey: 'segmentCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 2, maxFromKey: 'segmentCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道的序号' },
     { key: 'showShare', type: 'toggle', label: '占比百分比', default: true, desc: '瓷砖 / 柱尾占比显隐' },
     { key: 'showTotal', type: 'toggle', label: '合计徽标', default: true, desc: '页脚总额显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

@@ -9,7 +9,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  rowCount        number 展示的公司行数        默认 6   可选 3–6
  *  focusEnabled    bool   重点行高亮开关         默认 true
- *  focusIndex      number 重点行序号(从1起)     默认 1   范围 1–rowCount
+ *  focusIndex      number 重点行序号(从1起)     默认 2   范围 1–rowCount
  *  showBar         bool   估值规模柱条列显隐      默认 true
  *  showRating      bool   资本热度评级点显隐      默认 true
  *  showCategory    bool   赛道标签列显隐         默认 true
@@ -86,7 +86,7 @@ function Slide39Scoreboard(props) {
       rowsData = XHSSB_ROWS,
     rowCount = 6,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showBar = true,
     showRating = true,
     showCategory = true,
@@ -231,7 +231,7 @@ const META = {
     ...hlDefaults,
     rowCount: 6,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showBar: true,
     showRating: true,
     showCategory: true,
@@ -244,7 +244,7 @@ const META = {
     ...hlControls,
     { key: 'rowCount', type: 'slider', label: '公司行数', min: 3, max: 6, step: 1, default: 6, desc: '展示的公司行数' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一行' },
-    { key: 'focusIndex', type: 'slider', label: '重点行序号', min: 1, max: 6, step: 1, default: 1, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点行序号', min: 1, max: 6, step: 1, default: 2, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
     { key: 'showBar', type: 'toggle', label: '估值柱条', default: true, desc: '行内估值规模柱条' },
     { key: 'showRating', type: 'toggle', label: '资本热度', default: true, desc: '资本热度评级点' },
     { key: 'showCategory', type: 'toggle', label: '赛道标签', default: true, desc: '主投赛道标签列' },

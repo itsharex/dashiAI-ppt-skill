@@ -16,6 +16,7 @@ export const meta = { id: 'directory', index: 30, label: '名录榜 / Directory'
 
 export const defaultProps = {
   accent: C.cyan,
+  theme: 'light',          // 'light' | 'dark'
   rowCount: 6,             // 4–7 rows
   showRank: true,
   showBar: true,
@@ -51,6 +52,8 @@ export const controls = [
   { key: 'focus', label: '聚焦高亮', type: 'toggle', def: false, desc: '突出其中一行，其余常态' },
   { key: 'focusIndex', label: '聚焦第几行', type: 'slider', def: 1, min: 1, max: 7, step: 1,
     dependsOn: 'focus', desc: '高亮的行序号' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.cyan,
     options: [C.cyan, C.orange, C.purple, C.green], desc: '聚焦行 / 导语 / 页脚强调色' },
 ];
@@ -64,9 +67,21 @@ export default function SwSlideDirectory(props) {
 
   const grid = (p.showRank ? '56px ' : '') + '1.6fr 1fr 0.8fr 1.5fr';
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const metaC = dark ? 'rgba(245,225,227,.6)' : C.inkMut;
+  const headC = dark ? 'rgba(245,225,227,.5)' : C.inkMut;
+  const headRule = dark ? C.lineD2 : C.line2;
+  const rowRule = dark ? 'rgba(245,225,227,.1)' : C.line;
+  const mutedC = dark ? 'rgba(245,225,227,.5)' : C.inkMut;
+  const secC = dark ? 'rgba(245,225,227,.85)' : '#5a4f54';
+  const tagBorder = dark ? 'rgba(245,225,227,.3)' : C.line2;
+  const barTrack = dark ? 'rgba(245,225,227,.12)' : 'rgba(27,21,24,.10)';
+
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 20, display: 'flex', alignItems: 'flex-end',
         justifyContent: 'space-between', gap: 40 }}>
@@ -77,7 +92,7 @@ export default function SwSlideDirectory(props) {
           </h2>
         </div>
         <div style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.12em', textTransform: 'uppercase',
-          color: 'rgba(245,225,227,.6)', textAlign: 'right', paddingBottom: 6 }}>
+          color: metaC, textAlign: 'right', paddingBottom: 6 }}>
           {p.metaLine} {String(count).padStart(2, '0')}
         </div>
       </div>
@@ -86,8 +101,8 @@ export default function SwSlideDirectory(props) {
         {/* header */}
         <div style={{ display: 'grid', gridTemplateColumns: grid, gap: 22, alignItems: 'center',
           padding: '0 18px 12px', fontFamily: F.mono, fontSize: 17, letterSpacing: '.14em',
-          textTransform: 'uppercase', color: 'rgba(245,225,227,.5)',
-          borderBottom: '1px solid ' + C.lineD2 }}>
+          textTransform: 'uppercase', color: headC,
+          borderBottom: '1px solid ' + headRule }}>
           {p.showRank && <span>#</span>}
           <span>{p.colArtist}</span>
           <span>{p.colGenre}</span>
@@ -103,12 +118,12 @@ export default function SwSlideDirectory(props) {
             const hot = fi === i;
             return (
               <div key={a.n} style={{ display: 'grid', gridTemplateColumns: grid, gap: 22, alignItems: 'center',
-                padding: '0 18px', borderBottom: '1px solid rgba(245,225,227,.1)',
+                padding: '0 18px', borderBottom: '1px solid ' + rowRule,
                 background: hot ? accent : 'transparent', borderRadius: hot ? 14 : 0,
-                color: hot ? '#06222e' : C.blush, opacity: on ? 1 : 0.5 }}>
+                color: hot ? '#06222e' : fg, opacity: on ? 1 : 0.5 }}>
                 {p.showRank && (
                   <span style={{ fontWeight: 900, fontSize: 30, letterSpacing: '-1px',
-                    color: hot ? '#06222e' : (i === 0 ? accent : 'rgba(245,225,227,.5)') }}>{String(i + 1).padStart(2, '0')}</span>
+                    color: hot ? '#06222e' : (i === 0 ? accent : mutedC) }}>{String(i + 1).padStart(2, '0')}</span>
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
                   <span style={{ width: 44, height: 44, flexShrink: 0, borderRadius: '50%',
@@ -119,20 +134,20 @@ export default function SwSlideDirectory(props) {
                 </div>
                 <span>
                   <span style={{ fontFamily: F.mono, fontSize: 19, padding: '4px 12px', borderRadius: 999,
-                    border: '1px solid ' + (hot ? 'rgba(6,34,46,.3)' : 'rgba(245,225,227,.3)'),
-                    color: hot ? '#06222e' : 'rgba(245,225,227,.85)' }}>{a.g}</span>
+                    border: '1px solid ' + (hot ? 'rgba(6,34,46,.3)' : tagBorder),
+                    color: hot ? '#06222e' : secC }}>{a.g}</span>
                 </span>
-                <span style={{ fontSize: 23, color: hot ? '#06222e' : 'rgba(245,225,227,.85)' }}>{a.city}</span>
+                <span style={{ fontSize: 23, color: hot ? '#06222e' : secC }}>{a.city}</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14, justifyContent: 'flex-end' }}>
                   {p.showBar && (
                     <div style={{ flex: 1, maxWidth: 180, height: 8, borderRadius: 999,
-                      background: hot ? 'rgba(6,34,46,.18)' : 'rgba(245,225,227,.12)' }}>
+                      background: hot ? 'rgba(6,34,46,.18)' : barTrack }}>
                       <div style={{ width: (a.v * 100) + '%', height: '100%', borderRadius: 999,
                         background: hot ? '#06222e' : col }} />
                     </div>
                   )}
                   <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, minWidth: 76,
-                    textAlign: 'right', color: hot ? '#06222e' : C.blush }}>{a.s}</span>
+                    textAlign: 'right', color: hot ? '#06222e' : fg }}>{a.s}</span>
                 </div>
               </div>
             );
@@ -140,7 +155,7 @@ export default function SwSlideDirectory(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

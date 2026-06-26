@@ -6,6 +6,7 @@ import https from 'node:https';
 import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
+import { ensureThemePreviewFresh } from './preview-freshness.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const serveRoot = path.resolve(process.argv[2] || 'output/theme-preview/ppt');
@@ -15,9 +16,15 @@ const localName = process.env.DASHI_PPT_PREVIEW_NAME || os.hostname().split('.')
 const portScanLimit = Math.max(40, Number(process.env.DASHI_PPT_PREVIEW_PORT_SCAN || 240));
 
 if (!existsSync(path.join(serveRoot, 'index.html'))) {
+  ensureThemePreviewFresh({ serveRoot });
+}
+
+if (!existsSync(path.join(serveRoot, 'index.html'))) {
   console.error(`Preview index.html not found: ${path.join(serveRoot, 'index.html')}`);
   process.exit(1);
 }
+
+ensureThemePreviewFresh({ serveRoot });
 
 const port = await findAvailablePort(requestedPort, host);
 const logFile = path.join(serveRoot, '.preview-server.log');

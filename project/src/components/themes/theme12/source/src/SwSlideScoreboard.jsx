@@ -17,6 +17,7 @@ export const meta = { id: 'scoreboard', index: 60, label: '记分牌 / Scoreboar
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   statCount: 4,            // 2–4 metrics
   columns: 2,              // 2 | 4
   showDelta: true,
@@ -45,6 +46,8 @@ export const controls = [
   { key: 'showDelta', label: '同比', type: 'toggle', def: true, desc: '显示/隐藏同比涨跌标记' },
   { key: 'showSpark', label: '迷你走势', type: 'toggle', def: true, desc: '显示/隐藏迷你趋势线' },
   { key: 'showLede', label: '显示导语', type: 'toggle', def: true, desc: '显示/隐藏标题区导语' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '导语高亮 / 页脚强调色' },
 ];
@@ -72,9 +75,14 @@ export default function SwSlideScoreboard(props) {
   const cols = p.columns === 4 ? Math.min(4, count) : 2;
   const stats = (p.stats || []).slice(0, count);
 
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} divider={p.showLede} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 3 }}>
 
@@ -87,7 +95,7 @@ export default function SwSlideScoreboard(props) {
                 {renderSwText(p.title, { hl: { tone: 'o' } })}
               </h2>
             </div>
-            <p style={{ fontSize: 24, lineHeight: 1.6, color: C.inkMut, maxWidth: 420, paddingBottom: 6 }}>
+            <p style={{ fontSize: 24, lineHeight: 1.6, color: mut, maxWidth: 420, paddingBottom: 6 }}>
               {p.lede}
             </p>
           </div>
@@ -133,7 +141,7 @@ export default function SwSlideScoreboard(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} divider={false} dark={dark} />
     </SlideRoot>
   );
 }

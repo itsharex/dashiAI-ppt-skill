@@ -65,7 +65,7 @@ export default function SwSlideTestimonial(props) {
   // Portrait sits inside a bold accent panel so the column reads as a strong
   // design block even before any image is dropped in.
   const Portrait = (
-    <div style={{ position: 'relative', height: '100%', minWidth: 0, overflow: 'hidden',
+    <div style={{ position: 'relative', height: '100%', minWidth: 0, minHeight: 0, overflow: 'hidden',
       borderRadius: swTheme.radius, background: accent,
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: circle ? 56 : 30 }}>
       <div aria-hidden="true" style={{ position: 'absolute', top: -56, left: 18, fontWeight: 900,
@@ -74,7 +74,7 @@ export default function SwSlideTestimonial(props) {
       <div aria-hidden="true" style={{ position: 'absolute', bottom: 22, left: 30, fontFamily: F.mono,
         fontWeight: 700, fontSize: 22, letterSpacing: '.16em', color: 'rgba(255,255,255,.7)', zIndex: 2 }}>{p.portraitTag}</div>
       <div style={{ position: 'relative', zIndex: 1, width: circle ? '100%' : '100%',
-        height: circle ? 'auto' : '100%', aspectRatio: circle ? '1 / 1' : 'auto' }}>
+        height: circle ? 'auto' : '100%', aspectRatio: circle ? '1 / 1' : 'auto', minWidth: 0, minHeight: 0 }}>
         <SwImageSlot value={p.media[0] || null} onChange={(s) => p.onMediaChange(0, s)}
           fit="cover" accent={accent} radius={circle ? 999 : 18} tone="dark"
           placeholder={circle ? p.portraitPlaceholderCircle : p.portraitPlaceholderRect} />
@@ -115,7 +115,7 @@ export default function SwSlideTestimonial(props) {
       <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '0.82fr 1.18fr',
-        gap: 64, alignItems: 'stretch', padding: '24px 0 22px', position: 'relative', zIndex: 3 }}>
+        gridTemplateRows: 'minmax(0, 1fr)', gap: 64, alignItems: 'stretch', padding: '24px 0 22px', position: 'relative', zIndex: 3 }}>
         {portraitLeft ? <>{Portrait}{Quote}</> : <>{Quote}{Portrait}</>}
       </div>
 

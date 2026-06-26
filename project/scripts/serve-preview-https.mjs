@@ -6,6 +6,9 @@ import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 import tls from 'node:tls';
+import { getChromeExecutablePath } from './chrome-path.mjs';
+import { getOpenSslExecutablePath } from './openssl-path.mjs';
+import { ensureThemePreviewFresh } from './preview-freshness.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SERVE_ROOT = path.resolve(ROOT, process.argv[2] || 'output/theme-preview/ppt');
@@ -19,6 +22,8 @@ const CERT_KEY = path.join(CERT_DIR, 'localhost-key.pem');
 const CERT_FILE = path.join(CERT_DIR, 'localhost-cert.pem');
 const EXPORT_DIR = path.join(ROOT, 'output/exports');
 const EXPORT_PROGRESS = new Map();
+
+ensureThemePreviewFresh({ serveRoot: SERVE_ROOT });
 
 if (!existsSync(path.join(SERVE_ROOT, 'index.html'))) {
   console.error(`Preview index.html not found: ${path.join(SERVE_ROOT, 'index.html')}`);
@@ -113,13 +118,13 @@ function isTlsClientHello(chunk) {
 function ensureCertificate() {
   mkdirSync(CERT_DIR, { recursive: true });
   const names = ['localhost', `${LOCAL_HOSTNAME}.local`, ...LAN_IPS];
-  const meta = JSON.stringify({ names }, null, 2);
+  const meta = renderCertificateMeta(names);
   const current = existsSync(CERT_META) ? readFileSync(CERT_META, 'utf8') : '';
-  if (existsSync(CERT_KEY) && existsSync(CERT_FILE) && current === meta) return;
+  if (existsSync(CERT_KEY) && existsSync(CERT_FILE) && certificateMetaMatches(current, meta)) return;
 
   const config = path.join(CERT_DIR, 'openssl.cnf');
   writeFileSync(config, renderOpenSslConfig(names));
-  execFileSync('openssl', [
+  execFileSync(getOpenSslExecutablePath(), [
     'req',
     '-x509',
     '-newkey',
@@ -138,6 +143,14 @@ function ensureCertificate() {
     'v3_req',
   ], { stdio: 'ignore' });
   writeFileSync(CERT_META, meta + '\n');
+}
+
+function renderCertificateMeta(names) {
+  return JSON.stringify({ names }, null, 2);
+}
+
+function certificateMetaMatches(current, expected) {
+  return current.trim() === expected;
 }
 
 function renderOpenSslConfig(names) {
@@ -500,9 +513,7 @@ function timestampForFile() {
 }
 
 function getChromePath() {
-  const chrome = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-  if (!existsSync(chrome)) throw new Error(`Chrome executable not found: ${chrome}`);
-  return chrome;
+  return getChromeExecutablePath();
 }
 
 async function closeBrowser(browser) {

@@ -24,6 +24,7 @@ export const defaultProps = {
   columns: 5,              // 3 | 4 | 5
   showTitle: true,
   showCaptions: true,
+  mediaFit: 'cover',
   media: [],
   onMediaChange: () => {},
   // —— content ——
@@ -47,6 +48,8 @@ export const controls = [
     options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'showTitle', label: '标题条', type: 'toggle', def: true, desc: '显示/隐藏顶部标题区' },
   { key: 'showCaptions', label: '伙伴名', type: 'toggle', def: true, desc: '显示/隐藏 logo 下方名称' },
+  { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
+    options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: 'Logo 图片的填充方式' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '高亮 / 页脚强调色' },
 ];
@@ -71,7 +74,7 @@ export default function SwSlideLogoWall(props) {
 
   return (
     <SlideRoot bg={bg} color={fg}>
-      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+      <Bar meta={p.barMeta} accent={accent} dark={dark} divider={p.showTitle} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 3 }}>
         {p.showTitle && (
@@ -99,7 +102,7 @@ export default function SwSlideLogoWall(props) {
               alignItems: 'center', justifyContent: 'center', minWidth: 0, minHeight: 0 }}>
               <div style={{ flex: 1, width: '100%', minHeight: 0 }}>
                 <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-                  fit="contain" accent={accent} radius={10} tone={dark ? 'dark' : 'light'}
+                  fit={p.mediaFit} accent={accent} radius={10} tone={dark ? 'dark' : 'light'}
                   placeholder={p.mediaPlaceholder} />
               </div>
               {p.showCaptions && (
@@ -112,7 +115,7 @@ export default function SwSlideLogoWall(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} divider={false} />
     </SlideRoot>
   );
 }

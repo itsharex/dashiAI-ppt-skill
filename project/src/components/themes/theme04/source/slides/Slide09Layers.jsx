@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  layerCount       number 展示层数            默认 3   可选 1–3
  *  focusEnabled     bool   重点突出开关         默认 false
- *  focusIndex       number 重点层序号(从1起)    默认 1   范围 1–layerCount
+ *  focusIndex       number 重点层序号(从1起)    默认 2   范围 1–layerCount
  *  showSegments     bool   细分环节显隐         默认 true
  *  showTags         bool   代表公司标签显隐      默认 true
  *  showDecorations  bool   装饰元素显隐         默认 true
@@ -62,7 +62,7 @@ function Slide09Layers(props) {
   const {
     layerCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showSegments = true,
     showTags = true,
     showDecorations = true,
@@ -180,7 +180,7 @@ const META = {
     ...hlDefaults,
     layerCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showSegments: true,
     showTags: true,
     showDecorations: true,
@@ -194,7 +194,7 @@ const META = {
     ...hlControls,
     { key: 'layerCount', type: 'slider', label: '展示层数', min: 1, max: 3, step: 1, default: 3, desc: '展示的产业链层数(上→中→下游)' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一层' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'layerCount', showIf: (v) => v.focusEnabled, desc: '被高亮层的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'layerCount', showIf: (v) => v.focusEnabled, desc: '被高亮层的序号' },
     { key: 'showSegments', type: 'toggle', label: '细分环节', default: true, desc: '每层的细分环节卡' },
     { key: 'showTags', type: 'toggle', label: '公司标签', default: true, desc: '代表公司标签' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

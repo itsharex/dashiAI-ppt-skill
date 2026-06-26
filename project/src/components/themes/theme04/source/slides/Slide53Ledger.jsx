@@ -10,7 +10,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  rowCount        number 展示的机构行数(3–6)   默认 6
  *  focusEnabled    bool   重点行高亮开关         默认 true
- *  focusIndex      number 重点行序号(从1起)     默认 1   范围 1–rowCount
+ *  focusIndex      number 重点行序号(从1起)     默认 2   范围 1–rowCount
  *  showBar         bool   出手次数柱条列显隐      默认 true
  *  showType        bool   机构类型标签列显隐      默认 true
  *  showRep         bool   代表押注列显隐         默认 true
@@ -75,7 +75,7 @@ function Slide53Ledger(props) {
       rowsData = XHSLG_ROWS,
     rowCount = 6,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showBar = true,
     showType = true,
     showRep = true,
@@ -221,7 +221,7 @@ const META = {
     ...hlDefaults,
     rowCount: 6,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showBar: true,
     showType: true,
     showRep: true,
@@ -234,7 +234,7 @@ const META = {
     ...hlControls,
     { key: 'rowCount', type: 'slider', label: '机构行数', min: 3, max: 6, step: 1, default: 6, desc: '展示的出资方行数' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一行' },
-    { key: 'focusIndex', type: 'slider', label: '重点行序号', min: 1, max: 6, step: 1, default: 1, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点行序号', min: 1, max: 6, step: 1, default: 2, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
     { key: 'showBar', type: 'toggle', label: '出手柱条', default: true, desc: '行内出手次数柱条' },
     { key: 'showType', type: 'toggle', label: '类型标签', default: true, desc: '机构类型标签列' },
     { key: 'showRep', type: 'toggle', label: '代表押注', default: true, desc: '代表押注列' },

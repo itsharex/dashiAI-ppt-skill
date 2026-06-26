@@ -22,6 +22,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_SCATTER_POINTS = 6;
+const MAX_SCATTER_FOCUS_INDEX = 5;
+
 export const slideScatterDefaults = {
   kicker: 'VALUATION · 估值地形',
   title: '估值与营收 ',
@@ -52,11 +55,11 @@ export const slideScatterDefaults = {
 
 export const slideScatterControls = [
   { key: 'pointCount', type: 'number', label: '公司数量', default: 6, min: 3, step: 1,
-    maxFrom: (p) => (p.points ? p.points.length : 8), describe: '散点上展示的公司数量' },
+    max: MAX_SCATTER_POINTS, maxFrom: (p) => Math.min(MAX_SCATTER_POINTS, (p.points ? p.points.length : MAX_SCATTER_POINTS)), describe: '散点上展示的公司数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '辉光强调某一气泡（其余淡出）' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.pointCount || 1) - 1),
+    oneBased: true, max: MAX_SCATTER_FOCUS_INDEX, maxFrom: (p) => Math.max(0, Math.min(MAX_SCATTER_FOCUS_INDEX, (p.pointCount || 1) - 1)),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调气泡的序号' },
   { key: 'showGrid', type: 'toggle', label: '网格刻度', default: true,
     describe: '坐标网格与刻度显隐' },
@@ -150,9 +153,9 @@ export function SlideScatter(props) {
   const sc = p.gxnScheme || {};
   const palette = sc.palette || ['#2fe07f', '#4ea2ff', '#9b7dff', '#ff6fae', '#b9f24a', '#2fe0c4', '#ffc24a'];
 
-  const count = Math.max(3, Math.min(p.points.length, p.pointCount));
+  const count = Math.max(3, Math.min(MAX_SCATTER_POINTS, p.points.length, p.pointCount));
   const points = p.points.slice(0, count);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_SCATTER_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const fp = fIdx >= 0 ? points[fIdx] : null;
 
   return (

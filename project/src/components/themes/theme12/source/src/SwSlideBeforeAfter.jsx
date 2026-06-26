@@ -18,6 +18,7 @@ export const meta = { id: 'beforeafter', index: 27, label: '前后对比 / Befor
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'dark',             // 'light' | 'dark'
   orientation: 'horizontal', // 'horizontal' (side by side) | 'vertical' (stacked)
   showLabels: true,          // BEFORE / AFTER chips
   showHandle: true,          // seam handle
@@ -49,6 +50,8 @@ export const controls = [
   { key: 'showLabels', label: '前后标签', type: 'toggle', def: true, desc: '显示/隐藏 BEFORE / AFTER 标签' },
   { key: 'showHandle', label: '中缝手柄', type: 'toggle', def: true, desc: '显示/隐藏接缝处的圆形手柄' },
   { key: 'showStat', label: '变化数据', type: 'toggle', def: true, desc: '显示/隐藏底部变化数据条' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '图片的填充方式' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
@@ -58,7 +61,13 @@ export const controls = [
 export default function SwSlideBeforeAfter(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const horiz = p.orientation !== 'vertical';
+
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? 'rgba(245,225,227,.6)' : C.inkMut;
+  const lineB = dark ? C.lineD2 : C.line2;
 
   const Chip = ({ text, sub, tone }) => (
     <div style={{ position: 'absolute', zIndex: 4,
@@ -75,7 +84,7 @@ export default function SwSlideBeforeAfter(props) {
   const Panel = ({ i, tone }) => (
     <div style={{ position: 'relative', minWidth: 0, minHeight: 0 }}>
       <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-        fit={p.mediaFit} accent={accent} radius={0} tone="dark"
+        fit={p.mediaFit} accent={accent} radius={0} tone={dark ? 'dark' : 'light'}
         placeholder={tone === 'before' ? p.beforePlaceholder : p.afterPlaceholder} />
       {tone === 'before' && (
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(27,21,24,.22)', pointerEvents: 'none' }} />
@@ -86,8 +95,8 @@ export default function SwSlideBeforeAfter(props) {
   );
 
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, margin: '22px 0', display: 'flex', flexDirection: 'column' }}>
         <div style={{ marginBottom: 16, flexShrink: 0 }}>
@@ -131,13 +140,13 @@ export default function SwSlideBeforeAfter(props) {
             gap: 28 }}>
             {p.stats.map((s, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 16,
-                borderTop: '2px solid ' + (i === 0 ? accent : C.lineD2), paddingTop: 12 }}>
+                borderTop: '2px solid ' + (i === 0 ? accent : lineB), paddingTop: 12 }}>
                 <span style={{ fontWeight: 900, fontSize: 46, letterSpacing: '-1.5px',
-                  color: i === 0 ? accent : C.blush }}>{s.v}</span>
+                  color: i === 0 ? accent : fg }}>{s.v}</span>
                 <span style={{ display: 'flex', flexDirection: 'column' }}>
                   <span style={{ fontSize: 21, fontWeight: 700 }}>{s.l}</span>
                   <span style={{ fontFamily: F.mono, fontSize: 16, letterSpacing: '.1em', textTransform: 'uppercase',
-                    color: 'rgba(245,225,227,.6)' }}>{s.e}</span>
+                    color: mut }}>{s.e}</span>
                 </span>
               </div>
             ))}
@@ -145,7 +154,7 @@ export default function SwSlideBeforeAfter(props) {
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

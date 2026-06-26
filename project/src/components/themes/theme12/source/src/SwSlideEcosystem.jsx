@@ -17,6 +17,7 @@ export const meta = { id: 'ecosystem', index: 8, label: '生态网络 / Ecosyste
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   nodeCount: 6,            // 3–6 orbiting nodes
   showConnectors: true,    // spokes from hub to nodes
   showCenter: true,        // central hub label
@@ -48,6 +49,8 @@ export const controls = [
   { key: 'showConnectors', label: '连接线', type: 'toggle', def: true, desc: '显示/隐藏中枢到各节点的连线' },
   { key: 'showCenter', label: '中枢标签', type: 'toggle', def: true, desc: '显示/隐藏中央中枢说明' },
   { key: 'showNodeEn', label: '英文副标', type: 'toggle', def: true, desc: '显示/隐藏节点上的英文副标题' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '中枢 / 连线 / 页脚强调色' },
 ];
@@ -55,8 +58,13 @@ export const controls = [
 export default function SwSlideEcosystem(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(6, p.nodeCount));
   const items = (p.nodes || []).slice(0, count);
+
+  const mut = dark ? '#c8c0bd' : '#5a4f54';
+  const inkMut = dark ? '#c8c0bd' : C.inkMut;
+  const panelBg = dark ? '#241e20' : C.paper;
 
   // satellite positions on an ellipse (percent of the plot box), starting top.
   const rx = 35, ry = 37, cx = 50, cy = 50;
@@ -66,8 +74,8 @@ export default function SwSlideEcosystem(props) {
   });
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={dark ? C.dark : C.blush} color={dark ? C.blush : C.ink}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '0.82fr 1.18fr',
         gap: 44, padding: '26px 0 22px', alignItems: 'stretch' }}>
@@ -78,11 +86,11 @@ export default function SwSlideEcosystem(props) {
           <h2 style={{ fontWeight: 900, fontSize: 60, lineHeight: 1.08, letterSpacing: '-1.4px', marginTop: 18 }}>
             {renderSwText(p.title, { hl: { tone: 'o' } })}
           </h2>
-          <p style={{ fontSize: 25, lineHeight: 1.6, color: '#5a4f54', marginTop: 24, maxWidth: 440 }}>
+          <p style={{ fontSize: 25, lineHeight: 1.6, color: mut, marginTop: 24, maxWidth: 440 }}>
             {p.intro}
           </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 30,
-            fontFamily: F.mono, fontSize: 22, letterSpacing: '.06em', color: C.inkMut }}>
+            fontFamily: F.mono, fontSize: 22, letterSpacing: '.06em', color: inkMut }}>
             <span style={{ width: 34, height: 34, borderRadius: '50%', background: accent, color: '#fff',
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>{count}</span>
             <span>{p.moduleNote}</span>
@@ -90,7 +98,7 @@ export default function SwSlideEcosystem(props) {
         </div>
 
         {/* radial diagram */}
-        <div style={{ position: 'relative', background: C.paper, borderRadius: swTheme.radius,
+        <div style={{ position: 'relative', background: panelBg, borderRadius: swTheme.radius,
           overflow: 'hidden', minWidth: 0 }}>
           {/* connectors */}
           {p.showConnectors && (
@@ -117,7 +125,7 @@ export default function SwSlideEcosystem(props) {
                   <div style={{ fontWeight: 900, fontSize: 25, letterSpacing: '-.3px', whiteSpace: 'nowrap' }}>{it.cn}</div>
                   {p.showNodeEn && (
                     <div style={{ fontFamily: F.mono, fontSize: 17, letterSpacing: '.1em', textTransform: 'uppercase',
-                      color: C.inkMut, marginTop: 2 }}>{it.en}</div>
+                      color: inkMut, marginTop: 2 }}>{it.en}</div>
                   )}
                 </div>
               </div>
@@ -140,7 +148,7 @@ export default function SwSlideEcosystem(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

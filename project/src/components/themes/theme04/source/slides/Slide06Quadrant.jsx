@@ -5,7 +5,7 @@
  *
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  focusEnabled    bool   重点突出开关        默认 false
- *  focusIndex      number 重点象限序号(1–4)   默认 1
+ *  focusIndex      number 重点象限序号(1–4)   默认 2
  *  chipCount       number 每格示例标签数量     默认 3   可选 0–4
  *  showAxisLabels  bool   坐标轴标注显隐       默认 true
  *  showChips       bool   示例标签显隐         默认 true
@@ -45,7 +45,7 @@ function QdSpark({ size = 20, color = '#fff', style }) {
 function Slide06Quadrant(props) {
   const {
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     chipCount = 3,
     showAxisLabels = true,
     showChips = true,
@@ -181,7 +181,7 @@ const META = {
   defaults: {
     ...hlDefaults,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     chipCount: 3,
     showAxisLabels: true,
     showChips: true,
@@ -198,7 +198,7 @@ const META = {
   controls: [
     ...hlControls,
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一象限' },
-    { key: 'focusIndex', type: 'slider', label: '重点象限', min: 1, max: 4, step: 1, default: 1, showIf: (v) => v.focusEnabled, desc: '被高亮象限序号(1左上→4右下)' },
+    { key: 'focusIndex', type: 'slider', label: '重点象限', min: 1, max: 4, step: 1, default: 2, showIf: (v) => v.focusEnabled, desc: '被高亮象限序号(1左上→4右下)' },
     { key: 'chipCount', type: 'slider', label: '标签数量', min: 0, max: 4, step: 1, default: 3, desc: '每个象限展示的示例标签数量' },
     { key: 'showAxisLabels', type: 'toggle', label: '坐标轴标注', default: true, desc: '横纵坐标轴文字' },
     { key: 'showChips', type: 'toggle', label: '示例标签', default: true, desc: '象限内示例公司标签' },

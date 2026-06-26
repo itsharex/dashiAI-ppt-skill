@@ -11,7 +11,7 @@
  *  gaugeCount      number 展示的仪表盘数量(1–3)  默认 3
  *  chartVariant    enum   编码方式             默认 'gauge' 可选 'gauge'|'bar'
  *  focusEnabled    bool   重点仪表高亮开关       默认 false
- *  focusIndex      number 重点仪表序号(从1起)   默认 1   范围 1–gaugeCount
+ *  focusIndex      number 重点仪表序号(从1起)   默认 2   范围 1–gaugeCount
  *  showContext     bool   盘下注释行显隐         默认 true
  *  showTrack       bool   底环（未填充弧）显隐    默认 true
  *  showDecorations bool   星芒等点缀显隐         默认 true
@@ -87,7 +87,7 @@ function Slide44Gauges(props) {
     gaugeCount = 3,
     chartVariant = 'gauge',
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showContext = true,
     showTrack = true,
     showDecorations = true,
@@ -220,7 +220,7 @@ const META = {
     gaugeCount: 3,
     chartVariant: 'gauge',
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showContext: true,
     showTrack: true,
     showDecorations: true,
@@ -233,7 +233,7 @@ const META = {
     { key: 'gaugeCount', type: 'slider', label: '仪表盘数', min: 1, max: 3, step: 1, default: 3, desc: '展示的环形仪表盘数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['gauge', 'bar'], optionLabels: ['环形盘', '横向柱'], default: 'gauge', desc: '环形仪表盘 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一仪表盘' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'gaugeCount', showIf: (v) => v.focusEnabled, desc: '被高亮仪表盘的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'gaugeCount', showIf: (v) => v.focusEnabled, desc: '被高亮仪表盘的序号' },
     { key: 'showContext', type: 'toggle', label: '盘下注释', default: true, desc: '仪表盘下方注释行' },
     { key: 'showTrack', type: 'toggle', label: '底环', default: true, desc: '未填充弧（底环）显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

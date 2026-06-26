@@ -17,6 +17,7 @@ export const meta = { id: 'showcase', index: 15, label: '图片页 / In Context'
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',            // 'light' | 'dark'
   mediaCount: 3,             // 0–5 image slots
   mediaFit: 'cover',         // multi-image fill mode
   showCaption: true,
@@ -43,6 +44,8 @@ export const controls = [
     dependsOn: 'mediaCount', desc: '多图时图片的填充方式' },
   { key: 'showCaption', label: '显示图注', type: 'toggle', def: true, desc: '显示/隐藏左栏图注说明' },
   { key: 'showDecorations', label: '显示装饰', type: 'toggle', def: true, desc: '显示/隐藏编号角标装饰' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '导语 / 角标 / 页脚强调色' },
 ];
@@ -56,12 +59,12 @@ const LAYOUTS = {
 };
 const AREAS = ['a', 'b', 'c', 'd', 'e'];
 
-function Gallery({ count, media, onMediaChange, fit, accent, placeholderHero, placeholder }) {
+function Gallery({ count, media, onMediaChange, fit, accent, tone = 'light', placeholderHero, placeholder }) {
   if (count === 1) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
         <SwImageSlot value={media[0] || null} onChange={(s) => onMediaChange(0, s)}
-          adaptive fit="contain" accent={accent} radius={swTheme.radius}
+          adaptive fit="contain" accent={accent} radius={swTheme.radius} tone={tone}
           maxRatio={2.1} minRatio={0.7} placeholder={placeholderHero} />
       </div>
     );
@@ -73,7 +76,7 @@ function Gallery({ count, media, onMediaChange, fit, accent, placeholderHero, pl
       {Array.from({ length: count }).map((_, i) => (
         <div key={i} style={{ gridArea: AREAS[i], minHeight: 0, minWidth: 0 }}>
           <SwImageSlot value={media[i] || null} onChange={(s) => onMediaChange(i, s)}
-            fit={fit} accent={accent} radius={swTheme.radius} label={i + 1} placeholder={placeholder} />
+            fit={fit} accent={accent} radius={swTheme.radius} tone={tone} label={i + 1} placeholder={placeholder} />
         </div>
       ))}
     </div>
@@ -83,11 +86,18 @@ function Gallery({ count, media, onMediaChange, fit, accent, placeholderHero, pl
 export default function SwSlideShowcase(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+  const tone = dark ? 'dark' : 'light';
   const count = Math.max(0, Math.min(5, p.mediaCount));
   const hasImages = count > 0;
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const railBg = dark ? '#241e20' : C.dark;          // dark text rail (elevated panel in dark mode)
+  const mut0 = dark ? '#c8c0bd' : '#4f444a';          // count===0 statement caption
+
   const TextRail = hasImages ? (
-    <div style={{ position: 'relative', overflow: 'hidden', borderRadius: swTheme.radius, background: C.dark,
+    <div style={{ position: 'relative', overflow: 'hidden', borderRadius: swTheme.radius, background: railBg,
       color: C.blush, padding: '44px 40px 38px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <div aria-hidden="true" style={{ position: 'absolute', top: -50, right: -8, fontFamily: F.mono, fontWeight: 700,
         fontSize: 200, lineHeight: 0.8, color: 'rgba(245,225,227,.06)', pointerEvents: 'none' }}>14</div>
@@ -115,7 +125,7 @@ export default function SwSlideShowcase(props) {
         {renderSwText((p.title || '').replace('\n', ''), { hl: { tone: 'o' } })}
       </h2>
       {p.showCaption && (
-        <p style={{ fontSize: T.body, lineHeight: 1.7, color: '#4f444a', marginTop: 22, maxWidth: 980 }}>
+        <p style={{ fontSize: T.body, lineHeight: 1.7, color: mut0, marginTop: 22, maxWidth: 980 }}>
           {p.caption}
         </p>
       )}
@@ -123,22 +133,22 @@ export default function SwSlideShowcase(props) {
   );
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, position: 'relative', zIndex: 3, padding: '26px 0 22px',
         display: 'grid', gap: hasImages ? 56 : 0,
-        gridTemplateColumns: hasImages ? '360px 1fr' : '1fr', alignItems: 'stretch' }}>
+        gridTemplateColumns: hasImages ? '360px 1fr' : '1fr', gridTemplateRows: 'minmax(0, 1fr)', alignItems: 'stretch' }}>
         {TextRail}
         {hasImages && (
           <div style={{ minWidth: 0, minHeight: 0 }}>
             <Gallery count={count} media={p.media} onMediaChange={p.onMediaChange}
-              fit={p.mediaFit} accent={accent} placeholderHero={p.mediaPlaceholderHero} placeholder={p.mediaPlaceholder} />
+              fit={p.mediaFit} accent={accent} tone={tone} placeholderHero={p.mediaPlaceholderHero} placeholder={p.mediaPlaceholder} />
           </div>
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

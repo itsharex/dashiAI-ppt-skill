@@ -21,6 +21,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_HEATMAP_CELLS = 6;
+const MAX_HEATMAP_FOCUS_INDEX = 5;
+
 export const slideHeatmapDefaults = {
   kicker: 'HEATMAP · 月度节奏',
   title: '逐月融资热力 ',
@@ -31,25 +34,25 @@ export const slideHeatmapDefaults = {
     { label: '7 月', value: 92 }, { label: '8 月', value: 118 }, { label: '9 月', value: 108 },
     { label: '10 月', value: 73 }, { label: '11 月', value: 81 }, { label: '12 月', value: 52 },
   ],
-  cellCount: 12,
+  cellCount: MAX_HEATMAP_CELLS,
   columns: 6,
   valueUnit: '亿',
   focusEnabled: true,
-  focusIndex: 7,
+  focusIndex: 4,
   showValues: true,
   showPeakTag: true,
   showScale: true,
 };
 
 export const slideHeatmapControls = [
-  { key: 'cellCount', type: 'number', label: '单元格数量', default: 12, min: 3, step: 1,
-    maxFrom: (p) => (p.cells ? p.cells.length : 12), describe: '展示的时间单元数量' },
+  { key: 'cellCount', type: 'number', label: '单元格数量', default: MAX_HEATMAP_CELLS, min: 3, step: 1,
+    max: MAX_HEATMAP_CELLS, maxFrom: (p) => Math.min(MAX_HEATMAP_CELLS, (p.cells ? p.cells.length : MAX_HEATMAP_CELLS)), describe: '展示的时间单元数量' },
   { key: 'columns', type: 'number', label: '网格列数', default: 6, min: 2, max: 6, step: 1,
     describe: '热力网格的列数，自动换行' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮某一单元格' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 7, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.cellCount || 1) - 1),
+    oneBased: true, max: MAX_HEATMAP_FOCUS_INDEX, maxFrom: (p) => Math.max(0, Math.min(MAX_HEATMAP_FOCUS_INDEX, (p.cellCount || 1) - 1)),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调单元格的序号' },
   { key: 'showValues', type: 'toggle', label: '数值显示', default: true,
     describe: '单元格内显示/隐藏数值' },
@@ -61,10 +64,10 @@ export const slideHeatmapControls = [
 
 export function SlideHeatmap(props) {
   const p = { ...slideHeatmapDefaults, ...props };
-  const count = Math.max(2, Math.min(p.cells.length, p.cellCount));
+  const count = Math.max(2, Math.min(MAX_HEATMAP_CELLS, p.cells.length, p.cellCount));
   const cells = p.cells.slice(0, count);
   const cols = Math.max(2, Math.min(6, p.columns));
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_HEATMAP_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const vMax = Math.max(...cells.map((c) => c.value), 1);
   const vMin = Math.min(...cells.map((c) => c.value), 0);
   const peakIdx = p.showPeakTag ? cells.reduce((m, c, i) => (c.value > cells[m].value ? i : m), 0) : -1;

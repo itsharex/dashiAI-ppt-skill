@@ -12,7 +12,7 @@
  *  statCount       number 计分卡数量(2–4)         默认 4
  *  layoutVariant   enum   排布                     默认 'grid' 可选 'grid'|'row'
  *  focusEnabled    bool   重点卡高亮开关            默认 false
- *  focusIndex      number 重点卡序号(从1起)        默认 1   范围 1–statCount
+ *  focusIndex      number 重点卡序号(从1起)        默认 2   范围 1–statCount
  *  showDelta       bool   趋势徽标显隐             默认 true
  *  showContext     bool   卡片注脚一句显隐          默认 true
  *  showDecorations bool   星芒等点缀显隐           默认 true
@@ -69,7 +69,7 @@ function Slide61Scorecards(props) {
     statCount = 4,
     layoutVariant = 'grid',
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showDelta = true,
     showContext = true,
     showDecorations = true,
@@ -190,7 +190,7 @@ const META = {
     statCount: 4,
     layoutVariant: 'grid',
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showDelta: true,
     showContext: true,
     showDecorations: true,
@@ -204,7 +204,7 @@ const META = {
     { key: 'statCount', type: 'slider', label: '计分卡数', min: 2, max: 4, step: 1, default: 4, desc: '展示的计分卡数量' },
     { key: 'layoutVariant', type: 'radio', label: '排布', options: ['grid', 'row'], optionLabels: ['2×2 网格', '一行排开'], default: 'grid', desc: '网格 / 一行（2 张自动一行）' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一张卡' },
-    { key: 'focusIndex', type: 'slider', label: '重点卡序号', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'statCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点卡序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'statCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡的序号' },
     { key: 'showDelta', type: 'toggle', label: '趋势徽标', default: true, desc: '卡内趋势徽标' },
     { key: 'showContext', type: 'toggle', label: '卡片注脚', default: true, desc: '卡片底部一句注脚' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

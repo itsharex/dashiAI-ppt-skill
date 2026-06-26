@@ -78,6 +78,7 @@ export default function SwSlideBento(props) {
   const count = Math.max(4, Math.min(6, p.tileCount));
   const L = LAYOUTS[count];
   const tiles = (p.tiles || []).slice(0, L.ord.length);
+  const focusIndex = Math.max(1, Math.min(count, Number(p.focusIndex) || 1));
 
   const pageBg = dark ? C.dark : C.blush;
   const fg = dark ? C.blush : C.ink;
@@ -106,7 +107,8 @@ export default function SwSlideBento(props) {
           const area = L.ord[i];
           const hero = t.kind === 'hero';
           const kpi = t.kind === 'kpi';
-          const dim = p.focus && (i + 1) !== p.focusIndex;
+          const dim = p.focus && (i + 1) !== focusIndex;
+          const hot = p.focus && !dim;
           const pal = swCardPalette[PAL_ORDER[(i - 1 + PAL_ORDER.length) % PAL_ORDER.length]];
 
           const cardBg = hero ? accent : pal.bg;
@@ -114,49 +116,54 @@ export default function SwSlideBento(props) {
           const bodyC = hero ? 'rgba(255,255,255,.92)' : pal.body;
           const labelC = hero ? 'rgba(255,255,255,.82)' : pal.sub;
           const numC = hero ? 'rgba(255,255,255,.6)' : pal.name;
+          const focusRing = hero ? 'rgba(255,255,255,.9)' : accent;
 
           return (
-            <div key={t.en} style={{ gridArea: area, position: 'relative', overflow: 'hidden',
-              borderRadius: 24, minWidth: 0, minHeight: 0, display: 'flex', flexDirection: 'column',
-              padding: hero ? '40px 40px 38px' : '28px 30px 26px',
-              background: cardBg, color: bodyC,
-              opacity: dim ? 0.34 : 1, transition: 'opacity .2s',
-              outline: p.focus && !dim && !hero ? '3px solid ' + accent : 'none', outlineOffset: -3 }}>
+            <div key={t.en} style={{ gridArea: area, position: 'relative',
+              borderRadius: 24, minWidth: 0, minHeight: 0, display: 'flex' }}>
+              <div style={{ position: 'relative', overflow: 'hidden',
+                borderRadius: 'inherit', minWidth: 0, minHeight: 0, width: '100%', height: '100%',
+                display: 'flex', flexDirection: 'column',
+                padding: hero ? '40px 40px 38px' : '28px 30px 26px',
+                background: cardBg, color: bodyC,
+                opacity: dim ? 0.34 : 1, transition: 'opacity .2s',
+                boxShadow: hot ? 'inset 0 0 0 3px ' + focusRing : 'none' }}>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
-                <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: hero ? 24 : 21,
-                  letterSpacing: '.14em', textTransform: 'uppercase', color: labelC }}>{t.en}</span>
-                <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: hero ? 24 : 20, color: numC }}>{String(i + 1).padStart(2, '0')}</span>
-              </div>
-
-              {kpi ? (
-                <div style={{ marginTop: 'auto', position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontWeight: 900, fontSize: 76, lineHeight: 1, letterSpacing: '-2px', color: pal.name }}>{t.kpi}</div>
-                  <h3 style={{ fontWeight: 900, fontSize: 28, letterSpacing: '-.3px', marginTop: 12, color: titleC }}>{t.cn}</h3>
-                  <p style={{ fontSize: 21, lineHeight: 1.5, color: bodyC, marginTop: 6 }}>{t.d}</p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 1 }}>
+                  <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: hero ? 24 : 21,
+                    letterSpacing: '.14em', textTransform: 'uppercase', color: labelC }}>{t.en}</span>
+                  <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: hero ? 24 : 20, color: numC }}>{String(i + 1).padStart(2, '0')}</span>
                 </div>
-              ) : (
-                <>
-                  <h3 style={{ fontWeight: 900, fontSize: hero ? 46 : 30, letterSpacing: '-.6px',
-                    marginTop: hero ? 26 : 16, position: 'relative', zIndex: 1, color: titleC }}>{t.cn}</h3>
-                  <p style={{ fontSize: hero ? T.body : 22, lineHeight: 1.6, marginTop: hero ? 16 : 10,
-                    maxWidth: hero ? 440 : '88%', position: 'relative', zIndex: 1, color: bodyC }}>{t.d}</p>
-                  {hero && (
-                    <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 14, position: 'relative', zIndex: 1 }}>
-                      <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.04em',
-                        padding: '9px 20px', borderRadius: 999, background: '#fff', color: accent }}>{p.heroTags[0]}</span>
-                      <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.04em',
-                        padding: '9px 20px', borderRadius: 999, border: '1.5px solid rgba(255,255,255,.5)' }}>{p.heroTags[1]}</span>
-                    </div>
-                  )}
-                </>
-              )}
 
-              {p.showDeco && !hero && !kpi && <TileDeco i={i} color={pal.deco[0]} />}
-              {hero && (
-                <div aria-hidden="true" style={{ position: 'absolute', right: -40, top: -50,
-                  width: 200, height: 200, borderRadius: '50%', border: '26px solid rgba(255,255,255,.16)' }} />
-              )}
+                {kpi ? (
+                  <div style={{ marginTop: 'auto', position: 'relative', zIndex: 1 }}>
+                    <div style={{ fontWeight: 900, fontSize: 76, lineHeight: 1, letterSpacing: '-2px', color: pal.name }}>{t.kpi}</div>
+                    <h3 style={{ fontWeight: 900, fontSize: 28, letterSpacing: '-.3px', marginTop: 12, color: titleC }}>{t.cn}</h3>
+                    <p style={{ fontSize: 21, lineHeight: 1.5, color: bodyC, marginTop: 6 }}>{t.d}</p>
+                  </div>
+                ) : (
+                  <>
+                    <h3 style={{ fontWeight: 900, fontSize: hero ? 46 : 30, letterSpacing: '-.6px',
+                      marginTop: hero ? 26 : 16, position: 'relative', zIndex: 1, color: titleC }}>{t.cn}</h3>
+                    <p style={{ fontSize: hero ? T.body : 22, lineHeight: 1.6, marginTop: hero ? 16 : 10,
+                      maxWidth: hero ? 440 : '88%', position: 'relative', zIndex: 1, color: bodyC }}>{t.d}</p>
+                    {hero && (
+                      <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 14, position: 'relative', zIndex: 1 }}>
+                        <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.04em',
+                          padding: '9px 20px', borderRadius: 999, background: '#fff', color: accent }}>{p.heroTags[0]}</span>
+                        <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.04em',
+                          padding: '9px 20px', borderRadius: 999, border: '1.5px solid rgba(255,255,255,.5)' }}>{p.heroTags[1]}</span>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {p.showDeco && !hero && !kpi && <TileDeco i={i} color={pal.deco[0]} />}
+                {hero && (
+                  <div aria-hidden="true" style={{ position: 'absolute', right: -40, top: -50,
+                    width: 200, height: 200, borderRadius: '50%', border: '26px solid rgba(255,255,255,.16)' }} />
+                )}
+              </div>
             </div>
           );
         })}

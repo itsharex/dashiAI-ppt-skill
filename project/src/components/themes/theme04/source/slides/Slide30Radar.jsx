@@ -7,7 +7,7 @@
  *  itemCount       number 对比的玩家数量        默认 3   可选 2–3
  *  chartVariant    enum   图表类型            默认 'radar' 可选 'radar'|'bars'
  *  focusEnabled    bool   重点玩家高亮开关       默认 true
- *  focusIndex      number 重点玩家序号(从1起)    默认 2
+ *  focusIndex      number 重点玩家序号(从1起)    默认 3
  *  showGrid        bool   雷达网格 / 刻度环显隐   默认 true（radar 生效）
  *  showLegend      bool   图例 / 维度图例显隐     默认 true
  *  showDecorations bool   星芒 / 圆环等点缀     默认 true
@@ -148,7 +148,7 @@ function Slide30Radar(props) {
     itemCount = 3,
     chartVariant = 'radar',
     focusEnabled = true,
-    focusIndex = 2,
+    focusIndex = 3,
     showGrid = true,
     showLegend = true,
     showDecorations = true,
@@ -283,7 +283,7 @@ const META = {
     itemCount: 3,
     chartVariant: 'radar',
     focusEnabled: true,
-    focusIndex: 2,
+    focusIndex: 3,
     showGrid: true,
     showLegend: true,
     showDecorations: true,
@@ -296,7 +296,7 @@ const META = {
     { key: 'itemCount', type: 'slider', label: '玩家数量', min: 2, max: 3, step: 1, default: 3, desc: '对比的玩家数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['radar', 'bars'], optionLabels: ['雷达', '分组柱'], default: 'radar', desc: '雷达图 / 分组柱状图' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一玩家' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮玩家的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 3, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮玩家的序号' },
     { key: 'showGrid', type: 'toggle', label: '雷达网格', default: true, showIf: (v) => v.chartVariant === 'radar', desc: '雷达网格 / 刻度环(雷达生效)' },
     { key: 'showLegend', type: 'toggle', label: '图例列表', default: true, desc: '右侧玩家图例 + 综合分' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

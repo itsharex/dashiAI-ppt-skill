@@ -96,11 +96,11 @@ export default function SwSlideDuo(props) {
   // Grid template per portrait count.
   const cols = count === 2 ? '0.78fr 1.1fr 0.78fr'
     : count === 1 ? '0.85fr 1.15fr'
-    : '1fr';
+    : 'minmax(0, 1fr)';
 
   return (
     <SlideRoot bg={bg} color={fg} style={{ padding: 40 }}>
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 32, gridTemplateColumns: cols, alignItems: 'stretch' }}>
+      <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 32, gridTemplateColumns: cols, gridTemplateRows: 'minmax(0, 1fr)', alignItems: 'stretch' }}>
         {count === 2 && <>{Portrait(0)}{Center}{Portrait(1)}</>}
         {count === 1 && <>{Portrait(0)}{Center}</>}
         {count === 0 && Center}

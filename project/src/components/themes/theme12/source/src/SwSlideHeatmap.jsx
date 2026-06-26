@@ -16,6 +16,7 @@ export const meta = { id: 'heatmap', index: 33, label: '热力网格 / Heatmap' 
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   weeks: 14,               // 8–16 columns
   showLegend: true,
   showSidebar: true,
@@ -41,6 +42,8 @@ export const controls = [
     desc: '热力网格的列数（周）' },
   { key: 'showLegend', label: '图例', type: 'toggle', def: true, desc: '显示/隐藏 少→多 强度图例' },
   { key: 'showSidebar', label: '侧栏数据', type: 'toggle', def: true, desc: '显示/隐藏右侧统计侧栏' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.green, C.purple, C.cyan], desc: '热力 / 导语 / 页脚强调色' },
 ];
@@ -57,12 +60,19 @@ function intensity(d, w) {
 export default function SwSlideHeatmap(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const emptyCell = dark ? 'rgba(245,225,227,.06)' : 'rgba(27,21,24,.06)';
+  const cellBorder = dark ? 'rgba(245,225,227,.05)' : 'rgba(27,21,24,.05)';
   const weeks = Math.max(8, Math.min(16, p.weeks));
   const DAYS = p.weekdays;
   const MONTHS = p.months;
 
   const cell = (lvl) => {
-    if (lvl <= 0) return 'rgba(27,21,24,.06)';
+    if (lvl <= 0) return emptyCell;
     return accent + ['', '', '40', '6e', 'a8', 'ff'][lvl + 1]; // alpha ramp via hex
   };
   // build matrix + total
@@ -73,10 +83,10 @@ export default function SwSlideHeatmap(props) {
   const peakDay = DAYS[5];
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '34px 44px 30px', display: 'grid',
         gridTemplateColumns: p.showSidebar ? '1fr 270px' : '1fr', gap: 40 }}>
 
@@ -91,7 +101,7 @@ export default function SwSlideHeatmap(props) {
           <div style={{ display: 'grid', gridTemplateColumns: '34px 1fr', gap: 10 }}>
             <div />
             <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: F.mono,
-              fontSize: 18, letterSpacing: '.08em', color: C.inkMut, paddingRight: 4 }}>
+              fontSize: 18, letterSpacing: '.08em', color: mutedC, paddingRight: 4 }}>
               {MONTHS.map((m) => <span key={m}>{m}</span>)}
             </div>
           </div>
@@ -102,7 +112,7 @@ export default function SwSlideHeatmap(props) {
             <div style={{ display: 'grid', gridTemplateRows: 'repeat(7, 1fr)', gap: 8, height: '100%' }}>
               {DAYS.map((d) => (
                 <div key={d} style={{ display: 'flex', alignItems: 'center', fontFamily: F.mono,
-                  fontSize: 18, color: C.inkMut }}>{d}</div>
+                  fontSize: 18, color: mutedC }}>{d}</div>
               ))}
             </div>
             {/* cells */}
@@ -111,7 +121,7 @@ export default function SwSlideHeatmap(props) {
               {grid.map((row, d) => (
                 row.map((v, w) => (
                   <div key={d + '-' + w} title={'强度 ' + v} style={{ background: cell(v), borderRadius: 6,
-                    minWidth: 0, border: '1px solid rgba(27,21,24,.05)' }} />
+                    minWidth: 0, border: '1px solid ' + cellBorder }} />
                 ))
               ))}
             </div>
@@ -119,11 +129,11 @@ export default function SwSlideHeatmap(props) {
 
           {p.showLegend && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18,
-              fontFamily: F.mono, fontSize: 18, color: C.inkMut }}>
+              fontFamily: F.mono, fontSize: 18, color: mutedC }}>
               <span>{p.legendLess}</span>
               {[0, 1, 2, 3, 4].map((l) => (
                 <span key={l} style={{ width: 20, height: 20, borderRadius: 5, background: cell(l),
-                  border: '1px solid rgba(27,21,24,.05)' }} />
+                  border: '1px solid ' + cellBorder }} />
               ))}
               <span>{p.legendMore}</span>
               <span style={{ marginLeft: 'auto', textTransform: 'uppercase' }}>{p.legendNote}</span>
@@ -153,7 +163,7 @@ export default function SwSlideHeatmap(props) {
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

@@ -10,7 +10,7 @@
  *  accentTone      enum   主色调(通用命名)            默认 'yellow' green/yellow/blue/pink
  *  lineCount       number 底部导读条数量(0–4)         默认 4
  *  focusEnabled    bool   是否高亮某一导读条          默认 false
- *  focusIndex      number 被高亮导读条序号(1–lineCount) 默认 1
+ *  focusIndex      number 被高亮导读条序号(1–lineCount) 默认 2
  *  showGhost       bool   背景巨型描边数字显隐        默认 true
  *  showIssue       bool   期号徽标显隐                默认 true
  *  showDecorations bool   星芒等点缀显隐              默认 true
@@ -45,7 +45,7 @@ function Slide75CoverGhost(props) {
     accentTone = 'yellow',
     lineCount = 4,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showGhost = true,
     showIssue = true,
     showDecorations = true,
@@ -165,7 +165,7 @@ const META = {
     accentTone: 'yellow',
     lineCount: 4,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showGhost: true,
     showIssue: true,
     showDecorations: true,
@@ -186,7 +186,7 @@ const META = {
     { key: 'accentTone', type: 'radio', label: '主色调', options: ['green', 'yellow', 'blue', 'pink'], optionLabels: ['绿', '黄', '蓝', '粉'], default: 'yellow', desc: '页面主色调(通用命名)' },
     { key: 'lineCount', type: 'slider', label: '导读条数量', min: 0, max: 4, step: 1, default: 4, desc: '底部导读条数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一导读条' },
-    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'lineCount', desc: '被高亮导读条序号', showIf: (v) => v.focusEnabled },
+    { key: 'focusIndex', type: 'slider', label: '高亮第几个', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'lineCount', desc: '被高亮导读条序号', showIf: (v) => v.focusEnabled },
     { key: 'showGhost', type: 'toggle', label: '幽灵数字', default: true, desc: '背景巨型描边数字显隐' },
     { key: 'showIssue', type: 'toggle', label: '期号徽标', default: true, desc: '期号徽标显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

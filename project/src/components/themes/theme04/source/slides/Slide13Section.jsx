@@ -9,7 +9,7 @@
  *  showIndex       bool   章节索引侧栏显隐     默认 true
  *  indexCount      number 索引条目数量         默认 4   可选 2–5
  *  focusEnabled    bool   当前章节高亮开关     默认 true
- *  focusIndex      number 当前章节序号(从1起)  默认 2
+ *  focusIndex      number 当前章节序号(从1起)  默认 3
  *  showDecorations bool   装饰元素显隐         默认 true
  *
  * 所有可见文案 / 数据均由 props 暴露（defaults 给完整默认值），controls 与 props 一一对应。
@@ -54,7 +54,7 @@ function Slide13Section(props) {
     showIndex = true,
     indexCount = 4,
     focusEnabled = true,
-    focusIndex = 2,
+    focusIndex = 3,
     showDecorations = true,
     // 文案
     indexKicker = 'CONTENTS · 章节导航',
@@ -193,7 +193,7 @@ const META = {
     showIndex: true,
     indexCount: 4,
     focusEnabled: true,
-    focusIndex: 2,
+    focusIndex: 3,
     showDecorations: true,
     indexKicker: 'CONTENTS · 章节导航',
     lead: XHSSC_LEAD,
@@ -205,7 +205,7 @@ const META = {
     { key: 'showIndex', type: 'toggle', label: '章节索引', default: true, desc: '右侧章节导航列表' },
     { key: 'indexCount', type: 'slider', label: '索引条目', min: 2, max: 5, step: 1, default: 4, showIf: (v) => v.showIndex, desc: '索引列表条目数量' },
     { key: 'focusEnabled', type: 'toggle', label: '当前高亮', default: true, showIf: (v) => v.showIndex, desc: '高亮当前章节' },
-    { key: 'focusIndex', type: 'slider', label: '当前序号', min: 1, max: 5, step: 1, default: 2, maxFromKey: 'indexCount', showIf: (v) => v.showIndex && v.focusEnabled, desc: '当前章节的序号' },
+    { key: 'focusIndex', type: 'slider', label: '当前序号', min: 1, max: 5, step: 1, default: 3, maxFromKey: 'indexCount', showIf: (v) => v.showIndex && v.focusEnabled, desc: '当前章节的序号' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
     { type: 'section', label: '文案' },
     { key: 'lead', type: 'textarea', label: '导语', rows: 3, default: XHSSC_LEAD, desc: '海报卡下方导语' },

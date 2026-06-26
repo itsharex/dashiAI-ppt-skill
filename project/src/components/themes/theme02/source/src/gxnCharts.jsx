@@ -40,11 +40,15 @@ export function TrendChart({
   const yVal = (v) => padT + plotH * (1 - v / vMax);
   const ySec = (v) => padT + plotH * (1 - v / sMax);
   const focused = focusIndex >= 0 && focusIndex < n;
+  const dense = n > 8;
+  const valueFont = dense ? 22 : 28;
+  const xLabelFont = dense ? 19 : 25;
 
   const gridLines = [0, 0.25, 0.5, 0.75, 1].map((t) => padT + plotH * t);
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%" preserveAspectRatio="xMidYMid meet"
+         data-density={dense ? 'dense' : undefined}
          style={{ display: 'block', overflow: 'visible' }}>
       <defs>
         <linearGradient id={`${uid}-bar`} x1="0" y1="0" x2="0" y2="1">
@@ -87,7 +91,7 @@ export function TrendChart({
         const h = padT + plotH - y;
         const dim = focused && i !== focusIndex;
         return (
-          <g key={i} opacity={dim ? 0.32 : 1}>
+          <g key={i} data-trend-point="true" opacity={dim ? 0.32 : 1}>
             <rect x={x} y={y} width={bw} height={Math.max(h, 2)} rx="9"
                   fill={`url(#${uid}-bar)`}
                   filter={!dim && (i === focusIndex || !focused) ? `url(#${uid}-glow)` : undefined} />
@@ -108,7 +112,7 @@ export function TrendChart({
               const isF = i === focusIndex;
               const dim = focused && !isF;
               // hollow ringed dots — dark fill, accent ring (ref-card style)
-              return <circle key={i} cx={xMid(i)} cy={yVal(d.value)} r={isF ? 11 : 8}
+              return <circle key={i} data-trend-point="true" cx={xMid(i)} cy={yVal(d.value)} r={isF ? 11 : 8}
                              fill="#10141b" stroke={isF ? ACCENT2 : ACCENT} strokeWidth={isF ? 5 : 4}
                              opacity={dim ? 0.4 : 1} filter={!dim ? `url(#${uid}-glow)` : undefined} />;
             })}
@@ -135,7 +139,7 @@ export function TrendChart({
         const dim = focused && i !== focusIndex;
         return (
           <text key={i} x={xMid(i)} y={yVal(d.value) - 18} textAnchor="middle"
-                fontFamily="'Space Grotesk',sans-serif" fontWeight="600" fontSize="27"
+                fontFamily="'Space Grotesk',sans-serif" fontWeight="600" fontSize={dense ? 22 : 27}
                 fill={i === focusIndex ? (auroraColors ? `url(#${uid}-aur)` : ACCENT2) : '#eef3f1'} opacity={dim ? 0.4 : 1}
                 style={{ fontVariantNumeric: 'tabular-nums' }}>
             {d.value}{valueSuffix}
@@ -147,7 +151,7 @@ export function TrendChart({
         const dim = focused && !isF;
         const cxp = xMid(i);
         const txt = `${d.value}${valueSuffix}`;
-        const bw = txt.length * 17 + 30, bh = 48;
+        const bw = txt.length * (dense ? 13 : 17) + (dense ? 22 : 30), bh = dense ? 40 : 48;
         const by = yVal(d.value) - 20 - bh;
         const bx = cxp - bw / 2;
         // Single unified speech-bubble path: rounded rect + downward pointer,
@@ -168,7 +172,7 @@ export function TrendChart({
                   stroke={isF ? ACCENT2 : 'rgba(255,255,255,0.14)'} strokeWidth={isF ? 2.5 : 1.5}
                   strokeLinejoin="round" />
             <text x={cxp} y={by + bh / 2 + 1} textAnchor="middle" dominantBaseline="central"
-                  fontFamily="'Space Grotesk',sans-serif" fontWeight="600" fontSize="28"
+                  fontFamily="'Space Grotesk',sans-serif" fontWeight="600" fontSize={valueFont}
                   fill={isF ? (auroraColors ? `url(#${uid}-aur)` : ACCENT2) : '#eef3f1'} style={{ fontVariantNumeric: 'tabular-nums' }}>
               {txt}
             </text>
@@ -179,7 +183,7 @@ export function TrendChart({
       {/* x labels */}
       {data.map((d, i) => (
         <text key={`x${i}`} x={xMid(i)} y={H - 28} textAnchor="middle"
-              fontFamily="'Space Mono',monospace" fontSize="25"
+              fontFamily="'Space Mono',monospace" fontSize={xLabelFont}
               fill={i === focusIndex ? '#eef3f1' : 'rgba(238,243,241,0.55)'}>
           {d.label}
         </text>

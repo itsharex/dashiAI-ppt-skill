@@ -17,6 +17,7 @@ export const meta = { id: 'growth', index: 44, label: '增长曲线 / Growth' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   chartType: 'area',       // 'area' | 'line' | 'bars'
   seriesCount: 2,          // 1–2
   showGrid: true,
@@ -50,6 +51,8 @@ export const controls = [
   { key: 'showGrid', label: '网格线', type: 'toggle', def: true, desc: '显示/隐藏背景网格与刻度' },
   { key: 'showLegend', label: '图例', type: 'toggle', def: true, desc: '显示/隐藏系列图例' },
   { key: 'showCallout', label: '终点标注', type: 'toggle', def: true, desc: '高亮并标注最新一季' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '主系列 / 标注 / 页脚强调色' },
 ];
@@ -63,8 +66,17 @@ const yAt = (v) => M.t + PH * (1 - v);
 export default function SwSlideGrowth(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const two = p.seriesCount >= 2;
   const secondary = C.cyan;
+
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const gridStroke = dark ? 'rgba(245,225,227,.12)' : 'rgba(27,21,24,.12)';
+  const axisLabel = dark ? '#c8c0bd' : '#9a8f8c';
+  const quarterLabel = dark ? '#c8c0bd' : '#7d7176';
+  const calloutMut = dark ? '#c8c0bd' : C.inkMut;
   const QUARTERS = p.quarters;
   const SERIES_A = p.seriesA;
   const SERIES_B = p.seriesB;
@@ -79,10 +91,10 @@ export default function SwSlideGrowth(props) {
   const last = ptsA[n - 1];
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '40px 48px 30px', display: 'grid', gridTemplateColumns: '1fr 300px', gap: 40 }}>
 
         {/* chart */}
@@ -105,9 +117,9 @@ export default function SwSlideGrowth(props) {
               {p.showGrid && yTicks.map((t) => (
                 <g key={t}>
                   <line x1={M.l} y1={yAt(t)} x2={W - M.r} y2={yAt(t)}
-                    stroke="rgba(27,21,24,.12)" strokeWidth="1" strokeDasharray={t === 0 ? '0' : '4 6'} />
+                    stroke={gridStroke} strokeWidth="1" strokeDasharray={t === 0 ? '0' : '4 6'} />
                   <text x={M.l - 14} y={yAt(t) + 7} textAnchor="end"
-                    fontFamily={F.mono} fontSize="19" fill="#9a8f8c">{Math.round(t * 100)}</text>
+                    fontFamily={F.mono} fontSize="19" fill={axisLabel}>{Math.round(t * 100)}</text>
                 </g>
               ))}
 
@@ -135,14 +147,14 @@ export default function SwSlideGrowth(props) {
                     strokeLinecap="round" strokeLinejoin="round" />
                   {ptsA.map((q, i) => (
                     <circle key={i} cx={q[0]} cy={q[1]} r={i === n - 1 ? 9 : 5}
-                      fill={i === n - 1 ? accent : C.paper} stroke={accent} strokeWidth="3" />
+                      fill={i === n - 1 ? accent : cardBg} stroke={accent} strokeWidth="3" />
                   ))}
                 </>
               )}
 
               {QUARTERS.map((q, i) => (
                 <text key={q} x={xAt(i, n)} y={H - 24} textAnchor="middle"
-                  fontFamily={F.mono} fontSize="19" letterSpacing="1" fill="#7d7176">{q}</text>
+                  fontFamily={F.mono} fontSize="19" letterSpacing="1" fill={quarterLabel}>{q}</text>
               ))}
 
               {p.showCallout && p.chartType !== 'bars' && (
@@ -154,7 +166,7 @@ export default function SwSlideGrowth(props) {
 
             {p.showCallout && (
               <div style={{ position: 'absolute', top: 6, right: 8, textAlign: 'right' }}>
-                <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', textTransform: 'uppercase', color: C.inkMut }}>{p.calloutPeriod}</div>
+                <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', textTransform: 'uppercase', color: calloutMut }}>{p.calloutPeriod}</div>
                 <div style={{ fontWeight: 900, fontSize: 40, letterSpacing: '-1px', color: accent, whiteSpace: 'nowrap' }}>{p.calloutValue}</div>
               </div>
             )}
@@ -194,7 +206,7 @@ export default function SwSlideGrowth(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

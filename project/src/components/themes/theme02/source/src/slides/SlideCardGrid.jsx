@@ -21,6 +21,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader, MediaView, mediaItem } from '../gxnPrimitives.jsx';
 
+const CARD_GRID_INFO_HEIGHT = 168;
+const CARD_GRID_DESC_LINES = 3;
+
 export const slideCardGridDefaults = {
   kicker: 'CASES · 案例图文',
   title: '四张面孔 ',
@@ -79,7 +82,15 @@ function Card({ i, src, card, fit, isFocus, dim, showDesc, showTags, onActivate,
                   onClick={(e) => { e.stopPropagation(); onClear(i); }}>×</button>
         )}
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '2px 8px 8px' }}>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 12,
+        padding: '2px 8px 8px',
+        flex: `0 0 ${CARD_GRID_INFO_HEIGHT}px`,
+        minHeight: CARD_GRID_INFO_HEIGHT,
+        height: CARD_GRID_INFO_HEIGHT,
+      }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <h3 style={{ margin: 0, fontSize: 32, fontWeight: 700, lineHeight: 1.1,
             color: isFocus ? 'var(--gxn-accent)' : 'var(--gxn-text)', whiteSpace: 'nowrap',
@@ -90,7 +101,16 @@ function Card({ i, src, card, fit, isFocus, dim, showDesc, showTags, onActivate,
           )}
         </div>
         {showDesc && card.desc && (
-          <p style={{ margin: 0, fontSize: 25, lineHeight: 1.5, color: 'var(--gxn-dim)' }}>{card.desc}</p>
+          <p style={{
+            margin: 0,
+            fontSize: 25,
+            lineHeight: 1.5,
+            color: 'var(--gxn-dim)',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: CARD_GRID_DESC_LINES,
+            overflow: 'hidden',
+          }}>{card.desc}</p>
         )}
       </div>
     </article>

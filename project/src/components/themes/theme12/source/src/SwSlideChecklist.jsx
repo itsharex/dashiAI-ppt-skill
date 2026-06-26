@@ -18,6 +18,7 @@ export const meta = { id: 'checklist', index: 34, label: '特性矩阵 / Feature
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   rowCount: 6,             // 4–7 feature rows
   columnCount: 3,          // 2–3 competitor columns (besides 声浪)
   ownIndex: 1,             // which column is "声浪" (1-based, always first here)
@@ -50,15 +51,17 @@ export const defaultProps = {
 export const controls = [
   { key: 'rowCount', label: '特性行数', type: 'slider', def: 6, min: 4, max: 7, step: 1,
     desc: '对照的能力条目数量' },
-  { key: 'columnCount', label: '对手列数', type: 'slider', def: 3, min: 2, max: 3, step: 1,
+  { key: 'columnCount', label: '对手列数', type: 'slider', def: 3, min: 1, max: 3, step: 1,
     desc: '除声浪外的对照列数量' },
   { key: 'showLegend', label: '显示图例', type: 'toggle', def: true, desc: '显示/隐藏底部符号图例' },
   { key: 'showLede', label: '显示导语', type: 'toggle', def: true, desc: '显示/隐藏标题区导语' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '声浪列 / 高亮 / 页脚强调色' },
 ];
 
-function Token({ kind, accent, own }) {
+function Token({ kind, accent, own, dark }) {
   if (kind === 2) {
     return (
       <span style={{ width: 44, height: 44, borderRadius: '50%', display: 'inline-flex',
@@ -70,13 +73,13 @@ function Token({ kind, accent, own }) {
     return (
       <span style={{ width: 44, height: 44, borderRadius: '50%', display: 'inline-flex',
         alignItems: 'center', justifyContent: 'center',
-        border: '2.5px solid ' + (own ? 'rgba(255,255,255,.6)' : C.line2),
-        color: own ? 'rgba(255,255,255,.8)' : C.inkMut, fontFamily: F.mono, fontWeight: 700, fontSize: 22 }}>~</span>
+        border: '2.5px solid ' + (own ? 'rgba(255,255,255,.6)' : (dark ? C.lineD2 : C.line2)),
+        color: own ? 'rgba(255,255,255,.8)' : (dark ? '#c8c0bd' : C.inkMut), fontFamily: F.mono, fontWeight: 700, fontSize: 22 }}>~</span>
     );
   }
   return (
     <span style={{ width: 44, height: 44, display: 'inline-flex', alignItems: 'center',
-      justifyContent: 'center', color: own ? 'rgba(255,255,255,.5)' : 'rgba(27,21,24,.3)',
+      justifyContent: 'center', color: own ? 'rgba(255,255,255,.5)' : (dark ? 'rgba(245,225,227,.3)' : 'rgba(27,21,24,.3)'),
       fontFamily: F.mono, fontWeight: 700, fontSize: 24 }}>✕</span>
   );
 }
@@ -84,14 +87,30 @@ function Token({ kind, accent, own }) {
 export default function SwSlideChecklist(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
-  const rivals = Math.max(2, Math.min(3, p.columnCount));
+  const dark = p.theme === 'dark';
+  const rivals = Math.max(1, Math.min(3, p.columnCount));
   const rows = (p.rows || []).slice(0, Math.max(4, Math.min(7, p.rowCount)));
   const cols = [p.cols[0], ...p.cols.slice(1, 1 + rivals)];
-  const gridCols = '1.6fr repeat(' + (rivals + 1) + ', 1fr)';
+  const tokenCols = rivals + 1; // 声浪 + competitors
+  // With the full set the proportional `fr` tracks fill the card edge-to-edge.
+  // With just one competitor (two token columns) those same `fr` tracks would
+  // balloon each token cell to ~480px — a lone ✓ stranded in a near-empty band.
+  // Instead pin the token columns to a sensible fixed width and let the
+  // capability column flex to absorb the slack, keeping the head-to-head
+  // compact and intentional.
+  const gridCols = rivals <= 1
+    ? 'minmax(0, 1fr) repeat(' + tokenCols + ', minmax(0, 340px))'
+    : '1.6fr repeat(' + tokenCols + ', 1fr)';
+
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const cardBg = dark ? '#241e20' : '#ffffff';
+  const line = dark ? C.lineD : C.line;
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 3 }}>
 
@@ -104,7 +123,7 @@ export default function SwSlideChecklist(props) {
                 {renderSwText(p.title, { hl: { tone: 'o' } })}
               </h2>
             </div>
-            <p style={{ fontSize: 24, lineHeight: 1.6, color: C.inkMut, maxWidth: 420, paddingBottom: 6 }}>
+            <p style={{ fontSize: 24, lineHeight: 1.6, color: mut, maxWidth: 420, paddingBottom: 6 }}>
               {p.lede}
             </p>
           </div>
@@ -112,8 +131,8 @@ export default function SwSlideChecklist(props) {
 
         {/* table */}
         <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column',
-          position: 'relative', borderRadius: 26, overflow: 'hidden', background: C.paper,
-          border: '1px solid ' + C.line }}>
+          position: 'relative', borderRadius: 26, overflow: 'hidden', background: cardBg,
+          border: '1px solid ' + line }}>
 
           {/* highlighted own-column backdrop */}
           <div aria-hidden="true" style={{ position: 'absolute', top: 0, bottom: 0, zIndex: 0,
@@ -122,18 +141,18 @@ export default function SwSlideChecklist(props) {
           {/* header */}
           <div style={{ display: 'grid', gridTemplateColumns: gridCols, alignItems: 'stretch', flexShrink: 0 }}>
             <div style={{ padding: '24px 30px', display: 'flex', alignItems: 'flex-end',
-              fontFamily: F.mono, fontSize: 21, letterSpacing: '.12em', textTransform: 'uppercase', color: C.inkMut }}>{p.capabilityLabel}</div>
+              fontFamily: F.mono, fontSize: 21, letterSpacing: '.12em', textTransform: 'uppercase', color: mut }}>{p.capabilityLabel}</div>
             {cols.map((c, ci) => {
               const own = ci === 0;
               return (
                 <div key={c} style={{ padding: own ? '24px 18px 26px' : '24px 18px',
-                  background: own ? accent : 'transparent', color: own ? '#fff' : C.ink,
+                  background: own ? accent : 'transparent', color: own ? '#fff' : fg,
                   display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end',
                   textAlign: 'center', gap: 4, borderTopLeftRadius: own ? 0 : 0 }}>
                   <span style={{ fontWeight: 900, fontSize: own ? 27 : 24, letterSpacing: '-.3px',
                     lineHeight: 1.1 }}>{c.split(' ')[0]}</span>
                   <span style={{ fontFamily: F.mono, fontSize: 17, letterSpacing: '.08em',
-                    color: own ? 'rgba(255,255,255,.82)' : C.inkMut, textTransform: 'uppercase' }}>{c.split(' ').slice(1).join(' ') || '·'}</span>
+                    color: own ? 'rgba(255,255,255,.82)' : mut, textTransform: 'uppercase' }}>{c.split(' ').slice(1).join(' ') || '·'}</span>
                 </div>
               );
             })}
@@ -143,10 +162,10 @@ export default function SwSlideChecklist(props) {
           <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
             {rows.map((r, ri) => (
               <div key={r.en} style={{ flex: 1, display: 'grid', gridTemplateColumns: gridCols,
-                alignItems: 'center', borderTop: '1px solid ' + C.line }}>
+                alignItems: 'center', borderTop: '1px solid ' + line }}>
                 <div style={{ padding: '0 30px', minWidth: 0 }}>
                   <div style={{ fontWeight: 700, fontSize: 27, letterSpacing: '-.3px' }}>{r.cn}</div>
-                  <div style={{ fontFamily: F.mono, fontSize: 18, letterSpacing: '.06em', color: C.inkMut,
+                  <div style={{ fontFamily: F.mono, fontSize: 18, letterSpacing: '.06em', color: mut,
                     textTransform: 'uppercase', marginTop: 2 }}>{r.en}</div>
                 </div>
                 {cols.map((_, ci) => {
@@ -154,7 +173,7 @@ export default function SwSlideChecklist(props) {
                   return (
                     <div key={ci} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',
                       alignSelf: 'stretch', background: own ? accent : 'transparent' }}>
-                      <Token kind={r.v[ci]} accent={accent} own={own} />
+                      <Token kind={r.v[ci]} accent={accent} own={own} dark={dark} />
                     </div>
                   );
                 })}
@@ -165,21 +184,21 @@ export default function SwSlideChecklist(props) {
 
         {p.showLegend && (
           <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 34, marginTop: 18,
-            fontFamily: F.mono, fontSize: 20, letterSpacing: '.04em', color: C.inkMut }}>
+            fontFamily: F.mono, fontSize: 20, letterSpacing: '.04em', color: mut }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
               <b style={{ width: 26, height: 26, borderRadius: '50%', background: accent, color: '#fff',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 15 }}>✓</b> {p.legendYes}</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-              <b style={{ width: 26, height: 26, borderRadius: '50%', border: '2px solid ' + C.line2, color: C.inkMut,
+              <b style={{ width: 26, height: 26, borderRadius: '50%', border: '2px solid ' + (dark ? C.lineD2 : C.line2), color: mut,
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 15 }}>~</b> {p.legendPartial}</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
               <b style={{ width: 26, height: 26, display: 'inline-flex', alignItems: 'center',
-                justifyContent: 'center', fontSize: 15, color: 'rgba(27,21,24,.3)' }}>✕</b> {p.legendNo}</span>
+                justifyContent: 'center', fontSize: 15, color: dark ? 'rgba(245,225,227,.3)' : 'rgba(27,21,24,.3)' }}>✕</b> {p.legendNo}</span>
           </div>
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

@@ -14,7 +14,7 @@
  *  showObjectives  bool   议题清单显隐           默认 true
  *  objectiveCount  number 议题条数(2–4)          默认 3
  *  focusEnabled    bool   当前议题高亮开关        默认 true
- *  focusIndex      number 当前议题序号(从1起)    默认 1   范围 1–objectiveCount
+ *  focusIndex      number 当前议题序号(从1起)    默认 2   范围 1–objectiveCount
  *  showDecorations bool   星芒等点缀显隐         默认 true
  *
  * 文本写死在组件内，不做参数化。
@@ -69,7 +69,7 @@ function Slide62Split(props) {
     showObjectives = true,
     objectiveCount = 3,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showDecorations = true,
   } = props;
 
@@ -198,7 +198,7 @@ const META = {
     showObjectives: true,
     objectiveCount: 3,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showDecorations: true,
   },
   controls: [
@@ -212,7 +212,7 @@ const META = {
     { key: 'showObjectives', type: 'toggle', label: '议题清单', default: true, desc: '右侧议题清单' },
     { key: 'objectiveCount', type: 'slider', label: '议题条数', min: 2, max: 4, step: 1, default: 3, showIf: (v) => v.showObjectives, desc: '议题条目数量' },
     { key: 'focusEnabled', type: 'toggle', label: '当前高亮', default: true, showIf: (v) => v.showObjectives, desc: '高亮当前议题' },
-    { key: 'focusIndex', type: 'slider', label: '当前序号', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'objectiveCount', showIf: (v) => v.showObjectives && v.focusEnabled, desc: '当前议题序号' },
+    { key: 'focusIndex', type: 'slider', label: '当前序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'objectiveCount', showIf: (v) => v.showObjectives && v.focusEnabled, desc: '当前议题序号' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
   ],
 };

@@ -26,6 +26,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader, MediaView, mediaItem } from '../gxnPrimitives.jsx';
 
+const MAX_MASONRY_TILES = 6;
+const MAX_MASONRY_FOCUS_INDEX = 5;
+
 export const slideMasonryDefaults = {
   kicker: 'GALLERY · 资本图墙',
   title: '一面墙 ',
@@ -36,7 +39,7 @@ export const slideMasonryDefaults = {
     'Scale AI · 数据标注', 'Databricks · 数据平台', 'Mistral · 开源模型', 'Perplexity · AI 搜索',
     'Cerebras · AI 芯片', 'Glean · 企业搜索',
   ],
-  tileCount: 7,
+  tileCount: MAX_MASONRY_TILES,
   columns: 3,
   fit: 'cover',
   focusEnabled: false,
@@ -46,8 +49,8 @@ export const slideMasonryDefaults = {
 };
 
 export const slideMasonryControls = [
-  { key: 'tileCount', type: 'number', label: '图片数量', default: 7, min: 0, step: 1,
-    maxFrom: (p) => (p.captions ? p.captions.length : 10), describe: '瀑布流图片块数量（0 = 纯标题）' },
+  { key: 'tileCount', type: 'number', label: '图片数量', default: MAX_MASONRY_TILES, min: 0, step: 1,
+    max: MAX_MASONRY_TILES, maxFrom: (p) => Math.min(MAX_MASONRY_TILES, (p.captions ? p.captions.length : MAX_MASONRY_TILES)), describe: '瀑布流图片块数量（0 = 纯标题）' },
   { key: 'columns', type: 'number', label: '列数', default: 3, min: 2, max: 4, step: 1,
     visibleWhen: (p) => p.tileCount > 0, describe: '瀑布流列数（自适应错落）' },
   { key: 'fit', type: 'enum', label: '贴合方式', default: 'cover',
@@ -56,7 +59,7 @@ export const slideMasonryControls = [
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: false,
     describe: '辉光强调某一块（描边）' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.tileCount || 1) - 1),
+    oneBased: true, max: MAX_MASONRY_FOCUS_INDEX, maxFrom: (p) => Math.max(0, Math.min(MAX_MASONRY_FOCUS_INDEX, (p.tileCount || 1) - 1)),
     visibleWhen: (p) => p.focusEnabled && p.tileCount > 0, describe: '被强调块的序号' },
   { key: 'showCaptions', type: 'toggle', label: '图注', default: true,
     visibleWhen: (p) => p.tileCount > 0, describe: '显示/隐藏图注' },
@@ -94,9 +97,9 @@ function Tile({ i, src, cap, fit, isFocus, weight, showCaptions, onActivate, onC
 
 export function SlideMasonry(props) {
   const p = { ...slideMasonryDefaults, ...props };
-  const count = Math.max(0, Math.min(p.captions.length, p.tileCount));
+  const count = Math.max(0, Math.min(MAX_MASONRY_TILES, p.captions.length, p.tileCount));
   const cols = Math.max(2, Math.min(4, count > 0 ? Math.min(p.columns, count) : p.columns));
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_MASONRY_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const imgs = p.images || [];
 
   // distribute tiles across columns, column-major so order reads top→bottom per column

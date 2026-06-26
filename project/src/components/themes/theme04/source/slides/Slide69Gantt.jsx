@@ -11,7 +11,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  laneCount       number 展示的公司泳道数(3–6)   默认 6
  *  focusEnabled    bool   重点泳道高亮开关         默认 true
- *  focusIndex      number 重点泳道序号(从1起)     默认 1   范围 1–laneCount
+ *  focusIndex      number 重点泳道序号(从1起)     默认 2   范围 1–laneCount
  *  showSpan        bool   多轮区间连接条显隐       默认 true
  *  showAmount      bool   事件金额标签显隐         默认 true
  *  showQuarterTint bool   季度背景分区淡色块       默认 true
@@ -70,7 +70,7 @@ function Slide69Gantt(props) {
       monthsData = XHSGT_MONTHS,
     laneCount = 6,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showSpan = true,
     showAmount = true,
     showQuarterTint = true,
@@ -225,7 +225,7 @@ const META = {
     ...hlDefaults,
     laneCount: 6,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showSpan: true,
     showAmount: true,
     showQuarterTint: true,
@@ -239,7 +239,7 @@ const META = {
     ...hlControls,
     { key: 'laneCount', type: 'slider', label: '公司泳道数', min: 3, max: 6, step: 1, default: 6, desc: '展示的公司泳道数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一泳道' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 1, maxFromKey: 'laneCount', showIf: (v) => v.focusEnabled, desc: '被高亮泳道的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 2, maxFromKey: 'laneCount', showIf: (v) => v.focusEnabled, desc: '被高亮泳道的序号' },
     { key: 'showSpan', type: 'toggle', label: '多轮区间条', default: true, desc: '同年多轮的区间连接条' },
     { key: 'showAmount', type: 'toggle', label: '金额标签', default: true, desc: '事件金额标签' },
     { key: 'showQuarterTint', type: 'toggle', label: '季度分区', default: true, desc: '季度背景分区淡色块' },

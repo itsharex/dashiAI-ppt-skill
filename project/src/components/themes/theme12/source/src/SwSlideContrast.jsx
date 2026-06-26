@@ -17,6 +17,7 @@ export const meta = { id: 'contrast', index: 35, label: '对照 / Before · Afte
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   pointCount: 4,           // 2–4 checklist items per side
   showStat: true,
   showBadge: true,
@@ -42,6 +43,8 @@ export const controls = [
     desc: '每侧列出的对照条目数量' },
   { key: 'showStat', label: '对照大数', type: 'toggle', def: true, desc: '显示/隐藏每侧顶部的对比数字' },
   { key: 'showBadge', label: '中缝徽标', type: 'toggle', def: true, desc: '显示/隐藏中间的 VS 徽标' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '“有声浪”一侧 / 页脚强调色' },
 ];
@@ -59,15 +62,20 @@ function Mark({ ok, color }) {
 export default function SwSlideContrast(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const n = Math.max(2, Math.min(4, p.pointCount));
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const negBg = dark ? '#241e20' : '#1c1416';   // "without" panel surface adapts to page theme
+
   const Panel = ({ side, data, ok }) => {
-    const dark = !ok;
-    const fg = dark ? '#cfc6c8' : '#fff';
-    const head = dark ? '#9a8f8c' : 'rgba(255,255,255,.82)';
+    const neg = !ok;
+    const txt = neg ? '#cfc6c8' : '#fff';
+    const head = neg ? '#9a8f8c' : 'rgba(255,255,255,.82)';
     return (
       <div style={{ position: 'relative', minWidth: 0, padding: '54px 64px',
-        background: ok ? accent : '#1c1416', color: fg, display: 'flex', flexDirection: 'column' }}>
+        background: ok ? accent : negBg, color: txt, display: 'flex', flexDirection: 'column' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
           <span style={{ width: 14, height: 14, borderRadius: 4, background: ok ? '#fff' : accent }} />
           <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.16em',
@@ -96,8 +104,8 @@ export default function SwSlideContrast(props) {
   };
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, margin: '24px 0 22px', borderRadius: 32, overflow: 'hidden',
         position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
@@ -106,7 +114,7 @@ export default function SwSlideContrast(props) {
 
         {p.showBadge && (
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
-            width: 92, height: 92, borderRadius: '50%', background: C.blush, color: C.ink,
+            width: 92, height: 92, borderRadius: '50%', background: dark ? '#241e20' : C.blush, color: fg,
             display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 3,
             fontFamily: F.mono, fontWeight: 700, fontSize: 30, letterSpacing: '.04em', lineHeight: 1,
             paddingLeft: '.04em',
@@ -114,7 +122,7 @@ export default function SwSlideContrast(props) {
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

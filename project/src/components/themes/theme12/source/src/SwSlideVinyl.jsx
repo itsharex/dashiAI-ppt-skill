@@ -56,7 +56,7 @@ export const controls = [
     options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'showGrooves', label: '唱纹', type: 'toggle', def: true, desc: '显示/隐藏唱片同心纹路' },
   { key: 'showTracklist', label: '曲目表', type: 'toggle', def: true, desc: '显示/隐藏右侧曲目列表' },
-  { key: 'trackCount', label: '曲目数量', type: 'slider', def: 4, min: 3, max: 6, step: 1,
+  { key: 'trackCount', label: '曲目数量', type: 'slider', def: 4, min: 1, max: 6, step: 1,
     dependsOn: 'showTracklist', desc: '曲目列表的行数' },
   { key: 'mediaFit', label: '图片填充', type: 'segment', def: 'cover',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '封面图填充方式' },
@@ -69,7 +69,7 @@ export default function SwSlideVinyl(props) {
   const accent = p.accent;
   const dark = p.theme === 'dark';
   const left = p.recordSide === 'left';
-  const tc = Math.max(3, Math.min(6, p.trackCount));
+  const tc = Math.max(1, Math.min(6, p.trackCount));
 
   const bg = dark ? C.dark : C.blush;
   const fg = dark ? C.blush : C.ink;
@@ -81,7 +81,7 @@ export default function SwSlideVinyl(props) {
     : 'none';
 
   const Record = (
-    <div style={{ position: 'relative', minWidth: 0, height: '100%', display: 'flex',
+    <div style={{ position: 'relative', minWidth: 0, minHeight: 0, height: '100%', display: 'flex',
       alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ position: 'relative', width: 'min(560px, 100%)', aspectRatio: '1 / 1' }}>
         {/* the black disc */}
@@ -153,7 +153,7 @@ export default function SwSlideVinyl(props) {
       <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 64, padding: '24px 0 22px',
-        gridTemplateColumns: '1fr 1fr', alignItems: 'stretch', position: 'relative', zIndex: 3 }}>
+        gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1fr)', alignItems: 'stretch', position: 'relative', zIndex: 3 }}>
         {left ? <>{Record}{Panel}</> : <>{Panel}{Record}</>}
       </div>
 

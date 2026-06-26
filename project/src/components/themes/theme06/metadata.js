@@ -15,6 +15,7 @@ export const pages = [
     "layout": "THEME06-001",
     "slot": "coverA",
     "label": "封面A · 智联万物 / PRODUCT LAUNCH",
+    "bgClass": "",
     "controls": [
       {
         "key": "showMidBtn",
@@ -81,8 +82,7 @@ export const pages = [
       ],
       "accent": "#d2fb30",
       "showMidBtn": true
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page002",
@@ -91,6 +91,7 @@ export const pages = [
     "layout": "THEME06-002",
     "slot": "coverB",
     "label": "封面B · 新机遇 / BUSINESS PLAN",
+    "bgClass": "",
     "controls": [
       {
         "key": "showHaze",
@@ -154,8 +155,7 @@ export const pages = [
       ],
       "accent": "#d2fb30",
       "showHaze": true
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page003",
@@ -164,6 +164,7 @@ export const pages = [
     "layout": "THEME06-003",
     "slot": "coverC",
     "label": "封面C · 精益智造 / LEAN MFG",
+    "bgClass": "",
     "controls": [
       {
         "key": "activeStep",
@@ -242,8 +243,7 @@ export const pages = [
       ],
       "accent": "#d2fb30",
       "activeStep": 2
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page004",
@@ -252,6 +252,7 @@ export const pages = [
     "layout": "THEME06-004",
     "slot": "coverD",
     "label": "封面D · 品牌整合营销 / BRAND MKT",
+    "bgClass": "",
     "controls": [
       {
         "key": "showWatermark",
@@ -326,8 +327,7 @@ export const pages = [
       "accent": "#d2fb30",
       "showWatermark": true,
       "showGlow": true
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page005",
@@ -336,6 +336,7 @@ export const pages = [
     "layout": "THEME06-005",
     "slot": "cover",
     "label": "01 · 封面 / COVER",
+    "bgClass": "",
     "controls": [
       {
         "key": "showWatermark",
@@ -448,8 +449,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 1,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page006",
@@ -458,6 +458,7 @@ export const pages = [
     "layout": "THEME06-006",
     "slot": "summary",
     "label": "02 · 报告摘要 / OVERVIEW",
+    "bgClass": "",
     "controls": [
       {
         "key": "metricCount",
@@ -622,8 +623,7 @@ export const pages = [
       "chartType": "bars",
       "showCaption": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page007",
@@ -632,6 +632,7 @@ export const pages = [
     "layout": "THEME06-007",
     "slot": "contents",
     "label": "03 · 报告结构 / STRUCTURE",
+    "bgClass": "",
     "controls": [
       {
         "key": "cardCount",
@@ -779,8 +780,7 @@ export const pages = [
       "layout": "rows",
       "showColumnHeaders": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page008",
@@ -789,6 +789,7 @@ export const pages = [
     "layout": "THEME06-008",
     "slot": "method",
     "label": "04 · 研究方法 / METHODOLOGY",
+    "bgClass": "",
     "controls": [
       {
         "key": "cardCount",
@@ -920,8 +921,7 @@ export const pages = [
       "stackStyle": "stack",
       "showDecor": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page009",
@@ -930,6 +930,7 @@ export const pages = [
     "layout": "THEME06-009",
     "slot": "trend",
     "label": "05 · 市场全景 / TREND",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -1070,8 +1071,7 @@ export const pages = [
       "chartType": "area",
       "showDecor": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page010",
@@ -1080,6 +1080,7 @@ export const pages = [
     "layout": "THEME06-010",
     "slot": "chapter",
     "label": "06 · 市场数据深拆 / CHAPTER",
+    "bgClass": "",
     "controls": [
       {
         "key": "background",
@@ -1215,8 +1216,7 @@ export const pages = [
       "background": "glow",
       "showWatermark": false,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page011",
@@ -1225,6 +1225,7 @@ export const pages = [
     "layout": "THEME06-011",
     "slot": "dealmap",
     "label": "07 · 规模分层 / DEAL MAP",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -1368,8 +1369,7 @@ export const pages = [
       "focusIndex": 3,
       "showValueLabels": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page012",
@@ -1378,6 +1378,7 @@ export const pages = [
     "layout": "THEME06-012",
     "slot": "q1",
     "label": "08 · 冷启动季度 / Q1 BREAKDOWN",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -1543,8 +1544,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page013",
@@ -1553,6 +1553,7 @@ export const pages = [
     "layout": "THEME06-013",
     "slot": "q2",
     "label": "09 · 加速季度 / Q2 BREAKDOWN",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -1730,8 +1731,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 1,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page014",
@@ -1740,6 +1740,7 @@ export const pages = [
     "layout": "THEME06-014",
     "slot": "q3",
     "label": "10 · 峰值季度 / Q3 PEAK",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -1860,8 +1861,7 @@ export const pages = [
       "focusIndex": 2,
       "showPeakBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page015",
@@ -1870,6 +1870,7 @@ export const pages = [
     "layout": "THEME06-015",
     "slot": "q4",
     "label": "11 · 回落季度 / Q4 PULLBACK",
+    "bgClass": "",
     "controls": [
       {
         "key": "nodeCount",
@@ -2027,8 +2028,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 3,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page016",
@@ -2037,6 +2037,7 @@ export const pages = [
     "layout": "THEME06-016",
     "slot": "peaktrough",
     "label": "12 · 峰值与低位 / PEAK & TROUGH",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -2217,8 +2218,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page017",
@@ -2227,6 +2227,7 @@ export const pages = [
     "layout": "THEME06-017",
     "slot": "waterfall",
     "label": "13 · 赛道贡献 / WATERFALL",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -2394,8 +2395,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page018",
@@ -2404,6 +2404,7 @@ export const pages = [
     "layout": "THEME06-018",
     "slot": "sizesplit",
     "label": "14 · 金额区间结构 / SIZE SPLIT",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -2550,8 +2551,7 @@ export const pages = [
       "focusIndex": 3,
       "showValueLabels": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page019",
@@ -2560,6 +2560,7 @@ export const pages = [
     "layout": "THEME06-019",
     "slot": "avgticket",
     "label": "15 · 赛道平均融资额 / AVG TICKET",
+    "bgClass": "",
     "controls": [
       {
         "key": "metricCount",
@@ -2677,8 +2678,7 @@ export const pages = [
       "align": "center",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page020",
@@ -2687,6 +2687,7 @@ export const pages = [
     "layout": "THEME06-020",
     "slot": "cumulative",
     "label": "16 · 累计资金分布 / CAPITAL CURVE",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -2852,8 +2853,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 3,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page021",
@@ -2862,6 +2862,7 @@ export const pages = [
     "layout": "THEME06-021",
     "slot": "ch03",
     "label": "17 · 赛道结构细分 / CHAPTER 03",
+    "bgClass": "",
     "controls": [
       {
         "key": "background",
@@ -2999,8 +3000,7 @@ export const pages = [
       "background": "glow",
       "showWatermark": false,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page022",
@@ -3009,6 +3009,7 @@ export const pages = [
     "layout": "THEME06-022",
     "slot": "radar",
     "label": "18 · 模型实验室竞争 / MODEL LAB RACE",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -3192,8 +3193,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page023",
@@ -3202,6 +3202,7 @@ export const pages = [
     "layout": "THEME06-023",
     "slot": "agent",
     "label": "19 · 工作流自动化 / AI AGENTS",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -3379,8 +3380,7 @@ export const pages = [
       "focusIndex": 2,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page024",
@@ -3389,6 +3389,7 @@ export const pages = [
     "layout": "THEME06-024",
     "slot": "search",
     "label": "20 · 知识入口 / ENTERPRISE SEARCH",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -3566,8 +3567,7 @@ export const pages = [
       "focusIndex": 2,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page025",
@@ -3576,6 +3576,7 @@ export const pages = [
     "layout": "THEME06-025",
     "slot": "legal",
     "label": "21 · 专业服务 / LEGAL AI",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -3759,8 +3760,7 @@ export const pages = [
       "focusIndex": 2,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page026",
@@ -3769,6 +3769,7 @@ export const pages = [
     "layout": "THEME06-026",
     "slot": "ranking",
     "label": "22 · 融资排名 / RANKING",
+    "bgClass": "",
     "controls": [
       {
         "key": "rowCount",
@@ -3921,8 +3922,7 @@ export const pages = [
       "chartType": "bars",
       "showValueLabels": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page027",
@@ -3931,6 +3931,7 @@ export const pages = [
     "layout": "THEME06-027",
     "slot": "chain",
     "label": "23 · 产业链分层 / VALUE CHAIN",
+    "bgClass": "",
     "controls": [
       {
         "key": "layerCount",
@@ -4095,8 +4096,7 @@ export const pages = [
       "layout": "stack",
       "showRegion": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page028",
@@ -4105,6 +4105,7 @@ export const pages = [
     "layout": "THEME06-028",
     "slot": "cases",
     "label": "24 · 典型案例 / CASE STUDIES",
+    "bgClass": "",
     "controls": [
       {
         "key": "cardCount",
@@ -4262,8 +4263,7 @@ export const pages = [
       "showImage": true,
       "metricCount": 3,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page029",
@@ -4272,6 +4272,7 @@ export const pages = [
     "layout": "THEME06-029",
     "slot": "quadrant",
     "label": "25 · 机会矩阵 / QUADRANT",
+    "bgClass": "",
     "controls": [
       {
         "key": "focusEnabled",
@@ -4400,8 +4401,7 @@ export const pages = [
       "showAxis": true,
       "showDecor": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page030",
@@ -4410,6 +4410,7 @@ export const pages = [
     "layout": "THEME06-030",
     "slot": "risk",
     "label": "26 · 风险研判 / RISK",
+    "bgClass": "",
     "controls": [
       {
         "key": "cardCount",
@@ -4553,8 +4554,7 @@ export const pages = [
       "showConnectors": true,
       "showLevel": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page031",
@@ -4563,6 +4563,7 @@ export const pages = [
     "layout": "THEME06-031",
     "slot": "outlook",
     "label": "27 · 投资建议 / OUTLOOK",
+    "bgClass": "",
     "controls": [
       {
         "key": "itemCount",
@@ -4770,8 +4771,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 2,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page032",
@@ -4780,6 +4780,7 @@ export const pages = [
     "layout": "THEME06-032",
     "slot": "big",
     "label": "28 · 大数字 / BIG NUMBER",
+    "bgClass": "",
     "controls": [
       {
         "key": "metricCount",
@@ -4897,8 +4898,7 @@ export const pages = [
       "align": "left",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page033",
@@ -4907,6 +4907,7 @@ export const pages = [
     "layout": "THEME06-033",
     "slot": "health",
     "label": "29 · 慢变量高壁垒 / HEALTHCARE AI",
+    "bgClass": "",
     "controls": [
       {
         "key": "branchCount",
@@ -5077,8 +5078,7 @@ export const pages = [
       "showValueBars": true,
       "showRootBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page034",
@@ -5087,6 +5087,7 @@ export const pages = [
     "layout": "THEME06-034",
     "slot": "finance",
     "label": "30 · 投研风控合规 / FINANCE AI",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -5252,8 +5253,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page035",
@@ -5262,6 +5262,7 @@ export const pages = [
     "layout": "THEME06-035",
     "slot": "dev",
     "label": "31 · 研发效率提升 / DEV TOOLS",
+    "bgClass": "",
     "controls": [
       {
         "key": "showMeta",
@@ -5374,8 +5375,7 @@ export const pages = [
       "align": "left",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page036",
@@ -5384,6 +5384,7 @@ export const pages = [
     "layout": "THEME06-036",
     "slot": "datainfra",
     "label": "32 · 企业 AI 底座 / DATA INFRA",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -5559,8 +5560,7 @@ export const pages = [
       "showConnectors": true,
       "showGrowth": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page037",
@@ -5569,6 +5569,7 @@ export const pages = [
     "layout": "THEME06-037",
     "slot": "growth",
     "label": "33 · 增长效率工具 / GROWTH",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -5757,8 +5758,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page038",
@@ -5767,6 +5767,7 @@ export const pages = [
     "layout": "THEME06-038",
     "slot": "lowcode",
     "label": "34 · 企业流程嵌入 / LOW CODE",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -5954,8 +5955,7 @@ export const pages = [
       "focusIndex": 2,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page039",
@@ -5964,6 +5964,7 @@ export const pages = [
     "layout": "THEME06-039",
     "slot": "opensource",
     "label": "35 · 社区影响力变现 / OPEN SOURCE",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -6119,8 +6120,7 @@ export const pages = [
       "showBars": true,
       "showBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page040",
@@ -6129,6 +6129,7 @@ export const pages = [
     "layout": "THEME06-040",
     "slot": "safety",
     "label": "36 · 安全与对齐工具 / ALIGNMENT",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -6308,8 +6309,7 @@ export const pages = [
       "showConnectors": true,
       "showGrowth": false,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page041",
@@ -6318,6 +6318,7 @@ export const pages = [
     "layout": "THEME06-041",
     "slot": "ch04",
     "label": "37 · 资本与地区结构 / CHAPTER 04",
+    "bgClass": "",
     "controls": [
       {
         "key": "background",
@@ -6455,8 +6456,7 @@ export const pages = [
       "background": "glow",
       "showWatermark": false,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page042",
@@ -6465,6 +6465,7 @@ export const pages = [
     "layout": "THEME06-042",
     "slot": "rounds",
     "label": "38 · 新主题萌芽 / EARLY-STAGE SIGNAL",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -6647,8 +6648,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 2,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page043",
@@ -6657,6 +6657,7 @@ export const pages = [
     "layout": "THEME06-043",
     "slot": "dealstruct",
     "label": "39 · 复杂交易结构 / DEAL STRUCTURE",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -6865,8 +6866,7 @@ export const pages = [
       "showValueLabels": true,
       "showBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page044",
@@ -6875,6 +6875,7 @@ export const pages = [
     "layout": "THEME06-044",
     "slot": "investor",
     "label": "40 · 资本来源结构 / INVESTOR MIX",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -7040,8 +7041,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 1,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page045",
@@ -7050,6 +7050,7 @@ export const pages = [
     "layout": "THEME06-045",
     "slot": "resource",
     "label": "41 · 钱以外的资源 / STRATEGIC RESOURCES",
+    "bgClass": "",
     "controls": [
       {
         "key": "cardCount",
@@ -7217,8 +7218,7 @@ export const pages = [
       "showKind": true,
       "showBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page046",
@@ -7227,6 +7227,7 @@ export const pages = [
     "layout": "THEME06-046",
     "slot": "alliance",
     "label": "42 · 投资与算力消费闭环 / CLOUD ALLIANCES",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -7399,8 +7400,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page047",
@@ -7409,6 +7409,7 @@ export const pages = [
     "layout": "THEME06-047",
     "slot": "gpu",
     "label": "43 · GPU 资源链条 / NVIDIA ECOSYSTEM",
+    "bgClass": "",
     "controls": [
       {
         "key": "branchCount",
@@ -7585,8 +7586,7 @@ export const pages = [
       "showValueBars": true,
       "showRootBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page048",
@@ -7595,6 +7595,7 @@ export const pages = [
     "layout": "THEME06-048",
     "slot": "bay",
     "label": "44 · 最大地理中心 / BAY AREA",
+    "bgClass": "",
     "controls": [
       {
         "key": "metricCount",
@@ -7712,8 +7713,7 @@ export const pages = [
       "align": "center",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page049",
@@ -7722,6 +7722,7 @@ export const pages = [
     "layout": "THEME06-049",
     "slot": "nyc",
     "label": "45 · 行业客户优势 / NEW YORK",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -7949,8 +7950,7 @@ export const pages = [
       "showTagBadge": true,
       "showNote": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page050",
@@ -7959,6 +7959,7 @@ export const pages = [
     "layout": "THEME06-050",
     "slot": "seattle",
     "label": "46 · 云计算人才外溢 / SEATTLE",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -8186,8 +8187,7 @@ export const pages = [
       "showTagBadge": true,
       "showNote": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page051",
@@ -8196,6 +8196,7 @@ export const pages = [
     "layout": "THEME06-051",
     "slot": "boston",
     "label": "47 · 科研与硬科技 / BOSTON",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -8423,8 +8424,7 @@ export const pages = [
       "showTagBadge": true,
       "showNote": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page052",
@@ -8433,6 +8433,7 @@ export const pages = [
     "layout": "THEME06-052",
     "slot": "other",
     "label": "48 · 分散型应用落地 / OTHER REGIONS",
+    "bgClass": "",
     "controls": [
       {
         "key": "layout",
@@ -8659,8 +8660,7 @@ export const pages = [
       "showTagBadge": true,
       "showNote": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page053",
@@ -8669,6 +8669,7 @@ export const pages = [
     "layout": "THEME06-053",
     "slot": "triad",
     "label": "49 · 三类关键资源 / TALENT·CAPITAL·COMPUTE",
+    "bgClass": "",
     "controls": [
       {
         "key": "showMeta",
@@ -8781,8 +8782,7 @@ export const pages = [
       "align": "center",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page054",
@@ -8791,6 +8791,7 @@ export const pages = [
     "layout": "THEME06-054",
     "slot": "openai",
     "label": "50 · 商业化标杆 / OPENAI",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -8954,8 +8955,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page055",
@@ -8964,6 +8964,7 @@ export const pages = [
     "layout": "THEME06-055",
     "slot": "anthropic",
     "label": "51 · 安全可靠模型 / ANTHROPIC",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -9128,8 +9129,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page056",
@@ -9138,6 +9138,7 @@ export const pages = [
     "layout": "THEME06-056",
     "slot": "xai",
     "label": "52 · 实时数据生态 / XAI",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -9302,8 +9303,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page057",
@@ -9312,6 +9312,7 @@ export const pages = [
     "layout": "THEME06-057",
     "slot": "coreweave",
     "label": "53 · 算力基础设施 / COREWEAVE",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -9476,8 +9477,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page058",
@@ -9486,6 +9486,7 @@ export const pages = [
     "layout": "THEME06-058",
     "slot": "scaleai",
     "label": "54 · 数据基础设施 / SCALE AI · TABLE",
+    "bgClass": "",
     "controls": [
       {
         "key": "rowCount",
@@ -9725,8 +9726,7 @@ export const pages = [
       "showTagBadge": true,
       "zebra": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page059",
@@ -9735,6 +9735,7 @@ export const pages = [
     "layout": "THEME06-059",
     "slot": "perplexity",
     "label": "55 · AI 搜索入口 / PERPLEXITY",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -9902,8 +9903,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page060",
@@ -9912,6 +9912,7 @@ export const pages = [
     "layout": "THEME06-060",
     "slot": "databricks",
     "label": "56 · 数据平台延展 / DATABRICKS",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -10079,8 +10080,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page061",
@@ -10089,6 +10089,7 @@ export const pages = [
     "layout": "THEME06-061",
     "slot": "glean",
     "label": "57 · 企业知识入口 / GLEAN",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -10256,8 +10257,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page062",
@@ -10266,6 +10266,7 @@ export const pages = [
     "layout": "THEME06-062",
     "slot": "figure",
     "label": "58 · 人形机器人 / FIGURE AI",
+    "bgClass": "",
     "controls": [
       {
         "key": "metricCount",
@@ -10383,8 +10384,7 @@ export const pages = [
       "align": "center",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page063",
@@ -10393,6 +10393,7 @@ export const pages = [
     "layout": "THEME06-063",
     "slot": "ssi",
     "label": "59 · 强叙事模型实验室 / SSI",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -10560,8 +10561,7 @@ export const pages = [
       "showCaseIndex": true,
       "showTagBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page064",
@@ -10570,6 +10570,7 @@ export const pages = [
     "layout": "THEME06-064",
     "slot": "ch05",
     "label": "60 · 风险与策略 / CHAPTER 05",
+    "bgClass": "",
     "controls": [
       {
         "key": "background",
@@ -10707,8 +10708,7 @@ export const pages = [
       "background": "glow",
       "showWatermark": false,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page065",
@@ -10717,6 +10717,7 @@ export const pages = [
     "layout": "THEME06-065",
     "slot": "revrisk",
     "label": "61 · 从试点到稳定收入 / REVENUE RISK",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -10918,8 +10919,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page066",
@@ -10928,6 +10928,7 @@ export const pages = [
     "layout": "THEME06-066",
     "slot": "regrisk",
     "label": "62 · 隐私版权与安全 / REGULATION · TABLE",
+    "bgClass": "",
     "controls": [
       {
         "key": "rowCount",
@@ -11177,8 +11178,7 @@ export const pages = [
       "showTagBadge": true,
       "zebra": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page067",
@@ -11187,6 +11187,7 @@ export const pages = [
     "layout": "THEME06-067",
     "slot": "compute",
     "label": "63 · 毛利天花板 / COMPUTE COST",
+    "bgClass": "",
     "controls": [
       {
         "key": "metricCount",
@@ -11304,8 +11305,7 @@ export const pages = [
       "align": "center",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page068",
@@ -11314,6 +11314,7 @@ export const pages = [
     "layout": "THEME06-068",
     "slot": "openrisk",
     "label": "64 · 壁垒被压缩 / OPEN SOURCE RISK",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -11515,8 +11516,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 0,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page069",
@@ -11525,6 +11525,7 @@ export const pages = [
     "layout": "THEME06-069",
     "slot": "infra",
     "label": "65 · 确定性预算 / INFRA STRATEGY",
+    "bgClass": "",
     "controls": [
       {
         "key": "cardCount",
@@ -11719,8 +11720,7 @@ export const pages = [
       "showTag": true,
       "showBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page070",
@@ -11729,6 +11729,7 @@ export const pages = [
     "layout": "THEME06-070",
     "slot": "vertical",
     "label": "66 · 嵌入工作流 / VERTICAL STRATEGY",
+    "bgClass": "",
     "controls": [
       {
         "key": "cardCount",
@@ -11928,8 +11929,7 @@ export const pages = [
       "showTag": true,
       "showBadge": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page071",
@@ -11938,6 +11938,7 @@ export const pages = [
     "layout": "THEME06-071",
     "slot": "quote",
     "label": "67 · 结论 / CONCLUSION",
+    "bgClass": "",
     "controls": [
       {
         "key": "showMeta",
@@ -12050,8 +12051,7 @@ export const pages = [
       "align": "left",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page072",
@@ -12060,6 +12060,7 @@ export const pages = [
     "layout": "THEME06-072",
     "slot": "ipowatch",
     "label": "68 · 估值锚重定价 / IPO WATCH",
+    "bgClass": "",
     "controls": [
       {
         "key": "phaseCount",
@@ -12275,8 +12276,7 @@ export const pages = [
       "showAxis": true,
       "showMarkers": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page073",
@@ -12285,6 +12285,7 @@ export const pages = [
     "layout": "THEME06-073",
     "slot": "ch06",
     "label": "69 · 数据附录精读 / CHAPTER 06",
+    "bgClass": "",
     "controls": [
       {
         "key": "background",
@@ -12420,8 +12421,7 @@ export const pages = [
       "background": "glow",
       "showWatermark": false,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page074",
@@ -12430,6 +12430,7 @@ export const pages = [
     "layout": "THEME06-074",
     "slot": "heatmap",
     "label": "70 · 全年月度热力 / MONTHLY HEAT",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -12633,8 +12634,7 @@ export const pages = [
       "showValueLabels": true,
       "showPeakMark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page075",
@@ -12643,6 +12643,7 @@ export const pages = [
     "layout": "THEME06-075",
     "slot": "megadeals",
     "label": "71 · 超级交易画像 / MEGA DEALS",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -12834,8 +12835,7 @@ export const pages = [
       "showTagBadge": true,
       "showCaption": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page076",
@@ -12844,6 +12844,7 @@ export const pages = [
     "layout": "THEME06-076",
     "slot": "megabig",
     "label": "72 · 超级交易均值 / MEGA AVG",
+    "bgClass": "",
     "controls": [
       {
         "key": "metricCount",
@@ -12961,8 +12962,7 @@ export const pages = [
       "align": "center",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page077",
@@ -12971,6 +12971,7 @@ export const pages = [
     "layout": "THEME06-077",
     "slot": "recap",
     "label": "73 · 全景速览 / YEAR IN ONE VIEW",
+    "bgClass": "",
     "controls": [
       {
         "key": "statCount",
@@ -13154,8 +13155,7 @@ export const pages = [
       "showThesis": true,
       "showCaption": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page078",
@@ -13164,6 +13164,7 @@ export const pages = [
     "layout": "THEME06-078",
     "slot": "sources",
     "label": "74 · 数据来源与口径 / SOURCES",
+    "bgClass": "",
     "controls": [
       {
         "key": "rowCount",
@@ -13413,8 +13414,7 @@ export const pages = [
       "showTagBadge": true,
       "zebra": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page079",
@@ -13423,6 +13423,7 @@ export const pages = [
     "layout": "THEME06-079",
     "slot": "closing",
     "label": "75 · 最终判断 / FINAL VERDICT",
+    "bgClass": "",
     "controls": [
       {
         "key": "showMeta",
@@ -13535,8 +13536,7 @@ export const pages = [
       "align": "center",
       "showWatermark": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page080",
@@ -13545,6 +13545,7 @@ export const pages = [
     "layout": "THEME06-080",
     "slot": "ch07",
     "label": "76 · 前瞻信号 / CHAPTER 07",
+    "bgClass": "",
     "controls": [
       {
         "key": "background",
@@ -13682,8 +13683,7 @@ export const pages = [
       "background": "glow",
       "showWatermark": false,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page081",
@@ -13692,6 +13692,7 @@ export const pages = [
     "layout": "THEME06-081",
     "slot": "capflow",
     "label": "77 · 资本流向预测 / CAPITAL FLOW",
+    "bgClass": "",
     "controls": [
       {
         "key": "chartType",
@@ -13875,8 +13876,7 @@ export const pages = [
       "showHero": true,
       "showNote": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page082",
@@ -13885,6 +13885,7 @@ export const pages = [
     "layout": "THEME06-082",
     "slot": "statement",
     "label": "78 · 前瞻主题 / FORWARD STATEMENT",
+    "bgClass": "",
     "controls": [
       {
         "key": "mediaSlotCount",
@@ -14034,8 +14035,7 @@ export const pages = [
       "showBadge": true,
       "showLead": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   },
   {
     "key": "theme06_page083",
@@ -14044,6 +14044,7 @@ export const pages = [
     "layout": "THEME06-083",
     "slot": "milestones",
     "label": "79 · 里程碑节奏 / MILESTONES 2025",
+    "bgClass": "",
     "controls": [
       {
         "key": "phaseCount",
@@ -14259,7 +14260,6 @@ export const pages = [
       "showAxis": true,
       "showMarkers": true,
       "accent": "#c8f135"
-    },
-    "bgClass": ""
+    }
   }
 ];

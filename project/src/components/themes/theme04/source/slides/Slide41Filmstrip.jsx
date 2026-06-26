@@ -11,7 +11,7 @@
  *  mediaCount      number 显示图片槽的格数(0–4)  默认 3
  *  frameRatio      enum   画框构图             默认 'landscape' 可选 'landscape'|'portrait'
  *  focusEnabled    bool   重点格高亮开关         默认 false
- *  focusIndex      number 重点格序号(从1起)     默认 1   范围 1–4
+ *  focusIndex      number 重点格序号(从1起)     默认 2   范围 1–4
  *  showCaptions    bool   逐格说明显隐          默认 true
  *  showSprockets   bool   胶片齿孔显隐          默认 true
  *  showDecorations bool   星芒 / 圆环等点缀      默认 true
@@ -68,7 +68,7 @@ function Slide41Filmstrip(props) {
     mediaCount = 3,
     frameRatio = 'landscape',
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showCaptions = true,
     showSprockets = true,
     showDecorations = true,
@@ -189,7 +189,7 @@ const META = {
     mediaCount: 3,
     frameRatio: 'landscape',
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showCaptions: true,
     showSprockets: true,
     showDecorations: true,
@@ -202,7 +202,7 @@ const META = {
     { key: 'mediaCount', type: 'slider', label: '图片格数', min: 0, max: 4, step: 1, default: 3, desc: '显示图片槽的格数(其余转未曝光占位)' },
     { key: 'frameRatio', type: 'radio', label: '画框构图', options: ['landscape', 'portrait'], optionLabels: ['横构图', '竖构图'], default: 'landscape', desc: '画框横 / 竖比例' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一格' },
-    { key: 'focusIndex', type: 'slider', label: '重点格序号', min: 1, max: 4, step: 1, default: 1, showIf: (v) => v.focusEnabled, desc: '被高亮格的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点格序号', min: 1, max: 4, step: 1, default: 2, showIf: (v) => v.focusEnabled, desc: '被高亮格的序号' },
     { key: 'showCaptions', type: 'toggle', label: '逐格说明', default: true, desc: '每格编号 / 说明' },
     { key: 'showSprockets', type: 'toggle', label: '胶片齿孔', default: true, desc: '上下齿孔显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

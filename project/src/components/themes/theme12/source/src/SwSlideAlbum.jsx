@@ -18,6 +18,7 @@ export const meta = { id: 'album', index: 64, label: '专辑曲目 / Tracklist' 
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'dark',           // 'light' | 'dark'
   trackCount: 8,           // 5–10 tracks
   showDuration: true,      // runtime per track
   coverSide: 'left',       // 'left' | 'right'
@@ -62,6 +63,8 @@ export const controls = [
     dependsOn: 'focus', desc: '主打曲目的序号（1 起）' },
   { key: 'mediaFit', label: '封面填充', type: 'segment', def: 'cover',
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '封面的填充方式' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'dark',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '主打 / 序号 / 页脚强调色' },
 ];
@@ -69,22 +72,32 @@ export const controls = [
 export default function SwSlideAlbum(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const n = Math.max(5, Math.min(10, p.trackCount));
   const tracks = (p.tracks || []).slice(0, n);
   const coverLeft = p.coverSide !== 'right';
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const subC = dark ? 'rgba(245,225,227,.66)' : '#4f444a';
+  const mut = dark ? 'rgba(245,225,227,.6)' : C.inkMut;
+  const enC = dark ? 'rgba(245,225,227,.5)' : C.inkMut;
+  const durC = dark ? 'rgba(245,225,227,.62)' : '#6a5f64';
+  const hair = dark ? C.lineD2 : C.line2;
+  const coverShadow = dark ? '0 30px 70px rgba(0,0,0,.55)' : '0 26px 60px rgba(27,21,24,.30)';
+
   const Cover = (
-    <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minWidth: 0, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
       <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', borderRadius: 14,
-        overflow: 'hidden', boxShadow: '0 30px 70px rgba(0,0,0,.55)' }}>
+        overflow: 'hidden', boxShadow: coverShadow, minWidth: 0, minHeight: 0 }}>
         <SwImageSlot value={p.media[0] || null} onChange={(s) => p.onMediaChange(0, s)}
-          fit={p.mediaFit} accent={accent} radius={14} tone="dark" placeholder={p.mediaPlaceholder} />
+          fit={p.mediaFit} accent={accent} radius={14} tone={dark ? 'dark' : 'light'} placeholder={p.mediaPlaceholder} />
       </div>
       <div style={{ marginTop: 22 }}>
         <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.16em', textTransform: 'uppercase',
           color: accent }}>{p.coverTag}</div>
         <div style={{ fontWeight: 900, fontSize: 50, letterSpacing: '-1.4px', lineHeight: 1.02, marginTop: 8 }}>{p.albumTitle}</div>
-        <div style={{ fontSize: 23, color: 'rgba(245,225,227,.66)', marginTop: 6 }}>{p.albumSub}</div>
+        <div style={{ fontSize: 23, color: subC, marginTop: 6 }}>{p.albumSub}</div>
       </div>
     </div>
   );
@@ -92,12 +105,12 @@ export default function SwSlideAlbum(props) {
   const List = (
     <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
-        borderBottom: '1px solid ' + C.lineD2, paddingBottom: 14, marginBottom: 6 }}>
+        borderBottom: '1px solid ' + hair, paddingBottom: 14, marginBottom: 6 }}>
         <h2 style={{ fontWeight: 900, fontSize: 40, letterSpacing: '-1px' }}>
           {renderSwText(p.listTitle, { hl: { tone: 'o' } })}
         </h2>
         <span style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.1em', textTransform: 'uppercase',
-          color: 'rgba(245,225,227,.6)' }}>{String(n).padStart(2, '0')} {p.tracksLabel}</span>
+          color: mut }}>{String(n).padStart(2, '0')} {p.tracksLabel}</span>
       </div>
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         {tracks.map((t, i) => {
@@ -109,16 +122,16 @@ export default function SwSlideAlbum(props) {
                 color: on ? '#fff' : accent, fontVariantNumeric: 'tabular-nums' }}>{String(i + 1).padStart(2, '0')}</span>
               <span style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'baseline', gap: 14 }}>
                 <span style={{ fontWeight: 900, fontSize: 28, letterSpacing: '-.3px',
-                  color: on ? '#fff' : C.blush }}>{t.cn}</span>
+                  color: on ? '#fff' : fg }}>{t.cn}</span>
                 <span style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.08em', textTransform: 'uppercase',
-                  color: on ? 'rgba(255,255,255,.82)' : 'rgba(245,225,227,.5)' }}>{t.en}</span>
+                  color: on ? 'rgba(255,255,255,.82)' : enC }}>{t.en}</span>
                 {on && (
                   <span style={{ fontFamily: F.mono, fontSize: 14, letterSpacing: '.1em', padding: '2px 9px',
                     borderRadius: 999, background: 'rgba(255,255,255,.9)', color: accent, fontWeight: 700 }}>{p.focusTag}</span>
                 )}
               </span>
               {p.showDuration && (
-                <span style={{ fontFamily: F.mono, fontSize: 21, color: on ? 'rgba(255,255,255,.9)' : 'rgba(245,225,227,.62)',
+                <span style={{ fontFamily: F.mono, fontSize: 21, color: on ? 'rgba(255,255,255,.9)' : durC,
                   fontVariantNumeric: 'tabular-nums' }}>{t.d}</span>
               )}
             </div>
@@ -129,15 +142,16 @@ export default function SwSlideAlbum(props) {
   );
 
   return (
-    <SlideRoot bg={C.dark} color={C.blush}>
-      <Bar meta={p.barMeta} accent={accent} dark />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '0.82fr 1.18fr',
-        gap: 64, alignItems: 'stretch', padding: '26px 0 22px' }}>
+      <div style={{ flex: 1, minHeight: 0, display: 'grid',
+        gridTemplateColumns: coverLeft ? '0.82fr 1.18fr' : '1.18fr 0.82fr',
+        gridTemplateRows: 'minmax(0, 1fr)', gap: 64, alignItems: 'stretch', padding: '26px 0 22px' }}>
         {coverLeft ? <>{Cover}{List}</> : <>{List}{Cover}</>}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} dark />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

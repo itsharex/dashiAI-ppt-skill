@@ -72,7 +72,7 @@ export default function SwSlideGridWall(props) {
       <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 14, padding: '22px 0',
-        gridTemplateColumns: 'repeat(' + cols + ',1fr)', gridTemplateRows: 'repeat(' + rows + ',1fr)',
+        gridTemplateColumns: 'repeat(' + cols + ', minmax(0, 1fr))', gridTemplateRows: 'repeat(' + rows + ', minmax(0, 1fr))',
         position: 'relative', zIndex: 3 }}>
 
         {/* title tile spans two columns */}

@@ -18,6 +18,7 @@ export const meta = { id: 'funnel', index: 47, label: '转化漏斗 / Funnel' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   stageCount: 4,           // 3–5 stages
   showRates: true,         // step conversion %
   focus: true,
@@ -50,6 +51,8 @@ export const controls = [
   { key: 'focusIndex', label: '高亮第几个', type: 'slider', def: 4, min: 1, max: 5, step: 1,
     dependsOn: 'focus', desc: '被高亮阶段的序号（1 起）' },
   { key: 'showNotes', label: '右侧说明', type: 'toggle', def: true, desc: '显示/隐藏右侧文字说明' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '末段 / 高亮 / 页脚强调色' },
 ];
@@ -61,9 +64,19 @@ export default function SwSlideFunnel(props) {
   const stages = (p.stages || []).slice(0, count);
   const RATES = p.rates;
 
+  // Funnel sits directly on the page (no plot card). Surfaces flip with theme;
+  // the rate chip's pill background lifts to #241e20 in dark so its accent text
+  // and border stay legible. Funnel band colours stay data-driven.
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mutedC = dark ? '#c8c0bd' : '#5a4f54';
+  const railLine = dark ? C.lineD : C.line;
+  const chipBg = dark ? '#241e20' : '#fff';
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1.32fr 0.68fr', gap: 56,
         alignItems: 'stretch', padding: '92px 0 84px', position: 'relative', zIndex: 3 }}>
@@ -75,9 +88,15 @@ export default function SwSlideFunnel(props) {
             const last = i === count - 1;
             const pal = swCardPalette[i % swCardPalette.length];
             const cardBg = (last || (p.focus && (i + 1) === p.focusIndex)) ? accent : pal.bg;
-            const titleC = cardBg === accent ? '#fff' : pal.title;
-            const subC = cardBg === accent ? 'rgba(255,255,255,.85)' : pal.sub;
-            const valC = cardBg === accent ? '#fff' : pal.title;
+            // A dimmed (non-focused) band sits at 0.42 opacity; in dark mode that
+            // composites its fill DOWN to a dark tone, so palette text meant for
+            // a bright fill (e.g. the navy-on-cyan band) goes unreadable. Lift
+            // such text to blush so the de-emphasised band still reads, matching
+            // the light-mode de-emphasis level. Light mode is untouched.
+            const dimDark = dark && !on && cardBg !== accent;
+            const titleC = cardBg === accent ? '#fff' : (dimDark ? C.blush : pal.title);
+            const subC = cardBg === accent ? 'rgba(255,255,255,.85)' : (dimDark ? 'rgba(245,225,227,.7)' : pal.sub);
+            const valC = cardBg === accent ? '#fff' : (dimDark ? C.blush : pal.title);
             return (
               <div key={s.en} style={{ position: 'relative', width: s.w + '%', margin: '0 auto', minWidth: 0,
                 flex: '1 1 0', minHeight: 0, display: 'flex',
@@ -97,7 +116,7 @@ export default function SwSlideFunnel(props) {
                 {p.showRates && i < count - 1 && (
                   <div style={{ position: 'absolute', left: '50%', bottom: -9, transform: 'translate(-50%,50%)',
                     zIndex: 3, fontFamily: F.mono, fontWeight: 700, fontSize: 18, color: accent,
-                    background: '#fff', border: '1.5px solid ' + accent, borderRadius: 999, padding: '2px 12px' }}>
+                    background: chipBg, border: '1.5px solid ' + accent, borderRadius: 999, padding: '2px 12px' }}>
                     ↓ {RATES[i]}
                   </div>
                 )}
@@ -108,25 +127,25 @@ export default function SwSlideFunnel(props) {
 
         {/* notes rail */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minWidth: 0,
-          borderLeft: '1px solid ' + C.line, paddingLeft: 40, position: 'relative' }}>
+          borderLeft: '1px solid ' + railLine, paddingLeft: 40, position: 'relative' }}>
           <Shape kind="ring" size={64} border={13} color={accent} style={{ top: 18, right: 0, opacity: .9 }} />
           <Kicker accent={accent}>{p.kicker}</Kicker>
           <h2 style={{ fontWeight: 900, fontSize: 48, lineHeight: 1.08, letterSpacing: '-1.2px', marginTop: 16 }}>
             {renderSwText(p.title, { hl: { tone: 'o' } })}
           </h2>
           {p.showNotes && (
-            <p style={{ fontSize: 24, lineHeight: 1.66, color: '#5a4f54', marginTop: 22 }}>
+            <p style={{ fontSize: 24, lineHeight: 1.66, color: mutedC, marginTop: 22 }}>
               {p.notes}
             </p>
           )}
           <div style={{ marginTop: 28, display: 'flex', alignItems: 'baseline', gap: 14 }}>
             <span style={{ fontWeight: 900, fontSize: 60, letterSpacing: '-2px', color: accent }}>{p.totalValue}</span>
-            <span style={{ fontSize: 23, color: '#5a4f54' }}>{p.totalLabel}</span>
+            <span style={{ fontSize: 23, color: mutedC }}>{p.totalLabel}</span>
           </div>
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

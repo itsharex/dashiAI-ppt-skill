@@ -22,6 +22,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_PARETO_BARS = 13;
+const MAX_PARETO_FOCUS_INDEX = 12;
+
 export const slideParetoDefaults = {
   kicker: 'PARETO · 集中度',
   title: '少数头部 ',
@@ -39,9 +42,12 @@ export const slideParetoDefaults = {
     { label: 'Perplexity', value: 5.2 },
     { label: 'Databricks', value: 5.0 },
     { label: 'Glean', value: 2.6 },
+    { label: 'Mistral', value: 2.3 },
+    { label: 'Cohere', value: 1.9 },
+    { label: 'Cerebras', value: 1.4 },
   ],
   unit: '亿美元',
-  barCount: 10,
+  barCount: MAX_PARETO_BARS,
   focusEnabled: true,
   focusIndex: 0,
   showCumLine: true,
@@ -51,12 +57,12 @@ export const slideParetoDefaults = {
 };
 
 export const slideParetoControls = [
-  { key: 'barCount', type: 'number', label: '条目数量', default: 10, min: 2, step: 1,
-    maxFrom: (p) => (p.items ? p.items.length : 10), describe: '帕累托图展示的条目数量' },
+  { key: 'barCount', type: 'number', label: '条目数量', default: MAX_PARETO_BARS, min: 2, step: 1,
+    max: MAX_PARETO_BARS, maxFrom: (p) => Math.min(MAX_PARETO_BARS, (p.items ? p.items.length : MAX_PARETO_BARS)), describe: '帕累托图展示的条目数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '辉光强调某一柱（其余淡出）' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.barCount || 1) - 1),
+    oneBased: true, max: MAX_PARETO_FOCUS_INDEX, maxFrom: (p) => Math.max(0, Math.min(MAX_PARETO_FOCUS_INDEX, (p.barCount || 1) - 1)),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调柱的序号' },
   { key: 'showCumLine', type: 'toggle', label: '累计曲线', default: true, describe: '累计占比折线显隐' },
   { key: 'showEighty', type: 'toggle', label: '80% 线', default: true, describe: '80% 参考线显隐' },
@@ -192,10 +198,10 @@ export function SlidePareto(props) {
   const cool = sc.cool || '#4ea2ff';
   const glow = sc.glow || '47,224,127';
 
-  const count = Math.max(2, Math.min(p.items.length, p.barCount));
+  const count = Math.max(2, Math.min(MAX_PARETO_BARS, p.items.length, p.barCount));
   const items = p.items.slice(0, count);
   const total = items.reduce((s, d) => s + d.value, 0) || 1;
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_PARETO_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   // top-3 concentration on the FULL visible set
   const top3 = items.slice(0, Math.min(3, count)).reduce((s, d) => s + d.value, 0);
   const top3Pct = Math.round((top3 / total) * 100);

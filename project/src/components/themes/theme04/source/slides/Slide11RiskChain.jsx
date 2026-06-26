@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  chainCount       number 传导链数量         默认 3   可选 1–3
  *  focusEnabled     bool   重点突出开关         默认 false
- *  focusIndex       number 重点链序号(从1起)    默认 1   范围 1–chainCount
+ *  focusIndex       number 重点链序号(从1起)    默认 2   范围 1–chainCount
  *  showArrows       bool   箭头连接显隐         默认 true
  *  showOutcome      bool   末端结果强调显隐      默认 true
  *  showDecorations  bool   装饰元素显隐         默认 true
@@ -67,7 +67,7 @@ function Slide11RiskChain(props) {
   const {
     chainCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showArrows = true,
     showOutcome = true,
     showDecorations = true,
@@ -174,7 +174,7 @@ const META = {
     ...hlDefaults,
     chainCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showArrows: true,
     showOutcome: true,
     showDecorations: true,
@@ -187,7 +187,7 @@ const META = {
     ...hlControls,
     { key: 'chainCount', type: 'slider', label: '链路数量', min: 1, max: 3, step: 1, default: 3, desc: '展示的风险传导链数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一条链路' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'chainCount', showIf: (v) => v.focusEnabled, desc: '被高亮链路的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'chainCount', showIf: (v) => v.focusEnabled, desc: '被高亮链路的序号' },
     { key: 'showArrows', type: 'toggle', label: '箭头连接', default: true, desc: '节点间的箭头流向' },
     { key: 'showOutcome', type: 'toggle', label: '结果强调', default: true, desc: '末端结果节点高亮' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

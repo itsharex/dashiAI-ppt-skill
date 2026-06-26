@@ -20,6 +20,8 @@ import { SlideHeader } from '../gxnPrimitives.jsx';
 import { ShareChart } from '../gxnCharts.jsx';
 import { GXN_PALETTE } from '../gxnTheme.js';
 
+const MAX_INDUSTRY_FOCUS_INDEX = 4;
+
 export const slideIndustryDefaults = {
   kicker: 'STRUCTURE · 横向透视',
   title: '行业赛道融资额占比 ',
@@ -48,8 +50,8 @@ export const slideIndustryControls = [
     describe: '占比数据的呈现形式' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮某一赛道' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.data ? p.data.length : 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_INDUSTRY_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_INDUSTRY_FOCUS_INDEX + 1, p.data ? p.data.length : 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调赛道的序号' },
   { key: 'showLegend', type: 'toggle', label: '图例', default: true,
     describe: '显示/隐藏右侧图例列表' },
@@ -60,9 +62,37 @@ export const slideIndustryControls = [
     describe: '在图表上显示占比数值' },
 ];
 
+export function normalizeIndustryShareData(data = []) {
+  const rows = data.map((item) => ({ ...item, value: Number(item.value) || 0 }));
+  const total = rows.reduce((sum, item) => sum + Math.max(0, item.value), 0);
+  if (!rows.length || total <= 0) {
+    return rows.map((item) => ({ ...item, pct: '0.0%' }));
+  }
+
+  const scaled = rows.map((item, index) => {
+    const raw = (Math.max(0, item.value) / total) * 1000;
+    const base = Math.floor(raw);
+    return { index, base, remainder: raw - base };
+  });
+  let remaining = 1000 - scaled.reduce((sum, item) => sum + item.base, 0);
+  const ranked = [...scaled].sort((a, b) => b.remainder - a.remainder || a.index - b.index);
+  for (const item of ranked) {
+    if (remaining <= 0) break;
+    item.base += 1;
+    remaining -= 1;
+  }
+  const tenthsByIndex = new Map(ranked.map((item) => [item.index, item.base]));
+
+  return rows.map((item, index) => {
+    const tenths = tenthsByIndex.get(index) || 0;
+    return { ...item, pct: `${(tenths / 10).toFixed(1)}%` };
+  });
+}
+
 export function SlideIndustry(props) {
   const p = { ...slideIndustryDefaults, ...props };
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(p.data.length - 1, p.focusIndex)) : -1;
+  const data = normalizeIndustryShareData(p.data);
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_INDUSTRY_FOCUS_INDEX, data.length - 1, p.focusIndex)) : -1;
   const palette = (p.gxnScheme && p.gxnScheme.palette) || GXN_PALETTE;
   const colorOf = (d, i) => d.color || palette[i % palette.length];
 
@@ -79,7 +109,7 @@ export function SlideIndustry(props) {
         }}>
           {/* chart */}
           <div style={{ height: '100%', minHeight: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <ShareChart data={p.data} chartType={p.chartType} focusIndex={fIdx}
+            <ShareChart data={data} chartType={p.chartType} focusIndex={fIdx}
                         showCenter={p.showCenter} showValueLabels={p.showValueLabels}
                         centerValue={p.centerValue} centerLabel={p.centerLabel} palette={palette}
                         auroraColors={p.gxnScheme && p.gxnScheme.aurora} auroraSpeed={p.gxnScheme && p.gxnScheme.auroraSpeed} />
@@ -89,7 +119,7 @@ export function SlideIndustry(props) {
           {p.showLegend && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 30, maxWidth: 640 }}>
               <ul className="gxn-legend" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                {p.data.map((d, i) => {
+                {data.map((d, i) => {
                   const isDim = p.focusEnabled && i !== fIdx;
                   const isF = p.focusEnabled && i === fIdx;
                   return (

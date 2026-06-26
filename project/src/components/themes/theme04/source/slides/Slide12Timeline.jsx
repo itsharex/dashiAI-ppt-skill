@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  stepCount        number 阶段数量            默认 3   可选 2–3
  *  focusEnabled     bool   重点突出开关         默认 false
- *  focusIndex       number 重点阶段序号(从1起)   默认 1   范围 1–stepCount
+ *  focusIndex       number 重点阶段序号(从1起)   默认 2   范围 1–stepCount
  *  showAxis         bool   连接轴线显隐         默认 true
  *  showRange        bool   时间区间显隐         默认 true
  *  showDecorations  bool   装饰元素显隐         默认 true
@@ -44,7 +44,7 @@ function Slide12Timeline(props) {
   const {
     stepCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showAxis = true,
     showRange = true,
     showDecorations = true,
@@ -175,7 +175,7 @@ const META = {
     ...hlDefaults,
     stepCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showAxis: true,
     showRange: true,
     showDecorations: true,
@@ -189,7 +189,7 @@ const META = {
     ...hlControls,
     { key: 'stepCount', type: 'slider', label: '阶段数量', min: 2, max: 3, step: 1, default: 3, desc: '时间轴阶段数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一阶段' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'stepCount', showIf: (v) => v.focusEnabled, desc: '被高亮阶段的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'stepCount', showIf: (v) => v.focusEnabled, desc: '被高亮阶段的序号' },
     { key: 'showAxis', type: 'toggle', label: '连接轴线', default: true, desc: '贯穿节点的横向轴线' },
     { key: 'showRange', type: 'toggle', label: '时间区间', default: true, desc: '节点下方的时间区间标签' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

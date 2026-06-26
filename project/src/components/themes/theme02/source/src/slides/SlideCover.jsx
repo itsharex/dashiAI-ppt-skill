@@ -64,7 +64,9 @@ export const slideCoverControls = [
 
 export function SlideCover(props) {
   const p = { ...slideCoverDefaults, ...props };
-  const centered = p.layout === 'centered' || !p.imageCount;
+  const imageCount = Math.max(0, Math.min(3, Number(p.imageCount) || 0));
+  const centered = p.layout === 'centered';
+  const hasImages = imageCount > 0;
 
   const textBlock = (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 40,
@@ -88,14 +90,38 @@ export function SlideCover(props) {
       <ThemeStyle />
       <div className="gxn-pad" style={{ justifyContent: 'center' }}>
         {centered ? (
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="gxn-cover-centered-body" style={{
+            flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column',
+            justifyContent: hasImages ? 'flex-start' : 'center', alignItems: 'center',
+            paddingTop: hasImages ? 10 : 0,
+          }}>
             {textBlock}
+            {hasImages && (
+              <div className="gxn-cover-centered-media gxn-rise-3" style={{
+                flex: '0 0 auto',
+                width: imageCount === 1 ? 'min(640px, 74%)' : 'min(860px, 84%)',
+                height: imageCount === 1 ? 136 : 136,
+                marginTop: 14,
+              }}>
+                <ImageSlots count={imageCount} items={p.images}
+                            onActivate={p.onSlotActivate} onClear={p.onSlotClear}
+                            boundSingle
+                            placeholder="鎷栧叆閰嶅浘 路 IMAGE" />
+              </div>
+            )}
           </div>
         ) : (
-          <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1.28fr 0.72fr', gap: 60, alignItems: 'center' }}>
+          <div className="gxn-cover-split-body" style={{
+            flex: '1 1 0', minHeight: 0, display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1.28fr) minmax(0, 0.72fr)',
+            gap: 60, alignItems: 'center',
+          }}>
             {textBlock}
-            <div className="gxn-rise-3" style={{ height: '76%', alignSelf: 'center' }}>
-              <ImageSlots count={p.imageCount} items={p.images}
+            <div className="gxn-cover-split-media gxn-rise-3" style={{
+              height: 'min(720px, 76%)', maxHeight: '100%', minHeight: 0,
+              alignSelf: 'center', overflow: 'hidden',
+            }}>
+              <ImageSlots count={imageCount} items={p.images}
                           onActivate={p.onSlotActivate} onClear={p.onSlotClear}
                           placeholder="拖入配图 · IMAGE" />
             </div>

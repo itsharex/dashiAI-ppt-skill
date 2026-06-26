@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  itemCount       number  模块数量          默认 4   可选 2–4
  *  focusEnabled    bool    重点突出开关       默认 false
- *  focusIndex      number  重点项序号(从1起)  默认 1   范围 1–itemCount
+ *  focusIndex      number  重点项序号(从1起)  默认 2   范围 1–itemCount
  *  showDecorations bool    装饰元素显隐       默认 true
  *  showTag         bool    序号标签显隐       默认 true
  *  tilt            bool    卡片倾斜           默认 true
@@ -83,7 +83,7 @@ import { HL, hlControls, hlDefaults } from './_Highlight.jsx';
     const {
       itemCount = 4,
       focusEnabled = false,
-      focusIndex = 1,
+      focusIndex = 2,
       showDecorations = true,
       showTag = true,
       tilt = true,
@@ -226,7 +226,7 @@ import { HL, hlControls, hlDefaults } from './_Highlight.jsx';
       ...hlDefaults,
       itemCount: 4,
       focusEnabled: false,
-      focusIndex: 1,
+      focusIndex: 2,
       showDecorations: true,
       showTag: true,
       tilt: true,
@@ -240,7 +240,7 @@ import { HL, hlControls, hlDefaults } from './_Highlight.jsx';
       ...hlControls,
       { key: 'itemCount', type: 'slider', label: '模块数量', min: 2, max: 4, step: 1, default: 4, desc: '展示的章节模块卡数量' },
       { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一个模块' },
-      { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮模块的序号' },
+      { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮模块的序号' },
       { key: 'tilt', type: 'toggle', label: '卡片倾斜', default: true, desc: '卡片是否带随机倾斜角' },
       { key: 'showTag', type: 'toggle', label: '序号标签', default: true, desc: '显示 <Part0X> 标签' },
       { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

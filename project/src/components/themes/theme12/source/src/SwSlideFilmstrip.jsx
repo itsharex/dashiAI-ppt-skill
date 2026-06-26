@@ -20,6 +20,7 @@ export const meta = { id: 'filmstrip', index: 24, label: '胶片样张 / Contact
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   mediaCount: 4,           // 3–5 frames
   mediaFit: 'cover',
   showSprockets: true,
@@ -51,6 +52,8 @@ export const controls = [
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '图片的填充方式' },
   { key: 'showSprockets', label: '齿孔', type: 'toggle', def: true, desc: '显示/隐藏胶片齿孔轨' },
   { key: 'showCaptions', label: '画格图注', type: 'toggle', def: true, desc: '显示/隐藏每格下方的编号图注' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '导语 / 高亮 / 页脚强调色' },
 ];
@@ -68,12 +71,18 @@ function Sprockets() {
 export default function SwSlideFilmstrip(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(5, p.mediaCount));
   const CAPS = p.captions;
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const stripBg = dark ? '#241e20' : '#1c1416';
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 22, marginBottom: 20, display: 'flex',
         alignItems: 'flex-end', justifyContent: 'space-between', gap: 40, position: 'relative' }}>
@@ -84,17 +93,17 @@ export default function SwSlideFilmstrip(props) {
           </h2>
         </div>
         <div style={{ fontFamily: F.mono, fontSize: 23, letterSpacing: '.12em', textTransform: 'uppercase',
-          color: C.inkMut, textAlign: 'right', paddingBottom: 6 }}>
+          color: mut, textAlign: 'right', paddingBottom: 6 }}>
           {p.metaLine} · {String(count).padStart(2, '0')} {p.hint}<br />drag to fill
         </div>
       </div>
 
       {/* film strip */}
-      <div style={{ flex: 1, minHeight: 0, background: '#1c1416', borderRadius: 20, overflow: 'hidden',
+      <div style={{ flex: 1, minHeight: 0, background: stripBg, borderRadius: 20, overflow: 'hidden',
         display: 'flex', flexDirection: 'column', borderTop: '5px solid ' + accent }}>
         {p.showSprockets && <Sprockets />}
         <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 14, padding: '0 22px',
-          gridTemplateColumns: 'repeat(' + count + ',1fr)' }}>
+          gridTemplateColumns: 'repeat(' + count + ', minmax(0, 1fr))' }}>
           {Array.from({ length: count }).map((_, i) => (
             <div key={i} style={{ minWidth: 0, minHeight: 0 }}>
               <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
@@ -117,7 +126,7 @@ export default function SwSlideFilmstrip(props) {
                 <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 22, color: FRAME_COLORS[i % FRAME_COLORS.length] }}>{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <div style={{ fontWeight: 700, fontSize: 23, letterSpacing: '-.3px' }}>{c.t}</div>
-                  <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.12em', color: C.inkMut }}>{c.s}</div>
+                  <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.12em', color: mut }}>{c.s}</div>
                 </div>
               </div>
             );
@@ -126,7 +135,7 @@ export default function SwSlideFilmstrip(props) {
       )}
 
       <div style={{ marginTop: 16 }}>
-        <Footer page={p.page} total={p.total} accent={accent} />
+        <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
       </div>
     </SlideRoot>
   );

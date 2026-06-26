@@ -57,6 +57,12 @@ export default function SwSlideStat3(props) {
   const mut = dark ? '#c8c0bd' : '#5a4f54';
   const line = dark ? C.lineD2 : C.line2;
 
+  // The neon lime reads fine on the dark bg but is too low-contrast on the
+  // light blush bg, so swap it for the darker, clearly-readable green there.
+  const statColors = dark
+    ? swStatColors
+    : swStatColors.map((c) => (c === C.lime ? C.green : c));
+
   return (
     <SlideRoot bg={bg} color={fg}>
       {p.showDecorations && (
@@ -80,7 +86,7 @@ export default function SwSlideStat3(props) {
         {stats.map((st, i) => (
           <div key={st.lb} style={{ padding: '0 44px', borderLeft: (p.showDividers && i > 0) ? '1px solid ' + line : 'none' }}>
             <div style={{ fontWeight: 900, fontSize: 132, lineHeight: 0.92, letterSpacing: '-4px',
-              color: swStatColors[i % swStatColors.length] }}>{st.v}</div>
+              color: statColors[i % statColors.length] }}>{st.v}</div>
             <div style={{ fontWeight: 700, fontSize: 32, letterSpacing: '-.4px', marginTop: 16 }}>{st.lb}</div>
             <div style={{ fontFamily: F.mono, fontSize: 20, letterSpacing: '.08em', textTransform: 'uppercase',
               color: mut, marginTop: 8 }}>{st.s}</div>

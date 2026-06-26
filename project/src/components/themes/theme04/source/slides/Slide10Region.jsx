@@ -8,7 +8,7 @@
  *  itemCount        number 展示条目数量       默认 5   可选 3–5
  *  chartVariant     enum   图表类型          默认 'donut'  可选 'donut' | 'bar'
  *  focusEnabled     bool   重点突出开关        默认 true
- *  focusIndex       number 重点项序号(从1起)   默认 1   范围 1–itemCount
+ *  focusIndex       number 重点项序号(从1起)   默认 2   范围 1–itemCount
  *  showPercent      bool   百分比显示         默认 true
  *  showDecorations  bool   装饰元素显隐        默认 true
  *
@@ -128,7 +128,7 @@ function Slide10Region(props) {
     itemCount = 5,
     chartVariant = 'donut',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showPercent = true,
     showDecorations = true,
     hlStyle = 'glass',
@@ -272,7 +272,7 @@ const META = {
     itemCount: 5,
     chartVariant: 'donut',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showPercent: true,
     showDecorations: true,
     kicker: '地理护城河 · 融资地区分布',
@@ -289,7 +289,7 @@ const META = {
     { key: 'itemCount', type: 'slider', label: '条目数量', min: 3, max: 5, step: 1, default: 5, desc: '展示的地区条目数量' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['donut', 'bar'], optionLabels: ['环形', '柱状'], default: 'donut', desc: '环形图或柱状图' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一地区' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮地区的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮地区的序号' },
     { key: 'showPercent', type: 'toggle', label: '百分比', default: true, desc: '右侧百分比徽章' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
     { type: 'section', label: '文案' },

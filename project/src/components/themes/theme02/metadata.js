@@ -19,8 +19,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -43,8 +43,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -67,8 +67,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -80,8 +80,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -90,8 +90,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -100,8 +100,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -113,31 +113,33 @@ export const pages = [
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否对核心数据做高亮发光强调",
+        "describe": "是否对核心数据做高亮发光强调",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否对核心数据做高亮发光强调",
         "description": "是否对核心数据做高亮发光强调"
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 1,
         "min": 0,
         "max": 3,
         "step": 1,
-        "desc": "右侧配图槽位数量（0 = 纯文字封面）",
+        "describe": "右侧配图槽位数量（0 = 纯文字封面）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "右侧配图槽位数量（0 = 纯文字封面）",
         "description": "右侧配图槽位数量（0 = 纯文字封面）"
       },
       {
         "key": "layout",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "split",
         "options": [
           {
@@ -149,29 +151,32 @@ export const pages = [
             "label": "居中"
           }
         ],
-        "desc": "整体构图：左右分栏带配图，或纯居中标题",
+        "describe": "整体构图：左右分栏带配图，或纯居中标题",
         "publicKey": "layout",
         "publicLabel": "版式",
+        "desc": "整体构图：左右分栏带配图，或纯居中标题",
         "description": "整体构图：左右分栏带配图，或纯居中标题"
       },
       {
         "key": "showTags",
-        "label": "装饰标签",
         "type": "toggle",
+        "label": "装饰标签",
         "default": true,
-        "desc": "显示/隐藏标题下方的装饰标签",
+        "describe": "显示/隐藏标题下方的装饰标签",
         "publicKey": "showTags",
         "publicLabel": "装饰标签",
+        "desc": "显示/隐藏标题下方的装饰标签",
         "description": "显示/隐藏标题下方的装饰标签"
       },
       {
         "key": "showFootnote",
-        "label": "附注信息",
         "type": "toggle",
+        "label": "附注信息",
         "default": true,
-        "desc": "显示/隐藏底部的编制日期与口径附注",
+        "describe": "显示/隐藏底部的编制日期与口径附注",
         "publicKey": "showFootnote",
         "publicLabel": "附注信息",
+        "desc": "显示/隐藏底部的编制日期与口径附注",
         "description": "显示/隐藏底部的编制日期与口径附注"
       }
     ],
@@ -221,8 +226,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -245,8 +250,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -269,8 +274,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -282,8 +287,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -292,8 +297,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -302,8 +307,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -315,55 +320,60 @@ export const pages = [
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "主标题次行做发光流光强调",
+        "describe": "主标题次行做发光流光强调",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "主标题次行做发光流光强调",
         "description": "主标题次行做发光流光强调"
       },
       {
         "key": "showKicker",
-        "label": "眉题",
         "type": "toggle",
+        "label": "眉题",
         "default": true,
-        "desc": "显示/隐藏标题上方的居中眉题",
+        "describe": "显示/隐藏标题上方的居中眉题",
         "publicKey": "showKicker",
         "publicLabel": "眉题",
+        "desc": "显示/隐藏标题上方的居中眉题",
         "description": "显示/隐藏标题上方的居中眉题"
       },
       {
         "key": "showRule",
-        "label": "发光分隔线",
         "type": "toggle",
+        "label": "发光分隔线",
         "default": true,
-        "desc": "标题与副标题之间的发光分隔线",
+        "describe": "标题与副标题之间的发光分隔线",
         "publicKey": "showRule",
         "publicLabel": "发光分隔线",
+        "desc": "标题与副标题之间的发光分隔线",
         "description": "标题与副标题之间的发光分隔线"
       },
       {
         "key": "statCount",
-        "label": "底部数据",
         "type": "number",
+        "label": "底部数据",
         "default": 3,
         "min": 0,
         "max": 3,
         "step": 1,
-        "desc": "底部一排迷你数据的数量（0 = 隐藏）",
+        "describe": "底部一排迷你数据的数量（0 = 隐藏）",
         "publicKey": "statCount",
         "publicLabel": "底部数据",
+        "desc": "底部一排迷你数据的数量（0 = 隐藏）",
         "description": "底部一排迷你数据的数量（0 = 隐藏）"
       },
       {
         "key": "showMeta",
-        "label": "附注信息",
         "type": "toggle",
+        "label": "附注信息",
         "default": true,
-        "desc": "显示/隐藏底部的日期与口径附注",
+        "describe": "显示/隐藏底部的日期与口径附注",
         "publicKey": "showMeta",
         "publicLabel": "附注信息",
+        "desc": "显示/隐藏底部的日期与口径附注",
         "description": "显示/隐藏底部的日期与口径附注"
       }
     ],
@@ -419,8 +429,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -443,8 +453,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -467,8 +477,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -480,8 +490,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -490,8 +500,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -500,8 +510,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -513,18 +523,19 @@ export const pages = [
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "右侧巨数面板做发光强调（接入全局强调样式）",
+        "describe": "右侧巨数面板做发光强调（接入全局强调样式）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "右侧巨数面板做发光强调（接入全局强调样式）",
         "description": "右侧巨数面板做发光强调（接入全局强调样式）"
       },
       {
         "key": "statSide",
-        "label": "巨数侧别",
         "type": "enum",
+        "label": "巨数侧别",
         "default": "right",
         "options": [
           {
@@ -536,42 +547,46 @@ export const pages = [
             "label": "右侧"
           }
         ],
-        "desc": "巨型数字面板放在左或右",
+        "describe": "巨型数字面板放在左或右",
         "publicKey": "statSide",
         "publicLabel": "巨数侧别",
+        "desc": "巨型数字面板放在左或右",
         "description": "巨型数字面板放在左或右"
       },
       {
         "key": "subStatCount",
-        "label": "小指标数量",
         "type": "number",
+        "label": "小指标数量",
         "default": 2,
         "min": 0,
         "max": 2,
         "step": 1,
-        "desc": "巨数下方的小指标数量（0 = 隐藏）",
+        "describe": "巨数下方的小指标数量（0 = 隐藏）",
         "publicKey": "subStatCount",
         "publicLabel": "小指标数量",
+        "desc": "巨数下方的小指标数量（0 = 隐藏）",
         "description": "巨数下方的小指标数量（0 = 隐藏）"
       },
       {
         "key": "showSubtitle",
-        "label": "副标题",
         "type": "toggle",
+        "label": "副标题",
         "default": true,
-        "desc": "显示/隐藏左列副标题",
+        "describe": "显示/隐藏左列副标题",
         "publicKey": "showSubtitle",
         "publicLabel": "副标题",
+        "desc": "显示/隐藏左列副标题",
         "description": "显示/隐藏左列副标题"
       },
       {
         "key": "showTags",
-        "label": "装饰标签",
         "type": "toggle",
+        "label": "装饰标签",
         "default": true,
-        "desc": "显示/隐藏左列标签",
+        "describe": "显示/隐藏左列标签",
         "publicKey": "showTags",
         "publicLabel": "装饰标签",
+        "desc": "显示/隐藏左列标签",
         "description": "显示/隐藏左列标签"
       }
     ],
@@ -627,7 +642,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -648,7 +662,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "goey",
         "def": "goey",
         "options": [
           {
@@ -677,8 +690,8 @@ export const pages = [
       },
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -701,8 +714,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -725,8 +738,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -738,8 +751,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -748,8 +761,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -758,8 +771,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -771,21 +784,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "主图",
         "type": "number",
+        "label": "主图",
         "default": 1,
         "min": 0,
         "max": 1,
         "step": 1,
-        "desc": "满幅主图槽（0 = 纯文字海报）",
+        "describe": "满幅主图槽（0 = 纯文字海报）",
         "publicKey": "imageCount",
         "publicLabel": "主图",
+        "desc": "满幅主图槽（0 = 纯文字海报）",
         "description": "满幅主图槽（0 = 纯文字海报）"
       },
       {
         "key": "fit",
-        "label": "图片填充",
         "type": "enum",
+        "label": "图片填充",
         "default": "cover",
         "options": [
           {
@@ -797,15 +811,16 @@ export const pages = [
             "label": "完整不裁切"
           }
         ],
-        "desc": "主图满幅裁切，或按原始比例完整显示",
+        "describe": "主图满幅裁切，或按原始比例完整显示",
         "publicKey": "fit",
         "publicLabel": "图片填充",
+        "desc": "主图满幅裁切，或按原始比例完整显示",
         "description": "主图满幅裁切，或按原始比例完整显示"
       },
       {
         "key": "titlePos",
-        "label": "标题位置",
         "type": "enum",
+        "label": "标题位置",
         "default": "bottom",
         "options": [
           {
@@ -817,42 +832,46 @@ export const pages = [
             "label": "居中"
           }
         ],
-        "desc": "标题锁定在左下压字，或整体居中",
+        "describe": "标题锁定在左下压字，或整体居中",
         "publicKey": "titlePos",
         "publicLabel": "标题位置",
+        "desc": "标题锁定在左下压字，或整体居中",
         "description": "标题锁定在左下压字，或整体居中"
       },
       {
         "key": "showQuote",
-        "label": "金句",
         "type": "toggle",
+        "label": "金句",
         "default": true,
-        "desc": "显示/隐藏标题下方金句",
+        "describe": "显示/隐藏标题下方金句",
         "publicKey": "showQuote",
         "publicLabel": "金句",
+        "desc": "显示/隐藏标题下方金句",
         "description": "显示/隐藏标题下方金句"
       },
       {
         "key": "showFrame",
-        "label": "内嵌描边框",
         "type": "toggle",
+        "label": "内嵌描边框",
         "default": true,
-        "desc": "显示/隐藏海报内嵌的发光描边框",
+        "describe": "显示/隐藏海报内嵌的发光描边框",
         "publicKey": "showFrame",
         "publicLabel": "内嵌描边框",
+        "desc": "显示/隐藏海报内嵌的发光描边框",
         "description": "显示/隐藏海报内嵌的发光描边框"
       },
       {
         "key": "metaCount",
-        "label": "底部数据",
         "type": "number",
+        "label": "底部数据",
         "default": 3,
         "min": 0,
         "max": 3,
         "step": 1,
-        "desc": "底部内联数据数量（0 = 隐藏）",
+        "describe": "底部内联数据数量（0 = 隐藏）",
         "publicKey": "metaCount",
         "publicLabel": "底部数据",
+        "desc": "底部内联数据数量（0 = 隐藏）",
         "description": "底部内联数据数量（0 = 隐藏）"
       }
     ],
@@ -905,8 +924,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -929,8 +948,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -953,8 +972,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -966,8 +985,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -976,8 +995,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -986,8 +1005,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -999,68 +1018,75 @@ export const pages = [
       },
       {
         "key": "pillarCount",
-        "label": "支柱数量",
         "type": "number",
+        "label": "支柱数量",
         "default": 4,
         "min": 2,
         "max": 4,
         "step": 1,
-        "desc": "右列支柱面板的数量",
+        "describe": "右列支柱面板的数量",
         "publicKey": "pillarCount",
         "publicLabel": "支柱数量",
+        "desc": "右列支柱面板的数量",
         "description": "右列支柱面板的数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "强调其中一块支柱（发光）",
+        "describe": "强调其中一块支柱（发光）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "强调其中一块支柱（发光）",
         "description": "强调其中一块支柱（发光）"
       },
       {
         "key": "focusIndex",
-        "label": "强调序号",
         "type": "number",
+        "label": "强调序号",
         "default": 1,
         "min": 0,
         "max": 3,
         "step": 1,
-        "desc": "被强调支柱的序号",
+        "oneBased": true,
+        "describe": "被强调支柱的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调序号",
+        "desc": "被强调支柱的序号",
         "description": "被强调支柱的序号"
       },
       {
         "key": "showIndex",
-        "label": "支柱编号",
         "type": "toggle",
+        "label": "支柱编号",
         "default": true,
-        "desc": "显示/隐藏支柱的描边巨号",
+        "describe": "显示/隐藏支柱的描边巨号",
         "publicKey": "showIndex",
         "publicLabel": "支柱编号",
+        "desc": "显示/隐藏支柱的描边巨号",
         "description": "显示/隐藏支柱的描边巨号"
       },
       {
         "key": "showDesc",
-        "label": "支柱说明",
         "type": "toggle",
+        "label": "支柱说明",
         "default": true,
-        "desc": "显示/隐藏支柱的一句说明",
+        "describe": "显示/隐藏支柱的一句说明",
         "publicKey": "showDesc",
         "publicLabel": "支柱说明",
+        "desc": "显示/隐藏支柱的一句说明",
         "description": "显示/隐藏支柱的一句说明"
       },
       {
         "key": "showMeta",
-        "label": "附注信息",
         "type": "toggle",
+        "label": "附注信息",
         "default": true,
-        "desc": "显示/隐藏左列底部附注",
+        "describe": "显示/隐藏左列底部附注",
         "publicKey": "showMeta",
         "publicLabel": "附注信息",
+        "desc": "显示/隐藏左列底部附注",
         "description": "显示/隐藏左列底部附注"
       }
     ],
@@ -1118,8 +1144,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -1142,8 +1168,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -1166,8 +1192,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -1179,8 +1205,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -1189,8 +1215,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -1199,8 +1225,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -1212,47 +1238,53 @@ export const pages = [
       },
       {
         "key": "cardCount",
-        "label": "卡片数量",
         "type": "number",
+        "label": "卡片数量",
         "default": 3,
         "min": 1,
         "max": 4,
         "step": 1,
-        "desc": "展示的维度卡片数量",
+        "describe": "展示的维度卡片数量",
         "publicKey": "cardCount",
         "publicLabel": "卡片数量",
+        "desc": "展示的维度卡片数量",
         "description": "展示的维度卡片数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一张卡片",
+        "describe": "是否高亮其中一张卡片",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一张卡片",
         "description": "是否高亮其中一张卡片"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 3,
         "step": 1,
-        "desc": "被强调卡片的序号",
+        "oneBased": true,
+        "describe": "被强调卡片的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调卡片的序号",
         "description": "被强调卡片的序号"
       },
       {
         "key": "showIndex",
-        "label": "序号显示",
         "type": "toggle",
+        "label": "序号显示",
         "default": true,
-        "desc": "显示/隐藏卡片左上角的 01 · 02 序号",
+        "describe": "显示/隐藏卡片左上角的 01 · 02 序号",
         "publicKey": "showIndex",
         "publicLabel": "序号显示",
+        "desc": "显示/隐藏卡片左上角的 01 · 02 序号",
         "description": "显示/隐藏卡片左上角的 01 · 02 序号"
       }
     ],
@@ -1311,8 +1343,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -1335,8 +1367,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -1359,8 +1391,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -1372,8 +1404,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -1382,8 +1414,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -1392,8 +1424,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -1405,79 +1437,89 @@ export const pages = [
       },
       {
         "key": "itemCount",
-        "label": "章节条数",
         "type": "number",
+        "label": "章节条数",
         "default": 6,
         "min": 2,
+        "max": 6,
         "step": 1,
-        "desc": "目录展示的章节条数",
+        "describe": "目录展示的章节条数",
         "publicKey": "itemCount",
         "publicLabel": "章节条数",
+        "desc": "目录展示的章节条数",
         "description": "目录展示的章节条数"
       },
       {
         "key": "columns",
-        "label": "卡片列数",
         "type": "number",
+        "label": "卡片列数",
         "default": 2,
         "min": 1,
         "max": 2,
         "step": 1,
-        "desc": "章节卡片的列数（1 或 2）",
+        "describe": "章节卡片的列数（1 或 2）",
         "publicKey": "columns",
         "publicLabel": "卡片列数",
+        "desc": "章节卡片的列数（1 或 2）",
         "description": "章节卡片的列数（1 或 2）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "高亮“当前 / 重点”章节",
+        "describe": "高亮“当前 / 重点”章节",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "高亮“当前 / 重点”章节",
         "description": "高亮“当前 / 重点”章节"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 5,
         "step": 1,
-        "desc": "被强调章节的序号",
+        "oneBased": true,
+        "describe": "被强调章节的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调章节的序号",
         "description": "被强调章节的序号"
       },
       {
         "key": "showSub",
-        "label": "小节说明",
         "type": "toggle",
+        "label": "小节说明",
         "default": true,
-        "desc": "章节下方小节说明显隐",
+        "describe": "章节下方小节说明显隐",
         "publicKey": "showSub",
         "publicLabel": "小节说明",
+        "desc": "章节下方小节说明显隐",
         "description": "章节下方小节说明显隐"
       },
       {
         "key": "showRail",
-        "label": "清单光轨",
         "type": "toggle",
+        "label": "清单光轨",
         "default": true,
-        "desc": "单列时竖向光轨与发光节点显隐",
+        "describe": "单列时竖向光轨与发光节点显隐",
         "publicKey": "showRail",
         "publicLabel": "清单光轨",
+        "desc": "单列时竖向光轨与发光节点显隐",
         "description": "单列时竖向光轨与发光节点显隐"
       },
       {
         "key": "showLead",
-        "label": "左侧导语",
         "type": "toggle",
+        "label": "左侧导语",
         "default": true,
-        "desc": "左侧导语立柱显隐",
+        "describe": "左侧导语立柱显隐",
         "publicKey": "showLead",
         "publicLabel": "左侧导语",
+        "desc": "左侧导语立柱显隐",
         "description": "左侧导语立柱显隐"
       }
     ],
@@ -1539,8 +1581,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -1563,8 +1605,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -1587,8 +1629,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -1600,8 +1642,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -1610,8 +1652,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -1620,8 +1662,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -1633,8 +1675,8 @@ export const pages = [
       },
       {
         "key": "chartType",
-        "label": "图表类型",
         "type": "enum",
+        "label": "图表类型",
         "default": "line",
         "options": [
           {
@@ -1650,61 +1692,69 @@ export const pages = [
             "label": "面积"
           }
         ],
-        "desc": "主数据系列的呈现形式",
+        "describe": "主数据系列的呈现形式",
         "publicKey": "chartType",
         "publicLabel": "图表类型",
+        "desc": "主数据系列的呈现形式",
         "description": "主数据系列的呈现形式"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一数据点",
+        "describe": "是否高亮某一数据点",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一数据点",
         "description": "是否高亮某一数据点"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 2,
         "min": 0,
         "step": 1,
-        "desc": "被强调数据点的序号",
+        "oneBased": true,
+        "describe": "被强调数据点的序号",
+        "max": 11,
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调数据点的序号",
         "description": "被强调数据点的序号"
       },
       {
         "key": "showSecondary",
-        "label": "次要指标",
         "type": "toggle",
+        "label": "次要指标",
         "default": true,
-        "desc": "叠加显示次要系列（事件笔数）",
+        "describe": "叠加显示次要系列（事件笔数）",
         "publicKey": "showSecondary",
         "publicLabel": "次要指标",
+        "desc": "叠加显示次要系列（事件笔数）",
         "description": "叠加显示次要系列（事件笔数）"
       },
       {
         "key": "showValueLabels",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
-        "desc": "在图表上显示具体数值",
+        "describe": "在图表上显示具体数值",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签",
+        "desc": "在图表上显示具体数值",
         "description": "在图表上显示具体数值"
       },
       {
         "key": "showAnnotation",
-        "label": "解读文案",
         "type": "toggle",
+        "label": "解读文案",
         "default": true,
-        "desc": "显示/隐藏右下角的趋势解读",
+        "describe": "显示/隐藏右下角的趋势解读",
         "publicKey": "showAnnotation",
         "publicLabel": "解读文案",
+        "desc": "显示/隐藏右下角的趋势解读",
         "description": "显示/隐藏右下角的趋势解读"
       }
     ],
@@ -1714,24 +1764,64 @@ export const pages = [
       "titleEm": "前高后稳",
       "data": [
         {
-          "label": "Q1",
-          "value": 162,
-          "secondary": 18
+          "label": "M01",
+          "value": 58,
+          "secondary": 6
         },
         {
-          "label": "Q2",
-          "value": 284,
-          "secondary": 26
+          "label": "M02",
+          "value": 47,
+          "secondary": 5
         },
         {
-          "label": "Q3",
-          "value": 318,
-          "secondary": 31
+          "label": "M03",
+          "value": 57,
+          "secondary": 7
         },
         {
-          "label": "Q4",
-          "value": 206,
-          "secondary": 22
+          "label": "M04",
+          "value": 78,
+          "secondary": 8
+        },
+        {
+          "label": "M05",
+          "value": 92,
+          "secondary": 9
+        },
+        {
+          "label": "M06",
+          "value": 114,
+          "secondary": 9
+        },
+        {
+          "label": "M07",
+          "value": 108,
+          "secondary": 10
+        },
+        {
+          "label": "M08",
+          "value": 104,
+          "secondary": 11
+        },
+        {
+          "label": "M09",
+          "value": 106,
+          "secondary": 10
+        },
+        {
+          "label": "M10",
+          "value": 88,
+          "secondary": 8
+        },
+        {
+          "label": "M11",
+          "value": 118,
+          "secondary": 14
+        },
+        {
+          "label": "M12",
+          "value": 96,
+          "secondary": 9
         }
       ],
       "chartType": "line",
@@ -1740,7 +1830,7 @@ export const pages = [
       "focusEnabled": true,
       "focusIndex": 2,
       "showAnnotation": true,
-      "annotation": "Q2–Q3 为融资高峰，Q4 回落但仍处高位。平均单笔约 10 亿美元，市场对头部标的高度追捧。",
+      "annotation": "M04–M09 进入融资密集窗口，M11 再次抬升。月度拆分保留总额与事件数口径，便于逐项编辑和强调。",
       "stats": [
         {
           "value": "970",
@@ -1782,8 +1872,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -1806,8 +1896,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -1830,8 +1920,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -1843,8 +1933,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -1853,8 +1943,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -1863,8 +1953,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -1876,79 +1966,89 @@ export const pages = [
       },
       {
         "key": "cellCount",
-        "label": "单元格数量",
         "type": "number",
-        "default": 12,
+        "label": "单元格数量",
+        "default": 6,
         "min": 3,
         "step": 1,
-        "desc": "展示的时间单元数量",
+        "max": 6,
+        "describe": "展示的时间单元数量",
         "publicKey": "cellCount",
         "publicLabel": "单元格数量",
+        "desc": "展示的时间单元数量",
         "description": "展示的时间单元数量"
       },
       {
         "key": "columns",
-        "label": "网格列数",
         "type": "number",
+        "label": "网格列数",
         "default": 6,
         "min": 2,
         "max": 6,
         "step": 1,
-        "desc": "热力网格的列数，自动换行",
+        "describe": "热力网格的列数，自动换行",
         "publicKey": "columns",
         "publicLabel": "网格列数",
+        "desc": "热力网格的列数，自动换行",
         "description": "热力网格的列数，自动换行"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一单元格",
+        "describe": "是否高亮某一单元格",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一单元格",
         "description": "是否高亮某一单元格"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 7,
         "min": 0,
         "step": 1,
-        "desc": "被强调单元格的序号",
+        "oneBased": true,
+        "max": 5,
+        "describe": "被强调单元格的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调单元格的序号",
         "description": "被强调单元格的序号"
       },
       {
         "key": "showValues",
-        "label": "数值显示",
         "type": "toggle",
+        "label": "数值显示",
         "default": true,
-        "desc": "单元格内显示/隐藏数值",
+        "describe": "单元格内显示/隐藏数值",
         "publicKey": "showValueLabels",
         "publicLabel": "数值显示",
+        "desc": "单元格内显示/隐藏数值",
         "description": "单元格内显示/隐藏数值"
       },
       {
         "key": "showPeakTag",
-        "label": "峰值标记",
         "type": "toggle",
+        "label": "峰值标记",
         "default": true,
-        "desc": "自动标注最高值单元格",
+        "describe": "自动标注最高值单元格",
         "publicKey": "showPeakTag",
         "publicLabel": "峰值标记",
+        "desc": "自动标注最高值单元格",
         "description": "自动标注最高值单元格"
       },
       {
         "key": "showScale",
-        "label": "强度图例",
         "type": "toggle",
+        "label": "强度图例",
         "default": true,
-        "desc": "底部强度渐变图例显隐",
+        "describe": "底部强度渐变图例显隐",
         "publicKey": "showScale",
         "publicLabel": "强度图例",
+        "desc": "底部强度渐变图例显隐",
         "description": "底部强度渐变图例显隐"
       }
     ],
@@ -2006,11 +2106,11 @@ export const pages = [
           "value": 52
         }
       ],
-      "cellCount": 12,
+      "cellCount": 6,
       "columns": 6,
       "valueUnit": "亿",
       "focusEnabled": true,
-      "focusIndex": 7,
+      "focusIndex": 4,
       "showValues": true,
       "showPeakTag": true,
       "showScale": true,
@@ -2034,8 +2134,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -2058,8 +2158,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -2082,8 +2182,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -2095,8 +2195,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -2105,8 +2205,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -2115,8 +2215,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -2128,8 +2228,8 @@ export const pages = [
       },
       {
         "key": "chartType",
-        "label": "图表类型",
         "type": "enum",
+        "label": "图表类型",
         "default": "donut",
         "options": [
           {
@@ -2145,61 +2245,69 @@ export const pages = [
             "label": "条形"
           }
         ],
-        "desc": "占比数据的呈现形式",
+        "describe": "占比数据的呈现形式",
         "publicKey": "chartType",
         "publicLabel": "图表类型",
+        "desc": "占比数据的呈现形式",
         "description": "占比数据的呈现形式"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一分类",
+        "describe": "是否高亮某一赛道",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一分类",
         "description": "是否高亮某一分类"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 4,
         "step": 1,
-        "desc": "被强调分类的序号",
+        "oneBased": true,
+        "describe": "被强调赛道的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调分类的序号",
         "description": "被强调分类的序号"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "显示/隐藏右侧图例列表",
+        "describe": "显示/隐藏右侧图例列表",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "显示/隐藏右侧图例列表",
         "description": "显示/隐藏右侧图例列表"
       },
       {
         "key": "showCenter",
-        "label": "中心数据",
         "type": "toggle",
+        "label": "中心数据",
         "default": true,
-        "desc": "显示/隐藏环形图中心的合计读数",
+        "describe": "显示/隐藏环形图中心的合计读数",
         "publicKey": "showCenter",
         "publicLabel": "中心数据",
+        "desc": "显示/隐藏环形图中心的合计读数",
         "description": "显示/隐藏环形图中心的合计读数"
       },
       {
         "key": "showValueLabels",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
-        "desc": "在图表上显示占比数值",
+        "describe": "在图表上显示占比数值",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签",
+        "desc": "在图表上显示占比数值",
         "description": "在图表上显示占比数值"
       }
     ],
@@ -2265,8 +2373,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -2289,8 +2397,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -2313,8 +2421,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -2326,8 +2434,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -2336,8 +2444,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -2346,8 +2454,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -2359,76 +2467,86 @@ export const pages = [
       },
       {
         "key": "rowCount",
-        "label": "行数",
         "type": "number",
+        "label": "行数",
         "default": 6,
         "min": 3,
+        "max": 6,
         "step": 1,
-        "desc": "展示的榜单行数",
+        "describe": "展示的榜单行数",
         "publicKey": "rowCount",
         "publicLabel": "行数",
+        "desc": "展示的榜单行数",
         "description": "展示的榜单行数"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮其中一行",
+        "describe": "是否高亮其中一行",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一行",
         "description": "是否高亮其中一行"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 5,
         "step": 1,
-        "desc": "被强调行的序号",
+        "oneBased": true,
+        "describe": "被强调行的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调行的序号",
         "description": "被强调行的序号"
       },
       {
         "key": "showRank",
-        "label": "名次徽章",
         "type": "toggle",
+        "label": "名次徽章",
         "default": true,
-        "desc": "显示/隐藏左侧名次徽章",
+        "describe": "显示/隐藏左侧名次徽章",
         "publicKey": "showRank",
         "publicLabel": "名次徽章",
+        "desc": "显示/隐藏左侧名次徽章",
         "description": "显示/隐藏左侧名次徽章"
       },
       {
         "key": "showTrack",
-        "label": "分类列",
         "type": "toggle",
+        "label": "分类列",
         "default": true,
-        "desc": "显示/隐藏公司下方的分类说明",
+        "describe": "显示/隐藏公司下方的赛道说明",
         "publicKey": "showGuide",
         "publicLabel": "分类列",
+        "desc": "显示/隐藏公司下方的分类说明",
         "description": "显示/隐藏公司下方的分类说明"
       },
       {
         "key": "showBars",
-        "label": "条形可视化",
         "type": "toggle",
+        "label": "条形可视化",
         "default": true,
-        "desc": "显示/隐藏数值的等比条形",
+        "describe": "显示/隐藏融资额的等比条形",
         "publicKey": "showValueLabels",
         "publicLabel": "条形可视化",
+        "desc": "显示/隐藏数值的等比条形",
         "description": "显示/隐藏数值的等比条形"
       },
       {
         "key": "showValueLabels",
-        "label": "数值列",
         "type": "toggle",
+        "label": "数值列",
         "default": true,
-        "desc": "显示/隐藏右侧数值",
+        "describe": "显示/隐藏右侧数值",
         "publicKey": "showValueLabels2",
         "publicLabel": "数值列",
+        "desc": "显示/隐藏右侧数值",
         "description": "显示/隐藏右侧数值"
       }
     ],
@@ -2523,8 +2641,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -2547,8 +2665,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -2571,8 +2689,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -2584,8 +2702,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -2594,8 +2712,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -2604,8 +2722,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -2617,20 +2735,22 @@ export const pages = [
       },
       {
         "key": "itemCount",
-        "label": "节点数量",
         "type": "number",
+        "label": "节点数量",
         "default": 5,
         "min": 3,
+        "max": 6,
         "step": 1,
-        "desc": "时间轴节点数量",
+        "describe": "时间轴节点数量",
         "publicKey": "itemCount",
         "publicLabel": "节点数量",
+        "desc": "时间轴节点数量",
         "description": "时间轴节点数量"
       },
       {
         "key": "orientation",
-        "label": "轴向",
         "type": "enum",
+        "label": "轴向",
         "default": "horizontal",
         "options": [
           {
@@ -2642,51 +2762,58 @@ export const pages = [
             "label": "纵向"
           }
         ],
-        "desc": "时间轴排布方向",
+        "describe": "时间轴排布方向",
         "publicKey": "orientation",
         "publicLabel": "轴向",
+        "desc": "时间轴排布方向",
         "description": "时间轴排布方向"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一节点",
+        "describe": "是否高亮某一节点",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一节点",
         "description": "是否高亮某一节点"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 3,
         "min": 0,
         "step": 1,
-        "desc": "被强调节点的序号",
+        "oneBased": true,
+        "max": 5,
+        "describe": "被强调节点的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调节点的序号",
         "description": "被强调节点的序号"
       },
       {
         "key": "showConnector",
-        "label": "连接轴线",
         "type": "toggle",
+        "label": "连接轴线",
         "default": true,
-        "desc": "显示/隐藏贯穿节点的轴线",
+        "describe": "显示/隐藏贯穿节点的轴线",
         "publicKey": "showConnector",
         "publicLabel": "连接轴线",
+        "desc": "显示/隐藏贯穿节点的轴线",
         "description": "显示/隐藏贯穿节点的轴线"
       },
       {
         "key": "showMeta",
-        "label": "描述文案",
         "type": "toggle",
+        "label": "描述文案",
         "default": true,
-        "desc": "显示/隐藏节点的补充描述",
+        "describe": "显示/隐藏节点的补充描述",
         "publicKey": "showMeta",
         "publicLabel": "描述文案",
+        "desc": "显示/隐藏节点的补充描述",
         "description": "显示/隐藏节点的补充描述"
       }
     ],
@@ -2726,6 +2853,30 @@ export const pages = [
           "desc": "从狂热转向分化，资本回归兑现逻辑。"
         },
         {
+          "date": "2025 · Q1",
+          "tag": "算力扩容",
+          "title": "GPU 云锁定长单",
+          "desc": "模型厂商提前预定训练资源，基础设施融资继续升温。"
+        },
+        {
+          "date": "2025 · 05",
+          "tag": "应用层爆发",
+          "title": "AI 搜索与办公加速",
+          "desc": "资本从底座外溢到高频场景，垂直应用估值抬升。"
+        },
+        {
+          "date": "2025 · Q3",
+          "tag": "并购整合",
+          "title": "工具链进入平台化",
+          "desc": "数据、评测与开发工具被大平台吸收，赛道集中度提高。"
+        },
+        {
+          "date": "2026 · Q1",
+          "tag": "二级预热",
+          "title": "核心资产进入窗口",
+          "desc": "一级市场定价开始对接上市叙事，退出路径更清晰。"
+        },
+        {
           "date": "2026 · 06",
           "tag": "IPO 在即",
           "title": "Anthropic 递交上市申请",
@@ -2758,8 +2909,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -2782,8 +2933,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -2806,8 +2957,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -2819,8 +2970,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -2829,8 +2980,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -2839,8 +2990,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -2852,21 +3003,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 3,
         "min": 0,
-        "max": 4,
+        "max": 5,
         "step": 1,
-        "desc": "配图槽位数量（0 = 纯文字版式）",
+        "describe": "配图槽位数量（0 = 纯文字版式）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "配图槽位数量（0 = 纯文字版式）",
         "description": "配图槽位数量（0 = 纯文字版式）"
       },
       {
         "key": "layout",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "split",
         "options": [
           {
@@ -2878,51 +3030,58 @@ export const pages = [
             "label": "满幅图廊"
           }
         ],
-        "desc": "图文分栏，或图片占主导的满幅图廊",
+        "describe": "图文分栏，或图片占主导的满幅图廊",
         "publicKey": "layout",
         "publicLabel": "版式",
+        "desc": "图文分栏，或图片占主导的满幅图廊",
         "description": "图文分栏，或图片占主导的满幅图廊"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一张配图",
+        "describe": "是否高亮其中一张配图",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一张配图",
         "description": "是否高亮其中一张配图"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 4,
         "step": 1,
-        "desc": "被强调配图的序号",
+        "oneBased": true,
+        "describe": "被强调配图的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调配图的序号",
         "description": "被强调配图的序号"
       },
       {
         "key": "showCaptions",
-        "label": "图注",
         "type": "toggle",
+        "label": "图注",
         "default": true,
-        "desc": "显示/隐藏图片上的说明文字",
+        "describe": "显示/隐藏图片上的说明文字",
         "publicKey": "showCaptions",
         "publicLabel": "图注",
+        "desc": "显示/隐藏图片上的说明文字",
         "description": "显示/隐藏图片上的说明文字"
       },
       {
         "key": "showStat",
-        "label": "关键数字",
         "type": "toggle",
+        "label": "关键数字",
         "default": true,
-        "desc": "显示/隐藏侧栏的关键数字",
+        "describe": "显示/隐藏侧栏的关键数字",
         "publicKey": "showStat",
         "publicLabel": "关键数字",
+        "desc": "显示/隐藏侧栏的关键数字",
         "description": "显示/隐藏侧栏的关键数字"
       }
     ],
@@ -2937,7 +3096,8 @@ export const pages = [
         "OpenAI · 通用大模型",
         "Anthropic · 安全对齐",
         "xAI · 实时多模态",
-        "CoreWeave · 算力云"
+        "CoreWeave · 算力云",
+        "Perplexity · AI 搜索"
       ],
       "focusEnabled": false,
       "focusIndex": 0,
@@ -2974,8 +3134,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -2998,8 +3158,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -3022,8 +3182,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -3035,8 +3195,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -3045,8 +3205,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -3055,8 +3215,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -3068,8 +3228,8 @@ export const pages = [
       },
       {
         "key": "align",
-        "label": "对齐",
         "type": "enum",
+        "label": "对齐",
         "default": "left",
         "options": [
           {
@@ -3081,49 +3241,54 @@ export const pages = [
             "label": "居中"
           }
         ],
-        "desc": "章节页整体对齐方式",
+        "describe": "章节页整体对齐方式",
         "publicKey": "align",
         "publicLabel": "对齐",
+        "desc": "章节页整体对齐方式",
         "description": "章节页整体对齐方式"
       },
       {
         "key": "showNumber",
-        "label": "章节大序号",
         "type": "toggle",
+        "label": "章节大序号",
         "default": true,
-        "desc": "显示/隐藏超大章节编号",
+        "describe": "显示/隐藏超大章节编号",
         "publicKey": "showNumber",
         "publicLabel": "章节大序号",
+        "desc": "显示/隐藏超大章节编号",
         "description": "显示/隐藏超大章节编号"
       },
       {
         "key": "showAgenda",
-        "label": "章节目录",
         "type": "toggle",
+        "label": "章节目录",
         "default": true,
-        "desc": "显示/隐藏小节索引列表",
+        "describe": "显示/隐藏小节索引列表",
         "publicKey": "showAgenda",
         "publicLabel": "章节目录",
+        "desc": "显示/隐藏小节索引列表",
         "description": "显示/隐藏小节索引列表"
       },
       {
         "key": "showLead",
-        "label": "导语",
         "type": "toggle",
+        "label": "导语",
         "default": true,
-        "desc": "显示/隐藏章节导语",
+        "describe": "显示/隐藏章节导语",
         "publicKey": "showLead",
         "publicLabel": "导语",
+        "desc": "显示/隐藏章节导语",
         "description": "显示/隐藏章节导语"
       },
       {
         "key": "showRule",
-        "label": "强调分隔线",
         "type": "toggle",
+        "label": "强调分隔线",
         "default": true,
-        "desc": "显示/隐藏标题旁的强调短线",
+        "describe": "显示/隐藏标题旁的强调短线",
         "publicKey": "showRule",
         "publicLabel": "强调分隔线",
+        "desc": "显示/隐藏标题旁的强调短线",
         "description": "显示/隐藏标题旁的强调短线"
       }
     ],
@@ -3163,8 +3328,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -3187,8 +3352,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -3211,8 +3376,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -3224,8 +3389,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -3234,8 +3399,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -3244,8 +3409,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -3257,55 +3422,61 @@ export const pages = [
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一象限",
+        "describe": "是否高亮某一象限",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一象限",
         "description": "是否高亮某一象限"
       },
       {
         "key": "focusIndex",
-        "label": "强调象限",
         "type": "number",
+        "label": "强调象限",
         "default": 1,
         "min": 0,
         "max": 3,
         "step": 1,
-        "desc": "被强调象限的序号（按阅读顺序）",
+        "oneBased": true,
+        "describe": "被强调象限的序号（按阅读顺序）",
         "publicKey": "focusIndex",
         "publicLabel": "强调象限",
+        "desc": "被强调象限的序号（按阅读顺序）",
         "description": "被强调象限的序号（按阅读顺序）"
       },
       {
         "key": "showItems",
-        "label": "代表公司",
         "type": "toggle",
+        "label": "代表公司",
         "default": true,
-        "desc": "显示/隐藏象限内的对象标签",
+        "describe": "显示/隐藏象限内的公司标签",
         "publicKey": "showItems",
         "publicLabel": "代表公司",
+        "desc": "显示/隐藏象限内的对象标签",
         "description": "显示/隐藏象限内的对象标签"
       },
       {
         "key": "showDesc",
-        "label": "象限说明",
         "type": "toggle",
+        "label": "象限说明",
         "default": true,
-        "desc": "显示/隐藏象限描述文案",
+        "describe": "显示/隐藏象限描述文案",
         "publicKey": "showDesc",
         "publicLabel": "象限说明",
+        "desc": "显示/隐藏象限描述文案",
         "description": "显示/隐藏象限描述文案"
       },
       {
         "key": "showAxisLabels",
-        "label": "坐标轴",
         "type": "toggle",
+        "label": "坐标轴",
         "default": true,
-        "desc": "显示/隐藏坐标轴标签与端点",
+        "describe": "显示/隐藏坐标轴标签与端点",
         "publicKey": "showAxisLabels",
         "publicLabel": "坐标轴",
+        "desc": "显示/隐藏坐标轴标签与端点",
         "description": "显示/隐藏坐标轴标签与端点"
       }
     ],
@@ -3384,8 +3555,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -3408,8 +3579,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -3432,8 +3603,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -3445,8 +3616,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -3455,8 +3626,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -3465,8 +3636,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -3478,88 +3649,101 @@ export const pages = [
       },
       {
         "key": "axisCount",
-        "label": "维度数量",
         "type": "number",
+        "label": "维度数量",
         "default": 6,
         "min": 3,
+        "max": 6,
         "step": 1,
-        "desc": "雷达展示的维度数量",
+        "describe": "雷达展示的维度数量",
         "publicKey": "axisCount",
         "publicLabel": "维度数量",
+        "desc": "雷达展示的维度数量",
         "description": "雷达展示的维度数量"
       },
       {
         "key": "seriesCount",
-        "label": "系列数量",
         "type": "number",
+        "label": "系列数量",
         "default": 5,
         "min": 1,
+        "max": 5,
         "step": 1,
-        "desc": "叠加对比的系列数量",
+        "describe": "叠加对比的系列数量",
         "publicKey": "seriesCount",
         "publicLabel": "系列数量",
+        "desc": "叠加对比的系列数量",
         "description": "叠加对比的系列数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否强调某一系列（其余淡出）",
+        "describe": "是否强调某一系列（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否强调某一系列（其余淡出）",
         "description": "是否强调某一系列（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调系列的序号",
+        "oneBased": true,
+        "describe": "被强调系列的序号",
+        "max": 5,
+        "maxFromKey": "axisCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调系列的序号",
         "description": "被强调系列的序号"
       },
       {
         "key": "showRings",
-        "label": "背景环网",
         "type": "toggle",
+        "label": "背景环网",
         "default": true,
-        "desc": "同心环 + 辐射轴显隐",
+        "describe": "同心环 + 辐射轴显隐",
         "publicKey": "showRings",
         "publicLabel": "背景环网",
+        "desc": "同心环 + 辐射轴显隐",
         "description": "同心环 + 辐射轴显隐"
       },
       {
         "key": "showDots",
-        "label": "顶点圆点",
         "type": "toggle",
+        "label": "顶点圆点",
         "default": true,
-        "desc": "各维度顶点圆点显隐",
+        "describe": "各维度顶点圆点显隐",
         "publicKey": "showDots",
         "publicLabel": "顶点圆点",
+        "desc": "各维度顶点圆点显隐",
         "description": "各维度顶点圆点显隐"
       },
       {
         "key": "showLegend",
-        "label": "系列图例",
         "type": "toggle",
+        "label": "系列图例",
         "default": true,
-        "desc": "右侧系列图例显隐",
+        "describe": "右侧系列图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "系列图例",
+        "desc": "右侧系列图例显隐",
         "description": "右侧系列图例显隐"
       },
       {
         "key": "showAxisLabels",
-        "label": "维度标签",
         "type": "toggle",
+        "label": "维度标签",
         "default": true,
-        "desc": "外圈维度文字标签显隐",
+        "describe": "外圈维度文字标签显隐",
         "publicKey": "showAxisLabels",
         "publicLabel": "维度标签",
+        "desc": "外圈维度文字标签显隐",
         "description": "外圈维度文字标签显隐"
       }
     ],
@@ -3661,8 +3845,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -3685,8 +3869,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -3709,8 +3893,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -3722,8 +3906,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -3732,8 +3916,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -3742,8 +3926,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -3755,69 +3939,78 @@ export const pages = [
       },
       {
         "key": "rowCount",
-        "label": "行数",
         "type": "number",
+        "label": "行数",
         "default": 5,
         "min": 2,
+        "max": 5,
         "step": 1,
-        "desc": "展示的数据行数",
+        "describe": "展示的数据行数",
         "publicKey": "rowCount",
         "publicLabel": "行数",
+        "desc": "展示的数据行数",
         "description": "展示的数据行数"
       },
       {
         "key": "scaleMax",
-        "label": "评分满分",
         "type": "number",
+        "label": "评分满分",
         "default": 5,
         "min": 3,
         "max": 5,
         "step": 1,
-        "desc": "点阵评分的满分点数",
+        "describe": "点阵评分的满分点数",
         "publicKey": "scaleMax",
         "publicLabel": "评分满分",
+        "desc": "点阵评分的满分点数",
         "description": "点阵评分的满分点数"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮其中一行",
+        "describe": "是否高亮其中一行",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一行",
         "description": "是否高亮其中一行"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 2,
         "min": 0,
+        "max": 4,
         "step": 1,
-        "desc": "被强调行的序号",
+        "oneBased": true,
+        "describe": "被强调行的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调行的序号",
         "description": "被强调行的序号"
       },
       {
         "key": "showSub",
-        "label": "副标题",
         "type": "toggle",
+        "label": "副标题",
         "default": true,
-        "desc": "行名下方英文/副标显隐",
+        "describe": "行名下方英文/副标显隐",
         "publicKey": "showSub",
         "publicLabel": "副标题",
+        "desc": "行名下方英文/副标显隐",
         "description": "行名下方英文/副标显隐"
       },
       {
         "key": "showVerdict",
-        "label": "综合判断列",
         "type": "toggle",
+        "label": "综合判断列",
         "default": true,
-        "desc": "末列综合判断标签显隐",
+        "describe": "末列综合判断标签显隐",
         "publicKey": "showVerdict",
         "publicLabel": "综合判断列",
+        "desc": "末列综合判断标签显隐",
         "description": "末列综合判断标签显隐"
       }
     ],
@@ -3919,8 +4112,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -3943,8 +4136,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -3967,8 +4160,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -3980,8 +4173,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -3990,8 +4183,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -4000,8 +4193,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -4013,66 +4206,75 @@ export const pages = [
       },
       {
         "key": "layerCount",
-        "label": "层级数量",
         "type": "number",
+        "label": "层级数量",
         "default": 3,
         "min": 2,
+        "max": 3,
         "step": 1,
-        "desc": "展示的产业链层级数量",
+        "describe": "展示的产业链层级数量",
         "publicKey": "layerCount",
         "publicLabel": "层级数量",
+        "desc": "展示的产业链层级数量",
         "description": "展示的产业链层级数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一层级",
+        "describe": "是否高亮某一层级",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一层级",
         "description": "是否高亮某一层级"
       },
       {
         "key": "focusIndex",
-        "label": "强调层级",
         "type": "number",
+        "label": "强调层级",
         "default": 0,
         "min": 0,
+        "max": 2,
         "step": 1,
-        "desc": "被强调层级的序号",
+        "oneBased": true,
+        "describe": "被强调层级的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调层级",
+        "desc": "被强调层级的序号",
         "description": "被强调层级的序号"
       },
       {
         "key": "showCompanies",
-        "label": "代表公司",
         "type": "toggle",
+        "label": "代表公司",
         "default": true,
-        "desc": "显示/隐藏各环节代表公司",
+        "describe": "显示/隐藏各环节代表公司",
         "publicKey": "showCompanies",
         "publicLabel": "代表公司",
+        "desc": "显示/隐藏各环节代表公司",
         "description": "显示/隐藏各环节代表公司"
       },
       {
         "key": "showFlow",
-        "label": "层级连接",
         "type": "toggle",
+        "label": "层级连接",
         "default": true,
-        "desc": "显示/隐藏层级之间的传导箭头",
+        "describe": "显示/隐藏层级之间的传导箭头",
         "publicKey": "showFlow",
         "publicLabel": "层级连接",
+        "desc": "显示/隐藏层级之间的传导箭头",
         "description": "显示/隐藏层级之间的传导箭头"
       },
       {
         "key": "showNote",
-        "label": "层级批注",
         "type": "toggle",
+        "label": "层级批注",
         "default": true,
-        "desc": "显示/隐藏每层右上角的确定性批注",
+        "describe": "显示/隐藏每层右上角的确定性批注",
         "publicKey": "showNote",
         "publicLabel": "层级批注",
+        "desc": "显示/隐藏每层右上角的确定性批注",
         "description": "显示/隐藏每层右上角的确定性批注"
       }
     ],
@@ -4177,8 +4379,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -4201,8 +4403,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -4225,8 +4427,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -4238,8 +4440,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -4248,8 +4450,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -4258,8 +4460,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -4271,56 +4473,64 @@ export const pages = [
       },
       {
         "key": "sourceCount",
-        "label": "来源数量",
         "type": "number",
+        "label": "来源数量",
         "default": 5,
         "min": 2,
+        "max": 5,
         "step": 1,
-        "desc": "左列展示的来源数量",
+        "describe": "左列展示的来源数量",
         "publicKey": "sourceCount",
         "publicLabel": "来源数量",
+        "desc": "左列展示的来源数量",
         "description": "左列展示的来源数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一来源（其丝带高亮、其余淡出）",
+        "describe": "辉光强调某一来源（其丝带高亮、其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一来源（其丝带高亮、其余淡出）",
         "description": "辉光强调某一来源（其丝带高亮、其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 4,
         "step": 1,
-        "desc": "被强调来源的序号",
+        "oneBased": true,
+        "describe": "被强调来源的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调来源的序号",
         "description": "被强调来源的序号"
       },
       {
         "key": "showValueLabels",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
-        "desc": "来源数值 + 占比显隐",
+        "describe": "来源金额 + 占比显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签",
+        "desc": "来源数值 + 占比显隐",
         "description": "来源数值 + 占比显隐"
       },
       {
         "key": "showTargetMeta",
-        "label": "目标说明",
         "type": "toggle",
+        "label": "目标说明",
         "default": true,
-        "desc": "右列目标说明 + 流入合计显隐",
+        "describe": "右列目标说明 + 流入合计显隐",
         "publicKey": "showTargetMeta",
         "publicLabel": "目标说明",
+        "desc": "右列目标说明 + 流入合计显隐",
         "description": "右列目标说明 + 流入合计显隐"
       }
     ],
@@ -4401,8 +4611,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -4425,8 +4635,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -4449,8 +4659,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -4462,8 +4672,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -4472,8 +4682,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -4482,8 +4692,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -4495,20 +4705,22 @@ export const pages = [
       },
       {
         "key": "statCount",
-        "label": "数字数量",
         "type": "number",
+        "label": "数字数量",
         "default": 4,
         "min": 2,
+        "max": 4,
         "step": 1,
-        "desc": "展示的关键数字数量",
+        "describe": "展示的关键数字数量",
         "publicKey": "statCount",
         "publicLabel": "数字数量",
+        "desc": "展示的关键数字数量",
         "description": "展示的关键数字数量"
       },
       {
         "key": "layout",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "row",
         "options": [
           {
@@ -4520,51 +4732,58 @@ export const pages = [
             "label": "主次结构"
           }
         ],
-        "desc": "等分一排，或一个主数字 + 其余次级",
+        "describe": "等分一排，或一个主数字 + 其余次级",
         "publicKey": "layout",
         "publicLabel": "版式",
+        "desc": "等分一排，或一个主数字 + 其余次级",
         "description": "等分一排，或一个主数字 + 其余次级"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一个数字",
+        "describe": "是否高亮其中一个数字",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一个数字",
         "description": "是否高亮其中一个数字"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 3,
         "step": 1,
-        "desc": "被强调数字的序号",
+        "oneBased": true,
+        "describe": "被强调数字的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调数字的序号",
         "description": "被强调数字的序号"
       },
       {
         "key": "showDelta",
-        "label": "注解徽章",
         "type": "toggle",
+        "label": "注解徽章",
         "default": true,
-        "desc": "显示/隐藏数字旁的注解徽章",
+        "describe": "显示/隐藏数字旁的注解徽章",
         "publicKey": "showDelta",
         "publicLabel": "注解徽章",
+        "desc": "显示/隐藏数字旁的注解徽章",
         "description": "显示/隐藏数字旁的注解徽章"
       },
       {
         "key": "showCaption",
-        "label": "说明文案",
         "type": "toggle",
+        "label": "说明文案",
         "default": true,
-        "desc": "显示/隐藏数字下方说明",
+        "describe": "显示/隐藏数字下方说明",
         "publicKey": "showCaption",
         "publicLabel": "说明文案",
+        "desc": "显示/隐藏数字下方说明",
         "description": "显示/隐藏数字下方说明"
       }
     ],
@@ -4624,8 +4843,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -4648,8 +4867,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -4672,8 +4891,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -4685,8 +4904,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -4695,8 +4914,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -4705,8 +4924,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -4718,8 +4937,8 @@ export const pages = [
       },
       {
         "key": "align",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "split",
         "options": [
           {
@@ -4731,51 +4950,57 @@ export const pages = [
             "label": "居中铺满"
           }
         ],
-        "desc": "数字+导语分栏，或数字居中铺满",
+        "describe": "数字+导语分栏，或数字居中铺满",
         "publicKey": "align",
         "publicLabel": "版式",
+        "desc": "数字+导语分栏，或数字居中铺满",
         "description": "数字+导语分栏，或数字居中铺满"
       },
       {
         "key": "supportCount",
-        "label": "支撑数据",
         "type": "number",
+        "label": "支撑数据",
         "default": 3,
         "min": 0,
         "step": 1,
-        "desc": "底部支撑小数据数量（0 = 不显示）",
+        "max": 3,
+        "describe": "底部支撑小数据数量（0 = 不显示）",
         "publicKey": "supportCount",
         "publicLabel": "支撑数据",
+        "desc": "底部支撑小数据数量（0 = 不显示）",
         "description": "底部支撑小数据数量（0 = 不显示）"
       },
       {
         "key": "showRing",
-        "label": "辉光弧环",
         "type": "toggle",
+        "label": "辉光弧环",
         "default": false,
-        "desc": "主数字背后的发光弧环显隐",
+        "describe": "主数字背后的发光弧环显隐",
         "publicKey": "showRing",
         "publicLabel": "辉光弧环",
+        "desc": "主数字背后的发光弧环显隐",
         "description": "主数字背后的发光弧环显隐"
       },
       {
         "key": "showLead",
-        "label": "导语",
         "type": "toggle",
+        "label": "导语",
         "default": true,
-        "desc": "分栏版式右侧导语显隐",
+        "describe": "分栏版式右侧导语显隐",
         "publicKey": "showLead",
         "publicLabel": "导语",
+        "desc": "分栏版式右侧导语显隐",
         "description": "分栏版式右侧导语显隐"
       },
       {
         "key": "showCaption",
-        "label": "数字说明",
         "type": "toggle",
+        "label": "数字说明",
         "default": true,
-        "desc": "主数字下方说明文案显隐",
+        "describe": "主数字下方说明文案显隐",
         "publicKey": "showCaption",
         "publicLabel": "数字说明",
+        "desc": "主数字下方说明文案显隐",
         "description": "主数字下方说明文案显隐"
       }
     ],
@@ -4827,8 +5052,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -4851,8 +5076,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -4875,8 +5100,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -4888,8 +5113,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -4898,8 +5123,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -4908,8 +5133,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -4921,8 +5146,8 @@ export const pages = [
       },
       {
         "key": "emphasize",
-        "label": "强调侧",
         "type": "enum",
+        "label": "强调侧",
         "default": "to",
         "options": [
           {
@@ -4938,51 +5163,57 @@ export const pages = [
             "label": "两侧都亮"
           }
         ],
-        "desc": "辉光强调哪一侧数字",
+        "describe": "辉光强调哪一侧数字",
         "publicKey": "emphasize",
         "publicLabel": "强调侧",
+        "desc": "辉光强调哪一侧数字",
         "description": "辉光强调哪一侧数字"
       },
       {
         "key": "showBadge",
-        "label": "变化徽标",
         "type": "toggle",
+        "label": "变化徽标",
         "default": true,
-        "desc": "中央箭头 + 增减幅徽标显隐",
+        "describe": "中央箭头 + 增减幅徽标显隐",
         "publicKey": "showBadge",
         "publicLabel": "变化徽标",
+        "desc": "中央箭头 + 增减幅徽标显隐",
         "description": "中央箭头 + 增减幅徽标显隐"
       },
       {
         "key": "showLabels",
-        "label": "时点标签",
         "type": "toggle",
+        "label": "时点标签",
         "default": true,
-        "desc": "起点 / 终点的时点标签显隐",
+        "describe": "起点 / 终点的时点标签显隐",
         "publicKey": "showLabels",
         "publicLabel": "时点标签",
+        "desc": "起点 / 终点的时点标签显隐",
         "description": "起点 / 终点的时点标签显隐"
       },
       {
         "key": "supportCount",
-        "label": "支撑数据",
         "type": "number",
+        "label": "支撑数据",
         "default": 3,
         "min": 0,
         "step": 1,
-        "desc": "底部支撑小数据数量（0 = 不显示）",
+        "max": 3,
+        "describe": "底部支撑小数据数量（0 = 不显示）",
         "publicKey": "supportCount",
         "publicLabel": "支撑数据",
+        "desc": "底部支撑小数据数量（0 = 不显示）",
         "description": "底部支撑小数据数量（0 = 不显示）"
       },
       {
         "key": "showCaption",
-        "label": "底部说明",
         "type": "toggle",
+        "label": "底部说明",
         "default": true,
-        "desc": "底部一句话说明显隐",
+        "describe": "底部一句话说明显隐",
         "publicKey": "showCaption",
         "publicLabel": "底部说明",
+        "desc": "底部一句话说明显隐",
         "description": "底部一句话说明显隐"
       }
     ],
@@ -5046,8 +5277,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -5070,8 +5301,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -5094,8 +5325,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -5107,8 +5338,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -5117,8 +5348,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -5127,8 +5358,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -5140,20 +5371,22 @@ export const pages = [
       },
       {
         "key": "statCount",
-        "label": "支撑数字",
         "type": "number",
+        "label": "支撑数字",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "右侧支撑小数字数量",
+        "max": 4,
+        "describe": "右侧支撑小数字数量",
         "publicKey": "statCount",
         "publicLabel": "支撑数字",
+        "desc": "右侧支撑小数字数量",
         "description": "右侧支撑小数字数量"
       },
       {
         "key": "layout",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "hero-left",
         "options": [
           {
@@ -5165,25 +5398,27 @@ export const pages = [
             "label": "主单元在右"
           }
         ],
-        "desc": "主单元位于左侧或右侧",
+        "describe": "主单元位于左侧或右侧",
         "publicKey": "layout",
         "publicLabel": "版式",
+        "desc": "主单元位于左侧或右侧",
         "description": "主单元位于左侧或右侧"
       },
       {
         "key": "accentHero",
-        "label": "主单元强调",
         "type": "toggle",
+        "label": "主单元强调",
         "default": true,
-        "desc": "主单元辉光强调显隐",
+        "describe": "主单元辉光强调显隐",
         "publicKey": "accentHero",
         "publicLabel": "主单元强调",
+        "desc": "主单元辉光强调显隐",
         "description": "主单元辉光强调显隐"
       },
       {
         "key": "heroExtra",
-        "label": "主单元底部",
         "type": "enum",
+        "label": "主单元底部",
         "default": "tags",
         "options": [
           {
@@ -5199,19 +5434,21 @@ export const pages = [
             "label": "无"
           }
         ],
-        "desc": "主单元底部内容形态",
+        "describe": "主单元底部内容形态",
         "publicKey": "heroExtra",
         "publicLabel": "主单元底部",
+        "desc": "主单元底部内容形态",
         "description": "主单元底部内容形态"
       },
       {
         "key": "showCaption",
-        "label": "主单元说明",
         "type": "toggle",
+        "label": "主单元说明",
         "default": true,
-        "desc": "主单元说明文案显隐",
+        "describe": "主单元说明文案显隐",
         "publicKey": "showCaption",
         "publicLabel": "主单元说明",
+        "desc": "主单元说明文案显隐",
         "description": "主单元说明文案显隐"
       }
     ],
@@ -5287,8 +5524,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -5311,8 +5548,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -5335,8 +5572,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -5348,8 +5585,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -5358,8 +5595,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -5368,8 +5605,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -5381,21 +5618,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 1,
         "min": 0,
         "max": 1,
         "step": 1,
-        "desc": "主图槽位（0 = 纯文字版式）",
+        "describe": "主图槽位（0 = 纯文字版式）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "主图槽位（0 = 纯文字版式）",
         "description": "主图槽位（0 = 纯文字版式）"
       },
       {
         "key": "imageSide",
-        "label": "图片位置",
         "type": "enum",
+        "label": "图片位置",
         "default": "right",
         "options": [
           {
@@ -5407,52 +5645,57 @@ export const pages = [
             "label": "右侧"
           }
         ],
-        "desc": "主图位于左侧或右侧",
+        "describe": "主图位于左侧或右侧",
         "publicKey": "imageSide",
         "publicLabel": "图片位置",
+        "desc": "主图位于左侧或右侧",
         "description": "主图位于左侧或右侧"
       },
       {
         "key": "pointCount",
-        "label": "要点数量",
         "type": "number",
+        "label": "要点数量",
         "default": 3,
         "min": 1,
         "max": 4,
         "step": 1,
-        "desc": "展示的要点条数",
+        "describe": "展示的要点条数",
         "publicKey": "pointCount",
         "publicLabel": "要点数量",
+        "desc": "展示的要点条数",
         "description": "展示的要点条数"
       },
       {
         "key": "showPoints",
-        "label": "要点列表",
         "type": "toggle",
+        "label": "要点列表",
         "default": true,
-        "desc": "显示/隐藏要点列表",
+        "describe": "显示/隐藏要点列表",
         "publicKey": "showPoints",
         "publicLabel": "要点列表",
+        "desc": "显示/隐藏要点列表",
         "description": "显示/隐藏要点列表"
       },
       {
         "key": "showStat",
-        "label": "关键数字",
         "type": "toggle",
+        "label": "关键数字",
         "default": true,
-        "desc": "显示/隐藏关键数字",
+        "describe": "显示/隐藏关键数字",
         "publicKey": "showStat",
         "publicLabel": "关键数字",
+        "desc": "显示/隐藏关键数字",
         "description": "显示/隐藏关键数字"
       },
       {
         "key": "showCaption",
-        "label": "图注",
         "type": "toggle",
+        "label": "图注",
         "default": true,
-        "desc": "显示/隐藏图片说明",
+        "describe": "显示/隐藏图片说明",
         "publicKey": "showCaption",
         "publicLabel": "图注",
+        "desc": "显示/隐藏图片说明",
         "description": "显示/隐藏图片说明"
       }
     ],
@@ -5512,8 +5755,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -5536,8 +5779,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -5560,8 +5803,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -5573,8 +5816,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -5583,8 +5826,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -5593,8 +5836,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -5606,21 +5849,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 1,
         "min": 0,
         "max": 3,
         "step": 1,
-        "desc": "图片槽位数量（0 = 纯文字主视觉）",
+        "describe": "图片槽位数量（0 = 纯文字主视觉）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "图片槽位数量（0 = 纯文字主视觉）",
         "description": "图片槽位数量（0 = 纯文字主视觉）"
       },
       {
         "key": "overlay",
-        "label": "标题蒙层",
         "type": "enum",
+        "label": "标题蒙层",
         "default": "corner",
         "options": [
           {
@@ -5636,51 +5880,59 @@ export const pages = [
             "label": "不压字"
           }
         ],
-        "desc": "标题蒙层位置（不压字时标题回到顶部）",
+        "describe": "标题蒙层位置（不压字时标题回到顶部）",
         "publicKey": "overlay",
         "publicLabel": "标题蒙层",
+        "desc": "标题蒙层位置（不压字时标题回到顶部）",
         "description": "标题蒙层位置（不压字时标题回到顶部）"
       },
       {
         "key": "showStat",
-        "label": "角标数字",
         "type": "toggle",
+        "label": "角标数字",
         "default": true,
-        "desc": "显示/隐藏角落关键数字",
+        "describe": "显示/隐藏角落关键数字",
         "publicKey": "showStat",
         "publicLabel": "角标数字",
+        "desc": "显示/隐藏角落关键数字",
         "description": "显示/隐藏角落关键数字"
       },
       {
         "key": "showLead",
-        "label": "蒙层导语",
         "type": "toggle",
+        "label": "蒙层导语",
         "default": true,
-        "desc": "蒙层内导语显隐",
+        "describe": "蒙层内导语显隐",
         "publicKey": "showLead",
         "publicLabel": "蒙层导语",
+        "desc": "蒙层内导语显隐",
         "description": "蒙层内导语显隐"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一张图",
+        "describe": "是否高亮其中一张图",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一张图",
         "description": "是否高亮其中一张图"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调图的序号",
+        "oneBased": true,
+        "describe": "被强调图的序号",
+        "max": 2,
+        "maxFromKey": "imageCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调图的序号",
         "description": "被强调图的序号"
       }
     ],
@@ -5728,7 +5980,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -5749,7 +6000,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
         "def": "tech",
         "options": [
           {
@@ -5778,8 +6028,8 @@ export const pages = [
       },
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -5802,8 +6052,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -5826,8 +6076,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -5839,8 +6089,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -5849,8 +6099,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -5859,8 +6109,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -5872,21 +6122,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "主图数量",
         "type": "number",
+        "label": "主图数量",
         "default": 1,
         "min": 0,
         "max": 1,
         "step": 1,
-        "desc": "主图槽位（0 = 纯文字主视觉海报）",
+        "describe": "主图槽位（0 = 纯文字主视觉海报）",
         "publicKey": "imageCount",
         "publicLabel": "主图数量",
+        "desc": "主图槽位（0 = 纯文字主视觉海报）",
         "description": "主图槽位（0 = 纯文字主视觉海报）"
       },
       {
         "key": "fit",
-        "label": "图片填充",
         "type": "enum",
+        "label": "图片填充",
         "default": "cover",
         "options": [
           {
@@ -5898,15 +6149,16 @@ export const pages = [
             "label": "完整不裁切"
           }
         ],
-        "desc": "主图填充方式（完整 = 按原始比例不裁切）",
+        "describe": "主图填充方式（完整 = 按原始比例不裁切）",
         "publicKey": "fit",
         "publicLabel": "图片填充",
+        "desc": "主图填充方式（完整 = 按原始比例不裁切）",
         "description": "主图填充方式（完整 = 按原始比例不裁切）"
       },
       {
         "key": "titlePos",
-        "label": "标题位置",
         "type": "enum",
+        "label": "标题位置",
         "default": "bottom",
         "options": [
           {
@@ -5918,51 +6170,57 @@ export const pages = [
             "label": "居中"
           }
         ],
-        "desc": "标题在海报上的位置",
+        "describe": "标题在海报上的位置",
         "publicKey": "titlePos",
         "publicLabel": "标题位置",
+        "desc": "标题在海报上的位置",
         "description": "标题在海报上的位置"
       },
       {
         "key": "metaCount",
-        "label": "数据数量",
         "type": "number",
+        "label": "数据数量",
         "default": 3,
         "min": 0,
         "step": 1,
-        "desc": "底部内联数据数量",
+        "describe": "底部内联数据数量",
+        "max": 3,
         "publicKey": "metaCount",
         "publicLabel": "数据数量",
+        "desc": "底部内联数据数量",
         "description": "底部内联数据数量"
       },
       {
         "key": "showQuote",
-        "label": "金句",
         "type": "toggle",
+        "label": "金句",
         "default": true,
-        "desc": "标题下金句显隐",
+        "describe": "标题下金句显隐",
         "publicKey": "showQuote",
         "publicLabel": "金句",
+        "desc": "标题下金句显隐",
         "description": "标题下金句显隐"
       },
       {
         "key": "showFrame",
-        "label": "描边框",
         "type": "toggle",
+        "label": "描边框",
         "default": true,
-        "desc": "海报内嵌描边框显隐",
+        "describe": "海报内嵌描边框显隐",
         "publicKey": "showFrame",
         "publicLabel": "描边框",
+        "desc": "海报内嵌描边框显隐",
         "description": "海报内嵌描边框显隐"
       },
       {
         "key": "showCaption",
-        "label": "图注",
         "type": "toggle",
+        "label": "图注",
         "default": true,
-        "desc": "左下角图注显隐",
+        "describe": "左下角图注显隐",
         "publicKey": "showCaption",
         "publicLabel": "图注",
+        "desc": "左下角图注显隐",
         "description": "左下角图注显隐"
       }
     ],
@@ -6019,8 +6277,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -6043,8 +6301,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -6067,8 +6325,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -6080,8 +6338,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -6090,8 +6348,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -6100,8 +6358,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -6113,20 +6371,22 @@ export const pages = [
       },
       {
         "key": "cardCount",
-        "label": "卡片数量",
         "type": "number",
+        "label": "卡片数量",
         "default": 4,
         "min": 1,
         "step": 1,
-        "desc": "图文卡数量",
+        "describe": "图文卡数量",
+        "max": 4,
         "publicKey": "cardCount",
         "publicLabel": "卡片数量",
+        "desc": "图文卡数量",
         "description": "图文卡数量"
       },
       {
         "key": "fit",
-        "label": "贴合方式",
         "type": "enum",
+        "label": "贴合方式",
         "default": "cover",
         "options": [
           {
@@ -6138,51 +6398,59 @@ export const pages = [
             "label": "完整（不裁切）"
           }
         ],
-        "desc": "图片在卡片内填充或完整显示",
+        "describe": "图片在卡片内填充或完整显示",
         "publicKey": "fit",
         "publicLabel": "贴合方式",
+        "desc": "图片在卡片内填充或完整显示",
         "description": "图片在卡片内填充或完整显示"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否辉光强调某一张",
+        "describe": "是否辉光强调某一张",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否辉光强调某一张",
         "description": "是否辉光强调某一张"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调卡片的序号",
+        "oneBased": true,
+        "describe": "被强调卡片的序号",
+        "max": 3,
+        "maxFromKey": "cardCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调卡片的序号",
         "description": "被强调卡片的序号"
       },
       {
         "key": "showDesc",
-        "label": "描述",
         "type": "toggle",
+        "label": "描述",
         "default": true,
-        "desc": "显示/隐藏卡片描述",
+        "describe": "显示/隐藏卡片描述",
         "publicKey": "showDesc",
         "publicLabel": "描述",
+        "desc": "显示/隐藏卡片描述",
         "description": "显示/隐藏卡片描述"
       },
       {
         "key": "showTags",
-        "label": "标签",
         "type": "toggle",
+        "label": "标签",
         "default": true,
-        "desc": "显示/隐藏卡片标签",
+        "describe": "显示/隐藏卡片标签",
         "publicKey": "showTags",
         "publicLabel": "标签",
+        "desc": "显示/隐藏卡片标签",
         "description": "显示/隐藏卡片标签"
       }
     ],
@@ -6240,8 +6508,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -6264,8 +6532,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -6288,8 +6556,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -6301,8 +6569,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -6311,8 +6579,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -6321,8 +6589,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -6334,20 +6602,22 @@ export const pages = [
       },
       {
         "key": "rowCount",
-        "label": "行数",
         "type": "number",
+        "label": "行数",
         "default": 3,
         "min": 2,
         "step": 1,
-        "desc": "图文行数（2–n）",
+        "describe": "图文行数（2–n）",
+        "max": 3,
         "publicKey": "rowCount",
         "publicLabel": "行数",
+        "desc": "图文行数（2–n）",
         "description": "图文行数（2–n）"
       },
       {
         "key": "startSide",
-        "label": "首行图片",
         "type": "enum",
+        "label": "首行图片",
         "default": "left",
         "options": [
           {
@@ -6359,15 +6629,16 @@ export const pages = [
             "label": "居右起"
           }
         ],
-        "desc": "首行图片所在侧，逐行交错翻转",
+        "describe": "首行图片所在侧，逐行交错翻转",
         "publicKey": "startSide",
         "publicLabel": "首行图片",
+        "desc": "首行图片所在侧，逐行交错翻转",
         "description": "首行图片所在侧，逐行交错翻转"
       },
       {
         "key": "fit",
-        "label": "贴合方式",
         "type": "enum",
+        "label": "贴合方式",
         "default": "contain",
         "options": [
           {
@@ -6379,51 +6650,59 @@ export const pages = [
             "label": "填充（裁切）"
           }
         ],
-        "desc": "图片在槽内完整显示或填充裁切",
+        "describe": "图片在槽内完整显示或填充裁切",
         "publicKey": "fit",
         "publicLabel": "贴合方式",
+        "desc": "图片在槽内完整显示或填充裁切",
         "description": "图片在槽内完整显示或填充裁切"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否辉光强调某一行",
+        "describe": "是否辉光强调某一行",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否辉光强调某一行",
         "description": "是否辉光强调某一行"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调行的序号",
+        "oneBased": true,
+        "describe": "被强调行的序号",
+        "max": 2,
+        "maxFromKey": "rowCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调行的序号",
         "description": "被强调行的序号"
       },
       {
         "key": "showCopy",
-        "label": "解读段落",
         "type": "toggle",
+        "label": "解读段落",
         "default": true,
-        "desc": "显示/隐藏每行解读段落",
+        "describe": "显示/隐藏每行解读段落",
         "publicKey": "showCopy",
         "publicLabel": "解读段落",
+        "desc": "显示/隐藏每行解读段落",
         "description": "显示/隐藏每行解读段落"
       },
       {
         "key": "showStat",
-        "label": "行内数字",
         "type": "toggle",
+        "label": "行内数字",
         "default": true,
-        "desc": "显示/隐藏行内关键数字",
+        "describe": "显示/隐藏行内关键数字",
         "publicKey": "showStat",
         "publicLabel": "行内数字",
+        "desc": "显示/隐藏行内关键数字",
         "description": "显示/隐藏行内关键数字"
       }
     ],
@@ -6489,8 +6768,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -6513,8 +6792,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -6537,8 +6816,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -6550,8 +6829,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -6560,8 +6839,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -6570,8 +6849,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -6583,21 +6862,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 4,
         "min": 0,
         "max": 4,
         "step": 1,
-        "desc": "横排图集的槽位数量（0 = 纯标题）",
+        "describe": "横排图集的槽位数量（0 = 纯标题）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "横排图集的槽位数量（0 = 纯标题）",
         "description": "横排图集的槽位数量（0 = 纯标题）"
       },
       {
         "key": "fit",
-        "label": "贴合方式",
         "type": "enum",
+        "label": "贴合方式",
         "default": "contain",
         "options": [
           {
@@ -6609,51 +6889,59 @@ export const pages = [
             "label": "填充（裁切）"
           }
         ],
-        "desc": "图片在单元内完整显示或填充裁切",
+        "describe": "图片在单元内完整显示或填充裁切",
         "publicKey": "fit",
         "publicLabel": "贴合方式",
+        "desc": "图片在单元内完整显示或填充裁切",
         "description": "图片在单元内完整显示或填充裁切"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一张",
+        "describe": "是否高亮其中一张",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一张",
         "description": "是否高亮其中一张"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调图片的序号",
+        "oneBased": true,
+        "describe": "被强调图片的序号",
+        "max": 3,
+        "maxFromKey": "imageCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调图片的序号",
         "description": "被强调图片的序号"
       },
       {
         "key": "showCaptions",
-        "label": "图注",
         "type": "toggle",
+        "label": "图注",
         "default": true,
-        "desc": "显示/隐藏图片说明",
+        "describe": "显示/隐藏图片说明",
         "publicKey": "showCaptions",
         "publicLabel": "图注",
+        "desc": "显示/隐藏图片说明",
         "description": "显示/隐藏图片说明"
       },
       {
         "key": "showLead",
-        "label": "导语",
         "type": "toggle",
+        "label": "导语",
         "default": true,
-        "desc": "显示/隐藏标题下的导语",
+        "describe": "显示/隐藏标题下的导语",
         "publicKey": "showLead",
         "publicLabel": "导语",
+        "desc": "显示/隐藏标题下的导语",
         "description": "显示/隐藏标题下的导语"
       }
     ],
@@ -6695,8 +6983,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -6719,8 +7007,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -6743,8 +7031,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -6756,8 +7044,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -6766,8 +7054,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -6776,8 +7064,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -6789,20 +7077,22 @@ export const pages = [
       },
       {
         "key": "tileCount",
-        "label": "瓦片数量",
         "type": "number",
+        "label": "瓦片数量",
         "default": 6,
         "min": 0,
+        "max": 6,
         "step": 1,
-        "desc": "公司瓦片数量（0 = 纯标题）",
+        "describe": "公司瓦片数量（0 = 纯标题）",
         "publicKey": "tileCount",
         "publicLabel": "瓦片数量",
+        "desc": "公司瓦片数量（0 = 纯标题）",
         "description": "公司瓦片数量（0 = 纯标题）"
       },
       {
         "key": "fit",
-        "label": "贴合方式",
         "type": "enum",
+        "label": "贴合方式",
         "default": "cover",
         "options": [
           {
@@ -6814,51 +7104,58 @@ export const pages = [
             "label": "完整（不裁切）"
           }
         ],
-        "desc": "图片在瓦片内填充或完整显示",
+        "describe": "图片在瓦片内填充或完整显示",
         "publicKey": "fit",
         "publicLabel": "贴合方式",
+        "desc": "图片在瓦片内填充或完整显示",
         "description": "图片在瓦片内填充或完整显示"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一块",
+        "describe": "是否高亮其中一块",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一块",
         "description": "是否高亮其中一块"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 5,
         "step": 1,
-        "desc": "被强调瓦片的序号",
+        "oneBased": true,
+        "describe": "被强调瓦片的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调瓦片的序号",
         "description": "被强调瓦片的序号"
       },
       {
         "key": "showNames",
-        "label": "名称",
         "type": "toggle",
+        "label": "名称",
         "default": true,
-        "desc": "显示/隐藏公司名称",
+        "describe": "显示/隐藏公司名称",
         "publicKey": "showNames",
         "publicLabel": "名称",
+        "desc": "显示/隐藏公司名称",
         "description": "显示/隐藏公司名称"
       },
       {
         "key": "showTags",
-        "label": "标签",
         "type": "toggle",
+        "label": "标签",
         "default": true,
-        "desc": "显示/隐藏分类标签",
+        "describe": "显示/隐藏赛道标签",
         "publicKey": "showTags",
         "publicLabel": "标签",
+        "desc": "显示/隐藏分类标签",
         "description": "显示/隐藏分类标签"
       }
     ],
@@ -6914,8 +7211,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -6938,8 +7235,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -6962,8 +7259,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -6975,8 +7272,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -6985,8 +7282,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -6995,8 +7292,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -7008,78 +7305,86 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "配图栏数",
         "type": "number",
+        "label": "配图栏数",
         "default": 2,
         "min": 0,
         "max": 2,
         "step": 1,
-        "desc": "带配图的对比栏数（0 = 纯文字对比）",
+        "describe": "带配图的对比栏数（0 = 纯文字对比）",
         "publicKey": "imageCount",
         "publicLabel": "配图栏数",
+        "desc": "带配图的对比栏数（0 = 纯文字对比）",
         "description": "带配图的对比栏数（0 = 纯文字对比）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一栏",
+        "describe": "是否高亮其中一栏",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一栏",
         "description": "是否高亮其中一栏"
       },
       {
         "key": "focusIndex",
-        "label": "强调栏",
         "type": "number",
+        "label": "强调栏",
         "default": 1,
         "min": 0,
         "max": 1,
         "step": 1,
-        "desc": "被强调栏（A / B）",
+        "oneBased": true,
+        "describe": "被强调栏（A / B）",
         "publicKey": "focusIndex",
         "publicLabel": "强调栏",
+        "desc": "被强调栏（A / B）",
         "description": "被强调栏（A / B）"
       },
       {
         "key": "showVs",
-        "label": "中央 VS",
         "type": "toggle",
+        "label": "中央 VS",
         "default": true,
-        "desc": "显示/隐藏中央 VS 徽章",
+        "describe": "显示/隐藏中央 VS 徽章",
         "publicKey": "showVs",
         "publicLabel": "中央 VS",
+        "desc": "显示/隐藏中央 VS 徽章",
         "description": "显示/隐藏中央 VS 徽章"
       },
       {
         "key": "showAttrs",
-        "label": "属性标签",
         "type": "toggle",
+        "label": "属性标签",
         "default": true,
-        "desc": "显示/隐藏每栏的属性标签",
+        "describe": "显示/隐藏每栏的属性标签",
         "publicKey": "showAttrs",
         "publicLabel": "属性标签",
+        "desc": "显示/隐藏每栏的属性标签",
         "description": "显示/隐藏每栏的属性标签"
       },
       {
         "key": "showCaptions",
-        "label": "图注",
         "type": "toggle",
+        "label": "图注",
         "default": true,
-        "desc": "显示/隐藏图片说明",
+        "describe": "显示/隐藏图片说明",
         "publicKey": "showCaptions",
         "publicLabel": "图注",
+        "desc": "显示/隐藏图片说明",
         "description": "显示/隐藏图片说明"
       },
       {
         "key": "showVerdict",
-        "label": "结论",
         "type": "toggle",
+        "label": "结论",
         "default": true,
-        "desc": "显示/隐藏底部结论",
+        "describe": "显示/隐藏底部结论",
         "publicKey": "showVerdict",
         "publicLabel": "结论",
+        "desc": "显示/隐藏底部结论",
         "description": "显示/隐藏底部结论"
       }
     ],
@@ -7138,8 +7443,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -7162,8 +7467,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -7186,8 +7491,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -7199,8 +7504,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -7209,8 +7514,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -7219,8 +7524,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -7232,76 +7537,87 @@ export const pages = [
       },
       {
         "key": "rowCount",
-        "label": "行数",
         "type": "number",
+        "label": "行数",
         "default": 6,
         "min": 3,
         "step": 1,
-        "desc": "展示的阶段行数",
+        "describe": "展示的轮次行数",
+        "max": 6,
         "publicKey": "rowCount",
         "publicLabel": "行数",
+        "desc": "展示的阶段行数",
         "description": "展示的阶段行数"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮其中一行",
+        "describe": "是否高亮其中一行",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一行",
         "description": "是否高亮其中一行"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 4,
         "min": 0,
         "step": 1,
-        "desc": "被强调行的序号",
+        "oneBased": true,
+        "describe": "被强调行的序号",
+        "max": 5,
+        "maxFromKey": "rowCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调行的序号",
         "description": "被强调行的序号"
       },
       {
         "key": "showCountBar",
-        "label": "笔数条形",
         "type": "toggle",
+        "label": "笔数条形",
         "default": true,
-        "desc": "事件笔数列的等比条形显隐",
+        "describe": "事件笔数列的等比条形显隐",
         "publicKey": "showCountBar",
         "publicLabel": "笔数条形",
+        "desc": "事件笔数列的等比条形显隐",
         "description": "事件笔数列的等比条形显隐"
       },
       {
         "key": "showAvg",
-        "label": "平均单笔列",
         "type": "toggle",
+        "label": "平均单笔列",
         "default": true,
-        "desc": "显示/隐藏平均单笔指标列",
+        "describe": "显示/隐藏平均单笔指标列",
         "publicKey": "showAvg",
         "publicLabel": "平均单笔列",
+        "desc": "显示/隐藏平均单笔指标列",
         "description": "显示/隐藏平均单笔指标列"
       },
       {
         "key": "showAvgBar",
-        "label": "平均条形",
         "type": "toggle",
+        "label": "平均条形",
         "default": true,
-        "desc": "平均单笔列的等比条形显隐",
+        "describe": "平均单笔列的等比条形显隐",
         "publicKey": "showAvgBar",
         "publicLabel": "平均条形",
+        "desc": "平均单笔列的等比条形显隐",
         "description": "平均单笔列的等比条形显隐"
       },
       {
         "key": "showTotal",
-        "label": "合计行",
         "type": "toggle",
+        "label": "合计行",
         "default": true,
-        "desc": "显示/隐藏底部合计行",
+        "describe": "显示/隐藏底部合计行",
         "publicKey": "showTotal",
         "publicLabel": "合计行",
+        "desc": "显示/隐藏底部合计行",
         "description": "显示/隐藏底部合计行"
       }
     ],
@@ -7378,8 +7694,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -7402,8 +7718,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -7426,8 +7742,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -7439,8 +7755,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -7449,8 +7765,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -7459,8 +7775,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -7472,69 +7788,79 @@ export const pages = [
       },
       {
         "key": "groupCount",
-        "label": "分组数量",
         "type": "number",
+        "label": "分组数量",
         "default": 6,
         "min": 2,
         "step": 1,
-        "desc": "点阵着色的分组数量",
+        "describe": "点阵着色的分组数量",
+        "max": 6,
         "publicKey": "groupCount",
         "publicLabel": "分组数量",
+        "desc": "点阵着色的分组数量",
         "description": "点阵着色的分组数量"
       },
       {
         "key": "perRow",
-        "label": "每行点数",
         "type": "number",
+        "label": "每行点数",
         "default": 16,
         "min": 8,
         "max": 24,
         "step": 1,
-        "desc": "每行的点数（越大点越小、阵列越宽）",
+        "describe": "每行的点数（越大点越小、阵列越宽）",
         "publicKey": "perRow",
         "publicLabel": "每行点数",
+        "desc": "每行的点数（越大点越小、阵列越宽）",
         "description": "每行的点数（越大点越小、阵列越宽）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一组（其余淡出）",
+        "describe": "辉光强调某一组（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一组（其余淡出）",
         "description": "辉光强调某一组（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 4,
         "min": 0,
         "step": 1,
-        "desc": "被强调组的序号",
+        "oneBased": true,
+        "describe": "被强调组的序号",
+        "max": 5,
+        "maxFromKey": "groupCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调组的序号",
         "description": "被强调组的序号"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "右侧分组图例显隐",
+        "describe": "右侧分组图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "右侧分组图例显隐",
         "description": "右侧分组图例显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "数量占比",
         "type": "toggle",
+        "label": "数量占比",
         "default": true,
-        "desc": "图例中数量 + 占比显隐",
+        "describe": "图例中数量 + 占比显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "数量占比",
+        "desc": "图例中数量 + 占比显隐",
         "description": "图例中数量 + 占比显隐"
       }
     ],
@@ -7596,8 +7922,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -7620,8 +7946,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -7644,8 +7970,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -7657,8 +7983,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -7667,8 +7993,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -7677,8 +8003,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -7690,68 +8016,79 @@ export const pages = [
       },
       {
         "key": "rowCount",
-        "label": "行数（能力）",
         "type": "number",
+        "label": "行数（能力）",
         "default": 6,
         "min": 3,
         "step": 1,
-        "desc": "展示的能力维度行数",
+        "describe": "展示的能力维度行数",
+        "max": 6,
         "publicKey": "rowCount",
         "publicLabel": "行数（能力）",
+        "desc": "展示的能力维度行数",
         "description": "展示的能力维度行数"
       },
       {
         "key": "colCount",
-        "label": "列数（公司）",
         "type": "number",
+        "label": "列数（公司）",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "展示的公司列数",
+        "describe": "展示的公司列数",
+        "max": 4,
         "publicKey": "colCount",
         "publicLabel": "列数（公司）",
+        "desc": "展示的公司列数",
         "description": "展示的公司列数"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一列",
+        "describe": "是否高亮某一列",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一列",
         "description": "是否高亮某一列"
       },
       {
         "key": "focusCol",
-        "label": "强调列",
         "type": "number",
+        "label": "强调列",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调公司列的序号",
+        "oneBased": true,
+        "describe": "被强调公司列的序号",
+        "max": 3,
+        "maxFromKey": "colCount",
         "publicKey": "focusCol",
         "publicLabel": "强调列",
+        "desc": "被强调公司列的序号",
         "description": "被强调公司列的序号"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "✓/◐/✕ 释义图例显隐",
+        "describe": "✓/◐/✕ 释义图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "✓/◐/✕ 释义图例显隐",
         "description": "✓/◐/✕ 释义图例显隐"
       },
       {
         "key": "showRowNote",
-        "label": "行序号",
         "type": "toggle",
+        "label": "行序号",
         "default": true,
-        "desc": "行首序号显隐",
+        "describe": "行首序号显隐",
         "publicKey": "showRowNote",
         "publicLabel": "行序号",
+        "desc": "行首序号显隐",
         "description": "行首序号显隐"
       }
     ],
@@ -7848,8 +8185,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -7872,8 +8209,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -7896,8 +8233,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -7909,8 +8246,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -7919,8 +8256,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -7929,8 +8266,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -7942,66 +8279,76 @@ export const pages = [
       },
       {
         "key": "regionCount",
-        "label": "地区数量",
         "type": "number",
+        "label": "地区数量",
         "default": 5,
         "min": 3,
         "step": 1,
-        "desc": "展示的地区数量",
+        "describe": "展示的地区数量",
+        "max": 5,
         "publicKey": "regionCount",
         "publicLabel": "地区数量",
+        "desc": "展示的地区数量",
         "description": "展示的地区数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一地区",
+        "describe": "是否高亮某一地区",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一地区",
         "description": "是否高亮某一地区"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调地区的序号",
+        "oneBased": true,
+        "describe": "被强调地区的序号",
+        "max": 4,
+        "maxFromKey": "regionCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调地区的序号",
         "description": "被强调地区的序号"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "显示/隐藏图例列表",
+        "describe": "显示/隐藏图例列表",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "显示/隐藏图例列表",
         "description": "显示/隐藏图例列表"
       },
       {
         "key": "showValueLabels",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
-        "desc": "在条形段上显示占比",
+        "describe": "在条形段上显示占比",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签",
+        "desc": "在条形段上显示占比",
         "description": "在条形段上显示占比"
       },
       {
         "key": "showCallout",
-        "label": "主导读数",
         "type": "toggle",
+        "label": "主导读数",
         "default": true,
-        "desc": "显示/隐藏主导地区读数面板",
+        "describe": "显示/隐藏主导地区读数面板",
         "publicKey": "showCallout",
         "publicLabel": "主导读数",
+        "desc": "显示/隐藏主导地区读数面板",
         "description": "显示/隐藏主导地区读数面板"
       }
     ],
@@ -8069,8 +8416,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -8093,8 +8440,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -8117,8 +8464,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -8130,8 +8477,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -8140,8 +8487,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -8150,8 +8497,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -8163,66 +8510,76 @@ export const pages = [
       },
       {
         "key": "colCount",
-        "label": "列数（分类）",
         "type": "number",
+        "label": "列数（分类）",
         "default": 5,
         "min": 2,
         "step": 1,
-        "desc": "展示的分类列数",
+        "describe": "展示的赛道列数",
+        "max": 5,
         "publicKey": "categoryCount",
         "publicLabel": "列数（分类）",
+        "desc": "展示的分类列数",
         "description": "展示的分类列数"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否辉光强调某一列",
+        "describe": "是否辉光强调某一列",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否辉光强调某一列",
         "description": "是否辉光强调某一列"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调分类列的序号",
+        "oneBased": true,
+        "describe": "被强调赛道列的序号",
+        "max": 4,
+        "maxFromKey": "colCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调分类列的序号",
         "description": "被强调分类列的序号"
       },
       {
         "key": "showWidthLabels",
-        "label": "列名 / 宽度",
         "type": "toggle",
+        "label": "列名 / 宽度",
         "default": true,
-        "desc": "列顶名称 + 宽度占比显隐",
+        "describe": "列顶名称 + 宽度占比显隐",
         "publicKey": "showWidthLabels",
         "publicLabel": "列名 / 宽度",
+        "desc": "列顶名称 + 宽度占比显隐",
         "description": "列顶名称 + 宽度占比显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "段内占比",
         "type": "toggle",
+        "label": "段内占比",
         "default": true,
-        "desc": "每个色块内的阶段占比显隐",
+        "describe": "每个色块内的阶段占比显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "段内占比",
+        "desc": "每个色块内的阶段占比显隐",
         "description": "每个色块内的阶段占比显隐"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "底部分段图例显隐",
+        "describe": "底部分段图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "底部分段图例显隐",
         "description": "底部分段图例显隐"
       }
     ],
@@ -8309,8 +8666,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -8333,8 +8690,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -8357,8 +8714,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -8370,8 +8727,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -8380,8 +8737,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -8390,8 +8747,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -8403,66 +8760,76 @@ export const pages = [
       },
       {
         "key": "stageCount",
-        "label": "层级数量",
         "type": "number",
+        "label": "层级数量",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "漏斗展示的层级数量",
+        "describe": "漏斗展示的层级数量",
+        "max": 4,
         "publicKey": "stageCount",
         "publicLabel": "层级数量",
+        "desc": "漏斗展示的层级数量",
         "description": "漏斗展示的层级数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否辉光强调某一级",
+        "describe": "是否辉光强调某一级",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否辉光强调某一级",
         "description": "是否辉光强调某一级"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 1,
         "min": 0,
         "step": 1,
-        "desc": "被强调层级的序号",
+        "oneBased": true,
+        "describe": "被强调层级的序号",
+        "max": 3,
+        "maxFromKey": "stageCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调层级的序号",
         "description": "被强调层级的序号"
       },
       {
         "key": "showValueLabels",
-        "label": "段内数值",
         "type": "toggle",
+        "label": "段内数值",
         "default": true,
-        "desc": "漏斗段内数值标签显隐",
+        "describe": "漏斗段内数值标签显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "段内数值",
+        "desc": "漏斗段内数值标签显隐",
         "description": "漏斗段内数值标签显隐"
       },
       {
         "key": "showRate",
-        "label": "逐级转化率",
         "type": "toggle",
+        "label": "逐级转化率",
         "default": true,
-        "desc": "相邻层级的留存/转化率显隐",
+        "describe": "相邻层级的留存/转化率显隐",
         "publicKey": "showRate",
         "publicLabel": "逐级转化率",
+        "desc": "相邻层级的留存/转化率显隐",
         "description": "相邻层级的留存/转化率显隐"
       },
       {
         "key": "showDetail",
-        "label": "右侧明细",
         "type": "toggle",
+        "label": "右侧明细",
         "default": true,
-        "desc": "右侧层级明细列显隐",
+        "describe": "右侧层级明细列显隐",
         "publicKey": "showDetail",
         "publicLabel": "右侧明细",
+        "desc": "右侧层级明细列显隐",
         "description": "右侧层级明细列显隐"
       }
     ],
@@ -8523,8 +8890,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -8547,8 +8914,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -8571,8 +8938,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -8584,8 +8951,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -8594,8 +8961,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -8604,8 +8971,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -8617,66 +8984,75 @@ export const pages = [
       },
       {
         "key": "pointCount",
-        "label": "公司数量",
         "type": "number",
+        "label": "公司数量",
         "default": 6,
         "min": 3,
         "step": 1,
-        "desc": "散点上展示的公司数量",
+        "max": 6,
+        "describe": "散点上展示的公司数量",
         "publicKey": "pointCount",
         "publicLabel": "公司数量",
+        "desc": "散点上展示的公司数量",
         "description": "散点上展示的公司数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一气泡（其余淡出）",
+        "describe": "辉光强调某一气泡（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一气泡（其余淡出）",
         "description": "辉光强调某一气泡（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调气泡的序号",
+        "oneBased": true,
+        "max": 5,
+        "describe": "被强调气泡的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调气泡的序号",
         "description": "被强调气泡的序号"
       },
       {
         "key": "showGrid",
-        "label": "网格刻度",
         "type": "toggle",
+        "label": "网格刻度",
         "default": true,
-        "desc": "坐标网格与刻度显隐",
+        "describe": "坐标网格与刻度显隐",
         "publicKey": "showGrid",
         "publicLabel": "网格刻度",
+        "desc": "坐标网格与刻度显隐",
         "description": "坐标网格与刻度显隐"
       },
       {
         "key": "showLabels",
-        "label": "气泡名称",
         "type": "toggle",
+        "label": "气泡名称",
         "default": true,
-        "desc": "气泡上的公司名显隐",
+        "describe": "气泡上的公司名显隐",
         "publicKey": "showLabels",
         "publicLabel": "气泡名称",
+        "desc": "气泡上的公司名显隐",
         "description": "气泡上的公司名显隐"
       },
       {
         "key": "showAxisTitles",
-        "label": "坐标轴标题",
         "type": "toggle",
+        "label": "坐标轴标题",
         "default": true,
-        "desc": "X/Y 轴标题显隐",
+        "describe": "X/Y 轴标题显隐",
         "publicKey": "showAxisTitles",
         "publicLabel": "坐标轴标题",
+        "desc": "X/Y 轴标题显隐",
         "description": "X/Y 轴标题显隐"
       }
     ],
@@ -8774,8 +9150,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -8798,8 +9174,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -8822,8 +9198,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -8835,8 +9211,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -8845,8 +9221,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -8855,8 +9231,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -8868,66 +9244,76 @@ export const pages = [
       },
       {
         "key": "barCount",
-        "label": "条目数量",
         "type": "number",
+        "label": "条目数量",
         "default": 6,
         "min": 2,
         "step": 1,
-        "desc": "瀑布图展示的条目数量",
+        "describe": "瀑布图展示的条目数量",
+        "max": 6,
         "publicKey": "itemCount",
         "publicLabel": "条目数量",
+        "desc": "瀑布图展示的条目数量",
         "description": "瀑布图展示的条目数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一条（其余淡出）",
+        "describe": "辉光强调某一条（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一条（其余淡出）",
         "description": "辉光强调某一条（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 1,
         "min": 0,
         "step": 1,
-        "desc": "被强调条目的序号",
+        "oneBased": true,
+        "describe": "被强调条目的序号",
+        "max": 5,
+        "maxFromKey": "barCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调条目的序号",
         "description": "被强调条目的序号"
       },
       {
         "key": "showConnector",
-        "label": "连接器",
         "type": "toggle",
+        "label": "连接器",
         "default": true,
-        "desc": "浮动条之间的虚线连接器显隐",
+        "describe": "浮动条之间的虚线连接器显隐",
         "publicKey": "showConnector",
         "publicLabel": "连接器",
+        "desc": "浮动条之间的虚线连接器显隐",
         "description": "浮动条之间的虚线连接器显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
-        "desc": "条上方有符号数值显隐",
+        "describe": "条上方有符号数值显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签",
+        "desc": "条上方有符号数值显隐",
         "description": "条上方有符号数值显隐"
       },
       {
         "key": "showGrid",
-        "label": "网格刻度",
         "type": "toggle",
+        "label": "网格刻度",
         "default": true,
-        "desc": "水平网格与刻度显隐",
+        "describe": "水平网格与刻度显隐",
         "publicKey": "showGrid",
         "publicLabel": "网格刻度",
+        "desc": "水平网格与刻度显隐",
         "description": "水平网格与刻度显隐"
       }
     ],
@@ -8995,8 +9381,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -9019,8 +9405,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -9043,8 +9429,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -9056,8 +9442,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -9066,8 +9452,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -9076,8 +9462,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -9089,8 +9475,8 @@ export const pages = [
       },
       {
         "key": "layout",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "ring",
         "options": [
           {
@@ -9102,83 +9488,95 @@ export const pages = [
             "label": "一排仪表"
           }
         ],
-        "desc": "同心多环 (Bklit 风) / 一排 270° 仪表",
+        "describe": "同心多环 (Bklit 风) / 一排 270° 仪表",
         "publicKey": "layout",
         "publicLabel": "版式",
+        "desc": "同心多环 (Bklit 风) / 一排 270° 仪表",
         "description": "同心多环 (Bklit 风) / 一排 270° 仪表"
       },
       {
         "key": "gaugeCount",
-        "label": "环数量",
         "type": "number",
+        "label": "环数量",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "环 / 仪表的数量",
+        "describe": "环 / 仪表的数量",
+        "max": 4,
         "publicKey": "gaugeCount",
         "publicLabel": "环数量",
+        "desc": "环 / 仪表的数量",
         "description": "环 / 仪表的数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "强调某一项（圆心切到该项，其余淡出）",
+        "describe": "强调某一项（圆心切到该项，其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "强调某一项（圆心切到该项，其余淡出）",
         "description": "强调某一项（圆心切到该项，其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调项的序号",
+        "oneBased": true,
+        "describe": "被强调项的序号",
+        "max": 3,
+        "maxFromKey": "gaugeCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调项的序号",
         "description": "被强调项的序号"
       },
       {
         "key": "showTrack",
-        "label": "背景轨道",
         "type": "toggle",
+        "label": "背景轨道",
         "default": true,
-        "desc": "背景轨道弧显隐",
+        "describe": "背景轨道弧显隐",
         "publicKey": "showGuide",
         "publicLabel": "背景轨道",
+        "desc": "背景轨道弧显隐",
         "description": "背景轨道弧显隐"
       },
       {
         "key": "showCenter",
-        "label": "圆心读数",
         "type": "toggle",
+        "label": "圆心读数",
         "default": true,
-        "desc": "同心多环的圆心读数显隐",
+        "describe": "同心多环的圆心读数显隐",
         "publicKey": "showCenter",
         "publicLabel": "圆心读数",
+        "desc": "同心多环的圆心读数显隐",
         "description": "同心多环的圆心读数显隐"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "同心多环右侧图例显隐",
+        "describe": "同心多环右侧图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "同心多环右侧图例显隐",
         "description": "同心多环右侧图例显隐"
       },
       {
         "key": "showNote",
-        "label": "说明文案",
         "type": "toggle",
+        "label": "说明文案",
         "default": true,
-        "desc": "说明文案显隐（图例内 / 仪表下方）",
+        "describe": "说明文案显隐（图例内 / 仪表下方）",
         "publicKey": "showNote",
         "publicLabel": "说明文案",
+        "desc": "说明文案显隐（图例内 / 仪表下方）",
         "description": "说明文案显隐（图例内 / 仪表下方）"
       }
     ],
@@ -9237,8 +9635,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -9261,8 +9659,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -9285,8 +9683,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -9298,8 +9696,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -9308,8 +9706,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -9318,8 +9716,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -9331,66 +9729,76 @@ export const pages = [
       },
       {
         "key": "barCount",
-        "label": "行数",
         "type": "number",
+        "label": "行数",
         "default": 5,
         "min": 2,
         "step": 1,
-        "desc": "进度条行数（2–n）",
+        "describe": "进度条行数（2–n）",
+        "max": 5,
         "publicKey": "barCount",
         "publicLabel": "行数",
+        "desc": "进度条行数（2–n）",
         "description": "进度条行数（2–n）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否辉光强调某一行",
+        "describe": "是否辉光强调某一行",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否辉光强调某一行",
         "description": "是否辉光强调某一行"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调行的序号",
+        "oneBased": true,
+        "describe": "被强调行的序号",
+        "max": 4,
+        "maxFromKey": "barCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调行的序号",
         "description": "被强调行的序号"
       },
       {
         "key": "showTarget",
-        "label": "目标刻度",
         "type": "toggle",
+        "label": "目标刻度",
         "default": true,
-        "desc": "目标参照虚线显隐",
+        "describe": "目标参照虚线显隐",
         "publicKey": "showTarget",
         "publicLabel": "目标刻度",
+        "desc": "目标参照虚线显隐",
         "description": "目标参照虚线显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "百分比读数",
         "type": "toggle",
+        "label": "百分比读数",
         "default": true,
-        "desc": "右侧百分比读数显隐",
+        "describe": "右侧百分比读数显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "百分比读数",
+        "desc": "右侧百分比读数显隐",
         "description": "右侧百分比读数显隐"
       },
       {
         "key": "showNote",
-        "label": "说明文案",
         "type": "toggle",
+        "label": "说明文案",
         "default": true,
-        "desc": "行内说明文案显隐",
+        "describe": "行内说明文案显隐",
         "publicKey": "showNote",
         "publicLabel": "说明文案",
+        "desc": "行内说明文案显隐",
         "description": "行内说明文案显隐"
       }
     ],
@@ -9457,8 +9865,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -9481,8 +9889,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -9505,8 +9913,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -9518,8 +9926,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -9528,8 +9936,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -9538,8 +9946,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -9551,21 +9959,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "头像数量",
         "type": "number",
+        "label": "头像数量",
         "default": 1,
         "min": 0,
         "max": 1,
         "step": 1,
-        "desc": "人物头像槽（0 = 纯引言）",
+        "describe": "人物头像槽（0 = 纯引言）",
         "publicKey": "imageCount",
         "publicLabel": "头像数量",
+        "desc": "人物头像槽（0 = 纯引言）",
         "description": "人物头像槽（0 = 纯引言）"
       },
       {
         "key": "imageSide",
-        "label": "头像位置",
         "type": "enum",
+        "label": "头像位置",
         "default": "left",
         "options": [
           {
@@ -9577,49 +9986,54 @@ export const pages = [
             "label": "右侧"
           }
         ],
-        "desc": "头像位于左 / 右",
+        "describe": "头像位于左 / 右",
         "publicKey": "imageSide",
         "publicLabel": "头像位置",
+        "desc": "头像位于左 / 右",
         "description": "头像位于左 / 右"
       },
       {
         "key": "showMark",
-        "label": "装饰引号",
         "type": "toggle",
+        "label": "装饰引号",
         "default": true,
-        "desc": "显示/隐藏大号装饰引号",
+        "describe": "显示/隐藏大号装饰引号",
         "publicKey": "showMark",
         "publicLabel": "装饰引号",
+        "desc": "显示/隐藏大号装饰引号",
         "description": "显示/隐藏大号装饰引号"
       },
       {
         "key": "showEmphasis",
-        "label": "短语强调",
         "type": "toggle",
+        "label": "短语强调",
         "default": true,
-        "desc": "将关键短语处理为发光强调",
+        "describe": "将关键短语处理为发光强调",
         "publicKey": "showEmphasis",
         "publicLabel": "短语强调",
+        "desc": "将关键短语处理为发光强调",
         "description": "将关键短语处理为发光强调"
       },
       {
         "key": "showRole",
-        "label": "头衔",
         "type": "toggle",
+        "label": "头衔",
         "default": true,
-        "desc": "显示/隐藏署名头衔",
+        "describe": "显示/隐藏署名头衔",
         "publicKey": "showRole",
         "publicLabel": "头衔",
+        "desc": "显示/隐藏署名头衔",
         "description": "显示/隐藏署名头衔"
       },
       {
         "key": "showCaption",
-        "label": "头像图注",
         "type": "toggle",
+        "label": "头像图注",
         "default": true,
-        "desc": "显示/隐藏头像说明",
+        "describe": "显示/隐藏头像说明",
         "publicKey": "showCaption",
         "publicLabel": "头像图注",
+        "desc": "显示/隐藏头像说明",
         "description": "显示/隐藏头像说明"
       }
     ],
@@ -9658,8 +10072,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -9682,8 +10096,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -9706,8 +10120,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -9719,8 +10133,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -9729,8 +10143,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -9739,8 +10153,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -9752,67 +10166,76 @@ export const pages = [
       },
       {
         "key": "voiceCount",
-        "label": "人物卡数量",
         "type": "number",
+        "label": "人物卡数量",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
-        "desc": "一排人物卡的数量（2–4）",
+        "describe": "一排人物卡的数量（2–4）",
         "publicKey": "voiceCount",
         "publicLabel": "人物卡数量",
+        "desc": "一排人物卡的数量（2–4）",
         "description": "一排人物卡的数量（2–4）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "辉光强调某一张（其余淡出）",
+        "describe": "辉光强调某一张（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一张（其余淡出）",
         "description": "辉光强调某一张（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调卡片的序号",
+        "oneBased": true,
+        "describe": "被强调卡片的序号",
+        "max": 3,
+        "maxFromKey": "voiceCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调卡片的序号",
         "description": "被强调卡片的序号"
       },
       {
         "key": "showMark",
-        "label": "装饰引号",
         "type": "toggle",
+        "label": "装饰引号",
         "default": true,
-        "desc": "卡内装饰引号显隐",
+        "describe": "卡内装饰引号显隐",
         "publicKey": "showMark",
         "publicLabel": "装饰引号",
+        "desc": "卡内装饰引号显隐",
         "description": "卡内装饰引号显隐"
       },
       {
         "key": "showRole",
-        "label": "头衔",
         "type": "toggle",
+        "label": "头衔",
         "default": true,
-        "desc": "署名头衔显隐",
+        "describe": "署名头衔显隐",
         "publicKey": "showRole",
         "publicLabel": "头衔",
+        "desc": "署名头衔显隐",
         "description": "署名头衔显隐"
       },
       {
         "key": "showCaption",
-        "label": "头像图注",
         "type": "toggle",
+        "label": "头像图注",
         "default": true,
-        "desc": "头像下方图注显隐",
+        "describe": "头像下方图注显隐",
         "publicKey": "showCaption",
         "publicLabel": "头像图注",
+        "desc": "头像下方图注显隐",
         "description": "头像下方图注显隐"
       }
     ],
@@ -9868,8 +10291,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -9892,8 +10315,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -9916,8 +10339,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -9929,8 +10352,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -9939,8 +10362,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -9949,8 +10372,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -9962,20 +10385,22 @@ export const pages = [
       },
       {
         "key": "stepCount",
-        "label": "步骤数量",
         "type": "number",
+        "label": "步骤数量",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "展示的步骤数量",
+        "describe": "展示的步骤数量",
+        "max": 4,
         "publicKey": "stepCount",
         "publicLabel": "步骤数量",
+        "desc": "展示的步骤数量",
         "description": "展示的步骤数量"
       },
       {
         "key": "orientation",
-        "label": "排布方向",
         "type": "enum",
+        "label": "排布方向",
         "default": "horizontal",
         "options": [
           {
@@ -9987,61 +10412,70 @@ export const pages = [
             "label": "纵向"
           }
         ],
-        "desc": "步骤流的排布方向",
+        "describe": "步骤流的排布方向",
         "publicKey": "orientation",
         "publicLabel": "排布方向",
+        "desc": "步骤流的排布方向",
         "description": "步骤流的排布方向"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮某一步骤",
+        "describe": "是否高亮某一步骤",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一步骤",
         "description": "是否高亮某一步骤"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调步骤的序号",
+        "oneBased": true,
+        "describe": "被强调步骤的序号",
+        "max": 3,
+        "maxFromKey": "stepCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调步骤的序号",
         "description": "被强调步骤的序号"
       },
       {
         "key": "showConnector",
-        "label": "步骤箭头",
         "type": "toggle",
+        "label": "步骤箭头",
         "default": true,
-        "desc": "显示/隐藏步骤之间的箭头",
+        "describe": "显示/隐藏步骤之间的箭头",
         "publicKey": "showConnector",
         "publicLabel": "步骤箭头",
+        "desc": "显示/隐藏步骤之间的箭头",
         "description": "显示/隐藏步骤之间的箭头"
       },
       {
         "key": "showStepNo",
-        "label": "步骤编号",
         "type": "toggle",
+        "label": "步骤编号",
         "default": true,
-        "desc": "显示/隐藏大号步骤编号",
+        "describe": "显示/隐藏大号步骤编号",
         "publicKey": "showStepNo",
         "publicLabel": "步骤编号",
+        "desc": "显示/隐藏大号步骤编号",
         "description": "显示/隐藏大号步骤编号"
       },
       {
         "key": "showDesc",
-        "label": "步骤说明",
         "type": "toggle",
+        "label": "步骤说明",
         "default": true,
-        "desc": "显示/隐藏步骤描述",
+        "describe": "显示/隐藏步骤描述",
         "publicKey": "showDesc",
         "publicLabel": "步骤说明",
+        "desc": "显示/隐藏步骤描述",
         "description": "显示/隐藏步骤描述"
       }
     ],
@@ -10094,8 +10528,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -10118,8 +10552,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -10142,8 +10576,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -10155,8 +10589,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -10165,8 +10599,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -10175,8 +10609,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -10188,76 +10622,87 @@ export const pages = [
       },
       {
         "key": "itemCount",
-        "label": "结论条数",
         "type": "number",
+        "label": "结论条数",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "核心结论的条数",
+        "describe": "核心结论的条数",
+        "max": 4,
         "publicKey": "itemCount",
         "publicLabel": "结论条数",
+        "desc": "核心结论的条数",
         "description": "核心结论的条数"
       },
       {
         "key": "featureIndex",
-        "label": "特写项",
         "type": "number",
+        "label": "特写项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "作为左侧特写大图的结论序号",
+        "oneBased": true,
+        "describe": "作为左侧特写大图的结论序号",
+        "max": 3,
+        "maxFromKey": "itemCount",
         "publicKey": "featureIndex",
         "publicLabel": "特写项",
+        "desc": "作为左侧特写大图的结论序号",
         "description": "作为左侧特写大图的结论序号"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否辉光强调左侧特写面板",
+        "describe": "是否辉光强调左侧特写面板",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否辉光强调左侧特写面板",
         "description": "是否辉光强调左侧特写面板"
       },
       {
         "key": "showIndex",
-        "label": "编号",
         "type": "toggle",
+        "label": "编号",
         "default": true,
-        "desc": "大号 / 细号编号显隐",
+        "describe": "大号 / 细号编号显隐",
         "publicKey": "showIndex",
         "publicLabel": "编号",
+        "desc": "大号 / 细号编号显隐",
         "description": "大号 / 细号编号显隐"
       },
       {
         "key": "showBody",
-        "label": "支撑说明",
         "type": "toggle",
+        "label": "支撑说明",
         "default": true,
-        "desc": "支撑说明文案显隐",
+        "describe": "支撑说明文案显隐",
         "publicKey": "showBody",
         "publicLabel": "支撑说明",
+        "desc": "支撑说明文案显隐",
         "description": "支撑说明文案显隐"
       },
       {
         "key": "showRail",
-        "label": "清单光轨",
         "type": "toggle",
+        "label": "清单光轨",
         "default": true,
-        "desc": "右侧清单竖向光轨与发光节点显隐",
+        "describe": "右侧清单竖向光轨与发光节点显隐",
         "publicKey": "showRail",
         "publicLabel": "清单光轨",
+        "desc": "右侧清单竖向光轨与发光节点显隐",
         "description": "右侧清单竖向光轨与发光节点显隐"
       },
       {
         "key": "showDivider",
-        "label": "清单分隔线",
         "type": "toggle",
+        "label": "清单分隔线",
         "default": true,
-        "desc": "右侧清单条目之间分隔细线显隐",
+        "describe": "右侧清单条目之间分隔细线显隐",
         "publicKey": "showDivider",
         "publicLabel": "清单分隔线",
+        "desc": "右侧清单条目之间分隔细线显隐",
         "description": "右侧清单条目之间分隔细线显隐"
       }
     ],
@@ -10310,8 +10755,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -10334,8 +10779,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -10358,8 +10803,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -10371,8 +10816,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -10381,8 +10826,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -10391,8 +10836,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -10404,20 +10849,22 @@ export const pages = [
       },
       {
         "key": "riskCount",
-        "label": "状态项数量",
         "type": "number",
-        "default": 5,
-        "min": 3,
+        "label": "状态项数量",
+        "default": 3,
+        "min": 2,
         "step": 1,
-        "desc": "展示的状态条数",
+        "describe": "展示的风险条数",
+        "max": 3,
         "publicKey": "statusItemCount",
         "publicLabel": "状态项数量",
+        "desc": "展示的状态条数",
         "description": "展示的状态条数"
       },
       {
         "key": "layout",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "list",
         "options": [
           {
@@ -10429,51 +10876,59 @@ export const pages = [
             "label": "卡片网格"
           }
         ],
-        "desc": "竖排清单或双列卡片",
+        "describe": "竖排清单或双列卡片",
         "publicKey": "layout",
         "publicLabel": "版式",
+        "desc": "竖排清单或双列卡片",
         "description": "竖排清单或双列卡片"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一状态",
+        "describe": "是否高亮某一风险",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一状态",
         "description": "是否高亮某一状态"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调状态的序号",
+        "oneBased": true,
+        "describe": "被强调风险的序号",
+        "max": 2,
+        "maxFromKey": "riskCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调状态的序号",
         "description": "被强调状态的序号"
       },
       {
         "key": "showLevel",
-        "label": "严重度",
         "type": "toggle",
+        "label": "严重度",
         "default": true,
-        "desc": "显示/隐藏严重度徽章",
+        "describe": "显示/隐藏严重度徽章",
         "publicKey": "showStatusLevel",
         "publicLabel": "严重度",
+        "desc": "显示/隐藏严重度徽章",
         "description": "显示/隐藏严重度徽章"
       },
       {
         "key": "showDesc",
-        "label": "状态说明",
         "type": "toggle",
+        "label": "状态说明",
         "default": true,
-        "desc": "显示/隐藏状态描述",
+        "describe": "显示/隐藏风险描述",
         "publicKey": "showDesc",
         "publicLabel": "状态说明",
+        "desc": "显示/隐藏状态描述",
         "description": "显示/隐藏状态描述"
       }
     ],
@@ -10513,7 +10968,7 @@ export const pages = [
           "level": "low"
         }
       ],
-      "riskCount": 5,
+      "riskCount": 3,
       "layout": "list",
       "focusEnabled": true,
       "focusIndex": 0,
@@ -10539,8 +10994,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -10563,8 +11018,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -10587,8 +11042,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -10600,8 +11055,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -10610,8 +11065,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -10620,8 +11075,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -10633,8 +11088,8 @@ export const pages = [
       },
       {
         "key": "align",
-        "label": "对齐",
         "type": "enum",
+        "label": "对齐",
         "default": "left",
         "options": [
           {
@@ -10646,49 +11101,54 @@ export const pages = [
             "label": "居中"
           }
         ],
-        "desc": "金句整体的对齐方式",
+        "describe": "金句整体的对齐方式",
         "publicKey": "align",
         "publicLabel": "对齐",
+        "desc": "金句整体的对齐方式",
         "description": "金句整体的对齐方式"
       },
       {
         "key": "showMark",
-        "label": "引号装饰",
         "type": "toggle",
+        "label": "引号装饰",
         "default": true,
-        "desc": "显示/隐藏大号装饰引号",
+        "describe": "显示/隐藏大号装饰引号",
         "publicKey": "showMark",
         "publicLabel": "引号装饰",
+        "desc": "显示/隐藏大号装饰引号",
         "description": "显示/隐藏大号装饰引号"
       },
       {
         "key": "showEmphasis",
-        "label": "短语强调",
         "type": "toggle",
+        "label": "短语强调",
         "default": true,
-        "desc": "将关键短语处理为发光强调",
+        "describe": "将关键短语处理为发光强调",
         "publicKey": "showEmphasis",
         "publicLabel": "短语强调",
+        "desc": "将关键短语处理为发光强调",
         "description": "将关键短语处理为发光强调"
       },
       {
         "key": "showRule",
-        "label": "强调分隔线",
         "type": "toggle",
+        "label": "强调分隔线",
         "default": true,
-        "desc": "显示/隐藏落款上方的强调短线",
+        "describe": "显示/隐藏落款上方的强调短线",
         "publicKey": "showRule",
         "publicLabel": "强调分隔线",
+        "desc": "显示/隐藏落款上方的强调短线",
         "description": "显示/隐藏落款上方的强调短线"
       },
       {
         "key": "showAttribution",
-        "label": "落款",
         "type": "toggle",
+        "label": "落款",
         "default": true,
-        "desc": "显示/隐藏底部署名",
+        "describe": "显示/隐藏底部署名",
         "publicKey": "showAttribution",
         "publicLabel": "落款",
+        "desc": "显示/隐藏底部署名",
         "description": "显示/隐藏底部署名"
       }
     ],
@@ -10723,8 +11183,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -10747,8 +11207,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -10771,8 +11231,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -10784,8 +11244,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -10794,8 +11254,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -10804,8 +11264,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -10817,8 +11277,8 @@ export const pages = [
       },
       {
         "key": "chartType",
-        "label": "图表形态",
         "type": "enum",
+        "label": "图表形态",
         "default": "area",
         "options": [
           {
@@ -10838,83 +11298,95 @@ export const pages = [
             "label": "分组柱"
           }
         ],
-        "desc": "堆叠面积(Bklit 风) / 堆叠柱 / 100% 占比 / 同组分项并列",
+        "describe": "堆叠面积(Bklit 风) / 堆叠柱 / 100% 占比 / 同组分项并列",
         "publicKey": "chartType",
         "publicLabel": "图表形态",
+        "desc": "堆叠面积(Bklit 风) / 堆叠柱 / 100% 占比 / 同组分项并列",
         "description": "堆叠面积(Bklit 风) / 堆叠柱 / 100% 占比 / 同组分项并列"
       },
       {
         "key": "groupCount",
-        "label": "组数",
         "type": "number",
+        "label": "组数",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "展示的数据点（年份/期）数量",
+        "describe": "展示的数据点（年份/期）数量",
+        "max": 4,
         "publicKey": "groupCount",
         "publicLabel": "组数",
+        "desc": "展示的数据点（年份/期）数量",
         "description": "展示的数据点（年份/期）数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否强调某一组（面积图显示浮窗 + 引导线）",
+        "describe": "是否强调某一组（面积图显示浮窗 + 引导线）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否强调某一组（面积图显示浮窗 + 引导线）",
         "description": "是否强调某一组（面积图显示浮窗 + 引导线）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 3,
         "min": 0,
         "step": 1,
-        "desc": "被强调数据点的序号",
+        "oneBased": true,
+        "describe": "被强调数据点的序号",
+        "max": 3,
+        "maxFromKey": "groupCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调数据点的序号",
         "description": "被强调数据点的序号"
       },
       {
         "key": "showTotals",
-        "label": "合计标签",
         "type": "toggle",
+        "label": "合计标签",
         "default": true,
-        "desc": "各组合计数值标签显隐",
+        "describe": "各组合计数值标签显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "合计标签",
+        "desc": "各组合计数值标签显隐",
         "description": "各组合计数值标签显隐"
       },
       {
         "key": "showGrid",
-        "label": "网格刻度",
         "type": "toggle",
+        "label": "网格刻度",
         "default": true,
-        "desc": "横向网格与纵轴刻度显隐",
+        "describe": "横向网格与纵轴刻度显隐",
         "publicKey": "showGrid",
         "publicLabel": "网格刻度",
+        "desc": "横向网格与纵轴刻度显隐",
         "description": "横向网格与纵轴刻度显隐"
       },
       {
         "key": "showMarkers",
-        "label": "数据点标记",
         "type": "toggle",
+        "label": "数据点标记",
         "default": true,
-        "desc": "面积图数据点的环形标记显隐",
+        "describe": "面积图数据点的环形标记显隐",
         "publicKey": "showMarkers",
         "publicLabel": "数据点标记",
+        "desc": "面积图数据点的环形标记显隐",
         "description": "面积图数据点的环形标记显隐"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "分项图例显隐",
+        "describe": "分项图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "分项图例显隐",
         "description": "分项图例显隐"
       }
     ],
@@ -11008,8 +11480,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -11032,8 +11504,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -11056,8 +11528,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -11069,8 +11541,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -11079,8 +11551,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -11089,8 +11561,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -11102,21 +11574,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 5,
         "min": 0,
         "max": 5,
         "step": 1,
-        "desc": "拼贴图片槽位数量（0 = 纯文字浮层）",
+        "describe": "拼贴图片槽位数量（0 = 纯文字浮层）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "拼贴图片槽位数量（0 = 纯文字浮层）",
         "description": "拼贴图片槽位数量（0 = 纯文字浮层）"
       },
       {
         "key": "titlePlacement",
-        "label": "标题位置",
         "type": "enum",
+        "label": "标题位置",
         "default": "tl",
         "options": [
           {
@@ -11132,15 +11605,16 @@ export const pages = [
             "label": "右上"
           }
         ],
-        "desc": "标题浮层贴靠的角落",
+        "describe": "标题浮层贴靠的角落",
         "publicKey": "titlePlacement",
         "publicLabel": "标题位置",
+        "desc": "标题浮层贴靠的角落",
         "description": "标题浮层贴靠的角落"
       },
       {
         "key": "overlayStyle",
-        "label": "浮层样式",
         "type": "enum",
+        "label": "浮层样式",
         "default": "panel",
         "options": [
           {
@@ -11152,41 +11626,48 @@ export const pages = [
             "label": "直接压字"
           }
         ],
-        "desc": "标题浮层是否带磨砂卡片底",
+        "describe": "标题浮层是否带磨砂卡片底",
         "publicKey": "overlayStyle",
         "publicLabel": "浮层样式",
+        "desc": "标题浮层是否带磨砂卡片底",
         "description": "标题浮层是否带磨砂卡片底"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一张图片",
+        "describe": "是否高亮其中一张图片",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一张图片",
         "description": "是否高亮其中一张图片"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调图片的序号",
+        "oneBased": true,
+        "describe": "被强调图片的序号",
+        "max": 4,
+        "maxFromKey": "imageCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调图片的序号",
         "description": "被强调图片的序号"
       },
       {
         "key": "showCaptions",
-        "label": "图注",
         "type": "toggle",
+        "label": "图注",
         "default": true,
-        "desc": "显示/隐藏图片上的图注",
+        "describe": "显示/隐藏图片上的图注",
         "publicKey": "showCaptions",
         "publicLabel": "图注",
+        "desc": "显示/隐藏图片上的图注",
         "description": "显示/隐藏图片上的图注"
       }
     ],
@@ -11229,8 +11710,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -11253,8 +11734,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -11277,8 +11758,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -11290,8 +11771,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -11300,8 +11781,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -11310,8 +11791,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -11323,68 +11804,80 @@ export const pages = [
       },
       {
         "key": "rowCount",
-        "label": "行数",
         "type": "number",
+        "label": "行数",
         "default": 6,
         "min": 3,
         "step": 1,
-        "desc": "展示的数据行数量",
+        "describe": "展示的数据行数量",
+        "max": 6,
         "publicKey": "rowCount",
         "publicLabel": "行数",
+        "desc": "展示的数据行数量",
         "description": "展示的数据行数量"
       },
       {
         "key": "showRank",
-        "label": "序号列",
         "type": "toggle",
+        "label": "序号列",
         "default": true,
-        "desc": "左侧排名序号列显隐",
+        "describe": "左侧排名序号列显隐",
         "publicKey": "showRank",
         "publicLabel": "序号列",
+        "desc": "左侧排名序号列显隐",
         "description": "左侧排名序号列显隐"
       },
       {
         "key": "zebra",
-        "label": "斑马纹",
         "type": "toggle",
+        "label": "斑马纹",
         "default": true,
-        "desc": "隔行底色显隐",
+        "describe": "隔行底色显隐",
         "publicKey": "zebra",
         "publicLabel": "斑马纹",
+        "desc": "隔行底色显隐",
         "description": "隔行底色显隐"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否辉光强调某一行",
+        "describe": "是否辉光强调某一行",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否辉光强调某一行",
         "description": "是否辉光强调某一行"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调行的序号",
+        "oneBased": true,
+        "describe": "被强调行的序号",
+        "max": 5,
+        "maxFromKey": "rowCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调行的序号",
         "description": "被强调行的序号"
       },
       {
         "key": "highlightCol",
-        "label": "强调列",
         "type": "number",
+        "label": "强调列",
         "default": 3,
         "min": 0,
         "step": 1,
-        "desc": "accent 着色的列序号（用于突出关键指标列）",
+        "oneBased": true,
+        "describe": "accent 着色的列序号（用于突出关键指标列）",
+        "max": 5,
         "publicKey": "highlightCol",
         "publicLabel": "强调列",
+        "desc": "accent 着色的列序号（用于突出关键指标列）",
         "description": "accent 着色的列序号（用于突出关键指标列）"
       }
     ],
@@ -11503,8 +11996,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -11527,8 +12020,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -11551,8 +12044,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -11564,8 +12057,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -11574,8 +12067,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -11584,8 +12077,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -11597,40 +12090,44 @@ export const pages = [
       },
       {
         "key": "pointCount",
-        "label": "每栏论点数",
         "type": "number",
+        "label": "每栏论点数",
         "default": 3,
         "min": 2,
         "step": 1,
-        "desc": "每栏展示的论点条数",
+        "describe": "每栏展示的论点条数",
+        "max": 3,
         "publicKey": "pointCount",
         "publicLabel": "每栏论点数",
+        "desc": "每栏展示的论点条数",
         "description": "每栏展示的论点条数"
       },
       {
         "key": "showStat",
-        "label": "关键数字",
         "type": "toggle",
+        "label": "关键数字",
         "default": true,
-        "desc": "每栏顶部关键数字显隐",
+        "describe": "每栏顶部关键数字显隐",
         "publicKey": "showStat",
         "publicLabel": "关键数字",
+        "desc": "每栏顶部关键数字显隐",
         "description": "每栏顶部关键数字显隐"
       },
       {
         "key": "showVs",
-        "label": "中央 VS",
         "type": "toggle",
+        "label": "中央 VS",
         "default": true,
-        "desc": "中央 VS 徽标显隐",
+        "describe": "中央 VS 徽标显隐",
         "publicKey": "showVs",
         "publicLabel": "中央 VS",
+        "desc": "中央 VS 徽标显隐",
         "description": "中央 VS 徽标显隐"
       },
       {
         "key": "focusSide",
-        "label": "重点强调",
         "type": "enum",
+        "label": "重点强调",
         "default": "none",
         "options": [
           {
@@ -11646,9 +12143,10 @@ export const pages = [
             "label": "强调右栏"
           }
         ],
-        "desc": "辉光强调某一栏，另一栏自动暗淡",
+        "describe": "辉光强调某一栏，另一栏自动暗淡",
         "publicKey": "focusSide",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一栏，另一栏自动暗淡",
         "description": "辉光强调某一栏，另一栏自动暗淡"
       }
     ],
@@ -11702,8 +12200,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -11726,8 +12224,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -11750,8 +12248,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -11763,8 +12261,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -11773,8 +12271,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -11783,8 +12281,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -11796,21 +12294,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 1,
         "min": 0,
         "max": 2,
         "step": 1,
-        "desc": "档案配图槽位数量（0 = 纯文字版式）",
+        "describe": "档案配图槽位数量（0 = 纯文字版式）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "档案配图槽位数量（0 = 纯文字版式）",
         "description": "档案配图槽位数量（0 = 纯文字版式）"
       },
       {
         "key": "imageSide",
-        "label": "图片位置",
         "type": "enum",
+        "label": "图片位置",
         "default": "right",
         "options": [
           {
@@ -11822,53 +12321,62 @@ export const pages = [
             "label": "右侧"
           }
         ],
-        "desc": "配图列位于左侧或右侧",
+        "describe": "配图列位于左侧或右侧",
         "publicKey": "imageSide",
         "publicLabel": "图片位置",
+        "desc": "配图列位于左侧或右侧",
         "description": "配图列位于左侧或右侧"
       },
       {
         "key": "factCount",
-        "label": "档案条目",
         "type": "number",
+        "label": "档案条目",
         "default": 5,
         "min": 2,
         "step": 1,
-        "desc": "展示的事实条目数量",
+        "describe": "展示的事实条目数量",
+        "max": 5,
         "publicKey": "itemCount",
         "publicLabel": "档案条目",
+        "desc": "展示的事实条目数量",
         "description": "展示的事实条目数量"
       },
       {
         "key": "showQuote",
-        "label": "人物金句",
         "type": "toggle",
+        "label": "人物金句",
         "default": true,
-        "desc": "显示/隐藏底部的人物金句",
+        "describe": "显示/隐藏底部的人物金句",
         "publicKey": "showQuote",
         "publicLabel": "人物金句",
+        "desc": "显示/隐藏底部的人物金句",
         "description": "显示/隐藏底部的人物金句"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一张配图",
+        "describe": "是否高亮其中一张配图",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一张配图",
         "description": "是否高亮其中一张配图"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调配图的序号",
+        "oneBased": true,
+        "describe": "被强调配图的序号",
+        "max": 1,
+        "maxFromKey": "imageCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调配图的序号",
         "description": "被强调配图的序号"
       }
     ],
@@ -11937,8 +12445,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -11961,8 +12469,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -11985,8 +12493,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -11998,8 +12506,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -12008,8 +12516,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -12018,8 +12526,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -12031,58 +12539,68 @@ export const pages = [
       },
       {
         "key": "stepCount",
-        "label": "步骤数量",
         "type": "number",
+        "label": "步骤数量",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "进程带中的步骤数量",
+        "describe": "进程带中的步骤数量",
+        "max": 4,
         "publicKey": "stepCount",
         "publicLabel": "步骤数量",
+        "desc": "进程带中的步骤数量",
         "description": "进程带中的步骤数量"
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 4,
         "min": 0,
         "step": 1,
-        "desc": "配图槽位数量（自前向后填充；0 = 纯文字步骤）",
+        "describe": "配图槽位数量（自前向后填充；0 = 纯文字步骤）",
+        "max": 4,
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "配图槽位数量（自前向后填充；0 = 纯文字步骤）",
         "description": "配图槽位数量（自前向后填充；0 = 纯文字步骤）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮其中一个步骤",
+        "describe": "是否高亮其中一个步骤",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一个步骤",
         "description": "是否高亮其中一个步骤"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 2,
         "min": 0,
         "step": 1,
-        "desc": "被强调步骤的序号",
+        "oneBased": true,
+        "describe": "被强调步骤的序号",
+        "max": 3,
+        "maxFromKey": "stepCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调步骤的序号",
         "description": "被强调步骤的序号"
       },
       {
         "key": "showLead",
-        "label": "引言",
         "type": "toggle",
+        "label": "引言",
         "default": true,
-        "desc": "显示/隐藏标题下方的引言",
+        "describe": "显示/隐藏标题下方的引言",
         "publicKey": "showLead",
         "publicLabel": "引言",
+        "desc": "显示/隐藏标题下方的引言",
         "description": "显示/隐藏标题下方的引言"
       }
     ],
@@ -12139,8 +12657,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -12163,8 +12681,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -12187,8 +12705,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -12200,8 +12718,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -12210,8 +12728,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -12220,8 +12738,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -12233,8 +12751,8 @@ export const pages = [
       },
       {
         "key": "sortBy",
-        "label": "排序方式",
         "type": "enum",
+        "label": "排序方式",
         "default": "to",
         "options": [
           {
@@ -12250,73 +12768,84 @@ export const pages = [
             "label": "增幅"
           }
         ],
-        "desc": "行的排序依据",
+        "describe": "行的排序依据",
         "publicKey": "sortBy",
         "publicLabel": "排序方式",
+        "desc": "行的排序依据",
         "description": "行的排序依据"
       },
       {
         "key": "rowCount",
-        "label": "行数",
         "type": "number",
+        "label": "行数",
         "default": 5,
         "min": 2,
         "step": 1,
-        "desc": "展示的对比行数量",
+        "describe": "展示的对比行数量",
+        "max": 5,
         "publicKey": "rowCount",
         "publicLabel": "行数",
+        "desc": "展示的对比行数量",
         "description": "展示的对比行数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮其中一行",
+        "describe": "是否高亮其中一行",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一行",
         "description": "是否高亮其中一行"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调行的序号（按当前排序）",
+        "oneBased": true,
+        "describe": "被强调行的序号（按当前排序）",
+        "max": 4,
+        "maxFromKey": "rowCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调行的序号（按当前排序）",
         "description": "被强调行的序号（按当前排序）"
       },
       {
         "key": "showDelta",
-        "label": "增幅标签",
         "type": "toggle",
+        "label": "增幅标签",
         "default": true,
-        "desc": "显示/隐藏每行末尾的 Δ 增幅",
+        "describe": "显示/隐藏每行末尾的 Δ 增幅",
         "publicKey": "showDelta",
         "publicLabel": "增幅标签",
+        "desc": "显示/隐藏每行末尾的 Δ 增幅",
         "description": "显示/隐藏每行末尾的 Δ 增幅"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "显示/隐藏起止图例",
+        "describe": "显示/隐藏起止图例",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "显示/隐藏起止图例",
         "description": "显示/隐藏起止图例"
       },
       {
         "key": "showAnnotation",
-        "label": "解读文案",
         "type": "toggle",
+        "label": "解读文案",
         "default": true,
-        "desc": "显示/隐藏底部的趋势解读",
+        "describe": "显示/隐藏底部的趋势解读",
         "publicKey": "showAnnotation",
         "publicLabel": "解读文案",
+        "desc": "显示/隐藏底部的趋势解读",
         "description": "显示/隐藏底部的趋势解读"
       }
     ],
@@ -12382,8 +12911,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -12406,8 +12935,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -12430,8 +12959,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -12443,8 +12972,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -12453,8 +12982,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -12463,8 +12992,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -12476,66 +13005,76 @@ export const pages = [
       },
       {
         "key": "claimCount",
-        "label": "主张数量",
         "type": "number",
+        "label": "主张数量",
         "default": 3,
         "min": 2,
         "step": 1,
-        "desc": "展示的主张条数",
+        "describe": "展示的主张条数",
+        "max": 3,
         "publicKey": "claimCount",
         "publicLabel": "主张数量",
+        "desc": "展示的主张条数",
         "description": "展示的主张条数"
       },
       {
         "key": "showIndex",
-        "label": "编号",
         "type": "toggle",
+        "label": "编号",
         "default": true,
-        "desc": "为每条主张显示序号",
+        "describe": "为每条主张显示序号",
         "publicKey": "showIndex",
         "publicLabel": "编号",
+        "desc": "为每条主张显示序号",
         "description": "为每条主张显示序号"
       },
       {
         "key": "showDivider",
-        "label": "分隔线",
         "type": "toggle",
+        "label": "分隔线",
         "default": true,
-        "desc": "在主张之间显示分隔线",
+        "describe": "在主张之间显示分隔线",
         "publicKey": "showDivider",
         "publicLabel": "分隔线",
+        "desc": "在主张之间显示分隔线",
         "description": "在主张之间显示分隔线"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一条主张",
+        "describe": "是否高亮其中一条主张",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一条主张",
         "description": "是否高亮其中一条主张"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调主张的序号",
+        "oneBased": true,
+        "describe": "被强调主张的序号",
+        "max": 2,
+        "maxFromKey": "claimCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调主张的序号",
         "description": "被强调主张的序号"
       },
       {
         "key": "showFootnote",
-        "label": "收束句",
         "type": "toggle",
+        "label": "收束句",
         "default": true,
-        "desc": "显示/隐藏底部的收束句",
+        "describe": "显示/隐藏底部的收束句",
         "publicKey": "showFootnote",
         "publicLabel": "收束句",
+        "desc": "显示/隐藏底部的收束句",
         "description": "显示/隐藏底部的收束句"
       }
     ],
@@ -12588,8 +13127,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -12612,8 +13151,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -12636,8 +13175,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -12649,8 +13188,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -12659,8 +13198,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -12669,8 +13208,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -12682,56 +13221,65 @@ export const pages = [
       },
       {
         "key": "phaseCount",
-        "label": "阶段数量",
         "type": "number",
+        "label": "阶段数量",
         "default": 3,
         "min": 2,
         "step": 1,
-        "desc": "路线图的阶段数量",
+        "describe": "路线图的阶段数量",
+        "max": 3,
         "publicKey": "phaseCount",
         "publicLabel": "阶段数量",
+        "desc": "路线图的阶段数量",
         "description": "路线图的阶段数量"
       },
       {
         "key": "showRail",
-        "label": "进度轨道",
         "type": "toggle",
+        "label": "进度轨道",
         "default": true,
-        "desc": "显示/隐藏底部的进度轨道与节点",
+        "describe": "显示/隐藏底部的进度轨道与节点",
         "publicKey": "showRail",
         "publicLabel": "进度轨道",
+        "desc": "显示/隐藏底部的进度轨道与节点",
         "description": "显示/隐藏底部的进度轨道与节点"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一个阶段",
+        "describe": "是否高亮其中一个阶段",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一个阶段",
         "description": "是否高亮其中一个阶段"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 1,
         "min": 0,
         "step": 1,
-        "desc": "被强调阶段的序号",
+        "oneBased": true,
+        "describe": "被强调阶段的序号",
+        "max": 2,
+        "maxFromKey": "phaseCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调阶段的序号",
         "description": "被强调阶段的序号"
       },
       {
         "key": "showLead",
-        "label": "引言",
         "type": "toggle",
+        "label": "引言",
         "default": true,
-        "desc": "显示/隐藏标题下方的引言",
+        "describe": "显示/隐藏标题下方的引言",
         "publicKey": "showLead",
         "publicLabel": "引言",
+        "desc": "显示/隐藏标题下方的引言",
         "description": "显示/隐藏标题下方的引言"
       }
     ],
@@ -12782,8 +13330,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -12806,8 +13354,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -12830,8 +13378,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -12843,8 +13391,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -12853,8 +13401,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -12863,8 +13411,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -12876,44 +13424,50 @@ export const pages = [
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮某一月份",
+        "describe": "是否高亮某一月份",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一月份",
         "description": "是否高亮某一月份"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 7,
         "min": 0,
         "step": 1,
-        "desc": "被强调月份的序号",
+        "oneBased": true,
+        "max": 11,
+        "describe": "被强调月份的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调月份的序号",
         "description": "被强调月份的序号"
       },
       {
         "key": "showValueLabels",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
-        "desc": "在气泡上显示具体数值",
+        "describe": "在气泡上显示具体数值",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签",
+        "desc": "在气泡上显示具体数值",
         "description": "在气泡上显示具体数值"
       },
       {
         "key": "showAnnotation",
-        "label": "解读文案",
         "type": "toggle",
+        "label": "解读文案",
         "default": true,
-        "desc": "显示/隐藏趋势解读",
+        "describe": "显示/隐藏趋势解读",
         "publicKey": "showAnnotation",
         "publicLabel": "解读文案",
+        "desc": "显示/隐藏趋势解读",
         "description": "显示/隐藏趋势解读"
       }
     ],
@@ -12997,8 +13551,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -13021,8 +13575,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -13045,8 +13599,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -13058,8 +13612,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -13068,8 +13622,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -13078,8 +13632,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -13091,40 +13645,44 @@ export const pages = [
       },
       {
         "key": "tierCount",
-        "label": "层级数量",
         "type": "number",
+        "label": "层级数量",
         "default": 3,
         "min": 2,
         "step": 1,
-        "desc": "金字塔的层级数量",
+        "describe": "金字塔的层级数量",
+        "max": 3,
         "publicKey": "tierCount",
         "publicLabel": "层级数量",
+        "desc": "金字塔的层级数量",
         "description": "金字塔的层级数量"
       },
       {
         "key": "showDesc",
-        "label": "层级说明",
         "type": "toggle",
+        "label": "层级说明",
         "default": true,
-        "desc": "显示/隐藏右侧的层级说明栏",
+        "describe": "显示/隐藏右侧的层级说明栏",
         "publicKey": "showDesc",
         "publicLabel": "层级说明",
+        "desc": "显示/隐藏右侧的层级说明栏",
         "description": "显示/隐藏右侧的层级说明栏"
       },
       {
         "key": "showNumbers",
-        "label": "层级编号",
         "type": "toggle",
+        "label": "层级编号",
         "default": true,
-        "desc": "在金字塔每层显示序号",
+        "describe": "在金字塔每层显示序号",
         "publicKey": "showNumbers",
         "publicLabel": "层级编号",
+        "desc": "在金字塔每层显示序号",
         "description": "在金字塔每层显示序号"
       },
       {
         "key": "faceTexture",
-        "label": "表面质感",
         "type": "enum",
+        "label": "表面质感",
         "default": "gloss",
         "options": [
           {
@@ -13140,41 +13698,48 @@ export const pages = [
             "label": "斜纹"
           }
         ],
-        "desc": "层面的表面质感样式",
+        "describe": "层面的表面质感样式",
         "publicKey": "faceTexture",
         "publicLabel": "表面质感",
+        "desc": "层面的表面质感样式",
         "description": "层面的表面质感样式"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一个层级",
+        "describe": "是否高亮其中一个层级",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一个层级",
         "description": "是否高亮其中一个层级"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调层级的序号（塔尖为 1）",
+        "oneBased": true,
+        "describe": "被强调层级的序号（塔尖为 1）",
+        "max": 2,
+        "maxFromKey": "tierCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调层级的序号（塔尖为 1）",
         "description": "被强调层级的序号（塔尖为 1）"
       },
       {
         "key": "showLead",
-        "label": "引言",
         "type": "toggle",
+        "label": "引言",
         "default": true,
-        "desc": "显示/隐藏标题下方的引言",
+        "describe": "显示/隐藏标题下方的引言",
         "publicKey": "showLead",
         "publicLabel": "引言",
+        "desc": "显示/隐藏标题下方的引言",
         "description": "显示/隐藏标题下方的引言"
       }
     ],
@@ -13228,8 +13793,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -13252,8 +13817,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -13276,8 +13841,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -13289,8 +13854,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -13299,8 +13864,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -13309,8 +13874,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -13322,21 +13887,22 @@ export const pages = [
       },
       {
         "key": "imageCount",
-        "label": "图片数量",
         "type": "number",
+        "label": "图片数量",
         "default": 1,
         "min": 0,
         "max": 2,
         "step": 1,
-        "desc": "配图槽位数量（0 = 纯文字版式）",
+        "describe": "配图槽位数量（0 = 纯文字版式）",
         "publicKey": "imageCount",
         "publicLabel": "图片数量",
+        "desc": "配图槽位数量（0 = 纯文字版式）",
         "description": "配图槽位数量（0 = 纯文字版式）"
       },
       {
         "key": "imageSide",
-        "label": "图片位置",
         "type": "enum",
+        "label": "图片位置",
         "default": "right",
         "options": [
           {
@@ -13348,51 +13914,59 @@ export const pages = [
             "label": "右侧"
           }
         ],
-        "desc": "配图位于左侧或右侧",
+        "describe": "配图位于左侧或右侧",
         "publicKey": "imageSide",
         "publicLabel": "图片位置",
+        "desc": "配图位于左侧或右侧",
         "description": "配图位于左侧或右侧"
       },
       {
         "key": "showStat",
-        "label": "关键数字",
         "type": "toggle",
+        "label": "关键数字",
         "default": true,
-        "desc": "显示/隐藏标题区的关键数字",
+        "describe": "显示/隐藏标题区的关键数字",
         "publicKey": "showStat",
         "publicLabel": "关键数字",
+        "desc": "显示/隐藏标题区的关键数字",
         "description": "显示/隐藏标题区的关键数字"
       },
       {
         "key": "showBackdrop",
-        "label": "背景大字",
         "type": "toggle",
+        "label": "背景大字",
         "default": true,
-        "desc": "显示/隐藏背景的大号装饰字",
+        "describe": "显示/隐藏背景的大号装饰字",
         "publicKey": "showBackdrop",
         "publicLabel": "背景大字",
+        "desc": "显示/隐藏背景的大号装饰字",
         "description": "显示/隐藏背景的大号装饰字"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一张配图",
+        "describe": "是否高亮其中一张配图",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一张配图",
         "description": "是否高亮其中一张配图"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调配图的序号",
+        "oneBased": true,
+        "describe": "被强调配图的序号",
+        "max": 1,
+        "maxFromKey": "imageCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调配图的序号",
         "description": "被强调配图的序号"
       }
     ],
@@ -13444,8 +14018,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -13468,8 +14042,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -13492,8 +14066,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -13505,8 +14079,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -13515,8 +14089,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -13525,8 +14099,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -13538,76 +14112,86 @@ export const pages = [
       },
       {
         "key": "barCount",
-        "label": "条目数量",
         "type": "number",
-        "default": 10,
+        "label": "条目数量",
+        "default": 13,
         "min": 2,
         "step": 1,
-        "desc": "帕累托图展示的条目数量",
+        "max": 13,
+        "describe": "帕累托图展示的条目数量",
         "publicKey": "itemCount",
         "publicLabel": "条目数量",
+        "desc": "帕累托图展示的条目数量",
         "description": "帕累托图展示的条目数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一柱（其余淡出）",
+        "describe": "辉光强调某一柱（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一柱（其余淡出）",
         "description": "辉光强调某一柱（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调柱的序号",
+        "oneBased": true,
+        "max": 12,
+        "describe": "被强调柱的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调柱的序号",
         "description": "被强调柱的序号"
       },
       {
         "key": "showCumLine",
-        "label": "累计曲线",
         "type": "toggle",
+        "label": "累计曲线",
         "default": true,
-        "desc": "累计占比折线显隐",
+        "describe": "累计占比折线显隐",
         "publicKey": "showCumLine",
         "publicLabel": "累计曲线",
+        "desc": "累计占比折线显隐",
         "description": "累计占比折线显隐"
       },
       {
         "key": "showEighty",
-        "label": "80% 线",
         "type": "toggle",
+        "label": "80% 线",
         "default": true,
-        "desc": "80% 参考线显隐",
+        "describe": "80% 参考线显隐",
         "publicKey": "showEighty",
         "publicLabel": "80% 线",
+        "desc": "80% 参考线显隐",
         "description": "80% 参考线显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "数值标签",
         "type": "toggle",
+        "label": "数值标签",
         "default": true,
-        "desc": "柱上数值显隐",
+        "describe": "柱上数值显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "数值标签",
+        "desc": "柱上数值显隐",
         "description": "柱上数值显隐"
       },
       {
         "key": "showGrid",
-        "label": "网格刻度",
         "type": "toggle",
+        "label": "网格刻度",
         "default": true,
-        "desc": "左轴网格刻度显隐",
+        "describe": "左轴网格刻度显隐",
         "publicKey": "showGrid",
         "publicLabel": "网格刻度",
+        "desc": "左轴网格刻度显隐",
         "description": "左轴网格刻度显隐"
       }
     ],
@@ -13656,10 +14240,22 @@ export const pages = [
         {
           "label": "Glean",
           "value": 2.6
+        },
+        {
+          "label": "Mistral",
+          "value": 2.3
+        },
+        {
+          "label": "Cohere",
+          "value": 1.9
+        },
+        {
+          "label": "Cerebras",
+          "value": 1.4
         }
       ],
       "unit": "亿美元",
-      "barCount": 10,
+      "barCount": 13,
       "focusEnabled": true,
       "focusIndex": 0,
       "showCumLine": true,
@@ -13686,8 +14282,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -13710,8 +14306,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -13734,8 +14330,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -13747,8 +14343,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -13757,8 +14353,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -13767,8 +14363,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -13780,20 +14376,22 @@ export const pages = [
       },
       {
         "key": "petalCount",
-        "label": "花瓣数量",
         "type": "number",
-        "default": 12,
+        "label": "花瓣数量",
+        "default": 6,
         "min": 3,
         "step": 1,
-        "desc": "玫瑰图展示的花瓣（周期）数量",
+        "max": 6,
+        "describe": "玫瑰图展示的花瓣（周期）数量",
         "publicKey": "petalCount",
         "publicLabel": "花瓣数量",
+        "desc": "玫瑰图展示的花瓣（周期）数量",
         "description": "玫瑰图展示的花瓣（周期）数量"
       },
       {
         "key": "scaleMode",
-        "label": "半径映射",
         "type": "enum",
+        "label": "半径映射",
         "default": "radius",
         "options": [
           {
@@ -13805,61 +14403,69 @@ export const pages = [
             "label": "面积守恒"
           }
         ],
-        "desc": "半径 ∝ 数值，或面积 ∝ 数值（√）",
+        "describe": "半径 ∝ 数值，或面积 ∝ 数值（√）",
         "publicKey": "scaleMode",
         "publicLabel": "半径映射",
+        "desc": "半径 ∝ 数值，或面积 ∝ 数值（√）",
         "description": "半径 ∝ 数值，或面积 ∝ 数值（√）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一瓣（其余淡出）",
+        "describe": "辉光强调某一瓣（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一瓣（其余淡出）",
         "description": "辉光强调某一瓣（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 7,
         "min": 0,
         "step": 1,
-        "desc": "被强调花瓣的序号",
+        "oneBased": true,
+        "max": 5,
+        "describe": "被强调花瓣的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调花瓣的序号",
         "description": "被强调花瓣的序号"
       },
       {
         "key": "showRings",
-        "label": "背景环网",
         "type": "toggle",
+        "label": "背景环网",
         "default": true,
-        "desc": "同心环 + 刻度显隐",
+        "describe": "同心环 + 刻度显隐",
         "publicKey": "showRings",
         "publicLabel": "背景环网",
+        "desc": "同心环 + 刻度显隐",
         "description": "同心环 + 刻度显隐"
       },
       {
         "key": "showLabels",
-        "label": "周期标签",
         "type": "toggle",
+        "label": "周期标签",
         "default": true,
-        "desc": "外圈周期标签显隐",
+        "describe": "外圈周期标签显隐",
         "publicKey": "showLabels",
         "publicLabel": "周期标签",
+        "desc": "外圈周期标签显隐",
         "description": "外圈周期标签显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "峰值数值",
         "type": "toggle",
+        "label": "峰值数值",
         "default": true,
-        "desc": "峰值瓣数值显隐",
+        "describe": "峰值瓣数值显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "峰值数值",
+        "desc": "峰值瓣数值显隐",
         "description": "峰值瓣数值显隐"
       }
     ],
@@ -13919,10 +14525,10 @@ export const pages = [
         }
       ],
       "unit": "亿美元",
-      "petalCount": 12,
+      "petalCount": 6,
       "scaleMode": "radius",
       "focusEnabled": true,
-      "focusIndex": 7,
+      "focusIndex": 4,
       "showRings": true,
       "showLabels": true,
       "showValueLabels": true,
@@ -13946,8 +14552,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -13970,8 +14576,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -13994,8 +14600,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -14007,8 +14613,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -14017,8 +14623,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -14027,8 +14633,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -14040,66 +14646,76 @@ export const pages = [
       },
       {
         "key": "itemCount",
-        "label": "色块数量",
         "type": "number",
+        "label": "色块数量",
         "default": 5,
         "min": 2,
         "step": 1,
-        "desc": "矩形树图展示的色块数量",
+        "describe": "矩形树图展示的色块数量",
+        "max": 5,
         "publicKey": "itemCount",
         "publicLabel": "色块数量",
+        "desc": "矩形树图展示的色块数量",
         "description": "矩形树图展示的色块数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一块（其余淡出）",
+        "describe": "辉光强调某一块（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一块（其余淡出）",
         "description": "辉光强调某一块（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调色块的序号",
+        "oneBased": true,
+        "describe": "被强调色块的序号",
+        "max": 4,
+        "maxFromKey": "itemCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调色块的序号",
         "description": "被强调色块的序号"
       },
       {
         "key": "showValue",
-        "label": "数值",
         "type": "toggle",
+        "label": "数值",
         "default": true,
-        "desc": "块内数值显隐",
+        "describe": "块内数值显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "数值",
+        "desc": "块内数值显隐",
         "description": "块内数值显隐"
       },
       {
         "key": "showShare",
-        "label": "占比",
         "type": "toggle",
+        "label": "占比",
         "default": true,
-        "desc": "块内占比百分比显隐",
+        "describe": "块内占比百分比显隐",
         "publicKey": "showShare",
         "publicLabel": "占比",
+        "desc": "块内占比百分比显隐",
         "description": "块内占比百分比显隐"
       },
       {
         "key": "showNote",
-        "label": "注解",
         "type": "toggle",
+        "label": "注解",
         "default": true,
-        "desc": "大块内一句注解显隐",
+        "describe": "大块内一句注解显隐",
         "publicKey": "showNote",
         "publicLabel": "注解",
+        "desc": "大块内一句注解显隐",
         "description": "大块内一句注解显隐"
       }
     ],
@@ -14162,8 +14778,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -14186,8 +14802,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -14210,8 +14826,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -14223,8 +14839,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -14233,8 +14849,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -14243,8 +14859,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -14256,67 +14872,76 @@ export const pages = [
       },
       {
         "key": "segmentCount",
-        "label": "环节数量",
         "type": "number",
+        "label": "环节数量",
         "default": 3,
         "min": 3,
         "max": 5,
         "step": 1,
-        "desc": "飞轮环节数量（角度自适应：3→120°、4→90°、5→72°）",
+        "describe": "飞轮环节数量（角度自适应：3→120°、4→90°、5→72°）",
         "publicKey": "segmentCount",
         "publicLabel": "环节数量",
+        "desc": "飞轮环节数量（角度自适应：3→120°、4→90°、5→72°）",
         "description": "飞轮环节数量（角度自适应：3→120°、4→90°、5→72°）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮其中一个环节",
+        "describe": "是否高亮其中一个环节",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一个环节",
         "description": "是否高亮其中一个环节"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 2,
         "min": 0,
         "step": 1,
-        "desc": "被强调环节的序号",
+        "oneBased": true,
+        "describe": "被强调环节的序号",
+        "max": 4,
+        "maxFromKey": "segmentCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调环节的序号",
         "description": "被强调环节的序号"
       },
       {
         "key": "showArrows",
-        "label": "旋转箭头",
         "type": "toggle",
+        "label": "旋转箭头",
         "default": true,
-        "desc": "段间旋转箭头显隐",
+        "describe": "段间旋转箭头显隐",
         "publicKey": "showArrows",
         "publicLabel": "旋转箭头",
+        "desc": "段间旋转箭头显隐",
         "description": "段间旋转箭头显隐"
       },
       {
         "key": "showCards",
-        "label": "说明卡片",
         "type": "toggle",
+        "label": "说明卡片",
         "default": true,
-        "desc": "右侧环节说明卡列显隐",
+        "describe": "右侧环节说明卡列显隐",
         "publicKey": "showCards",
         "publicLabel": "说明卡片",
+        "desc": "右侧环节说明卡列显隐",
         "description": "右侧环节说明卡列显隐"
       },
       {
         "key": "showTags",
-        "label": "卡片标签",
         "type": "toggle",
+        "label": "卡片标签",
         "default": true,
-        "desc": "卡片内标签显隐",
+        "describe": "卡片内标签显隐",
         "publicKey": "showTags",
         "publicLabel": "卡片标签",
+        "desc": "卡片内标签显隐",
         "description": "卡片内标签显隐"
       }
     ],
@@ -14401,8 +15026,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -14425,8 +15050,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -14449,8 +15074,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -14462,8 +15087,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -14472,8 +15097,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -14482,8 +15107,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -14495,66 +15120,76 @@ export const pages = [
       },
       {
         "key": "itemCount",
-        "label": "条目数量",
         "type": "number",
+        "label": "条目数量",
         "default": 6,
         "min": 2,
         "step": 1,
-        "desc": "斜率图展示的条目数量",
+        "describe": "斜率图展示的条目数量",
+        "max": 6,
         "publicKey": "itemCount",
         "publicLabel": "条目数量",
+        "desc": "斜率图展示的条目数量",
         "description": "斜率图展示的条目数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一条（其余淡出）",
+        "describe": "辉光强调某一条（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一条（其余淡出）",
         "description": "辉光强调某一条（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 5,
         "min": 0,
         "step": 1,
-        "desc": "被强调条目的序号",
+        "oneBased": true,
+        "describe": "被强调条目的序号",
+        "max": 5,
+        "maxFromKey": "itemCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调条目的序号",
         "description": "被强调条目的序号"
       },
       {
         "key": "showDots",
-        "label": "端点圆点",
         "type": "toggle",
+        "label": "端点圆点",
         "default": true,
-        "desc": "两端圆点显隐",
+        "describe": "两端圆点显隐",
         "publicKey": "showDots",
         "publicLabel": "端点圆点",
+        "desc": "两端圆点显隐",
         "description": "两端圆点显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "端点数值",
         "type": "toggle",
+        "label": "端点数值",
         "default": true,
-        "desc": "两端数值显隐",
+        "describe": "两端数值显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "端点数值",
+        "desc": "两端数值显隐",
         "description": "两端数值显隐"
       },
       {
         "key": "showDelta",
-        "label": "变化徽章",
         "type": "toggle",
+        "label": "变化徽章",
         "default": true,
-        "desc": "右侧变化量徽章显隐",
+        "describe": "右侧变化量徽章显隐",
         "publicKey": "showDelta",
         "publicLabel": "变化徽章",
+        "desc": "右侧变化量徽章显隐",
         "description": "右侧变化量徽章显隐"
       }
     ],
@@ -14624,8 +15259,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -14648,8 +15283,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -14672,8 +15307,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -14685,8 +15320,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -14695,8 +15330,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -14705,8 +15340,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -14718,86 +15353,98 @@ export const pages = [
       },
       {
         "key": "nodeCount",
-        "label": "节点数量",
         "type": "number",
+        "label": "节点数量",
         "default": 5,
         "min": 3,
         "step": 1,
-        "desc": "环绕节点的数量",
+        "describe": "环绕节点的数量",
+        "max": 5,
         "publicKey": "nodeCount",
         "publicLabel": "节点数量",
+        "desc": "环绕节点的数量",
         "description": "环绕节点的数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮其中一个节点",
+        "describe": "是否高亮其中一个节点",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一个节点",
         "description": "是否高亮其中一个节点"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调节点的序号",
+        "oneBased": true,
+        "describe": "被强调节点的序号",
+        "max": 4,
+        "maxFromKey": "nodeCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调节点的序号",
         "description": "被强调节点的序号"
       },
       {
         "key": "coreFlow",
-        "label": "中心流光",
         "type": "toggle",
+        "label": "中心流光",
         "default": true,
-        "desc": "中心球体的荧光流动动效",
+        "describe": "中心球体的荧光流动动效",
         "publicKey": "coreFlow",
         "publicLabel": "中心流光",
+        "desc": "中心球体的荧光流动动效",
         "description": "中心球体的荧光流动动效"
       },
       {
         "key": "showSpokes",
-        "label": "辐射连线",
         "type": "toggle",
+        "label": "辐射连线",
         "default": true,
-        "desc": "中心→节点的辐射连线显隐",
+        "describe": "中心→节点的辐射连线显隐",
         "publicKey": "showSpokes",
         "publicLabel": "辐射连线",
+        "desc": "中心→节点的辐射连线显隐",
         "description": "中心→节点的辐射连线显隐"
       },
       {
         "key": "showOrbit",
-        "label": "轨道环",
         "type": "toggle",
+        "label": "轨道环",
         "default": true,
-        "desc": "显示/隐藏环绕轨道线",
+        "describe": "显示/隐藏环绕轨道线",
         "publicKey": "showOrbit",
         "publicLabel": "轨道环",
+        "desc": "显示/隐藏环绕轨道线",
         "description": "显示/隐藏环绕轨道线"
       },
       {
         "key": "showIndex",
-        "label": "节点序号",
         "type": "toggle",
+        "label": "节点序号",
         "default": true,
-        "desc": "节点内序号显隐",
+        "describe": "节点内序号显隐",
         "publicKey": "showIndex",
         "publicLabel": "节点序号",
+        "desc": "节点内序号显隐",
         "description": "节点内序号显隐"
       },
       {
         "key": "showDesc",
-        "label": "节点说明",
         "type": "toggle",
+        "label": "节点说明",
         "default": true,
-        "desc": "节点说明文案显隐",
+        "describe": "节点说明文案显隐",
         "publicKey": "showDesc",
         "publicLabel": "节点说明",
+        "desc": "节点说明文案显隐",
         "description": "节点说明文案显隐"
       }
     ],
@@ -14859,8 +15506,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -14883,8 +15530,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -14907,8 +15554,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -14920,8 +15567,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -14930,8 +15577,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -14940,8 +15587,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -14953,67 +15600,75 @@ export const pages = [
       },
       {
         "key": "nodeCount",
-        "label": "球体数量",
         "type": "number",
+        "label": "球体数量",
         "default": 3,
         "min": 2,
-        "max": 4,
+        "max": 3,
         "step": 1,
-        "desc": "横向并列的阶段球数量",
+        "describe": "横向并列的阶段球数量",
         "publicKey": "nodeCount",
         "publicLabel": "球体数量",
+        "desc": "横向并列的阶段球数量",
         "description": "横向并列的阶段球数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "是否高亮其中一个阶段",
+        "describe": "是否高亮其中一个阶段",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮其中一个阶段",
         "description": "是否高亮其中一个阶段"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 2,
         "min": 0,
+        "max": 2,
         "step": 1,
-        "desc": "被强调阶段的序号",
+        "oneBased": true,
+        "describe": "被强调阶段的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调阶段的序号",
         "description": "被强调阶段的序号"
       },
       {
         "key": "showConnectors",
-        "label": "连接标签",
         "type": "toggle",
+        "label": "连接标签",
         "default": true,
-        "desc": "球之间的连接标签显隐",
+        "describe": "球之间的连接标签显隐",
         "publicKey": "showConnectors",
         "publicLabel": "连接标签",
+        "desc": "球之间的连接标签显隐",
         "description": "球之间的连接标签显隐"
       },
       {
         "key": "showDesc",
-        "label": "球内说明",
         "type": "toggle",
+        "label": "球内说明",
         "default": true,
-        "desc": "球内说明文案显隐",
+        "describe": "球内说明文案显隐",
         "publicKey": "showDesc",
         "publicLabel": "球内说明",
+        "desc": "球内说明文案显隐",
         "description": "球内说明文案显隐"
       },
       {
         "key": "showGhost",
-        "label": "背景大字",
         "type": "toggle",
+        "label": "背景大字",
         "default": true,
-        "desc": "标题后的背景大字英文显隐",
+        "describe": "标题后的背景大字英文显隐",
         "publicKey": "showGhost",
         "publicLabel": "背景大字",
+        "desc": "标题后的背景大字英文显隐",
         "description": "标题后的背景大字英文显隐"
       }
     ],
@@ -15077,8 +15732,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -15101,8 +15756,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -15125,8 +15780,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -15138,8 +15793,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -15148,8 +15803,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -15158,8 +15813,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -15171,90 +15826,101 @@ export const pages = [
       },
       {
         "key": "branchCount",
-        "label": "分支数量",
         "type": "number",
+        "label": "分支数量",
         "default": 3,
         "min": 2,
         "max": 3,
         "step": 1,
-        "desc": "分支节点数量",
+        "describe": "分支节点数量",
         "publicKey": "branchCount",
         "publicLabel": "分支数量",
+        "desc": "分支节点数量",
         "description": "分支节点数量"
       },
       {
         "key": "leafCount",
-        "label": "叶子数量",
         "type": "number",
+        "label": "叶子数量",
         "default": 3,
         "min": 1,
         "max": 3,
         "step": 1,
-        "desc": "每个分支发散的叶子卡数量",
+        "describe": "每个分支发散的叶子卡数量",
         "publicKey": "leafCount",
         "publicLabel": "叶子数量",
+        "desc": "每个分支发散的叶子卡数量",
         "description": "每个分支发散的叶子卡数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "是否高亮某一分支及其叶子",
+        "describe": "是否高亮某一分支及其叶子",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "是否高亮某一分支及其叶子",
         "description": "是否高亮某一分支及其叶子"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 1,
         "min": 0,
         "step": 1,
-        "desc": "被强调分支的序号",
+        "oneBased": true,
+        "describe": "被强调分支的序号",
+        "max": 2,
+        "maxFromKey": "branchCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调分支的序号",
         "description": "被强调分支的序号"
       },
       {
         "key": "showLeaves",
-        "label": "叶子卡",
         "type": "toggle",
+        "label": "叶子卡",
         "default": true,
-        "desc": "显示/隐藏叶子卡",
+        "describe": "显示/隐藏叶子卡",
         "publicKey": "showLeaves",
         "publicLabel": "叶子卡",
+        "desc": "显示/隐藏叶子卡",
         "description": "显示/隐藏叶子卡"
       },
       {
         "key": "showSub",
-        "label": "分支副标题",
         "type": "toggle",
+        "label": "分支副标题",
         "default": true,
-        "desc": "分支副标题显隐",
+        "describe": "分支副标题显隐",
         "publicKey": "showSub",
         "publicLabel": "分支副标题",
+        "desc": "分支副标题显隐",
         "description": "分支副标题显隐"
       },
       {
         "key": "showConnectors",
-        "label": "连接线",
         "type": "toggle",
+        "label": "连接线",
         "default": true,
-        "desc": "层级连接线显隐",
+        "describe": "层级连接线显隐",
         "publicKey": "showConnectors",
         "publicLabel": "连接线",
+        "desc": "层级连接线显隐",
         "description": "层级连接线显隐"
       },
       {
         "key": "coreFlow",
-        "label": "中心流光",
         "type": "toggle",
+        "label": "中心流光",
         "default": true,
-        "desc": "中心球体的荧光流动动效",
+        "describe": "中心球体的荧光流动动效",
         "publicKey": "coreFlow",
         "publicLabel": "中心流光",
+        "desc": "中心球体的荧光流动动效",
         "description": "中心球体的荧光流动动效"
       }
     ],
@@ -15349,8 +16015,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -15373,8 +16039,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -15397,8 +16063,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -15410,8 +16076,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -15420,8 +16086,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -15430,8 +16096,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -15443,66 +16109,76 @@ export const pages = [
       },
       {
         "key": "groupCount",
-        "label": "板块数量",
         "type": "number",
+        "label": "板块数量",
         "default": 3,
         "min": 1,
         "step": 1,
-        "desc": "旭日图展示的顶层板块数量",
+        "describe": "旭日图展示的顶层板块数量",
+        "max": 3,
         "publicKey": "groupCount",
         "publicLabel": "板块数量",
+        "desc": "旭日图展示的顶层板块数量",
         "description": "旭日图展示的顶层板块数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一板块（其余淡出）",
+        "describe": "辉光强调某一板块（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一板块（其余淡出）",
         "description": "辉光强调某一板块（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调板块的序号",
+        "oneBased": true,
+        "describe": "被强调板块的序号",
+        "max": 2,
+        "maxFromKey": "groupCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调板块的序号",
         "description": "被强调板块的序号"
       },
       {
         "key": "showInnerLabels",
-        "label": "板块标签",
         "type": "toggle",
+        "label": "板块标签",
         "default": true,
-        "desc": "内环板块标签显隐",
+        "describe": "内环板块标签显隐",
         "publicKey": "showInnerLabels",
         "publicLabel": "板块标签",
+        "desc": "内环板块标签显隐",
         "description": "内环板块标签显隐"
       },
       {
         "key": "showValueLabels",
-        "label": "子项数值",
         "type": "toggle",
+        "label": "子项数值",
         "default": true,
-        "desc": "外环子项数值显隐",
+        "describe": "外环子项数值显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "子项数值",
+        "desc": "外环子项数值显隐",
         "description": "外环子项数值显隐"
       },
       {
         "key": "showLegend",
-        "label": "右侧明细",
         "type": "toggle",
+        "label": "右侧明细",
         "default": true,
-        "desc": "右侧明细图例显隐",
+        "describe": "右侧明细图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "右侧明细",
+        "desc": "右侧明细图例显隐",
         "description": "右侧明细图例显隐"
       }
     ],
@@ -15588,8 +16264,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -15612,8 +16288,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -15636,8 +16312,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -15649,8 +16325,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -15659,8 +16335,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -15669,8 +16345,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -15682,66 +16358,76 @@ export const pages = [
       },
       {
         "key": "itemCount",
-        "label": "条目数量",
         "type": "number",
+        "label": "条目数量",
         "default": 5,
         "min": 2,
         "step": 1,
-        "desc": "名次图展示的条目数量",
+        "describe": "名次图展示的条目数量",
+        "max": 5,
         "publicKey": "itemCount",
         "publicLabel": "条目数量",
+        "desc": "名次图展示的条目数量",
         "description": "名次图展示的条目数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一条（其余淡出）",
+        "describe": "辉光强调某一条（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一条（其余淡出）",
         "description": "辉光强调某一条（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 1,
         "min": 0,
         "step": 1,
-        "desc": "被强调条目的序号",
+        "oneBased": true,
+        "describe": "被强调条目的序号",
+        "max": 4,
+        "maxFromKey": "itemCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调条目的序号",
         "description": "被强调条目的序号"
       },
       {
         "key": "showDots",
-        "label": "端点圆点",
         "type": "toggle",
+        "label": "端点圆点",
         "default": true,
-        "desc": "各期端点圆点显隐",
+        "describe": "各期端点圆点显隐",
         "publicKey": "showDots",
         "publicLabel": "端点圆点",
+        "desc": "各期端点圆点显隐",
         "description": "各期端点圆点显隐"
       },
       {
         "key": "showRankAxis",
-        "label": "名次刻度",
         "type": "toggle",
+        "label": "名次刻度",
         "default": true,
-        "desc": "左侧名次刻度显隐",
+        "describe": "左侧名次刻度显隐",
         "publicKey": "showRankAxis",
         "publicLabel": "名次刻度",
+        "desc": "左侧名次刻度显隐",
         "description": "左侧名次刻度显隐"
       },
       {
         "key": "showEndLabels",
-        "label": "两端名称",
         "type": "toggle",
+        "label": "两端名称",
         "default": true,
-        "desc": "两端条目名称显隐",
+        "describe": "两端条目名称显隐",
         "publicKey": "showEndLabels",
         "publicLabel": "两端名称",
+        "desc": "两端条目名称显隐",
         "description": "两端条目名称显隐"
       }
     ],
@@ -15829,8 +16515,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -15853,8 +16539,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -15877,8 +16563,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -15890,8 +16576,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -15900,8 +16586,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -15910,8 +16596,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -15923,33 +16609,36 @@ export const pages = [
       },
       {
         "key": "tileCount",
-        "label": "图片数量",
         "type": "number",
-        "default": 7,
+        "label": "图片数量",
+        "default": 6,
         "min": 0,
         "step": 1,
-        "desc": "瀑布流图片块数量（0 = 纯标题）",
+        "max": 6,
+        "describe": "瀑布流图片块数量（0 = 纯标题）",
         "publicKey": "tileCount",
         "publicLabel": "图片数量",
+        "desc": "瀑布流图片块数量（0 = 纯标题）",
         "description": "瀑布流图片块数量（0 = 纯标题）"
       },
       {
         "key": "columns",
-        "label": "列数",
         "type": "number",
+        "label": "列数",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1,
-        "desc": "瀑布流列数（自适应错落）",
+        "describe": "瀑布流列数（自适应错落）",
         "publicKey": "columns",
         "publicLabel": "列数",
+        "desc": "瀑布流列数（自适应错落）",
         "description": "瀑布流列数（自适应错落）"
       },
       {
         "key": "fit",
-        "label": "贴合方式",
         "type": "enum",
+        "label": "贴合方式",
         "default": "cover",
         "options": [
           {
@@ -15961,41 +16650,47 @@ export const pages = [
             "label": "完整（不裁切）"
           }
         ],
-        "desc": "图片在块内填充或完整显示",
+        "describe": "图片在块内填充或完整显示",
         "publicKey": "fit",
         "publicLabel": "贴合方式",
+        "desc": "图片在块内填充或完整显示",
         "description": "图片在块内填充或完整显示"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "辉光强调某一块（描边）",
+        "describe": "辉光强调某一块（描边）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一块（描边）",
         "description": "辉光强调某一块（描边）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调块的序号",
+        "oneBased": true,
+        "max": 5,
+        "describe": "被强调块的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调块的序号",
         "description": "被强调块的序号"
       },
       {
         "key": "showCaptions",
-        "label": "图注",
         "type": "toggle",
+        "label": "图注",
         "default": true,
-        "desc": "显示/隐藏图注",
+        "describe": "显示/隐藏图注",
         "publicKey": "showCaptions",
         "publicLabel": "图注",
+        "desc": "显示/隐藏图注",
         "description": "显示/隐藏图注"
       }
     ],
@@ -16016,7 +16711,7 @@ export const pages = [
         "Cerebras · AI 芯片",
         "Glean · 企业搜索"
       ],
-      "tileCount": 7,
+      "tileCount": 6,
       "columns": 3,
       "fit": "cover",
       "focusEnabled": false,
@@ -16043,8 +16738,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -16067,8 +16762,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -16091,8 +16786,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -16104,8 +16799,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -16114,8 +16809,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -16124,8 +16819,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -16137,67 +16832,76 @@ export const pages = [
       },
       {
         "key": "setCount",
-        "label": "集合数量",
         "type": "number",
+        "label": "集合数量",
         "default": 3,
         "min": 2,
         "max": 3,
         "step": 1,
-        "desc": "维恩图集合数量（2–3）",
+        "describe": "维恩图集合数量（2–3）",
         "publicKey": "setCount",
         "publicLabel": "集合数量",
+        "desc": "维恩图集合数量（2–3）",
         "description": "维恩图集合数量（2–3）"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": false,
-        "desc": "辉光强调某一集合（其余淡出）",
+        "describe": "辉光强调某一集合（其余淡出）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一集合（其余淡出）",
         "description": "辉光强调某一集合（其余淡出）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
         "step": 1,
-        "desc": "被强调集合的序号",
+        "oneBased": true,
+        "describe": "被强调集合的序号",
+        "max": 2,
+        "maxFromKey": "setCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调集合的序号",
         "description": "被强调集合的序号"
       },
       {
         "key": "showPairs",
-        "label": "配对交集",
         "type": "toggle",
+        "label": "配对交集",
         "default": true,
-        "desc": "两两交集说明显隐",
+        "describe": "两两交集说明显隐",
         "publicKey": "showPairs",
         "publicLabel": "配对交集",
+        "desc": "两两交集说明显隐",
         "description": "两两交集说明显隐"
       },
       {
         "key": "showCenter",
-        "label": "中心交集",
         "type": "toggle",
+        "label": "中心交集",
         "default": true,
-        "desc": "中心交集节点显隐",
+        "describe": "中心交集节点显隐",
         "publicKey": "showCenter",
         "publicLabel": "中心交集",
+        "desc": "中心交集节点显隐",
         "description": "中心交集节点显隐"
       },
       {
         "key": "showSub",
-        "label": "要素副标题",
         "type": "toggle",
+        "label": "要素副标题",
         "default": true,
-        "desc": "集合副标题显隐",
+        "describe": "集合副标题显隐",
         "publicKey": "showSub",
         "publicLabel": "要素副标题",
+        "desc": "集合副标题显隐",
         "description": "集合副标题显隐"
       }
     ],
@@ -16259,8 +16963,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -16283,8 +16987,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -16307,8 +17011,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -16320,8 +17024,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -16330,8 +17034,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -16340,8 +17044,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -16353,8 +17057,8 @@ export const pages = [
       },
       {
         "key": "baseline",
-        "label": "基线形态",
         "type": "enum",
+        "label": "基线形态",
         "default": "center",
         "options": [
           {
@@ -16366,83 +17070,94 @@ export const pages = [
             "label": "底部堆叠"
           }
         ],
-        "desc": "中心对称基线(ThemeRiver) / 底部堆叠面积",
+        "describe": "中心对称基线(ThemeRiver) / 底部堆叠面积",
         "publicKey": "baseline",
         "publicLabel": "基线形态",
+        "desc": "中心对称基线(ThemeRiver) / 底部堆叠面积",
         "description": "中心对称基线(ThemeRiver) / 底部堆叠面积"
       },
       {
         "key": "pointCount",
-        "label": "时点数量",
         "type": "number",
-        "default": 12,
+        "label": "时点数量",
+        "default": 6,
         "min": 4,
+        "max": 6,
         "step": 1,
-        "desc": "展示的时点（月/期）数量",
+        "describe": "展示的时点（月/期）数量",
         "publicKey": "pointCount",
         "publicLabel": "时点数量",
+        "desc": "展示的时点（月/期）数量",
         "description": "展示的时点（月/期）数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一条带（其余淡出 + 峰值读数）",
+        "describe": "辉光强调某一条带（其余淡出 + 峰值读数）",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一条带（其余淡出 + 峰值读数）",
         "description": "辉光强调某一条带（其余淡出 + 峰值读数）"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 0,
         "min": 0,
+        "max": 3,
         "step": 1,
-        "desc": "被强调分项的序号",
+        "oneBased": true,
+        "describe": "被强调分项的序号",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调分项的序号",
         "description": "被强调分项的序号"
       },
       {
         "key": "showBaseline",
-        "label": "基线",
         "type": "toggle",
+        "label": "基线",
         "default": true,
-        "desc": "中心基线 / 底轴显隐",
+        "describe": "中心基线 / 底轴显隐",
         "publicKey": "showBaseline",
         "publicLabel": "基线",
+        "desc": "中心基线 / 底轴显隐",
         "description": "中心基线 / 底轴显隐"
       },
       {
         "key": "showAxis",
-        "label": "时点刻度",
         "type": "toggle",
+        "label": "时点刻度",
         "default": true,
-        "desc": "横轴时点标签显隐",
+        "describe": "横轴时点标签显隐",
         "publicKey": "showAxis",
         "publicLabel": "时点刻度",
+        "desc": "横轴时点标签显隐",
         "description": "横轴时点标签显隐"
       },
       {
         "key": "showPeak",
-        "label": "峰值读数",
         "type": "toggle",
+        "label": "峰值读数",
         "default": true,
-        "desc": "焦点带峰值数值显隐",
+        "describe": "焦点带峰值数值显隐",
         "publicKey": "showValueLabels",
         "publicLabel": "峰值读数",
+        "desc": "焦点带峰值数值显隐",
         "description": "焦点带峰值数值显隐"
       },
       {
         "key": "showLegend",
-        "label": "图例",
         "type": "toggle",
+        "label": "图例",
         "default": true,
-        "desc": "右侧分项图例显隐",
+        "describe": "右侧分项图例显隐",
         "publicKey": "showLegend",
         "publicLabel": "图例",
+        "desc": "右侧分项图例显隐",
         "description": "右侧分项图例显隐"
       }
     ],
@@ -16579,7 +17294,7 @@ export const pages = [
           }
         }
       ],
-      "pointCount": 12,
+      "pointCount": 6,
       "baseline": "center",
       "focusEnabled": true,
       "focusIndex": 0,
@@ -16608,8 +17323,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -16632,8 +17347,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -16656,8 +17371,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -16669,8 +17384,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -16679,8 +17394,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -16689,8 +17404,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -16702,8 +17417,8 @@ export const pages = [
       },
       {
         "key": "layout",
-        "label": "版式",
         "type": "enum",
+        "label": "版式",
         "default": "split",
         "options": [
           {
@@ -16715,73 +17430,84 @@ export const pages = [
             "label": "通栏横排"
           }
         ],
-        "desc": "左陈述右数字 / 上陈述下数字横排",
+        "describe": "左陈述右数字 / 上陈述下数字横排",
         "publicKey": "layout",
         "publicLabel": "版式",
+        "desc": "左陈述右数字 / 上陈述下数字横排",
         "description": "左陈述右数字 / 上陈述下数字横排"
       },
       {
         "key": "pointCount",
-        "label": "数字条目",
         "type": "number",
+        "label": "数字条目",
         "default": 4,
         "min": 2,
         "step": 1,
-        "desc": "展示的数字条目数量",
+        "describe": "展示的数字条目数量",
+        "max": 4,
         "publicKey": "itemCount",
         "publicLabel": "数字条目",
+        "desc": "展示的数字条目数量",
         "description": "展示的数字条目数量"
       },
       {
         "key": "focusEnabled",
-        "label": "重点强调",
         "type": "toggle",
+        "label": "重点强调",
         "default": true,
-        "desc": "辉光强调某一条数字",
+        "describe": "辉光强调某一条数字",
         "publicKey": "focusEnabled",
         "publicLabel": "重点强调",
+        "desc": "辉光强调某一条数字",
         "description": "辉光强调某一条数字"
       },
       {
         "key": "focusIndex",
-        "label": "强调项",
         "type": "number",
+        "label": "强调项",
         "default": 3,
         "min": 0,
         "step": 1,
-        "desc": "被强调条目的序号",
+        "oneBased": true,
+        "describe": "被强调条目的序号",
+        "max": 3,
+        "maxFromKey": "pointCount",
         "publicKey": "focusIndex",
         "publicLabel": "强调项",
+        "desc": "被强调条目的序号",
         "description": "被强调条目的序号"
       },
       {
         "key": "showLead",
-        "label": "支撑导语",
         "type": "toggle",
+        "label": "支撑导语",
         "default": true,
-        "desc": "陈述下方支撑导语显隐",
+        "describe": "陈述下方支撑导语显隐",
         "publicKey": "showLead",
         "publicLabel": "支撑导语",
+        "desc": "陈述下方支撑导语显隐",
         "description": "陈述下方支撑导语显隐"
       },
       {
         "key": "showNote",
-        "label": "条目注解",
         "type": "toggle",
+        "label": "条目注解",
         "default": true,
-        "desc": "数字条目的一句注解显隐",
+        "describe": "数字条目的一句注解显隐",
         "publicKey": "showNote",
         "publicLabel": "条目注解",
+        "desc": "数字条目的一句注解显隐",
         "description": "数字条目的一句注解显隐"
       },
       {
         "key": "showRule",
-        "label": "分隔线",
         "type": "toggle",
+        "label": "分隔线",
         "default": true,
-        "desc": "条目分隔线 / 分栏竖线显隐",
+        "describe": "条目分隔线 / 分栏竖线显隐",
         "publicKey": "showRule",
         "publicLabel": "分隔线",
+        "desc": "条目分隔线 / 分栏竖线显隐",
         "description": "条目分隔线 / 分栏竖线显隐"
       }
     ],
@@ -16845,8 +17571,8 @@ export const pages = [
     "controls": [
       {
         "key": "scheme",
-        "label": "配色方案",
         "type": "enum",
+        "label": "配色方案",
         "default": "green",
         "options": [
           {
@@ -16869,8 +17595,8 @@ export const pages = [
       },
       {
         "key": "emphasis",
-        "label": "强调卡片",
         "type": "enum",
+        "label": "强调卡片",
         "default": "ticket",
         "options": [
           {
@@ -16893,8 +17619,8 @@ export const pages = [
       },
       {
         "key": "breath",
-        "label": "内光呼吸感",
         "type": "slider",
+        "label": "内光呼吸感",
         "default": 55,
         "min": 0,
         "max": 100,
@@ -16906,8 +17632,8 @@ export const pages = [
       },
       {
         "key": "magnet",
-        "label": "磁吸悬停",
         "type": "toggle",
+        "label": "磁吸悬停",
         "default": true,
         "desc": "焦点卡片跟随指针产生轻微位移和倾斜。",
         "publicKey": "magnet",
@@ -16916,8 +17642,8 @@ export const pages = [
       },
       {
         "key": "aurora",
-        "label": "渐变流光",
         "type": "toggle",
+        "label": "渐变流光",
         "default": true,
         "desc": "开启标题、数字和图表重点元素的流光渐变。",
         "publicKey": "aurora",
@@ -16926,8 +17652,8 @@ export const pages = [
       },
       {
         "key": "auroraSpeed",
-        "label": "流光速度",
         "type": "slider",
+        "label": "流光速度",
         "default": 1,
         "min": 0.4,
         "max": 3,
@@ -16939,8 +17665,8 @@ export const pages = [
       },
       {
         "key": "align",
-        "label": "对齐",
         "type": "enum",
+        "label": "对齐",
         "default": "left",
         "options": [
           {
@@ -16952,59 +17678,65 @@ export const pages = [
             "label": "居中"
           }
         ],
-        "desc": "封底整体对齐方式",
+        "describe": "封底整体对齐方式",
         "publicKey": "align",
         "publicLabel": "对齐",
+        "desc": "封底整体对齐方式",
         "description": "封底整体对齐方式"
       },
       {
         "key": "showGhost",
-        "label": "背景巨型字",
         "type": "toggle",
+        "label": "背景巨型字",
         "default": true,
-        "desc": "背景描边巨型字（如 FIN）显隐",
+        "describe": "背景描边巨型字（如 FIN）显隐",
         "publicKey": "showGhost",
         "publicLabel": "背景巨型字",
+        "desc": "背景描边巨型字（如 FIN）显隐",
         "description": "背景描边巨型字（如 FIN）显隐"
       },
       {
         "key": "showMark",
-        "label": "装饰引号",
         "type": "toggle",
+        "label": "装饰引号",
         "default": true,
-        "desc": "主张上方装饰引号显隐",
+        "describe": "主张上方装饰引号显隐",
         "publicKey": "showMark",
         "publicLabel": "装饰引号",
+        "desc": "主张上方装饰引号显隐",
         "description": "主张上方装饰引号显隐"
       },
       {
         "key": "showRule",
-        "label": "发光分隔线",
         "type": "toggle",
+        "label": "发光分隔线",
         "default": true,
-        "desc": "主张与说明之间的发光线显隐",
+        "describe": "主张与说明之间的发光线显隐",
         "publicKey": "showRule",
         "publicLabel": "发光分隔线",
+        "desc": "主张与说明之间的发光线显隐",
         "description": "主张与说明之间的发光线显隐"
       },
       {
         "key": "showSub",
-        "label": "补充说明",
         "type": "toggle",
+        "label": "补充说明",
         "default": true,
-        "desc": "主张下方补充说明显隐",
+        "describe": "主张下方补充说明显隐",
         "publicKey": "showSub",
         "publicLabel": "补充说明",
+        "desc": "主张下方补充说明显隐",
         "description": "主张下方补充说明显隐"
       },
       {
         "key": "showSignature",
-        "label": "落款署名",
         "type": "toggle",
+        "label": "落款署名",
         "default": true,
-        "desc": "底部报告名 / 日期 / 口径显隐",
+        "describe": "底部报告名 / 日期 / 口径显隐",
         "publicKey": "showSignature",
         "publicLabel": "落款署名",
+        "desc": "底部报告名 / 日期 / 口径显隐",
         "description": "底部报告名 / 日期 / 口径显隐"
       }
     ],

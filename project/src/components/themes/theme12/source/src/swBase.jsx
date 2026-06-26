@@ -88,13 +88,13 @@ export function Kicker({ children, accent = C.orange }) {
   );
 }
 
-export function Bar({ meta, accent = C.orange, dark = false }) {
+export function Bar({ meta, accent = C.orange, dark = false, divider = true }) {
   const fg = dark ? '#fff' : C.ink;
   const metaC = dark ? 'rgba(255,255,255,.82)' : C.inkMut;
   const line = dark ? C.lineD : C.line;
   return (
     <div data-sw-unit="" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      paddingBottom: 20, borderBottom: '1px solid ' + line, flexShrink: 0, position: 'relative', zIndex: 5 }}>
+      paddingBottom: 20, borderBottom: divider ? '1px solid ' + line : 'none', flexShrink: 0, position: 'relative', zIndex: 5 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
         <span style={{ width: 16, height: 16, background: accent, borderRadius: 4 }} />
         <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.2em', color: fg }}>CREATIVE SYSTEM</span>

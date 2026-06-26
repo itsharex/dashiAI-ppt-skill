@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  cardCount       number 卡片数量          默认 4   可选 2–4
  *  focusEnabled    bool   重点突出开关       默认 false
- *  focusIndex      number 重点项序号(从1起)  默认 1
+ *  focusIndex      number 重点项序号(从1起)  默认 2
  *  showTags        bool   底部标签显隐       默认 true
  *  showDecorations bool   装饰元素显隐       默认 true
  *  mediaCount      number 图片槽数量         默认 0   可选 0–4（从左起替换为图片卡）
@@ -85,7 +85,7 @@ function Slide02Cards(props) {
       copy = SLIDE02CARDS_COPY,
       cardCount = 4,
       focusEnabled = false,
-      focusIndex = 1,
+      focusIndex = 2,
       showTags = true,
       showDecorations = true,
       mediaCount = 0,
@@ -217,7 +217,7 @@ function Slide02Cards(props) {
       ...hlDefaults,
       cardCount: 4,
       focusEnabled: false,
-      focusIndex: 1,
+      focusIndex: 2,
       showTags: true,
       showDecorations: true,
       mediaCount: 0,
@@ -236,7 +236,7 @@ function Slide02Cards(props) {
     ...hlControls,
     { key: 'cardCount', type: 'slider', label: '卡片数量', min: 2, max: 4, step: 1, default: 4, desc: '赛道卡片数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一张卡片' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'cardCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡片的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'cardCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡片的序号' },
     { key: 'mediaCount', type: 'slider', label: '图片槽数量', min: 0, max: 4, step: 1, default: 0, maxFromKey: 'cardCount', desc: '从左起 N 张卡片加入自适应图片槽' },
     { key: 'showTags', type: 'toggle', label: '底部标签', default: true, desc: '卡片底部小标签' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

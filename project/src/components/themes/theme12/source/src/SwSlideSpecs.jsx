@@ -17,6 +17,7 @@ export const meta = { id: 'specs', index: 29, label: '规格清单 / Spec Sheet'
 
 export const defaultProps = {
   accent: C.purple,
+  theme: 'light',          // 'light' | 'dark'
   groupCount: 4,           // 2–4 spec groups
   columns: 2,              // 1–2 columns
   showLeaders: true,       // dotted leader lines
@@ -51,11 +52,17 @@ export const controls = [
     desc: '分组排布的列数' },
   { key: 'showLeaders', label: '引导点', type: 'toggle', def: true, desc: '显示/隐藏项与值之间的虚线引导' },
   { key: 'showLede', label: '显示导语', type: 'toggle', def: true, desc: '显示/隐藏标题区说明' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.purple,
     options: [C.purple, C.orange, C.cyan, C.green], desc: '分组标号 / 重点值 / 页脚强调色' },
 ];
 
-function Group({ g, accent, idx, leaders, rowCols, dense }) {
+function Group({ g, accent, idx, leaders, rowCols, dense, dark }) {
+  const labelC = dark ? '#c8c0bd' : '#5a4f54';
+  const valC = dark ? C.blush : C.ink;
+  const rowLine = dark ? C.lineD : C.line;
+  const dotC = dark ? C.lineD2 : C.line2;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
@@ -68,12 +75,12 @@ function Group({ g, accent, idx, leaders, rowCols, dense }) {
           const lastInCol = i >= g.rows.length - rowCols; // bottom row of each sub-column
           return (
             <div key={r.k} style={{ display: 'flex', alignItems: 'baseline', gap: 8, padding: (dense ? 5 : 9) + 'px 0',
-              borderBottom: lastInCol ? 'none' : '1px solid ' + C.line }}>
-              <span style={{ fontSize: 22, color: '#5a4f54', whiteSpace: 'nowrap' }}>{r.k}</span>
-              <span style={{ flex: 1, borderBottom: leaders ? '2px dotted ' + C.line2 : 'none',
+              borderBottom: lastInCol ? 'none' : '1px solid ' + rowLine }}>
+              <span style={{ fontSize: 22, color: labelC, whiteSpace: 'nowrap' }}>{r.k}</span>
+              <span style={{ flex: 1, borderBottom: leaders ? '2px dotted ' + dotC : 'none',
                 transform: 'translateY(-5px)', minWidth: 14 }} />
               <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 23, letterSpacing: '-.5px',
-                color: C.ink, whiteSpace: 'nowrap' }}>{r.v}</span>
+                color: valC, whiteSpace: 'nowrap' }}>{r.v}</span>
             </div>
           );
         })}
@@ -89,15 +96,22 @@ export default function SwSlideSpecs(props) {
   const cols = Math.max(1, Math.min(2, p.columns));
   const groups = (p.groups || []).slice(0, count);
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const headRule = dark ? C.lineD2 : C.line2;
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '38px 48px 40px', display: 'flex', flexDirection: 'column' }}>
 
         <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
-          borderBottom: '2px solid ' + C.line2, paddingBottom: 18, marginBottom: 26 }}>
+          borderBottom: '2px solid ' + headRule, paddingBottom: 18, marginBottom: 26 }}>
           <div>
             <Kicker accent={accent}>{p.kicker}</Kicker>
             {p.showLede && (
@@ -107,19 +121,19 @@ export default function SwSlideSpecs(props) {
             )}
           </div>
           <div style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.12em', textTransform: 'uppercase',
-            color: C.inkMut, textAlign: 'right' }}>{renderSwText(p.metaLine)}</div>
+            color: mutedC, textAlign: 'right' }}>{renderSwText(p.metaLine)}</div>
         </div>
 
         <div style={{ flex: 1, minHeight: 0, display: 'grid', columnGap: 64, rowGap: cols === 1 ? 16 : 30,
           gridTemplateColumns: 'repeat(' + cols + ',1fr)', alignContent: 'start' }}>
           {groups.map((g, i) => (
             <Group key={g.g} g={g} accent={accent} idx={i} leaders={p.showLeaders}
-              rowCols={cols === 1 ? 2 : 1} dense={cols === 1} />
+              rowCols={cols === 1 ? 2 : 1} dense={cols === 1} dark={dark} />
           ))}
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

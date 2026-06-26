@@ -16,6 +16,7 @@ export const meta = { id: 'timeline', index: 77, label: '时间轴 / Roadmap' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',           // 'light' | 'dark'
   milestoneCount: 5,        // 3–5 nodes
   focus: true,              // highlight the current milestone
   focusIndex: 4,            // which node is "now" (1-based)
@@ -47,6 +48,8 @@ export const controls = [
   { key: 'showProgress', label: '进度填充', type: 'toggle', def: true, desc: '连接线按当前进度着色填充' },
   { key: 'showDescriptions', label: '节点描述', type: 'toggle', def: true, desc: '显示/隐藏每个节点的描述文字' },
   { key: 'showIntro', label: '显示引言', type: 'toggle', def: true, desc: '显示/隐藏顶部标题与引言' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '当前节点 / 进度 / 页脚强调色' },
 ];
@@ -54,6 +57,7 @@ export const controls = [
 export default function SwSlideTimeline(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(5, p.milestoneCount));
   const now = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) : 0;
   const items = (p.milestones || []).slice(0, count);
@@ -63,9 +67,14 @@ export default function SwSlideTimeline(props) {
   const lineWidth = (100 - 2 * half) + '%';
   const progress = now > 1 ? ((now - 1) / (count - 1)) * (100 - 2 * half) : 0;
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const railC = dark ? C.lineD2 : C.line2;
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column',
         position: 'relative', zIndex: 3, padding: '8px 0' }}>
@@ -85,7 +94,7 @@ export default function SwSlideTimeline(props) {
             const isNow = (i + 1) === now;
             return (
               <div key={m.q} style={{ textAlign: 'center', fontFamily: F.mono, fontWeight: 700, fontSize: 24,
-                letterSpacing: '.06em', color: isNow ? accent : C.inkMut }}>{m.q}</div>
+                letterSpacing: '.06em', color: isNow ? accent : mut }}>{m.q}</div>
             );
           })}
         </div>
@@ -93,7 +102,7 @@ export default function SwSlideTimeline(props) {
         {/* track */}
         <div style={{ position: 'relative', flexShrink: 0, height: 44, marginTop: 18 }}>
           <div style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', left: lineLeft, width: lineWidth, height: 4,
-            background: C.line2, borderRadius: 999 }} />
+            background: railC, borderRadius: 999 }} />
           {p.showProgress && now > 1 && (
             <div style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', left: lineLeft, width: progress + '%', height: 4,
               background: accent, borderRadius: 999 }} />
@@ -115,7 +124,7 @@ export default function SwSlideTimeline(props) {
                     </span>
                   ) : (
                     <span style={{ width: 26, height: 26, borderRadius: '50%', background: dotColor,
-                      border: '5px solid ' + C.blush, boxShadow: '0 0 0 2px ' + dotColor }} />
+                      border: '5px solid ' + bg, boxShadow: '0 0 0 2px ' + dotColor }} />
                   )}
                 </div>
               );
@@ -160,7 +169,7 @@ export default function SwSlideTimeline(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

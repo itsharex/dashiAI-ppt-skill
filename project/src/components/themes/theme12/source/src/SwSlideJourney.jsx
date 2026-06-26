@@ -17,6 +17,7 @@ export const meta = { id: 'journey', index: 72, label: '旅程纵览 / Journey' 
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   stepCount: 5,            // 3–5 nodes
   focus: true,             // highlight the "now" node
   focusIndex: 5,           // which node (1-based)
@@ -47,6 +48,8 @@ export const controls = [
     dependsOn: 'focus', desc: '当前节点序号（1 起）' },
   { key: 'showSpine', label: '中轴脊线', type: 'toggle', def: true, desc: '显示/隐藏中央脊线与进度填充' },
   { key: 'showDescriptions', label: '节点描述', type: 'toggle', def: true, desc: '显示/隐藏节点描述文字' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '当前节点 / 进度 / 页脚强调色' },
 ];
@@ -54,14 +57,22 @@ export const controls = [
 export default function SwSlideJourney(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(5, p.stepCount));
   const now = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) : 0;
   const nodes = (p.nodes || []).slice(0, count);
   const progress = now > 1 ? ((now - 0.5) / count) * 100 : (now === 1 ? (0.5 / count) * 100 : 0);
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : '#5a4f54';
+  const cardBg = dark ? '#241e20' : C.paper;
+  const railC = dark ? C.lineD2 : C.line2;
+  const lineC = dark ? C.lineD : C.line;
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '376px 1fr', gap: 56,
         padding: '14px 0 6px' }}>
@@ -72,7 +83,7 @@ export default function SwSlideJourney(props) {
           <h2 style={{ fontWeight: 900, fontSize: 56, lineHeight: 1.06, letterSpacing: '-1.6px', marginTop: 16 }}>
             {renderSwText(p.title, { hl: { tone: 'o' } })}
           </h2>
-          <p style={{ fontSize: T.body, lineHeight: 1.66, color: '#5a4f54', marginTop: 20, maxWidth: 320 }}>
+          <p style={{ fontSize: T.body, lineHeight: 1.66, color: mut, marginTop: 20, maxWidth: 320 }}>
             {p.intro}
           </p>
         </div>
@@ -82,7 +93,7 @@ export default function SwSlideJourney(props) {
           {p.showSpine && (
             <>
               <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 4,
-                transform: 'translateX(-50%)', background: C.line2, borderRadius: 999 }} />
+                transform: 'translateX(-50%)', background: railC, borderRadius: 999 }} />
               {now > 0 && (
                 <div style={{ position: 'absolute', left: '50%', top: 0, height: progress + '%', width: 4,
                   transform: 'translateX(-50%)', background: accent, borderRadius: 999 }} />
@@ -110,7 +121,7 @@ export default function SwSlideJourney(props) {
                       </span>
                     ) : (
                       <span style={{ display: 'block', width: 22, height: 22, borderRadius: '50%', background: dot,
-                        border: '5px solid ' + C.blush, boxShadow: '0 0 0 2px ' + dot }} />
+                        border: '5px solid ' + bg, boxShadow: '0 0 0 2px ' + dot }} />
                     )}
                   </div>
 
@@ -119,10 +130,10 @@ export default function SwSlideJourney(props) {
                     textAlign: right ? 'left' : 'right' }}>
                     <div style={{ display: 'inline-block', textAlign: 'left',
                       borderRadius: 18, padding: '13px 20px', maxWidth: 440,
-                      background: isNow ? accent : C.paper,
-                      color: isNow ? '#fff' : C.ink,
+                      background: isNow ? accent : cardBg,
+                      color: isNow ? '#fff' : fg,
                       boxShadow: isNow ? '0 16px 38px rgba(20,15,16,.2)' : '0 6px 20px rgba(20,15,16,.06)',
-                      border: isNow ? 'none' : '1px solid ' + C.line }}>
+                      border: isNow ? 'none' : '1px solid ' + lineC }}>
                       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
                         <span style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 22, letterSpacing: '.04em',
                           color: isNow ? '#fff' : accent }}>{m.y}</span>
@@ -133,10 +144,10 @@ export default function SwSlideJourney(props) {
                         )}
                       </div>
                       <div style={{ fontWeight: 900, fontSize: 26, letterSpacing: '-.4px', marginTop: 3,
-                        color: isNow ? '#fff' : C.ink }}>{m.t}</div>
+                        color: isNow ? '#fff' : fg }}>{m.t}</div>
                       {p.showDescriptions && (
                         <p style={{ fontSize: 20, lineHeight: 1.42, marginTop: 5,
-                          color: isNow ? 'rgba(255,255,255,.92)' : '#5a4f54' }}>{m.d}</p>
+                          color: isNow ? 'rgba(255,255,255,.92)' : mut }}>{m.d}</p>
                       )}
                     </div>
                   </div>
@@ -147,7 +158,7 @@ export default function SwSlideJourney(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

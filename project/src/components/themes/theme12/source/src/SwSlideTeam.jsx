@@ -91,7 +91,7 @@ export default function SwSlideTeam(props) {
         )}
 
         <div style={{ flex: 1, minHeight: 0, display: 'grid', gap: 20,
-          gridTemplateColumns: 'repeat(' + cols + ',1fr)', gridAutoRows: '1fr' }}>
+          gridTemplateColumns: 'repeat(' + cols + ', minmax(0, 1fr))', gridAutoRows: 'minmax(0, 1fr)' }}>
           {members.map((m, i) => {
             const pal = swCardPalette[i % swCardPalette.length];
             return (
@@ -100,7 +100,7 @@ export default function SwSlideTeam(props) {
                 display: 'flex', flexDirection: 'column', minWidth: 0, minHeight: 0 }}>
                 <span style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 6, background: pal.bg, zIndex: 2 }} />
                 <div style={{ flex: 1, minHeight: 0, padding: 14, paddingTop: 16 }}>
-                  <div style={{ width: '100%', height: '100%' }}>
+                  <div style={{ width: '100%', height: '100%', minWidth: 0, minHeight: 0 }}>
                     <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
                       fit={p.mediaFit} accent={pal.bg} radius={14} tone={dark ? 'dark' : 'light'}
                       placeholder={p.mediaPlaceholder} />

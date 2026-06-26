@@ -16,6 +16,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_METRICS_STATS = 4;
+const MAX_METRICS_FOCUS_INDEX = 3;
+
 export const slideMetricsDefaults = {
   kicker: 'KEY FIGURES · 年度关键指标',
   title: '一年资本盛宴 ',
@@ -35,15 +38,15 @@ export const slideMetricsDefaults = {
 };
 
 export const slideMetricsControls = [
-  { key: 'statCount', type: 'number', label: '数字数量', default: 4, min: 2, step: 1,
-    maxFrom: (p) => (p.stats ? p.stats.length : 4), describe: '展示的关键数字数量' },
+  { key: 'statCount', type: 'number', label: '数字数量', default: 4, min: 2, max: MAX_METRICS_STATS, step: 1,
+    maxFrom: (p) => Math.min(MAX_METRICS_STATS, p.stats ? p.stats.length : MAX_METRICS_STATS), describe: '展示的关键数字数量' },
   { key: 'layout', type: 'enum', label: '版式', default: 'row',
     options: [{ value: 'row', label: '等分排列' }, { value: 'feature', label: '主次结构' }],
     describe: '等分一排，或一个主数字 + 其余次级' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: false,
     describe: '是否高亮其中一个数字' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.statCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_METRICS_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_METRICS_FOCUS_INDEX + 1, p.statCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调数字的序号' },
   { key: 'showDelta', type: 'toggle', label: '注解徽章', default: true,
     describe: '显示/隐藏数字旁的注解徽章' },
@@ -53,9 +56,9 @@ export const slideMetricsControls = [
 
 export function SlideMetrics(props) {
   const p = { ...slideMetricsDefaults, ...props };
-  const count = Math.max(2, Math.min(p.stats.length, p.statCount));
+  const count = Math.max(2, Math.min(MAX_METRICS_STATS, p.stats.length, p.statCount));
   const stats = p.stats.slice(0, count);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_METRICS_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const feature = p.layout === 'feature';
 
   const Panel = ({ s, i, hero }) => {

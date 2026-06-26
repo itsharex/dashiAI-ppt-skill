@@ -16,6 +16,7 @@ export const meta = { id: 'pricing', index: 37, label: '价格 / Plans' };
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   planCount: 3,            // 2–4
   highlightIndex: 2,       // promoted plan (1-based)
   billing: 'monthly',      // 'monthly' | 'yearly'
@@ -52,6 +53,8 @@ export const controls = [
     options: [{ value: 'monthly', label: '按月' }, { value: 'yearly', label: '按年' }],
     desc: '切换月付 / 年付价格' },
   { key: 'showFeatures', label: '功能清单', type: 'toggle', def: true, desc: '显示/隐藏每个方案的功能清单' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '推荐卡 / 对勾 / 页脚强调色' },
 ];
@@ -59,6 +62,10 @@ export const controls = [
 export default function SwSlidePricing(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
   const count = Math.max(2, Math.min(4, p.planCount));
   const hi = Math.max(1, Math.min(count, p.highlightIndex));
   const yearly = p.billing === 'yearly';
@@ -72,8 +79,8 @@ export default function SwSlidePricing(props) {
   };
 
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
         margin: '24px 0 22px', flexShrink: 0 }}>
@@ -81,10 +88,10 @@ export default function SwSlidePricing(props) {
           {renderSwText(p.title, { hl: { tone: 'o' } })}
         </h2>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontFamily: F.mono,
-          fontSize: 22, letterSpacing: '.08em', textTransform: 'uppercase', color: C.inkMut, flexShrink: 0 }}>
-          <span style={{ fontWeight: yearly ? 400 : 700, color: yearly ? C.inkMut : C.ink }}>{p.billMonthly}</span>
+          fontSize: 22, letterSpacing: '.08em', textTransform: 'uppercase', color: mutedC, flexShrink: 0 }}>
+          <span style={{ fontWeight: yearly ? 400 : 700, color: yearly ? mutedC : fg }}>{p.billMonthly}</span>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: accent }} />
-          <span style={{ fontWeight: yearly ? 700 : 400, color: yearly ? C.ink : C.inkMut }}>{p.billYearly}</span>
+          <span style={{ fontWeight: yearly ? 700 : 400, color: yearly ? fg : mutedC }}>{p.billYearly}</span>
         </div>
       </div>
 
@@ -94,13 +101,22 @@ export default function SwSlidePricing(props) {
           const on = (i + 1) === hi;
           const pr = priceOf(pl);
           const pal = swCardPalette[i % swCardPalette.length];
-          const priceC = on ? accent : pal.bg;
+          // The highlighted card is a dark surface in BOTH modes; in dark mode the
+          // ordinary cards also become dark panels, so any card with a dark surface
+          // (`onDark`) uses the light text ramp.
+          const onDark = on || dark;
+          // Light mode keeps the per-card palette colour for the price; on a dark
+          // surface several palette hues (e.g. the navy/cyan card) lose contrast,
+          // so non-highlighted prices fall back to the legible foreground tint.
+          const priceC = on ? accent : (dark ? C.blush : pal.bg);
+          const cardSurface = on ? (dark ? '#2e2629' : C.dark) : (dark ? '#241e20' : C.paper);
           return (
             <div key={pl.en} style={{ position: 'relative', display: 'flex', flexDirection: 'column',
               borderRadius: 28, padding: on ? '40px 36px 36px' : '36px 34px', overflow: 'hidden',
-              background: on ? C.dark : C.paper, color: on ? C.blush : C.ink,
-              border: on ? 'none' : '1px solid ' + C.line2,
-              transform: on ? 'translateY(-10px)' : 'none', boxShadow: on ? '0 24px 60px rgba(20,15,16,.22)' : 'none' }}>
+              background: cardSurface, color: onDark ? C.blush : C.ink,
+              border: on ? 'none' : '1px solid ' + (dark ? C.lineD2 : C.line2),
+              transform: on ? 'translateY(-10px)' : 'none',
+              boxShadow: on ? (dark ? '0 24px 60px rgba(0,0,0,.5)' : '0 24px 60px rgba(20,15,16,.22)') : 'none' }}>
 
               <span aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 7,
                 background: on ? accent : pal.bg }} />
@@ -114,14 +130,14 @@ export default function SwSlidePricing(props) {
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginTop: on ? 30 : 6 }}>
                 <span style={{ fontWeight: 900, fontSize: 36, letterSpacing: '-.5px' }}>{pl.cn}</span>
                 <span style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.12em',
-                  textTransform: 'uppercase', color: on ? '#9a8f8c' : C.inkMut }}>{pl.en}</span>
+                  textTransform: 'uppercase', color: onDark ? '#9a8f8c' : C.inkMut }}>{pl.en}</span>
               </div>
-              <p style={{ fontSize: 23, color: on ? '#c8c0bd' : '#6a5f64', marginTop: 8 }}>{pl.desc}</p>
+              <p style={{ fontSize: 23, color: onDark ? '#c8c0bd' : '#6a5f64', marginTop: 8 }}>{pl.desc}</p>
 
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 22,
-                paddingBottom: 22, borderBottom: '1px solid ' + (on ? C.lineD : C.line) }}>
+                paddingBottom: 22, borderBottom: '1px solid ' + (onDark ? C.lineD : C.line) }}>
                 <span style={{ fontWeight: 900, fontSize: 62, letterSpacing: '-2px', color: priceC }}>{pr.big}</span>
-                <span style={{ fontFamily: F.mono, fontSize: 22, color: on ? '#9a8f8c' : C.inkMut }}>{pr.unit || pl.note}</span>
+                <span style={{ fontFamily: F.mono, fontSize: 22, color: onDark ? '#9a8f8c' : C.inkMut }}>{pr.unit || pl.note}</span>
               </div>
 
               {p.showFeatures && (
@@ -132,7 +148,7 @@ export default function SwSlidePricing(props) {
                         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                         background: on ? accent : pal.bg, color: on ? '#fff' : pal.title,
                         fontFamily: F.mono, fontWeight: 700, fontSize: 16 }}>✓</span>
-                      <span style={{ fontSize: 24, lineHeight: 1.45, color: on ? '#e7ddda' : '#3a3034' }}>{f}</span>
+                      <span style={{ fontSize: 24, lineHeight: 1.45, color: onDark ? '#e7ddda' : '#3a3034' }}>{f}</span>
                     </div>
                   ))}
                 </div>
@@ -149,7 +165,7 @@ export default function SwSlidePricing(props) {
       </div>
 
       <div style={{ marginTop: 22 }}>
-        <Footer page={p.page} total={p.total} accent={accent} />
+        <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
       </div>
     </SlideRoot>
   );

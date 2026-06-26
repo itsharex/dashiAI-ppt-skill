@@ -17,6 +17,7 @@ export const meta = { id: 'roadmap', index: 32, label: '路线图 / Roadmap' };
 
 export const defaultProps = {
   accent: C.cyan,
+  theme: 'light',          // 'light' | 'dark'
   laneCount: 3,            // 2–4 lanes
   quarterCount: 4,         // 4–6 columns
   focus: false,
@@ -53,6 +54,8 @@ export const controls = [
   { key: 'focusIndex', label: '聚焦第几条', type: 'slider', def: 1, min: 1, max: 4, step: 1,
     dependsOn: 'focus', desc: '高亮的泳道序号' },
   { key: 'showMilestones', label: '里程碑', type: 'toggle', def: true, desc: '显示/隐藏菱形里程碑标记' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.cyan,
     options: [C.cyan, C.orange, C.purple, C.green], desc: '当前季度 / 导语 / 页脚强调色' },
 ];
@@ -60,6 +63,7 @@ export const controls = [
 export default function SwSlideRoadmap(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const lanes = Math.max(2, Math.min(4, p.laneCount));
   const qn = Math.max(4, Math.min(6, p.quarterCount));
   const data = (p.lanes || []).slice(0, lanes);
@@ -70,9 +74,13 @@ export default function SwSlideRoadmap(props) {
   const labelW = 230;
   const cell = 'minmax(0, 1fr)';
 
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+
   return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 22, display: 'flex', alignItems: 'flex-end',
         justifyContent: 'space-between', gap: 30 }}>
@@ -83,7 +91,7 @@ export default function SwSlideRoadmap(props) {
           </h2>
         </div>
         <div style={{ fontFamily: F.mono, fontSize: 21, letterSpacing: '.12em', textTransform: 'uppercase',
-          color: C.inkMut, textAlign: 'right', paddingBottom: 6 }}>
+          color: mut, textAlign: 'right', paddingBottom: 6 }}>
           {lanes} lanes · {qn} quarters
         </div>
       </div>
@@ -95,7 +103,7 @@ export default function SwSlideRoadmap(props) {
           <div />
           {qs.map((q, i) => (
             <div key={q} style={{ textAlign: 'center', fontFamily: F.mono, fontWeight: 700, fontSize: 22,
-              letterSpacing: '.08em', color: i === nowCol ? accent : C.inkMut,
+              letterSpacing: '.08em', color: i === nowCol ? accent : mut,
               padding: '8px 0', borderRadius: 8,
               background: i === nowCol ? 'rgba(0,0,0,0)' : 'transparent' }}>
               {q}{i === nowCol && <div style={{ fontSize: 15, letterSpacing: '.16em', marginTop: 2 }}>{p.nowLabel}</div>}
@@ -126,7 +134,9 @@ export default function SwSlideRoadmap(props) {
                     gridTemplateColumns: 'repeat(' + qn + ',' + cell + ')', gap: 12 }}>
                     {qs.map((q, ci) => (
                       <div key={q} style={{ borderRadius: 10,
-                        background: ci === nowCol ? 'rgba(59,182,236,.08)' : 'rgba(27,21,24,.035)' }} />
+                        background: ci === nowCol
+                          ? (dark ? 'rgba(59,182,236,.16)' : 'rgba(59,182,236,.08)')
+                          : (dark ? 'rgba(245,225,227,.05)' : 'rgba(27,21,24,.035)') }} />
                     ))}
                   </div>
                   {/* bars */}
@@ -151,8 +161,8 @@ export default function SwSlideRoadmap(props) {
                     <div style={{ position: 'absolute', top: -2, bottom: -2,
                       left: 'calc(' + ((lane.ms + 1) / qn) * 100 + '% - 11px)',
                       display: 'flex', alignItems: 'center', zIndex: 3 }}>
-                      <span style={{ width: 22, height: 22, background: C.ink, transform: 'rotate(45deg)',
-                        border: '3px solid ' + C.blush, boxShadow: '0 2px 8px rgba(0,0,0,.3)' }} />
+                      <span style={{ width: 22, height: 22, background: dark ? C.blush : C.ink, transform: 'rotate(45deg)',
+                        border: '3px solid ' + (dark ? C.dark : C.blush), boxShadow: '0 2px 8px rgba(0,0,0,.3)' }} />
                     </div>
                   )}
                 </div>
@@ -162,7 +172,7 @@ export default function SwSlideRoadmap(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

@@ -18,6 +18,7 @@ export const meta = { id: 'moodboard', index: 63, label: '灵感板 / Moodboard'
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   mediaCount: 4,           // 3–6 pinned photos
   mediaFit: 'cover',
   showSwatches: true,
@@ -47,6 +48,8 @@ export const controls = [
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '照片填充方式' },
   { key: 'showSwatches', label: '色卡', type: 'toggle', def: true, desc: '显示/隐藏右侧配色色卡' },
   { key: 'showNote', label: '便签', type: 'toggle', def: true, desc: '显示/隐藏右侧手写便签' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '导语 / 高亮 / 页脚强调色' },
 ];
@@ -54,6 +57,7 @@ export const controls = [
 export default function SwSlideMoodboard(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(6, p.mediaCount));
   const cols = count === 3 ? 3 : count <= 4 ? 2 : 3;
   const rows = Math.ceil(count / cols);
@@ -61,14 +65,20 @@ export default function SwSlideMoodboard(props) {
   const TILT = p.tilt;
   const SWATCHES = p.swatches;
 
+  const bg = dark ? C.dark : '#e7ded3';
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const paper = dark ? '#241e20' : '#ffffff';
+  const swatchBorder = dark ? C.lineD : 'rgba(27,21,24,.1)';
+
   const Pinned = ({ i }) => (
     <div style={{ position: 'relative', height: '100%', minHeight: 0,
       transform: 'rotate(' + TILT[i % TILT.length] + 'deg)' }}>
-      <div style={{ height: '100%', background: '#fff', padding: 10, paddingBottom: 24,
+      <div style={{ height: '100%', background: paper, padding: 10, paddingBottom: 24,
         display: 'flex', flexDirection: 'column', boxShadow: '0 14px 30px rgba(27,21,24,.22)' }}>
-        <div style={{ flex: 1, minHeight: 0 }}>
+        <div style={{ flex: 1, minHeight: 0, minWidth: 0 }}>
           <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-            fit={p.mediaFit} accent={PIN[i % PIN.length]} radius={0} tone="light" placeholder={p.mediaPlaceholder} />
+            fit={p.mediaFit} accent={PIN[i % PIN.length]} radius={0} tone={dark ? 'dark' : 'light'} placeholder={p.mediaPlaceholder} />
         </div>
       </div>
       <span style={{ position: 'absolute', top: -9, left: '50%', transform: 'translateX(-50%)',
@@ -78,8 +88,8 @@ export default function SwSlideMoodboard(props) {
   );
 
   return (
-    <SlideRoot bg="#e7ded3" color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 18, display: 'flex', alignItems: 'flex-end',
         justifyContent: 'space-between', gap: 40 }}>
@@ -90,17 +100,17 @@ export default function SwSlideMoodboard(props) {
           </h2>
         </div>
         <div style={{ fontFamily: F.mono, fontSize: 21, letterSpacing: '.12em', textTransform: 'uppercase',
-          color: C.inkMut, textAlign: 'right', paddingBottom: 6 }}>
+          color: mut, textAlign: 'right', paddingBottom: 6 }}>
           {p.metaPrefix} {String(count).padStart(2, '0')} pins<br />drag to fill
         </div>
       </div>
 
       <div style={{ flex: 1, minHeight: 0, marginTop: 18, display: 'grid',
-        gridTemplateColumns: (p.showSwatches || p.showNote) ? '1fr 300px' : '1fr', gap: 34 }}>
+        gridTemplateColumns: (p.showSwatches || p.showNote) ? 'minmax(0, 1fr) 300px' : 'minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1fr)', gap: 34 }}>
 
         {/* photo grid */}
         <div style={{ minWidth: 0, minHeight: 0, display: 'grid', gap: 24,
-          gridTemplateColumns: 'repeat(' + cols + ', 1fr)', gridTemplateRows: 'repeat(' + rows + ', 1fr)' }}>
+          gridTemplateColumns: 'repeat(' + cols + ', minmax(0, 1fr))', gridTemplateRows: 'repeat(' + rows + ', minmax(0, 1fr))' }}>
           {Array.from({ length: count }).map((_, i) => <Pinned key={i} i={i} />)}
         </div>
 
@@ -108,14 +118,14 @@ export default function SwSlideMoodboard(props) {
         {(p.showSwatches || p.showNote) && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24, justifyContent: 'center' }}>
             {p.showSwatches && (
-              <div style={{ background: '#fff', borderRadius: 14, padding: 18,
+              <div style={{ background: paper, borderRadius: 14, padding: 18,
                 boxShadow: '0 12px 26px rgba(27,21,24,.16)', transform: 'rotate(1.2deg)' }}>
                 <div style={{ fontFamily: F.mono, fontSize: 17, letterSpacing: '.16em', textTransform: 'uppercase',
-                  color: C.inkMut, marginBottom: 12 }}>{p.paletteLabel}</div>
+                  color: mut, marginBottom: 12 }}>{p.paletteLabel}</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
                   {SWATCHES.map((s) => (
                     <div key={s} style={{ aspectRatio: '1 / 1', borderRadius: 8, background: s,
-                      border: '1px solid rgba(27,21,24,.1)' }} />
+                      border: '1px solid ' + swatchBorder }} />
                   ))}
                 </div>
               </div>
@@ -136,7 +146,7 @@ export default function SwSlideMoodboard(props) {
         )}
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

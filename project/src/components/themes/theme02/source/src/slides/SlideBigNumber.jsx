@@ -21,6 +21,8 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_BIG_NUMBER_SUPPORT = 3;
+
 export const slideBigNumberDefaults = {
   kicker: 'HEADLINE · 资本大年',
   value: '970',
@@ -44,7 +46,8 @@ export const slideBigNumberControls = [
     options: [{ value: 'split', label: '分栏' }, { value: 'center', label: '居中铺满' }],
     describe: '数字+导语分栏，或数字居中铺满' },
   { key: 'supportCount', type: 'number', label: '支撑数据', default: 3, min: 0, step: 1,
-    maxFrom: (p) => (p.support ? p.support.length : 3), describe: '底部支撑小数据数量（0 = 不显示）' },
+    max: MAX_BIG_NUMBER_SUPPORT,
+    maxFrom: (p) => Math.min(MAX_BIG_NUMBER_SUPPORT, p.support ? p.support.length : MAX_BIG_NUMBER_SUPPORT), describe: '底部支撑小数据数量（0 = 不显示）' },
   { key: 'showRing', type: 'toggle', label: '辉光弧环', default: false,
     describe: '主数字背后的发光弧环显隐' },
   { key: 'showLead', type: 'toggle', label: '导语', default: true,
@@ -92,7 +95,7 @@ function HeroNumber({ value, unit, center }) {
 
 export function SlideBigNumber(props) {
   const p = { ...slideBigNumberDefaults, ...props };
-  const sCount = Math.max(0, Math.min(p.support.length, p.supportCount));
+  const sCount = Math.max(0, Math.min(MAX_BIG_NUMBER_SUPPORT, p.support.length, p.supportCount));
   const support = p.support.slice(0, sCount);
   const center = p.align === 'center';
 

@@ -11,7 +11,7 @@
  *  itemCount       number 公司卡数量          默认 3   可选 2–3
  *  mediaCount      number 带图片槽的卡片数      默认 3   可选 0–itemCount
  *  focusEnabled    bool   重点卡高亮开关         默认 true
- *  focusIndex      number 重点卡序号(从1起)     默认 1
+ *  focusIndex      number 重点卡序号(从1起)     默认 2
  *  showMeta        bool   创始人 / 赛道行显隐     默认 true
  *  showRank        bool   左上角名次徽章显隐      默认 true
  *  showDecorations bool   星芒 / 圆环等点缀      默认 true
@@ -62,7 +62,7 @@ function Slide24Trio(props) {
     itemCount = 3,
     mediaCount = 3,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showMeta = true,
     showRank = true,
     showDecorations = true,
@@ -188,7 +188,7 @@ const META = {
     itemCount: 3,
     mediaCount: 3,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showMeta: true,
     showRank: true,
     showDecorations: true,
@@ -201,7 +201,7 @@ const META = {
     { key: 'itemCount', type: 'slider', label: '公司卡数量', min: 2, max: 3, step: 1, default: 3, desc: '展示的公司卡片数量' },
     { key: 'mediaCount', type: 'slider', label: '图片槽数量', min: 0, max: 3, step: 1, default: 3, maxFromKey: 'itemCount', desc: '从左起带图片槽的卡片数(其余转无图态)' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一张卡片' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡片的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'itemCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡片的序号' },
     { key: 'showMeta', type: 'toggle', label: '创始人 / 赛道', default: true, desc: '创始人 + 赛道标签行' },
     { key: 'showRank', type: 'toggle', label: '名次徽章', default: true, desc: '左上角名次徽章' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒 / 圆环等点缀' },

@@ -17,6 +17,7 @@ export const meta = { id: 'bubble', index: 49, label: '气泡图 / Bubble' };
 
 export const defaultProps = {
   accent: C.purple,
+  theme: 'light',          // 'light' | 'dark'
   bubbleCount: 6,          // 4–7 bubbles
   focus: false,
   focusIndex: 4,           // 1-based
@@ -55,6 +56,8 @@ export const controls = [
     dependsOn: 'focus', desc: '高亮的气泡序号' },
   { key: 'showGrid', label: '坐标网格', type: 'toggle', def: true, desc: '显示/隐藏坐标轴与网格' },
   { key: 'showLabels', label: '气泡标签', type: 'toggle', def: true, desc: '显示/隐藏气泡上的名称标签' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.purple,
     options: [C.purple, C.orange, C.cyan, C.green], desc: '聚焦气泡 / 导语 / 页脚强调色' },
 ];
@@ -73,11 +76,20 @@ export default function SwSlideBubble(props) {
   const fi = p.focus ? Math.max(1, Math.min(count, p.focusIndex)) - 1 : -1;
   const ticks = [0, 25, 50, 75, 100];
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const gridStroke = dark ? 'rgba(245,225,227,.07)' : 'rgba(27,21,24,.07)';
+  const axisStroke = dark ? 'rgba(245,225,227,.28)' : 'rgba(27,21,24,.28)';
+  const tickFill = dark ? '#c8c0bd' : '#9a8f8c';
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '34px 48px 22px', display: 'grid', gridTemplateColumns: '1fr 280px', gap: 40 }}>
 
         {/* plot */}
@@ -92,15 +104,15 @@ export default function SwSlideBubble(props) {
               style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}>
               {p.showGrid && ticks.map((t) => (
                 <g key={t}>
-                  <line x1={xAt(t)} y1={M.t} x2={xAt(t)} y2={M.t + PH} stroke="rgba(27,21,24,.07)" strokeWidth="1" />
-                  <line x1={M.l} y1={yAt(t)} x2={W - M.r} y2={yAt(t)} stroke="rgba(27,21,24,.07)" strokeWidth="1" />
-                  <text x={M.l - 14} y={yAt(t) + 6} textAnchor="end" fontFamily={F.mono} fontSize="18" fill="#9a8f8c">{t}</text>
-                  <text x={xAt(t)} y={H - 26} textAnchor="middle" fontFamily={F.mono} fontSize="18" fill="#9a8f8c">{t}</text>
+                  <line x1={xAt(t)} y1={M.t} x2={xAt(t)} y2={M.t + PH} stroke={gridStroke} strokeWidth="1" />
+                  <line x1={M.l} y1={yAt(t)} x2={W - M.r} y2={yAt(t)} stroke={gridStroke} strokeWidth="1" />
+                  <text x={M.l - 14} y={yAt(t) + 6} textAnchor="end" fontFamily={F.mono} fontSize="18" fill={tickFill}>{t}</text>
+                  <text x={xAt(t)} y={H - 26} textAnchor="middle" fontFamily={F.mono} fontSize="18" fill={tickFill}>{t}</text>
                 </g>
               ))}
               {/* axes */}
-              <line x1={M.l} y1={M.t + PH} x2={W - M.r} y2={M.t + PH} stroke="rgba(27,21,24,.28)" strokeWidth="2" />
-              <line x1={M.l} y1={M.t} x2={M.l} y2={M.t + PH} stroke="rgba(27,21,24,.28)" strokeWidth="2" />
+              <line x1={M.l} y1={M.t + PH} x2={W - M.r} y2={M.t + PH} stroke={axisStroke} strokeWidth="2" />
+              <line x1={M.l} y1={M.t} x2={M.l} y2={M.t + PH} stroke={axisStroke} strokeWidth="2" />
 
               {/* bubbles — large first so small sit on top */}
               {data.map((b, i) => ({ b, i })).sort((a, z) => z.b.r - a.b.r).map(({ b, i }) => {
@@ -123,7 +135,7 @@ export default function SwSlideBubble(props) {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: F.mono, fontSize: 19,
-            letterSpacing: '.08em', color: C.inkMut, marginTop: 2 }}>
+            letterSpacing: '.08em', color: mutedC, marginTop: 2 }}>
             <span>{p.axisX}</span>
             <span style={{ color: accent }}>{p.legendSize}</span>
           </div>
@@ -151,7 +163,7 @@ export default function SwSlideBubble(props) {
         </div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

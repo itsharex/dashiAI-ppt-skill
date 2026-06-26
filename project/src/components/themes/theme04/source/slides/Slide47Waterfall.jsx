@@ -11,7 +11,7 @@
  *  segmentCount    number 参与累加的赛道段数(2–5) 默认 5
  *  chartVariant    enum   编码方式             默认 'waterfall' 可选 'waterfall'|'bar'
  *  focusEnabled    bool   重点段高亮开关         默认 true
- *  focusIndex      number 重点段序号(从1起)     默认 1   范围 1–segmentCount
+ *  focusIndex      number 重点段序号(从1起)     默认 2   范围 1–segmentCount
  *  showConnectors  bool   段间虚线连接显隐       默认 true
  *  showTotal       bool   末端合计柱显隐         默认 true
  *  showDecorations bool   星芒等点缀显隐         默认 true
@@ -67,7 +67,7 @@ function Slide47Waterfall(props) {
     segmentCount = 5,
     chartVariant = 'waterfall',
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showConnectors = true,
     showTotal = true,
     showDecorations = true,
@@ -238,7 +238,7 @@ const META = {
     segmentCount: 5,
     chartVariant: 'waterfall',
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showConnectors: true,
     showTotal: true,
     showDecorations: true,
@@ -251,7 +251,7 @@ const META = {
     { key: 'segmentCount', type: 'slider', label: '赛道段数', min: 2, max: 5, step: 1, default: 5, desc: '参与累加的赛道段数' },
     { key: 'chartVariant', type: 'radio', label: '图表类型', options: ['waterfall', 'bar'], optionLabels: ['瀑布图', '横向柱'], default: 'waterfall', desc: '瀑布累加 / 横向柱状' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一赛道段' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 1, maxFromKey: 'segmentCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道段的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 5, step: 1, default: 2, maxFromKey: 'segmentCount', showIf: (v) => v.focusEnabled, desc: '被高亮赛道段的序号' },
     { key: 'showConnectors', type: 'toggle', label: '段间连接', default: true, desc: '瀑布段间虚线连接（瀑布生效）' },
     { key: 'showTotal', type: 'toggle', label: '合计柱', default: true, desc: '末端总额柱显隐（瀑布生效）' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },

@@ -490,6 +490,7 @@
   const URL_STATE_PARAM = 'deckState';
   const URL_STATE_MAX_LENGTH = 60000;
   const URL_STATE_DEBOUNCE_MS = 260;
+  const RESTORED_EMPHASIS_INDEX_KEYS = new Set(['activeIndex', 'currentIndex', 'emphasisIndex', 'featureIndex', 'focusCol', 'focusIndex', 'highlightCol', 'highlightIndex', 'highlightRowIndex']);
   const vm = readJson(vmEl, {});
   vm.state = vm.state || {};
   const embeddedText = readJson(textEl, {});
@@ -506,13 +507,15 @@
   const deckSignature = createDeckSignature(vm, baseState.text);
   const urlState = readUrlEditState(deckSignature);
   const restored = urlState?.state || {};
-  const saved = urlState ? {} : readSaved(deckSignature);
+  const saved = readSaved(deckSignature);
   vm.state.slideOrder = hasOwn(restored, 'slideOrder') ? restored.slideOrder : (saved.slideOrder || baseState.slideOrder);
   vm.state.skippedSlides = hasOwn(restored, 'skippedSlides') ? restored.skippedSlides : (saved.skippedSlides || baseState.skippedSlides);
   vm.state.deletedSlides = hasOwn(restored, 'deletedSlides') ? restored.deletedSlides : (saved.deletedSlides || baseState.deletedSlides);
   vm.state.duplicatedSlides = hasOwn(restored, 'duplicatedSlides') ? restored.duplicatedSlides : (saved.duplicatedSlides || baseState.duplicatedSlides);
   vm.state.text = {...baseState.text, ...(saved.text || {}), ...(restored.text || {})};
-  vm.state.props = mergePropsStates(baseState.props, saved.props, restored.props);
+  vm.state.props = mergePropsStates(baseState.props, urlState ? null : saved.props, restored.props);
+  if(urlState) vm.state.props = mergeLocalMediaProps(vm.state.props, saved.props);
+  vm.state.props = normalizeRestoredProps(vm.state.props, {migrateLegacyEmphasis:urlState});
   vm.state.__deckSignature = deckSignature;
 
   writeJson(textEl, vm.state.text);
@@ -882,6 +885,97 @@
       });
     });
     return out;
+  }
+
+  function normalizeRestoredProps(props, opts = {}){
+    const out = {};
+    Object.entries(props || {}).forEach(([slideId, rawValues]) => {
+      const normalized = normalizeRestoredSlideProps(slideId, rawValues, opts);
+      if(normalized && Object.keys(normalized).length) out[slideId] = normalized;
+    });
+    return out;
+  }
+
+  function normalizeRestoredSlideProps(slideId, rawValues, opts = {}){
+    if(!rawValues || typeof rawValues !== 'object' || Array.isArray(rawValues)) return {};
+    const controls = getSlidePropControls(slideId);
+    if(!controls.length) return {...rawValues};
+    const defaults = getDefaultSlideProps(slideId);
+    const values = {...defaults, ...rawValues};
+    controls.forEach(control => {
+      const type = normalizeRestoredControlType(control?.type);
+      if(type !== 'range' || !hasOwn(rawValues, control.key)) return;
+      const bounds = resolveRestoredRangeBounds(control, values);
+      const current = Number(values[control.key]);
+      if(!Number.isFinite(current)) return;
+      const migrated = opts.migrateLegacyEmphasis && shouldMigrateLegacyEmphasisValue(control, rawValues, values, bounds)
+        ? Number(control.default)
+        : current;
+      values[control.key] = Math.min(bounds.max, Math.max(bounds.min, migrated));
+    });
+    return diffObject(values, defaults);
+  }
+
+  function shouldMigrateLegacyEmphasisValue(control, rawValues, values, bounds){
+    if(!control?.maxFromKey || !RESTORED_EMPHASIS_INDEX_KEYS.has(control.key)) return false;
+    if(hasOwn(rawValues, control.maxFromKey)) return false;
+    const min = Number(control.min ?? 0);
+    const current = Number(values[control.key]);
+    const nextDefault = Number(control.default);
+    const linkedValue = Number(values[control.maxFromKey]);
+    return min === 1
+      && Number.isFinite(current)
+      && Number.isFinite(nextDefault)
+      && Number.isFinite(linkedValue)
+      && current === nextDefault - 1
+      && bounds.max === nextDefault
+      && linkedValue === nextDefault;
+  }
+
+  function resolveRestoredRangeBounds(control, values){
+    const min = Number(control.min ?? 0);
+    let max = Number(control.max ?? 10);
+    if(control.maxFromKey && RESTORED_EMPHASIS_INDEX_KEYS.has(control.key)){
+      const linkedValue = Number(values?.[control.maxFromKey]);
+      if(Number.isFinite(linkedValue)) max = Math.min(max, Math.max(min, linkedValue - (min === 0 ? 1 : 0)));
+    }
+    if(max < min) max = min;
+    return {min, max};
+  }
+
+  function normalizeRestoredControlType(type){
+    if(['slider', 'range', 'number'].includes(type)) return 'range';
+    return type || 'range';
+  }
+
+  function getSlidePropControls(slideId){
+    const slideEl = [...document.querySelectorAll('#deck > .slide')].find(slide => slide.dataset.vmSlideId === slideId);
+    return readDatasetJson(slideEl?.querySelector('[data-prop-controls]')?.dataset.propControls, []);
+  }
+
+  function mergeLocalMediaProps(currentProps, savedProps){
+    const out = mergePropsStates(currentProps);
+    Object.entries(savedProps || {}).forEach(([slideId, values]) => {
+      Object.entries(values || {}).forEach(([key, value]) => {
+        if(!containsLocalMediaValue(value)) return;
+        if(!out[slideId]) out[slideId] = {};
+        out[slideId][key] = cloneJsonValue(value);
+      });
+    });
+    return out;
+  }
+
+  function containsLocalMediaValue(value){
+    if(value == null) return false;
+    if(typeof value === 'string') return /^data:(image|video)\//i.test(value);
+    if(Array.isArray(value)) return value.some(containsLocalMediaValue);
+    if(typeof value !== 'object') return false;
+    if(typeof value.src === 'string' && /^data:(image|video)\//i.test(value.src)) return true;
+    return Object.values(value).some(containsLocalMediaValue);
+  }
+
+  function cloneJsonValue(value){
+    return value == null ? value : JSON.parse(JSON.stringify(value));
   }
 
   function encodeUrlState(payload){
@@ -3561,7 +3655,7 @@ refreshRailCatalog();
 
   const STORE = 'dashi-ppt-preview';
   const viewModel = window.__deckViewModel;
-  let deckSlides = [...document.querySelectorAll('#deck > .slide')];
+  let deckSlides = readPreviewDeckSlides();
   const propsField = document.getElementById('preview-props-field');
   const propsPanel = document.getElementById('preview-props');
   const themePackField = document.getElementById('preview-theme-field');
@@ -3569,6 +3663,8 @@ refreshRailCatalog();
   const transitionSelect = document.getElementById('preview-transition');
   const transitionColorField = document.getElementById('preview-transition-color-field');
   const transitionColorOptions = document.getElementById('preview-transition-color-options');
+  let renderingPropControls = false;
+  let pendingPropControlsRender = false;
   var ENGLISH_PROP_OPTION_LABELS;
 
   const urlViewState = window.__deckUrlStateInitial?.view || {};
@@ -3638,11 +3734,6 @@ refreshRailCatalog();
     return bestPos;
   }
 
-  renderTransitionColorOptions();
-  syncTransitionControl();
-  applyStoredSlideControls();
-  renderPropControls();
-
   function readSaved(){
     try {
       return JSON.parse(localStorage.getItem(window.__previewStoreKey?.() || STORE) || '{}');
@@ -3671,8 +3762,17 @@ refreshRailCatalog();
   }
 
   function refreshDeckSlides(){
-    deckSlides = window.__getVisibleSlides?.() || [...document.querySelectorAll('#deck > .slide:not([hidden])')];
+    deckSlides = readPreviewDeckSlides();
     if(count) count.textContent = `${Math.min(deckSlides.length, Math.max(1, (window.__currentSlideIndex || 0) + 1))}/${deckSlides.length}页`;
+  }
+
+  function readPreviewDeckSlides(){
+    const runtimeSlides = window.__getVisibleSlides?.();
+    const deckRuntimeSlides = Array.isArray(runtimeSlides)
+      ? runtimeSlides.filter(slide => slide?.parentElement?.id === 'deck')
+      : [];
+    if(deckRuntimeSlides.length) return deckRuntimeSlides;
+    return [...document.querySelectorAll('#deck > .slide:not([hidden])')];
   }
 
   function renderThemePackControl(){
@@ -3852,6 +3952,22 @@ refreshRailCatalog();
     }
   }
 
+  function orderPropControlsForPanel(controls, root){
+    if(root?.dataset.themeKey !== 'theme12') return controls || [];
+    const toneControls = [];
+    const rest = [];
+    (controls || []).forEach(control => {
+      (isToneThemeControl(control) ? toneControls : rest).push(control);
+    });
+    return [...toneControls, ...rest];
+  }
+
+  function isToneThemeControl(control){
+    if(control?.key !== 'theme') return false;
+    const values = propOptions(control).map(item => String(item.value));
+    return values.includes('light') && values.includes('dark');
+  }
+
   function parsePropDefaults(root){
     try {
       return JSON.parse(root?.dataset.propDefaults || '{}') || {};
@@ -3885,17 +4001,23 @@ refreshRailCatalog();
 
   function renderPropControls(){
     if(!propsField || !propsPanel) return;
+    if(renderingPropControls){
+      pendingPropControlsRender = true;
+      return;
+    }
+    renderingPropControls = true;
+    try {
     const root = getCurrentPropRoot();
-    const controls = parsePropControls(root);
+    const controls = orderPropControlsForPanel(parsePropControls(root), root);
     if(!root || !controls.length){
       propsField.classList.add('is-hidden');
-      propsPanel.innerHTML = '';
+      propsPanel.replaceChildren();
       return;
     }
     const slide = getCurrentSlide();
     const values = getSlidePropValues(slide);
     propsField.classList.remove('is-hidden');
-    propsPanel.innerHTML = '';
+    const nextPanel = document.createDocumentFragment();
     controls.forEach(control => {
       if(!shouldRenderPropControl(control, values)) return;
       const row = document.createElement('div');
@@ -4021,12 +4143,8 @@ refreshRailCatalog();
         row.appendChild(group);
       } else {
         row.classList.add('is-range');
-        const displayOffset = Number(control.displayOffset ?? 0);
-        const rawMin = Number(control.min ?? 0);
-        const rawMax = resolveRangeMax(control, values, rawMin);
+        const { rawMin, displayOffset, min, max } = resolveRangeBounds(control, values);
         const step = Number(control.step ?? 1);
-        const min = rawMin + displayOffset;
-        const max = rawMax + displayOffset;
         const span = (max - min) / (step || 1);
         const stepped = Number.isInteger(step) && step >= 1 && Number.isInteger(min) && Number.isInteger(max) && span <= 12;
         const wrap = document.createElement('div');
@@ -4068,9 +4186,17 @@ refreshRailCatalog();
         wrap.appendChild(output);
         row.appendChild(wrap);
       }
-      propsPanel.appendChild(row);
+      nextPanel.appendChild(row);
     });
+    propsPanel.replaceChildren(nextPanel);
     applyPropValues(slide, values, {persist:false});
+    } finally {
+      renderingPropControls = false;
+      if(pendingPropControlsRender){
+        pendingPropControlsRender = false;
+        renderPropControls();
+      }
+    }
   }
 
   function resolveRangeMax(control, values, min){
@@ -4132,6 +4258,47 @@ refreshRailCatalog();
     return true;
   }
 
+  const EMPHASIS_INDEX_CONTROL_KEYS = new Set(['activeIndex', 'currentIndex', 'emphasisIndex', 'featureIndex', 'focusCol', 'focusIndex', 'highlightCol', 'highlightIndex', 'highlightRowIndex']);
+
+  function isEmphasisIndexControl(control){
+    return EMPHASIS_INDEX_CONTROL_KEYS.has(control?.key);
+  }
+
+  function resolveEmphasisLinkedMax(control, linkedValue, min){
+    return Math.max(min, linkedValue - (min === 0 ? 1 : 0));
+  }
+
+  function resolveRangeBounds(control, values){
+    const displayOffset = Number(control.displayOffset ?? 0);
+    const rawMin = Number(control.min ?? 0);
+    let rawMax = resolveRangeMax(control, values, rawMin);
+    if(control.maxFromKey && isEmphasisIndexControl(control)){
+      const linkedValue = Number(values?.[control.maxFromKey]);
+      if(Number.isFinite(linkedValue)){
+        rawMax = Math.min(rawMax, resolveEmphasisLinkedMax(control, linkedValue, rawMin));
+      }
+    }
+    if(control.countKey && control.countIndex !== undefined){
+      const count = Number(values?.[control.countKey]);
+      if(Number.isFinite(count)){
+        rawMax = Math.min(rawMax, Math.max(rawMin, count - 1));
+      }
+    }
+    if(rawMax < rawMin) rawMax = rawMin;
+    return {
+      rawMin,
+      rawMax,
+      displayOffset,
+      min: rawMin + displayOffset,
+      max: rawMax + displayOffset,
+    };
+  }
+
+  renderTransitionColorOptions();
+  syncTransitionControl();
+  applyStoredSlideControls();
+  renderPropControls();
+
   function syncSelectionButtons(group, value){
     const current = propOptionDomValue(value);
     const buttons = [...group.querySelectorAll('.preview-prop-choice')];
@@ -4160,6 +4327,13 @@ refreshRailCatalog();
     if(!slide) return;
     const values = getSlidePropValues(slide);
     values[control.key] = coercePropValue(control, value);
+    if(normalizePropControlType(control.type, control) === 'range'){
+      const bounds = resolveRangeBounds(control, values);
+      const numericValue = Number(values[control.key]);
+      if(Number.isFinite(numericValue)){
+        values[control.key] = Math.min(bounds.rawMax, Math.max(bounds.rawMin, numericValue));
+      }
+    }
     Object.assign(values, opts.extra || {});
     const unicornRefresh = control.key === 'backgroundMode' || control.key === 'unicornScene';
     if(slide.dataset.themePack === 'theme03' && control.key === 'forceDark'){
@@ -4485,6 +4659,7 @@ refreshRailCatalog();
   });
 
   function getCurrentSlide(){
+    if(!deckSlides.length) deckSlides = readPreviewDeckSlides();
     const index = window.__currentSlideIndex || 0;
     return deckSlides[index] || null;
   }

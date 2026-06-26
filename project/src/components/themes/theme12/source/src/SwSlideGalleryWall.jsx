@@ -18,6 +18,7 @@ export const meta = { id: 'gallerywall', index: 67, label: '画框墙 / Gallery 
 
 export const defaultProps = {
   accent: C.rust,
+  theme: 'light',          // 'light' | 'dark'
   mediaCount: 4,           // 3–6 framed works
   mediaFit: 'cover',
   showMat: true,
@@ -49,6 +50,8 @@ export const controls = [
     options: [{ value: 'cover', label: '裁切' }, { value: 'contain', label: '完整' }], desc: '画作填充方式' },
   { key: 'showMat', label: '卡纸边', type: 'toggle', def: true, desc: '显示/隐藏画框内的白色卡纸边' },
   { key: 'showPlaque', label: '铭牌', type: 'toggle', def: true, desc: '显示/隐藏画框下方的作品铭牌' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.rust,
     options: [C.rust, C.orange, C.purple, C.green], desc: '导语 / 高亮 / 页脚强调色' },
 ];
@@ -59,15 +62,23 @@ const COLS = { 3: 3, 4: 4, 5: 5, 6: 3 };
 export default function SwSlideGalleryWall(props) {
   const p = { ...defaultProps, ...props };
   const accent = p.accent;
+  const dark = p.theme === 'dark';
   const count = Math.max(3, Math.min(6, p.mediaCount));
   const cols = COLS[count] || count;
   const rows = Math.ceil(count / cols);
   const matPad = p.showMat ? 14 : 0;
   const PLAQUES = p.plaques;
 
+  const bg = dark ? C.dark : '#efe6df';
+  const fg = dark ? C.blush : C.ink;
+  const mut = dark ? '#c8c0bd' : C.inkMut;
+  const railLine = dark ? C.lineD2 : 'rgba(27,21,24,.22)';
+  const mat = dark ? '#241e20' : '#faf6f1';
+  const frameBorder = dark ? C.lineD2 : 'rgba(0,0,0,.5)';
+
   return (
-    <SlideRoot bg="#efe6df" color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flexShrink: 0, marginTop: 20, display: 'flex', alignItems: 'flex-end',
         justifyContent: 'space-between', gap: 40 }}>
@@ -78,15 +89,15 @@ export default function SwSlideGalleryWall(props) {
           </h2>
         </div>
         <div style={{ fontFamily: F.mono, fontSize: 22, letterSpacing: '.12em', textTransform: 'uppercase',
-          color: C.inkMut, textAlign: 'right', paddingBottom: 6 }}>
+          color: mut, textAlign: 'right', paddingBottom: 6 }}>
           {p.metaPrefix} {String(count).padStart(2, '0')} works<br />drag to fill
         </div>
       </div>
 
       {/* picture rail */}
       <div style={{ flex: 1, minHeight: 0, marginTop: 20, paddingTop: 18,
-        borderTop: '3px solid rgba(27,21,24,.22)', display: 'grid', gap: 30,
-        gridTemplateColumns: 'repeat(' + cols + ', 1fr)', gridTemplateRows: 'repeat(' + rows + ', 1fr)' }}>
+        borderTop: '3px solid ' + railLine, display: 'grid', gap: 30,
+        gridTemplateColumns: 'repeat(' + cols + ', minmax(0, 1fr))', gridTemplateRows: 'repeat(' + rows + ', minmax(0, 1fr))' }}>
         {Array.from({ length: count }).map((_, i) => {
           const pl = PLAQUES[i % PLAQUES.length];
           return (
@@ -95,12 +106,12 @@ export default function SwSlideGalleryWall(props) {
               <div style={{ flex: 1, minHeight: 0, width: '100%', display: 'flex', flexDirection: 'column',
                 background: 'linear-gradient(145deg, #2a2023, #160f11)',
                 padding: 12, borderRadius: 4, boxShadow: '0 22px 40px rgba(27,21,24,.32)',
-                border: '1px solid rgba(0,0,0,.5)' }}>
-                <div style={{ flex: 1, minHeight: 0, background: '#faf6f1', padding: matPad, borderRadius: 1,
+                border: '1px solid ' + frameBorder }}>
+                <div style={{ flex: 1, minHeight: 0, background: mat, padding: matPad, borderRadius: 1,
                   display: 'flex' }}>
-                  <div style={{ flex: 1, minHeight: 0, width: '100%' }}>
+                  <div style={{ flex: 1, minHeight: 0, minWidth: 0, width: '100%' }}>
                     <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
-                      fit={p.mediaFit} accent={accent} radius={0} tone="light" placeholder={p.mediaPlaceholder} />
+                      fit={p.mediaFit} accent={accent} radius={0} tone={dark ? 'dark' : 'light'} placeholder={p.mediaPlaceholder} />
                   </div>
                 </div>
               </div>
@@ -120,7 +131,7 @@ export default function SwSlideGalleryWall(props) {
       </div>
 
       <div style={{ marginTop: 18 }}>
-        <Footer page={p.page} total={p.total} accent={accent} />
+        <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
       </div>
     </SlideRoot>
   );

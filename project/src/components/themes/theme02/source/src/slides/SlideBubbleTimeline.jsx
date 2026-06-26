@@ -22,6 +22,8 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const BUBBLE_TIMELINE_DEFAULT_FOCUS_INDEX = 7;
+
 export const slideBubbleTimelineDefaults = {
   kicker: 'MARKET · 月度节奏',
   title: '逐月融资额 ',
@@ -34,7 +36,7 @@ export const slideBubbleTimelineDefaults = {
   ],
   valueSuffix: '亿',
   focusEnabled: true,
-  focusIndex: 7,
+  focusIndex: BUBBLE_TIMELINE_DEFAULT_FOCUS_INDEX,
   showValueLabels: true,
   showAnnotation: true,
   annotation: '5 月与 8 月形成两次峰值，与多家头部公司集中关账有关；年末回落但仍高于上半年，节奏呈「双峰脉冲」。',
@@ -43,8 +45,8 @@ export const slideBubbleTimelineDefaults = {
 export const slideBubbleTimelineControls = [
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '是否高亮某一月份' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 7, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.data ? p.data.length : 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: BUBBLE_TIMELINE_DEFAULT_FOCUS_INDEX, min: 0, step: 1,
+    oneBased: true, max: Math.max(0, slideBubbleTimelineDefaults.data.length - 1), maxFrom: (p) => Math.max(0, (p.data ? p.data.length : 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调月份的序号' },
   { key: 'showValueLabels', type: 'toggle', label: '数值标签', default: true,
     describe: '在气泡上显示具体数值' },
@@ -114,7 +116,8 @@ function Bubbles({ data, valueSuffix, focusIndex, showValueLabels, accent, accen
 export function SlideBubbleTimeline(props) {
   const p = { ...slideBubbleTimelineDefaults, ...props };
   const sch = p.gxnScheme || {};
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(p.data.length - 1, p.focusIndex)) : -1;
+  const maxFocusIndex = Math.max(0, p.data.length - 1);
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(maxFocusIndex, p.focusIndex)) : -1;
   const total = p.data.reduce((s, d) => s + d.value, 0);
   const peak = p.data.reduce((m, d) => (d.value > m.value ? d : m), p.data[0]);
 

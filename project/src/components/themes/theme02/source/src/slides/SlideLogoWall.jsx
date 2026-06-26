@@ -24,6 +24,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader, MediaView, mediaItem } from '../gxnPrimitives.jsx';
 
+const MAX_LOGO_WALL_TILES = 6;
+const MAX_LOGO_WALL_FOCUS_INDEX = 5;
+
 export const slideLogoWallDefaults = {
   kicker: 'PLAYERS · 公司图谱',
   title: '一张图看懂 ',
@@ -31,7 +34,7 @@ export const slideLogoWallDefaults = {
   lead: '模型实验室、算力云、应用层与基础设施——大额融资塑造的头部阵营，集中在少数几张面孔上。',
   names: ['OpenAI', 'Anthropic', 'xAI', 'CoreWeave', 'Scale AI', 'Databricks', 'Mistral', 'Perplexity'],
   tags: ['通用大模型', '安全对齐', '实时多模态', '算力云', '数据标注', '数据平台', '开源模型', 'AI 搜索'],
-  tileCount: 6,
+  tileCount: MAX_LOGO_WALL_TILES,
   fit: 'cover',
   focusEnabled: false,
   focusIndex: 0,
@@ -41,15 +44,15 @@ export const slideLogoWallDefaults = {
 };
 
 export const slideLogoWallControls = [
-  { key: 'tileCount', type: 'number', label: '瓦片数量', default: 6, min: 0, step: 1,
-    maxFrom: (p) => (p.names ? p.names.length : 8), describe: '公司瓦片数量（0 = 纯标题）' },
+  { key: 'tileCount', type: 'number', label: '瓦片数量', default: MAX_LOGO_WALL_TILES, min: 0, max: MAX_LOGO_WALL_TILES, step: 1,
+    describe: '公司瓦片数量（0 = 纯标题）' },
   { key: 'fit', type: 'enum', label: '贴合方式', default: 'cover',
     options: [{ value: 'cover', label: '填充（裁切）' }, { value: 'contain', label: '完整（不裁切）' }],
     visibleWhen: (p) => p.tileCount > 0, describe: '图片在瓦片内填充或完整显示' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: false,
     describe: '是否高亮其中一块' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.tileCount || 1) - 1),
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_LOGO_WALL_FOCUS_INDEX, step: 1,
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_LOGO_WALL_FOCUS_INDEX + 1, p.tileCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled && p.tileCount > 0, describe: '被强调瓦片的序号' },
   { key: 'showNames', type: 'toggle', label: '名称', default: true,
     visibleWhen: (p) => p.tileCount > 0, describe: '显示/隐藏公司名称' },
@@ -98,9 +101,9 @@ function Tile({ i, src, name, tag, fit, isFocus, showNames, showTags, onActivate
 
 export function SlideLogoWall(props) {
   const p = { ...slideLogoWallDefaults, ...props };
-  const count = Math.max(0, Math.min(p.names.length, p.tileCount));
+  const count = Math.max(0, Math.min(MAX_LOGO_WALL_TILES, p.names.length, p.tileCount));
   const cols = COLS[count] || Math.min(4, count || 1);
-  const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
+  const fIdx = p.focusEnabled ? Math.max(0, Math.min(MAX_LOGO_WALL_FOCUS_INDEX, count - 1, p.focusIndex)) : -1;
   const imgs = p.images || [];
 
   return (

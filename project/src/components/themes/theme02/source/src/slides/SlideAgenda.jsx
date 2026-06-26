@@ -21,6 +21,8 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_AGENDA_ITEMS = 6;
+
 export const slideAgendaDefaults = {
   kicker: 'CONTENTS · 报告目录',
   title: '六个章节 ',
@@ -44,13 +46,13 @@ export const slideAgendaDefaults = {
 };
 
 export const slideAgendaControls = [
-  { key: 'itemCount', type: 'number', label: '章节条数', default: 6, min: 2, step: 1,
-    maxFrom: (p) => (p.items ? p.items.length : 6), describe: '目录展示的章节条数' },
+  { key: 'itemCount', type: 'number', label: '章节条数', default: 6, min: 2, max: MAX_AGENDA_ITEMS, step: 1,
+    describe: '目录展示的章节条数' },
   { key: 'columns', type: 'number', label: '卡片列数', default: 2, min: 1, max: 2, step: 1,
     describe: '章节卡片的列数（1 或 2）' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: true,
     describe: '高亮“当前 / 重点”章节' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: MAX_AGENDA_ITEMS - 1, step: 1,
     oneBased: true, maxFrom: (p) => Math.max(0, (p.itemCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调章节的序号' },
   { key: 'showSub', type: 'toggle', label: '小节说明', default: true,
@@ -63,19 +65,23 @@ export const slideAgendaControls = [
 
 export function SlideAgenda(props) {
   const p = { ...slideAgendaDefaults, ...props };
-  const count = Math.max(2, Math.min(p.items.length, p.itemCount));
+  const count = Math.max(2, Math.min(MAX_AGENDA_ITEMS, p.items.length, p.itemCount));
   const items = p.items.slice(0, count).map((it, i) => ({ ...it, n: i }));
   const fIdx = p.focusEnabled ? Math.max(0, Math.min(count - 1, p.focusIndex)) : -1;
   const cols = Math.max(1, Math.min(2, p.columns));
   const num = (i) => String(i + 1).padStart(2, '0');
   const useRail = p.showRail && cols === 1;
+  const dense = count >= 9;
 
   const Card = ({ it }) => {
     const isF = it.n === fIdx;
     return (
       <li className={cx('gxn-panel', 'gxn-ag-card', isF && 'is-focus')}
+        data-agenda-item="true"
+        data-agenda-index={it.n}
+        data-focus={isF ? 'true' : undefined}
         style={{ listStyle: 'none', position: 'relative', display: 'flex', alignItems: 'center',
-          gap: 26, padding: useRail ? '0 38px 0 80px' : '0 32px',
+          gap: dense ? 18 : 26, padding: useRail ? '0 38px 0 80px' : (dense ? '0 24px' : '0 32px'),
           opacity: fIdx >= 0 && !isF ? 0.84 : 1, transition: 'opacity .3s ease' }}>
         {useRail && (
           <span aria-hidden="true" className="gxn-ag-node" style={{
@@ -92,11 +98,11 @@ export function SlideAgenda(props) {
           background: isF
             ? 'linear-gradient(180deg, transparent, rgba(var(--gxn-glow),0.85), transparent)'
             : 'linear-gradient(180deg, transparent, var(--gxn-line), transparent)' }} />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0, flex: 1 }}>
-          <h3 style={{ margin: 0, fontSize: 33, fontWeight: 700, lineHeight: 1.14,
+        <div style={{ display: 'flex', flexDirection: 'column', gap: dense ? 4 : 6, minWidth: 0, flex: 1 }}>
+          <h3 style={{ margin: 0, fontSize: dense ? 28 : 33, fontWeight: 700, lineHeight: 1.14,
             color: 'var(--gxn-text)', textWrap: 'balance' }}>{it.title}</h3>
           {p.showSub && it.sub && (
-            <p style={{ margin: 0, fontSize: 24, lineHeight: 1.4, color: 'var(--gxn-dim)',
+            <p style={{ margin: 0, fontSize: dense ? 20 : 24, lineHeight: 1.34, color: 'var(--gxn-dim)',
               textWrap: 'pretty' }}>{it.sub}</p>
           )}
         </div>
@@ -109,7 +115,7 @@ export function SlideAgenda(props) {
       {useRail && items.length > 1 && (
         <span aria-hidden="true" className="gxn-ag-rail" />
       )}
-      <ol className="gxn-ag-grid" style={{ margin: 0, padding: 0,
+      <ol className="gxn-ag-grid" data-agenda-count={count} data-density={dense ? 'dense' : undefined} style={{ margin: 0, padding: 0,
         gridTemplateColumns: cols === 2 ? '1fr 1fr' : '1fr' }}>
         {items.map((it) => <Card key={it.n} it={it} />)}
       </ol>

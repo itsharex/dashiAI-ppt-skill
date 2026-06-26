@@ -40,7 +40,7 @@ export const slideMethodControls = [
     describe: '展示的维度卡片数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: false,
     describe: '是否高亮其中一张卡片' },
-  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
+  { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, max: 3, step: 1,
     oneBased: true, maxFrom: (p) => Math.max(0, (p.cardCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调卡片的序号' },
   { key: 'showIndex', type: 'toggle', label: '序号显示', default: true,

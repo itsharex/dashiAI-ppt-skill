@@ -16,6 +16,7 @@ export const meta = { id: 'areastack', index: 45, label: '堆叠面积 / Stacked
 
 export const defaultProps = {
   accent: C.orange,
+  theme: 'light',          // 'light' | 'dark'
   seriesCount: 3,          // 2–3 stacked series
   showGrid: true,
   showLegend: true,
@@ -42,6 +43,8 @@ export const controls = [
   { key: 'showGrid', label: '网格线', type: 'toggle', def: true, desc: '显示/隐藏背景网格与刻度' },
   { key: 'showLegend', label: '图例', type: 'toggle', def: true, desc: '显示/隐藏系列图例' },
   { key: 'showEndLabels', label: '终值标注', type: 'toggle', def: true, desc: '显示/隐藏右端各层占比标注' },
+  { key: 'theme', label: '配色', type: 'segment', def: 'light',
+    options: [{ value: 'light', label: '浅色' }, { value: 'dark', label: '深色' }], desc: '页面整体明暗配色' },
   { key: 'accent', label: '强调色', type: 'color', def: C.orange,
     options: [C.orange, C.purple, C.cyan, C.green], desc: '主系列 / 导语 / 页脚强调色' },
 ];
@@ -77,11 +80,22 @@ export default function SwSlideAreaStack(props) {
   });
   const yTicks = [0, 0.25, 0.5, 0.75, 1].map((f) => Math.round(maxTotal * f));
 
-  return (
-    <SlideRoot bg={C.blush} color={C.ink}>
-      <Bar meta={p.barMeta} accent={accent} />
+  // Page / card surfaces flip with theme; grid + axis greys mirror to their
+  // blush-tinted equivalents. Stacked-area series colours stay data-driven.
+  const dark = p.theme === 'dark';
+  const bg = dark ? C.dark : C.blush;
+  const fg = dark ? C.blush : C.ink;
+  const cardBg = dark ? '#241e20' : C.paper;
+  const mutedC = dark ? '#c8c0bd' : C.inkMut;
+  const subC = dark ? '#c8c0bd' : '#9a8f8c';
+  const gridC = dark ? 'rgba(245,225,227,.1)' : 'rgba(27,21,24,.1)';
+  const qLabelC = dark ? '#c8c0bd' : '#7d7176';
 
-      <div style={{ flex: 1, minHeight: 0, background: C.paper, borderRadius: 38, margin: '24px 0 22px',
+  return (
+    <SlideRoot bg={bg} color={fg}>
+      <Bar meta={p.barMeta} accent={accent} dark={dark} />
+
+      <div style={{ flex: 1, minHeight: 0, background: cardBg, borderRadius: 38, margin: '24px 0 22px',
         padding: '34px 48px 26px', display: 'flex', flexDirection: 'column' }}>
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 30 }}>
@@ -96,7 +110,7 @@ export default function SwSlideAreaStack(props) {
               {layers.map((l) => (
                 <div key={l.t} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span style={{ width: 18, height: 18, borderRadius: 5, background: l.c }} />
-                  <span style={{ fontSize: 21, fontWeight: 700, color: C.ink }}>{l.t}</span>
+                  <span style={{ fontSize: 21, fontWeight: 700, color: fg }}>{l.t}</span>
                 </div>
               ))}
             </div>
@@ -108,10 +122,10 @@ export default function SwSlideAreaStack(props) {
             style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}>
             {p.showGrid && yTicks.map((t, i) => (
               <g key={i}>
-                <line x1={M.l} y1={yAt(t)} x2={W - M.r} y2={yAt(t)} stroke="rgba(27,21,24,.1)" strokeWidth="1"
+                <line x1={M.l} y1={yAt(t)} x2={W - M.r} y2={yAt(t)} stroke={gridC} strokeWidth="1"
                   strokeDasharray={i === 0 ? '0' : '4 6'} />
                 <text x={M.l - 14} y={yAt(t) + 6} textAnchor="end" fontFamily={F.mono} fontSize="18"
-                  fill="#9a8f8c">{t}</text>
+                  fill={subC}>{t}</text>
               </g>
             ))}
 
@@ -124,7 +138,7 @@ export default function SwSlideAreaStack(props) {
 
             {QUARTERS.map((q, i) => (
               <text key={q} x={xAt(i)} y={H - 22} textAnchor="middle" fontFamily={F.mono} fontSize="18"
-                fill="#7d7176">{q}</text>
+                fill={qLabelC}>{q}</text>
             ))}
 
             {p.showEndLabels && layers.map((l) => (
@@ -132,17 +146,17 @@ export default function SwSlideAreaStack(props) {
                 <text x={W - M.r + 16} y={(l.endTop + l.endBot) / 2 + 1} textAnchor="start"
                   fontFamily={F.sans} fontWeight="900" fontSize="26" fill={l.c}>{l.share}%</text>
                 <text x={W - M.r + 16} y={(l.endTop + l.endBot) / 2 + 24} textAnchor="start"
-                  fontFamily={F.mono} fontSize="15" letterSpacing="1" fill={C.inkMut}>{l.s}</text>
+                  fontFamily={F.mono} fontSize="15" letterSpacing="1" fill={mutedC}>{l.s}</text>
               </g>
             ))}
           </svg>
         </div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', color: C.inkMut,
+        <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: '.1em', color: mutedC,
           textAlign: 'center', marginTop: 2 }}>{p.axisLabel}</div>
       </div>
 
-      <Footer page={p.page} total={p.total} accent={accent} />
+      <Footer page={p.page} total={p.total} accent={accent} dark={dark} />
     </SlideRoot>
   );
 }

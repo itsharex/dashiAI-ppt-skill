@@ -10,7 +10,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  nodeCount       number 站点数量(3–6)        默认 6
  *  focusEnabled    bool   重点站高亮开关         默认 true
- *  focusIndex      number 重点站序号(从1起)     默认 3   范围 1–nodeCount
+ *  focusIndex      number 重点站序号(从1起)     默认 4   范围 1–nodeCount
  *  alternate       bool   标签线上/线下交替       默认 true（关=全部在线下）
  *  showValue       bool   站点金额/结论行显隐     默认 true
  *  showLine        bool   贯穿地铁线显隐         默认 true
@@ -63,7 +63,7 @@ function Slide52Metro(props) {
       nodesData = XHSMT_NODES,
     nodeCount = 6,
     focusEnabled = true,
-    focusIndex = 3,
+    focusIndex = 4,
     alternate = true,
     showValue = true,
     showLine = true,
@@ -199,7 +199,7 @@ const META = {
     ...hlDefaults,
     nodeCount: 6,
     focusEnabled: true,
-    focusIndex: 3,
+    focusIndex: 4,
     alternate: true,
     showValue: true,
     showLine: true,
@@ -212,7 +212,7 @@ const META = {
     ...hlControls,
     { key: 'nodeCount', type: 'slider', label: '站点数量', min: 3, max: 6, step: 1, default: 6, desc: '地铁线上的里程碑站点数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一站' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 3, maxFromKey: 'nodeCount', showIf: (v) => v.focusEnabled, desc: '被高亮站点的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 6, step: 1, default: 4, maxFromKey: 'nodeCount', showIf: (v) => v.focusEnabled, desc: '被高亮站点的序号' },
     { key: 'alternate', type: 'toggle', label: '上下交替', default: true, desc: '标签在线上 / 线下交替（关=全部在线下）' },
     { key: 'showValue', type: 'toggle', label: '结论行', default: true, desc: '站点金额 / 结论行显隐' },
     { key: 'showLine', type: 'toggle', label: '贯穿线', default: true, desc: '贯穿全幅的地铁线显隐' },

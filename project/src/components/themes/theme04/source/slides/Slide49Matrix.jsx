@@ -11,7 +11,7 @@
  *  rowCount        number 展示的公司行数(3–4)   默认 4
  *  colCount        number 展示的能力维度列数(3–5) 默认 5
  *  focusEnabled    bool   重点行高亮开关         默认 true
- *  focusIndex      number 重点行序号(从1起)     默认 1   范围 1–rowCount
+ *  focusIndex      number 重点行序号(从1起)     默认 2   范围 1–rowCount
  *  showRowMeta     bool   公司下方赛道副标显隐    默认 true
  *  showLegend      bool   底部评级图例显隐       默认 true
  *  showColScore    bool   列尾综合分行显隐       默认 true
@@ -81,7 +81,7 @@ function Slide49Matrix(props) {
     rowCount = 4,
     colCount = 5,
     focusEnabled = true,
-    focusIndex = 1,
+    focusIndex = 2,
     showRowMeta = true,
     showLegend = true,
     showColScore = true,
@@ -256,7 +256,7 @@ const META = {
     rowCount: 4,
     colCount: 5,
     focusEnabled: true,
-    focusIndex: 1,
+    focusIndex: 2,
     showRowMeta: true,
     showLegend: true,
     showColScore: true,
@@ -272,7 +272,7 @@ const META = {
     { key: 'rowCount', type: 'slider', label: '公司行数', min: 3, max: 4, step: 1, default: 4, desc: '展示的公司行数' },
     { key: 'colCount', type: 'slider', label: '维度列数', min: 3, max: 5, step: 1, default: 5, desc: '展示的能力维度列数' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: true, desc: '是否高亮某一行' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 1, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 4, step: 1, default: 2, maxFromKey: 'rowCount', showIf: (v) => v.focusEnabled, desc: '被高亮行的序号' },
     { key: 'showRowMeta', type: 'toggle', label: '赛道副标', default: true, desc: '公司下方赛道副标显隐' },
     { key: 'showLegend', type: 'toggle', label: '评级图例', default: true, desc: '底部评级图例显隐' },
     { key: 'showColScore', type: 'toggle', label: '综合强度行', default: true, desc: '列尾综合强度行显隐' },

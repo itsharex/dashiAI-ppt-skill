@@ -21,7 +21,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -42,7 +41,6 @@ export const pages = [
         "key": "showCoverLines",
         "label": "封面导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右栏封面导语",
         "publicKey": "showCoverLines",
@@ -53,7 +51,6 @@ export const pages = [
         "key": "lineCount",
         "label": "导语条数",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 1,
         "max": 3,
@@ -68,7 +65,6 @@ export const pages = [
         "key": "showSeal",
         "label": "身份印章",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏 CREATOR-OWNED 圆章",
         "publicKey": "showSeal",
@@ -79,7 +75,6 @@ export const pages = [
         "key": "showGhost",
         "label": "巨型刊号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏出血的巨型刊号数字",
         "publicKey": "showGhost",
@@ -90,7 +85,6 @@ export const pages = [
         "key": "showBarcode",
         "label": "刊号条码",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏角落刊号条码",
         "publicKey": "showBarcode",
@@ -101,7 +95,6 @@ export const pages = [
         "key": "showShapes",
         "label": "几何装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏漂浮几何装饰",
         "publicKey": "showShapes",
@@ -112,7 +105,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -194,7 +186,6 @@ export const pages = [
         "key": "align",
         "label": "对齐",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -215,7 +206,6 @@ export const pages = [
         "key": "barCount",
         "label": "频谱条数",
         "type": "slider",
-        "default": 34,
         "def": 34,
         "min": 18,
         "max": 52,
@@ -229,7 +219,6 @@ export const pages = [
         "key": "showReflection",
         "label": "镜面倒影",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏频谱下方的倒影",
         "publicKey": "showReflection",
@@ -240,7 +229,6 @@ export const pages = [
         "key": "showAxis",
         "label": "频率刻度",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏基线与频率刻度",
         "publicKey": "showAxis",
@@ -251,7 +239,6 @@ export const pages = [
         "key": "showPlayhead",
         "label": "进度游标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏扫过频谱的进度游标",
         "publicKey": "showPlayhead",
@@ -262,7 +249,6 @@ export const pages = [
         "key": "showTagline",
         "label": "副标语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏一行副标语",
         "publicKey": "showTagline",
@@ -270,10 +256,29 @@ export const pages = [
         "description": "显示/隐藏一行副标语"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#d61fb5",
         "def": "#d61fb5",
         "options": [
           {
@@ -301,6 +306,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#d61fb5",
+      "theme": "dark",
       "align": "left",
       "barCount": 34,
       "showReflection": true,
@@ -337,7 +343,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -358,7 +363,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
         "def": "tech",
         "options": [
           {
@@ -389,7 +393,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -410,7 +413,6 @@ export const pages = [
         "key": "scrim",
         "label": "蒙版",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -431,7 +433,6 @@ export const pages = [
         "key": "showSpine",
         "label": "书脊标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏左缘竖排书脊文字",
         "publicKey": "showSpine",
@@ -442,7 +443,6 @@ export const pages = [
         "key": "showCoverLines",
         "label": "封面导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右侧封面导语",
         "publicKey": "showCoverLines",
@@ -453,7 +453,6 @@ export const pages = [
         "key": "lineCount",
         "label": "导语条数",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 1,
         "max": 3,
@@ -468,7 +467,6 @@ export const pages = [
         "key": "showBarcode",
         "label": "刊号条码",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右下角刊号条码",
         "publicKey": "showBarcode",
@@ -479,7 +477,6 @@ export const pages = [
         "key": "showCredit",
         "label": "封面署名",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏封面人物署名",
         "publicKey": "showCredit",
@@ -490,7 +487,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -569,7 +565,6 @@ export const pages = [
         "key": "theme",
         "label": "面板配色",
         "type": "segment",
-        "default": "accent",
         "def": "accent",
         "options": [
           {
@@ -590,7 +585,6 @@ export const pages = [
         "key": "itemCount",
         "label": "目录条目",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 5,
@@ -604,7 +598,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "高亮某一目录条目，弱化其余",
         "publicKey": "focus",
@@ -615,7 +608,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几个",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 5,
@@ -630,7 +622,6 @@ export const pages = [
         "key": "showStats",
         "label": "数据标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部数据标签",
         "publicKey": "showStats",
@@ -641,7 +632,6 @@ export const pages = [
         "key": "statCount",
         "label": "标签数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 0,
         "max": 3,
@@ -656,7 +646,6 @@ export const pages = [
         "key": "showSeal",
         "label": "身份印章",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏 CREATOR-OWNED 圆章",
         "publicKey": "showSeal",
@@ -667,7 +656,6 @@ export const pages = [
         "key": "showGhost",
         "label": "巨型刊号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏面板内出血的巨型刊号",
         "publicKey": "showGhost",
@@ -678,7 +666,6 @@ export const pages = [
         "key": "colorfulRows",
         "label": "彩色目录",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "每条目录使用不同的品牌色编号",
         "publicKey": "colorfulRows",
@@ -689,7 +676,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -805,10 +791,29 @@ export const pages = [
     "bgClass": "",
     "controls": [
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -837,22 +842,20 @@ export const pages = [
         "key": "mediaCount",
         "label": "图片数量",
         "type": "slider",
-        "default": 0,
         "def": 0,
         "min": 0,
         "max": 3,
         "step": 1,
-        "desc": "右栏图片槽数量；0 时显示文字说明卡，1 时图片按原始比例自适应",
+        "desc": "右栏图片槽数量；0 时显示文字说明卡，1 时图片完整显示",
         "publicKey": "mediaCount",
         "publicLabel": "图片数量",
-        "description": "右栏图片槽数量；0 时显示文字说明卡，1 时图片按原始比例自适应"
+        "description": "右栏图片槽数量；0 时显示文字说明卡，1 时图片完整显示"
       },
       {
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
-        "def": "cover",
+        "def": "contain",
         "options": [
           {
             "value": "cover",
@@ -873,7 +876,6 @@ export const pages = [
         "key": "indexCount",
         "label": "目录条目",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -887,7 +889,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "高亮某一目录条目，弱化其余",
         "publicKey": "focus",
@@ -898,7 +899,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几个",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -913,7 +913,6 @@ export const pages = [
         "key": "showKicker",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题上方的小标签",
         "publicKey": "showKicker",
@@ -924,7 +923,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰图形",
         "publicKey": "showDecorations",
@@ -934,10 +932,11 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "showDecorations": true,
       "showKicker": true,
       "mediaCount": 0,
-      "mediaFit": "cover",
+      "mediaFit": "contain",
       "indexCount": 4,
       "focus": false,
       "focusIndex": 1,
@@ -998,7 +997,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -1019,7 +1017,6 @@ export const pages = [
         "key": "align",
         "label": "对齐",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -1040,7 +1037,6 @@ export const pages = [
         "key": "showMark",
         "label": "引号装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏大引号符号",
         "publicKey": "showMark",
@@ -1051,7 +1047,6 @@ export const pages = [
         "key": "showAttribution",
         "label": "署名",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏引文署名",
         "publicKey": "showAttribution",
@@ -1062,7 +1057,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰图形",
         "publicKey": "showDecorations",
@@ -1073,7 +1067,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -1128,7 +1121,6 @@ export const pages = [
         "key": "chapterCount",
         "label": "章节数量",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 3,
         "max": 6,
@@ -1142,7 +1134,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "segment",
-        "default": 2,
         "def": 2,
         "options": [
           {
@@ -1163,7 +1154,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "把某一章提升为强调色块",
         "publicKey": "focus",
@@ -1174,7 +1164,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几章",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 6,
@@ -1189,7 +1178,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -1210,7 +1198,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -1221,7 +1208,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -1307,7 +1293,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "accent",
         "def": "accent",
         "options": [
           {
@@ -1332,7 +1317,6 @@ export const pages = [
         "key": "align",
         "label": "对齐",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -1353,7 +1337,6 @@ export const pages = [
         "key": "showKicker",
         "label": "显示眉标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏顶部小标题",
         "publicKey": "showKicker",
@@ -1364,7 +1347,6 @@ export const pages = [
         "key": "showGhost",
         "label": "巨型数字",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏出血的巨型页码",
         "publicKey": "showGhost",
@@ -1375,7 +1357,6 @@ export const pages = [
         "key": "showShapes",
         "label": "几何装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏漂浮的几何装饰",
         "publicKey": "showShapes",
@@ -1386,7 +1367,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -1440,7 +1420,6 @@ export const pages = [
         "key": "cardCount",
         "label": "卡片数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -1454,7 +1433,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "segment",
-        "default": 2,
         "def": 2,
         "options": [
           {
@@ -1479,7 +1457,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "高亮某一张卡片，弱化其余",
         "publicKey": "focus",
@@ -1490,7 +1467,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几个",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -1505,7 +1481,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏顶部高亮短句",
         "publicKey": "showLede",
@@ -1516,7 +1491,6 @@ export const pages = [
         "key": "showDeco",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏卡片内的图形装饰",
         "publicKey": "showDeco",
@@ -1524,10 +1498,29 @@ export const pages = [
         "description": "显示/隐藏卡片内的图形装饰"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -1555,6 +1548,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "cardCount": 4,
       "columns": 2,
       "focus": false,
@@ -1610,7 +1604,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -1631,7 +1624,6 @@ export const pages = [
         "key": "tileCount",
         "label": "便当格数",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 4,
         "max": 6,
@@ -1645,7 +1637,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "高亮某一格，弱化其余",
         "publicKey": "focus",
@@ -1656,7 +1647,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几格",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 6,
@@ -1671,7 +1661,6 @@ export const pages = [
         "key": "showDeco",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏格子内几何装饰",
         "publicKey": "showDeco",
@@ -1682,7 +1671,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -1779,7 +1767,6 @@ export const pages = [
         "key": "stepCount",
         "label": "步骤数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 5,
@@ -1793,7 +1780,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "把某一步提升为强调色卡片",
         "publicKey": "focus",
@@ -1804,7 +1790,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几步",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 1,
         "max": 5,
@@ -1819,7 +1804,6 @@ export const pages = [
         "key": "showConnector",
         "label": "连接箭头",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏步骤间的箭头",
         "publicKey": "showConnector",
@@ -1830,7 +1814,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -1838,10 +1821,29 @@ export const pages = [
         "description": "显示/隐藏标题区导语"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -1869,6 +1871,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "stepCount": 4,
       "focus": true,
       "focusIndex": 4,
@@ -1921,7 +1924,6 @@ export const pages = [
         "key": "nodeCount",
         "label": "节点数量",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 3,
         "max": 6,
@@ -1935,7 +1937,6 @@ export const pages = [
         "key": "showConnectors",
         "label": "连接线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏中枢到各节点的连线",
         "publicKey": "showConnectors",
@@ -1946,7 +1947,6 @@ export const pages = [
         "key": "showCenter",
         "label": "中枢标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏中央中枢说明",
         "publicKey": "showCenter",
@@ -1957,7 +1957,6 @@ export const pages = [
         "key": "showNodeEn",
         "label": "英文副标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏节点上的英文副标题",
         "publicKey": "showNodeEn",
@@ -1965,10 +1964,29 @@ export const pages = [
         "description": "显示/隐藏节点上的英文副标题"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -1996,6 +2014,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "nodeCount": 6,
       "showConnectors": true,
       "showCenter": true,
@@ -2051,7 +2070,6 @@ export const pages = [
         "key": "childCount",
         "label": "分支数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -2065,7 +2083,6 @@ export const pages = [
         "key": "showLevel3",
         "label": "第三层",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏第三层叶子节点",
         "publicKey": "showLevel3",
@@ -2076,7 +2093,6 @@ export const pages = [
         "key": "showLeafDesc",
         "label": "叶子说明",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏叶子节点下方说明",
         "publicKey": "showLeafDesc",
@@ -2084,10 +2100,29 @@ export const pages = [
         "description": "显示/隐藏叶子节点下方说明"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -2115,6 +2150,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#5a138e",
+      "theme": "light",
       "childCount": 3,
       "showLevel3": true,
       "showLeafDesc": true,
@@ -2202,7 +2238,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -2223,7 +2258,6 @@ export const pages = [
         "key": "imageSide",
         "label": "图片位置",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -2244,7 +2278,6 @@ export const pages = [
         "key": "showCaption",
         "label": "骑缝图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏跨缝的图注小标签",
         "publicKey": "showCaption",
@@ -2255,7 +2288,6 @@ export const pages = [
         "key": "showStats",
         "label": "数据小行",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题下的数据小行",
         "publicKey": "showStats",
@@ -2266,7 +2298,6 @@ export const pages = [
         "key": "statCount",
         "label": "数据数量",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 0,
         "max": 2,
@@ -2281,7 +2312,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -2349,7 +2379,6 @@ export const pages = [
         "key": "frameCount",
         "label": "画框数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -2363,7 +2392,6 @@ export const pages = [
         "key": "panelSide",
         "label": "标题面板",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -2384,7 +2412,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -2405,7 +2432,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每框下方图注",
         "publicKey": "showCaptions",
@@ -2416,7 +2442,6 @@ export const pages = [
         "key": "showIndex",
         "label": "序号角标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏画框序号",
         "publicKey": "showIndex",
@@ -2427,7 +2452,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -2448,7 +2472,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -2524,7 +2547,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "图片数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -2538,11 +2560,11 @@ export const pages = [
         "key": "spread",
         "label": "错位间距",
         "type": "slider",
-        "default": 64,
         "def": 64,
         "min": 24,
         "max": 110,
         "step": 2,
+        "unit": "px",
         "desc": "相邻照片之间的错位距离",
         "publicKey": "spread",
         "publicLabel": "错位间距",
@@ -2552,11 +2574,11 @@ export const pages = [
         "key": "tilt",
         "label": "倾斜角度",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 0,
         "max": 12,
         "step": 1,
+        "unit": "°",
         "desc": "照片的倾斜强度",
         "publicKey": "tilt",
         "publicLabel": "倾斜角度",
@@ -2566,7 +2588,6 @@ export const pages = [
         "key": "showFrame",
         "label": "白边相纸",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "为照片添加白色相纸边框",
         "publicKey": "showFrame",
@@ -2577,7 +2598,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "编号角标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏照片编号角标",
         "publicKey": "showCaptions",
@@ -2585,10 +2605,29 @@ export const pages = [
         "description": "显示/隐藏照片编号角标"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -2609,7 +2648,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -2637,6 +2675,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "dark",
       "mediaCount": 3,
       "spread": 64,
       "tilt": 5,
@@ -2668,7 +2707,6 @@ export const pages = [
         "key": "imageSide",
         "label": "图片位置",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -2689,7 +2727,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -2710,7 +2747,6 @@ export const pages = [
         "key": "showDropCap",
         "label": "首字下沉",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "正文首字母放大下沉",
         "publicKey": "showDropCap",
@@ -2721,7 +2757,6 @@ export const pages = [
         "key": "showPullQuote",
         "label": "引文条",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏彩色引文条",
         "publicKey": "showPullQuote",
@@ -2732,7 +2767,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -2753,7 +2787,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -2812,7 +2845,6 @@ export const pages = [
         "key": "rowCount",
         "label": "段落数",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 3,
@@ -2826,7 +2858,6 @@ export const pages = [
         "key": "imageSide",
         "label": "首段图片侧",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -2847,7 +2878,6 @@ export const pages = [
         "key": "showNumbers",
         "label": "段落编号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每段的大编号",
         "publicKey": "showNumbers",
@@ -2858,7 +2888,6 @@ export const pages = [
         "key": "showCaption",
         "label": "段落正文",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每段说明文字",
         "publicKey": "showCaption",
@@ -2866,10 +2895,29 @@ export const pages = [
         "description": "显示/隐藏每段说明文字"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -2897,6 +2945,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "rowCount": 3,
       "imageSide": "left",
       "showNumbers": true,
@@ -2939,7 +2988,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "图片数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 0,
         "max": 5,
@@ -2953,7 +3001,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -2975,7 +3022,6 @@ export const pages = [
         "key": "showCaption",
         "label": "显示图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏左栏图注说明",
         "publicKey": "showCaption",
@@ -2986,7 +3032,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏编号角标装饰",
         "publicKey": "showDecorations",
@@ -2994,10 +3039,29 @@ export const pages = [
         "description": "显示/隐藏编号角标装饰"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -3025,6 +3089,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "mediaCount": 3,
       "mediaFit": "cover",
       "showCaption": true,
@@ -3054,7 +3119,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -3075,7 +3139,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "automations",
         "def": "automations",
         "options": [
           {
@@ -3106,7 +3169,6 @@ export const pages = [
         "key": "overlayPosition",
         "label": "文案位置",
         "type": "segment",
-        "default": "bottom-left",
         "def": "bottom-left",
         "options": [
           {
@@ -3131,7 +3193,6 @@ export const pages = [
         "key": "scrim",
         "label": "蒙版",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -3152,7 +3213,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -3173,7 +3233,6 @@ export const pages = [
         "key": "showStats",
         "label": "数据标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部数据标签",
         "publicKey": "showStats",
@@ -3184,7 +3243,6 @@ export const pages = [
         "key": "statCount",
         "label": "标签数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 0,
         "max": 3,
@@ -3199,7 +3257,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -3272,7 +3329,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -3293,7 +3349,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "moving",
         "def": "moving",
         "options": [
           {
@@ -3324,7 +3379,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -3345,7 +3399,6 @@ export const pages = [
         "key": "showCoverLines",
         "label": "封面导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏两侧封面文案",
         "publicKey": "showCoverLines",
@@ -3356,7 +3409,6 @@ export const pages = [
         "key": "showBarcode",
         "label": "刊号条码",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏角落刊号条码",
         "publicKey": "showBarcode",
@@ -3367,7 +3419,6 @@ export const pages = [
         "key": "mastheadFill",
         "label": "刊头实底",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "刊头使用实色块或描边样式",
         "publicKey": "mastheadFill",
@@ -3378,7 +3429,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -3451,7 +3501,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -3472,7 +3521,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "goey",
         "def": "goey",
         "options": [
           {
@@ -3503,7 +3551,6 @@ export const pages = [
         "key": "cardCorner",
         "label": "文字卡位置",
         "type": "segment",
-        "default": "bl",
         "def": "bl",
         "options": [
           {
@@ -3532,7 +3579,6 @@ export const pages = [
         "key": "showScrim",
         "label": "压暗渐变",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "文字卡后的压暗渐变，提升可读性",
         "publicKey": "showScrim",
@@ -3543,7 +3589,6 @@ export const pages = [
         "key": "showCaption",
         "label": "副文案",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏卡片副文案",
         "publicKey": "showCaption",
@@ -3551,21 +3596,9 @@ export const pages = [
         "description": "显示/隐藏卡片副文案"
       },
       {
-        "key": "showShapes",
-        "label": "几何装饰",
-        "type": "toggle",
-        "default": true,
-        "def": true,
-        "desc": "显示/隐藏漂浮的几何装饰",
-        "publicKey": "showShapes",
-        "publicLabel": "几何装饰",
-        "description": "显示/隐藏漂浮的几何装饰"
-      },
-      {
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -3586,7 +3619,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -3617,7 +3649,6 @@ export const pages = [
       "cardCorner": "bl",
       "showScrim": true,
       "showCaption": true,
-      "showShapes": true,
       "backgroundMode": "unicorn",
       "unicornScene": "goey",
       "mediaFit": "cover",
@@ -3645,7 +3676,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -3666,7 +3696,6 @@ export const pages = [
         "key": "showSpotlights",
         "label": "射灯",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏顶部射灯与光晕",
         "publicKey": "showSpotlights",
@@ -3677,7 +3706,6 @@ export const pages = [
         "key": "showBrandStrip",
         "label": "品牌条",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏灯箱顶部品牌条",
         "publicKey": "showBrandStrip",
@@ -3688,7 +3716,6 @@ export const pages = [
         "key": "showCaption",
         "label": "位置说明",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部投放位置说明",
         "publicKey": "showCaption",
@@ -3696,10 +3723,29 @@ export const pages = [
         "description": "显示/隐藏底部投放位置说明"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -3727,6 +3773,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "dark",
       "mediaFit": "cover",
       "showSpotlights": true,
       "showBrandStrip": true,
@@ -3754,7 +3801,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "图片数量",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 2,
@@ -3768,7 +3814,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -3789,7 +3834,6 @@ export const pages = [
         "key": "showMeta",
         "label": "信息条",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏图片下方的事实条",
         "publicKey": "showMeta",
@@ -3800,7 +3844,6 @@ export const pages = [
         "key": "metaCount",
         "label": "事实条数",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 3,
@@ -3815,7 +3858,6 @@ export const pages = [
         "key": "showCaption",
         "label": "图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏图片下方图注",
         "publicKey": "showCaption",
@@ -3823,10 +3865,29 @@ export const pages = [
         "description": "显示/隐藏图片下方图注"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#3bb6ec",
         "def": "#3bb6ec",
         "options": [
           {
@@ -3854,6 +3915,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#3bb6ec",
+      "theme": "dark",
       "mediaCount": 1,
       "mediaFit": "cover",
       "showMeta": true,
@@ -3896,7 +3958,6 @@ export const pages = [
         "key": "photoCount",
         "label": "照片数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 5,
@@ -3910,7 +3971,6 @@ export const pages = [
         "key": "scatter",
         "label": "随意散落",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "开启倾斜散落 / 关闭则整齐排布",
         "publicKey": "scatter",
@@ -3921,7 +3981,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -3942,7 +4001,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "手写图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏照片下方说明",
         "publicKey": "showCaptions",
@@ -3953,7 +4011,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -3974,7 +4031,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -4038,7 +4094,6 @@ export const pages = [
         "key": "imageSide",
         "label": "照片位置",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -4059,7 +4114,6 @@ export const pages = [
         "key": "showStamp",
         "label": "邮票槽",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏邮票占位（可拖入图片）",
         "publicKey": "showStamp",
@@ -4070,7 +4124,6 @@ export const pages = [
         "key": "showPostmark",
         "label": "邮戳",
         "type": "toggle",
-        "default": true,
         "def": true,
         "dependsOn": "showStamp",
         "desc": "邮票上的圆形邮戳",
@@ -4082,7 +4135,6 @@ export const pages = [
         "key": "showDivider",
         "label": "分隔竖线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "信息区与地址区之间的竖线",
         "publicKey": "showDivider",
@@ -4093,7 +4145,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -4111,10 +4162,29 @@ export const pages = [
         "description": "照片的填充方式"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -4142,6 +4212,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "imageSide": "left",
       "showStamp": true,
       "showPostmark": true,
@@ -4182,7 +4253,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -4203,7 +4273,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -4224,7 +4293,6 @@ export const pages = [
         "key": "showPerforation",
         "label": "撕裂齿孔",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏票根之间的撕裂虚线",
         "publicKey": "showPerforation",
@@ -4235,7 +4303,6 @@ export const pages = [
         "key": "showBarcode",
         "label": "条形码",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏存根下方的条形码",
         "publicKey": "showBarcode",
@@ -4246,7 +4313,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -4325,7 +4391,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "画格数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 5,
@@ -4339,7 +4404,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -4360,7 +4424,6 @@ export const pages = [
         "key": "showSprockets",
         "label": "齿孔",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏胶片齿孔轨",
         "publicKey": "showSprockets",
@@ -4371,7 +4434,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "画格图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每格下方的编号图注",
         "publicKey": "showCaptions",
@@ -4379,10 +4441,29 @@ export const pages = [
         "description": "显示/隐藏每格下方的编号图注"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -4410,6 +4491,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "mediaCount": 4,
       "mediaFit": "cover",
       "showSprockets": true,
@@ -4460,7 +4542,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "邮票数量",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 4,
         "max": 8,
@@ -4474,7 +4555,6 @@ export const pages = [
         "key": "cols",
         "label": "每行列数",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 4,
@@ -4488,7 +4568,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -4509,7 +4588,6 @@ export const pages = [
         "key": "showDenom",
         "label": "面值",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每枚邮票的面值",
         "publicKey": "showDenom",
@@ -4517,10 +4595,29 @@ export const pages = [
         "description": "显示/隐藏每枚邮票的面值"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -4548,6 +4645,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "mediaCount": 6,
       "mediaFit": "cover",
       "showDenom": true,
@@ -4597,7 +4695,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "封面数量",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 3,
         "max": 7,
@@ -4611,7 +4708,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦封面",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 1,
         "max": 7,
@@ -4625,7 +4721,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -4646,7 +4741,6 @@ export const pages = [
         "key": "showReflection",
         "label": "倒影",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏封面下方倒影",
         "publicKey": "showReflection",
@@ -4657,7 +4751,6 @@ export const pages = [
         "key": "showCaption",
         "label": "焦点图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏焦点封面的条目标签",
         "publicKey": "showCaption",
@@ -4665,10 +4758,29 @@ export const pages = [
         "description": "显示/隐藏焦点封面的条目标签"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#3bb6ec",
         "def": "#3bb6ec",
         "options": [
           {
@@ -4696,6 +4808,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#3bb6ec",
+      "theme": "dark",
       "mediaCount": 5,
       "focusIndex": 3,
       "mediaFit": "cover",
@@ -4754,7 +4867,6 @@ export const pages = [
         "key": "orientation",
         "label": "排布方向",
         "type": "segment",
-        "default": "horizontal",
         "def": "horizontal",
         "options": [
           {
@@ -4775,7 +4887,6 @@ export const pages = [
         "key": "showLabels",
         "label": "前后标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏 BEFORE / AFTER 标签",
         "publicKey": "showLabels",
@@ -4786,7 +4897,6 @@ export const pages = [
         "key": "showHandle",
         "label": "中缝手柄",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏接缝处的圆形手柄",
         "publicKey": "showHandle",
@@ -4797,7 +4907,6 @@ export const pages = [
         "key": "showStat",
         "label": "变化数据",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部变化数据条",
         "publicKey": "showStat",
@@ -4805,10 +4914,29 @@ export const pages = [
         "description": "显示/隐藏底部变化数据条"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -4829,7 +4957,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -4857,6 +4984,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "dark",
       "orientation": "horizontal",
       "showLabels": true,
       "showHandle": true,
@@ -4905,7 +5033,6 @@ export const pages = [
         "key": "columnCount",
         "label": "对比列数",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -4919,7 +5046,6 @@ export const pages = [
         "key": "rowCount",
         "label": "对比项数",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 3,
         "max": 6,
@@ -4933,7 +5059,6 @@ export const pages = [
         "key": "highlight",
         "label": "高亮某列",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "突出显示某一方案列",
         "publicKey": "highlight",
@@ -4944,7 +5069,6 @@ export const pages = [
         "key": "highlightIndex",
         "label": "高亮第几列",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -4959,7 +5083,6 @@ export const pages = [
         "key": "zebra",
         "label": "斑马纹",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "行间隔底色，便于横向阅读",
         "publicKey": "zebra",
@@ -4970,7 +5093,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏表格上方说明句",
         "publicKey": "showLede",
@@ -4978,10 +5100,29 @@ export const pages = [
         "description": "显示/隐藏表格上方说明句"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -5009,6 +5150,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "columnCount": 3,
       "rowCount": 6,
       "highlight": true,
@@ -5115,7 +5257,6 @@ export const pages = [
         "key": "groupCount",
         "label": "分组数",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -5129,7 +5270,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 1,
         "max": 2,
@@ -5143,7 +5283,6 @@ export const pages = [
         "key": "showLeaders",
         "label": "引导点",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏项与值之间的虚线引导",
         "publicKey": "showLeaders",
@@ -5154,7 +5293,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区说明",
         "publicKey": "showLede",
@@ -5162,10 +5300,29 @@ export const pages = [
         "description": "显示/隐藏标题区说明"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -5193,6 +5350,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#5a138e",
+      "theme": "light",
       "groupCount": 4,
       "columns": 2,
       "showLeaders": true,
@@ -5304,7 +5462,6 @@ export const pages = [
         "key": "rowCount",
         "label": "名录行数",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 4,
         "max": 7,
@@ -5318,7 +5475,6 @@ export const pages = [
         "key": "showRank",
         "label": "排名序号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏左侧排名序号",
         "publicKey": "showRank",
@@ -5329,7 +5485,6 @@ export const pages = [
         "key": "showBar",
         "label": "数据条",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏数值内联条形",
         "publicKey": "showValueLabels",
@@ -5340,7 +5495,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦高亮",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "突出其中一行，其余常态",
         "publicKey": "focus",
@@ -5351,7 +5505,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几行",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 7,
@@ -5363,10 +5516,29 @@ export const pages = [
         "description": "高亮的行序号"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#3bb6ec",
         "def": "#3bb6ec",
         "options": [
           {
@@ -5394,6 +5566,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#3bb6ec",
+      "theme": "light",
       "rowCount": 6,
       "showRank": true,
       "showBar": true,
@@ -5482,7 +5655,6 @@ export const pages = [
         "key": "eventCount",
         "label": "排期数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 1,
         "max": 5,
@@ -5496,7 +5668,6 @@ export const pages = [
         "key": "showWeekdays",
         "label": "星期表头",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏星期表头行",
         "publicKey": "showWeekdays",
@@ -5507,7 +5678,6 @@ export const pages = [
         "key": "showLegend",
         "label": "图例",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右上角事件图例",
         "publicKey": "showLegend",
@@ -5518,7 +5688,6 @@ export const pages = [
         "key": "markToday",
         "label": "今日标记",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "在“今日”加圆环标记",
         "publicKey": "markToday",
@@ -5526,10 +5695,29 @@ export const pages = [
         "description": "在“今日”加圆环标记"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -5557,6 +5745,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "eventCount": 4,
       "showWeekdays": true,
       "showLegend": true,
@@ -5627,7 +5816,6 @@ export const pages = [
         "key": "laneCount",
         "label": "泳道数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -5641,7 +5829,6 @@ export const pages = [
         "key": "quarterCount",
         "label": "时间列数",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 4,
         "max": 6,
@@ -5655,7 +5842,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦泳道",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "突出其中一条泳道，其余淡化",
         "publicKey": "focus",
@@ -5666,7 +5852,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几条",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -5681,7 +5866,6 @@ export const pages = [
         "key": "showMilestones",
         "label": "里程碑",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏菱形里程碑标记",
         "publicKey": "showMilestones",
@@ -5689,10 +5873,29 @@ export const pages = [
         "description": "显示/隐藏菱形里程碑标记"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#3bb6ec",
         "def": "#3bb6ec",
         "options": [
           {
@@ -5720,6 +5923,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#3bb6ec",
+      "theme": "light",
       "laneCount": 3,
       "quarterCount": 4,
       "focus": false,
@@ -5829,7 +6033,6 @@ export const pages = [
         "key": "weeks",
         "label": "周数",
         "type": "slider",
-        "default": 14,
         "def": 14,
         "min": 8,
         "max": 16,
@@ -5843,7 +6046,6 @@ export const pages = [
         "key": "showLegend",
         "label": "图例",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏 少→多 强度图例",
         "publicKey": "showLegend",
@@ -5854,7 +6056,6 @@ export const pages = [
         "key": "showSidebar",
         "label": "侧栏数据",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右侧统计侧栏",
         "publicKey": "showSidebar",
@@ -5862,10 +6063,29 @@ export const pages = [
         "description": "显示/隐藏右侧统计侧栏"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -5893,6 +6113,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "weeks": 14,
       "showLegend": true,
       "showSidebar": true,
@@ -5938,7 +6159,6 @@ export const pages = [
         "key": "rowCount",
         "label": "特性行数",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 4,
         "max": 7,
@@ -5952,9 +6172,8 @@ export const pages = [
         "key": "columnCount",
         "label": "对手列数",
         "type": "slider",
-        "default": 3,
         "def": 3,
-        "min": 2,
+        "min": 1,
         "max": 3,
         "step": 1,
         "desc": "除声浪外的对照列数量",
@@ -5966,7 +6185,6 @@ export const pages = [
         "key": "showLegend",
         "label": "显示图例",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部符号图例",
         "publicKey": "showLegend",
@@ -5977,7 +6195,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -5985,10 +6202,29 @@ export const pages = [
         "description": "显示/隐藏标题区导语"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -6016,6 +6252,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "rowCount": 6,
       "columnCount": 3,
       "ownIndex": 1,
@@ -6124,7 +6361,6 @@ export const pages = [
         "key": "pointCount",
         "label": "对照条目",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -6138,7 +6374,6 @@ export const pages = [
         "key": "showStat",
         "label": "对照大数",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每侧顶部的对比数字",
         "publicKey": "showStat",
@@ -6149,7 +6384,6 @@ export const pages = [
         "key": "showBadge",
         "label": "中缝徽标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏中间的 VS 徽标",
         "publicKey": "showBadge",
@@ -6157,10 +6391,29 @@ export const pages = [
         "description": "显示/隐藏中间的 VS 徽标"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -6188,6 +6441,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "pointCount": 4,
       "showStat": true,
       "showBadge": true,
@@ -6232,7 +6486,6 @@ export const pages = [
         "key": "itemCount",
         "label": "问题数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 6,
@@ -6246,7 +6499,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "segment",
-        "default": 2,
         "def": 2,
         "options": [
           {
@@ -6267,8 +6519,7 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": false,
-        "def": false,
+        "def": true,
         "desc": "把某一条提升为强调色卡片",
         "publicKey": "focus",
         "publicLabel": "重点强调",
@@ -6278,7 +6529,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几条",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 6,
@@ -6293,7 +6543,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -6314,7 +6563,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -6325,7 +6573,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -6356,7 +6603,7 @@ export const pages = [
       "theme": "light",
       "itemCount": 4,
       "columns": 2,
-      "focus": false,
+      "focus": true,
       "focusIndex": 1,
       "showLede": true,
       "barMeta": "36 — FAQ",
@@ -6406,7 +6653,6 @@ export const pages = [
         "key": "planCount",
         "label": "方案数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -6420,7 +6666,6 @@ export const pages = [
         "key": "highlightIndex",
         "label": "推荐方案",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 1,
         "max": 4,
@@ -6434,7 +6679,6 @@ export const pages = [
         "key": "billing",
         "label": "计费周期",
         "type": "segment",
-        "default": "monthly",
         "def": "monthly",
         "options": [
           {
@@ -6455,7 +6699,6 @@ export const pages = [
         "key": "showFeatures",
         "label": "功能清单",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每个方案的功能清单",
         "publicKey": "showFeatures",
@@ -6463,10 +6706,29 @@ export const pages = [
         "description": "显示/隐藏每个方案的功能清单"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -6494,6 +6756,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "planCount": 3,
       "highlightIndex": 2,
       "billing": "monthly",
@@ -6580,7 +6843,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -6601,7 +6863,6 @@ export const pages = [
         "key": "numeral",
         "label": "编号样式",
         "type": "segment",
-        "default": "arabic",
         "def": "arabic",
         "options": [
           {
@@ -6622,7 +6883,6 @@ export const pages = [
         "key": "showIndex",
         "label": "巨大编号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏背景巨大编号",
         "publicKey": "showIndex",
@@ -6633,7 +6893,6 @@ export const pages = [
         "key": "showTag",
         "label": "下一幕标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏“接下来”标签",
         "publicKey": "showTag",
@@ -6644,7 +6903,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰",
         "publicKey": "showDecorations",
@@ -6655,7 +6913,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -6710,7 +6967,6 @@ export const pages = [
         "key": "statCount",
         "label": "指标数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -6724,7 +6980,6 @@ export const pages = [
         "key": "chartType",
         "label": "图表类型",
         "type": "segment",
-        "default": "number",
         "def": "number",
         "options": [
           {
@@ -6749,7 +7004,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "高亮某一指标，弱化其余",
         "publicKey": "focus",
@@ -6760,7 +7014,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几个",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -6775,7 +7028,6 @@ export const pages = [
         "key": "showIntro",
         "label": "显示引言",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右上引言段落",
         "publicKey": "showIntro",
@@ -6786,7 +7038,6 @@ export const pages = [
         "key": "showArgument",
         "label": "显示论述",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部现状/解法两栏",
         "publicKey": "showArgument",
@@ -6794,10 +7045,29 @@ export const pages = [
         "description": "显示/隐藏底部现状/解法两栏"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -6825,6 +7095,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "statCount": 4,
       "chartType": "number",
       "focus": false,
@@ -6886,9 +7157,8 @@ export const pages = [
         "key": "segmentCount",
         "label": "分段数量",
         "type": "slider",
-        "default": 5,
         "def": 5,
-        "min": 3,
+        "min": 1,
         "max": 5,
         "step": 1,
         "desc": "收益构成的分段数量",
@@ -6900,7 +7170,6 @@ export const pages = [
         "key": "chartType",
         "label": "图表类型",
         "type": "segment",
-        "default": "donut",
         "def": "donut",
         "options": [
           {
@@ -6921,7 +7190,6 @@ export const pages = [
         "key": "showCenter",
         "label": "中心总计",
         "type": "toggle",
-        "default": true,
         "def": true,
         "dependsOn": "chartType",
         "desc": "环形中心显示总计（仅环形）",
@@ -6933,7 +7201,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "放大并高亮某一分段",
         "publicKey": "focus",
@@ -6944,7 +7211,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几段",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 5,
@@ -6956,10 +7222,29 @@ export const pages = [
         "description": "被强调分段的序号（1 起）"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -6987,6 +7272,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "segmentCount": 5,
       "chartType": "donut",
       "showCenter": true,
@@ -7042,9 +7328,8 @@ export const pages = [
         "key": "blockCount",
         "label": "方块数量",
         "type": "slider",
-        "default": 6,
         "def": 6,
-        "min": 4,
+        "min": 1,
         "max": 6,
         "step": 1,
         "desc": "占比方块（收入来源）的数量",
@@ -7056,7 +7341,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦高亮",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "突出其中一个方块，其余淡化",
         "publicKey": "focus",
@@ -7067,7 +7351,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几块",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 6,
@@ -7082,7 +7365,6 @@ export const pages = [
         "key": "showShare",
         "label": "占比数字",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每块的占比百分比",
         "publicKey": "showShare",
@@ -7090,10 +7372,29 @@ export const pages = [
         "description": "显示/隐藏每块的占比百分比"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#1f6b2a",
         "def": "#1f6b2a",
         "options": [
           {
@@ -7121,6 +7422,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#1f6b2a",
+      "theme": "dark",
       "blockCount": 6,
       "focus": false,
       "focusIndex": 1,
@@ -7198,7 +7500,6 @@ export const pages = [
         "key": "bucketCount",
         "label": "去向数量",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 3,
         "max": 5,
@@ -7212,7 +7513,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦高亮",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "突出其中一条资金流，其余淡化",
         "publicKey": "focus",
@@ -7223,7 +7523,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几条",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 5,
@@ -7238,7 +7537,6 @@ export const pages = [
         "key": "showValues",
         "label": "数值占比",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每条流向的占比",
         "publicKey": "showValueLabels",
@@ -7246,10 +7544,29 @@ export const pages = [
         "description": "显示/隐藏每条流向的占比"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#1f6b2a",
         "def": "#1f6b2a",
         "options": [
           {
@@ -7277,6 +7594,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#1f6b2a",
+      "theme": "light",
       "bucketCount": 5,
       "focus": true,
       "focusIndex": 1,
@@ -7337,7 +7655,6 @@ export const pages = [
         "key": "stepCount",
         "label": "变动项数",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 5,
@@ -7351,7 +7668,6 @@ export const pages = [
         "key": "showConnectors",
         "label": "连接线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏柱顶之间的虚线",
         "publicKey": "showConnectors",
@@ -7362,7 +7678,6 @@ export const pages = [
         "key": "showValues",
         "label": "数值标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每根柱的增减数值",
         "publicKey": "showValueLabels",
@@ -7373,7 +7688,6 @@ export const pages = [
         "key": "focus",
         "label": "高亮某项",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "突出某一增减项",
         "publicKey": "focus",
@@ -7384,7 +7698,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "高亮第几项",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 1,
         "max": 5,
@@ -7396,10 +7709,29 @@ export const pages = [
         "description": "被突出增减项的序号（1 起）"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -7427,6 +7759,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "stepCount": 4,
       "showConnectors": true,
       "showValues": true,
@@ -7488,7 +7821,6 @@ export const pages = [
         "key": "chartType",
         "label": "图表类型",
         "type": "segment",
-        "default": "area",
         "def": "area",
         "options": [
           {
@@ -7513,7 +7845,6 @@ export const pages = [
         "key": "seriesCount",
         "label": "数据系列",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 1,
         "max": 2,
@@ -7527,7 +7858,6 @@ export const pages = [
         "key": "showGrid",
         "label": "网格线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏背景网格与刻度",
         "publicKey": "showGrid",
@@ -7538,7 +7868,6 @@ export const pages = [
         "key": "showLegend",
         "label": "图例",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏系列图例",
         "publicKey": "showLegend",
@@ -7549,7 +7878,6 @@ export const pages = [
         "key": "showCallout",
         "label": "终点标注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮并标注最新一季",
         "publicKey": "showCallout",
@@ -7557,10 +7885,29 @@ export const pages = [
         "description": "高亮并标注最新一季"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -7588,6 +7935,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "chartType": "area",
       "seriesCount": 2,
       "showGrid": true,
@@ -7651,7 +7999,6 @@ export const pages = [
         "key": "seriesCount",
         "label": "数据系列",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 3,
@@ -7665,7 +8012,6 @@ export const pages = [
         "key": "showGrid",
         "label": "网格线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏背景网格与刻度",
         "publicKey": "showGrid",
@@ -7676,7 +8022,6 @@ export const pages = [
         "key": "showLegend",
         "label": "图例",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏系列图例",
         "publicKey": "showLegend",
@@ -7687,7 +8032,6 @@ export const pages = [
         "key": "showEndLabels",
         "label": "终值标注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右端各层占比标注",
         "publicKey": "showEndLabels",
@@ -7695,10 +8039,29 @@ export const pages = [
         "description": "显示/隐藏右端各层占比标注"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -7726,6 +8089,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "seriesCount": 3,
       "showGrid": true,
       "showLegend": true,
@@ -7808,7 +8172,6 @@ export const pages = [
         "key": "lineCount",
         "label": "指标数量",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 3,
         "max": 6,
@@ -7822,7 +8185,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦高亮",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "突出其中一条指标线，其余淡化",
         "publicKey": "focus",
@@ -7833,7 +8195,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几条",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 6,
@@ -7848,7 +8209,6 @@ export const pages = [
         "key": "showGrid",
         "label": "刻度网格",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏两端刻度与基线",
         "publicKey": "showGrid",
@@ -7859,7 +8219,6 @@ export const pages = [
         "key": "showDelta",
         "label": "变化标注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每条线的变化百分比",
         "publicKey": "showDelta",
@@ -7867,10 +8226,29 @@ export const pages = [
         "description": "显示/隐藏每条线的变化百分比"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -7898,6 +8276,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "lineCount": 5,
       "focus": true,
       "focusIndex": 1,
@@ -7964,7 +8343,6 @@ export const pages = [
         "key": "stageCount",
         "label": "阶段数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 5,
@@ -7978,7 +8356,6 @@ export const pages = [
         "key": "showRates",
         "label": "转化率",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏阶段间转化率",
         "publicKey": "showRates",
@@ -7989,7 +8366,6 @@ export const pages = [
         "key": "focus",
         "label": "高亮阶段",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮某个阶段、弱化其余",
         "publicKey": "focus",
@@ -8000,7 +8376,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "高亮第几个",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 1,
         "max": 5,
@@ -8015,7 +8390,6 @@ export const pages = [
         "key": "showNotes",
         "label": "右侧说明",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右侧文字说明",
         "publicKey": "showNotes",
@@ -8023,10 +8397,29 @@ export const pages = [
         "description": "显示/隐藏右侧文字说明"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -8054,6 +8447,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "stageCount": 4,
       "showRates": true,
       "focus": true,
@@ -8120,7 +8514,6 @@ export const pages = [
         "key": "categoryCount",
         "label": "类目数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -8134,11 +8527,11 @@ export const pages = [
         "key": "dotValue",
         "label": "每点单位",
         "type": "slider",
-        "default": 20,
         "def": 20,
         "min": 10,
         "max": 40,
         "step": 5,
+        "unit": "万",
         "desc": "每个圆点代表的数量（万）",
         "publicKey": "dotValue",
         "publicLabel": "每点单位",
@@ -8148,7 +8541,6 @@ export const pages = [
         "key": "showValues",
         "label": "数值标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每行右侧数值",
         "publicKey": "showValueLabels",
@@ -8159,7 +8551,6 @@ export const pages = [
         "key": "focus",
         "label": "高亮某行",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮某一类目、弱化其余",
         "publicKey": "focus",
@@ -8170,7 +8561,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "高亮第几行",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -8182,10 +8572,29 @@ export const pages = [
         "description": "被高亮类目的序号（1 起）"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -8213,6 +8622,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "categoryCount": 4,
       "dotValue": 20,
       "showValues": true,
@@ -8261,7 +8671,6 @@ export const pages = [
         "key": "bubbleCount",
         "label": "气泡数量",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 4,
         "max": 7,
@@ -8275,7 +8684,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦高亮",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "突出其中一个气泡，其余淡化",
         "publicKey": "focus",
@@ -8286,7 +8694,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几个",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 1,
         "max": 7,
@@ -8301,7 +8708,6 @@ export const pages = [
         "key": "showGrid",
         "label": "坐标网格",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏坐标轴与网格",
         "publicKey": "showGrid",
@@ -8312,7 +8718,6 @@ export const pages = [
         "key": "showLabels",
         "label": "气泡标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏气泡上的名称标签",
         "publicKey": "showLabels",
@@ -8320,10 +8725,29 @@ export const pages = [
         "description": "显示/隐藏气泡上的名称标签"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -8351,6 +8775,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#5a138e",
+      "theme": "light",
       "bubbleCount": 6,
       "focus": false,
       "focusIndex": 4,
@@ -8434,7 +8859,6 @@ export const pages = [
         "key": "periodCount",
         "label": "周期数量",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 4,
         "max": 8,
@@ -8448,7 +8872,6 @@ export const pages = [
         "key": "seriesCount",
         "label": "分项数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 3,
@@ -8462,7 +8885,6 @@ export const pages = [
         "key": "chartType",
         "label": "图表类型",
         "type": "segment",
-        "default": "stacked",
         "def": "stacked",
         "options": [
           {
@@ -8483,7 +8905,6 @@ export const pages = [
         "key": "focus",
         "label": "高亮周期",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮某个周期、弱化其余",
         "publicKey": "focus",
@@ -8494,7 +8915,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "高亮第几个",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 1,
         "max": 8,
@@ -8509,7 +8929,6 @@ export const pages = [
         "key": "showValues",
         "label": "数值标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每柱顶部合计",
         "publicKey": "showValueLabels",
@@ -8520,7 +8939,6 @@ export const pages = [
         "key": "showGrid",
         "label": "网格线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏背景横向网格线",
         "publicKey": "showGrid",
@@ -8528,10 +8946,29 @@ export const pages = [
         "description": "显示/隐藏背景横向网格线"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -8559,6 +8996,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "periodCount": 6,
       "seriesCount": 3,
       "chartType": "stacked",
@@ -8652,9 +9090,8 @@ export const pages = [
         "key": "barCount",
         "label": "条目数量",
         "type": "slider",
-        "default": 6,
         "def": 6,
-        "min": 4,
+        "min": 2,
         "max": 7,
         "step": 1,
         "desc": "排行展示的平台条目数量",
@@ -8666,7 +9103,6 @@ export const pages = [
         "key": "showValue",
         "label": "数值标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每条末端的数值",
         "publicKey": "showValueLabels",
@@ -8677,7 +9113,6 @@ export const pages = [
         "key": "showAxis",
         "label": "刻度网格",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏背景刻度网格",
         "publicKey": "showAxis",
@@ -8688,7 +9123,6 @@ export const pages = [
         "key": "focus",
         "label": "重点强调",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮某一条，弱化其余",
         "publicKey": "focus",
@@ -8699,7 +9133,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "强调第几条",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 7,
@@ -8711,10 +9144,29 @@ export const pages = [
         "description": "被强调条目的序号（1 起）"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -8742,6 +9194,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "barCount": 6,
       "showValue": true,
       "showAxis": true,
@@ -8813,7 +9266,6 @@ export const pages = [
         "key": "gaugeCount",
         "label": "仪表数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -8827,7 +9279,6 @@ export const pages = [
         "key": "showTrack",
         "label": "底环轨道",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏环形底色轨道",
         "publicKey": "showGuide",
@@ -8838,7 +9289,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -8859,7 +9309,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -8870,7 +9319,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -8949,7 +9397,6 @@ export const pages = [
         "key": "rowCount",
         "label": "指标数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 5,
@@ -8963,7 +9410,6 @@ export const pages = [
         "key": "showBands",
         "label": "区间底色",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏差/中/好的区间底色",
         "publicKey": "showBands",
@@ -8974,7 +9420,6 @@ export const pages = [
         "key": "showTarget",
         "label": "目标刻度",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏目标值竖线",
         "publicKey": "showTarget",
@@ -8985,7 +9430,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦高亮",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "突出其中一行，其余淡化",
         "publicKey": "focus",
@@ -8996,7 +9440,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几行",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 5,
@@ -9008,10 +9451,29 @@ export const pages = [
         "description": "高亮的指标行序号"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#1f6b2a",
         "def": "#1f6b2a",
         "options": [
           {
@@ -9039,6 +9501,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#1f6b2a",
+      "theme": "light",
       "rowCount": 4,
       "showBands": true,
       "showTarget": true,
@@ -9110,7 +9573,6 @@ export const pages = [
         "key": "tierCount",
         "label": "分层数量",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 4,
         "max": 6,
@@ -9124,7 +9586,6 @@ export const pages = [
         "key": "showValues",
         "label": "数值标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每条占比数值",
         "publicKey": "showValueLabels",
@@ -9135,7 +9596,6 @@ export const pages = [
         "key": "showAxis",
         "label": "中轴线",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "显示/隐藏中央分隔轴",
         "publicKey": "showAxis",
@@ -9146,7 +9606,6 @@ export const pages = [
         "key": "focus",
         "label": "高亮某层",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮某一分层、弱化其余",
         "publicKey": "focus",
@@ -9157,7 +9616,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "高亮第几层",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 1,
         "max": 6,
@@ -9169,10 +9627,29 @@ export const pages = [
         "description": "被高亮分层的序号（自上而下，1 起）"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -9200,6 +9677,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "tierCount": 5,
       "showValues": true,
       "showAxis": false,
@@ -9266,7 +9744,6 @@ export const pages = [
         "key": "axisCount",
         "label": "维度数",
         "type": "slider",
-        "default": 6,
         "def": 6,
         "min": 4,
         "max": 6,
@@ -9280,7 +9757,6 @@ export const pages = [
         "key": "seriesCount",
         "label": "系列数",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 1,
         "max": 2,
@@ -9294,7 +9770,6 @@ export const pages = [
         "key": "showGrid",
         "label": "网格环",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏背景网格环与刻度",
         "publicKey": "showGrid",
@@ -9305,7 +9780,6 @@ export const pages = [
         "key": "showLabels",
         "label": "维度标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏外圈维度名称",
         "publicKey": "showLabels",
@@ -9313,10 +9787,29 @@ export const pages = [
         "description": "显示/隐藏外圈维度名称"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -9344,6 +9837,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#5a138e",
+      "theme": "light",
       "axisCount": 6,
       "seriesCount": 2,
       "showGrid": true,
@@ -9409,7 +9903,6 @@ export const pages = [
         "key": "pointCount",
         "label": "对手数量",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 3,
         "max": 6,
@@ -9423,7 +9916,6 @@ export const pages = [
         "key": "showQuadrants",
         "label": "象限标注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏象限底色与标签",
         "publicKey": "showQuadrants",
@@ -9434,7 +9926,6 @@ export const pages = [
         "key": "showGrid",
         "label": "坐标网格",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏坐标轴与网格",
         "publicKey": "showGrid",
@@ -9445,7 +9936,6 @@ export const pages = [
         "key": "showRivalLabels",
         "label": "对手标签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏对照点名称",
         "publicKey": "showRivalLabels",
@@ -9453,10 +9943,29 @@ export const pages = [
         "description": "显示/隐藏对照点名称"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -9484,6 +9993,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "pointCount": 5,
       "showQuadrants": true,
       "showGrid": true,
@@ -9559,7 +10069,6 @@ export const pages = [
         "key": "columnCount",
         "label": "方案数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -9573,7 +10082,6 @@ export const pages = [
         "key": "rowCount",
         "label": "评估维度",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 4,
         "max": 6,
@@ -9587,7 +10095,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "高亮方案",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -9601,7 +10108,6 @@ export const pages = [
         "key": "showTotals",
         "label": "合计得分",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部合计得分",
         "publicKey": "showTotals",
@@ -9609,10 +10115,29 @@ export const pages = [
         "description": "显示/隐藏底部合计得分"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -9640,6 +10165,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#5a138e",
+      "theme": "light",
       "columnCount": 3,
       "rowCount": 5,
       "focusIndex": 1,
@@ -9746,7 +10272,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -9767,7 +10292,6 @@ export const pages = [
         "key": "showTrend",
         "label": "趋势图",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏主数字旁的小条形趋势",
         "publicKey": "showTrend",
@@ -9778,7 +10302,6 @@ export const pages = [
         "key": "showSupporting",
         "label": "辅助指标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部辅助数据行",
         "publicKey": "showSupporting",
@@ -9789,7 +10312,6 @@ export const pages = [
         "key": "supportingCount",
         "label": "辅助数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 0,
         "max": 3,
@@ -9804,7 +10326,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰图形",
         "publicKey": "showDecorations",
@@ -9815,7 +10336,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#3bb6ec",
         "def": "#3bb6ec",
         "options": [
           {
@@ -9897,7 +10417,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -9918,7 +10437,6 @@ export const pages = [
         "key": "statCount",
         "label": "数字数量",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 3,
@@ -9932,7 +10450,6 @@ export const pages = [
         "key": "showDividers",
         "label": "分隔线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏数字之间的竖向分隔线",
         "publicKey": "showDividers",
@@ -9943,7 +10460,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰图形",
         "publicKey": "showDecorations",
@@ -9954,7 +10470,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -10023,7 +10538,6 @@ export const pages = [
         "key": "statCount",
         "label": "指标数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -10037,7 +10551,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "segment",
-        "default": 2,
         "def": 2,
         "options": [
           {
@@ -10058,7 +10571,6 @@ export const pages = [
         "key": "showDelta",
         "label": "同比",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏同比涨跌标记",
         "publicKey": "showDelta",
@@ -10069,7 +10581,6 @@ export const pages = [
         "key": "showSpark",
         "label": "迷你走势",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏迷你趋势线",
         "publicKey": "showSpark",
@@ -10080,7 +10591,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -10088,10 +10598,29 @@ export const pages = [
         "description": "显示/隐藏标题区导语"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -10119,6 +10648,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "statCount": 4,
       "columns": 2,
       "showDelta": true,
@@ -10211,7 +10741,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "图片数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 5,
@@ -10225,7 +10754,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -10246,11 +10774,11 @@ export const pages = [
         "key": "gap",
         "label": "间距",
         "type": "slider",
-        "default": 14,
         "def": 14,
         "min": 4,
         "max": 28,
         "step": 2,
+        "unit": "px",
         "desc": "拼贴块之间的间距",
         "publicKey": "gap",
         "publicLabel": "间距",
@@ -10260,7 +10788,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "图块编号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏图块上的编号角标",
         "publicKey": "showCaptions",
@@ -10268,10 +10795,29 @@ export const pages = [
         "description": "显示/隐藏图块上的编号角标"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#1f6b2a",
         "def": "#1f6b2a",
         "options": [
           {
@@ -10299,6 +10845,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#1f6b2a",
+      "theme": "dark",
       "mediaCount": 4,
       "mediaFit": "cover",
       "gap": 14,
@@ -10325,7 +10872,6 @@ export const pages = [
         "key": "scrapCount",
         "label": "拼贴张数",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 2,
         "max": 4,
@@ -10339,7 +10885,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -10360,7 +10905,6 @@ export const pages = [
         "key": "showTape",
         "label": "胶带",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏贴在碎片上的胶带",
         "publicKey": "showTape",
@@ -10371,21 +10915,40 @@ export const pages = [
         "key": "tilt",
         "label": "倾斜角度",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 0,
         "max": 10,
         "step": 1,
+        "unit": "°",
         "desc": "碎片随机倾斜的基准角度",
         "publicKey": "tilt",
         "publicLabel": "倾斜角度",
         "description": "碎片随机倾斜的基准角度"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#baf04f",
         "def": "#baf04f",
         "options": [
           {
@@ -10413,6 +10976,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#baf04f",
+      "theme": "dark",
       "scrapCount": 3,
       "mediaFit": "cover",
       "showTape": true,
@@ -10448,7 +11012,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "照片数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 6,
@@ -10462,7 +11025,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -10483,7 +11045,6 @@ export const pages = [
         "key": "showSwatches",
         "label": "色卡",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右侧配色色卡",
         "publicKey": "showSwatches",
@@ -10494,7 +11055,6 @@ export const pages = [
         "key": "showNote",
         "label": "便签",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右侧手写便签",
         "publicKey": "showNote",
@@ -10502,10 +11062,29 @@ export const pages = [
         "description": "显示/隐藏右侧手写便签"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -10533,6 +11112,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "mediaCount": 4,
       "mediaFit": "cover",
       "showSwatches": true,
@@ -10587,7 +11167,6 @@ export const pages = [
         "key": "trackCount",
         "label": "条目数量",
         "type": "slider",
-        "default": 8,
         "def": 8,
         "min": 5,
         "max": 10,
@@ -10601,7 +11180,6 @@ export const pages = [
         "key": "showDuration",
         "label": "时长",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每首条目的时长",
         "publicKey": "showDuration",
@@ -10612,7 +11190,6 @@ export const pages = [
         "key": "coverSide",
         "label": "封面位置",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -10633,7 +11210,6 @@ export const pages = [
         "key": "focus",
         "label": "重点高亮",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮重点条目",
         "publicKey": "focus",
@@ -10644,7 +11220,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "重点序号",
         "type": "slider",
-        "default": 3,
         "def": 3,
         "min": 1,
         "max": 10,
@@ -10659,7 +11234,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "封面填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -10677,10 +11251,29 @@ export const pages = [
         "description": "封面的填充方式"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -10708,6 +11301,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "dark",
       "trackCount": 8,
       "showDuration": true,
       "coverSide": "left",
@@ -10792,7 +11386,6 @@ export const pages = [
         "key": "recordSide",
         "label": "视觉元素位置",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -10813,7 +11406,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -10834,7 +11426,6 @@ export const pages = [
         "key": "showGrooves",
         "label": "环形纹理",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏环形纹理",
         "publicKey": "showGrooves",
@@ -10845,7 +11436,6 @@ export const pages = [
         "key": "showTracklist",
         "label": "条目表",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右侧条目列表",
         "publicKey": "showItemList",
@@ -10856,9 +11446,8 @@ export const pages = [
         "key": "trackCount",
         "label": "条目数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
-        "min": 3,
+        "min": 1,
         "max": 6,
         "step": 1,
         "dependsOn": "showTracklist",
@@ -10871,7 +11460,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -10892,7 +11480,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#d61fb5",
         "def": "#d61fb5",
         "options": [
           {
@@ -10985,7 +11572,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "图片数量",
         "type": "slider",
-        "default": 7,
         "def": 7,
         "min": 4,
         "max": 8,
@@ -10999,7 +11585,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "segment",
-        "default": 4,
         "def": 4,
         "options": [
           {
@@ -11020,7 +11605,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -11041,7 +11625,6 @@ export const pages = [
         "key": "showIndex",
         "label": "序号角标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏图片序号",
         "publicKey": "showIndex",
@@ -11052,7 +11635,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "悬浮图注",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏图片底部说明条",
         "publicKey": "showCaptions",
@@ -11063,7 +11645,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -11084,7 +11665,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#1f6b2a",
         "def": "#1f6b2a",
         "options": [
           {
@@ -11151,7 +11731,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "画框数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 6,
@@ -11165,7 +11744,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -11186,7 +11764,6 @@ export const pages = [
         "key": "showMat",
         "label": "卡纸边",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏画框内的白色卡纸边",
         "publicKey": "showMat",
@@ -11197,7 +11774,6 @@ export const pages = [
         "key": "showPlaque",
         "label": "铭牌",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏画框下方的作品铭牌",
         "publicKey": "showPlaque",
@@ -11205,10 +11781,29 @@ export const pages = [
         "description": "显示/隐藏画框下方的作品铭牌"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#7a3a18",
         "def": "#7a3a18",
         "options": [
           {
@@ -11236,6 +11831,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#7a3a18",
+      "theme": "light",
       "mediaCount": 4,
       "mediaFit": "cover",
       "showMat": true,
@@ -11295,7 +11891,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "图片列数",
         "type": "slider",
-        "default": 7,
         "def": 7,
         "min": 5,
         "max": 9,
@@ -11309,7 +11904,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -11330,7 +11924,6 @@ export const pages = [
         "key": "showAxis",
         "label": "中线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏声波中线",
         "publicKey": "showAxis",
@@ -11341,7 +11934,6 @@ export const pages = [
         "key": "showNumbers",
         "label": "帧编号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每列帧编号",
         "publicKey": "showNumbers",
@@ -11349,10 +11941,29 @@ export const pages = [
         "description": "显示/隐藏每列帧编号"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#baf04f",
         "def": "#baf04f",
         "options": [
           {
@@ -11380,6 +11991,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#baf04f",
+      "theme": "light",
       "mediaCount": 7,
       "mediaFit": "cover",
       "showAxis": true,
@@ -11406,7 +12018,6 @@ export const pages = [
         "key": "logoCount",
         "label": "品牌数量",
         "type": "slider",
-        "default": 10,
         "def": 10,
         "min": 6,
         "max": 12,
@@ -11420,7 +12031,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "segment",
-        "default": 5,
         "def": 5,
         "options": [
           {
@@ -11445,7 +12055,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -11466,7 +12075,6 @@ export const pages = [
         "key": "showTitle",
         "label": "标题条",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏顶部标题区",
         "publicKey": "showTitle",
@@ -11477,7 +12085,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "伙伴名",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏 logo 下方名称",
         "publicKey": "showCaptions",
@@ -11485,10 +12092,29 @@ export const pages = [
         "description": "显示/隐藏 logo 下方名称"
       },
       {
+        "key": "mediaFit",
+        "label": "图片填充",
+        "type": "segment",
+        "def": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "裁切"
+          },
+          {
+            "value": "contain",
+            "label": "完整"
+          }
+        ],
+        "desc": "Logo 图片的填充方式",
+        "publicKey": "mediaFit",
+        "publicLabel": "图片填充",
+        "description": "Logo 图片的填充方式"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -11521,6 +12147,7 @@ export const pages = [
       "columns": 5,
       "showTitle": true,
       "showCaptions": true,
+      "mediaFit": "cover",
       "media": [],
       "barMeta": "69 — Logo Wall",
       "kicker": "分发网络 / Everywhere",
@@ -11558,7 +12185,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -11579,7 +12205,6 @@ export const pages = [
         "key": "mediaCount",
         "label": "人像数量",
         "type": "slider",
-        "default": 2,
         "def": 2,
         "min": 0,
         "max": 2,
@@ -11593,7 +12218,6 @@ export const pages = [
         "key": "showCaptions",
         "label": "图块编号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏人像角标编号",
         "publicKey": "showCaptions",
@@ -11604,7 +12228,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -11659,7 +12282,6 @@ export const pages = [
         "key": "imageSide",
         "label": "图片位置",
         "type": "segment",
-        "default": "right",
         "def": "right",
         "options": [
           {
@@ -11680,7 +12302,6 @@ export const pages = [
         "key": "calloutCount",
         "label": "标注数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -11694,7 +12315,6 @@ export const pages = [
         "key": "showPins",
         "label": "图上标注点",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏图片上的编号标注点",
         "publicKey": "showPins",
@@ -11705,7 +12325,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -11723,10 +12342,29 @@ export const pages = [
         "description": "图片的填充方式"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -11754,6 +12392,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "imageSide": "right",
       "calloutCount": 4,
       "showPins": true,
@@ -11819,7 +12458,6 @@ export const pages = [
         "key": "stepCount",
         "label": "节点数",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 3,
         "max": 5,
@@ -11833,7 +12471,6 @@ export const pages = [
         "key": "focus",
         "label": "当前节点",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮“此刻”所处的节点",
         "publicKey": "focus",
@@ -11844,7 +12481,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "进行到第几个",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 1,
         "max": 5,
@@ -11859,7 +12495,6 @@ export const pages = [
         "key": "showSpine",
         "label": "中轴脊线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏中央脊线与进度填充",
         "publicKey": "showSpine",
@@ -11870,7 +12505,6 @@ export const pages = [
         "key": "showDescriptions",
         "label": "节点描述",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏节点描述文字",
         "publicKey": "showDescriptions",
@@ -11878,10 +12512,29 @@ export const pages = [
         "description": "显示/隐藏节点描述文字"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -11909,6 +12562,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "stepCount": 5,
       "focus": true,
       "focusIndex": 5,
@@ -11963,7 +12617,6 @@ export const pages = [
         "key": "backgroundMode",
         "label": "背景替换",
         "type": "segment",
-        "default": "unicorn",
         "def": "unicorn",
         "options": [
           {
@@ -11984,7 +12637,6 @@ export const pages = [
         "key": "unicornScene",
         "label": "动态场景",
         "type": "segment",
-        "default": "tech",
         "def": "tech",
         "options": [
           {
@@ -12015,7 +12667,6 @@ export const pages = [
         "key": "tint",
         "label": "蒙版色调",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -12036,7 +12687,6 @@ export const pages = [
         "key": "quotePos",
         "label": "金句位置",
         "type": "segment",
-        "default": "bottom",
         "def": "bottom",
         "options": [
           {
@@ -12057,7 +12707,6 @@ export const pages = [
         "key": "showMark",
         "label": "引号装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏大引号符号",
         "publicKey": "showMark",
@@ -12068,7 +12717,6 @@ export const pages = [
         "key": "showAttribution",
         "label": "署名",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏引文署名",
         "publicKey": "showAttribution",
@@ -12079,7 +12727,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -12137,7 +12784,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -12158,7 +12804,6 @@ export const pages = [
         "key": "align",
         "label": "对齐",
         "type": "segment",
-        "default": "center",
         "def": "center",
         "options": [
           {
@@ -12179,7 +12824,6 @@ export const pages = [
         "key": "showEqualizer",
         "label": "声波条",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部声波条装饰",
         "publicKey": "showEqualizer",
@@ -12190,7 +12834,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰图形",
         "publicKey": "showDecorations",
@@ -12201,7 +12844,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#c44ee0",
         "def": "#c44ee0",
         "options": [
           {
@@ -12293,7 +12935,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "color",
         "def": "color",
         "options": [
           {
@@ -12318,7 +12959,6 @@ export const pages = [
         "key": "numeral",
         "label": "编号样式",
         "type": "segment",
-        "default": "roman",
         "def": "roman",
         "options": [
           {
@@ -12339,7 +12979,6 @@ export const pages = [
         "key": "showIndex",
         "label": "章节编号",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏巨大的章节编号",
         "publicKey": "showIndex",
@@ -12350,7 +12989,6 @@ export const pages = [
         "key": "showAgenda",
         "label": "章节目录",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏右侧章节进度列表",
         "publicKey": "showAgenda",
@@ -12361,7 +12999,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰图形",
         "publicKey": "showDecorations",
@@ -12372,7 +13009,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -12434,7 +13070,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "accent",
         "def": "accent",
         "options": [
           {
@@ -12452,24 +13087,9 @@ export const pages = [
         "description": "间章整体配色"
       },
       {
-        "key": "sectionNo",
-        "label": "章节序号",
-        "type": "slider",
-        "default": 3,
-        "def": 3,
-        "min": 1,
-        "max": 9,
-        "step": 1,
-        "desc": "本章的序号",
-        "publicKey": "sectionNo",
-        "publicLabel": "章节序号",
-        "description": "本章的序号"
-      },
-      {
         "key": "align",
         "label": "对齐",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -12490,7 +13110,6 @@ export const pages = [
         "key": "showRule",
         "label": "分隔线",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题下方分隔线",
         "publicKey": "showRule",
@@ -12501,7 +13120,6 @@ export const pages = [
         "key": "showGhost",
         "label": "背景大字",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏背景超大序号",
         "publicKey": "showGhost",
@@ -12512,7 +13130,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -12541,7 +13158,7 @@ export const pages = [
     "defaultProps": {
       "accent": "#f15a29",
       "theme": "accent",
-      "sectionNo": 3,
+      "sectionLabel": "03",
       "align": "left",
       "showRule": true,
       "showGhost": true,
@@ -12566,7 +13183,6 @@ export const pages = [
         "key": "milestoneCount",
         "label": "节点数量",
         "type": "slider",
-        "default": 5,
         "def": 5,
         "min": 3,
         "max": 5,
@@ -12580,7 +13196,6 @@ export const pages = [
         "key": "focus",
         "label": "当前进度",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "高亮“当前”所处的里程碑",
         "publicKey": "focus",
@@ -12591,7 +13206,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "进行到第几个",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 1,
         "max": 5,
@@ -12606,7 +13220,6 @@ export const pages = [
         "key": "showProgress",
         "label": "进度填充",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "连接线按当前进度着色填充",
         "publicKey": "showProgress",
@@ -12617,7 +13230,6 @@ export const pages = [
         "key": "showDescriptions",
         "label": "节点描述",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏每个节点的描述文字",
         "publicKey": "showDescriptions",
@@ -12628,7 +13240,6 @@ export const pages = [
         "key": "showIntro",
         "label": "显示引言",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏顶部标题与引言",
         "publicKey": "showIntro",
@@ -12636,10 +13247,29 @@ export const pages = [
         "description": "显示/隐藏顶部标题与引言"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -12667,6 +13297,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "milestoneCount": 5,
       "focus": true,
       "focusIndex": 4,
@@ -12721,7 +13352,6 @@ export const pages = [
         "key": "principleCount",
         "label": "信条数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 6,
@@ -12735,7 +13365,6 @@ export const pages = [
         "key": "columns",
         "label": "栏数",
         "type": "segment",
-        "default": 2,
         "def": 2,
         "options": [
           {
@@ -12756,7 +13385,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -12777,7 +13405,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -12788,7 +13415,6 @@ export const pages = [
         "key": "showDeco",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏卡片内几何装饰",
         "publicKey": "showDeco",
@@ -12799,7 +13425,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -12885,7 +13510,6 @@ export const pages = [
         "key": "memberCount",
         "label": "成员数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 3,
         "max": 6,
@@ -12899,7 +13523,6 @@ export const pages = [
         "key": "showRole",
         "label": "职位",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏成员职位",
         "publicKey": "showRole",
@@ -12910,7 +13533,6 @@ export const pages = [
         "key": "showLede",
         "label": "显示导语",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏标题区导语",
         "publicKey": "showLede",
@@ -12921,7 +13543,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "light",
         "def": "light",
         "options": [
           {
@@ -12942,7 +13563,6 @@ export const pages = [
         "key": "mediaFit",
         "label": "图片填充",
         "type": "segment",
-        "default": "cover",
         "def": "cover",
         "options": [
           {
@@ -12963,7 +13583,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -13051,7 +13670,6 @@ export const pages = [
         "key": "portraitSide",
         "label": "人像位置",
         "type": "segment",
-        "default": "left",
         "def": "left",
         "options": [
           {
@@ -13072,7 +13690,6 @@ export const pages = [
         "key": "portraitShape",
         "label": "人像形状",
         "type": "segment",
-        "default": "rounded",
         "def": "rounded",
         "options": [
           {
@@ -13093,7 +13710,6 @@ export const pages = [
         "key": "theme",
         "label": "配色",
         "type": "segment",
-        "default": "dark",
         "def": "dark",
         "options": [
           {
@@ -13114,7 +13730,6 @@ export const pages = [
         "key": "showWave",
         "label": "声波装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏引文下方的声波装饰",
         "publicKey": "showWave",
@@ -13125,7 +13740,6 @@ export const pages = [
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#d61fb5",
         "def": "#d61fb5",
         "options": [
           {
@@ -13199,7 +13813,6 @@ export const pages = [
         "key": "quoteCount",
         "label": "引言数量",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -13213,7 +13826,6 @@ export const pages = [
         "key": "showBadge",
         "label": "姓名徽标",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏发言人首字徽标",
         "publicKey": "showBadge",
@@ -13224,7 +13836,6 @@ export const pages = [
         "key": "focus",
         "label": "聚焦高亮",
         "type": "toggle",
-        "default": false,
         "def": false,
         "desc": "突出其中一条引言，其余淡化",
         "publicKey": "focus",
@@ -13235,7 +13846,6 @@ export const pages = [
         "key": "focusIndex",
         "label": "聚焦第几条",
         "type": "slider",
-        "default": 1,
         "def": 1,
         "min": 1,
         "max": 4,
@@ -13247,10 +13857,29 @@ export const pages = [
         "description": "高亮的引言序号"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "dark",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#5a138e",
         "def": "#5a138e",
         "options": [
           {
@@ -13278,6 +13907,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#5a138e",
+      "theme": "dark",
       "quoteCount": 4,
       "showBadge": true,
       "focus": false,
@@ -13341,7 +13971,6 @@ export const pages = [
         "key": "showDirectory",
         "label": "显示目录",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部链接目录",
         "publicKey": "showDirectory",
@@ -13352,7 +13981,6 @@ export const pages = [
         "key": "directoryColumns",
         "label": "目录栏数",
         "type": "slider",
-        "default": 4,
         "def": 4,
         "min": 2,
         "max": 4,
@@ -13367,7 +13995,6 @@ export const pages = [
         "key": "showMarquee",
         "label": "显示跑马灯",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏底部滚动条",
         "publicKey": "showMarquee",
@@ -13378,11 +14005,11 @@ export const pages = [
         "key": "marqueeSpeed",
         "label": "跑马灯速度",
         "type": "slider",
-        "default": 20,
         "def": 20,
         "min": 8,
         "max": 40,
         "step": 1,
+        "unit": "s",
         "dependsOn": "showMarquee",
         "desc": "滚动一圈的秒数（越小越快）",
         "publicKey": "marqueeSpeed",
@@ -13393,7 +14020,6 @@ export const pages = [
         "key": "showDecorations",
         "label": "显示装饰",
         "type": "toggle",
-        "default": true,
         "def": true,
         "desc": "显示/隐藏几何装饰图形",
         "publicKey": "showDecorations",
@@ -13401,10 +14027,29 @@ export const pages = [
         "description": "显示/隐藏几何装饰图形"
       },
       {
+        "key": "theme",
+        "label": "配色",
+        "type": "segment",
+        "def": "light",
+        "options": [
+          {
+            "value": "light",
+            "label": "浅色"
+          },
+          {
+            "value": "dark",
+            "label": "深色"
+          }
+        ],
+        "desc": "页面整体明暗配色",
+        "publicKey": "theme",
+        "publicLabel": "配色",
+        "description": "页面整体明暗配色"
+      },
+      {
         "key": "accent",
         "label": "强调色",
         "type": "color",
-        "default": "#f15a29",
         "def": "#f15a29",
         "options": [
           {
@@ -13432,6 +14077,7 @@ export const pages = [
     ],
     "defaultProps": {
       "accent": "#f15a29",
+      "theme": "light",
       "showDirectory": true,
       "directoryColumns": 4,
       "showMarquee": true,

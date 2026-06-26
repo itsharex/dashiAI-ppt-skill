@@ -13,7 +13,7 @@
  *  mediaLayout     enum   多图构图           默认 'feature' 可选 'feature'|'stack'
  *  statCount       number 数据标签数量         默认 3   可选 0–3
  *  focusEnabled    bool   图片重点高亮开关      默认 false
- *  focusIndex      number 重点图序号(从1起)    默认 1
+ *  focusIndex      number 重点图序号(从1起)    默认 2
  *  showDecorations bool   装饰元素显隐         默认 true
  *
  * 所有可见文案 / 数据 / 图片槽占位均由 props 暴露（defaults 给完整默认值），controls 与 props 一一对应。
@@ -92,7 +92,7 @@ function Slide16ImageStory(props) {
     mediaLayout = 'feature',
     statCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showDecorations = true,
     hlStyle = 'glass',
     hlTilt = 2,
@@ -236,7 +236,7 @@ const META = {
     mediaLayout: 'feature',
     statCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showDecorations: true,
     kicker: '典型案例 · 卖铲子的人',
     name: 'CoreWeave',
@@ -253,7 +253,7 @@ const META = {
     { key: 'mediaLayout', type: 'radio', label: '多图构图', options: ['feature', 'stack'], optionLabels: ['特写网格', '等列堆叠'], default: 'feature', showIf: (v) => v.mediaCount > 1, desc: '多张图片的排布构图' },
     { key: 'statCount', type: 'slider', label: '数据标签', min: 0, max: 3, step: 1, default: 3, desc: '左侧数据标签数量' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, showIf: (v) => v.mediaCount > 1, desc: '是否高亮某一张图片' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'mediaCount', showIf: (v) => v.mediaCount > 1 && v.focusEnabled, desc: '被高亮图片的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'mediaCount', showIf: (v) => v.mediaCount > 1 && v.focusEnabled, desc: '被高亮图片的序号' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
     { type: 'section', label: '文案' },
     { key: 'kicker', type: 'text', label: '眉标', default: '典型案例 · 卖铲子的人', desc: '顶部 kicker' },

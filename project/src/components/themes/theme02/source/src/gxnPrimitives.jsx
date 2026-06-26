@@ -80,6 +80,7 @@ function looksLikeVideoSrc(src) {
 export function ImageSlots({
   count = 1, items = [], captions = [], focusIndex = -1, onActivate, onClear,
   placeholder = '拖入图片 · IMAGE', gap = 16, arrange = 'grid', fit, className, style,
+  boundSingle = false,
 }) {
   const [ratios, setRatios] = React.useState({});
   if (!count || count < 1) return null;
@@ -98,7 +99,13 @@ export function ImageSlots({
     const cap = captions[i];
     const isFocus = i === focusIndex;
     let boxStyle = { ...cellStyle };
-    if (single) {
+    if (single && boundSingle) {
+      boxStyle = {
+        ...cellStyle,
+        width: '100%', height: '100%',
+        maxWidth: '100%', maxHeight: '100%',
+      };
+    } else if (single) {
       const r = Math.max(0.62, Math.min(1.9, ratio || 1.5));
       boxStyle = {
         ...cellStyle,
@@ -109,7 +116,9 @@ export function ImageSlots({
       };
     }
     return (
-      <div className={cx('gxn-slot', filled && 'is-filled', isFocus && 'is-focus')} style={boxStyle}>
+      <div className={cx('gxn-slot', filled && 'is-filled', isFocus && 'is-focus')}
+           data-bound-single={single && boundSingle ? 'true' : undefined}
+           style={boxStyle}>
         {filled
           ? data.kind === 'video'
             ? <video src={data.src} muted playsInline loop preload="metadata"
@@ -149,9 +158,9 @@ export function ImageSlots({
   if (arrange === 'row') {
     return (
       <div className={className}
-           style={{ height: '100%', width: '100%', display: 'flex', gap, ...style }}>
+           style={{ height: '100%', width: '100%', minHeight: 0, minWidth: 0, display: 'flex', gap, ...style }}>
         {Array.from({ length: count }).map((_, i) => (
-          <Slot key={i} i={i} cellStyle={{ flex: 1, minWidth: 0, height: '100%' }} />
+          <Slot key={i} i={i} cellStyle={{ flex: 1, minWidth: 0, minHeight: 0, width: '100%', height: '100%' }} />
         ))}
       </div>
     );
@@ -159,18 +168,28 @@ export function ImageSlots({
 
   let grid;
   if (count === 2) {
-    grid = { gridTemplateColumns: '1fr', gridTemplateRows: '1fr 1fr' };
+    grid = { gridTemplateColumns: 'minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1fr) minmax(0, 1fr)' };
   } else if (count === 3) {
-    grid = { gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1.25fr 1fr' };
+    grid = { gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1.25fr) minmax(0, 1fr)' };
+  } else if (count === 5) {
+    grid = { gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gridTemplateRows: 'minmax(0, 1fr) minmax(0, 1fr)' };
   } else {
-    grid = { gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr' };
+    grid = { gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gridTemplateRows: 'minmax(0, 1fr) minmax(0, 1fr)' };
   }
   return (
     <div className={className}
-         style={{ height: '100%', width: '100%', display: 'grid', gap, ...grid, ...style }}>
+         style={{ height: '100%', width: '100%', minHeight: 0, minWidth: 0, display: 'grid', gap, ...grid, ...style }}>
       {Array.from({ length: count }).map((_, i) => (
         <Slot key={i} i={i}
-              cellStyle={count === 3 && i === 0 ? { gridColumn: '1 / span 2' } : {}} />
+              cellStyle={{
+                minHeight: 0, minWidth: 0, width: '100%', height: '100%',
+                ...(count === 3 && i === 0 ? { gridColumn: '1 / span 2' } : {}),
+                ...(count === 5 ? (
+                  i < 3
+                    ? { gridColumn: `${i * 2 + 1} / span 2` }
+                    : { gridColumn: `${(i - 3) * 3 + 1} / span 3`, gridRow: '2' }
+                ) : {}),
+              }} />
       ))}
     </div>
   );

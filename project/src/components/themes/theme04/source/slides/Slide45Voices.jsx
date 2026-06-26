@@ -11,7 +11,7 @@
  *  cardCount       number 观点卡数量(2–3)       默认 3
  *  mediaCount      number 显示头像槽的卡片数(0–3) 默认 0   (其余转首字母无图态)
  *  focusEnabled    bool   重点卡高亮开关          默认 false
- *  focusIndex      number 重点卡序号(从1起)      默认 1   范围 1–cardCount
+ *  focusIndex      number 重点卡序号(从1起)      默认 2   范围 1–cardCount
  *  showRole        bool   署名下职务行显隐        默认 true
  *  showDecorations bool   星芒等点缀显隐          默认 true
  *
@@ -71,7 +71,7 @@ function Slide45Voices(props) {
     cardCount = 3,
     mediaCount = 0,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showRole = true,
     showDecorations = true,
     hlStyle = 'glass',
@@ -185,7 +185,7 @@ const META = {
     cardCount: 3,
     mediaCount: 0,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showRole: true,
     showDecorations: true,
   },
@@ -197,7 +197,7 @@ const META = {
     { key: 'cardCount', type: 'slider', label: '观点卡数', min: 2, max: 3, step: 1, default: 3, desc: '展示的观点卡数量' },
     { key: 'mediaCount', type: 'slider', label: '头像图片槽', min: 0, max: 3, step: 1, default: 0, maxFromKey: 'cardCount', desc: '显示头像槽的卡片数(其余转首字母)' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一张卡片' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'cardCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡片的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'cardCount', showIf: (v) => v.focusEnabled, desc: '被高亮卡片的序号' },
     { key: 'showRole', type: 'toggle', label: '职务行', default: true, desc: '署名下职务行显隐' },
     { key: 'showDecorations', type: 'toggle', label: '装饰元素', default: true, desc: '星芒等点缀' },
   ],

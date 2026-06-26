@@ -23,6 +23,9 @@ import React from 'react';
 import { ThemeStyle, THEME_CLASS, cx } from '../gxnTheme.js';
 import { SlideHeader } from '../gxnPrimitives.jsx';
 
+const MAX_RADAR_AXES = 6;
+const MAX_RADAR_SERIES = 5;
+
 export const slideRadarDefaults = {
   kicker: 'RADAR · 能力雷达',
   title: '头部之争 ',
@@ -36,8 +39,8 @@ export const slideRadarDefaults = {
     { name: 'Google DeepMind', values: [93, 78, 90, 88, 82, 89] },
     { name: 'Mistral', values: [80, 62, 56, 60, 72, 64] },
   ],
-  axisCount: 6,
-  seriesCount: 5,
+  axisCount: MAX_RADAR_AXES,
+  seriesCount: MAX_RADAR_SERIES,
   focusEnabled: false,
   focusIndex: 0,
   showRings: true,
@@ -47,14 +50,14 @@ export const slideRadarDefaults = {
 };
 
 export const slideRadarControls = [
-  { key: 'axisCount', type: 'number', label: '维度数量', default: 6, min: 3, step: 1,
-    maxFrom: (p) => (p.axes ? p.axes.length : 6), describe: '雷达展示的维度数量' },
-  { key: 'seriesCount', type: 'number', label: '系列数量', default: 5, min: 1, step: 1,
-    maxFrom: (p) => (p.series ? p.series.length : 5), describe: '叠加对比的系列数量' },
+  { key: 'axisCount', type: 'number', label: '维度数量', default: MAX_RADAR_AXES, min: 3, max: MAX_RADAR_AXES, step: 1,
+    describe: '雷达展示的维度数量' },
+  { key: 'seriesCount', type: 'number', label: '系列数量', default: MAX_RADAR_SERIES, min: 1, max: MAX_RADAR_SERIES, step: 1,
+    describe: '叠加对比的系列数量' },
   { key: 'focusEnabled', type: 'toggle', label: '重点强调', default: false,
     describe: '是否强调某一系列（其余淡出）' },
   { key: 'focusIndex', type: 'number', label: '强调项', default: 0, min: 0, step: 1,
-    oneBased: true, maxFrom: (p) => Math.max(0, (p.seriesCount || 1) - 1),
+    oneBased: true, maxFrom: (p) => Math.max(0, Math.min(MAX_RADAR_SERIES, p.seriesCount || 1) - 1),
     visibleWhen: (p) => p.focusEnabled, describe: '被强调系列的序号' },
   { key: 'showRings', type: 'toggle', label: '背景环网', default: true,
     describe: '同心环 + 辐射轴显隐' },
@@ -136,9 +139,9 @@ export function SlideRadar(props) {
   const sc = p.gxnScheme || {};
   const palette = sc.palette || ['#2fe07f', '#4ea2ff', '#ff6fae', '#b9f24a', '#9b7dff'];
 
-  const aCount = Math.max(3, Math.min(p.axes.length, p.axisCount));
+  const aCount = Math.max(3, Math.min(MAX_RADAR_AXES, p.axes.length, p.axisCount));
   const axes = p.axes.slice(0, aCount);
-  const sCount = Math.max(1, Math.min(p.series.length, p.seriesCount));
+  const sCount = Math.max(1, Math.min(MAX_RADAR_SERIES, p.series.length, p.seriesCount));
   const series = p.series.slice(0, sCount);
   const fIdx = p.focusEnabled ? Math.max(0, Math.min(sCount - 1, p.focusIndex)) : -1;
 

@@ -6,7 +6,7 @@
  * ── 可调参数（controls）────────────────────────────────────────────────
  *  groupCount      number 展示的层级数(上中下游) 默认 3   可选 1–3
  *  focusEnabled    bool   重点层高亮开关         默认 false
- *  focusIndex      number 重点层序号(从1起)      默认 1
+ *  focusIndex      number 重点层序号(从1起)      默认 2
  *  showCompanyTags bool   代表公司用标签 / 纯文本 默认 true
  *  showLevelBadge  bool   层级大徽章 + 英文显隐   默认 true
  *  showFlow        bool   层级间向下传导箭头显隐  默认 true
@@ -79,7 +79,7 @@ function Slide23ChainTable(props) {
       groupsData = XHSCT_GROUPS,
     groupCount = 3,
     focusEnabled = false,
-    focusIndex = 1,
+    focusIndex = 2,
     showCompanyTags = true,
     showLevelBadge = true,
     showFlow = true,
@@ -225,7 +225,7 @@ const META = {
     ...hlDefaults,
     groupCount: 3,
     focusEnabled: false,
-    focusIndex: 1,
+    focusIndex: 2,
     showCompanyTags: true,
     showLevelBadge: true,
     showFlow: true,
@@ -238,7 +238,7 @@ const META = {
     ...hlControls,
     { key: 'groupCount', type: 'slider', label: '层级数量', min: 1, max: 3, step: 1, default: 3, desc: '展示的产业层级数(上中下游)' },
     { key: 'focusEnabled', type: 'toggle', label: '重点突出', default: false, desc: '是否高亮某一层级' },
-    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 1, maxFromKey: 'groupCount', showIf: (v) => v.focusEnabled, desc: '被高亮层级的序号' },
+    { key: 'focusIndex', type: 'slider', label: '重点序号', min: 1, max: 3, step: 1, default: 2, maxFromKey: 'groupCount', showIf: (v) => v.focusEnabled, desc: '被高亮层级的序号' },
     { key: 'showCompanyTags', type: 'toggle', label: '公司标签', default: true, desc: '代表公司用标签(关) / 纯文本' },
     { key: 'showLevelBadge', type: 'toggle', label: '层级徽章', default: true, desc: '层级大徽章 + 英文' },
     { key: 'showFlow', type: 'toggle', label: '传导箭头', default: true, desc: '层级间向下传导箭头' },

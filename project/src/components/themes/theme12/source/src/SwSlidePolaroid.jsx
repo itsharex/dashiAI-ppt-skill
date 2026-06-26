@@ -72,7 +72,7 @@ export default function SwSlidePolaroid(props) {
       <Bar meta={p.barMeta} accent={accent} dark={dark} />
 
       <div style={{ flex: 1, minHeight: 0, position: 'relative', display: 'grid',
-        gridTemplateColumns: '0.82fr 1.18fr', gap: 36, alignItems: 'center', padding: '20px 0', zIndex: 3 }}>
+        gridTemplateColumns: '0.82fr 1.18fr', gridTemplateRows: 'minmax(0, 1fr)', gap: 36, alignItems: 'center', padding: '20px 0', zIndex: 3 }}>
 
         {/* title block */}
         <div style={{ position: 'relative', zIndex: 2 }}>
@@ -89,7 +89,7 @@ export default function SwSlidePolaroid(props) {
         </div>
 
         {/* photo cluster */}
-        <div style={{ position: 'relative', height: '100%', minWidth: 0, display: 'flex',
+        <div style={{ position: 'relative', height: '100%', minWidth: 0, minHeight: 0, display: 'flex',
           alignItems: 'center', justifyContent: 'center', gap: p.scatter ? 0 : 22 }}>
           {Array.from({ length: count }).map((_, i) => {
             const pal = swCardPalette[i % swCardPalette.length];
@@ -103,7 +103,7 @@ export default function SwSlidePolaroid(props) {
                 transform: 'rotate(' + tilt + 'deg) translateY(' + nudge + '%)',
                 background: photoBg, padding: '14px 14px 0', borderRadius: 6,
                 boxShadow: '0 16px 34px rgba(20,15,16,.26)', zIndex: 10 + i }}>
-                <div style={{ aspectRatio: '1 / 1', width: '100%' }}>
+                <div style={{ aspectRatio: '1 / 1', width: '100%', minWidth: 0, minHeight: 0 }}>
                   <SwImageSlot value={p.media[i] || null} onChange={(s) => p.onMediaChange(i, s)}
                     fit={p.mediaFit} accent={pal.bg} radius={3} tone={dark ? 'dark' : 'light'}
                     label={i + 1} placeholder={p.mediaPlaceholder} />
