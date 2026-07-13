@@ -47,5 +47,6 @@ npm run render:goal -- "$SPEC_PATH" "$OUT_PATH"
 npm run validate:swiss -- "$OUT_PATH"
 npm run validate:goal-copy -- "$SPEC_PATH" "$OUT_PATH"
 OUT_DIR="$(dirname "$OUT_PATH")"
-PREVIEW_PORT="${DASHI_PPT_PREVIEW_PORT:-4178}"
+# 缺省端口落在 SKILL.md 约定的 5200-5999 段(4178/4300/4400 为用户保留端口);被占用时服务自增。
+PREVIEW_PORT="${DASHI_PPT_PREVIEW_PORT:-5200}"
 npm run preview:start -- "$OUT_DIR" "$PREVIEW_PORT"

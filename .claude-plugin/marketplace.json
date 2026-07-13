@@ -1,11 +1,11 @@
 {
-  "name": "dashiai-ppt-skill",
+  "name": "dashi-ppt-skill",
   "owner": {
     "name": "大师的AI小灶"
   },
   "metadata": {
     "description": "DashiAI PPT skill marketplace",
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   "plugins": [
     {

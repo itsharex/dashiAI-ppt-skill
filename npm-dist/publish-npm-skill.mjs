@@ -1,4 +1,4 @@
-// 把 skill 发布为 npm 包 dashiai-ppt-skill(国内经 npmmirror 自动同步分发,
+// 把 skill 发布为 npm 包 dashi-ppt-skill(国内经 npmmirror 自动同步分发,
 // 替代直连 GitHub 的下载通道)。内容与 skill:sync 产物同源;幂等:npm 上已有
 // 当前版本则跳过。用法:node scripts/publish-npm-skill.mjs [--dry-run]
 import { execFileSync } from 'node:child_process';
@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SKILL_ROOT = process.env.DASHI_PPT_SKILL_ROOT
   || path.join(os.homedir(), '.agents', 'skills', 'dashiai-ppt');
-const PACKAGE_NAME = 'dashiai-ppt-skill';
+const PACKAGE_NAME = 'dashi-ppt-skill';
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // 本地安装目录里的运行时残留,不进分发包。
@@ -61,26 +61,26 @@ function main() {
       name: PACKAGE_NAME,
       version,
       description: 'DashiAI PPT skill installer — offline-editable HTML decks with PPTX/PDF export. 国内可经 npmmirror 安装。',
-      bin: { 'dashiai-ppt-skill': 'bin/install.mjs' },
+      bin: { 'dashi-ppt-skill': 'bin/install.mjs' },
       files: ['bin', 'skill', 'LICENSE'],
       // 与仓库一致:skill 本体 AGPL-3.0(html-deck-to-pptx 子包为专有组件,见其目录内 LICENSE)。
       license: 'AGPL-3.0-only',
-      repository: { type: 'git', url: 'git+https://github.com/chuspeeism/dashiAI-ppt-skill.git' },
-      homepage: 'https://github.com/chuspeeism/dashiAI-ppt-skill#readme',
+      repository: { type: 'git', url: 'git+https://github.com/chuspeeism/dashi-ppt-skill.git' },
+      homepage: 'https://github.com/chuspeeism/dashi-ppt-skill#readme',
       keywords: ['agent-skill', 'ppt', 'presentation', 'claude', 'codex'],
       // 与导出子包 html-deck-to-pptx 的 engines 对齐(README/SKILL 同步声明 20+)。
       engines: { node: '>=20' },
     }, null, 2)}\n`);
     fs.writeFileSync(path.join(staging, 'README.md'), [
-      '# dashiai-ppt-skill',
+      '# dashi-ppt-skill',
       '',
-      'Installer package for the [DashiAI PPT](https://github.com/chuspeeism/dashiAI-ppt-skill) agent skill.',
+      'Installer package for the [DashiAI PPT](https://github.com/chuspeeism/dashi-ppt-skill) agent skill.',
       '',
       '```bash',
       '# International',
-      'npx dashiai-ppt-skill',
+      'npx dashi-ppt-skill',
       '# 中国大陆(走 npmmirror 镜像)',
-      'npx --registry=https://registry.npmmirror.com dashiai-ppt-skill',
+      'npx --registry=https://registry.npmmirror.com dashi-ppt-skill',
       '```',
       '',
       'Options: `--dir <skills-root>` to target a specific skills directory, `--list` to show detected locations.',

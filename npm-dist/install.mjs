@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// dashiai-ppt-skill 的 npx 安装器:把包内 skill/ 目录复制到本机技能目录。
+// dashi-ppt-skill 的 npx 安装器:把包内 skill/ 目录复制到本机技能目录。
 // 用法:
-//   npx dashiai-ppt-skill@latest                  # 探测常见技能目录,全部安装/更新
-//   npx dashiai-ppt-skill@latest --dir <path>     # 显式指定技能根目录
-//   npx dashiai-ppt-skill@latest --list           # 只列出探测到的候选目录
+//   npx dashi-ppt-skill@latest                  # 探测常见技能目录,全部安装/更新
+//   npx dashi-ppt-skill@latest --dir <path>     # 显式指定技能根目录
+//   npx dashi-ppt-skill@latest --list           # 只列出探测到的候选目录
 //
 // 关键行为:
 // - npm publish 会排除 .npmrc,包内以 project/npmrc.template 携带缺省镜像配置,
@@ -115,7 +115,7 @@ function installInto(targetRoot, version) {
 
 function main() {
   if (!existsSync(SKILL_SOURCE)) {
-    console.error('损坏的安装包:缺少 skill/ 内容。请重新安装 dashiai-ppt-skill。');
+    console.error('损坏的安装包:缺少 skill/ 内容。请重新安装 dashi-ppt-skill。');
     process.exit(1);
   }
   const detected = detectSkillRoots();
@@ -128,7 +128,7 @@ function main() {
   const targetRoots = explicitDir ? [path.resolve(explicitDir)] : detected;
   if (!targetRoots.length) {
     console.error('未探测到技能目录。请显式指定,例如:');
-    console.error('  npx dashiai-ppt-skill --dir ~/.claude/skills');
+    console.error('  npx dashi-ppt-skill --dir ~/.claude/skills');
     console.error(`常见位置:\n  ${candidates.join('\n  ')}`);
     process.exit(2);
   }

@@ -11,9 +11,9 @@ const SOURCE_PACKAGE = path.join(SKILL_ROOT, 'package.json');
 // 端点按国内可达性排序:npmmirror(国内可达)→ npm 官方 → GitHub raw(兜底,
 // 兼容 npm 包尚未发布的过渡期)。任一端点拿到版本即停,全部失败保持静默。
 const REMOTE_VERSION_ENDPOINTS = [
-  { url: 'https://registry.npmmirror.com/dashiai-ppt-skill/latest', pick: (json) => json.version },
-  { url: 'https://registry.npmjs.org/dashiai-ppt-skill/latest', pick: (json) => json.version },
-  { url: 'https://raw.githubusercontent.com/chuspeeism/dashiAI-ppt-skill/main/skills/dashiai-ppt/project/package.json', pick: (json) => json.version },
+  { url: 'https://registry.npmmirror.com/dashi-ppt-skill/latest', pick: (json) => json.version },
+  { url: 'https://registry.npmjs.org/dashi-ppt-skill/latest', pick: (json) => json.version },
+  { url: 'https://raw.githubusercontent.com/chuspeeism/dashi-ppt-skill/main/skills/dashiai-ppt/project/package.json', pick: (json) => json.version },
 ];
 const REQUEST_TIMEOUT_MS = 5000;
 
@@ -26,7 +26,7 @@ async function main() {
   if (!remoteVersion) return;
   if (compareVersions(remoteVersion, localVersion) <= 0) return;
   process.stdout.write(
-    `发现 DashiAI PPT 新版本 ${remoteVersion}（当前 ${localVersion}）。更新方式：npx dashiai-ppt-skill@latest（国内加 --registry=https://registry.npmmirror.com），或重新拉取 https://github.com/chuspeeism/dashiAI-ppt-skill。\n`
+    `发现 DashiAI PPT 新版本 ${remoteVersion}（当前 ${localVersion}）。更新方式：npx dashi-ppt-skill@latest（国内加 --registry=https://registry.npmmirror.com），或重新拉取 https://github.com/chuspeeism/dashi-ppt-skill。\n`
   );
 }
 
